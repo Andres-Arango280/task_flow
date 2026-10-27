@@ -32,7 +32,7 @@ pipeline {
     stage('Pruebas de regresión unitarias') {
       steps {
         echo 'Ejecutando pruebas unitarias del backend...'
-        sh 'npm run test:regression:unit'
+        sh 'npm run test:regression:unit -- --coverage --coverageReporters=lcov'  // genera coverage/lcov.info para SonarQube
       }
     }
 
