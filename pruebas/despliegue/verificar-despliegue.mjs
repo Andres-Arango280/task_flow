@@ -191,8 +191,26 @@ if (authJenkins) {
     caso('JEN-04', 'Nuevo build del pipeline sobre la versión refactorizada', 'positivo', 'Disparar el pipeline con el código final.', 'SUCCESS.', `No se pudo disparar o esperar el build (HTTP ${disparo.status}).`, 'Fallido', []);
   }
 } else {
-  caso('JEN-04', 'Nuevo build del pipeline sobre la versión refactorizada', 'positivo', 'Disparar el pipeline con el código final publicado en GitHub (checkout scm de Claudia280-girl/validacion, rama main).', 'SUCCESS con Quality Gate OK.',
-    'Pendiente: 1) git add -A && git commit && git push origin main; 2) defina JENKINS_USER y JENKINS_TOKEN (Jenkins → usuario → Configurar → API Token) y vuelva a ejecutar este script, o pulse «Construir ahora» en http://localhost:8081/job/taskflow-pipeline y guarde la consola en pruebas/evidencias/despliegue/jenkins/.', 'Pendiente', []);
+  // Sin credenciales: el job sondea el SCM (H/2) y construye solo cuando detecta el commit publicado.
+  // Se busca el build más reciente, posterior al último conocido, cuya consola contenga el commit HEAD local.
+  const headLocal = ejecutar('git', ['rev-parse', 'HEAD'], RAIZ, null).salida.trim().slice(0, 40);
+  let nuevo = null; let consolaNuevo = '';
+  for (const b of builds.filter((x) => x.result && x.number > (ultimoExitoso?.number ?? 0) && x.number > 11)) {
+    const consola = await http(`${JENKINS}/job/${JOB}/${b.number}/consoleText`, { timeout: 30000 });
+    const limpio = consola.texto.replace(/\u001b\[[0-9;]*m/g, '').replace(/ha:\/\/\/\/[A-Za-z0-9+/=]+/g, '');
+    if (limpio.includes(headLocal)) { nuevo = b; consolaNuevo = limpio; break; }
+  }
+  if (nuevo) {
+    guardar(`jenkins/build-${nuevo.number}-consola.log`, consolaNuevo);
+    const etapas = [...consolaNuevo.matchAll(/\[Pipeline\] \{ \((.+?)\)/g)].map((m) => m[1]).filter((e, i, a) => a.indexOf(e) === i);
+    caso('JEN-04', `Nuevo build del pipeline sobre la versión refactorizada (#${nuevo.number})`, 'positivo',
+      'Publicar el código final en GitHub (Andres-Arango280/task_flow, rama main) y verificar que el pipeline, disparado por el sondeo SCM, termina en SUCCESS.', 'SUCCESS con Quality Gate OK.',
+      `Build #${nuevo.number} del ${new Date(nuevo.timestamp).toLocaleString('es-CO')} sobre el commit ${headLocal.slice(0, 7)}: ${nuevo.result} en ${Math.round(nuevo.duration / 1000)} s; etapas ${etapas.join(' → ')}; ${(consolaNuevo.match(/Tests:\s+[^\n]+/g) ?? []).join(' | ')} ${/Quality gate is 'OK'/.test(consolaNuevo) ? 'Quality Gate OK.' : ''}`,
+      nuevo.result === 'SUCCESS' ? 'Aprobado' : 'Fallido', [`jenkins/build-${nuevo.number}-consola.log`, 'jenkins/job-api.json'], { commit: headLocal, etapas });
+  } else {
+    caso('JEN-04', 'Nuevo build del pipeline sobre la versión refactorizada', 'positivo', 'Publicar el código final en GitHub (Andres-Arango280/task_flow, rama main) y verificar que el pipeline termina en SUCCESS.', 'SUCCESS con Quality Gate OK.',
+      `Pendiente: aún no hay un build de Jenkins sobre el commit local ${headLocal.slice(0, 7)}. Haga git push origin main y espere el sondeo SCM (cada 2 min), o defina JENKINS_USER y JENKINS_TOKEN para dispararlo desde este script.`, 'Pendiente', []);
+  }
 }
 
 // ---------- REG: regresión posterior a la refactorización ----------
