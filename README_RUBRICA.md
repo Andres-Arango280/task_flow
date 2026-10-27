@@ -91,8 +91,9 @@ npm run cy:open              # modo interactivo para la demostración en vivo
 ## 5. Pruebas E2E con Screenplay y lenguaje Gherkin
 
 - **Carpeta:** `pruebas/e2e-screenplay/`
-  - `features/*.feature` — 12 escenarios GH-01…GH-12 en español (Dado / Cuando / Entonces).
-  - `features/step_definitions/*.ts` — cada paso llama a `actorCalled('Ana').attemptsTo(...)` con las **mismas tareas Screenplay** de los specs SP-01…SP-18.
+  - `features/*.feature` — 4 Feature, 7 Rule y 12 escenarios GH-01…GH-12 con el formato de la Clase 19: palabras clave en inglés (`Feature`, `Background`, `Rule`, `Scenario`, `Scenario Outline`, `Examples`, `Given`/`When`/`Then`/`And`), texto en español, el actor nombrado en el primer paso y después el pronombre («When ella…», «Then ella observa el mensaje "…"»), tablas de datos en los `Then` y etiquetas `@web`, `@api`, `@smoke`, `@GH-xx`.
+  - `features/step_definitions/*.ts` — cada paso llama a `actorDe(quien).attemptsTo(...)` con las **mismas tareas Screenplay** de los specs SP-01…SP-18 (`quien` es el nombre o el pronombre).
+  - Cada `Feature` describe **Necesidad → Regla → Ejemplos**, como en la diapositiva «Del requisito al escenario».
   - `src/screenplay/` — actores, tareas, interacciones y preguntas (patrón Screenplay con Serenity/JS 3.48 + Playwright).
 - **Comandos:**
 
@@ -104,7 +105,7 @@ npm run gherkin     # Gherkin + Screenplay: 12 escenarios, 106 pasos (Cucumber 1
 ```
 
 - **Evidencias:** `pruebas/evidencias/gherkin/` (`reporte-serenity/index.html`, `reporte-cucumber/`, `capturas/`, copia de los `.feature`) y `pruebas/evidencias/screenplay/` (reporte Serenity, reporte Playwright, vídeos, trazas).
-- **Qué mostrar:** abra un `.feature`, su `step_definitions` y el informe Serenity: cada paso Gherkin se despliega en las tareas e interacciones Screenplay anidadas. Node 20 exige Cucumber 11 (Cucumber 13 requiere Node ≥ 22).
+- **Qué mostrar:** abra `features/autenticacion.feature` (Rule + Scenario Outline con dos Examples etiquetados @GH-03/@GH-04), `features/tablero.feature` (tablas de datos en los Then), su `step_definitions` y el informe Serenity: cada paso Gherkin se despliega en las tareas e interacciones Screenplay anidadas. Node 20 exige Cucumber 11 (Cucumber 13 requiere Node ≥ 22).
 
 ## 6. Pruebas con tres herramientas de IA (por integrante)
 

@@ -43,7 +43,7 @@ md.push('## 4. Demostración en vivo (6 min)', '');
 md.push('| Paso | Comando | Qué señalar |', '|---|---|---|');
 md.push(`| Cypress seguridad (13 casos, ~10 s) | \`cd taskflow-frontend && npm run test:seguridad\` | JWT manipulado → 401, 6.º intento → 429, BOLA → 403, XSS mostrado como texto, cabeceras helmet, CORS |`);
 md.push(`| Cypress accesibilidad (11 casos, ~20 s) | \`npm run test:accesibilidad\` | axe-core WCAG A/AA sin violaciones en 8 pantallas + diálogo modal + alto contraste + teclado |`);
-md.push(`| Gherkin + Screenplay (${t(R.gherkin)}, ~50 s) | \`cd pruebas/e2e-screenplay && npm run gherkin\` | Abrir un .feature (Dado/Cuando/Entonces en español) y el informe Serenity con las tareas Screenplay anidadas |`);
+md.push(`| Gherkin + Screenplay (${t(R.gherkin)}, ~50 s) | \`cd pruebas/e2e-screenplay && npm run gherkin\` | Abrir un .feature (Feature → Rule → Scenario con Given/When/Then y texto en español, formato de la Clase 19) y el informe Serenity con las tareas Screenplay anidadas |`);
 md.push(`| Stagehand (${t(R.stagehand)}) | mostrar \`pruebas/evidencias/stagehand\` (capturas + salidas JSON) | observe devuelve selectores reales; extract valida con zod; act con instrucción imposible → success=false |`);
 md.push(`| Playwright Agents (${t(R.pwa)}) | abrir \`pruebas/ia-herramientas/playwright-agents/specs/plan-de-pruebas.md\` y \`reportes/healer-diff.md\` | Planner → Generator → Healer: el localizador roto se repara y la prueba vuelve a pasar |`);
 md.push('', `Suites completas ya ejecutadas (mostrar reportes HTML si hay tiempo): Jest ${t(R.jest)} (cobertura líneas ${R.jest?.cobertura?.lines ?? '—'} %), Cypress ${t(R.cypress)}, Screenplay ${t(R.screenplay)}, Seguridad OWASP ${t(R.seguridad)}, Rendimiento ${t(R.rendimiento)}, UX/a11y ${t(R.ux)}, Browser Use ${t(R.bu)}, Playwright MCP ${t(R.mcp)}.`, '');
@@ -65,7 +65,7 @@ md.push(`- Casos ejecutados o preparados en total: ${matriz ? matriz.totales.cas
 md.push('- IA: el modelo local gratuito (llama3.1:8b) sirve para explorar y generar pruebas, pero su latencia y el formato de salida limitan su uso en regresión; la validación determinista siempre decide el resultado.');
 md.push('- Recomendaciones: CSP y cookie HttpOnly en el frontend, actualizar Vite/NestJS, límite por IP, integrar todas las suites en Jenkins.', '');
 md.push('## Preguntas frecuentes de sustentación', '');
-md.push('- **¿Cómo se enlaza Gherkin con Screenplay?** Cada paso Dado/Cuando/Entonces tiene una definición en `features/step_definitions/*.ts` que llama a `actorCalled("Ana").attemptsTo(Tarea…)`; las tareas son las mismas que usan los specs SP-01…SP-18.');
+md.push('- **¿Cómo se enlaza Gherkin con Screenplay?** Cada paso Given/When/Then tiene una definición en `features/step_definitions/*.ts` que llama a `actorDe("ella").attemptsTo(Tarea…)` (el pronombre se resuelve al actor en escena, como Alicia/ella en la clase); las tareas son las mismas que usan los specs SP-01…SP-18.');
 md.push('- **¿Qué hace cada capacidad de Stagehand?** `observe` lista acciones con selectores; `act` ejecuta una instrucción y se autorrepara; `extract` devuelve datos validados por esquema zod. Todo se comprueba después contra la API.');
 md.push('- **¿Por qué fallan algunos casos de Stagehand/IA?** Son limitaciones del modelo local (JSON fuera de esquema, omisiones, lentitud), documentadas como tales; no son defectos de TaskFlow.');
 md.push('- **¿Cómo verifico un módulo concreto?** `npm run test:unit:<modulo>` / `npm run test:e2e:<modulo>`; en Cypress, `--spec cypress/e2e/api/<modulo>.cy.ts`.');

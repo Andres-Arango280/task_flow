@@ -1,64 +1,62 @@
-import { Given, Then, When } from '@cucumber/cucumber';
+import { DataTable, Given, Then, When } from '@cucumber/cucumber';
 import { actorCalled, actorInTheSpotlight } from '@serenity-js/core';
 import { contain, Ensure, equals, includes, property } from '@serenity-js/assertions';
 import {
     CrearTarea, CrearTareaPorApi, DeshacerUltimaAccion, EliminarTarea, MensajeDeError, MoverTarea, RellenarNuevaTarea,
     TitulosDeTareasEn, TitulosDeTareasVisibles,
 } from '../../src/screenplay';
+import { actorDe } from '../support/contexto';
 
 /** Pasos de la característica «Tablero Kanban de tareas» */
 
-const Dado = Given;
-const Cuando = When;
-const Entonces = Then;
+const columna = (tabla: DataTable): string[] => tabla.raw().map((fila) => fila[0].trim());
 
-Dado('que existen por API las tareas {string} y {string} en el proyecto de {word}', async (primera: string, segunda: string, nombre: string) => {
-    await actorCalled(nombre).attemptsTo(
-        CrearTareaPorApi.titulada(primera),
-        CrearTareaPorApi.titulada(segunda),
-    );
+/** Tabla de datos con los títulos de las tareas que se crean por API antes de abrir el tablero */
+Given('existen por API las tareas en el proyecto de {word}:', async (nombre: string, tabla: DataTable) => {
+    await actorCalled(nombre).attemptsTo(...columna(tabla).map((titulo) => CrearTareaPorApi.titulada(titulo)));
 });
 
-Cuando('{word} crea la tarea {string} con la descripción {string}', async (nombre: string, titulo: string, descripcion: string) => {
-    await actorCalled(nombre).attemptsTo(CrearTarea.titulada(titulo, descripcion));
+When('{word} crea la tarea {string} con la descripción {string}', async (quien: string, titulo: string, descripcion: string) => {
+    await actorDe(quien).attemptsTo(CrearTarea.titulada(titulo, descripcion));
 });
 
-Cuando('{word} crea la tarea {string}', async (nombre: string, titulo: string) => {
-    await actorCalled(nombre).attemptsTo(CrearTarea.titulada(titulo));
+When('{word} crea la tarea {string}', async (quien: string, titulo: string) => {
+    await actorDe(quien).attemptsTo(CrearTarea.titulada(titulo));
 });
 
-Cuando('{word} mueve la tarea {string} a la columna {string}', async (nombre: string, titulo: string, columna: string) => {
-    await actorCalled(nombre).attemptsTo(MoverTarea.llamada(titulo).aLaColumna(columna));
+When('{word} mueve la tarea {string} a la columna {string}', async (quien: string, titulo: string, columnaDestino: string) => {
+    await actorDe(quien).attemptsTo(MoverTarea.llamada(titulo).aLaColumna(columnaDestino));
 });
 
-Cuando('{word} intenta crear una tarea sin título con la descripción {string}', async (nombre: string, descripcion: string) => {
-    await actorCalled(nombre).attemptsTo(RellenarNuevaTarea.con('', descripcion));
+When('{word} intenta crear una tarea sin título con la descripción {string}', async (quien: string, descripcion: string) => {
+    await actorDe(quien).attemptsTo(RellenarNuevaTarea.con('', descripcion));
 });
 
-Cuando('{word} elimina la tarea {string} confirmando la acción', async (nombre: string, titulo: string) => {
-    await actorCalled(nombre).attemptsTo(EliminarTarea.llamada(titulo));
+When('{word} elimina la tarea {string} confirmando la acción', async (quien: string, titulo: string) => {
+    await actorDe(quien).attemptsTo(EliminarTarea.llamada(titulo));
 });
 
-Cuando('{word} deshace la última acción desde el aviso', async (nombre: string) => {
-    await actorCalled(nombre).attemptsTo(DeshacerUltimaAccion());
+When('{word} deshace la última acción desde el mensaje', async (quien: string) => {
+    await actorDe(quien).attemptsTo(DeshacerUltimaAccion());
 });
 
-Entonces('la columna {string} contiene las tareas {string} y {string}', async (columna: string, primera: string, segunda: string) => {
-    await actorInTheSpotlight().attemptsTo(Ensure.eventually(TitulosDeTareasEn(columna), equals([primera, segunda])));
+/** Tabla de datos: la columna debe contener exactamente esas tareas, en ese orden */
+Then('{word} observa en la columna {string} solamente las tareas:', async (quien: string, nombreColumna: string, tabla: DataTable) => {
+    await actorDe(quien).attemptsTo(Ensure.eventually(TitulosDeTareasEn(nombreColumna), equals(columna(tabla))));
 });
 
-Entonces('la columna {string} contiene la tarea {string}', async (columna: string, titulo: string) => {
-    await actorInTheSpotlight().attemptsTo(Ensure.eventually(TitulosDeTareasEn(columna), contain(titulo)));
+Then('{word} observa en la columna {string} la tarea {string}', async (quien: string, nombreColumna: string, titulo: string) => {
+    await actorDe(quien).attemptsTo(Ensure.eventually(TitulosDeTareasEn(nombreColumna), contain(titulo)));
 });
 
-Entonces('{word} ve en la ventana de nueva tarea el error {string}', async (nombre: string, texto: string) => {
-    await actorCalled(nombre).attemptsTo(Ensure.eventually(MensajeDeError.delTitulo(), includes(texto)));
+Then('{word} observa en la ventana de nueva tarea el error {string}', async (quien: string, texto: string) => {
+    await actorDe(quien).attemptsTo(Ensure.eventually(MensajeDeError.delTitulo(), includes(texto)));
 });
 
-Entonces('el tablero no muestra ninguna tarea', async () => {
+Then('el tablero no muestra ninguna tarea', async () => {
     await actorInTheSpotlight().attemptsTo(Ensure.that(TitulosDeTareasVisibles(), property('length', equals(0))));
 });
 
-Entonces('el tablero muestra únicamente la tarea {string}', async (titulo: string) => {
-    await actorInTheSpotlight().attemptsTo(Ensure.eventually(TitulosDeTareasVisibles(), equals([titulo])));
+Then('{word} observa solamente la tarea {string} en el tablero', async (quien: string, titulo: string) => {
+    await actorDe(quien).attemptsTo(Ensure.eventually(TitulosDeTareasVisibles(), equals([titulo])));
 });

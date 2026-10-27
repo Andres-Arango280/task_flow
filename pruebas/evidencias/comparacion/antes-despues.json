@@ -1,5 +1,5 @@
 {
-  "generado": "2026-10-27T05:33:08.201Z",
+  "generado": "2026-10-27T13:41:28.554Z",
   "versionAnterior": {
     "ref": "8b46dc0",
     "commit": "8b46dc0",
@@ -33,11 +33,11 @@
       }
     },
     "despues": {
-      "archivos": 756,
-      "archivosCodigo": 184,
+      "archivos": 758,
+      "archivosCodigo": 185,
       "archivosPrueba": 59,
-      "lineasCodigo": 16553,
-      "lineasPrueba": 8576,
+      "lineasCodigo": 16862,
+      "lineasPrueba": 8607,
       "casosIt": 373,
       "escenariosGherkin": 11,
       "porCarpeta": {
@@ -67,15 +67,15 @@
         },
         "pruebas/e2e-screenplay": {
           "archivos": 56,
-          "lineas": 7001
+          "lineas": 7055
         },
         "pruebas/ia-herramientas": {
           "archivos": 322,
           "lineas": 83890
         },
         "pruebas/informe": {
-          "archivos": 11,
-          "lineas": 12878
+          "archivos": 13,
+          "lineas": 13158
         },
         "pruebas/jest-a-resumen.js": {
           "archivos": 1,
@@ -587,7 +587,7 @@
       "total": 12,
       "aprobados": 12,
       "fallidos": 0,
-      "fecha": "2026-10-26T23:16:15.543Z"
+      "fecha": "2026-10-27T13:38:49.684Z"
     },
     {
       "area": "stagehand",

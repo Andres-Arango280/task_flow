@@ -1,137 +1,137 @@
 [
   {
-    "description": "  Como persona que quiere organizar tareas con su equipo\n  quiero crear mi cuenta e iniciar sesión de forma segura\n  para que solo yo pueda ver y gestionar mis equipos y proyectos.",
+    "description": "  Necesidad: una persona quiere organizar las tareas de su equipo sin que nadie más vea su información.\n  Regla: TaskFlow crea cuentas con datos válidos y solo concede acceso con credenciales válidas; rechaza las inválidas.\n  Ejemplos: registro y acceso aceptados, correo repetido rechazado, credenciales inválidas rechazadas y rutas privadas protegidas.",
     "elements": [
       {
         "description": "",
-        "id": "acceso-a-taskflow-(registro,-inicio-de-sesión-y-rutas-protegidas);gh-01-registro-exitoso-de-una-nueva-usuaria-e-inicio-de-sesión",
-        "keyword": "Escenario",
-        "line": 12,
-        "name": "GH-01 Registro exitoso de una nueva usuaria e inicio de sesión",
+        "id": "autenticación-en-taskflow;una-persona-nueva-crea-su-cuenta-y-entra-con-ella;registro-e-inicio-de-sesión-correctos",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Registro e inicio de sesión correctos",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 442300
+              "duration": 350799
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
+              "location": "features\\step_definitions\\comunes.ts:41"
             },
             "result": {
               "status": "passed",
-              "duration": 155492800
+              "duration": 216233199
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 13,
-            "name": "que Ana es una persona nueva sin cuenta en TaskFlow",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:47"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 538200
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Cuando ",
+            "keyword": "Given ",
             "line": 14,
-            "name": "Ana se registra desde el formulario con sus datos",
+            "name": "Ana es una persona nueva sin cuenta en TaskFlow",
             "match": {
-              "location": "features\\step_definitions\\acceso.ts:16"
+              "location": "features\\step_definitions\\comunes.ts:45"
             },
             "result": {
               "status": "passed",
-              "duration": 1894502899
+              "duration": 456200
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
+            "keyword": "When ",
             "line": 15,
-            "name": "Ana es redirigida al inicio de sesión con el aviso \"Cuenta creada correctamente\"",
+            "name": "ella se registra desde el formulario con sus datos",
             "match": {
-              "location": "features\\step_definitions\\acceso.ts:38"
+              "location": "features\\step_definitions\\acceso.ts:13"
             },
             "result": {
               "status": "passed",
-              "duration": 623079200
+              "duration": 1196877499
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
+            "keyword": "Then ",
             "line": 16,
-            "name": "el correo de Ana aparece precargado en el formulario de inicio de sesión",
+            "name": "ella es redirigida al inicio de sesión con el mensaje \"Cuenta creada correctamente\"",
             "match": {
-              "location": "features\\step_definitions\\acceso.ts:45"
+              "location": "features\\step_definitions\\acceso.ts:37"
             },
             "result": {
               "status": "passed",
-              "duration": 29173600
+              "duration": 593855200
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
+            "keyword": "And ",
             "line": 17,
-            "name": "Ana inicia sesión con sus credenciales",
+            "name": "ella observa su correo precargado en el formulario de inicio de sesión",
+            "match": {
+              "location": "features\\step_definitions\\acceso.ts:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29867500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "ella inicia sesión con sus credenciales",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:106"
             },
             "result": {
               "status": "passed",
-              "duration": 782133700
+              "duration": 620599500
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 18,
-            "name": "Ana llega a la página \"Mis equipos\"",
+            "keyword": "Then ",
+            "line": 19,
+            "name": "ella observa la página \"Mis equipos\"",
             "match": {
-              "location": "features\\step_definitions\\acceso.ts:51"
+              "location": "features\\step_definitions\\acceso.ts:50"
             },
             "result": {
               "status": "passed",
-              "duration": 76272399
+              "duration": 76574200
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 19,
+            "keyword": "And ",
+            "line": 20,
             "name": "el título de la pestaña es \"Mis equipos · TaskFlow\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:137"
             },
             "result": {
               "status": "passed",
-              "duration": 59937200
+              "duration": 44959100
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 20,
-            "name": "el navegador de Ana guarda un token de acceso",
+            "keyword": "And ",
+            "line": 21,
+            "name": "su navegador guarda un token de acceso",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:165"
             },
             "result": {
               "status": "passed",
-              "duration": 29407300
+              "duration": 28507499
             }
           },
           {
@@ -139,7 +139,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 127134000
+              "duration": 79103599
             }
           },
           {
@@ -147,100 +147,112 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 138256499
+              "duration": 104443500
             }
           }
         ],
         "tags": [
           {
+            "name": "@web",
+            "line": 1
+          },
+          {
             "name": "@autenticacion",
-            "line": 2
+            "line": 1
+          },
+          {
+            "name": "@GH-01",
+            "line": 12
           },
           {
             "name": "@exitoso",
-            "line": 11
+            "line": 12
+          },
+          {
+            "name": "@smoke",
+            "line": 12
           }
         ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "acceso-a-taskflow-(registro,-inicio-de-sesión-y-rutas-protegidas);gh-02-registro-con-un-correo-ya-existente-muestra-un-error",
-        "keyword": "Escenario",
-        "line": 23,
-        "name": "GH-02 Registro con un correo ya existente muestra un error",
+        "id": "autenticación-en-taskflow;una-persona-nueva-crea-su-cuenta-y-entra-con-ella;registro-con-un-correo-ya-existente",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "Registro con un correo ya existente",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 82399
+              "duration": 86699
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
+              "location": "features\\step_definitions\\comunes.ts:41"
             },
             "result": {
               "status": "passed",
-              "duration": 30737800
+              "duration": 21094199
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 24,
-            "name": "que Ana ya tiene una cuenta registrada en TaskFlow",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:51"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 217099599
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Cuando ",
+            "keyword": "Given ",
             "line": 25,
-            "name": "Ana intenta registrarse de nuevo con el mismo correo",
+            "name": "Ana ya tiene una cuenta registrada en TaskFlow",
             "match": {
-              "location": "features\\step_definitions\\acceso.ts:20"
+              "location": "features\\step_definitions\\comunes.ts:50"
             },
             "result": {
               "status": "passed",
-              "duration": 1331448300
+              "duration": 186756100
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
+            "keyword": "When ",
             "line": 26,
-            "name": "Ana ve en el formulario de registro el error \"Ya existe una cuenta con el correo\"",
+            "name": "ella intenta registrarse de nuevo con el mismo correo",
             "match": {
-              "location": "features\\step_definitions\\acceso.ts:58"
+              "location": "features\\step_definitions\\acceso.ts:17"
             },
             "result": {
               "status": "passed",
-              "duration": 59646700
+              "duration": 1084006399
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
+            "keyword": "Then ",
             "line": 27,
-            "name": "Ana permanece en la ruta \"/register\"",
+            "name": "ella observa en el formulario de registro el error \"Ya existe una cuenta con el correo\"",
+            "match": {
+              "location": "features\\step_definitions\\acceso.ts:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44489299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "ella permanece en la ruta \"/register\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:153"
             },
             "result": {
               "status": "passed",
-              "duration": 29736299
+              "duration": 29070599
             }
           },
           {
@@ -248,7 +260,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 76363000
+              "duration": 116543200
             }
           },
           {
@@ -256,383 +268,407 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 75844099
+              "duration": 67784099
             }
           }
         ],
         "tags": [
           {
+            "name": "@web",
+            "line": 1
+          },
+          {
             "name": "@autenticacion",
-            "line": 2
+            "line": 1
+          },
+          {
+            "name": "@GH-02",
+            "line": 23
           },
           {
             "name": "@alternativo",
-            "line": 22
+            "line": 23
           }
         ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "acceso-a-taskflow-(registro,-inicio-de-sesión-y-rutas-protegidas);gh-03-inicio-de-sesión-rechazado-con-una-contraseña-incorrecta",
-        "keyword": "Esquema del escenario",
-        "line": 39,
-        "name": "GH-03 Inicio de sesión rechazado con una contraseña incorrecta",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 91500
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Dado ",
-            "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 38271600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Dado ",
-            "line": 31,
-            "name": "que Ana ya tiene una cuenta registrada en TaskFlow",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:51"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 218096999
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Cuando ",
-            "line": 32,
-            "name": "Ana intenta iniciar sesión con su correo y una contraseña equivocada",
-            "match": {
-              "location": "features\\step_definitions\\acceso.ts:25"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1197233499
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Entonces ",
-            "line": 33,
-            "name": "Ana ve en el formulario de inicio de sesión el error \"El correo o la contraseña no son correctos\"",
-            "match": {
-              "location": "features\\step_definitions\\acceso.ts:62"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 137989999
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 34,
-            "name": "Ana permanece en la ruta \"/login\"",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:153"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 29930000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 35,
-            "name": "el navegador de Ana no guarda ningún token de acceso",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:169"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 29511800
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 100949599
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 85548500
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@autenticacion",
-            "line": 2
-          },
-          {
-            "name": "@error",
-            "line": 29
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "acceso-a-taskflow-(registro,-inicio-de-sesión-y-rutas-protegidas);gh-04-inicio-de-sesión-rechazado-con-un-correo-que-no-existe",
-        "keyword": "Esquema del escenario",
-        "line": 40,
-        "name": "GH-04 Inicio de sesión rechazado con un correo que no existe",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 67500
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Dado ",
-            "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 22811900
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Dado ",
-            "line": 31,
-            "name": "que Ana ya tiene una cuenta registrada en TaskFlow",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:51"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 218020599
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Cuando ",
-            "line": 32,
-            "name": "Ana intenta iniciar sesión con un correo no registrado",
-            "match": {
-              "location": "features\\step_definitions\\acceso.ts:29"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1120145799
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Entonces ",
-            "line": 33,
-            "name": "Ana ve en el formulario de inicio de sesión el error \"El correo o la contraseña no son correctos\"",
-            "match": {
-              "location": "features\\step_definitions\\acceso.ts:62"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 153179599
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 34,
-            "name": "Ana permanece en la ruta \"/login\"",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:153"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 28329300
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 35,
-            "name": "el navegador de Ana no guarda ningún token de acceso",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:169"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 28600700
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 72133699
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 81553700
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@autenticacion",
-            "line": 2
-          },
-          {
-            "name": "@error",
-            "line": 29
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "acceso-a-taskflow-(registro,-inicio-de-sesión-y-rutas-protegidas);gh-05-una-ruta-protegida-sin-sesión-redirige-al-inicio-de-sesión",
-        "keyword": "Escenario",
+        "id": "autenticación-en-taskflow;solo-las-credenciales-válidas-dan-acceso;inicio-de-sesión-rechazado",
+        "keyword": "Scenario Outline",
         "line": 43,
-        "name": "GH-05 Una ruta protegida sin sesión redirige al inicio de sesión",
+        "name": "Inicio de sesión rechazado",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 77800
+              "duration": 66199
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
+              "location": "features\\step_definitions\\comunes.ts:41"
             },
             "result": {
               "status": "passed",
-              "duration": 24117799
+              "duration": 22649200
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 44,
-            "name": "que Ana no ha iniciado sesión en TaskFlow",
+            "keyword": "Given ",
+            "line": 34,
+            "name": "Ana ya tiene una cuenta registrada en TaskFlow",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 171530499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 35,
+            "name": "ella intenta iniciar sesión con su correo y una contraseña equivocada",
+            "match": {
+              "location": "features\\step_definitions\\acceso.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 763220100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "ella observa en el formulario de inicio de sesión el error \"El correo o la contraseña no son correctos\"",
+            "match": {
+              "location": "features\\step_definitions\\acceso.ts:61"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 76552799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "ella permanece en la ruta \"/login\"",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:153"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13761199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "su navegador no guarda ningún token de acceso",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:169"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30068799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49261899
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 56739000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@web",
+            "line": 1
+          },
+          {
+            "name": "@autenticacion",
+            "line": 1
+          },
+          {
+            "name": "@error",
+            "line": 32
+          },
+          {
+            "name": "@GH-03",
+            "line": 40
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "autenticación-en-taskflow;solo-las-credenciales-válidas-dan-acceso;inicio-de-sesión-rechazado",
+        "keyword": "Scenario Outline",
+        "line": 48,
+        "name": "Inicio de sesión rechazado",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 66000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24505699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 34,
+            "name": "Ana ya tiene una cuenta registrada en TaskFlow",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 153559699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 35,
+            "name": "ella intenta iniciar sesión con un correo no registrado",
+            "match": {
+              "location": "features\\step_definitions\\acceso.ts:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 698290800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "ella observa en el formulario de inicio de sesión el error \"El correo o la contraseña no son correctos\"",
+            "match": {
+              "location": "features\\step_definitions\\acceso.ts:61"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60954900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "ella permanece en la ruta \"/login\"",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:153"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14583399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 38,
+            "name": "su navegador no guarda ningún token de acceso",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:169"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30800699
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45272899
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 60922500
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@web",
+            "line": 1
+          },
+          {
+            "name": "@autenticacion",
+            "line": 1
+          },
+          {
+            "name": "@error",
+            "line": 32
+          },
+          {
+            "name": "@GH-04",
+            "line": 45
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "autenticación-en-taskflow;las-rutas-privadas-exigen-una-sesión-iniciada;una-ruta-protegida-sin-sesión-redirige-al-inicio-de-sesión",
+        "keyword": "Scenario",
+        "line": 53,
+        "name": "Una ruta protegida sin sesión redirige al inicio de sesión",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27594699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 54,
+            "name": "Ana no ha iniciado sesión en TaskFlow",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:99"
             },
             "result": {
               "status": "passed",
-              "duration": 782268600
+              "duration": 482383200
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 45,
-            "name": "Ana intenta abrir la ruta \"/proyectos/00000000-0000-0000-0000-000000000000\"",
+            "keyword": "When ",
+            "line": 55,
+            "name": "ella intenta abrir la ruta \"/proyectos/00000000-0000-0000-0000-000000000000\"",
             "match": {
-              "location": "features\\step_definitions\\acceso.ts:34"
+              "location": "features\\step_definitions\\acceso.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 155763800
+              "duration": 91938200
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 46,
-            "name": "Ana es redirigida a la ruta \"/login\"",
+            "keyword": "Then ",
+            "line": 56,
+            "name": "ella es redirigida a la ruta \"/login\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:157"
             },
             "result": {
               "status": "passed",
-              "duration": 549250100
+              "duration": 545731600
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 47,
+            "keyword": "And ",
+            "line": 57,
             "name": "el encabezado principal es \"Iniciar sesión\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:145"
             },
             "result": {
               "status": "passed",
-              "duration": 76113300
+              "duration": 59772100
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 48,
-            "name": "Ana intenta abrir la ruta \"/preferencias\"",
+            "keyword": "When ",
+            "line": 58,
+            "name": "ella intenta abrir la ruta \"/preferencias\"",
             "match": {
-              "location": "features\\step_definitions\\acceso.ts:34"
+              "location": "features\\step_definitions\\acceso.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 146634799
+              "duration": 106542499
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 49,
-            "name": "Ana es redirigida a la ruta \"/login\"",
+            "keyword": "Then ",
+            "line": 59,
+            "name": "ella es redirigida a la ruta \"/login\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:157"
             },
             "result": {
               "status": "passed",
-              "duration": 38919300
+              "duration": 30216000
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 50,
+            "keyword": "And ",
+            "line": 60,
             "name": "el título de la pestaña es \"Iniciar sesión · TaskFlow\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:137"
             },
             "result": {
               "status": "passed",
-              "duration": 61931500
+              "duration": 45258900
             }
           },
           {
@@ -640,7 +676,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 56399699
+              "duration": 63647500
             }
           },
           {
@@ -648,194 +684,206 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 80875800
+              "duration": 58427299
             }
           }
         ],
         "tags": [
           {
+            "name": "@web",
+            "line": 1
+          },
+          {
             "name": "@autenticacion",
-            "line": 2
+            "line": 1
+          },
+          {
+            "name": "@GH-05",
+            "line": 52
           },
           {
             "name": "@error",
-            "line": 42
+            "line": 52
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "acceso-a-taskflow-(registro,-inicio-de-sesión-y-rutas-protegidas)",
-    "line": 3,
-    "keyword": "Característica",
-    "name": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+    "id": "autenticación-en-taskflow",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Autenticación en TaskFlow",
     "tags": [
       {
+        "name": "@web",
+        "line": 1
+      },
+      {
         "name": "@autenticacion",
-        "line": 2
+        "line": 1
       }
     ],
     "uri": "features\\autenticacion.feature"
   },
   {
-    "description": "  Como líder de un equipo\n  quiero que solo las personas de mi equipo vean nuestros proyectos\n  para proteger la información del trabajo.",
+    "description": "  Necesidad: la líder de un equipo quiere que solo las personas de su equipo vean sus proyectos.\n  Regla: la API y la interfaz niegan el acceso a los proyectos de equipos a los que la persona no pertenece.\n  Ejemplos: una usuaria ajena consulta la API y abre el tablero de otro equipo.",
     "elements": [
       {
         "description": "",
-        "id": "control-de-acceso-entre-usuarios;gh-12-una-usuaria-ajena-al-equipo-no-puede-ver-el-tablero-de-ana",
-        "keyword": "Escenario",
-        "line": 12,
-        "name": "GH-12 Una usuaria ajena al equipo no puede ver el tablero de Ana",
+        "id": "control-de-acceso-entre-usuarios;solo-los-miembros-del-equipo-ven-sus-proyectos;una-usuaria-ajena-al-equipo-no-puede-ver-el-tablero-de-ana",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Una usuaria ajena al equipo no puede ver el tablero de Ana",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 50599
+              "duration": 42199
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
+              "location": "features\\step_definitions\\comunes.ts:41"
             },
             "result": {
               "status": "passed",
-              "duration": 25736400
+              "duration": 27892899
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 13,
-            "name": "que Ana tiene una cuenta, un equipo y un proyecto con la tarea \"Tarea confidencial\" creados por API",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:76"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 907443800
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
+            "keyword": "Given ",
             "line": 14,
-            "name": "que Carla tiene una cuenta creada por API y no pertenece al equipo de Ana",
+            "name": "Ana tiene una cuenta, un equipo y un proyecto con la tarea \"Tarea confidencial\" creados por API",
             "match": {
-              "location": "features\\step_definitions\\colaboracion.ts:19"
+              "location": "features\\step_definitions\\comunes.ts:75"
             },
             "result": {
               "status": "passed",
-              "duration": 438020499
+              "duration": 670111999
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
+            "keyword": "And ",
             "line": 15,
+            "name": "Carla tiene una cuenta creada por API y no pertenece al equipo de Ana",
+            "match": {
+              "location": "features\\step_definitions\\colaboracion.ts:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 341997299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
             "name": "Carla consulta por API las tareas del proyecto de Ana",
             "match": {
-              "location": "features\\step_definitions\\colaboracion.ts:24"
+              "location": "features\\step_definitions\\colaboracion.ts:20"
             },
             "result": {
               "status": "passed",
-              "duration": 44782100
+              "duration": 29461099
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 16,
+            "keyword": "Then ",
+            "line": 17,
             "name": "la API responde a Carla con el estado 403",
             "match": {
-              "location": "features\\step_definitions\\colaboracion.ts:34"
+              "location": "features\\step_definitions\\colaboracion.ts:30"
             },
             "result": {
               "status": "passed",
-              "duration": 14162999
+              "duration": 13677100
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 17,
+            "keyword": "When ",
+            "line": 18,
             "name": "Carla inicia sesión con sus credenciales",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:106"
             },
             "result": {
               "status": "passed",
-              "duration": 1450309600
+              "duration": 905596400
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 18,
-            "name": "Carla no ve el equipo de Ana en \"Mis equipos\"",
+            "keyword": "Then ",
+            "line": 19,
+            "name": "Carla no observa el equipo de Ana en \"Mis equipos\"",
             "match": {
-              "location": "features\\step_definitions\\colaboracion.ts:38"
+              "location": "features\\step_definitions\\colaboracion.ts:34"
             },
             "result": {
               "status": "passed",
-              "duration": 45281700
+              "duration": 29732500
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 19,
+            "keyword": "When ",
+            "line": 20,
             "name": "Carla intenta abrir el tablero del proyecto de Ana",
             "match": {
-              "location": "features\\step_definitions\\colaboracion.ts:29"
+              "location": "features\\step_definitions\\colaboracion.ts:25"
             },
             "result": {
               "status": "passed",
-              "duration": 203151200
+              "duration": 139637600
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 20,
-            "name": "el encabezado principal que ve Carla es \"No tienes acceso a este proyecto\"",
+            "keyword": "Then ",
+            "line": 21,
+            "name": "Carla observa el encabezado \"No tienes acceso a este proyecto\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:149"
             },
             "result": {
               "status": "passed",
-              "duration": 167303700
+              "duration": 91398699
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 21,
-            "name": "Carla ve un aviso de error \"No tienes acceso a este proyecto\"",
+            "keyword": "And ",
+            "line": 22,
+            "name": "Carla observa el mensaje de error \"No tienes acceso a este proyecto\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:131"
             },
             "result": {
               "status": "passed",
-              "duration": 62462700
+              "duration": 44450799
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 22,
-            "name": "Carla no ve el tablero ni la tarea \"Tarea confidencial\"",
+            "keyword": "And ",
+            "line": 23,
+            "name": "Carla no observa el tablero ni la tarea \"Tarea confidencial\"",
             "match": {
-              "location": "features\\step_definitions\\colaboracion.ts:43"
+              "location": "features\\step_definitions\\colaboracion.ts:39"
             },
             "result": {
               "status": "passed",
-              "duration": 566523499
+              "duration": 559116799
             }
           },
           {
@@ -843,7 +891,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 72841700
+              "duration": 48877700
             }
           },
           {
@@ -851,202 +899,247 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 97006199
+              "duration": 89436799
             }
           }
         ],
         "tags": [
           {
+            "name": "@web",
+            "line": 1
+          },
+          {
+            "name": "@api",
+            "line": 1
+          },
+          {
             "name": "@usuarios",
-            "line": 2
+            "line": 1
           },
           {
             "name": "@seguridad",
-            "line": 2
+            "line": 1
+          },
+          {
+            "name": "@GH-12",
+            "line": 12
           },
           {
             "name": "@error",
-            "line": 11
+            "line": 12
           }
         ],
         "type": "scenario"
       }
     ],
     "id": "control-de-acceso-entre-usuarios",
-    "line": 3,
-    "keyword": "Característica",
+    "line": 2,
+    "keyword": "Feature",
     "name": "Control de acceso entre usuarios",
     "tags": [
       {
+        "name": "@web",
+        "line": 1
+      },
+      {
+        "name": "@api",
+        "line": 1
+      },
+      {
         "name": "@usuarios",
-        "line": 2
+        "line": 1
       },
       {
         "name": "@seguridad",
-        "line": 2
+        "line": 1
       }
     ],
     "uri": "features\\colaboracion.feature"
   },
   {
-    "description": "  Como líder de un equipo\n  quiero crear equipos, invitar a mis compañeros y abrir proyectos\n  para organizar el trabajo en tableros Kanban compartidos.",
+    "description": "  Necesidad: la líder de un equipo quiere organizar el trabajo con sus compañeros en tableros compartidos.\n  Regla: solo se invita a personas que ya tienen cuenta y cada proyecto nace con las tres listas del tablero.\n  Ejemplos: crear un equipo e invitar a un miembro, invitar un correo inexistente y crear un proyecto.",
     "elements": [
       {
         "description": "",
-        "id": "equipos-y-proyectos;gh-06-la-líder-crea-un-equipo-e-invita-a-un-miembro-registrado",
-        "keyword": "Escenario",
-        "line": 12,
-        "name": "GH-06 La líder crea un equipo e invita a un miembro registrado",
+        "id": "equipos-y-proyectos;la-líder-invita-a-personas-que-ya-tienen-cuenta;crear-un-equipo-e-invitar-a-un-miembro-registrado",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Crear un equipo e invitar a un miembro registrado",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 64800
+              "duration": 42199
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
+              "location": "features\\step_definitions\\comunes.ts:41"
             },
             "result": {
               "status": "passed",
-              "duration": 36438900
+              "duration": 24387000
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 13,
-            "name": "que Beto ya tiene una cuenta registrada en TaskFlow",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:51"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 200095199
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
+            "keyword": "Given ",
             "line": 14,
-            "name": "que Ana ha iniciado sesión en TaskFlow",
+            "name": "Beto ya tiene una cuenta registrada en TaskFlow",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:90"
+              "location": "features\\step_definitions\\comunes.ts:50"
             },
             "result": {
               "status": "passed",
-              "duration": 1629960699
+              "duration": 153994200
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
+            "keyword": "And ",
             "line": 15,
-            "name": "Ana crea el equipo \"Equipo Backend\"",
+            "name": "Ana ha iniciado sesión en TaskFlow",
             "match": {
-              "location": "features\\step_definitions\\equipos.ts:24"
+              "location": "features\\step_definitions\\comunes.ts:89"
             },
             "result": {
               "status": "passed",
-              "duration": 716399700
+              "duration": 1089715900
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
+            "keyword": "When ",
             "line": 16,
-            "name": "Ana ve el aviso \"creado\"",
+            "name": "ella crea el equipo \"Equipo Backend\"",
+            "match": {
+              "location": "features\\step_definitions\\equipos.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 640904099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "ella observa el mensaje \"creado\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:125"
             },
             "result": {
               "status": "passed",
-              "duration": 61110899
+              "duration": 46433199
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 17,
-            "name": "Ana abre el equipo \"Equipo Backend\"",
+            "keyword": "When ",
+            "line": 18,
+            "name": "ella abre el equipo \"Equipo Backend\"",
             "match": {
-              "location": "features\\step_definitions\\equipos.ts:30"
+              "location": "features\\step_definitions\\equipos.ts:29"
             },
             "result": {
               "status": "passed",
-              "duration": 325356900
+              "duration": 279247900
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 18,
+            "keyword": "Then ",
+            "line": 19,
             "name": "el título de la pestaña termina en \"· TaskFlow\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:141"
             },
             "result": {
               "status": "passed",
-              "duration": 60107699
+              "duration": 43450700
             }
           },
           {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 19,
-            "name": "los miembros del equipo son solo Ana",
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Ana"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 20,
+            "name": "ella observa solamente los miembros:",
             "match": {
               "location": "features\\step_definitions\\equipos.ts:52"
             },
             "result": {
               "status": "passed",
-              "duration": 60534500
+              "duration": 55788000
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 20,
-            "name": "Ana invita a Beto por su correo",
-            "match": {
-              "location": "features\\step_definitions\\equipos.ts:34"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1475343700
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Entonces ",
-            "line": 21,
-            "name": "los miembros del equipo son Ana y Beto",
-            "match": {
-              "location": "features\\step_definitions\\equipos.ts:56"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 109032299
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
+            "keyword": "When ",
             "line": 22,
-            "name": "Ana ve el aviso \"ahora es miembro del equipo\"",
+            "name": "ella invita a Beto por su correo",
+            "match": {
+              "location": "features\\step_definitions\\equipos.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1304007299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "ella observa el mensaje \"ahora es miembro del equipo\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:125"
             },
             "result": {
               "status": "passed",
-              "duration": 121455799
+              "duration": 58868699
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Ana"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Beto"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 24,
+            "name": "ella observa solamente los miembros:",
+            "match": {
+              "location": "features\\step_definitions\\equipos.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 58135300
             }
           },
           {
@@ -1054,7 +1147,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 157552299
+              "duration": 68524799
             }
           },
           {
@@ -1062,126 +1155,138 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 146376099
+              "duration": 114397899
             }
           }
         ],
         "tags": [
           {
+            "name": "@web",
+            "line": 1
+          },
+          {
             "name": "@equipos",
-            "line": 2
+            "line": 1
+          },
+          {
+            "name": "@GH-06",
+            "line": 12
           },
           {
             "name": "@exitoso",
-            "line": 11
+            "line": 12
+          },
+          {
+            "name": "@smoke",
+            "line": 12
           }
         ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "equipos-y-proyectos;gh-07-invitar-un-correo-que-no-está-registrado-muestra-un-error-en-la-ventana",
-        "keyword": "Escenario",
-        "line": 25,
-        "name": "GH-07 Invitar un correo que no está registrado muestra un error en la ventana",
+        "id": "equipos-y-proyectos;la-líder-invita-a-personas-que-ya-tienen-cuenta;invitar-un-correo-que-no-está-registrado",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "Invitar un correo que no está registrado",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 78699
+              "duration": 57300
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
+              "location": "features\\step_definitions\\comunes.ts:41"
             },
             "result": {
               "status": "passed",
-              "duration": 35188399
+              "duration": 38368800
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 26,
-            "name": "que Ana tiene una cuenta y un equipo creados por API",
+            "keyword": "Given ",
+            "line": 30,
+            "name": "Ana tiene una cuenta y un equipo creados por API",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:56"
+              "location": "features\\step_definitions\\comunes.ts:55"
             },
             "result": {
               "status": "passed",
-              "duration": 585785200
+              "duration": 449099699
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 27,
-            "name": "que Ana ha iniciado sesión en TaskFlow",
+            "keyword": "And ",
+            "line": 31,
+            "name": "ella ha iniciado sesión en TaskFlow",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:90"
+              "location": "features\\step_definitions\\comunes.ts:89"
             },
             "result": {
               "status": "passed",
-              "duration": 1947062099
+              "duration": 873104400
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 28,
-            "name": "que Ana está en la página de su equipo",
+            "keyword": "And ",
+            "line": 32,
+            "name": "ella está en la página de su equipo",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:112"
             },
             "result": {
               "status": "passed",
-              "duration": 463023000
+              "duration": 233791799
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 29,
-            "name": "Ana busca para invitar a un correo que no está registrado",
+            "keyword": "When ",
+            "line": 33,
+            "name": "ella busca para invitar a un correo que no está registrado",
             "match": {
-              "location": "features\\step_definitions\\equipos.ts:38"
+              "location": "features\\step_definitions\\equipos.ts:37"
             },
             "result": {
               "status": "passed",
-              "duration": 658128499
+              "duration": 530565899
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 30,
-            "name": "Ana ve en la ventana de invitación el error \"No hay ningún usuario registrado con el correo\"",
+            "keyword": "Then ",
+            "line": 34,
+            "name": "ella observa en la ventana de invitación el error \"No hay ningún usuario registrado con el correo\"",
             "match": {
-              "location": "features\\step_definitions\\equipos.ts:62"
+              "location": "features\\step_definitions\\equipos.ts:57"
             },
             "result": {
               "status": "passed",
-              "duration": 61780700
+              "duration": 48808899
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 31,
+            "keyword": "And ",
+            "line": 35,
             "name": "el equipo sigue teniendo 1 miembro",
             "match": {
-              "location": "features\\step_definitions\\equipos.ts:68"
+              "location": "features\\step_definitions\\equipos.ts:63"
             },
             "result": {
               "status": "passed",
-              "duration": 59563699
+              "duration": 26115299
             }
           },
           {
@@ -1189,7 +1294,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 102824899
+              "duration": 87139400
             }
           },
           {
@@ -1197,165 +1302,193 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 98294900
+              "duration": 80270400
             }
           }
         ],
         "tags": [
           {
+            "name": "@web",
+            "line": 1
+          },
+          {
             "name": "@equipos",
-            "line": 2
+            "line": 1
+          },
+          {
+            "name": "@GH-07",
+            "line": 28
           },
           {
             "name": "@alternativo",
-            "line": 24
+            "line": 28
           }
         ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "equipos-y-proyectos;gh-08-crear-un-proyecto-genera-un-tablero-con-las-3-columnas-por-defecto",
-        "keyword": "Escenario",
-        "line": 34,
-        "name": "GH-08 Crear un proyecto genera un tablero con las 3 columnas por defecto",
+        "id": "equipos-y-proyectos;cada-proyecto-nuevo-tiene-un-tablero-con-tres-listas;crear-un-proyecto-genera-un-tablero-con-las-columnas-por-defecto",
+        "keyword": "Scenario",
+        "line": 40,
+        "name": "Crear un proyecto genera un tablero con las columnas por defecto",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 83599
+              "duration": 53100
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
+              "location": "features\\step_definitions\\comunes.ts:41"
             },
             "result": {
               "status": "passed",
-              "duration": 37717499
+              "duration": 23758499
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
-            "line": 35,
-            "name": "que Ana tiene una cuenta y un equipo creados por API",
+            "keyword": "Given ",
+            "line": 41,
+            "name": "Ana tiene una cuenta y un equipo creados por API",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:56"
+              "location": "features\\step_definitions\\comunes.ts:55"
             },
             "result": {
               "status": "passed",
-              "duration": 554439300
+              "duration": 419608000
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 36,
-            "name": "que Ana ha iniciado sesión en TaskFlow",
+            "keyword": "And ",
+            "line": 42,
+            "name": "ella ha iniciado sesión en TaskFlow",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:90"
+              "location": "features\\step_definitions\\comunes.ts:89"
             },
             "result": {
               "status": "passed",
-              "duration": 2675107599
+              "duration": 870540199
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 37,
-            "name": "que Ana está en la página de su equipo",
+            "keyword": "And ",
+            "line": 43,
+            "name": "ella está en la página de su equipo",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:112"
             },
             "result": {
               "status": "passed",
-              "duration": 1203733000
+              "duration": 326053800
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 38,
-            "name": "Ana crea el proyecto \"Proyecto API\"",
+            "keyword": "When ",
+            "line": 44,
+            "name": "ella crea el proyecto \"Proyecto API\"",
             "match": {
-              "location": "features\\step_definitions\\equipos.ts:43"
+              "location": "features\\step_definitions\\equipos.ts:42"
             },
             "result": {
               "status": "passed",
-              "duration": 865228900
+              "duration": 666936200
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 39,
-            "name": "Ana ve el aviso \"creado con sus 3 listas\"",
+            "keyword": "Then ",
+            "line": 45,
+            "name": "ella observa el mensaje \"creado con sus 3 listas\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:125"
             },
             "result": {
               "status": "passed",
-              "duration": 76954200
+              "duration": 59662700
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 40,
-            "name": "Ana abre el tablero del proyecto \"Proyecto API\"",
+            "keyword": "When ",
+            "line": 46,
+            "name": "ella abre el tablero del proyecto \"Proyecto API\"",
             "match": {
-              "location": "features\\step_definitions\\equipos.ts:48"
+              "location": "features\\step_definitions\\equipos.ts:47"
             },
             "result": {
               "status": "passed",
-              "duration": 1103882900
+              "duration": 296452900
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 41,
+            "keyword": "Then ",
+            "line": 47,
             "name": "la ruta actual contiene \"/proyectos/\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:161"
             },
             "result": {
               "status": "passed",
-              "duration": 29781999
+              "duration": 29759500
             }
           },
           {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 42,
-            "name": "las columnas del tablero son \"Por Hacer\", \"En Progreso\" y \"Hecho\"",
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Por Hacer"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "En Progreso"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Hecho"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 48,
+            "name": "ella observa solamente las columnas:",
             "match": {
-              "location": "features\\step_definitions\\equipos.ts:72"
+              "location": "features\\step_definitions\\equipos.ts:67"
             },
             "result": {
               "status": "passed",
-              "duration": 213661000
+              "duration": 58321799
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 43,
+            "keyword": "And ",
+            "line": 52,
             "name": "el progreso del proyecto es 0 %",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:174"
             },
             "result": {
               "status": "passed",
-              "duration": 88635900
+              "duration": 29966000
             }
           },
           {
@@ -1363,7 +1496,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 116683600
+              "duration": 91156100
             }
           },
           {
@@ -1371,237 +1504,284 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 109861100
+              "duration": 78047699
             }
           }
         ],
         "tags": [
           {
+            "name": "@web",
+            "line": 1
+          },
+          {
             "name": "@equipos",
-            "line": 2
+            "line": 1
+          },
+          {
+            "name": "@GH-08",
+            "line": 39
           },
           {
             "name": "@proyectos",
-            "line": 33
+            "line": 39
           },
           {
             "name": "@exitoso",
-            "line": 33
+            "line": 39
           }
         ],
         "type": "scenario"
       }
     ],
     "id": "equipos-y-proyectos",
-    "line": 3,
-    "keyword": "Característica",
+    "line": 2,
+    "keyword": "Feature",
     "name": "Equipos y proyectos",
     "tags": [
       {
+        "name": "@web",
+        "line": 1
+      },
+      {
         "name": "@equipos",
-        "line": 2
+        "line": 1
       }
     ],
     "uri": "features\\equipos-y-proyectos.feature"
   },
   {
-    "description": "  Como miembro de un proyecto\n  quiero crear, mover y eliminar tareas en el tablero\n  para seguir el avance del trabajo del equipo.",
+    "description": "  Necesidad: una integrante del proyecto quiere crear, mover y eliminar tareas para seguir el avance del equipo.\n  Regla: toda tarea necesita un título; mover una tarea a «Hecho» actualiza el progreso; eliminar pide confirmación y se puede deshacer.\n  Ejemplos: crear y mover tareas, intentar crear una tarea sin título, eliminar una tarea y deshacer.",
     "elements": [
       {
         "description": "",
-        "id": "tablero-kanban-de-tareas;gh-09-crear-tareas,-mover-una-a-«hecho»-y-ver-subir-el-progreso",
-        "keyword": "Escenario",
-        "line": 14,
-        "name": "GH-09 Crear tareas, mover una a «Hecho» y ver subir el progreso",
+        "id": "tablero-kanban-de-tareas;el-progreso-del-proyecto-refleja-las-tareas-en-«hecho»;crear-tareas-y-mover-una-a-hecho",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "Crear tareas y mover una a Hecho",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 124400
+              "duration": 59499
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24937799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
             "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
+            "name": "Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
+              "location": "features\\step_definitions\\comunes.ts:64"
             },
             "result": {
               "status": "passed",
-              "duration": 40298599
+              "duration": 549334200
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
+            "keyword": "And ",
             "line": 10,
-            "name": "que Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
+            "name": "ella ha iniciado sesión en TaskFlow",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:65"
+              "location": "features\\step_definitions\\comunes.ts:89"
             },
             "result": {
               "status": "passed",
-              "duration": 765700899
+              "duration": 948349099
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 11,
-            "name": "que Ana ha iniciado sesión en TaskFlow",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:90"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1395400600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Dado ",
-            "line": 15,
-            "name": "que Ana está viendo el tablero de su proyecto",
+            "keyword": "Given ",
+            "line": 16,
+            "name": "ella está viendo el tablero de su proyecto",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:116"
             },
             "result": {
               "status": "passed",
-              "duration": 296439800
+              "duration": 326537000
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 16,
-            "name": "el progreso del proyecto es 0 %",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:174"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 61771100
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Cuando ",
+            "keyword": "And ",
             "line": 17,
-            "name": "Ana crea la tarea \"Diseñar la pantalla de inicio\" con la descripción \"Wireframes y prototipo\"",
-            "match": {
-              "location": "features\\step_definitions\\tablero.ts:22"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 735896800
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 18,
-            "name": "Ana crea la tarea \"Configurar la base de datos\"",
-            "match": {
-              "location": "features\\step_definitions\\tablero.ts:26"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 4341348699
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Entonces ",
-            "line": 19,
-            "name": "la columna \"Por Hacer\" contiene las tareas \"Diseñar la pantalla de inicio\" y \"Configurar la base de datos\"",
-            "match": {
-              "location": "features\\step_definitions\\tablero.ts:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 77148000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 20,
             "name": "el progreso del proyecto es 0 %",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:174"
             },
             "result": {
               "status": "passed",
-              "duration": 58370500
+              "duration": 29960999
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 21,
-            "name": "Ana mueve la tarea \"Diseñar la pantalla de inicio\" a la columna \"Hecho\"",
+            "keyword": "When ",
+            "line": 18,
+            "name": "ella crea la tarea \"Diseñar la pantalla de inicio\" con la descripción \"Wireframes y prototipo\"",
             "match": {
-              "location": "features\\step_definitions\\tablero.ts:30"
+              "location": "features\\step_definitions\\tablero.ts:19"
             },
             "result": {
               "status": "passed",
-              "duration": 1164848700
+              "duration": 687218199
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 22,
-            "name": "Ana ve el aviso \"movida a Hecho\"",
+            "keyword": "And ",
+            "line": 19,
+            "name": "ella crea la tarea \"Configurar la base de datos\"",
+            "match": {
+              "location": "features\\step_definitions\\tablero.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4129243600
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Diseñar la pantalla de inicio"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Configurar la base de datos"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "ella observa en la columna \"Por Hacer\" solamente las tareas:",
+            "match": {
+              "location": "features\\step_definitions\\tablero.ts:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60893000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "el progreso del proyecto es 0 %",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:174"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29465799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
+            "name": "ella mueve la tarea \"Diseñar la pantalla de inicio\" a la columna \"Hecho\"",
+            "match": {
+              "location": "features\\step_definitions\\tablero.ts:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 915636699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "ella observa el mensaje \"movida a Hecho\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:125"
             },
             "result": {
               "status": "passed",
-              "duration": 74555999
+              "duration": 46189200
             }
           },
           {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 23,
-            "name": "la columna \"Hecho\" contiene la tarea \"Diseñar la pantalla de inicio\"",
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Diseñar la pantalla de inicio"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 26,
+            "name": "ella observa en la columna \"Hecho\" solamente las tareas:",
             "match": {
-              "location": "features\\step_definitions\\tablero.ts:50"
+              "location": "features\\step_definitions\\tablero.ts:44"
             },
             "result": {
               "status": "passed",
-              "duration": 76342500
+              "duration": 60905900
             }
           },
           {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 24,
-            "name": "la columna \"Por Hacer\" contiene la tarea \"Configurar la base de datos\"",
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Configurar la base de datos"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 28,
+            "name": "ella observa en la columna \"Por Hacer\" solamente las tareas:",
             "match": {
-              "location": "features\\step_definitions\\tablero.ts:50"
+              "location": "features\\step_definitions\\tablero.ts:44"
             },
             "result": {
               "status": "passed",
-              "duration": 61358800
+              "duration": 59742200
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 25,
+            "keyword": "And ",
+            "line": 30,
             "name": "el progreso del proyecto es 50 %",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:174"
             },
             "result": {
               "status": "passed",
-              "duration": 61452499
+              "duration": 29928999
             }
           },
           {
@@ -1609,7 +1789,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 86096099
+              "duration": 58133600
             }
           },
           {
@@ -1617,126 +1797,138 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 83822599
+              "duration": 63659699
             }
           }
         ],
         "tags": [
           {
+            "name": "@web",
+            "line": 1
+          },
+          {
             "name": "@tareas",
-            "line": 2
+            "line": 1
+          },
+          {
+            "name": "@GH-09",
+            "line": 14
           },
           {
             "name": "@exitoso",
-            "line": 13
+            "line": 14
+          },
+          {
+            "name": "@smoke",
+            "line": 14
           }
         ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "tablero-kanban-de-tareas;gh-10-crear-una-tarea-sin-título-muestra-un-error-y-no-la-crea",
-        "keyword": "Escenario",
-        "line": 28,
-        "name": "GH-10 Crear una tarea sin título muestra un error y no la crea",
+        "id": "tablero-kanban-de-tareas;una-tarea-necesita-un-título;crear-una-tarea-sin-título",
+        "keyword": "Scenario",
+        "line": 35,
+        "name": "Crear una tarea sin título",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 60400
+              "duration": 39199
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24160900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
             "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
+            "name": "Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
+              "location": "features\\step_definitions\\comunes.ts:64"
             },
             "result": {
               "status": "passed",
-              "duration": 35801800
+              "duration": 514399699
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
+            "keyword": "And ",
             "line": 10,
-            "name": "que Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
+            "name": "ella ha iniciado sesión en TaskFlow",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:65"
+              "location": "features\\step_definitions\\comunes.ts:89"
             },
             "result": {
               "status": "passed",
-              "duration": 625118000
+              "duration": 980803500
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 11,
-            "name": "que Ana ha iniciado sesión en TaskFlow",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:90"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1337737500
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Dado ",
-            "line": 29,
-            "name": "que Ana está viendo el tablero de su proyecto",
+            "keyword": "Given ",
+            "line": 36,
+            "name": "ella está viendo el tablero de su proyecto",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:116"
             },
             "result": {
               "status": "passed",
-              "duration": 420320800
+              "duration": 308199300
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 30,
-            "name": "Ana intenta crear una tarea sin título con la descripción \"Solo descripción, sin título\"",
+            "keyword": "When ",
+            "line": 37,
+            "name": "ella intenta crear una tarea sin título con la descripción \"Solo descripción, sin título\"",
             "match": {
-              "location": "features\\step_definitions\\tablero.ts:34"
+              "location": "features\\step_definitions\\tablero.ts:31"
             },
             "result": {
               "status": "passed",
-              "duration": 705228600
+              "duration": 591257400
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 31,
-            "name": "Ana ve en la ventana de nueva tarea el error \"Escribe un título para la tarea\"",
+            "keyword": "Then ",
+            "line": 38,
+            "name": "ella observa en la ventana de nueva tarea el error \"Escribe un título para la tarea\"",
             "match": {
-              "location": "features\\step_definitions\\tablero.ts:54"
+              "location": "features\\step_definitions\\tablero.ts:52"
             },
             "result": {
               "status": "passed",
-              "duration": 61683799
+              "duration": 59582200
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 32,
+            "keyword": "And ",
+            "line": 39,
             "name": "el tablero no muestra ninguna tarea",
             "match": {
-              "location": "features\\step_definitions\\tablero.ts:58"
+              "location": "features\\step_definitions\\tablero.ts:56"
             },
             "result": {
               "status": "passed",
-              "duration": 44094600
+              "duration": 45646699
             }
           },
           {
@@ -1744,7 +1936,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 90716699
+              "duration": 62539700
             }
           },
           {
@@ -1752,191 +1944,214 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 111809200
+              "duration": 61216399
             }
           }
         ],
         "tags": [
           {
+            "name": "@web",
+            "line": 1
+          },
+          {
             "name": "@tareas",
-            "line": 2
+            "line": 1
+          },
+          {
+            "name": "@GH-10",
+            "line": 34
           },
           {
             "name": "@error",
-            "line": 27
+            "line": 34
           }
         ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "tablero-kanban-de-tareas;gh-11-eliminar-una-tarea-pide-confirmación-y-se-puede-deshacer",
-        "keyword": "Escenario",
-        "line": 35,
-        "name": "GH-11 Eliminar una tarea pide confirmación y se puede deshacer",
+        "id": "tablero-kanban-de-tareas;eliminar-una-tarea-pide-confirmación-y-se-puede-deshacer;eliminar-una-tarea-y-deshacer-la-eliminación",
+        "keyword": "Scenario",
+        "line": 44,
+        "name": "Eliminar una tarea y deshacer la eliminación",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 67600
+              "duration": 37700
             }
           },
           {
             "arguments": [],
-            "keyword": "Dado ",
+            "keyword": "Given ",
+            "line": 8,
+            "name": "la aplicación TaskFlow está disponible",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27233199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
             "line": 9,
-            "name": "que la aplicación TaskFlow está disponible",
+            "name": "Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:43"
+              "location": "features\\step_definitions\\comunes.ts:64"
             },
             "result": {
               "status": "passed",
-              "duration": 42640999
+              "duration": 513749700
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
+            "keyword": "And ",
             "line": 10,
-            "name": "que Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
+            "name": "ella ha iniciado sesión en TaskFlow",
             "match": {
-              "location": "features\\step_definitions\\comunes.ts:65"
+              "location": "features\\step_definitions\\comunes.ts:89"
             },
             "result": {
               "status": "passed",
-              "duration": 658055500
+              "duration": 921627000
             }
           },
           {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 11,
-            "name": "que Ana ha iniciado sesión en TaskFlow",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:90"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1371220099
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Dado ",
-            "line": 36,
-            "name": "que existen por API las tareas \"Tarea temporal\" y \"Tarea que se queda\" en el proyecto de Ana",
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Tarea temporal"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Tarea que se queda"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 45,
+            "name": "existen por API las tareas en el proyecto de Ana:",
             "match": {
               "location": "features\\step_definitions\\tablero.ts:15"
             },
             "result": {
               "status": "passed",
-              "duration": 201822399
+              "duration": 184260699
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 37,
-            "name": "que Ana está viendo el tablero de su proyecto",
+            "keyword": "And ",
+            "line": 48,
+            "name": "ella está viendo el tablero de su proyecto",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:116"
             },
             "result": {
               "status": "passed",
-              "duration": 1021026399
+              "duration": 309699300
             }
           },
           {
             "arguments": [],
-            "keyword": "Y ",
-            "line": 38,
-            "name": "la columna \"Por Hacer\" contiene la tarea \"Tarea temporal\"",
+            "keyword": "And ",
+            "line": 49,
+            "name": "ella observa en la columna \"Por Hacer\" la tarea \"Tarea temporal\"",
             "match": {
-              "location": "features\\step_definitions\\tablero.ts:50"
+              "location": "features\\step_definitions\\tablero.ts:48"
             },
             "result": {
               "status": "passed",
-              "duration": 92009599
+              "duration": 77051399
             }
           },
           {
             "arguments": [],
-            "keyword": "Cuando ",
-            "line": 39,
-            "name": "Ana elimina la tarea \"Tarea temporal\" confirmando la acción",
+            "keyword": "When ",
+            "line": 50,
+            "name": "ella elimina la tarea \"Tarea temporal\" confirmando la acción",
             "match": {
-              "location": "features\\step_definitions\\tablero.ts:38"
+              "location": "features\\step_definitions\\tablero.ts:35"
             },
             "result": {
               "status": "passed",
-              "duration": 1561080999
+              "duration": 1273058600
             }
           },
           {
             "arguments": [],
-            "keyword": "Entonces ",
-            "line": 40,
-            "name": "Ana ve el aviso \"Tarea \\\"Tarea temporal\\\" eliminada\"",
-            "match": {
-              "location": "features\\step_definitions\\comunes.ts:125"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 61528299
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 41,
-            "name": "el tablero muestra únicamente la tarea \"Tarea que se queda\"",
-            "match": {
-              "location": "features\\step_definitions\\tablero.ts:62"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 60807600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Cuando ",
-            "line": 42,
-            "name": "Ana deshace la última acción desde el aviso",
-            "match": {
-              "location": "features\\step_definitions\\tablero.ts:42"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 232577600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Entonces ",
-            "line": 43,
-            "name": "la columna \"Por Hacer\" contiene la tarea \"Tarea temporal\"",
-            "match": {
-              "location": "features\\step_definitions\\tablero.ts:50"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 76434099
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Y ",
-            "line": 44,
-            "name": "Ana ve el aviso \"Tarea \\\"Tarea temporal\\\" restaurada\"",
+            "keyword": "Then ",
+            "line": 51,
+            "name": "ella observa el mensaje \"Tarea \\\"Tarea temporal\\\" eliminada\"",
             "match": {
               "location": "features\\step_definitions\\comunes.ts:125"
             },
             "result": {
               "status": "passed",
-              "duration": 61080300
+              "duration": 46080099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 52,
+            "name": "ella observa solamente la tarea \"Tarea que se queda\" en el tablero",
+            "match": {
+              "location": "features\\step_definitions\\tablero.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60484900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 53,
+            "name": "ella deshace la última acción desde el mensaje",
+            "match": {
+              "location": "features\\step_definitions\\tablero.ts:39"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 279371400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "ella observa en la columna \"Por Hacer\" la tarea \"Tarea temporal\"",
+            "match": {
+              "location": "features\\step_definitions\\tablero.ts:48"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60041699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 55,
+            "name": "ella observa el mensaje \"Tarea \\\"Tarea temporal\\\" restaurada\"",
+            "match": {
+              "location": "features\\step_definitions\\comunes.ts:125"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 59856400
             }
           },
           {
@@ -1944,7 +2159,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 72455799
+              "duration": 53800999
             }
           },
           {
@@ -1952,31 +2167,43 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 97128700
+              "duration": 69044300
             }
           }
         ],
         "tags": [
           {
+            "name": "@web",
+            "line": 1
+          },
+          {
             "name": "@tareas",
-            "line": 2
+            "line": 1
+          },
+          {
+            "name": "@GH-11",
+            "line": 43
           },
           {
             "name": "@alternativo",
-            "line": 34
+            "line": 43
           }
         ],
         "type": "scenario"
       }
     ],
     "id": "tablero-kanban-de-tareas",
-    "line": 3,
-    "keyword": "Característica",
+    "line": 2,
+    "keyword": "Feature",
     "name": "Tablero Kanban de tareas",
     "tags": [
       {
+        "name": "@web",
+        "line": 1
+      },
+      {
         "name": "@tareas",
-        "line": 2
+        "line": 1
       }
     ],
     "uri": "features\\tablero.feature"

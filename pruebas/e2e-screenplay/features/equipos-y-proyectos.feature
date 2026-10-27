@@ -1,43 +1,52 @@
-# language: es
-@equipos
-Característica: Equipos y proyectos
-  Como líder de un equipo
-  quiero crear equipos, invitar a mis compañeros y abrir proyectos
-  para organizar el trabajo en tableros Kanban compartidos.
+@web @equipos
+Feature: Equipos y proyectos
+  Necesidad: la líder de un equipo quiere organizar el trabajo con sus compañeros en tableros compartidos.
+  Regla: solo se invita a personas que ya tienen cuenta y cada proyecto nace con las tres listas del tablero.
+  Ejemplos: crear un equipo e invitar a un miembro, invitar un correo inexistente y crear un proyecto.
 
-  Antecedentes:
-    Dado que la aplicación TaskFlow está disponible
+  Background:
+    Given la aplicación TaskFlow está disponible
 
-  @exitoso
-  Escenario: GH-06 La líder crea un equipo e invita a un miembro registrado
-    Dado que Beto ya tiene una cuenta registrada en TaskFlow
-    Y que Ana ha iniciado sesión en TaskFlow
-    Cuando Ana crea el equipo "Equipo Backend"
-    Entonces Ana ve el aviso "creado"
-    Cuando Ana abre el equipo "Equipo Backend"
-    Entonces el título de la pestaña termina en "· TaskFlow"
-    Y los miembros del equipo son solo Ana
-    Cuando Ana invita a Beto por su correo
-    Entonces los miembros del equipo son Ana y Beto
-    Y Ana ve el aviso "ahora es miembro del equipo"
+  Rule: La líder invita a personas que ya tienen cuenta
 
-  @alternativo
-  Escenario: GH-07 Invitar un correo que no está registrado muestra un error en la ventana
-    Dado que Ana tiene una cuenta y un equipo creados por API
-    Y que Ana ha iniciado sesión en TaskFlow
-    Y que Ana está en la página de su equipo
-    Cuando Ana busca para invitar a un correo que no está registrado
-    Entonces Ana ve en la ventana de invitación el error "No hay ningún usuario registrado con el correo"
-    Y el equipo sigue teniendo 1 miembro
+    @GH-06 @exitoso @smoke
+    Scenario: Crear un equipo e invitar a un miembro registrado
+      Given Beto ya tiene una cuenta registrada en TaskFlow
+      And Ana ha iniciado sesión en TaskFlow
+      When ella crea el equipo "Equipo Backend"
+      Then ella observa el mensaje "creado"
+      When ella abre el equipo "Equipo Backend"
+      Then el título de la pestaña termina en "· TaskFlow"
+      And ella observa solamente los miembros:
+        | Ana |
+      When ella invita a Beto por su correo
+      Then ella observa el mensaje "ahora es miembro del equipo"
+      And ella observa solamente los miembros:
+        | Ana  |
+        | Beto |
 
-  @proyectos @exitoso
-  Escenario: GH-08 Crear un proyecto genera un tablero con las 3 columnas por defecto
-    Dado que Ana tiene una cuenta y un equipo creados por API
-    Y que Ana ha iniciado sesión en TaskFlow
-    Y que Ana está en la página de su equipo
-    Cuando Ana crea el proyecto "Proyecto API"
-    Entonces Ana ve el aviso "creado con sus 3 listas"
-    Cuando Ana abre el tablero del proyecto "Proyecto API"
-    Entonces la ruta actual contiene "/proyectos/"
-    Y las columnas del tablero son "Por Hacer", "En Progreso" y "Hecho"
-    Y el progreso del proyecto es 0 %
+    @GH-07 @alternativo
+    Scenario: Invitar un correo que no está registrado
+      Given Ana tiene una cuenta y un equipo creados por API
+      And ella ha iniciado sesión en TaskFlow
+      And ella está en la página de su equipo
+      When ella busca para invitar a un correo que no está registrado
+      Then ella observa en la ventana de invitación el error "No hay ningún usuario registrado con el correo"
+      And el equipo sigue teniendo 1 miembro
+
+  Rule: Cada proyecto nuevo tiene un tablero con tres listas
+
+    @GH-08 @proyectos @exitoso
+    Scenario: Crear un proyecto genera un tablero con las columnas por defecto
+      Given Ana tiene una cuenta y un equipo creados por API
+      And ella ha iniciado sesión en TaskFlow
+      And ella está en la página de su equipo
+      When ella crea el proyecto "Proyecto API"
+      Then ella observa el mensaje "creado con sus 3 listas"
+      When ella abre el tablero del proyecto "Proyecto API"
+      Then la ruta actual contiene "/proyectos/"
+      And ella observa solamente las columnas:
+        | Por Hacer   |
+        | En Progreso |
+        | Hecho       |
+      And el progreso del proyecto es 0 %

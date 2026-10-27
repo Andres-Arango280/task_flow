@@ -1,6 +1,6 @@
 # Matriz de trazabilidad — TaskFlow
 
-Generada: 27/10/2026, 12:32:25 a. m.. 529 casos trazados (494 aprobados, 15 fallidos, 20 pendientes); 23/23 requisitos cubiertos; 20 defectos registrados.
+Generada: 27/10/2026, 8:41:30 a. m.. 529 casos trazados (494 aprobados, 15 fallidos, 20 pendientes); 23/23 requisitos cubiertos; 20 defectos registrados.
 
 ## Requisitos
 

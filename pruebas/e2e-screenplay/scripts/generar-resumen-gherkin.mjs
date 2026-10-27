@@ -44,17 +44,18 @@ for (const feature of resultados) {
     });
 
     for (const escenario of escenarios) {
-        const id = (escenario.name.match(/^(GH-\d+)/) ?? [])[1];
+        // El identificador es la etiqueta @GH-xx (en un Scenario Outline va en cada bloque Examples)
+        const id = (escenario.tags ?? []).map(t => t.name).find(t => /^@GH-\d+$/.test(t))?.slice(1);
         if (!id) continue;
 
         const pasos = (escenario.steps ?? []).filter(p => !p.hidden && p.keyword);
         const pasosTexto = pasos.map(p => `${p.keyword.trim()} ${p.name}`);
-        // Pasos de verificación: los «Entonces» y los «Y» que los continúan
+        // Pasos de verificación: los «Then» y los «And»/«But» que los continúan
         let ultimaPalabra = '';
         const verificaciones = pasos.filter(p => {
             const palabra = p.keyword.trim();
-            if (!/^(Y|E|Pero)$/.test(palabra)) ultimaPalabra = palabra;
-            return ultimaPalabra === 'Entonces';
+            if (!/^(And|But|\*|Y|E|Pero)$/.test(palabra)) ultimaPalabra = palabra;
+            return ultimaPalabra === 'Then' || ultimaPalabra === 'Entonces';
         }).length;
         const fallido = pasos.find(p => p.result?.status === 'failed');
         const noEjecutados = pasos.filter(p => ['skipped', 'undefined', 'pending', 'ambiguous'].includes(p.result?.status));
@@ -82,7 +83,7 @@ for (const feature of resultados) {
             nombre: escenario.name.replace(/^GH-\d+\s*/, ''),
             feature: feature.name,
             archivo: feature.uri.replace(/\\/g, '/'),
-            esquema: /esquema/i.test(escenario.keyword ?? ''),
+            esquema: /outline|esquema/i.test(escenario.keyword ?? ''),
             tipo,
             funcionalidad: info.funcionalidad ?? '',
             etiquetas,
@@ -135,8 +136,8 @@ const resumen = {
         duracionSeg: Number(((Number(process.env.DURACION_TOTAL_MS) || casos.reduce((s, c) => s + c.duracionSeg * 1000, 0)) / 1000).toFixed(1)),
     },
     gherkin: {
-        idioma: 'es (# language: es)',
-        estructura: 'Característica → Antecedentes → Escenario / Esquema del escenario (Ejemplos) → Dado / Cuando / Entonces / Y',
+        idioma: 'Palabras clave Gherkin en inglés (Feature, Background, Rule, Scenario, Scenario Outline, Examples, Given/When/Then/And) y texto de los pasos en español, como en el material de la clase (Clase 19: Gherkin, Cucumber y Serenity/JS)',
+        estructura: 'Feature (Necesidad / Regla / Ejemplos) → Background → Rule → Scenario / Scenario Outline (Examples etiquetados @GH-xx) → Given / When / Then / And; el actor se nombra en el primer paso («Given Ana …») y después se usa el pronombre («When ella …», «Then ella observa …»); tablas de datos en los Then que comparan listas (miembros, columnas, tareas)',
         features,
         definicionesDePasos,
         enlaceConScreenplay: 'Cada paso Gherkin (features/step_definitions/*.ts) llama a actorCalled(«Actor»).attemptsTo(...) con las tareas, interacciones y preguntas de src/screenplay/, las mismas que usa la suite Playwright Test (SP-01…SP-18).',

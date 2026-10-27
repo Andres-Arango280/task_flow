@@ -1,15 +1,15 @@
 # TaskFlow: comparación antes y después de la refactorización
 
-Generado: 27/10/2026, 12:33:08 a. m.. Versión anterior: commit `8b46dc0` (2026-09-23, «Fuckc»). Versión final: árbol de trabajo actual.
+Generado: 27/10/2026, 8:41:28 a. m.. Versión anterior: commit `8b46dc0` (2026-09-23, «Fuckc»). Versión final: árbol de trabajo actual.
 
 ## 1. Métricas de código y pruebas
 
 | Métrica | Antes | Después | Variación |
 |---|---:|---:|---:|
-| Archivos de código (backend + frontend + pruebas) | 66 | 184 | +118 |
-| Líneas de código de la aplicación | 3.242 | 16.553 | +13.311 |
+| Archivos de código (backend + frontend + pruebas) | 66 | 185 | +119 |
+| Líneas de código de la aplicación | 3.242 | 16.862 | +13.620 |
 | Archivos de prueba | 13 | 59 | +46 |
-| Líneas de código de prueba | 3.292 | 8.576 | +5.284 |
+| Líneas de código de prueba | 3.292 | 8.607 | +5.315 |
 | Casos it()/test() automatizados | 142 | 373 | +231 |
 | Escenarios Gherkin | 0 | 11 | +11 |
 | Scripts npm (backend) | 12 | 28 | +16 |
@@ -23,9 +23,9 @@ Diff de `src/`, `taskflow-frontend/src/` y los package.json frente a 8b46dc0:  1
 | pruebas/accesibilidad | 0 / 0 | 10 / 4.886 |
 | pruebas/comparacion | 0 / 0 | 1 / 235 |
 | pruebas/despliegue | 0 / 0 | 1 / 264 |
-| pruebas/e2e-screenplay | 0 / 0 | 56 / 7.001 |
+| pruebas/e2e-screenplay | 0 / 0 | 56 / 7.055 |
 | pruebas/ia-herramientas | 0 / 0 | 322 / 83.890 |
-| pruebas/informe | 0 / 0 | 11 / 12.878 |
+| pruebas/informe | 0 / 0 | 13 / 13.158 |
 | pruebas/jest-a-resumen.js | 0 / 0 | 1 / 67 |
 | pruebas/katalon | 0 / 0 | 143 / 4.970 |
 | pruebas/rendimiento | 0 / 0 | 10 / 1.541 |
@@ -109,7 +109,7 @@ Diff de `src/`, `taskflow-frontend/src/` y los package.json frente a 8b46dc0:  1
 | rendimiento | autocannon 7.15.0 (API programática) sobre Node.js v20.20.2; monitor de CPU/memoria con PowerShell Get-Process | 6 | 6 | 0 | 2026-10-27 |
 | ux-accesibilidad | axe-core 4.14.0, Lighthouse 12.8.2, Puppeteer 24.43.1 (puppeteer-core + Chrome instalado), pixelmatch 8.0.0 | 68 | 68 | 0 | 2026-10-27 |
 | screenplay | Serenity/JS 3.48.2 + Playwright 1.63.0 | 18 | 18 | 0 | 2026-10-26 |
-| gherkin | Cucumber 11.3.0 + Serenity/JS 3.48.2 (@serenity-js/cucumber) + Playwright 1.63.0 | 12 | 12 | 0 | 2026-10-26 |
+| gherkin | Cucumber 11.3.0 + Serenity/JS 3.48.2 (@serenity-js/cucumber) + Playwright 1.63.0 | 12 | 12 | 0 | 2026-10-27 |
 | stagehand | Stagehand 3.7.3 + Ollama 0.40.7 (ollama/llama3.1:8b, local, sin coste) | 7 | 2 | 5 | 2026-10-27 |
 | katalon | Katalon Studio | 16 | 0 | 0 | 2026-10-09 |
 

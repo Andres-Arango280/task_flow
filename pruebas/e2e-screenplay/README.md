@@ -133,46 +133,62 @@ correos únicos para no activar el bloqueo de 5 intentos por correo.
 
 ## Escenarios Gherkin (Cucumber + Serenity/JS) sobre el mismo patrón Screenplay
 
-Además de las especificaciones de Playwright Test (`specs/`), la carpeta `features/` contiene **escenarios en lenguaje
-Gherkin en español** (`# language: es`) ejecutados con **Cucumber 11** y el adaptador `@serenity-js/cucumber`. Los pasos
-*Dado / Cuando / Entonces / Y* no contienen lógica de automatización: cada uno delega en las **mismas tareas,
-interacciones y preguntas Screenplay** de `src/screenplay/` que usan los casos SP-01…SP-18.
+Además de las especificaciones de Playwright Test (`specs/`), la carpeta `features/` contiene **escenarios Gherkin**
+ejecutados con **Cucumber 11** y el adaptador `@serenity-js/cucumber`, escritos con el formato del material de la clase
+(Clase 19: Gherkin, Cucumber y Serenity/JS):
+
+* **Palabras clave en inglés** (`Feature`, `Background`, `Rule`, `Scenario`, `Scenario Outline`, `Examples`,
+  `Given` / `When` / `Then` / `And`) y **texto de los pasos en español**. `Feature` y `Scenario` llevan dos puntos; los pasos no.
+* La descripción de cada `Feature` sigue el camino **Necesidad → Regla → Ejemplos**, y cada `Rule` agrupa los escenarios
+  que la ilustran.
+* El **actor se nombra en el primer paso** (`Given Ana es una persona nueva…`) y después se usa el **pronombre**
+  (`When ella inicia sesión…`, `Then ella observa el mensaje "…"`), igual que *Alicia* y *ella* en los ejemplos de la clase.
+  En el escenario con dos actrices (Ana y Carla) se usan siempre los nombres.
+* Los resultados observables se expresan con **«observa»** y datos literales entre comillas (`{string}`); las listas se
+  comparan con **tablas de datos** en el `Then` (miembros del equipo, columnas del tablero, tareas de una columna).
+* Un **`Scenario Outline`** con dos bloques `Examples` cubre los inicios de sesión rechazados; cada bloque lleva su etiqueta
+  `@GH-03` / `@GH-04`.
+* Etiquetas: `@web`, `@api`, `@smoke`, el identificador `@GH-xx` de cada escenario, el tipo (`@exitoso`, `@alternativo`,
+  `@error`) y la funcionalidad (`@autenticacion`, `@equipos`, `@proyectos`, `@tareas`, `@usuarios`, `@seguridad`).
+
+Los pasos no contienen lógica de automatización: cada uno delega en las **mismas tareas, interacciones y preguntas
+Screenplay** de `src/screenplay/` que usan los casos SP-01…SP-18.
 
 ```text
-features/autenticacion.feature          features/step_definitions/acceso.ts           src/screenplay/tareas/TareasDeAcceso.ts
-  Cuando Ana se registra desde el   →   Cuando('{word} se registra desde el     →   RegistrarseEnTaskFlow.con(credenciales)
-  formulario con sus datos                formulario con sus datos', nombre =>        (Navigate, Enter, Click sobre PaginaRegistro)
-                                          actorCalled(nombre).attemptsTo(...))
-  Entonces Ana llega a la página    →   Entonces('{word} llega a la página      →   Ensure.eventually(EncabezadoPrincipal(), equals(...))
-  "Mis equipos"                           {string}', ...)                             Ensure.that(UrlActual(), equals('/'))
+features/autenticacion.feature          features/step_definitions/acceso.ts            src/screenplay/tareas/TareasDeAcceso.ts
+  When ella se registra desde el    →   When('{word} se registra desde el         →   RegistrarseEnTaskFlow.con(credenciales)
+  formulario con sus datos                formulario con sus datos', quien =>           (Navigate, Enter, Click sobre PaginaRegistro)
+                                          actorDe(quien).attemptsTo(...))
+  Then ella observa la página       →   Then('{word} observa la página {string}', →   Ensure.eventually(EncabezadoPrincipal(), equals(...))
+  "Mis equipos"                           ...)                                          Ensure.that(UrlActual(), equals('/'))
 ```
 
 | Pieza | Dónde | Qué hace |
 |---|---|---|
-| Características (`.feature`) | `features/*.feature` | 4 características, 12 escenarios **GH-01…GH-12** (incluye un *Esquema del escenario* con *Ejemplos*), etiquetados `@exitoso`, `@alternativo` o `@error` y por funcionalidad (`@autenticacion`, `@equipos`, `@proyectos`, `@tareas`, `@usuarios`). |
-| Definiciones de pasos | `features/step_definitions/*.ts` | Expresiones Cucumber (`{word}` = actor, `{string}`, `{int}`) que llaman a `actorCalled('Ana').attemptsTo(Tarea…, Ensure.that(Pregunta…))`. |
-| Contexto del escenario | `features/support/contexto.ts` | Credenciales y nombres únicos generados en el escenario, compartidos entre pasos. |
-| Configuración Serenity/JS | `features/support/serenity.config.ts` | Lanza Chrome (Playwright), configura el elenco `ElencoGherkin` (un contexto de navegador por actor), los *reporters* (consola, Serenity BDD, fotos) y una captura final por escenario. |
+| Características (`.feature`) | `features/*.feature` | 4 `Feature`, 7 `Rule`, 12 escenarios **GH-01…GH-12** (incluye un `Scenario Outline` con dos `Examples` etiquetados), con tablas de datos en los `Then`. |
+| Definiciones de pasos | `features/step_definitions/*.ts` | Expresiones Cucumber (`{word}` = nombre del actor o pronombre, `{string}`, `{int}`, `DataTable`) que llaman a `actorDe(quien).attemptsTo(Tarea…, Ensure.that(Pregunta…))`. |
+| Contexto del escenario | `features/support/contexto.ts` | Credenciales y nombres únicos generados en el escenario; resuelve el pronombre («ella») al actor en escena (`actorInTheSpotlight`). |
+| Configuración Serenity/JS | `features/support/serenity.config.ts` | Lanza Chrome (Playwright), configura el elenco `ElencoGherkin` (un contexto de navegador por actor), los *reporters* (consola, Serenity BDD, fotos) y una captura final por escenario (`@GH-xx.png`). |
 | Elenco | `src/screenplay/actores/ElencoGherkin.ts` | Mismas habilidades que en Playwright Test: `BrowseTheWebWithPlaywright`, `CallAnApi`, `TakeNotes`. |
 | Configuración Cucumber | `cucumber.js`, `tsconfig.cucumber.json` | Carga los `.ts` con `tsx`, formatos `@serenity-js/cucumber`, JSON y HTML. |
 | Catálogo | `catalogo/gherkin.json` | Objetivo y resultado esperado de cada escenario (el obtenido se genera de la ejecución real). |
 
 ### Escenarios
 
-| Id | Característica | Escenario | Tipo |
+| Id | Feature / Rule | Scenario | Tipo |
 |---|---|---|---|
-| GH-01 | Acceso | Registro exitoso e inicio de sesión | exitoso |
-| GH-02 | Acceso | Registro con correo ya existente | alternativo |
-| GH-03 | Acceso | Inicio de sesión con contraseña incorrecta (esquema, ejemplo 1) | error |
-| GH-04 | Acceso | Inicio de sesión con correo no registrado (esquema, ejemplo 2) | error |
-| GH-05 | Acceso | Ruta protegida sin sesión redirige a /login | error |
-| GH-06 | Equipos | La líder crea un equipo e invita a un miembro | exitoso |
-| GH-07 | Equipos | Invitar un correo no registrado | alternativo |
-| GH-08 | Proyectos | Crear proyecto genera las 3 columnas | exitoso |
-| GH-09 | Tareas | Crear tareas, mover a «Hecho» y subir el progreso | exitoso |
-| GH-10 | Tareas | Crear tarea sin título | error |
-| GH-11 | Tareas | Eliminar tarea con confirmación y deshacer | alternativo |
-| GH-12 | Usuarios / acceso | Usuaria ajena no puede ver el tablero (API 403 + interfaz) | error |
+| GH-01 | Autenticación / Una persona nueva crea su cuenta y entra con ella | Registro e inicio de sesión correctos | exitoso |
+| GH-02 | Autenticación / Una persona nueva crea su cuenta y entra con ella | Registro con un correo ya existente | alternativo |
+| GH-03 | Autenticación / Solo las credenciales válidas dan acceso | Inicio de sesión rechazado (Scenario Outline, Examples «contraseña incorrecta») | error |
+| GH-04 | Autenticación / Solo las credenciales válidas dan acceso | Inicio de sesión rechazado (Scenario Outline, Examples «correo no registrado») | error |
+| GH-05 | Autenticación / Las rutas privadas exigen una sesión iniciada | Una ruta protegida sin sesión redirige al inicio de sesión | error |
+| GH-06 | Equipos y proyectos / La líder invita a personas que ya tienen cuenta | Crear un equipo e invitar a un miembro registrado | exitoso |
+| GH-07 | Equipos y proyectos / La líder invita a personas que ya tienen cuenta | Invitar un correo que no está registrado | alternativo |
+| GH-08 | Equipos y proyectos / Cada proyecto nuevo tiene un tablero con tres listas | Crear un proyecto genera un tablero con las columnas por defecto | exitoso |
+| GH-09 | Tablero Kanban / El progreso refleja las tareas en «Hecho» | Crear tareas y mover una a Hecho | exitoso |
+| GH-10 | Tablero Kanban / Una tarea necesita un título | Crear una tarea sin título | error |
+| GH-11 | Tablero Kanban / Eliminar pide confirmación y se puede deshacer | Eliminar una tarea y deshacer la eliminación | alternativo |
+| GH-12 | Control de acceso / Solo los miembros del equipo ven sus proyectos | Una usuaria ajena al equipo no puede ver el tablero de Ana | error |
 
 ### Ejecución y evidencias
 
@@ -180,7 +196,7 @@ features/autenticacion.feature          features/step_definitions/acceso.ts     
 cd pruebas/e2e-screenplay
 npm install
 npm run gherkin                          # Cucumber + Serenity/JS → informe Serenity BDD → resumen y evidencias
-npm run gherkin -- --tags @autenticacion # solo una característica
+npm run gherkin -- --tags @autenticacion # solo una Feature (también @smoke, @GH-09, "@web and @error"…)
 HEADED=1 npm run gherkin                 # ver el navegador (PowerShell: $env:HEADED='1'; npm run gherkin)
 VIDEO=1 npm run gherkin                  # grabar vídeo de cada actor
 npm run gherkin:resumen                  # regenerar solo el resumen a partir de la última ejecución

@@ -416,9 +416,9 @@ if (R.screenplay) {
 }
 if (R.gherkin) {
   const g = R.gherkin.gherkin || {};
-  cuerpo.push(H2('9.2 Escenarios Gherkin (Dado–Cuando–Entonces) vinculados con Screenplay'));
+  cuerpo.push(H2('9.2 Escenarios Gherkin (Given–When–Then) vinculados con Screenplay'));
   cuerpo.push(P(resumenLinea(R.gherkin)));
-  cuerpo.push(P(`Los escenarios se escriben en español (${g.idioma || '# language: es'}) con la estructura ${g.estructura || 'Característica → Escenario → Dado / Cuando / Entonces'}. Cada paso tiene una definición (features/step_definitions/*.ts) que no automatiza nada por sí misma: invoca las mismas Tareas, Interacciones y Preguntas Screenplay de la sección 9.1 mediante actorCalled('Ana').attemptsTo(...). Así el texto de negocio (feature) y la ejecución E2E (Serenity/JS + Playwright) quedan unidos, y el informe Serenity BDD muestra cada paso Gherkin con las tareas anidadas.`));
+  cuerpo.push(P(`Los escenarios siguen el formato del material de la asignatura (Clase 19: Gherkin, Cucumber y Serenity/JS): ${g.idioma || 'palabras clave Gherkin en inglés y texto de los pasos en español'}. Estructura: ${g.estructura || 'Feature (Necesidad / Regla / Ejemplos) → Background → Rule → Scenario / Scenario Outline → Given / When / Then / And'}. Cada paso tiene una definición (features/step_definitions/*.ts) que no automatiza nada por sí misma: invoca las mismas Tareas, Interacciones y Preguntas Screenplay de la sección 9.1 mediante actorDe('ella').attemptsTo(...), donde el pronombre se resuelve al actor en escena. Así el texto de negocio (feature) y la ejecución E2E (Serenity/JS + Playwright) quedan unidos, y el informe Serenity BDD muestra cada paso Gherkin con las tareas anidadas.`));
   if (g.features) cuerpo.push(tabla(['Archivo .feature', 'Característica', 'Escenarios', 'Etiquetas'], g.features.map((f) => [f.archivo, f.nombre, f.escenarios, (f.etiquetas || []).join(' ')]), [2400, 3800, 1000, 2438], { tam: 14 }));
   if (g.definicionesDePasos) cuerpo.push(P(`Definiciones de pasos: ${g.definicionesDePasos.total ?? g.definicionesDePasos} en ${(g.definicionesDePasos.archivos || []).join(', ') || 'features/step_definitions/'}.`));
   // Ejemplo real de feature

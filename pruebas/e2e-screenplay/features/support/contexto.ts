@@ -1,3 +1,4 @@
+import { Actor, actorCalled, actorInTheSpotlight } from '@serenity-js/core';
 import { Credenciales } from '../../src/screenplay';
 
 /**
@@ -24,11 +25,27 @@ export const reiniciarContexto = (): void => {
     delete contexto.correoInexistente;
 };
 
+/**
+ * Los escenarios nombran al actor en el primer paso («Given Ana …») y después usan el pronombre
+ * («When ella …», «Then ella observa …»), como en el material de la clase. El pronombre se resuelve
+ * al actor en escena (actorInTheSpotlight), es decir, el último que actuó.
+ */
+const PRONOMBRES = new Set(['ella', 'él', 'el', 'Ella', 'Él', 'El']);
+
+export const esPronombre = (palabra: string): boolean => PRONOMBRES.has(palabra);
+
+/** Nombre real del actor a partir de un nombre («Ana») o de un pronombre («ella») */
+export const nombreDe = (palabra: string): string => (esPronombre(palabra) ? actorInTheSpotlight().name : palabra);
+
+/** Actor a partir de un nombre o de un pronombre */
+export const actorDe = (palabra: string): Actor => (esPronombre(palabra) ? actorInTheSpotlight() : actorCalled(palabra));
+
 /** Credenciales de un actor dentro del escenario; falla con un mensaje claro si aún no se generaron */
-export const credencialesDe = (nombre: string): Credenciales => {
+export const credencialesDe = (palabra: string): Credenciales => {
+    const nombre = nombreDe(palabra);
     const credenciales = contexto.credenciales[nombre];
     if (!credenciales) {
-        throw new Error(`El escenario todavía no ha generado credenciales para «${nombre}». Añade un paso «Dado que ${nombre} …tiene una cuenta…» antes.`);
+        throw new Error(`El escenario todavía no ha generado credenciales para «${nombre}». Añade un paso «Given ${nombre} …tiene una cuenta…» antes.`);
     }
     return credenciales;
 };

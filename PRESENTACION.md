@@ -1,6 +1,6 @@
 # Guion de presentación — TaskFlow (entrega final de pruebas)
 
-> Generado el 27/10/2026, 12:33:10 a. m. con `node pruebas/informe/generar-presentacion.js` a partir de las evidencias reales. Duración objetivo: 15 minutos + preguntas.
+> Generado el 27/10/2026, 8:41:34 a. m. con `node pruebas/informe/generar-presentacion.js` a partir de las evidencias reales. Duración objetivo: 15 minutos + preguntas.
 
 ## 1. Apertura (1 min)
 
@@ -34,7 +34,7 @@
 |---|---|---|
 | Cypress seguridad (13 casos, ~10 s) | `cd taskflow-frontend && npm run test:seguridad` | JWT manipulado → 401, 6.º intento → 429, BOLA → 403, XSS mostrado como texto, cabeceras helmet, CORS |
 | Cypress accesibilidad (11 casos, ~20 s) | `npm run test:accesibilidad` | axe-core WCAG A/AA sin violaciones en 8 pantallas + diálogo modal + alto contraste + teclado |
-| Gherkin + Screenplay (12/12, ~50 s) | `cd pruebas/e2e-screenplay && npm run gherkin` | Abrir un .feature (Dado/Cuando/Entonces en español) y el informe Serenity con las tareas Screenplay anidadas |
+| Gherkin + Screenplay (12/12, ~50 s) | `cd pruebas/e2e-screenplay && npm run gherkin` | Abrir un .feature (Feature → Rule → Scenario con Given/When/Then y texto en español, formato de la Clase 19) y el informe Serenity con las tareas Screenplay anidadas |
 | Stagehand (2/7) | mostrar `pruebas/evidencias/stagehand` (capturas + salidas JSON) | observe devuelve selectores reales; extract valida con zod; act con instrucción imposible → success=false |
 | Playwright Agents (11/11) | abrir `pruebas/ia-herramientas/playwright-agents/specs/plan-de-pruebas.md` y `reportes/healer-diff.md` | Planner → Generator → Healer: el localizador roto se repara y la prueba vuelve a pasar |
 
@@ -72,7 +72,7 @@ Suites completas ya ejecutadas (mostrar reportes HTML si hay tiempo): Jest 137/1
 
 ## Preguntas frecuentes de sustentación
 
-- **¿Cómo se enlaza Gherkin con Screenplay?** Cada paso Dado/Cuando/Entonces tiene una definición en `features/step_definitions/*.ts` que llama a `actorCalled("Ana").attemptsTo(Tarea…)`; las tareas son las mismas que usan los specs SP-01…SP-18.
+- **¿Cómo se enlaza Gherkin con Screenplay?** Cada paso Given/When/Then tiene una definición en `features/step_definitions/*.ts` que llama a `actorDe("ella").attemptsTo(Tarea…)` (el pronombre se resuelve al actor en escena, como Alicia/ella en la clase); las tareas son las mismas que usan los specs SP-01…SP-18.
 - **¿Qué hace cada capacidad de Stagehand?** `observe` lista acciones con selectores; `act` ejecuta una instrucción y se autorrepara; `extract` devuelve datos validados por esquema zod. Todo se comprueba después contra la API.
 - **¿Por qué fallan algunos casos de Stagehand/IA?** Son limitaciones del modelo local (JSON fuera de esquema, omisiones, lentitud), documentadas como tales; no son defectos de TaskFlow.
 - **¿Cómo verifico un módulo concreto?** `npm run test:unit:<modulo>` / `npm run test:e2e:<modulo>`; en Cypress, `--spec cypress/e2e/api/<modulo>.cy.ts`.

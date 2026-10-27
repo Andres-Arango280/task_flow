@@ -1,5 +1,5 @@
 {
-  "generado": "2026-10-27T05:32:25.466Z",
+  "generado": "2026-10-27T13:41:30.199Z",
   "totales": {
     "casos": 529,
     "aprobados": 494,
@@ -2021,7 +2021,7 @@
       "nombre": "E2E Gherkin + Screenplay (Cucumber)",
       "nivel": "Aceptación",
       "herramienta": "Cucumber 11.3.0 + Serenity/JS 3.48.2 (@serenity-js/cucumber) + Playwright 1.63.0",
-      "fecha": "2026-10-26T23:16:15.543Z",
+      "fecha": "2026-10-27T13:38:49.684Z",
       "total": 12,
       "aprobados": 12,
       "fallidos": 0,
@@ -13108,21 +13108,21 @@
     },
     {
       "id": "GH-01",
-      "nombre": "Registro exitoso de una nueva usuaria e inicio de sesión",
+      "nombre": "Registro e inicio de sesión correctos",
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
-      "subSuite": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+      "subSuite": "Autenticación en TaskFlow",
       "tipo": "exitoso",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 9 pasos (5 de ellos de verificación «Entonces») en 3.7 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 9 pasos (5 de ellos de verificación «Entonces») en 2.8 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-01.png",
         "pruebas/evidencias/gherkin/features/autenticacion.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-01 Registro exitoso de una nueva usuaria e inicio de sesión Conforme a lo esperado. Se ejecutaron y superaron los 9 pasos (5 de ellos de verificación «Entonces») en 3.7 s.",
+      "textoParaDefectos": "GH-01 Registro e inicio de sesión correctos Conforme a lo esperado. Se ejecutaron y superaron los 9 pasos (5 de ellos de verificación «Entonces») en 2.8 s.",
       "funcionalidad": "F1 Autenticación (registro e inicio de sesión)",
       "funcionalidadId": "F1",
       "requisitos": [
@@ -13135,21 +13135,21 @@
     },
     {
       "id": "GH-02",
-      "nombre": "Registro con un correo ya existente muestra un error",
+      "nombre": "Registro con un correo ya existente",
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
-      "subSuite": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+      "subSuite": "Autenticación en TaskFlow",
       "tipo": "alternativo",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 5 pasos (2 de ellos de verificación «Entonces») en 1.7 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 5 pasos (2 de ellos de verificación «Entonces») en 1.4 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-02.png",
         "pruebas/evidencias/gherkin/features/autenticacion.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-02 Registro con un correo ya existente muestra un error Conforme a lo esperado. Se ejecutaron y superaron los 5 pasos (2 de ellos de verificación «Entonces») en 1.7 s.",
+      "textoParaDefectos": "GH-02 Registro con un correo ya existente Conforme a lo esperado. Se ejecutaron y superaron los 5 pasos (2 de ellos de verificación «Entonces») en 1.4 s.",
       "funcionalidad": "F1 Autenticación (registro e inicio de sesión)",
       "funcionalidadId": "F1",
       "requisitos": [
@@ -13162,21 +13162,21 @@
     },
     {
       "id": "GH-03",
-      "nombre": "Inicio de sesión rechazado con una contraseña incorrecta",
+      "nombre": "Inicio de sesión rechazado",
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
-      "subSuite": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+      "subSuite": "Autenticación en TaskFlow",
       "tipo": "error",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1.7 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1.1 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-03.png",
         "pruebas/evidencias/gherkin/features/autenticacion.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-03 Inicio de sesión rechazado con una contraseña incorrecta Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1.7 s.",
+      "textoParaDefectos": "GH-03 Inicio de sesión rechazado Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1.1 s.",
       "funcionalidad": "F1 Autenticación (registro e inicio de sesión)",
       "funcionalidadId": "F1",
       "requisitos": [
@@ -13189,21 +13189,21 @@
     },
     {
       "id": "GH-04",
-      "nombre": "Inicio de sesión rechazado con un correo que no existe",
+      "nombre": "Inicio de sesión rechazado",
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
-      "subSuite": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+      "subSuite": "Autenticación en TaskFlow",
       "tipo": "error",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1.6 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-04.png",
         "pruebas/evidencias/gherkin/features/autenticacion.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-04 Inicio de sesión rechazado con un correo que no existe Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1.6 s.",
+      "textoParaDefectos": "GH-04 Inicio de sesión rechazado Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1 s.",
       "funcionalidad": "F1 Autenticación (registro e inicio de sesión)",
       "funcionalidadId": "F1",
       "requisitos": [
@@ -13220,17 +13220,17 @@
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
-      "subSuite": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+      "subSuite": "Autenticación en TaskFlow",
       "tipo": "error",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 8 pasos (4 de ellos de verificación «Entonces») en 1.8 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 8 pasos (4 de ellos de verificación «Entonces») en 1.4 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-05.png",
         "pruebas/evidencias/gherkin/features/autenticacion.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-05 Una ruta protegida sin sesión redirige al inicio de sesión Conforme a lo esperado. Se ejecutaron y superaron los 8 pasos (4 de ellos de verificación «Entonces») en 1.8 s.",
+      "textoParaDefectos": "GH-05 Una ruta protegida sin sesión redirige al inicio de sesión Conforme a lo esperado. Se ejecutaron y superaron los 8 pasos (4 de ellos de verificación «Entonces») en 1.4 s.",
       "funcionalidad": "F3 Equipos y miembros",
       "funcionalidadId": "F3",
       "requisitos": [
@@ -13241,21 +13241,21 @@
     },
     {
       "id": "GH-06",
-      "nombre": "La líder crea un equipo e invita a un miembro registrado",
+      "nombre": "Crear un equipo e invitar a un miembro registrado",
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
       "subSuite": "Equipos y proyectos",
       "tipo": "exitoso",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 4.8 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 3.8 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-06.png",
         "pruebas/evidencias/gherkin/features/equipos-y-proyectos.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-06 La líder crea un equipo e invita a un miembro registrado Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 4.8 s.",
+      "textoParaDefectos": "GH-06 Crear un equipo e invitar a un miembro registrado Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 3.8 s.",
       "funcionalidad": "F3 Equipos y miembros",
       "funcionalidadId": "F3",
       "requisitos": [
@@ -13266,21 +13266,21 @@
     },
     {
       "id": "GH-07",
-      "nombre": "Invitar un correo que no está registrado muestra un error en la ventana",
+      "nombre": "Invitar un correo que no está registrado",
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
       "subSuite": "Equipos y proyectos",
       "tipo": "alternativo",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 3.8 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 2.2 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-07.png",
         "pruebas/evidencias/gherkin/features/equipos-y-proyectos.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-07 Invitar un correo que no está registrado muestra un error en la ventana Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 3.8 s.",
+      "textoParaDefectos": "GH-07 Invitar un correo que no está registrado Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 2.2 s.",
       "funcionalidad": "F4 Proyectos",
       "funcionalidadId": "F4",
       "requisitos": [
@@ -13290,21 +13290,21 @@
     },
     {
       "id": "GH-08",
-      "nombre": "Crear un proyecto genera un tablero con las 3 columnas por defecto",
+      "nombre": "Crear un proyecto genera un tablero con las columnas por defecto",
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
       "subSuite": "Equipos y proyectos",
       "tipo": "exitoso",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 10 pasos (4 de ellos de verificación «Entonces») en 6.8 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 10 pasos (4 de ellos de verificación «Entonces») en 2.8 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-08.png",
         "pruebas/evidencias/gherkin/features/equipos-y-proyectos.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-08 Crear un proyecto genera un tablero con las 3 columnas por defecto Conforme a lo esperado. Se ejecutaron y superaron los 10 pasos (4 de ellos de verificación «Entonces») en 6.8 s.",
+      "textoParaDefectos": "GH-08 Crear un proyecto genera un tablero con las columnas por defecto Conforme a lo esperado. Se ejecutaron y superaron los 10 pasos (4 de ellos de verificación «Entonces») en 2.8 s.",
       "funcionalidad": "F5 Listas y tablero Kanban (progreso, búsqueda, filtros)",
       "funcionalidadId": "F5",
       "requisitos": [
@@ -13315,21 +13315,21 @@
     },
     {
       "id": "GH-09",
-      "nombre": "Crear tareas, mover una a «Hecho» y ver subir el progreso",
+      "nombre": "Crear tareas y mover una a Hecho",
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
       "subSuite": "Tablero Kanban de tareas",
       "tipo": "exitoso",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 14 pasos (6 de ellos de verificación «Entonces») en 9.2 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 14 pasos (6 de ellos de verificación «Entonces») en 7.9 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-09.png",
         "pruebas/evidencias/gherkin/features/tablero.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-09 Crear tareas, mover una a «Hecho» y ver subir el progreso Conforme a lo esperado. Se ejecutaron y superaron los 14 pasos (6 de ellos de verificación «Entonces») en 9.2 s.",
+      "textoParaDefectos": "GH-09 Crear tareas y mover una a Hecho Conforme a lo esperado. Se ejecutaron y superaron los 14 pasos (6 de ellos de verificación «Entonces») en 7.9 s.",
       "funcionalidad": "F6 Tareas (crear, editar, mover, asignar, eliminar)",
       "funcionalidadId": "F6",
       "requisitos": [
@@ -13340,21 +13340,21 @@
     },
     {
       "id": "GH-10",
-      "nombre": "Crear una tarea sin título muestra un error y no la crea",
+      "nombre": "Crear una tarea sin título",
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
       "subSuite": "Tablero Kanban de tareas",
       "tipo": "error",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 3.2 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 2.5 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-10.png",
         "pruebas/evidencias/gherkin/features/tablero.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-10 Crear una tarea sin título muestra un error y no la crea Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 3.2 s.",
+      "textoParaDefectos": "GH-10 Crear una tarea sin título Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 2.5 s.",
       "funcionalidad": "F6 Tareas (crear, editar, mover, asignar, eliminar)",
       "funcionalidadId": "F6",
       "requisitos": [
@@ -13365,21 +13365,21 @@
     },
     {
       "id": "GH-11",
-      "nombre": "Eliminar una tarea pide confirmación y se puede deshacer",
+      "nombre": "Eliminar una tarea y deshacer la eliminación",
       "suite": "E2E Gherkin + Screenplay (Cucumber)",
       "area": "gherkin",
       "nivel": "Aceptación",
       "subSuite": "Tablero Kanban de tareas",
       "tipo": "alternativo",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 12 pasos (4 de ellos de verificación «Entonces») en 5.4 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 12 pasos (4 de ellos de verificación «Entonces») en 3.8 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-11.png",
         "pruebas/evidencias/gherkin/features/tablero.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-11 Eliminar una tarea pide confirmación y se puede deshacer Conforme a lo esperado. Se ejecutaron y superaron los 12 pasos (4 de ellos de verificación «Entonces») en 5.4 s.",
+      "textoParaDefectos": "GH-11 Eliminar una tarea y deshacer la eliminación Conforme a lo esperado. Se ejecutaron y superaron los 12 pasos (4 de ellos de verificación «Entonces») en 3.8 s.",
       "funcionalidad": "F3 Equipos y miembros",
       "funcionalidadId": "F3",
       "requisitos": [
@@ -13397,14 +13397,14 @@
       "subSuite": "Control de acceso entre usuarios",
       "tipo": "error",
       "estado": "Aprobado",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 3.9 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 2.9 s.",
       "evidencia": [
         "pruebas/evidencias/gherkin/capturas/GH-12.png",
         "pruebas/evidencias/gherkin/features/colaboracion.feature",
         "pruebas/evidencias/gherkin/reporte-serenity/index.html",
         "pruebas/evidencias/gherkin/reporte-cucumber/cucumber.html"
       ],
-      "textoParaDefectos": "GH-12 Una usuaria ajena al equipo no puede ver el tablero de Ana Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 3.9 s.",
+      "textoParaDefectos": "GH-12 Una usuaria ajena al equipo no puede ver el tablero de Ana Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 2.9 s.",
       "funcionalidad": "F6 Tareas (crear, editar, mover, asignar, eliminar)",
       "funcionalidadId": "F6",
       "requisitos": [

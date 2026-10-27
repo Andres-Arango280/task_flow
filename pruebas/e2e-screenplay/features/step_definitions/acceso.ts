@@ -1,64 +1,63 @@
 import { Then, When } from '@cucumber/cucumber';
-import { actorCalled, Wait } from '@serenity-js/core';
+import { Wait } from '@serenity-js/core';
 import { Ensure, equals, includes } from '@serenity-js/assertions';
 import { Navigate, Value } from '@serenity-js/web';
 import {
     credencialesPara, EncabezadoPrincipal, IntentarIniciarSesion, MensajeDeCuentaCreada, MensajeDeError, PaginaInicioSesion,
     RegistrarseEnTaskFlow, UrlActual,
 } from '../../src/screenplay';
-import { credencialesDe } from '../support/contexto';
+import { actorDe, credencialesDe } from '../support/contexto';
 
-/** Pasos de la característica «Acceso a TaskFlow»: registro, inicio de sesión y rutas protegidas */
+/** Pasos de la característica «Autenticación en TaskFlow»: registro, inicio de sesión y rutas protegidas */
 
-const Cuando = When;
-const Entonces = Then;
-
-Cuando('{word} se registra desde el formulario con sus datos', async (nombre: string) => {
-    await actorCalled(nombre).attemptsTo(RegistrarseEnTaskFlow.con(credencialesDe(nombre)));
+When('{word} se registra desde el formulario con sus datos', async (quien: string) => {
+    await actorDe(quien).attemptsTo(RegistrarseEnTaskFlow.con(credencialesDe(quien)));
 });
 
-Cuando('{word} intenta registrarse de nuevo con el mismo correo', async (nombre: string) => {
-    const credenciales = credencialesDe(nombre);
-    await actorCalled(nombre).attemptsTo(RegistrarseEnTaskFlow.con({ ...credenciales, nombre: `Otra ${nombre}` }));
+When('{word} intenta registrarse de nuevo con el mismo correo', async (quien: string) => {
+    const actor = actorDe(quien);
+    const credenciales = credencialesDe(quien);
+    await actor.attemptsTo(RegistrarseEnTaskFlow.con({ ...credenciales, nombre: `Otra ${actor.name}` }));
 });
 
-Cuando('{word} intenta iniciar sesión con su correo y una contraseña equivocada', async (nombre: string) => {
-    await actorCalled(nombre).attemptsTo(IntentarIniciarSesion.con(credencialesDe(nombre).email, 'contraseña-equivocada'));
+When('{word} intenta iniciar sesión con su correo y una contraseña equivocada', async (quien: string) => {
+    await actorDe(quien).attemptsTo(IntentarIniciarSesion.con(credencialesDe(quien).email, 'contraseña-equivocada'));
 });
 
-Cuando('{word} intenta iniciar sesión con un correo no registrado', async (nombre: string) => {
+When('{word} intenta iniciar sesión con un correo no registrado', async (quien: string) => {
     // Correo único: así el intento fallido no activa el bloqueo de 5 intentos de ninguna cuenta real
-    await actorCalled(nombre).attemptsTo(IntentarIniciarSesion.con(credencialesPara('Nadie').email, credencialesDe(nombre).password));
+    await actorDe(quien).attemptsTo(IntentarIniciarSesion.con(credencialesPara('Nadie').email, credencialesDe(quien).password));
 });
 
-Cuando('{word} intenta abrir la ruta {string}', async (nombre: string, ruta: string) => {
-    await actorCalled(nombre).attemptsTo(Navigate.to(ruta));
+When('{word} intenta abrir la ruta {string}', async (quien: string, ruta: string) => {
+    await actorDe(quien).attemptsTo(Navigate.to(ruta));
 });
 
-Entonces('{word} es redirigida al inicio de sesión con el aviso {string}', async (nombre: string, aviso: string) => {
-    await actorCalled(nombre).attemptsTo(
+/** El mensaje de «cuenta creada» se muestra en la página de inicio de sesión tras la redirección */
+Then('{word} es redirigida al inicio de sesión con el mensaje {string}', async (quien: string, mensaje: string) => {
+    await actorDe(quien).attemptsTo(
         Wait.until(UrlActual(), equals('/login')),
-        Ensure.eventually(MensajeDeCuentaCreada(), includes(aviso)),
+        Ensure.eventually(MensajeDeCuentaCreada(), includes(mensaje)),
     );
 });
 
-Entonces('el correo de {word} aparece precargado en el formulario de inicio de sesión', async (nombre: string) => {
-    await actorCalled(nombre).attemptsTo(
-        Ensure.that(Value.of(PaginaInicioSesion.correo()), equals(credencialesDe(nombre).email)),
+Then('{word} observa su correo precargado en el formulario de inicio de sesión', async (quien: string) => {
+    await actorDe(quien).attemptsTo(
+        Ensure.that(Value.of(PaginaInicioSesion.correo()), equals(credencialesDe(quien).email)),
     );
 });
 
-Entonces('{word} llega a la página {string}', async (nombre: string, encabezado: string) => {
-    await actorCalled(nombre).attemptsTo(
+Then('{word} observa la página {string}', async (quien: string, encabezado: string) => {
+    await actorDe(quien).attemptsTo(
         Ensure.eventually(EncabezadoPrincipal(), equals(encabezado)),
         Ensure.that(UrlActual(), equals('/')),
     );
 });
 
-Entonces('{word} ve en el formulario de registro el error {string}', async (nombre: string, texto: string) => {
-    await actorCalled(nombre).attemptsTo(Ensure.eventually(MensajeDeError.delRegistro(), includes(texto)));
+Then('{word} observa en el formulario de registro el error {string}', async (quien: string, texto: string) => {
+    await actorDe(quien).attemptsTo(Ensure.eventually(MensajeDeError.delRegistro(), includes(texto)));
 });
 
-Entonces('{word} ve en el formulario de inicio de sesión el error {string}', async (nombre: string, texto: string) => {
-    await actorCalled(nombre).attemptsTo(Ensure.eventually(MensajeDeError.delInicioDeSesion(), includes(texto)));
+Then('{word} observa en el formulario de inicio de sesión el error {string}', async (quien: string, texto: string) => {
+    await actorDe(quien).attemptsTo(Ensure.eventually(MensajeDeError.delInicioDeSesion(), includes(texto)));
 });

@@ -2,22 +2,23 @@
   "area": "E2E Gherkin + Screenplay",
   "herramienta": "Cucumber 11.3.0 + Serenity/JS 3.48.2 (@serenity-js/cucumber) + Playwright 1.63.0",
   "comando": "npm run gherkin",
-  "fecha": "2026-10-26T23:16:15.543Z",
+  "fecha": "2026-10-27T13:38:49.684Z",
   "totales": {
     "total": 12,
     "aprobados": 12,
     "fallidos": 0,
     "pasos": 106,
-    "duracionSeg": 47.6
+    "duracionSeg": 41.2
   },
   "gherkin": {
-    "idioma": "es (# language: es)",
-    "estructura": "Característica → Antecedentes → Escenario / Esquema del escenario (Ejemplos) → Dado / Cuando / Entonces / Y",
+    "idioma": "Palabras clave Gherkin en inglés (Feature, Background, Rule, Scenario, Scenario Outline, Examples, Given/When/Then/And) y texto de los pasos en español, como en el material de la clase (Clase 19: Gherkin, Cucumber y Serenity/JS)",
+    "estructura": "Feature (Necesidad / Regla / Ejemplos) → Background → Rule → Scenario / Scenario Outline (Examples etiquetados @GH-xx) → Given / When / Then / And; el actor se nombra en el primer paso («Given Ana …») y después se usa el pronombre («When ella …», «Then ella observa …»); tablas de datos en los Then que comparan listas (miembros, columnas, tareas)",
     "features": [
       {
         "archivo": "features/autenticacion.feature",
-        "nombre": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+        "nombre": "Autenticación en TaskFlow",
         "etiquetas": [
+          "@web",
           "@autenticacion"
         ],
         "escenarios": 5
@@ -26,6 +27,8 @@
         "archivo": "features/colaboracion.feature",
         "nombre": "Control de acceso entre usuarios",
         "etiquetas": [
+          "@web",
+          "@api",
           "@usuarios",
           "@seguridad"
         ],
@@ -35,6 +38,7 @@
         "archivo": "features/equipos-y-proyectos.feature",
         "nombre": "Equipos y proyectos",
         "etiquetas": [
+          "@web",
           "@equipos"
         ],
         "escenarios": 3
@@ -43,6 +47,7 @@
         "archivo": "features/tablero.feature",
         "nombre": "Tablero Kanban de tareas",
         "etiquetas": [
+          "@web",
           "@tareas"
         ],
         "escenarios": 3
@@ -57,49 +62,49 @@
           "{word} intenta iniciar sesión con su correo y una contraseña equivocada",
           "{word} intenta iniciar sesión con un correo no registrado",
           "{word} intenta abrir la ruta {string}",
-          "{word} es redirigida al inicio de sesión con el aviso {string}",
-          "el correo de {word} aparece precargado en el formulario de inicio de sesión",
-          "{word} llega a la página {string}",
-          "{word} ve en el formulario de registro el error {string}",
-          "{word} ve en el formulario de inicio de sesión el error {string}"
+          "{word} es redirigida al inicio de sesión con el mensaje {string}",
+          "{word} observa su correo precargado en el formulario de inicio de sesión",
+          "{word} observa la página {string}",
+          "{word} observa en el formulario de registro el error {string}",
+          "{word} observa en el formulario de inicio de sesión el error {string}"
         ]
       },
       {
         "archivo": "features/step_definitions/colaboracion.ts",
         "pasos": [
-          "que {word} tiene una cuenta creada por API y no pertenece al equipo de {word}",
+          "{word} tiene una cuenta creada por API y no pertenece al equipo de {word}",
           "{word} consulta por API las tareas del proyecto de {word}",
           "{word} intenta abrir el tablero del proyecto de {word}",
           "la API responde a {word} con el estado {int}",
-          "{word} no ve el equipo de {word} en {string}",
-          "{word} no ve el tablero ni la tarea {string}"
+          "{word} no observa el equipo de {word} en {string}",
+          "{word} no observa el tablero ni la tarea {string}"
         ]
       },
       {
         "archivo": "features/step_definitions/comunes.ts",
         "pasos": [
-          "que la aplicación TaskFlow está disponible",
-          "que {word} es una persona nueva sin cuenta en TaskFlow",
-          "que {word} ya tiene una cuenta registrada en TaskFlow",
-          "que {word} tiene una cuenta y un equipo creados por API",
-          "que {word} tiene una cuenta, un equipo y un proyecto vacío creados por API",
-          "que {word} tiene una cuenta, un equipo y un proyecto con la tarea {string} creados por API",
-          "que {word} ha iniciado sesión en TaskFlow",
-          "que {word} no ha iniciado sesión en TaskFlow",
+          "la aplicación TaskFlow está disponible",
+          "{word} es una persona nueva sin cuenta en TaskFlow",
+          "{word} ya tiene una cuenta registrada en TaskFlow",
+          "{word} tiene una cuenta y un equipo creados por API",
+          "{word} tiene una cuenta, un equipo y un proyecto vacío creados por API",
+          "{word} tiene una cuenta, un equipo y un proyecto con la tarea {string} creados por API",
+          "{word} ha iniciado sesión en TaskFlow",
+          "{word} no ha iniciado sesión en TaskFlow",
           "{word} inicia sesión con sus credenciales",
-          "que {word} está en la página de su equipo",
-          "que {word} está viendo el tablero de su proyecto",
-          "{word} ve el aviso {string}",
-          "{word} ve un aviso de error {string}",
+          "{word} está en la página de su equipo",
+          "{word} está viendo el tablero de su proyecto",
+          "{word} observa el mensaje {string}",
+          "{word} observa el mensaje de error {string}",
           "el título de la pestaña es {string}",
           "el título de la pestaña termina en {string}",
           "el encabezado principal es {string}",
-          "el encabezado principal que ve {word} es {string}",
+          "{word} observa el encabezado {string}",
           "{word} permanece en la ruta {string}",
           "{word} es redirigida a la ruta {string}",
           "la ruta actual contiene {string}",
-          "el navegador de {word} guarda un token de acceso",
-          "el navegador de {word} no guarda ningún token de acceso",
+          "su navegador guarda un token de acceso",
+          "su navegador no guarda ningún token de acceso",
           "el progreso del proyecto es {int} %"
         ]
       },
@@ -112,28 +117,27 @@
           "{word} busca para invitar a un correo que no está registrado",
           "{word} crea el proyecto {string}",
           "{word} abre el tablero del proyecto {string}",
-          "los miembros del equipo son solo {word}",
-          "los miembros del equipo son {word} y {word}",
-          "{word} ve en la ventana de invitación el error {string}",
+          "{word} observa solamente los miembros:",
+          "{word} observa en la ventana de invitación el error {string}",
           "el equipo sigue teniendo {int} miembro(s)",
-          "las columnas del tablero son {string}, {string} y {string}"
+          "{word} observa solamente las columnas:"
         ]
       },
       {
         "archivo": "features/step_definitions/tablero.ts",
         "pasos": [
-          "que existen por API las tareas {string} y {string} en el proyecto de {word}",
+          "existen por API las tareas en el proyecto de {word}:",
           "{word} crea la tarea {string} con la descripción {string}",
           "{word} crea la tarea {string}",
           "{word} mueve la tarea {string} a la columna {string}",
           "{word} intenta crear una tarea sin título con la descripción {string}",
           "{word} elimina la tarea {string} confirmando la acción",
-          "{word} deshace la última acción desde el aviso",
-          "la columna {string} contiene las tareas {string} y {string}",
-          "la columna {string} contiene la tarea {string}",
-          "{word} ve en la ventana de nueva tarea el error {string}",
+          "{word} deshace la última acción desde el mensaje",
+          "{word} observa en la columna {string} solamente las tareas:",
+          "{word} observa en la columna {string} la tarea {string}",
+          "{word} observa en la ventana de nueva tarea el error {string}",
           "el tablero no muestra ninguna tarea",
-          "el tablero muestra únicamente la tarea {string}"
+          "{word} observa solamente la tarea {string} en el tablero"
         ]
       }
     ],
@@ -227,35 +231,38 @@
   "casos": [
     {
       "id": "GH-01",
-      "nombre": "Registro exitoso de una nueva usuaria e inicio de sesión",
-      "feature": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+      "nombre": "Registro e inicio de sesión correctos",
+      "feature": "Autenticación en TaskFlow",
       "archivo": "features/autenticacion.feature",
       "esquema": false,
       "tipo": "exitoso",
       "funcionalidad": "Autenticación",
       "etiquetas": [
+        "@web",
         "@autenticacion",
-        "@exitoso"
+        "@GH-01",
+        "@exitoso",
+        "@smoke"
       ],
       "actores": [
         "Ana"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Dado que Ana es una persona nueva sin cuenta en TaskFlow",
-        "Cuando Ana se registra desde el formulario con sus datos",
-        "Entonces Ana es redirigida al inicio de sesión con el aviso \"Cuenta creada correctamente\"",
-        "Y el correo de Ana aparece precargado en el formulario de inicio de sesión",
-        "Cuando Ana inicia sesión con sus credenciales",
-        "Entonces Ana llega a la página \"Mis equipos\"",
-        "Y el título de la pestaña es \"Mis equipos · TaskFlow\"",
-        "Y el navegador de Ana guarda un token de acceso"
+        "Given la aplicación TaskFlow está disponible",
+        "Given Ana es una persona nueva sin cuenta en TaskFlow",
+        "When ella se registra desde el formulario con sus datos",
+        "Then ella es redirigida al inicio de sesión con el mensaje \"Cuenta creada correctamente\"",
+        "And ella observa su correo precargado en el formulario de inicio de sesión",
+        "When ella inicia sesión con sus credenciales",
+        "Then ella observa la página \"Mis equipos\"",
+        "And el título de la pestaña es \"Mis equipos · TaskFlow\"",
+        "And su navegador guarda un token de acceso"
       ],
       "objetivo": "Verificar que una persona nueva puede crear su cuenta desde el formulario de registro y, a continuación, iniciar sesión.",
       "esperado": "Tras «Crear cuenta» se redirige a /login con el aviso «Cuenta creada correctamente» y el correo precargado; al iniciar sesión llega a «Mis equipos» (título «Mis equipos · TaskFlow») y el navegador guarda el token de acceso.",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 9 pasos (5 de ellos de verificación «Entonces») en 3.7 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 9 pasos (5 de ellos de verificación «Entonces») en 2.8 s.",
       "estado": "Aprobado",
-      "duracionSeg": 3.7,
+      "duracionSeg": 2.8,
       "evidencia": [
         "capturas/GH-01.png",
         "features/autenticacion.feature",
@@ -265,31 +272,33 @@
     },
     {
       "id": "GH-02",
-      "nombre": "Registro con un correo ya existente muestra un error",
-      "feature": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+      "nombre": "Registro con un correo ya existente",
+      "feature": "Autenticación en TaskFlow",
       "archivo": "features/autenticacion.feature",
       "esquema": false,
       "tipo": "alternativo",
       "funcionalidad": "Autenticación",
       "etiquetas": [
+        "@web",
         "@autenticacion",
+        "@GH-02",
         "@alternativo"
       ],
       "actores": [
         "Ana"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Dado que Ana ya tiene una cuenta registrada en TaskFlow",
-        "Cuando Ana intenta registrarse de nuevo con el mismo correo",
-        "Entonces Ana ve en el formulario de registro el error \"Ya existe una cuenta con el correo\"",
-        "Y Ana permanece en la ruta \"/register\""
+        "Given la aplicación TaskFlow está disponible",
+        "Given Ana ya tiene una cuenta registrada en TaskFlow",
+        "When ella intenta registrarse de nuevo con el mismo correo",
+        "Then ella observa en el formulario de registro el error \"Ya existe una cuenta con el correo\"",
+        "And ella permanece en la ruta \"/register\""
       ],
       "objetivo": "Comprobar que no se puede registrar dos veces el mismo correo.",
       "esperado": "El formulario muestra la alerta «Ya existe una cuenta con el correo …» y la persona permanece en /register.",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 5 pasos (2 de ellos de verificación «Entonces») en 1.7 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 5 pasos (2 de ellos de verificación «Entonces») en 1.4 s.",
       "estado": "Aprobado",
-      "duracionSeg": 1.7,
+      "duracionSeg": 1.4,
       "evidencia": [
         "capturas/GH-02.png",
         "features/autenticacion.feature",
@@ -299,32 +308,34 @@
     },
     {
       "id": "GH-03",
-      "nombre": "Inicio de sesión rechazado con una contraseña incorrecta",
-      "feature": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+      "nombre": "Inicio de sesión rechazado",
+      "feature": "Autenticación en TaskFlow",
       "archivo": "features/autenticacion.feature",
       "esquema": true,
       "tipo": "error",
       "funcionalidad": "Autenticación",
       "etiquetas": [
+        "@web",
         "@autenticacion",
-        "@error"
+        "@error",
+        "@GH-03"
       ],
       "actores": [
         "Ana"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Dado que Ana ya tiene una cuenta registrada en TaskFlow",
-        "Cuando Ana intenta iniciar sesión con su correo y una contraseña equivocada",
-        "Entonces Ana ve en el formulario de inicio de sesión el error \"El correo o la contraseña no son correctos\"",
-        "Y Ana permanece en la ruta \"/login\"",
-        "Y el navegador de Ana no guarda ningún token de acceso"
+        "Given la aplicación TaskFlow está disponible",
+        "Given Ana ya tiene una cuenta registrada en TaskFlow",
+        "When ella intenta iniciar sesión con su correo y una contraseña equivocada",
+        "Then ella observa en el formulario de inicio de sesión el error \"El correo o la contraseña no son correctos\"",
+        "And ella permanece en la ruta \"/login\"",
+        "And su navegador no guarda ningún token de acceso"
       ],
       "objetivo": "Comprobar que una contraseña incorrecta no da acceso (esquema del escenario, ejemplo 1).",
       "esperado": "Aparece la alerta «El correo o la contraseña no son correctos», se mantiene en /login y no se guarda ningún token.",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1.7 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1.1 s.",
       "estado": "Aprobado",
-      "duracionSeg": 1.7,
+      "duracionSeg": 1.1,
       "evidencia": [
         "capturas/GH-03.png",
         "features/autenticacion.feature",
@@ -334,32 +345,34 @@
     },
     {
       "id": "GH-04",
-      "nombre": "Inicio de sesión rechazado con un correo que no existe",
-      "feature": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+      "nombre": "Inicio de sesión rechazado",
+      "feature": "Autenticación en TaskFlow",
       "archivo": "features/autenticacion.feature",
       "esquema": true,
       "tipo": "error",
       "funcionalidad": "Autenticación",
       "etiquetas": [
+        "@web",
         "@autenticacion",
-        "@error"
+        "@error",
+        "@GH-04"
       ],
       "actores": [
         "Ana"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Dado que Ana ya tiene una cuenta registrada en TaskFlow",
-        "Cuando Ana intenta iniciar sesión con un correo no registrado",
-        "Entonces Ana ve en el formulario de inicio de sesión el error \"El correo o la contraseña no son correctos\"",
-        "Y Ana permanece en la ruta \"/login\"",
-        "Y el navegador de Ana no guarda ningún token de acceso"
+        "Given la aplicación TaskFlow está disponible",
+        "Given Ana ya tiene una cuenta registrada en TaskFlow",
+        "When ella intenta iniciar sesión con un correo no registrado",
+        "Then ella observa en el formulario de inicio de sesión el error \"El correo o la contraseña no son correctos\"",
+        "And ella permanece en la ruta \"/login\"",
+        "And su navegador no guarda ningún token de acceso"
       ],
       "objetivo": "Comprobar que un correo no registrado no da acceso y que el mensaje no revela si la cuenta existe (esquema del escenario, ejemplo 2).",
       "esperado": "Aparece la misma alerta genérica «El correo o la contraseña no son correctos», se mantiene en /login y no se guarda ningún token.",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1.6 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 6 pasos (3 de ellos de verificación «Entonces») en 1 s.",
       "estado": "Aprobado",
-      "duracionSeg": 1.6,
+      "duracionSeg": 1,
       "evidencia": [
         "capturas/GH-04.png",
         "features/autenticacion.feature",
@@ -370,33 +383,35 @@
     {
       "id": "GH-05",
       "nombre": "Una ruta protegida sin sesión redirige al inicio de sesión",
-      "feature": "Acceso a TaskFlow (registro, inicio de sesión y rutas protegidas)",
+      "feature": "Autenticación en TaskFlow",
       "archivo": "features/autenticacion.feature",
       "esquema": false,
       "tipo": "error",
       "funcionalidad": "Autenticación",
       "etiquetas": [
+        "@web",
         "@autenticacion",
+        "@GH-05",
         "@error"
       ],
       "actores": [
         "Ana"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Dado que Ana no ha iniciado sesión en TaskFlow",
-        "Cuando Ana intenta abrir la ruta \"/proyectos/00000000-0000-0000-0000-000000000000\"",
-        "Entonces Ana es redirigida a la ruta \"/login\"",
-        "Y el encabezado principal es \"Iniciar sesión\"",
-        "Cuando Ana intenta abrir la ruta \"/preferencias\"",
-        "Entonces Ana es redirigida a la ruta \"/login\"",
-        "Y el título de la pestaña es \"Iniciar sesión · TaskFlow\""
+        "Given la aplicación TaskFlow está disponible",
+        "Given Ana no ha iniciado sesión en TaskFlow",
+        "When ella intenta abrir la ruta \"/proyectos/00000000-0000-0000-0000-000000000000\"",
+        "Then ella es redirigida a la ruta \"/login\"",
+        "And el encabezado principal es \"Iniciar sesión\"",
+        "When ella intenta abrir la ruta \"/preferencias\"",
+        "Then ella es redirigida a la ruta \"/login\"",
+        "And el título de la pestaña es \"Iniciar sesión · TaskFlow\""
       ],
       "objetivo": "Comprobar que las rutas privadas están protegidas cuando no hay sesión.",
       "esperado": "Al visitar /proyectos/:id y /preferencias sin sesión se redirige a /login («Iniciar sesión · TaskFlow»).",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 8 pasos (4 de ellos de verificación «Entonces») en 1.8 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 8 pasos (4 de ellos de verificación «Entonces») en 1.4 s.",
       "estado": "Aprobado",
-      "duracionSeg": 1.8,
+      "duracionSeg": 1.4,
       "evidencia": [
         "capturas/GH-05.png",
         "features/autenticacion.feature",
@@ -406,38 +421,41 @@
     },
     {
       "id": "GH-06",
-      "nombre": "La líder crea un equipo e invita a un miembro registrado",
+      "nombre": "Crear un equipo e invitar a un miembro registrado",
       "feature": "Equipos y proyectos",
       "archivo": "features/equipos-y-proyectos.feature",
       "esquema": false,
       "tipo": "exitoso",
       "funcionalidad": "Equipos",
       "etiquetas": [
+        "@web",
         "@equipos",
-        "@exitoso"
+        "@GH-06",
+        "@exitoso",
+        "@smoke"
       ],
       "actores": [
         "Ana",
         "Beto"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Dado que Beto ya tiene una cuenta registrada en TaskFlow",
-        "Y que Ana ha iniciado sesión en TaskFlow",
-        "Cuando Ana crea el equipo \"Equipo Backend\"",
-        "Entonces Ana ve el aviso \"creado\"",
-        "Cuando Ana abre el equipo \"Equipo Backend\"",
-        "Entonces el título de la pestaña termina en \"· TaskFlow\"",
-        "Y los miembros del equipo son solo Ana",
-        "Cuando Ana invita a Beto por su correo",
-        "Entonces los miembros del equipo son Ana y Beto",
-        "Y Ana ve el aviso \"ahora es miembro del equipo\""
+        "Given la aplicación TaskFlow está disponible",
+        "Given Beto ya tiene una cuenta registrada en TaskFlow",
+        "And Ana ha iniciado sesión en TaskFlow",
+        "When ella crea el equipo \"Equipo Backend\"",
+        "Then ella observa el mensaje \"creado\"",
+        "When ella abre el equipo \"Equipo Backend\"",
+        "Then el título de la pestaña termina en \"· TaskFlow\"",
+        "And ella observa solamente los miembros:",
+        "When ella invita a Beto por su correo",
+        "Then ella observa el mensaje \"ahora es miembro del equipo\"",
+        "And ella observa solamente los miembros:"
       ],
       "objetivo": "Verificar que la líder crea un equipo desde la interfaz e invita a un miembro registrado por su correo.",
       "esperado": "Aviso de equipo creado; la página del equipo muestra solo a Ana y, tras invitar, la lista de miembros contiene a Ana y a Beto con el aviso «… ahora es miembro del equipo».",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 4.8 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 3.8 s.",
       "estado": "Aprobado",
-      "duracionSeg": 4.8,
+      "duracionSeg": 3.8,
       "evidencia": [
         "capturas/GH-06.png",
         "features/equipos-y-proyectos.feature",
@@ -447,33 +465,35 @@
     },
     {
       "id": "GH-07",
-      "nombre": "Invitar un correo que no está registrado muestra un error en la ventana",
+      "nombre": "Invitar un correo que no está registrado",
       "feature": "Equipos y proyectos",
       "archivo": "features/equipos-y-proyectos.feature",
       "esquema": false,
       "tipo": "alternativo",
       "funcionalidad": "Equipos",
       "etiquetas": [
+        "@web",
         "@equipos",
+        "@GH-07",
         "@alternativo"
       ],
       "actores": [
         "Ana"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Dado que Ana tiene una cuenta y un equipo creados por API",
-        "Y que Ana ha iniciado sesión en TaskFlow",
-        "Y que Ana está en la página de su equipo",
-        "Cuando Ana busca para invitar a un correo que no está registrado",
-        "Entonces Ana ve en la ventana de invitación el error \"No hay ningún usuario registrado con el correo\"",
-        "Y el equipo sigue teniendo 1 miembro"
+        "Given la aplicación TaskFlow está disponible",
+        "Given Ana tiene una cuenta y un equipo creados por API",
+        "And ella ha iniciado sesión en TaskFlow",
+        "And ella está en la página de su equipo",
+        "When ella busca para invitar a un correo que no está registrado",
+        "Then ella observa en la ventana de invitación el error \"No hay ningún usuario registrado con el correo\"",
+        "And el equipo sigue teniendo 1 miembro"
       ],
       "objetivo": "Comprobar el mensaje al invitar a un correo que no está registrado.",
       "esperado": "Dentro de la ventana de invitación aparece «No hay ningún usuario registrado con el correo …» y el equipo sigue con 1 miembro.",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 3.8 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 2.2 s.",
       "estado": "Aprobado",
-      "duracionSeg": 3.8,
+      "duracionSeg": 2.2,
       "evidencia": [
         "capturas/GH-07.png",
         "features/equipos-y-proyectos.feature",
@@ -483,14 +503,16 @@
     },
     {
       "id": "GH-08",
-      "nombre": "Crear un proyecto genera un tablero con las 3 columnas por defecto",
+      "nombre": "Crear un proyecto genera un tablero con las columnas por defecto",
       "feature": "Equipos y proyectos",
       "archivo": "features/equipos-y-proyectos.feature",
       "esquema": false,
       "tipo": "exitoso",
       "funcionalidad": "Proyectos y listas",
       "etiquetas": [
+        "@web",
         "@equipos",
+        "@GH-08",
         "@proyectos",
         "@exitoso"
       ],
@@ -498,22 +520,22 @@
         "Ana"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Dado que Ana tiene una cuenta y un equipo creados por API",
-        "Y que Ana ha iniciado sesión en TaskFlow",
-        "Y que Ana está en la página de su equipo",
-        "Cuando Ana crea el proyecto \"Proyecto API\"",
-        "Entonces Ana ve el aviso \"creado con sus 3 listas\"",
-        "Cuando Ana abre el tablero del proyecto \"Proyecto API\"",
-        "Entonces la ruta actual contiene \"/proyectos/\"",
-        "Y las columnas del tablero son \"Por Hacer\", \"En Progreso\" y \"Hecho\"",
-        "Y el progreso del proyecto es 0 %"
+        "Given la aplicación TaskFlow está disponible",
+        "Given Ana tiene una cuenta y un equipo creados por API",
+        "And ella ha iniciado sesión en TaskFlow",
+        "And ella está en la página de su equipo",
+        "When ella crea el proyecto \"Proyecto API\"",
+        "Then ella observa el mensaje \"creado con sus 3 listas\"",
+        "When ella abre el tablero del proyecto \"Proyecto API\"",
+        "Then la ruta actual contiene \"/proyectos/\"",
+        "And ella observa solamente las columnas:",
+        "And el progreso del proyecto es 0 %"
       ],
       "objetivo": "Verificar que al crear un proyecto se genera su tablero con las tres listas por defecto.",
       "esperado": "Aviso «… creado con sus 3 listas»; el tablero muestra las columnas «Por Hacer», «En Progreso» y «Hecho» y un progreso del 0 %.",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 10 pasos (4 de ellos de verificación «Entonces») en 6.8 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 10 pasos (4 de ellos de verificación «Entonces») en 2.8 s.",
       "estado": "Aprobado",
-      "duracionSeg": 6.8,
+      "duracionSeg": 2.8,
       "evidencia": [
         "capturas/GH-08.png",
         "features/equipos-y-proyectos.feature",
@@ -523,40 +545,43 @@
     },
     {
       "id": "GH-09",
-      "nombre": "Crear tareas, mover una a «Hecho» y ver subir el progreso",
+      "nombre": "Crear tareas y mover una a Hecho",
       "feature": "Tablero Kanban de tareas",
       "archivo": "features/tablero.feature",
       "esquema": false,
       "tipo": "exitoso",
       "funcionalidad": "Tareas",
       "etiquetas": [
+        "@web",
         "@tareas",
-        "@exitoso"
+        "@GH-09",
+        "@exitoso",
+        "@smoke"
       ],
       "actores": [
         "Ana"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Y que Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
-        "Y que Ana ha iniciado sesión en TaskFlow",
-        "Dado que Ana está viendo el tablero de su proyecto",
-        "Y el progreso del proyecto es 0 %",
-        "Cuando Ana crea la tarea \"Diseñar la pantalla de inicio\" con la descripción \"Wireframes y prototipo\"",
-        "Y Ana crea la tarea \"Configurar la base de datos\"",
-        "Entonces la columna \"Por Hacer\" contiene las tareas \"Diseñar la pantalla de inicio\" y \"Configurar la base de datos\"",
-        "Y el progreso del proyecto es 0 %",
-        "Cuando Ana mueve la tarea \"Diseñar la pantalla de inicio\" a la columna \"Hecho\"",
-        "Entonces Ana ve el aviso \"movida a Hecho\"",
-        "Y la columna \"Hecho\" contiene la tarea \"Diseñar la pantalla de inicio\"",
-        "Y la columna \"Por Hacer\" contiene la tarea \"Configurar la base de datos\"",
-        "Y el progreso del proyecto es 50 %"
+        "Given la aplicación TaskFlow está disponible",
+        "And Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
+        "And ella ha iniciado sesión en TaskFlow",
+        "Given ella está viendo el tablero de su proyecto",
+        "And el progreso del proyecto es 0 %",
+        "When ella crea la tarea \"Diseñar la pantalla de inicio\" con la descripción \"Wireframes y prototipo\"",
+        "And ella crea la tarea \"Configurar la base de datos\"",
+        "Then ella observa en la columna \"Por Hacer\" solamente las tareas:",
+        "And el progreso del proyecto es 0 %",
+        "When ella mueve la tarea \"Diseñar la pantalla de inicio\" a la columna \"Hecho\"",
+        "Then ella observa el mensaje \"movida a Hecho\"",
+        "And ella observa en la columna \"Hecho\" solamente las tareas:",
+        "And ella observa en la columna \"Por Hacer\" solamente las tareas:",
+        "And el progreso del proyecto es 50 %"
       ],
       "objetivo": "Verificar el flujo principal del tablero: crear tareas, moverlas de columna y ver el progreso del proyecto.",
       "esperado": "Las dos tareas aparecen en «Por Hacer»; al mover una a «Hecho» se muestra el aviso «movida a Hecho», la tarea cambia de columna y el progreso pasa de 0 % a 50 %.",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 14 pasos (6 de ellos de verificación «Entonces») en 9.2 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 14 pasos (6 de ellos de verificación «Entonces») en 7.9 s.",
       "estado": "Aprobado",
-      "duracionSeg": 9.2,
+      "duracionSeg": 7.9,
       "evidencia": [
         "capturas/GH-09.png",
         "features/tablero.feature",
@@ -566,33 +591,35 @@
     },
     {
       "id": "GH-10",
-      "nombre": "Crear una tarea sin título muestra un error y no la crea",
+      "nombre": "Crear una tarea sin título",
       "feature": "Tablero Kanban de tareas",
       "archivo": "features/tablero.feature",
       "esquema": false,
       "tipo": "error",
       "funcionalidad": "Tareas",
       "etiquetas": [
+        "@web",
         "@tareas",
+        "@GH-10",
         "@error"
       ],
       "actores": [
         "Ana"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Y que Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
-        "Y que Ana ha iniciado sesión en TaskFlow",
-        "Dado que Ana está viendo el tablero de su proyecto",
-        "Cuando Ana intenta crear una tarea sin título con la descripción \"Solo descripción, sin título\"",
-        "Entonces Ana ve en la ventana de nueva tarea el error \"Escribe un título para la tarea\"",
-        "Y el tablero no muestra ninguna tarea"
+        "Given la aplicación TaskFlow está disponible",
+        "And Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
+        "And ella ha iniciado sesión en TaskFlow",
+        "Given ella está viendo el tablero de su proyecto",
+        "When ella intenta crear una tarea sin título con la descripción \"Solo descripción, sin título\"",
+        "Then ella observa en la ventana de nueva tarea el error \"Escribe un título para la tarea\"",
+        "And el tablero no muestra ninguna tarea"
       ],
       "objetivo": "Comprobar la validación del título obligatorio al crear una tarea.",
       "esperado": "La ventana muestra «Escribe un título para la tarea» y el tablero sigue sin tareas.",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 3.2 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 7 pasos (2 de ellos de verificación «Entonces») en 2.5 s.",
       "estado": "Aprobado",
-      "duracionSeg": 3.2,
+      "duracionSeg": 2.5,
       "evidencia": [
         "capturas/GH-10.png",
         "features/tablero.feature",
@@ -602,38 +629,40 @@
     },
     {
       "id": "GH-11",
-      "nombre": "Eliminar una tarea pide confirmación y se puede deshacer",
+      "nombre": "Eliminar una tarea y deshacer la eliminación",
       "feature": "Tablero Kanban de tareas",
       "archivo": "features/tablero.feature",
       "esquema": false,
       "tipo": "alternativo",
       "funcionalidad": "Tareas",
       "etiquetas": [
+        "@web",
         "@tareas",
+        "@GH-11",
         "@alternativo"
       ],
       "actores": [
         "Ana"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Y que Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
-        "Y que Ana ha iniciado sesión en TaskFlow",
-        "Dado que existen por API las tareas \"Tarea temporal\" y \"Tarea que se queda\" en el proyecto de Ana",
-        "Y que Ana está viendo el tablero de su proyecto",
-        "Y la columna \"Por Hacer\" contiene la tarea \"Tarea temporal\"",
-        "Cuando Ana elimina la tarea \"Tarea temporal\" confirmando la acción",
-        "Entonces Ana ve el aviso \"Tarea \\\"Tarea temporal\\\" eliminada\"",
-        "Y el tablero muestra únicamente la tarea \"Tarea que se queda\"",
-        "Cuando Ana deshace la última acción desde el aviso",
-        "Entonces la columna \"Por Hacer\" contiene la tarea \"Tarea temporal\"",
-        "Y Ana ve el aviso \"Tarea \\\"Tarea temporal\\\" restaurada\""
+        "Given la aplicación TaskFlow está disponible",
+        "And Ana tiene una cuenta, un equipo y un proyecto vacío creados por API",
+        "And ella ha iniciado sesión en TaskFlow",
+        "Given existen por API las tareas en el proyecto de Ana:",
+        "And ella está viendo el tablero de su proyecto",
+        "And ella observa en la columna \"Por Hacer\" la tarea \"Tarea temporal\"",
+        "When ella elimina la tarea \"Tarea temporal\" confirmando la acción",
+        "Then ella observa el mensaje \"Tarea \\\"Tarea temporal\\\" eliminada\"",
+        "And ella observa solamente la tarea \"Tarea que se queda\" en el tablero",
+        "When ella deshace la última acción desde el mensaje",
+        "Then ella observa en la columna \"Por Hacer\" la tarea \"Tarea temporal\"",
+        "And ella observa el mensaje \"Tarea \\\"Tarea temporal\\\" restaurada\""
       ],
       "objetivo": "Verificar que eliminar una tarea exige confirmación y que la acción se puede deshacer desde el aviso.",
       "esperado": "Tras confirmar, la tarea desaparece (aviso «Tarea \"…\" eliminada»); al pulsar «Deshacer» vuelve a «Por Hacer» (aviso «Tarea \"…\" restaurada»).",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 12 pasos (4 de ellos de verificación «Entonces») en 5.4 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 12 pasos (4 de ellos de verificación «Entonces») en 3.8 s.",
       "estado": "Aprobado",
-      "duracionSeg": 5.4,
+      "duracionSeg": 3.8,
       "evidencia": [
         "capturas/GH-11.png",
         "features/tablero.feature",
@@ -650,8 +679,11 @@
       "tipo": "error",
       "funcionalidad": "Usuarios y control de acceso",
       "etiquetas": [
+        "@web",
+        "@api",
         "@usuarios",
         "@seguridad",
+        "@GH-12",
         "@error"
       ],
       "actores": [
@@ -659,23 +691,23 @@
         "Carla"
       ],
       "pasos": [
-        "Dado que la aplicación TaskFlow está disponible",
-        "Dado que Ana tiene una cuenta, un equipo y un proyecto con la tarea \"Tarea confidencial\" creados por API",
-        "Y que Carla tiene una cuenta creada por API y no pertenece al equipo de Ana",
-        "Cuando Carla consulta por API las tareas del proyecto de Ana",
-        "Entonces la API responde a Carla con el estado 403",
-        "Cuando Carla inicia sesión con sus credenciales",
-        "Entonces Carla no ve el equipo de Ana en \"Mis equipos\"",
-        "Cuando Carla intenta abrir el tablero del proyecto de Ana",
-        "Entonces el encabezado principal que ve Carla es \"No tienes acceso a este proyecto\"",
-        "Y Carla ve un aviso de error \"No tienes acceso a este proyecto\"",
-        "Y Carla no ve el tablero ni la tarea \"Tarea confidencial\""
+        "Given la aplicación TaskFlow está disponible",
+        "Given Ana tiene una cuenta, un equipo y un proyecto con la tarea \"Tarea confidencial\" creados por API",
+        "And Carla tiene una cuenta creada por API y no pertenece al equipo de Ana",
+        "When Carla consulta por API las tareas del proyecto de Ana",
+        "Then la API responde a Carla con el estado 403",
+        "When Carla inicia sesión con sus credenciales",
+        "Then Carla no observa el equipo de Ana en \"Mis equipos\"",
+        "When Carla intenta abrir el tablero del proyecto de Ana",
+        "Then Carla observa el encabezado \"No tienes acceso a este proyecto\"",
+        "And Carla observa el mensaje de error \"No tienes acceso a este proyecto\"",
+        "And Carla no observa el tablero ni la tarea \"Tarea confidencial\""
       ],
       "objetivo": "Comprobar que una usuaria ajena al equipo no puede ver el tablero de otro equipo, ni por la API ni por la interfaz.",
       "esperado": "La API responde 403; en «Mis equipos» no aparece el equipo de Ana; al abrir el tablero se muestra «No tienes acceso a este proyecto» (encabezado y aviso de error) sin columnas ni tarjetas.",
-      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 3.9 s.",
+      "obtenido": "Conforme a lo esperado. Se ejecutaron y superaron los 11 pasos (5 de ellos de verificación «Entonces») en 2.9 s.",
       "estado": "Aprobado",
-      "duracionSeg": 3.9,
+      "duracionSeg": 2.9,
       "evidencia": [
         "capturas/GH-12.png",
         "features/colaboracion.feature",

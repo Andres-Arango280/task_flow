@@ -57,7 +57,8 @@ Before(() => {
 
 /** Captura final del escenario (estado de la pantalla del actor en escena) como evidencia GH-xx.png */
 After(async (escenario: ITestCaseHookParameter) => {
-    const id = escenario.pickle.name.match(/^GH-\d+/)?.[0];
+    // El identificador del caso es la etiqueta @GH-xx del escenario (o del bloque Examples en un Scenario Outline)
+    const id = escenario.pickle.tags.map((t) => t.name).find((t) => /^@GH-\d+$/.test(t))?.slice(1);
     if (!id) {
         return;
     }
