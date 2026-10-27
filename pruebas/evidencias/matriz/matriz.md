@@ -1,6 +1,6 @@
 # Matriz de trazabilidad — TaskFlow
 
-Generada: 26/10/2026, 11:53:34 p. m.. 529 casos trazados (493 aprobados, 15 fallidos, 21 pendientes); 23/23 requisitos cubiertos; 20 defectos registrados.
+Generada: 27/10/2026, 12:32:25 a. m.. 529 casos trazados (494 aprobados, 15 fallidos, 20 pendientes); 23/23 requisitos cubiertos; 20 defectos registrados.
 
 ## Requisitos
 
@@ -28,7 +28,7 @@ Generada: 26/10/2026, 11:53:34 p. m.. 529 casos trazados (493 aprobados, 15 fall
 | RNF07 | Rendimiento | Responder con p95 < 500 ms bajo carga media y sin errores en estrés/resistencia | F6 | 6 | 6 | 0 | rendimiento | — | Cubierto |
 | RNF08 | Accesibilidad | Cumplir WCAG 2.1/2.2 AA (axe, Lighthouse ≥ 90), navegación por teclado y lector de pantalla | F2 | 61 | 61 | 0 | cypress, ux-accesibilidad | C-17, C-18 | Cubierto |
 | RNF09 | Usabilidad | Satisfacer las heurísticas de Nielsen/GRIHO (≥ 90 %) con ayuda, confirmaciones y estados visibles | F2 | 36 | 32 | 0 | ux-accesibilidad | C-01, C-16 | Cubierto |
-| RNF10 | Mantenibilidad | Pasar la Quality Gate de SonarQube y el pipeline de Jenkins con cobertura ≥ 80 % en servicios | F4 | 13 | 12 | 0 | despliegue | C-12 | Cubierto |
+| RNF10 | Mantenibilidad | Pasar la Quality Gate de SonarQube y el pipeline de Jenkins con cobertura ≥ 80 % en servicios | F4 | 13 | 13 | 0 | despliegue | C-12 | Cubierto |
 
 ## Funcionalidades
 
@@ -37,7 +37,7 @@ Generada: 26/10/2026, 11:53:34 p. m.. 529 casos trazados (493 aprobados, 15 fall
 | F1 | Autenticación (registro e inicio de sesión) | Andrés Arango | 138 | 125 | 40 / 7 / 86 | backend-jest (25), cypress (29), seguridad (49), rendimiento (1), ux-accesibilidad (6), screenplay (6), gherkin (4), stagehand (3), ia-herramientas/playwright-agents (5), ia-herramientas/browser-use (3), ia-herramientas/playwright-mcp (3), katalon (4) | C-10, C-14, C-05, C-06, C-09, C-07, C-04, C-12, C-17, C-01 |
 | F2 | Usuarios: perfil, cuenta, preferencias de accesibilidad, ayuda y privacidad | Andrés Arango | 120 | 112 | 72 / 0 / 17 | backend-jest (10), cypress (20), seguridad (4), ux-accesibilidad (82), screenplay (1), katalon (3) | C-17, C-18, C-16 |
 | F3 | Equipos y miembros | Andrés Arango | 87 | 80 | 40 / 5 / 41 | backend-jest (42), cypress (26), rendimiento (1), ux-accesibilidad (2), screenplay (4), gherkin (3), stagehand (2), ia-herramientas/playwright-agents (2), ia-herramientas/browser-use (1), katalon (4) | C-15 |
-| F4 | Proyectos | Andrés Arango | 55 | 53 | 34 / 1 / 19 | backend-jest (27), cypress (10), ux-accesibilidad (1), screenplay (1), gherkin (1), ia-herramientas/playwright-agents (1), katalon (1), despliegue (13) | C-12 |
+| F4 | Proyectos | Andrés Arango | 55 | 54 | 34 / 1 / 19 | backend-jest (27), cypress (10), ux-accesibilidad (1), screenplay (1), gherkin (1), ia-herramientas/playwright-agents (1), katalon (1), despliegue (13) | C-12 |
 | F5 | Listas y tablero Kanban (progreso, búsqueda, filtros) | Andrés Arango | 56 | 52 | 33 / 0 / 21 | backend-jest (4), cypress (42), rendimiento (2), ux-accesibilidad (2), screenplay (1), gherkin (1), stagehand (2), katalon (2) | C-16 |
 | F6 | Tareas (crear, editar, mover, asignar, eliminar) | Andrés Arango | 66 | 64 | 25 / 3 / 35 | backend-jest (29), cypress (19), rendimiento (2), ux-accesibilidad (3), screenplay (5), gherkin (3), ia-herramientas/playwright-agents (3), katalon (2) | C-16 |
 

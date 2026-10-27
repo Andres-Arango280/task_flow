@@ -1,7 +1,7 @@
 {
-  "generado": "2026-10-27T04:53:32.748Z",
+  "generado": "2026-10-27T05:33:08.201Z",
   "versionAnterior": {
-    "ref": "HEAD",
+    "ref": "8b46dc0",
     "commit": "8b46dc0",
     "fecha": "2026-09-23",
     "mensaje": "Fuckc",
@@ -9,8 +9,8 @@
   },
   "versionFinal": {
     "descripcion": "Árbol de trabajo actual: backend NestJS + PostgreSQL/TypeORM, frontend React refactorizado según los hallazgos de las pruebas, y todas las suites de prueba.",
-    "diffStat": " 75 files changed, 4688 insertions(+), 2439 deletions(-)",
-    "archivosNuevos": 549
+    "diffStat": " 109 files changed, 6920 insertions(+), 2439 deletions(-)",
+    "archivosNuevos": 0
   },
   "metricas": {
     "antes": {
@@ -33,10 +33,10 @@
       }
     },
     "despues": {
-      "archivos": 757,
+      "archivos": 756,
       "archivosCodigo": 184,
       "archivosPrueba": 59,
-      "lineasCodigo": 16523,
+      "lineasCodigo": 16553,
       "lineasPrueba": 8576,
       "casosIt": 373,
       "escenariosGherkin": 11,
@@ -63,7 +63,7 @@
         },
         "pruebas/despliegue": {
           "archivos": 1,
-          "lineas": 234
+          "lineas": 264
         },
         "pruebas/e2e-screenplay": {
           "archivos": 56,
@@ -74,8 +74,8 @@
           "lineas": 83890
         },
         "pruebas/informe": {
-          "archivos": 12,
-          "lineas": 11813
+          "archivos": 11,
+          "lineas": 12878
         },
         "pruebas/jest-a-resumen.js": {
           "archivos": 1,

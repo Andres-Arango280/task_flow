@@ -1,20 +1,20 @@
 # TaskFlow: comparación antes y después de la refactorización
 
-Generado: 26/10/2026, 11:53:32 p. m.. Versión anterior: commit `8b46dc0` (2026-09-23, «Fuckc»). Versión final: árbol de trabajo actual.
+Generado: 27/10/2026, 12:33:08 a. m.. Versión anterior: commit `8b46dc0` (2026-09-23, «Fuckc»). Versión final: árbol de trabajo actual.
 
 ## 1. Métricas de código y pruebas
 
 | Métrica | Antes | Después | Variación |
 |---|---:|---:|---:|
 | Archivos de código (backend + frontend + pruebas) | 66 | 184 | +118 |
-| Líneas de código de la aplicación | 3.242 | 16.523 | +13.281 |
+| Líneas de código de la aplicación | 3.242 | 16.553 | +13.311 |
 | Archivos de prueba | 13 | 59 | +46 |
 | Líneas de código de prueba | 3.292 | 8.576 | +5.284 |
 | Casos it()/test() automatizados | 142 | 373 | +231 |
 | Escenarios Gherkin | 0 | 11 | +11 |
 | Scripts npm (backend) | 12 | 28 | +16 |
 
-Diff de `src/`, `taskflow-frontend/src/` y los package.json frente a HEAD:  75 files changed, 4688 insertions(+), 2439 deletions(-). Archivos nuevos sin seguimiento en git (código, Cypress y pruebas/): 549.
+Diff de `src/`, `taskflow-frontend/src/` y los package.json frente a 8b46dc0:  109 files changed, 6920 insertions(+), 2439 deletions(-). Archivos nuevos sin seguimiento en git (código, Cypress y pruebas/): 0.
 
 ### Líneas por carpeta
 
@@ -22,10 +22,10 @@ Diff de `src/`, `taskflow-frontend/src/` y los package.json frente a HEAD:  75 f
 |---|---:|---:|
 | pruebas/accesibilidad | 0 / 0 | 10 / 4.886 |
 | pruebas/comparacion | 0 / 0 | 1 / 235 |
-| pruebas/despliegue | 0 / 0 | 1 / 234 |
+| pruebas/despliegue | 0 / 0 | 1 / 264 |
 | pruebas/e2e-screenplay | 0 / 0 | 56 / 7.001 |
 | pruebas/ia-herramientas | 0 / 0 | 322 / 83.890 |
-| pruebas/informe | 0 / 0 | 12 / 11.813 |
+| pruebas/informe | 0 / 0 | 11 / 12.878 |
 | pruebas/jest-a-resumen.js | 0 / 0 | 1 / 67 |
 | pruebas/katalon | 0 / 0 | 143 / 4.970 |
 | pruebas/rendimiento | 0 / 0 | 10 / 1.541 |

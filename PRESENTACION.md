@@ -1,6 +1,6 @@
 # Guion de presentación — TaskFlow (entrega final de pruebas)
 
-> Generado el 26/10/2026, 11:55:15 p. m. con `node pruebas/informe/generar-presentacion.js` a partir de las evidencias reales. Duración objetivo: 15 minutos + preguntas.
+> Generado el 27/10/2026, 12:33:10 a. m. con `node pruebas/informe/generar-presentacion.js` a partir de las evidencias reales. Duración objetivo: 15 minutos + preguntas.
 
 ## 1. Apertura (1 min)
 
@@ -18,7 +18,7 @@
 | F1 Autenticación (registro e inicio de sesión) | 138 | 125 | 40 / 7 / 86 | C-10, C-14, C-05, C-06, C-09, C-07, C-04, C-12, C-17, C-01 |
 | F2 Usuarios: perfil, cuenta, preferencias de accesibilidad, ayuda y privacidad | 120 | 112 | 72 / 0 / 17 | C-17, C-18, C-16 |
 | F3 Equipos y miembros | 87 | 80 | 40 / 5 / 41 | C-15 |
-| F4 Proyectos | 55 | 53 | 34 / 1 / 19 | C-12 |
+| F4 Proyectos | 55 | 54 | 34 / 1 / 19 | C-12 |
 | F5 Listas y tablero Kanban (progreso, búsqueda, filtros) | 56 | 52 | 33 / 0 / 21 | C-16 |
 | F6 Tareas (crear, editar, mover, asignar, eliminar) | 66 | 64 | 25 / 3 / 35 | C-16 |
 
@@ -55,13 +55,13 @@ Suites completas ya ejecutadas (mostrar reportes HTML si hay tiempo): Jest 137/1
 - **DEP-04** Imagen Docker del backend (misma etapa que el pipeline): Aprobado — docker build OK: imagen creada
 - **SON-01** Servidor SonarQube disponible: Aprobado — SonarQube 9.9.8.100196 status=UP
 - **SON-02** Análisis SonarQube del backend (sonar-scanner): Aprobado — Informe subido y procesado (31 archivos indexados); estado reportado por el scanner: PASSED
-- **SON-03** Quality Gate del backend: Aprobado — Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_coverage OK (87.1 vs LT 8
+- **SON-03** Quality Gate del backend: Aprobado — Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_coverage OK (88.1 vs LT 8
 - **SON-04** Análisis SonarQube del frontend (sonar-scanner): Aprobado — Informe subido y procesado (56 archivos indexados); estado reportado por el scanner: PASSED
-- **SON-05** Quality Gate del frontend: Aprobado — Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1). bugs=0, vulnerabilidades=0, co
-- **JEN-01** Servidor Jenkins y job del pipeline disponibles: Aprobado — Jenkins OK (1 jobs); taskflow-pipeline: color=red, último build #11 (FAILURE), último exitoso #10
-- **JEN-02** Último build exitoso del pipeline (#10): Aprobado — Build #10 del 23/9/2026, 10:37:44 p. m. sobre el commit 8b46dc0: etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Ejecutar pruebas 
-- **JEN-03** Diagnóstico del último build (#11, FAILURE): Aprobado — Build #11: fatal: unable to access 'https://github.com/Claudia280-girl/validacion/': Could not resolve host: github.com
-- **JEN-04** Nuevo build del pipeline sobre la versión refactorizada: Pendiente — Pendiente: 1) git add -A && git commit && git push origin main; 2) defina JENKINS_USER y JENKINS_TOKEN (Jenkins → usuario → Configurar → API Token) y vuelva a ejecutar este script,
+- **SON-05** Quality Gate del frontend: Aprobado — Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_duplicated_lines_density 
+- **JEN-01** Servidor Jenkins y job del pipeline disponibles: Aprobado — Jenkins OK (1 jobs); taskflow-pipeline: color=blue, último build #13 (SUCCESS), último exitoso #13
+- **JEN-02** Último build exitoso del pipeline (#13): Aprobado — Build #13 del 27/10/2026, 12:21:27 a. m. sobre el commit f6522aa: etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Pruebas de regre
+- **JEN-03** Diagnóstico del último build no exitoso (#12, FAILURE): Aprobado — Build #12 del 27/10/2026, 12:11:07 a. m.: QUALITY GATE STATUS: FAILED - View details on http://sonarqube:9000/dashboard?id=taskflow%3Abackend — el análisis se ejecutó sin coverage/
+- **JEN-04** Build final del pipeline sobre la versión refactorizada (#13): Aprobado — Build #13 (existente) del 27/10/2026, 12:21:27 a. m. sobre el commit f6522aa: SUCCESS en 187 s; etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar d
 - Regresión completa posterior: Regresión backend 137/137; Cypress 146/146; E2E Screenplay 18/18; E2E Gherkin + Screenplay 12/12; Seguridad OWASP 48/53; UX y accesibilidad 68/68; Rendimiento 6/6.
 
 ## 7. Cierre: métricas, calidad y recomendaciones (1 min)

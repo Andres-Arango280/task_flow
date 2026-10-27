@@ -6,7 +6,7 @@
 #1 DONE 0.0s
 
 #2 [internal] load metadata for docker.io/library/node:20-alpine
-#2 DONE 0.3s
+#2 DONE 0.2s
 
 #3 [internal] load .dockerignore
 #3 transferring context: 134B done
@@ -20,10 +20,10 @@
 #5 DONE 0.1s
 
 #4 [internal] load build context
-#4 transferring context: 5.64MB 5.0s
-#4 transferring context: 11.56MB 10.1s
-#4 transferring context: 11.73MB 10.5s done
-#4 DONE 11.1s
+#4 transferring context: 4.31MB 4.9s
+#4 transferring context: 7.89MB 12.0s
+#4 transferring context: 11.78MB 12.4s done
+#4 DONE 12.9s
 
 #6 [builder 2/6] WORKDIR /app
 #6 CACHED
@@ -35,14 +35,14 @@
 #8 CACHED
 
 #9 [builder 5/6] COPY . .
-#9 DONE 66.9s
+#9 DONE 80.2s
 
 #10 [builder 6/6] RUN npm run build
-#10 -2.746 
-#10 -2.746 > taskflow@1.0.0 build
-#10 -2.746 > nest build
-#10 -2.746 
-#10 DONE 4.2s
+#10 2.965 
+#10 2.965 > taskflow@1.0.0 build
+#10 2.965 > nest build
+#10 2.965 
+#10 DONE 9.2s
 
 #11 [stage-1 4/5] RUN npm ci --omit=dev && npm cache clean --force
 #11 CACHED
@@ -52,12 +52,12 @@
 
 #13 exporting to image
 #13 exporting layers 0.0s done
-#13 exporting manifest sha256:46969f1e3e07c93fd5a515b73984ef20f7968a18de195a360ef3e3dfa37fc6ea done
+#13 exporting manifest sha256:46969f1e3e07c93fd5a515b73984ef20f7968a18de195a360ef3e3dfa37fc6ea 0.0s done
 #13 exporting config sha256:b58c638399cea6d672ca71fd3d62de75d213e5d024f1b076b139dd194b971e03 done
-#13 exporting attestation manifest sha256:5be1c1be6d26526f0ac2719e8aa627063578c43eae62852ff07f02008fff7ca5
-#13 exporting attestation manifest sha256:5be1c1be6d26526f0ac2719e8aa627063578c43eae62852ff07f02008fff7ca5 0.1s done
-#13 exporting manifest list sha256:617d333b8c1ea41bd22236cf279ad56fe8a0a64516b5782745a3f86ffa676efa
-#13 exporting manifest list sha256:617d333b8c1ea41bd22236cf279ad56fe8a0a64516b5782745a3f86ffa676efa 0.1s done
-#13 naming to docker.io/library/taskflow-backend:final done
-#13 unpacking to docker.io/library/taskflow-backend:final 0.0s done
-#13 DONE 0.4s
+#13 exporting attestation manifest sha256:d2b698a081706f323a37dd053f6bd150c287e1a4dc6efc7fa248d44d2620601a
+#13 exporting attestation manifest sha256:d2b698a081706f323a37dd053f6bd150c287e1a4dc6efc7fa248d44d2620601a 0.1s done
+#13 exporting manifest list sha256:314553852e703a8db41704cbde77acdcf556a288bf6803be87b705217fce5b66
+#13 exporting manifest list sha256:314553852e703a8db41704cbde77acdcf556a288bf6803be87b705217fce5b66 0.1s done
+#13 naming to docker.io/library/taskflow-backend:final 0.0s done
+#13 unpacking to docker.io/library/taskflow-backend:final 0.1s done
+#13 DONE 0.5s

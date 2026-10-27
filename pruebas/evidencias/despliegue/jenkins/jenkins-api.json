@@ -5,7 +5,7 @@
       "_class": "org.jenkinsci.plugins.workflow.job.WorkflowJob",
       "name": "taskflow-pipeline",
       "url": "http://localhost:8081/job/taskflow-pipeline/",
-      "color": "red"
+      "color": "blue"
     }
   ]
 }

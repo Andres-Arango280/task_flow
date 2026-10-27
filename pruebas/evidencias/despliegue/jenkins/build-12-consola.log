@@ -1,0 +1,366 @@
+Started by user unknown or anonymous
+Obtained Jenkinsfile from git https://github.com/Andres-Arango280/task_flow.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/taskflow-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: git
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/taskflow-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Andres-Arango280/task_flow.git # timeout=10
+Fetching upstream changes from https://github.com/Andres-Arango280/task_flow.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/Andres-Arango280/task_flow.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision b12656a694e1b3c5f3dd9eea78398f68aeec6ae3 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b12656a694e1b3c5f3dd9eea78398f68aeec6ae3 # timeout=10
+Commit message: "Ignorar archivos de bloqueo de Office (~$*.docx)"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Clonando repositorio...
+[Pipeline] checkout
+The recommended git tool is: git
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/taskflow-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Andres-Arango280/task_flow.git # timeout=10
+Fetching upstream changes from https://github.com/Andres-Arango280/task_flow.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/Andres-Arango280/task_flow.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision b12656a694e1b3c5f3dd9eea78398f68aeec6ae3 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b12656a694e1b3c5f3dd9eea78398f68aeec6ae3 # timeout=10
+Commit message: "Ignorar archivos de bloqueo de Office (~$*.docx)"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Instalar dependencias)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Instalando paquetes de Node...
+[Pipeline] sh
++ npm ci
+npm warn config production Use `--omit=dev` instead.
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+
+added 702 packages, and audited 703 packages in 22s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+24 vulnerabilities (3 low, 13 moderate, 8 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Pruebas de regresión unitarias)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Ejecutando pruebas unitarias del backend...
+[Pipeline] sh
++ npm run test:regression:unit
+npm warn config production Use `--omit=dev` instead.
+
+> taskflow@1.0.0 test:regression:unit
+> jest --selectProjects unit --runInBand
+
+Running one project: unit
+PASS unit src/tareas/tareas.edicion.spec.ts
+PASS unit src/auth/limitador-intentos.spec.ts
+PASS unit src/proyectos/proyectos.eliminar.spec.ts
+PASS unit src/equipos/equipos.eliminar.spec.ts (5.337 s)
+PASS unit src/auth/auth.service.spec.ts
+PASS unit src/tareas/tareas.service.spec.ts
+PASS unit src/listas/listas.service.spec.ts
+PASS unit src/equipos/equipos.remove-miembro.spec.ts
+PASS unit src/equipos/equipos.service.spec.ts
+PASS unit src/usuarios/usuarios.service.spec.ts
+PASS unit src/proyectos/proyectos.service.spec.ts
+
+Test Suites: 11 passed, 11 total
+Tests:       88 passed, 88 total
+Snapshots:   0 total
+Time:        6.378 s
+Ran all test suites.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Pruebas de regresión caja negra)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Ejecutando pruebas de caja negra (e2e)...
+[Pipeline] sh
++ npm run test:regression:e2e
+npm warn config production Use `--omit=dev` instead.
+
+> taskflow@1.0.0 test:regression:e2e
+> jest --selectProjects e2e --runInBand
+
+Running one project: e2e
+PASS e2e src/equipos/equipos.e2e.spec.ts
+PASS e2e src/proyectos/proyectos.e2e.spec.ts
+PASS e2e src/auth/auth.e2e.spec.ts
+
+Test Suites: 3 passed, 3 total
+Tests:       49 passed, 49 total
+Snapshots:   0 total
+Time:        6.046 s
+Ran all test suites.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Compilar aplicación)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Compilando la app NestJS...
+[Pipeline] sh
++ npm run build
+npm warn config production Use `--omit=dev` instead.
+
+> taskflow@1.0.0 build
+> nest build
+
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Analisis con SonarQube)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Enviando analisis a SonarQube...
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: SonarQube-Server
+[Pipeline] {
+[Pipeline] sh
++ npx sonarqube-scanner -Dsonar.projectKey=taskflow:backend -Dsonar.projectName=taskflow-backend -Dsonar.sources=src -Dsonar.host.url=http://sonarqube:9000 -Dsonar.token=******
+npm warn config production Use `--omit=dev` instead.
+[WARN]  Bootstrapper: SONARQUBE_SCANNER_PARAMS is deprecated, please use SONAR_SCANNER_JSON_PARAMS instead
+[INFO]  Bootstrapper: Retrieving info from "package.json" file
+[WARN]  Bootstrapper: Both properties "sonar.login" and "sonar.token" are set. "sonar.login" is deprecated and will be removed in a future version. Value of deprecated property "sonar.login" will be ignored.
+[INFO]  Bootstrapper: Platform: linux x64
+[INFO]  Bootstrapper: Server URL: http://sonarqube:9000
+[INFO]  Bootstrapper: Version: 4.4.0
+[INFO]  Bootstrapper: SonarQube server version: 9.9.8
+[INFO]  Bootstrapper: JRE provisioning is NOT supported
+[INFO]  Bootstrapper: Falling back on using sonar-scanner-cli
+[INFO]  Bootstrapper: Starting analysis
+05:12:20.071 INFO  Scanner configuration file: /root/.sonar/native-sonar-scanner/sonar-scanner-6.2.1.4610-linux-x64/conf/sonar-scanner.properties
+05:12:20.077 INFO  Project root configuration file: /var/jenkins_home/workspace/taskflow-pipeline/sonar-project.properties
+05:12:20.101 INFO  SonarScanner CLI 6.2.1.4610
+05:12:20.103 INFO  Java 17.0.12 Eclipse Adoptium (64-bit)
+05:12:20.104 INFO  Linux 6.6.87.2-microsoft-standard-WSL2 amd64
+05:12:20.121 INFO  User cache: /root/.sonar/cache
+05:12:21.098 INFO  Communicating with SonarQube Server 9.9.8.100196
+05:12:22.044 INFO  Load global settings
+05:12:22.351 INFO  Load global settings (done) | time=323ms
+05:12:22.355 INFO  Server id: 243B8A4D-AaDQ1td59T94hdE7cEGk
+05:12:22.364 INFO  User cache: /root/.sonar/cache
+05:12:22.517 INFO  Load/download plugins
+05:12:22.517 INFO  Load plugins index
+05:12:22.617 INFO  Load plugins index (done) | time=100ms
+05:12:22.767 INFO  Load/download plugins (done) | time=250ms
+05:12:23.616 INFO  Process project properties
+05:12:23.626 INFO  Process project properties (done) | time=10ms
+05:12:23.631 INFO  Execute project builders
+05:12:23.633 INFO  Execute project builders (done) | time=2ms
+05:12:23.637 INFO  Project key: taskflow:backend
+05:12:23.638 INFO  Base dir: /var/jenkins_home/workspace/taskflow-pipeline
+05:12:23.638 INFO  Working dir: /var/jenkins_home/workspace/taskflow-pipeline/.scannerwork
+05:12:23.649 INFO  Load project settings for component key: 'taskflow:backend'
+05:12:23.728 INFO  Load project settings for component key: 'taskflow:backend' (done) | time=78ms
+05:12:23.921 INFO  Auto-configuring with CI 'Jenkins'
+05:12:23.927 INFO  Load quality profiles
+05:12:24.083 INFO  Load quality profiles (done) | time=156ms
+05:12:24.090 INFO  Load active rules
+05:12:24.600 INFO  Load active rules (done) | time=510ms
+05:12:24.606 INFO  Load analysis cache
+05:12:24.636 INFO  Load analysis cache | time=30ms
+05:12:24.716 INFO  Load project repositories
+05:12:24.764 INFO  Load project repositories (done) | time=48ms
+05:12:24.815 INFO  Indexing files...
+05:12:24.816 INFO  Project configuration:
+05:12:24.818 INFO    Excluded sources: **/node_modules/**, **/dist/**, **/*.module.ts, **/*.controller.ts, **/*.dto.ts, **/*.spec.ts, **/*.e2e.spec.ts, **/main.ts, **/taskflow-frontend/**, **/config/**, **/*.spec.ts, **/*.e2e.spec.ts
+05:12:24.818 INFO    Included tests: **/*.spec.ts, **/*.e2e.spec.ts
+05:12:24.818 INFO    Excluded sources for coverage: **/*.module.ts, **/*.controller.ts, **/*.dto.ts, **/main.ts, **/*.interface.ts, **/taskflow-frontend/**, **/config/**
+05:12:25.333 INFO  31 files indexed
+05:12:25.333 INFO  79 files ignored because of inclusion/exclusion patterns
+05:12:25.334 INFO  0 files ignored because of scm ignore settings
+05:12:25.335 INFO  Quality profile for ts: Sonar way
+05:12:25.336 INFO  ------------- Run sensors on module taskflow-backend
+05:12:25.508 INFO  Load metrics repository
+05:12:25.555 INFO  Load metrics repository (done) | time=47ms
+05:12:28.011 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+05:12:28.014 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+05:12:28.016 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+05:12:28.017 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=6ms
+05:12:28.017 INFO  Sensor TypeScript analysis [javascript]
+05:12:33.828 WARN  Node.js version 20 is not recommended, you might experience issues. Please use a recommended version of Node.js [16, 18]
+05:12:33.876 INFO  Resolving TSConfig files using 'tsconfig.json' from property sonar.typescript.tsconfigPath
+05:12:33.877 INFO  Found 1 TSConfig file(s): [/var/jenkins_home/workspace/taskflow-pipeline/tsconfig.json]
+05:12:33.878 INFO  Creating TypeScript program
+05:12:33.879 INFO  TypeScript configuration file /var/jenkins_home/workspace/taskflow-pipeline/tsconfig.json
+05:12:33.882 INFO  31 source files to be analyzed
+05:12:35.302 INFO  Creating TypeScript program (done) | time=1424ms
+05:12:35.302 INFO  Starting analysis with current program
+05:12:37.502 INFO  Analyzed 17 file(s) with current program
+05:12:37.506 INFO  Skipped 14 file(s) because they were not part of any tsconfig.json (enable debug logs to see the full list)
+05:12:37.516 INFO  31/31 source files have been analyzed
+05:12:37.517 INFO  Hit the cache for 0 out of 17
+05:12:37.520 INFO  Miss the cache for 17 out of 17: ANALYSIS_MODE_INELIGIBLE [17/17]
+05:12:37.521 INFO  Sensor TypeScript analysis [javascript] (done) | time=9504ms
+05:12:37.521 INFO  Sensor CSS Rules [javascript]
+05:12:37.522 INFO  No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+05:12:37.522 INFO  Sensor CSS Rules [javascript] (done) | time=1ms
+05:12:37.522 INFO  Sensor JavaScript/TypeScript Coverage [javascript]
+05:12:38.009 INFO  No LCOV files were found using coverage/lcov.info
+05:12:38.009 WARN  No coverage information will be saved because all LCOV files cannot be found.
+05:12:38.009 INFO  Sensor JavaScript/TypeScript Coverage [javascript] (done) | time=487ms
+05:12:38.009 INFO  Sensor C# Project Type Information [csharp]
+05:12:38.010 INFO  Sensor C# Project Type Information [csharp] (done) | time=1ms
+05:12:38.011 INFO  Sensor C# Analysis Log [csharp]
+05:12:38.049 INFO  Sensor C# Analysis Log [csharp] (done) | time=38ms
+05:12:38.049 INFO  Sensor C# Properties [csharp]
+05:12:38.050 INFO  Sensor C# Properties [csharp] (done) | time=1ms
+05:12:38.050 INFO  Sensor HTML [web]
+05:12:38.053 INFO  Sensor HTML [web] (done) | time=3ms
+05:12:38.054 INFO  Sensor TextAndSecretsSensor [text]
+05:12:38.066 INFO  31 source files to be analyzed
+05:12:38.141 INFO  31/31 source files have been analyzed
+05:12:38.142 INFO  Sensor TextAndSecretsSensor [text] (done) | time=87ms
+05:12:38.142 INFO  Sensor VB.NET Project Type Information [vbnet]
+05:12:38.143 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+05:12:38.144 INFO  Sensor VB.NET Analysis Log [vbnet]
+05:12:38.167 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=23ms
+05:12:38.167 INFO  Sensor VB.NET Properties [vbnet]
+05:12:38.167 INFO  Sensor VB.NET Properties [vbnet] (done) | time=0ms
+05:12:38.167 INFO  Sensor IaC Docker Sensor [iac]
+05:12:38.170 INFO  0 source files to be analyzed
+05:12:38.235 INFO  0/0 source files have been analyzed
+05:12:38.236 INFO  Sensor IaC Docker Sensor [iac] (done) | time=69ms
+05:12:38.244 INFO  ------------- Run sensors on project
+05:12:38.293 INFO  Sensor Analysis Warnings import [csharp]
+05:12:38.294 INFO  Sensor Analysis Warnings import [csharp] (done) | time=1ms
+05:12:38.294 INFO  Sensor Zero Coverage Sensor
+05:12:38.306 INFO  Sensor Zero Coverage Sensor (done) | time=12ms
+05:12:38.314 INFO  SCM Publisher SCM provider for this project is: git
+05:12:38.314 INFO  SCM Publisher 30 source files to be analyzed
+05:12:38.650 INFO  SCM Publisher 30/30 source files have been analyzed (done) | time=334ms
+05:12:38.659 INFO  CPD Executor 2 files had no CPD blocks
+05:12:38.660 INFO  CPD Executor Calculating CPD for 15 files
+05:12:38.682 INFO  CPD Executor CPD calculation finished (done) | time=22ms
+05:12:38.797 INFO  Analysis report generated in 107ms, dir size=329.0 kB
+05:12:38.833 INFO  Analysis report compressed in 35ms, zip size=118.9 kB
+05:12:38.937 INFO  Analysis report uploaded in 102ms
+05:12:38.939 INFO  ------------- Check Quality Gate status
+05:12:38.940 INFO  Waiting for the analysis report to be processed (max 300s)
+05:12:49.605 INFO  EXECUTION FAILURE
+05:12:49.606 INFO  Total time: 29.598s
+[ERROR] Bootstrapper: 05:12:49.606 ERROR Error during SonarScanner CLI execution
+05:12:49.607 ERROR QUALITY GATE STATUS: FAILED - View details on http://sonarqube:9000/dashboard?id=taskflow%3Abackend
+
+[ERROR] Bootstrapper: 05:12:49.607 ERROR 
+05:12:49.607 ERROR Re-run SonarScanner CLI using the -X switch to enable full debug logging.
+
+[ERROR] Bootstrapper: An error occurred: Error: SonarScanner CLI failed with code 2
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Quality Gate)
+Stage "Quality Gate" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Construir imagen Docker)
+Stage "Construir imagen Docker" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline finalizado.
+[Pipeline] echo
+La pipeline falló. Revisar errores de pruebas, SonarQube o Docker.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE

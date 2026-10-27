@@ -1,19 +1,19 @@
 Running one project: unit
 
-PASS unit src/tareas/tareas.service.spec.ts (5.272 s)
+PASS unit src/tareas/tareas.service.spec.ts (6.591 s)
 PASS unit src/auth/auth.service.spec.ts
-PASS unit src/listas/listas.service.spec.ts
-PASS unit src/proyectos/proyectos.service.spec.ts
-PASS unit src/equipos/equipos.service.spec.ts
-PASS unit src/equipos/equipos.remove-miembro.spec.ts
-PASS unit src/usuarios/usuarios.service.spec.ts
-PASS unit src/tareas/tareas.edicion.spec.ts
-PASS unit src/equipos/equipos.eliminar.spec.ts
 PASS unit src/proyectos/proyectos.eliminar.spec.ts
+PASS unit src/tareas/tareas.edicion.spec.ts
+PASS unit src/proyectos/proyectos.service.spec.ts
+PASS unit src/usuarios/usuarios.service.spec.ts
+PASS unit src/equipos/equipos.eliminar.spec.ts
+PASS unit src/equipos/equipos.remove-miembro.spec.ts
+PASS unit src/listas/listas.service.spec.ts
+PASS unit src/equipos/equipos.service.spec.ts
 PASS unit src/auth/limitador-intentos.spec.ts
 
 Test Suites: 11 passed, 11 total
 Tests:       88 passed, 88 total
 Snapshots:   0 total
-Time:        10.95 s, estimated 11 s
+Time:        13.346 s
 Ran all test suites.

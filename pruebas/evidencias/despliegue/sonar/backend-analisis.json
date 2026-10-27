@@ -2,19 +2,69 @@
   "paging": {
     "pageIndex": 1,
     "pageSize": 10,
-    "total": 5
+    "total": 9
   },
   "analyses": [
     {
-      "key": "AaF7srRg90SSP5i2_t4n",
-      "date": "2026-10-27T04:50:22+0000",
+      "key": "AaF71ik_90SSP5i2_wtH",
+      "date": "2026-10-27T05:29:08+0000",
       "events": [
         {
-          "key": "AaF7sr4q90SSP5i2_uZJ",
+          "key": "AaF71jOE90SSP5i2_xNp",
           "category": "VERSION",
           "name": "1.0.0"
         }
       ],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "f6522aa21465137ea3c79a07999564dcc173e232",
+      "detectedCI": "undetected"
+    },
+    {
+      "key": "AaF7zzbi90SSP5i2_wMe",
+      "date": "2026-10-27T05:22:06+0000",
+      "events": [],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "f6522aa21465137ea3c79a07999564dcc173e232",
+      "detectedCI": "Jenkins"
+    },
+    {
+      "key": "AaF7zN5690SSP5i2_vRS",
+      "date": "2026-10-27T05:18:59+0000",
+      "events": [
+        {
+          "key": "AaF7zOg290SSP5i2_vx0",
+          "category": "QUALITY_GATE",
+          "name": "Passed",
+          "description": ""
+        }
+      ],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "f6522aa21465137ea3c79a07999564dcc173e232",
+      "detectedCI": "undetected"
+    },
+    {
+      "key": "AaF7xmEW90SSP5i2_uyz",
+      "date": "2026-10-27T05:12:23+0000",
+      "events": [
+        {
+          "key": "AaF7xmw590SSP5i2_vRK",
+          "category": "QUALITY_GATE",
+          "name": "Failed",
+          "description": "Coverage on New Code < 80"
+        }
+      ],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "b12656a694e1b3c5f3dd9eea78398f68aeec6ae3",
+      "detectedCI": "Jenkins"
+    },
+    {
+      "key": "AaF7srRg90SSP5i2_t4n",
+      "date": "2026-10-27T04:50:22+0000",
+      "events": [],
       "projectVersion": "1.0.0",
       "manualNewCodePeriodBaseline": false,
       "revision": "8b46dc0e7a60142b1bf26472161580efdf02c1e8",

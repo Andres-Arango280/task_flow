@@ -2,7 +2,7 @@
   "area": "Despliegue final y regresión posterior a la refactorización",
   "herramienta": "Docker Compose (SonarQube 9.9 Community, PostgreSQL 15, Jenkins LTS), sonar-scanner, nest build, vite build, docker build",
   "comando": "node pruebas/despliegue/verificar-despliegue.mjs  (con SONAR_TOKEN y, opcionalmente, JENKINS_USER/JENKINS_TOKEN)",
-  "fecha": "2026-10-27T04:52:37.771Z",
+  "fecha": "2026-10-27T05:31:19.601Z",
   "entorno": {
     "sonar": "http://localhost:9000",
     "jenkins": "http://localhost:8081",
@@ -12,10 +12,10 @@
   },
   "totales": {
     "total": 20,
-    "aprobados": 19,
+    "aprobados": 20,
     "fallidos": 0,
-    "pendientes": 1,
-    "duracionSeg": 260
+    "pendientes": 0,
+    "duracionSeg": 280
   },
   "regresion": [
     {
@@ -160,7 +160,7 @@
       "tipo": "positivo",
       "objetivo": "Leer el estado de la Quality Gate («Sonar way»: nuevo código) y las métricas del backend en SonarQube tras el análisis final.",
       "esperado": "Quality Gate OK: fiabilidad, seguridad y mantenibilidad A en código nuevo, cobertura nueva ≥ 80 %, duplicación nueva ≤ 3 %, 100 % de hotspots revisados.",
-      "obtenido": "Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_coverage OK (87.1 vs LT 80) · new_duplicated_lines_density OK (0.0 vs GT 3) · new_security_hotspots_reviewed OK (100.0 vs LT 100). bugs=0, vulnerabilidades=0, code smells=1, cobertura=87.2 %, duplicación=0.0 %, hotspots=0, ncloc=866; análisis registrados=5",
+      "obtenido": "Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_coverage OK (88.1 vs LT 80) · new_duplicated_lines_density OK (0.0 vs GT 3) · new_security_hotspots_reviewed OK (100.0 vs LT 100). bugs=0, vulnerabilidades=0, code smells=1, cobertura=87.2 %, duplicación=0.0 %, hotspots=0, ncloc=866; análisis registrados=9",
       "estado": "Aprobado",
       "evidencia": [
         "sonar/backend-quality-gate.json",
@@ -168,17 +168,17 @@
         "sonar/backend-analisis.json"
       ],
       "metricas": {
-        "vulnerabilities": "0",
-        "duplicated_lines_density": "0.0",
         "coverage": "87.2",
-        "security_rating": "1.0",
-        "ncloc": "866",
         "alert_status": "OK",
+        "duplicated_lines_density": "0.0",
         "sqale_rating": "1.0",
+        "security_rating": "1.0",
+        "reliability_rating": "1.0",
         "bugs": "0",
-        "security_hotspots": "0",
         "code_smells": "1",
-        "reliability_rating": "1.0"
+        "vulnerabilities": "0",
+        "ncloc": "866",
+        "security_hotspots": "0"
       },
       "qualityGate": "OK",
       "condiciones": [
@@ -212,7 +212,7 @@
           "comparator": "LT",
           "periodIndex": 1,
           "errorThreshold": "80",
-          "actualValue": "87.1"
+          "actualValue": "88.1"
         },
         {
           "status": "OK",
@@ -250,7 +250,7 @@
       "tipo": "positivo",
       "objetivo": "Leer el estado de la Quality Gate («Sonar way»: nuevo código) y las métricas del frontend en SonarQube tras el análisis final.",
       "esperado": "Quality Gate OK: fiabilidad, seguridad y mantenibilidad A en código nuevo, cobertura nueva ≥ 80 %, duplicación nueva ≤ 3 %, 100 % de hotspots revisados.",
-      "obtenido": "Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1). bugs=0, vulnerabilidades=0, code smells=0, cobertura=— %, duplicación=0.0 %, hotspots=0, ncloc=264; análisis registrados=2",
+      "obtenido": "Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_duplicated_lines_density OK (0.0 vs GT 3). bugs=0, vulnerabilidades=0, code smells=0, cobertura=— %, duplicación=0.0 %, hotspots=0, ncloc=264; análisis registrados=4",
       "estado": "Aprobado",
       "evidencia": [
         "sonar/frontend-quality-gate.json",
@@ -258,16 +258,16 @@
         "sonar/frontend-analisis.json"
       ],
       "metricas": {
-        "alert_status": "OK",
-        "vulnerabilities": "0",
         "bugs": "0",
-        "sqale_rating": "1.0",
-        "security_rating": "1.0",
+        "ncloc": "264",
         "reliability_rating": "1.0",
         "security_hotspots": "0",
-        "ncloc": "264",
-        "code_smells": "0",
-        "duplicated_lines_density": "0.0"
+        "alert_status": "OK",
+        "duplicated_lines_density": "0.0",
+        "security_rating": "1.0",
+        "sqale_rating": "1.0",
+        "vulnerabilities": "0",
+        "code_smells": "0"
       },
       "qualityGate": "OK",
       "condiciones": [
@@ -294,6 +294,14 @@
           "periodIndex": 1,
           "errorThreshold": "1",
           "actualValue": "1"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_duplicated_lines_density",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "3",
+          "actualValue": "0.0"
         }
       ]
     },
@@ -303,7 +311,7 @@
       "tipo": "positivo",
       "objetivo": "Verificar que Jenkins responde y que existe el job taskflow-pipeline (Jenkinsfile desde GitHub).",
       "esperado": "Jenkins responde 200 y el job taskflow-pipeline existe.",
-      "obtenido": "Jenkins OK (1 jobs); taskflow-pipeline: color=red, último build #11 (FAILURE), último exitoso #10",
+      "obtenido": "Jenkins OK (1 jobs); taskflow-pipeline: color=blue, último build #13 (SUCCESS), último exitoso #13",
       "estado": "Aprobado",
       "evidencia": [
         "jenkins/jenkins-api.json",
@@ -312,23 +320,24 @@
     },
     {
       "id": "JEN-02",
-      "nombre": "Último build exitoso del pipeline (#10)",
+      "nombre": "Último build exitoso del pipeline (#13)",
       "tipo": "positivo",
       "objetivo": "Verificar que el pipeline completo (instalar, pruebas de regresión, build, SonarQube, Quality Gate, imagen Docker) terminó en SUCCESS.",
       "esperado": "Todas las etapas ejecutadas, Quality Gate OK y SUCCESS.",
-      "obtenido": "Build #10 del 23/9/2026, 10:37:44 p. m. sobre el commit 8b46dc0: etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Ejecutar pruebas unitarias → Compilar aplicación → Analisis con SonarQube → Quality Gate → Construir imagen Docker → Declarative: Post Actions; Tests:       35 passed, 35 total; Quality Gate OK; resultado SUCCESS.",
+      "obtenido": "Build #13 del 27/10/2026, 12:21:27 a. m. sobre el commit f6522aa: etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Pruebas de regresión unitarias → Pruebas de regresión caja negra → Compilar aplicación → Analisis con SonarQube → Quality Gate → Construir imagen Docker → Declarative: Post Actions; Tests:       88 passed, 88 total | Tests:       49 passed, 49 total; Quality Gate OK; resultado SUCCESS.",
       "estado": "Aprobado",
       "evidencia": [
-        "jenkins/build-10-consola.log",
+        "jenkins/build-13-consola.log",
         "jenkins/job-api.json"
       ],
-      "commit": "8b46dc0",
+      "commit": "f6522aa",
       "etapas": [
         "Declarative: Checkout SCM",
         "Declarative: Tool Install",
         "Checkout",
         "Instalar dependencias",
-        "Ejecutar pruebas unitarias",
+        "Pruebas de regresión unitarias",
+        "Pruebas de regresión caja negra",
         "Compilar aplicación",
         "Analisis con SonarQube",
         "Quality Gate",
@@ -338,26 +347,44 @@
     },
     {
       "id": "JEN-03",
-      "nombre": "Diagnóstico del último build (#11, FAILURE)",
+      "nombre": "Diagnóstico del último build no exitoso (#12, FAILURE)",
       "tipo": "negativo",
-      "objetivo": "Registrar la causa del último build no exitoso para corregirla antes del despliegue final.",
-      "esperado": "Causa identificada y corregible (no es un fallo del software).",
-      "obtenido": "Build #11: fatal: unable to access 'https://github.com/Claudia280-girl/validacion/': Could not resolve host: github.com",
+      "objetivo": "Registrar la causa del último build no exitoso y comprobar que fue corregida antes del despliegue final.",
+      "esperado": "Causa identificada, ajena al software probado, y corregida en el build siguiente.",
+      "obtenido": "Build #12 del 27/10/2026, 12:11:07 a. m.: QUALITY GATE STATUS: FAILED - View details on http://sonarqube:9000/dashboard?id=taskflow%3Abackend — el análisis se ejecutó sin coverage/lcov.info (sensor de cobertura cero → new_coverage 0 %).",
       "estado": "Aprobado",
       "evidencia": [
-        "jenkins/build-11-consola.log"
+        "jenkins/build-12-consola.log"
       ],
-      "observacion": "El contenedor de Jenkins no tenía red para clonar GitHub; no es un fallo de las pruebas ni del código."
+      "observacion": "La Quality Gate falló por cobertura nueva 0 %: el pipeline no generaba el informe LCOV. Corregido en el Jenkinsfile (la etapa de regresión unitaria ejecuta Jest con --coverage --coverageReporters=lcov); verificado por JEN-04."
     },
     {
       "id": "JEN-04",
-      "nombre": "Nuevo build del pipeline sobre la versión refactorizada",
+      "nombre": "Build final del pipeline sobre la versión refactorizada (#13)",
       "tipo": "positivo",
-      "objetivo": "Disparar el pipeline con el código final publicado en GitHub (checkout scm de Claudia280-girl/validacion, rama main).",
+      "objetivo": "Ejecutar el pipeline completo (checkout de Andres-Arango280/task_flow, npm ci, regresión unitaria con cobertura, regresión de caja negra, build, análisis SonarQube, Quality Gate e imagen Docker) sobre el código final publicado.",
       "esperado": "SUCCESS con Quality Gate OK.",
-      "obtenido": "Pendiente: 1) git add -A && git commit && git push origin main; 2) defina JENKINS_USER y JENKINS_TOKEN (Jenkins → usuario → Configurar → API Token) y vuelva a ejecutar este script, o pulse «Construir ahora» en http://localhost:8081/job/taskflow-pipeline y guarde la consola en pruebas/evidencias/despliegue/jenkins/.",
-      "estado": "Pendiente",
-      "evidencia": []
+      "obtenido": "Build #13 (existente) del 27/10/2026, 12:21:27 a. m. sobre el commit f6522aa: SUCCESS en 187 s; etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Pruebas de regresión unitarias → Pruebas de regresión caja negra → Compilar aplicación → Analisis con SonarQube → Quality Gate → Construir imagen Docker → Declarative: Post Actions; Tests: 88 passed, 88 total | Tests: 49 passed, 49 total; Quality Gate OK.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "jenkins/build-13-consola.log",
+        "jenkins/job-api.json"
+      ],
+      "commit": "f6522aa21465137ea3c79a07999564dcc173e232",
+      "etapas": [
+        "Declarative: Checkout SCM",
+        "Declarative: Tool Install",
+        "Checkout",
+        "Instalar dependencias",
+        "Pruebas de regresión unitarias",
+        "Pruebas de regresión caja negra",
+        "Compilar aplicación",
+        "Analisis con SonarQube",
+        "Quality Gate",
+        "Construir imagen Docker",
+        "Declarative: Post Actions"
+      ],
+      "origen": "existente"
     },
     {
       "id": "REG-01",

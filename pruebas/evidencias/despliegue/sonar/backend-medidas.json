@@ -6,9 +6,13 @@
     "qualifier": "TRK",
     "measures": [
       {
-        "metric": "vulnerabilities",
-        "value": "0",
-        "bestValue": true
+        "metric": "coverage",
+        "value": "87.2",
+        "bestValue": false
+      },
+      {
+        "metric": "alert_status",
+        "value": "OK"
       },
       {
         "metric": "duplicated_lines_density",
@@ -16,9 +20,9 @@
         "bestValue": true
       },
       {
-        "metric": "coverage",
-        "value": "87.2",
-        "bestValue": false
+        "metric": "sqale_rating",
+        "value": "1.0",
+        "bestValue": true
       },
       {
         "metric": "security_rating",
@@ -26,15 +30,7 @@
         "bestValue": true
       },
       {
-        "metric": "ncloc",
-        "value": "866"
-      },
-      {
-        "metric": "alert_status",
-        "value": "OK"
-      },
-      {
-        "metric": "sqale_rating",
+        "metric": "reliability_rating",
         "value": "1.0",
         "bestValue": true
       },
@@ -44,18 +40,22 @@
         "bestValue": true
       },
       {
-        "metric": "security_hotspots",
-        "value": "0",
-        "bestValue": true
-      },
-      {
         "metric": "code_smells",
         "value": "1",
         "bestValue": false
       },
       {
-        "metric": "reliability_rating",
-        "value": "1.0",
+        "metric": "vulnerabilities",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "ncloc",
+        "value": "866"
+      },
+      {
+        "metric": "security_hotspots",
+        "value": "0",
         "bestValue": true
       }
     ]

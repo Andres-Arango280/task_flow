@@ -10,7 +10,7 @@ dist/index.html                   0.60 kB │ gzip:   0.37 kB
 dist/assets/index-Bw8SJ8Lv.css   45.83 kB │ gzip:   8.67 kB
 dist/assets/index-CL1xkNKc.js   525.97 kB │ gzip: 162.80 kB
 
-[32m✓ built in 1.43s[39m
+[32m✓ built in 1.41s[39m
 
 [33m[plugin builtin:vite-reporter] 
 (!) Some chunks are larger than 500 kB after minification. Consider:

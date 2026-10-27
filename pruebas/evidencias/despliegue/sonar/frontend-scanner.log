@@ -1,212 +1,158 @@
-23:51:29.618 INFO  Scanner configuration file: C:\sonar-scanner\bin\..\conf\sonar-scanner.properties
-23:51:29.623 INFO  Project root configuration file: C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\sonar-project.properties
-23:51:29.649 INFO  SonarScanner CLI 8.0.1.6346
-23:51:29.659 INFO  Windows 11 10.0 amd64
-23:51:32.787 INFO  Communicating with SonarQube Server 9.9.8.100196
-23:51:33.447 INFO  Load global settings
-23:51:33.540 INFO  Load global settings (done) | time=95ms
-23:51:33.543 INFO  Server id: 243B8A4D-AaDQ1td59T94hdE7cEGk
-23:51:33.547 INFO  User cache: C:\Users\brahi\.sonar\cache
-23:51:33.553 INFO  Load/download plugins
-23:51:33.553 INFO  Load plugins index
-23:51:33.611 INFO  Load plugins index (done) | time=58ms
-23:51:33.676 INFO  Load/download plugins (done) | time=123ms
-23:51:34.217 INFO  Process project properties
-23:51:34.227 INFO  Process project properties (done) | time=10ms
-23:51:34.233 INFO  Execute project builders
-23:51:34.234 INFO  Execute project builders (done) | time=2ms
-23:51:34.241 INFO  Project key: taskflow:frontend
-23:51:34.241 INFO  Base dir: C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend
-23:51:34.241 INFO  Working dir: C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork
-23:51:34.251 INFO  Load project settings for component key: 'taskflow:frontend'
-23:51:34.277 INFO  Load project settings for component key: 'taskflow:frontend' (done) | time=26ms
-23:51:34.405 INFO  Load quality profiles
-23:51:34.484 INFO  Load quality profiles (done) | time=79ms
-23:51:34.522 INFO  Load active rules
-23:51:35.862 INFO  Load active rules (done) | time=1340ms
-23:51:35.870 INFO  Load analysis cache
-23:51:35.880 INFO  Load analysis cache (404) | time=11ms
-23:51:35.948 INFO  Load project repositories
-23:51:35.976 INFO  Load project repositories (done) | time=28ms
-23:51:36.010 INFO  Indexing files...
-23:51:36.011 INFO  Project configuration:
-23:51:36.011 INFO    Excluded sources: **/node_modules/**, **/dist/**, **/build/**, **/coverage/**, **/*.spec.ts, **/*.spec.tsx, **/*.e2e.spec.ts
-23:51:36.011 INFO    Included tests: **/*.spec.ts, **/*.spec.tsx, **/*.e2e.spec.ts
-23:51:36.012 INFO    Excluded sources for coverage: **/types/**, **/pages/**, **/components/**/*.styles.ts
-23:51:36.603 INFO  56 files indexed
-23:51:36.604 INFO  56 files ignored because of inclusion/exclusion patterns
-23:51:36.604 INFO  0 files ignored because of scm ignore settings
-23:51:36.605 INFO  Quality profile for css: Sonar way
-23:51:36.605 INFO  Quality profile for ts: Sonar way
-23:51:36.605 INFO  ------------- Run sensors on module TaskFlow Frontend
-23:51:36.728 INFO  Load metrics repository
-23:51:36.813 INFO  Load metrics repository (done) | time=85ms
-23:51:38.597 INFO  Sensor JaCoCo XML Report Importer [jacoco]
-23:51:38.599 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
-23:51:38.599 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
-23:51:38.600 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=3ms
-23:51:38.600 INFO  Sensor TypeScript analysis [javascript]
-23:52:13.641 WARN  Node.js version 20 is not recommended, you might experience issues. Please use a recommended version of Node.js [16, 18]
-23:52:13.869 INFO  Found 2 tsconfig.json file(s): [C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\tsconfig.json, C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\cypress\tsconfig.json]
-23:52:13.870 INFO  Creating TypeScript program
-23:52:13.870 INFO  TypeScript configuration file C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\tsconfig.json
-23:52:13.872 INFO  51 source files to be analyzed
-23:52:14.009 INFO  Creating TypeScript program (done) | time=139ms
-23:52:14.009 INFO  Starting analysis with current program
-23:52:14.009 INFO  Analyzed 0 file(s) with current program
-23:52:14.012 INFO  Creating TypeScript program
-23:52:14.013 INFO  TypeScript configuration file C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\cypress\tsconfig.json
-23:52:14.042 INFO  Creating TypeScript program (done) | time=30ms
-23:52:14.042 INFO  Creating TypeScript program
-23:52:14.042 INFO  TypeScript configuration file C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\tsconfig.app.json
-23:52:14.054 INFO  Creating TypeScript program (done) | time=12ms
-23:52:14.054 INFO  Creating TypeScript program
-23:52:14.054 INFO  TypeScript configuration file C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\tsconfig.node.json
-23:52:14.060 INFO  Creating TypeScript program (done) | time=6ms
-23:52:14.061 INFO  Skipped 51 file(s) because they were not part of any tsconfig.json (enable debug logs to see the full list)
-23:52:14.064 INFO  51/51 source files have been analyzed
-23:52:14.065 INFO  Hit the cache for 0 out of 0
-23:52:14.066 INFO  Miss the cache for 0 out of 0
-23:52:14.066 INFO  Sensor TypeScript analysis [javascript] (done) | time=35466ms
-23:52:14.067 INFO  Sensor CSS Rules [javascript]
-23:52:14.075 INFO  2 source files to be analyzed
-23:52:14.395 INFO  2/2 source files have been analyzed
-23:52:14.395 INFO  Hit the cache for 0 out of 0
-23:52:14.395 INFO  Miss the cache for 0 out of 0
-23:52:14.395 INFO  Sensor CSS Rules [javascript] (done) | time=328ms
-23:52:14.395 INFO  Sensor JavaScript/TypeScript Coverage [javascript]
-23:52:14.395 INFO  Merging coverage reports from sonar.javascript.lcov.reportPaths and sonar.typescript.lcov.reportPaths.
-23:52:19.715 INFO  No LCOV files were found using coverage/lcov.info
-23:52:19.715 WARN  No coverage information will be saved because all LCOV files cannot be found.
-23:52:19.715 INFO  Sensor JavaScript/TypeScript Coverage [javascript] (done) | time=5320ms
-23:52:19.715 INFO  Sensor CSS Metrics [javascript]
-23:52:19.785 INFO  Sensor CSS Metrics [javascript] (done) | time=70ms
-23:52:19.786 INFO  Sensor C# Project Type Information [csharp]
-23:52:19.787 INFO  Sensor C# Project Type Information [csharp] (done) | time=1ms
-23:52:19.788 INFO  Sensor C# Analysis Log [csharp]
-23:52:19.809 INFO  Sensor C# Analysis Log [csharp] (done) | time=21ms
-23:52:19.809 INFO  Sensor C# Properties [csharp]
-23:52:19.809 INFO  Sensor C# Properties [csharp] (done) | time=0ms
-23:52:19.809 INFO  Sensor HTML [web]
-23:52:19.813 INFO  Sensor HTML [web] (done) | time=4ms
-23:52:19.813 INFO  Sensor TextAndSecretsSensor [text]
-23:52:19.823 INFO  53 source files to be analyzed
-23:52:20.027 INFO  53/53 source files have been analyzed
-23:52:20.027 INFO  Sensor TextAndSecretsSensor [text] (done) | time=214ms
-23:52:20.027 INFO  Sensor VB.NET Project Type Information [vbnet]
-23:52:20.028 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
-23:52:20.028 INFO  Sensor VB.NET Analysis Log [vbnet]
-23:52:20.046 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=17ms
-23:52:20.046 INFO  Sensor VB.NET Properties [vbnet]
-23:52:20.046 INFO  Sensor VB.NET Properties [vbnet] (done) | time=0ms
-23:52:20.046 INFO  Sensor IaC Docker Sensor [iac]
-23:52:20.049 INFO  0 source files to be analyzed
-23:52:20.105 INFO  0/0 source files have been analyzed
-23:52:20.105 INFO  Sensor IaC Docker Sensor [iac] (done) | time=59ms
-23:52:20.109 INFO  ------------- Run sensors on project
-23:52:20.166 INFO  Sensor Analysis Warnings import [csharp]
-23:52:20.167 INFO  Sensor Analysis Warnings import [csharp] (done) | time=1ms
-23:52:20.167 INFO  Sensor Zero Coverage Sensor
-23:52:20.169 INFO  Sensor Zero Coverage Sensor (done) | time=2ms
-23:52:20.181 INFO  SCM Publisher SCM provider for this project is: git
-23:52:20.183 INFO  SCM Publisher 49 source files to be analyzed
-23:52:21.233 INFO  SCM Publisher 0/49 source files have been analyzed (done) | time=1050ms
-23:52:21.233 WARN  Missing blame information for the following files:
-23:52:21.233 WARN    * src/components/layout/PrivateRoute.tsx
-23:52:21.233 WARN    * src/lib/errores.ts
-23:52:21.233 WARN    * src/pages/Privacidad.tsx
-23:52:21.233 WARN    * src/components/kanban/KanbanColumn.tsx
-23:52:21.233 WARN    * src/pages/KanbanBoard.tsx
-23:52:21.233 WARN    * src/components/equipo/MembersList.tsx
-23:52:21.233 WARN    * src/components/equipo/InviteMemberModal.tsx
-23:52:21.233 WARN    * src/hooks/useActualizacionPeriodica.ts
-23:52:21.233 WARN    * src/pages/Login.tsx
-23:52:21.233 WARN    * src/components/kanban/CreateTaskModal.tsx
-23:52:21.233 WARN    * src/components/kanban/estilosColumna.ts
-23:52:21.233 WARN    * src/components/kanban/TaskCard.tsx
-23:52:21.233 WARN    * src/pages/TeamView.tsx
-23:52:21.233 WARN    * src/services/authService.ts
-23:52:21.233 WARN    * src/components/ui/Button.tsx
-23:52:21.233 WARN    * src/services/equiposService.ts
-23:52:21.233 WARN    * src/components/ui/Confirmacion.tsx
-23:52:21.233 WARN    * src/components/ui/Modal.tsx
-23:52:21.233 WARN    * src/hooks/useAtajos.ts
-23:52:21.233 WARN    * src/pages/Ayuda.tsx
-23:52:21.233 WARN    * src/components/kanban/AssignMembersModal.tsx
-23:52:21.233 WARN    * src/components/equipo/CreateProjectModal.tsx
-23:52:21.233 WARN    * src/pages/Dashboard.tsx
-23:52:21.233 WARN    * src/pages/Register.tsx
-23:52:21.235 WARN    * src/components/ui/Input.tsx
-23:52:21.235 WARN    * src/services/api.ts
-23:52:21.235 WARN    * src/components/kanban/limites.ts
-23:52:21.235 WARN    * src/components/layout/PanelAtajos.tsx
-23:52:21.235 WARN    * src/components/ui/Toast.tsx
-23:52:21.235 WARN    * src/components/equipo/TeamHeader.tsx
-23:52:21.235 WARN    * src/index.css
-23:52:21.235 WARN    * src/pages/Preferencias.tsx
-23:52:21.235 WARN    * src/components/equipo/recientes.ts
-23:52:21.235 WARN    * src/App.tsx
-23:52:21.235 WARN    * src/store/useAuthStore.ts
-23:52:21.235 WARN    * src/components/kanban/TaskDetailModal.tsx
-23:52:21.235 WARN    * src/main.tsx
-23:52:21.235 WARN    * src/components/layout/Migas.tsx
-23:52:21.235 WARN    * src/services/proyectosService.ts
-23:52:21.235 WARN    * src/components/layout/Navbar.tsx
-23:52:21.235 WARN    * src/hooks/useBorrador.ts
-23:52:21.235 WARN    * src/hooks/useDocumentTitle.ts
-23:52:21.235 WARN    * src/services/tareasService.ts
-23:52:21.235 WARN    * src/store/usePreferencias.ts
-23:52:21.235 WARN    * src/components/equipo/ProjectsList.tsx
-23:52:21.235 WARN    * src/components/layout/BannerConexion.tsx
-23:52:21.235 WARN    * src/lib/busqueda.ts
-23:52:21.235 WARN    * src/types/index.ts
-23:52:21.235 WARN    * src/components/kanban/Avatar.tsx
-23:52:21.235 WARN  This may lead to missing/broken features in SonarQube
-23:52:21.238 INFO  CPD Executor Calculating CPD for 0 files
-23:52:21.238 INFO  CPD Executor CPD calculation finished (done) | time=0ms
-23:52:21.447 INFO  Analysis report generated in 185ms, dir size=371.1 kB
-23:52:21.550 INFO  Analysis report compressed in 102ms, zip size=107.6 kB
-23:52:21.604 INFO  Analysis report uploaded in 53ms
-23:52:21.607 INFO  ------------- Check Quality Gate status
-23:52:21.607 INFO  Waiting for the analysis report to be processed (max 300s)
-23:52:26.675 INFO  QUALITY GATE STATUS: PASSED - View details on http://localhost:9000/dashboard?id=taskflow%3Afrontend
-23:52:33.313 INFO  Analysis total time: 59.543 s
-23:52:33.316 INFO  EXECUTION SUCCESS
-23:52:33.316 INFO  Total time: 1:03.703s
+00:30:14.780 INFO  Scanner configuration file: C:\sonar-scanner\bin\..\conf\sonar-scanner.properties
+00:30:14.786 INFO  Project root configuration file: C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\sonar-project.properties
+00:30:14.810 INFO  SonarScanner CLI 8.0.1.6346
+00:30:14.816 INFO  Windows 11 10.0 amd64
+00:30:17.517 INFO  Communicating with SonarQube Server 9.9.8.100196
+00:30:18.003 INFO  Load global settings
+00:30:18.073 INFO  Load global settings (done) | time=71ms
+00:30:18.075 INFO  Server id: 243B8A4D-AaDQ1td59T94hdE7cEGk
+00:30:18.079 INFO  User cache: C:\Users\brahi\.sonar\cache
+00:30:18.082 INFO  Load/download plugins
+00:30:18.082 INFO  Load plugins index
+00:30:18.256 INFO  Load plugins index (done) | time=173ms
+00:30:18.319 INFO  Load/download plugins (done) | time=237ms
+00:30:18.792 INFO  Process project properties
+00:30:18.801 INFO  Process project properties (done) | time=9ms
+00:30:18.805 INFO  Execute project builders
+00:30:18.806 INFO  Execute project builders (done) | time=1ms
+00:30:18.812 INFO  Project key: taskflow:frontend
+00:30:18.813 INFO  Base dir: C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend
+00:30:18.813 INFO  Working dir: C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork
+00:30:18.821 INFO  Load project settings for component key: 'taskflow:frontend'
+00:30:18.840 INFO  Load project settings for component key: 'taskflow:frontend' (done) | time=19ms
+00:30:18.953 INFO  Load quality profiles
+00:30:18.995 INFO  Load quality profiles (done) | time=42ms
+00:30:19.009 INFO  Load active rules
+00:30:20.149 INFO  Load active rules (done) | time=1140ms
+00:30:20.156 INFO  Load analysis cache
+00:30:20.167 INFO  Load analysis cache (404) | time=11ms
+00:30:20.225 INFO  Load project repositories
+00:30:20.244 INFO  Load project repositories (done) | time=19ms
+00:30:20.278 INFO  Indexing files...
+00:30:20.278 INFO  Project configuration:
+00:30:20.278 INFO    Excluded sources: **/node_modules/**, **/dist/**, **/build/**, **/coverage/**, **/*.spec.ts, **/*.spec.tsx, **/*.e2e.spec.ts
+00:30:20.278 INFO    Included tests: **/*.spec.ts, **/*.spec.tsx, **/*.e2e.spec.ts
+00:30:20.279 INFO    Excluded sources for coverage: **/types/**, **/pages/**, **/components/**/*.styles.ts
+00:30:20.786 INFO  56 files indexed
+00:30:20.787 INFO  56 files ignored because of inclusion/exclusion patterns
+00:30:20.787 INFO  0 files ignored because of scm ignore settings
+00:30:20.788 INFO  Quality profile for css: Sonar way
+00:30:20.788 INFO  Quality profile for ts: Sonar way
+00:30:20.788 INFO  ------------- Run sensors on module TaskFlow Frontend
+00:30:20.863 INFO  Load metrics repository
+00:30:20.889 INFO  Load metrics repository (done) | time=26ms
+00:30:22.272 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+00:30:22.273 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+00:30:22.274 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+00:30:22.274 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=3ms
+00:30:22.274 INFO  Sensor TypeScript analysis [javascript]
+00:30:59.135 WARN  Node.js version 20 is not recommended, you might experience issues. Please use a recommended version of Node.js [16, 18]
+00:30:59.336 INFO  Found 2 tsconfig.json file(s): [C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\tsconfig.json, C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\cypress\tsconfig.json]
+00:30:59.336 INFO  Creating TypeScript program
+00:30:59.336 INFO  TypeScript configuration file C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\tsconfig.json
+00:30:59.338 INFO  51 source files to be analyzed
+00:30:59.371 INFO  Creating TypeScript program (done) | time=35ms
+00:30:59.371 INFO  Starting analysis with current program
+00:30:59.371 INFO  Analyzed 0 file(s) with current program
+00:30:59.374 INFO  Creating TypeScript program
+00:30:59.374 INFO  TypeScript configuration file C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\cypress\tsconfig.json
+00:30:59.392 INFO  Creating TypeScript program (done) | time=19ms
+00:30:59.393 INFO  Creating TypeScript program
+00:30:59.393 INFO  TypeScript configuration file C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\tsconfig.app.json
+00:30:59.401 INFO  Creating TypeScript program (done) | time=8ms
+00:30:59.401 INFO  Creating TypeScript program
+00:30:59.401 INFO  TypeScript configuration file C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\tsconfig.node.json
+00:30:59.406 INFO  Creating TypeScript program (done) | time=5ms
+00:30:59.406 INFO  Skipped 51 file(s) because they were not part of any tsconfig.json (enable debug logs to see the full list)
+00:30:59.408 INFO  51/51 source files have been analyzed
+00:30:59.409 INFO  Hit the cache for 0 out of 0
+00:30:59.410 INFO  Miss the cache for 0 out of 0
+00:30:59.410 INFO  Sensor TypeScript analysis [javascript] (done) | time=37136ms
+00:30:59.410 INFO  Sensor CSS Rules [javascript]
+00:30:59.417 INFO  2 source files to be analyzed
+00:30:59.743 INFO  2/2 source files have been analyzed
+00:30:59.743 INFO  Hit the cache for 0 out of 0
+00:30:59.743 INFO  Miss the cache for 0 out of 0
+00:30:59.743 INFO  Sensor CSS Rules [javascript] (done) | time=333ms
+00:30:59.743 INFO  Sensor JavaScript/TypeScript Coverage [javascript]
+00:30:59.743 INFO  Merging coverage reports from sonar.javascript.lcov.reportPaths and sonar.typescript.lcov.reportPaths.
+00:31:03.745 INFO  No LCOV files were found using coverage/lcov.info
+00:31:03.746 WARN  No coverage information will be saved because all LCOV files cannot be found.
+00:31:03.746 INFO  Sensor JavaScript/TypeScript Coverage [javascript] (done) | time=4003ms
+00:31:03.746 INFO  Sensor CSS Metrics [javascript]
+00:31:03.833 INFO  Sensor CSS Metrics [javascript] (done) | time=87ms
+00:31:03.833 INFO  Sensor C# Project Type Information [csharp]
+00:31:03.835 INFO  Sensor C# Project Type Information [csharp] (done) | time=2ms
+00:31:03.836 INFO  Sensor C# Analysis Log [csharp]
+00:31:03.863 INFO  Sensor C# Analysis Log [csharp] (done) | time=27ms
+00:31:03.864 INFO  Sensor C# Properties [csharp]
+00:31:03.864 INFO  Sensor C# Properties [csharp] (done) | time=0ms
+00:31:03.864 INFO  Sensor HTML [web]
+00:31:03.868 INFO  Sensor HTML [web] (done) | time=4ms
+00:31:03.869 INFO  Sensor TextAndSecretsSensor [text]
+00:31:03.893 INFO  53 source files to be analyzed
+00:31:03.993 INFO  53/53 source files have been analyzed
+00:31:03.994 INFO  Sensor TextAndSecretsSensor [text] (done) | time=125ms
+00:31:03.994 INFO  Sensor VB.NET Project Type Information [vbnet]
+00:31:03.994 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=0ms
+00:31:03.994 INFO  Sensor VB.NET Analysis Log [vbnet]
+00:31:04.010 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=15ms
+00:31:04.010 INFO  Sensor VB.NET Properties [vbnet]
+00:31:04.010 INFO  Sensor VB.NET Properties [vbnet] (done) | time=0ms
+00:31:04.010 INFO  Sensor IaC Docker Sensor [iac]
+00:31:04.012 INFO  0 source files to be analyzed
+00:31:04.067 INFO  0/0 source files have been analyzed
+00:31:04.068 INFO  Sensor IaC Docker Sensor [iac] (done) | time=58ms
+00:31:04.073 INFO  ------------- Run sensors on project
+00:31:04.145 INFO  Sensor Analysis Warnings import [csharp]
+00:31:04.146 INFO  Sensor Analysis Warnings import [csharp] (done) | time=1ms
+00:31:04.146 INFO  Sensor Zero Coverage Sensor
+00:31:04.148 INFO  Sensor Zero Coverage Sensor (done) | time=2ms
+00:31:04.209 INFO  CPD Executor Calculating CPD for 0 files
+00:31:04.210 INFO  CPD Executor CPD calculation finished (done) | time=0ms
+00:31:04.453 INFO  Analysis report generated in 214ms, dir size=371.0 kB
+00:31:04.558 INFO  Analysis report compressed in 104ms, zip size=113.8 kB
+00:31:04.612 INFO  Analysis report uploaded in 53ms
+00:31:04.615 INFO  ------------- Check Quality Gate status
+00:31:04.616 INFO  Waiting for the analysis report to be processed (max 300s)
+00:31:09.698 INFO  QUALITY GATE STATUS: PASSED - View details on http://localhost:9000/dashboard?id=taskflow%3Afrontend
+00:31:17.185 INFO  Analysis total time: 58.780 s
+00:31:17.187 INFO  EXECUTION SUCCESS
+00:31:17.188 INFO  Total time: 1:02.412s
 
-23:52:14.040 ERROR Error: Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Argument for '--moduleResolution' option must be: 'node', 'classic', 'node16', 'nodenext'.; Unknown compiler option 'allowImportingTsExtensions'.
-23:52:14.040 ERROR     at createProgramOptions (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:106:15)
-23:52:14.040 ERROR     at createProgram (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:132:28)
-23:52:14.040 ERROR     at default_1 (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\routing\on-create-program.js:10:57)
-23:52:14.040 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
-23:52:14.040 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:144:13)
-23:52:14.040 ERROR     at Route.dispatch (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:114:3)
-23:52:14.041 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
-23:52:14.041 ERROR     at C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:284:15
-23:52:14.041 ERROR     at Function.process_params (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:346:12)
-23:52:14.041 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:280:10)
-23:52:14.042 ERROR Failed to create program: Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Argument for '--moduleResolution' option must be: 'node', 'classic', 'node16', 'nodenext'.; Unknown compiler option 'allowImportingTsExtensions'.
-23:52:14.052 ERROR Error: Argument for '--target' option must be: 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.; Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Unknown compiler option 'allowArbitraryExtensions'.; Argument for '--moduleResolution' option must be: 'node', 'classic', 'node16', 'nodenext'.; Unknown compiler option 'allowImportingTsExtensions'.; Unknown compiler option 'verbatimModuleSyntax'.; Unknown compiler option 'erasableSyntaxOnly'.
-23:52:14.052 ERROR     at createProgramOptions (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:106:15)
-23:52:14.052 ERROR     at createProgram (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:132:28)
-23:52:14.052 ERROR     at default_1 (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\routing\on-create-program.js:10:57)
-23:52:14.052 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
-23:52:14.052 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:144:13)
-23:52:14.052 ERROR     at Route.dispatch (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:114:3)
-23:52:14.052 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
-23:52:14.052 ERROR     at C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:284:15
-23:52:14.052 ERROR     at Function.process_params (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:346:12)
-23:52:14.052 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:280:10)
-23:52:14.053 ERROR Failed to create program: Argument for '--target' option must be: 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.; Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Unknown compiler option 'allowArbitraryExtensions'.; Argument for '--moduleResolution' option must be: 'node', 'classic', 'node16', 'nodenext'.; Unknown compiler option 'allowImportingTsExtensions'.; Unknown compiler option 'verbatimModuleSyntax'.; Unknown compiler option 'erasableSyntaxOnly'.
-23:52:14.059 ERROR Error: Argument for '--target' option must be: 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.; Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Unknown compiler option 'allowImportingTsExtensions'.; Unknown compiler option 'verbatimModuleSyntax'.; Unknown compiler option 'erasableSyntaxOnly'.
-23:52:14.059 ERROR     at createProgramOptions (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:106:15)
-23:52:14.059 ERROR     at createProgram (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:132:28)
-23:52:14.059 ERROR     at default_1 (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\routing\on-create-program.js:10:57)
-23:52:14.059 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
-23:52:14.059 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:144:13)
-23:52:14.059 ERROR     at Route.dispatch (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:114:3)
-23:52:14.059 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
-23:52:14.060 ERROR     at C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:284:15
-23:52:14.060 ERROR     at Function.process_params (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:346:12)
-23:52:14.060 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:280:10)
-23:52:14.060 ERROR Failed to create program: Argument for '--target' option must be: 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.; Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Unknown compiler option 'allowImportingTsExtensions'.; Unknown compiler option 'verbatimModuleSyntax'.; Unknown compiler option 'erasableSyntaxOnly'.
+00:30:59.391 ERROR Error: Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Argument for '--moduleResolution' option must be: 'node', 'classic', 'node16', 'nodenext'.; Unknown compiler option 'allowImportingTsExtensions'.
+00:30:59.391 ERROR     at createProgramOptions (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:106:15)
+00:30:59.391 ERROR     at createProgram (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:132:28)
+00:30:59.391 ERROR     at default_1 (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\routing\on-create-program.js:10:57)
+00:30:59.391 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
+00:30:59.391 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:144:13)
+00:30:59.391 ERROR     at Route.dispatch (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:114:3)
+00:30:59.391 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
+00:30:59.391 ERROR     at C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:284:15
+00:30:59.391 ERROR     at Function.process_params (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:346:12)
+00:30:59.391 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:280:10)
+00:30:59.392 ERROR Failed to create program: Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Argument for '--moduleResolution' option must be: 'node', 'classic', 'node16', 'nodenext'.; Unknown compiler option 'allowImportingTsExtensions'.
+00:30:59.400 ERROR Error: Argument for '--target' option must be: 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.; Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Unknown compiler option 'allowArbitraryExtensions'.; Argument for '--moduleResolution' option must be: 'node', 'classic', 'node16', 'nodenext'.; Unknown compiler option 'allowImportingTsExtensions'.; Unknown compiler option 'verbatimModuleSyntax'.; Unknown compiler option 'erasableSyntaxOnly'.
+00:30:59.400 ERROR     at createProgramOptions (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:106:15)
+00:30:59.400 ERROR     at createProgram (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:132:28)
+00:30:59.400 ERROR     at default_1 (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\routing\on-create-program.js:10:57)
+00:30:59.400 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
+00:30:59.400 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:144:13)
+00:30:59.400 ERROR     at Route.dispatch (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:114:3)
+00:30:59.400 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
+00:30:59.400 ERROR     at C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:284:15
+00:30:59.400 ERROR     at Function.process_params (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:346:12)
+00:30:59.400 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:280:10)
+00:30:59.401 ERROR Failed to create program: Argument for '--target' option must be: 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.; Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Unknown compiler option 'allowArbitraryExtensions'.; Argument for '--moduleResolution' option must be: 'node', 'classic', 'node16', 'nodenext'.; Unknown compiler option 'allowImportingTsExtensions'.; Unknown compiler option 'verbatimModuleSyntax'.; Unknown compiler option 'erasableSyntaxOnly'.
+00:30:59.404 ERROR Error: Argument for '--target' option must be: 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.; Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Unknown compiler option 'allowImportingTsExtensions'.; Unknown compiler option 'verbatimModuleSyntax'.; Unknown compiler option 'erasableSyntaxOnly'.
+00:30:59.405 ERROR     at createProgramOptions (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:106:15)
+00:30:59.405 ERROR     at createProgram (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\services\program\program.js:132:28)
+00:30:59.405 ERROR     at default_1 (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\lib\routing\on-create-program.js:10:57)
+00:30:59.405 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
+00:30:59.405 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:144:13)
+00:30:59.405 ERROR     at Route.dispatch (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\route.js:114:3)
+00:30:59.405 ERROR     at Layer.handle [as handle_request] (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\layer.js:95:5)
+00:30:59.405 ERROR     at C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:284:15
+00:30:59.405 ERROR     at Function.process_params (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:346:12)
+00:30:59.405 ERROR     at next (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\taskflow-frontend\.scannerwork\.sonartmp\eslint-bridge-bundle\package\node_modules\express\lib\router\index.js:280:10)
+00:30:59.406 ERROR Failed to create program: Argument for '--target' option must be: 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.; Argument for '--lib' option must be: 'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost', 'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol', 'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object', 'es2017.sharedmemory', 'es2017.string', 'es2017.intl', 'es2017.typedarrays', 'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 'es2019.intl', 'es2020.bigint', 'es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 'es2022.intl', 'es2022.object', 'es2022.sharedmemory', 'es2022.string', 'esnext.array', 'esnext.symbol', 'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string', 'esnext.promise', 'esnext.weakref'.; Unknown compiler option 'allowImportingTsExtensions'.; Unknown compiler option 'verbatimModuleSyntax'.; Unknown compiler option 'erasableSyntaxOnly'.

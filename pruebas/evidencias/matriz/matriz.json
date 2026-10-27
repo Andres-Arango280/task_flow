@@ -1,10 +1,10 @@
 {
-  "generado": "2026-10-27T04:53:34.423Z",
+  "generado": "2026-10-27T05:32:25.466Z",
   "totales": {
     "casos": 529,
-    "aprobados": 493,
+    "aprobados": 494,
     "fallidos": 15,
-    "pendientes": 21,
+    "pendientes": 20,
     "requisitos": 23,
     "requisitosCubiertos": 23,
     "defectos": 20,
@@ -1563,9 +1563,9 @@
       "funcionalidad": "F4",
       "funcionalidadNombre": "Proyectos",
       "casos": 13,
-      "aprobados": 12,
+      "aprobados": 13,
       "fallidos": 0,
-      "pendientes": 1,
+      "pendientes": 0,
       "suites": [
         "despliegue"
       ],
@@ -1820,7 +1820,7 @@
       ],
       "integrante": "Andrés Arango",
       "casos": 55,
-      "aprobados": 53,
+      "aprobados": 54,
       "fallidos": 0,
       "porArea": {
         "backend-jest": 27,
@@ -2087,11 +2087,11 @@
       "nombre": "Despliegue (SonarQube + Jenkins) y regresión posterior",
       "nivel": "Sistema",
       "herramienta": "Docker Compose (SonarQube 9.9 Community, PostgreSQL 15, Jenkins LTS), sonar-scanner, nest build, vite build, docker build",
-      "fecha": "2026-10-27T04:52:37.771Z",
+      "fecha": "2026-10-27T05:31:19.601Z",
       "total": 20,
-      "aprobados": 19,
+      "aprobados": 20,
       "fallidos": 0,
-      "pendientes": 1
+      "pendientes": 0
     }
   ],
   "defectos": [
@@ -14552,13 +14552,13 @@
       "subSuite": "",
       "tipo": "positivo",
       "estado": "Aprobado",
-      "obtenido": "Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_coverage OK (87.1 vs LT 80) · new_duplicated_lines_density OK (0.0 vs GT 3) · new_security_hotspots_reviewed OK (100.0 vs LT 100). bugs=0, vulnerabilidades=0, code smells=1, cobertura=87.2 %, duplicación=0.0 %, hotspots=0, ncloc=866; análisis registrados=5",
+      "obtenido": "Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_coverage OK (88.1 vs LT 80) · new_duplicated_lines_density OK (0.0 vs GT 3) · new_security_hotspots_reviewed OK (100.0 vs LT 100). bugs=0, vulnerabilidades=0, code smells=1, cobertura=87.2 %, duplicación=0.0 %, hotspots=0, ncloc=866; análisis registrados=9",
       "evidencia": [
         "pruebas/evidencias/despliegue/sonar/backend-quality-gate.json",
         "pruebas/evidencias/despliegue/sonar/backend-medidas.json",
         "pruebas/evidencias/despliegue/sonar/backend-analisis.json"
       ],
-      "textoParaDefectos": "SON-03 Quality Gate del backend Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_coverage OK (87.1 vs LT 80) · new_duplicated_lines_density OK (0.0 vs GT 3) · new_security_hotspots_reviewed OK (100.0 vs LT 100). bugs=0, vulnerabilidades=0, code smells=1, cobertura=87.2 %, duplicación=0.0 %, hotspots=0, ncloc=866; análisis registrados=5",
+      "textoParaDefectos": "SON-03 Quality Gate del backend Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_coverage OK (88.1 vs LT 80) · new_duplicated_lines_density OK (0.0 vs GT 3) · new_security_hotspots_reviewed OK (100.0 vs LT 100). bugs=0, vulnerabilidades=0, code smells=1, cobertura=87.2 %, duplicación=0.0 %, hotspots=0, ncloc=866; análisis registrados=9",
       "funcionalidad": "F4 Proyectos",
       "funcionalidadId": "F4",
       "requisitos": [
@@ -14596,13 +14596,13 @@
       "subSuite": "",
       "tipo": "positivo",
       "estado": "Aprobado",
-      "obtenido": "Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1). bugs=0, vulnerabilidades=0, code smells=0, cobertura=— %, duplicación=0.0 %, hotspots=0, ncloc=264; análisis registrados=2",
+      "obtenido": "Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_duplicated_lines_density OK (0.0 vs GT 3). bugs=0, vulnerabilidades=0, code smells=0, cobertura=— %, duplicación=0.0 %, hotspots=0, ncloc=264; análisis registrados=4",
       "evidencia": [
         "pruebas/evidencias/despliegue/sonar/frontend-quality-gate.json",
         "pruebas/evidencias/despliegue/sonar/frontend-medidas.json",
         "pruebas/evidencias/despliegue/sonar/frontend-analisis.json"
       ],
-      "textoParaDefectos": "SON-05 Quality Gate del frontend Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1). bugs=0, vulnerabilidades=0, code smells=0, cobertura=— %, duplicación=0.0 %, hotspots=0, ncloc=264; análisis registrados=2",
+      "textoParaDefectos": "SON-05 Quality Gate del frontend Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_duplicated_lines_density OK (0.0 vs GT 3). bugs=0, vulnerabilidades=0, code smells=0, cobertura=— %, duplicación=0.0 %, hotspots=0, ncloc=264; análisis registrados=4",
       "funcionalidad": "F4 Proyectos",
       "funcionalidadId": "F4",
       "requisitos": [
@@ -14619,12 +14619,12 @@
       "subSuite": "",
       "tipo": "positivo",
       "estado": "Aprobado",
-      "obtenido": "Jenkins OK (1 jobs); taskflow-pipeline: color=red, último build #11 (FAILURE), último exitoso #10",
+      "obtenido": "Jenkins OK (1 jobs); taskflow-pipeline: color=blue, último build #13 (SUCCESS), último exitoso #13",
       "evidencia": [
         "pruebas/evidencias/despliegue/jenkins/jenkins-api.json",
         "pruebas/evidencias/despliegue/jenkins/job-api.json"
       ],
-      "textoParaDefectos": "JEN-01 Servidor Jenkins y job del pipeline disponibles Jenkins OK (1 jobs); taskflow-pipeline: color=red, último build #11 (FAILURE), último exitoso #10",
+      "textoParaDefectos": "JEN-01 Servidor Jenkins y job del pipeline disponibles Jenkins OK (1 jobs); taskflow-pipeline: color=blue, último build #13 (SUCCESS), último exitoso #13",
       "funcionalidad": "F4 Proyectos",
       "funcionalidadId": "F4",
       "requisitos": [
@@ -14634,19 +14634,19 @@
     },
     {
       "id": "JEN-02",
-      "nombre": "Último build exitoso del pipeline (#10)",
+      "nombre": "Último build exitoso del pipeline (#13)",
       "suite": "Despliegue (SonarQube + Jenkins) y regresión posterior",
       "area": "despliegue",
       "nivel": "Sistema",
       "subSuite": "",
       "tipo": "positivo",
       "estado": "Aprobado",
-      "obtenido": "Build #10 del 23/9/2026, 10:37:44 p. m. sobre el commit 8b46dc0: etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Ejecutar pruebas unitarias → Compilar aplicación → Analisis con SonarQube → Quality Gate → Construir imagen Docker → Declarative: Post Actions; Tests:       35 passed, 35 total; Quality Gate OK; resultado SUCCESS.",
+      "obtenido": "Build #13 del 27/10/2026, 12:21:27 a. m. sobre el commit f6522aa: etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Pruebas de regresión unitarias → Pruebas de regresión caja negra → Compilar aplicación → Analisis con SonarQube → Quality Gate → Construir imagen Docker → Declarative: Post Actions; Tests:       88 passed, 88 total | Tests:       49 passed, 49 total; Quality Gate OK; resultado SUCCESS.",
       "evidencia": [
-        "pruebas/evidencias/despliegue/jenkins/build-10-consola.log",
+        "pruebas/evidencias/despliegue/jenkins/build-13-consola.log",
         "pruebas/evidencias/despliegue/jenkins/job-api.json"
       ],
-      "textoParaDefectos": "JEN-02 Último build exitoso del pipeline (#10) Build #10 del 23/9/2026, 10:37:44 p. m. sobre el commit 8b46dc0: etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Ejecutar pruebas unitarias → Compilar aplicación → Analisis con SonarQube → Quality Gate → Construir imagen Docker → Declarative: Post Actions; Tests:       35 passed, 35 total; Quality Gate OK; resultado SUCCESS.",
+      "textoParaDefectos": "JEN-02 Último build exitoso del pipeline (#13) Build #13 del 27/10/2026, 12:21:27 a. m. sobre el commit f6522aa: etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Pruebas de regresión unitarias → Pruebas de regresión caja negra → Compilar aplicación → Analisis con SonarQube → Quality Gate → Construir imagen Docker → Declarative: Post Actions; Tests:       88 passed, 88 total | Tests:       49 passed, 49 total; Quality Gate OK; resultado SUCCESS.",
       "funcionalidad": "F4 Proyectos",
       "funcionalidadId": "F4",
       "requisitos": [
@@ -14656,18 +14656,18 @@
     },
     {
       "id": "JEN-03",
-      "nombre": "Diagnóstico del último build (#11, FAILURE)",
+      "nombre": "Diagnóstico del último build no exitoso (#12, FAILURE)",
       "suite": "Despliegue (SonarQube + Jenkins) y regresión posterior",
       "area": "despliegue",
       "nivel": "Sistema",
       "subSuite": "",
       "tipo": "negativo",
       "estado": "Aprobado",
-      "obtenido": "Build #11: fatal: unable to access 'https://github.com/Claudia280-girl/validacion/': Could not resolve host: github.com",
+      "obtenido": "Build #12 del 27/10/2026, 12:11:07 a. m.: QUALITY GATE STATUS: FAILED - View details on http://sonarqube:9000/dashboard?id=taskflow%3Abackend — el análisis se ejecutó sin coverage/lcov.info (sensor de cobertura cero → new_coverage 0 %).",
       "evidencia": [
-        "pruebas/evidencias/despliegue/jenkins/build-11-consola.log"
+        "pruebas/evidencias/despliegue/jenkins/build-12-consola.log"
       ],
-      "textoParaDefectos": "JEN-03 Diagnóstico del último build (#11, FAILURE) Build #11: fatal: unable to access 'https://github.com/Claudia280-girl/validacion/': Could not resolve host: github.com",
+      "textoParaDefectos": "JEN-03 Diagnóstico del último build no exitoso (#12, FAILURE) Build #12 del 27/10/2026, 12:11:07 a. m.: QUALITY GATE STATUS: FAILED - View details on http://sonarqube:9000/dashboard?id=taskflow%3Abackend — el análisis se ejecutó sin coverage/lcov.info (sensor de cobertura cero → new_coverage 0 %).",
       "funcionalidad": "F4 Proyectos",
       "funcionalidadId": "F4",
       "requisitos": [
@@ -14677,16 +14677,19 @@
     },
     {
       "id": "JEN-04",
-      "nombre": "Nuevo build del pipeline sobre la versión refactorizada",
+      "nombre": "Build final del pipeline sobre la versión refactorizada (#13)",
       "suite": "Despliegue (SonarQube + Jenkins) y regresión posterior",
       "area": "despliegue",
       "nivel": "Sistema",
       "subSuite": "",
       "tipo": "positivo",
-      "estado": "Pendiente",
-      "obtenido": "Pendiente: 1) git add -A && git commit && git push origin main; 2) defina JENKINS_USER y JENKINS_TOKEN (Jenkins → usuario → Configurar → API Token) y vuelva a ejecutar este script, o pulse «Construir ahora» en http://localhost:8081/job/taskflow-pipeline y guarde la consola en pruebas/evidencias/despliegue/jenkins/.",
-      "evidencia": [],
-      "textoParaDefectos": "JEN-04 Nuevo build del pipeline sobre la versión refactorizada Pendiente: 1) git add -A && git commit && git push origin main; 2) defina JENKINS_USER y JENKINS_TOKEN (Jenkins → usuario → Configurar → API Token) y vuelva a ejecutar este script, o pulse «Construir ahora» en http://localhost:8081/job/taskflow-pipeline y guarde la consola en pruebas/evidencias/despliegue/jenkins/.",
+      "estado": "Aprobado",
+      "obtenido": "Build #13 (existente) del 27/10/2026, 12:21:27 a. m. sobre el commit f6522aa: SUCCESS en 187 s; etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Pruebas de regresión unitarias → Pruebas de regresión caja negra → Compilar aplicación → Analisis con SonarQube → Quality Gate → Construir imagen Docker → Declarative: Post Actions; Tests: 88 passed, 88 total | Tests: 49 passed, 49 total; Quality Gate OK.",
+      "evidencia": [
+        "pruebas/evidencias/despliegue/jenkins/build-13-consola.log",
+        "pruebas/evidencias/despliegue/jenkins/job-api.json"
+      ],
+      "textoParaDefectos": "JEN-04 Build final del pipeline sobre la versión refactorizada (#13) Build #13 (existente) del 27/10/2026, 12:21:27 a. m. sobre el commit f6522aa: SUCCESS en 187 s; etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Pruebas de regresión unitarias → Pruebas de regresión caja negra → Compilar aplicación → Analisis con SonarQube → Quality Gate → Construir imagen Docker → Declarative: Post Actions; Tests: 88 passed, 88 total | Tests: 49 passed, 49 total; Quality Gate OK.",
       "funcionalidad": "F4 Proyectos",
       "funcionalidadId": "F4",
       "requisitos": [

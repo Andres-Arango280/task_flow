@@ -6,28 +6,13 @@
     "qualifier": "TRK",
     "measures": [
       {
-        "metric": "alert_status",
-        "value": "OK"
-      },
-      {
-        "metric": "vulnerabilities",
-        "value": "0",
-        "bestValue": true
-      },
-      {
         "metric": "bugs",
         "value": "0",
         "bestValue": true
       },
       {
-        "metric": "sqale_rating",
-        "value": "1.0",
-        "bestValue": true
-      },
-      {
-        "metric": "security_rating",
-        "value": "1.0",
-        "bestValue": true
+        "metric": "ncloc",
+        "value": "264"
       },
       {
         "metric": "reliability_rating",
@@ -40,17 +25,32 @@
         "bestValue": true
       },
       {
-        "metric": "ncloc",
-        "value": "264"
-      },
-      {
-        "metric": "code_smells",
-        "value": "0",
-        "bestValue": true
+        "metric": "alert_status",
+        "value": "OK"
       },
       {
         "metric": "duplicated_lines_density",
         "value": "0.0",
+        "bestValue": true
+      },
+      {
+        "metric": "security_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "sqale_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "vulnerabilities",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "code_smells",
+        "value": "0",
         "bestValue": true
       }
     ]

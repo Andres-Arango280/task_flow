@@ -176,7 +176,7 @@ El script escribe `pruebas/evidencias/despliegue/` con 20 casos:
 
 - **DEP-01…04** contenedores activos, `nest build`, `vite build`, imagen Docker del backend.
 - **SON-01…05** servidor SonarQube, análisis con `sonar-scanner` de backend y frontend, **Quality Gate OK** en ambos (fiabilidad, seguridad y mantenibilidad A en código nuevo; cobertura nueva 87,1 %; duplicación 0 %; 100 % de hotspots revisados). Los `*-medidas.json` y `*-quality-gate.json` son las respuestas reales de la API.
-- **JEN-01…04** Jenkins disponible, último build exitoso, diagnóstico del build fallido y **nuevo build sobre la versión final** disparado por el sondeo SCM del repositorio `Andres-Arango280/task_flow` (consola en `jenkins/build-<n>-consola.log`).
+- **JEN-01…04** Jenkins disponible, último build exitoso, diagnóstico de los builds fallidos (#11 sin red, #12 Quality Gate sin cobertura) y **nuevo build sobre la versión final** del repositorio `Andres-Arango280/task_flow`, disparado por el script y esperado hasta su resultado (consola en `jenkins/build-<n>-consola.log`). La etapa de regresión unitaria genera `coverage/lcov.info` para que SonarQube mida la cobertura.
 - **REG-01…07** regresión completa posterior al despliegue con los totales de cada suite.
 
 **Qué mostrar:** SonarQube en http://localhost:9000 (proyectos `taskflow:backend` y `taskflow:frontend`, Quality Gate verde, hotspot revisado como «Seguro» con su justificación, falso positivo del `@config` de Tailwind marcado). Jenkins en http://localhost:8081/job/taskflow-pipeline (etapas Checkout → Instalar → Regresión unitaria → Regresión caja negra → Compilar → SonarQube → Quality Gate → Imagen Docker). El `Jenkinsfile` aborta si la Quality Gate falla (`waitForQualityGate abortPipeline: true`).
@@ -237,7 +237,7 @@ node pruebas/informe/generar-presentacion.js
 | `Illegal instruction` con `npx cypress run` en Git Bash | Use los scripts `npm run test:*` del frontend. |
 | Stagehand / Browser Use / MCP muy lentos o fallan | Compruebe `ollama list`; cierre otras cargas; repita la ejecución (resultado no determinista con el modelo local). |
 | SonarQube responde 401 | Genere un token de usuario y páselo en `SONAR_TOKEN`; nunca lo escriba en archivos del repositorio. |
-| Jenkins no construye tras el push | El job sondea el SCM cada 2 min; también puede pulsar «Construir ahora» o definir `JENKINS_USER`/`JENKINS_TOKEN` para que el script lo dispare. |
+| Jenkins no construye tras el push | El job sondea el SCM cada 2 min (usa el repositorio del último build exitoso). `verificar-despliegue.mjs` dispara el build por sí mismo: con `JENKINS_USER`/`JENKINS_TOKEN` si se definen, o como anónimo si el administrador concedió ese permiso; también puede pulsar «Construir ahora». |
 | Cucumber falla al instalar | Node 20 requiere `@cucumber/cucumber@11`; la versión 13 exige Node ≥ 22. |
 
 Más detalle de cada suite: `README_COMANDOS.md`.

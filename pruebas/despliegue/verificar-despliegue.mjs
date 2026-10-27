@@ -158,59 +158,71 @@ if (ultimoExitoso) {
     'Aprobado', [`jenkins/build-${ultimoExitoso.number}-consola.log`, 'jenkins/job-api.json'], { commit, etapas });
 }
 const ultimo = builds[0];
-if (ultimo && ultimo.result !== 'SUCCESS') {
-  const consola = await http(`${JENKINS}/job/${JOB}/${ultimo.number}/consoleText`, { timeout: 30000 });
-  const limpio = consola.texto.replace(/\u001b\[[0-9;]*m/g, '');
-  guardar(`jenkins/build-${ultimo.number}-consola.log`, limpio);
-  const causa = (limpio.match(/fatal: [^\n]+|ERROR: [^\n]+|Caused by: [^\n]+/) ?? [limpio.trim().split('\n').slice(-3).join(' ')])[0];
-  caso('JEN-03', `Diagnóstico del último build (#${ultimo.number}, ${ultimo.result})`, 'negativo', 'Registrar la causa del último build no exitoso para corregirla antes del despliegue final.', 'Causa identificada y corregible (no es un fallo del software).',
-    `Build #${ultimo.number}: ${causa.slice(0, 300)}`, /Could not resolve host|unable to access/.test(causa) ? 'Aprobado' : 'Fallido', [`jenkins/build-${ultimo.number}-consola.log`], { observacion: /Could not resolve host/.test(causa) ? 'El contenedor de Jenkins no tenía red para clonar GitHub; no es un fallo de las pruebas ni del código.' : undefined });
+const limpiarConsola = (texto) => texto.replace(/\u001b\[[0-9;]*m/g, '').replace(/ha:\/\/\/\/[A-Za-z0-9+/=]+/g, '');
+const fallido = builds.find((b) => b.result && b.result !== 'SUCCESS');
+if (fallido) {
+  const consola = await http(`${JENKINS}/job/${JOB}/${fallido.number}/consoleText`, { timeout: 30000 });
+  const limpio = limpiarConsola(consola.texto);
+  guardar(`jenkins/build-${fallido.number}-consola.log`, limpio);
+  const causa = (limpio.match(/QUALITY GATE STATUS: FAILED[^\n]*|fatal: [^\n]+|ERROR: [^\n]+|Caused by: [^\n]+/) ?? [limpio.trim().split('\n').slice(-3).join(' ')])[0];
+  const esRed = /Could not resolve host|unable to access/.test(causa);
+  const esQg = /QUALITY GATE STATUS: FAILED/.test(causa);
+  const condicionQg = esQg ? (limpio.match(/new_coverage[^\n]*|coverage[^\n]*No LCOV[^\n]*/i) ?? [])[0] : undefined;
+  caso('JEN-03', `Diagnóstico del último build no exitoso (#${fallido.number}, ${fallido.result})`, 'negativo',
+    'Registrar la causa del último build no exitoso y comprobar que fue corregida antes del despliegue final.', 'Causa identificada, ajena al software probado, y corregida en el build siguiente.',
+    `Build #${fallido.number} del ${new Date(fallido.timestamp).toLocaleString('es-CO')}: ${causa.slice(0, 300)}${esQg ? ' — el análisis se ejecutó sin coverage/lcov.info (sensor de cobertura cero → new_coverage 0 %).' : ''}`,
+    esRed || esQg ? 'Aprobado' : 'Fallido', [`jenkins/build-${fallido.number}-consola.log`],
+    { observacion: esRed ? 'El contenedor de Jenkins no tenía red para clonar GitHub; no es un fallo de las pruebas ni del código. Corregido al restablecer la red del contenedor.'
+      : esQg ? 'La Quality Gate falló por cobertura nueva 0 %: el pipeline no generaba el informe LCOV. Corregido en el Jenkinsfile (la etapa de regresión unitaria ejecuta Jest con --coverage --coverageReporters=lcov); verificado por JEN-04.'
+      : undefined, condicionQg });
 }
 
-if (authJenkins) {
-  const crumb = await http(`${JENKINS}/crumbIssuer/api/json`, { headers: authJenkins });
-  const cab = { ...authJenkins, ...(crumb.json ? { [crumb.json.crumbRequestField]: crumb.json.crumb } : {}) };
-  const disparo = await http(`${JENKINS}/job/${JOB}/build`, { method: 'POST', headers: cab });
-  let nuevo = null;
+// JEN-04: build del pipeline sobre el commit local HEAD. Si ya existe un build terminado sobre ese commit se reutiliza;
+// si no, se dispara (con JENKINS_USER/JENKINS_TOKEN si existen, o como anónimo cuando el administrador concedió Job/Build)
+// y se espera su resultado. El crumb CSRF va ligado a la sesión, por eso se reenvía la cookie JSESSIONID.
+const headLocal = ejecutar('git', ['rev-parse', 'HEAD'], RAIZ, null).salida.trim().slice(0, 40);
+let nuevo = null; let consolaNuevo = ''; let origenBuild = 'existente';
+for (const b of builds.filter((x) => x.result)) {
+  const consola = await http(`${JENKINS}/job/${JOB}/${b.number}/consoleText`, { timeout: 30000 });
+  const limpio = limpiarConsola(consola.texto);
+  if (limpio.includes(`Checking out Revision ${headLocal}`)) { nuevo = b; consolaNuevo = limpio; break; }
+}
+let disparo = { status: 0 };
+if (!nuevo) {
+  origenBuild = 'disparado';
+  const crumb = await http(`${JENKINS}/crumbIssuer/api/json`, { headers: authJenkins ?? {} });
+  const cookie = (crumb.headers?.get?.('set-cookie') ?? '').split(';')[0];
+  const cab = { ...(authJenkins ?? {}), ...(crumb.json ? { [crumb.json.crumbRequestField]: crumb.json.crumb } : {}), ...(cookie ? { Cookie: cookie } : {}) };
+  disparo = await http(`${JENKINS}/job/${JOB}/build`, { method: 'POST', headers: cab });
   if (disparo.status === 201 || disparo.status === 200) {
     const siguiente = (ultimo?.number ?? 0) + 1;
     for (let i = 0; i < 90; i += 1) {
       await new Promise((r) => setTimeout(r, 10000));
-      const b = await http(`${JENKINS}/job/${JOB}/${siguiente}/api/json?tree=number,result,building,timestamp,duration`, { headers: authJenkins });
+      const b = await http(`${JENKINS}/job/${JOB}/${siguiente}/api/json?tree=number,result,building,timestamp,duration`, { headers: authJenkins ?? {} });
       if (b.json && b.json.result) { nuevo = b.json; break; }
     }
+    if (nuevo) {
+      const consola = await http(`${JENKINS}/job/${JOB}/${nuevo.number}/consoleText`, { headers: authJenkins ?? {}, timeout: 30000 });
+      consolaNuevo = limpiarConsola(consola.texto);
+    }
   }
-  if (nuevo) {
-    const consola = await http(`${JENKINS}/job/${JOB}/${nuevo.number}/consoleText`, { headers: authJenkins, timeout: 30000 });
-    const limpio = consola.texto.replace(/\u001b\[[0-9;]*m/g, '').replace(/ha:\/\/\/\/[A-Za-z0-9+/=]+/g, '');
-    guardar(`jenkins/build-${nuevo.number}-consola.log`, limpio);
-    caso('JEN-04', `Nuevo build del pipeline sobre la versión refactorizada (#${nuevo.number})`, 'positivo', 'Disparar el pipeline con el código final publicado en GitHub y verificar que termina en SUCCESS.', 'SUCCESS con Quality Gate OK.',
-      `Build #${nuevo.number}: ${nuevo.result} en ${Math.round(nuevo.duration / 1000)} s. ${(limpio.match(/Tests:\s+[^\n]+/g) ?? []).join(' | ')} ${/Quality gate is 'OK'/.test(limpio) ? 'Quality Gate OK.' : ''}`,
-      nuevo.result === 'SUCCESS' ? 'Aprobado' : 'Fallido', [`jenkins/build-${nuevo.number}-consola.log`]);
-  } else {
-    caso('JEN-04', 'Nuevo build del pipeline sobre la versión refactorizada', 'positivo', 'Disparar el pipeline con el código final.', 'SUCCESS.', `No se pudo disparar o esperar el build (HTTP ${disparo.status}).`, 'Fallido', []);
-  }
+}
+if (nuevo) {
+  guardar(`jenkins/build-${nuevo.number}-consola.log`, consolaNuevo);
+  const commitBuild = (consolaNuevo.match(/Checking out Revision ([0-9a-f]{40})/) ?? [])[1];
+  const etapas = [...consolaNuevo.matchAll(/\[Pipeline\] \{ \((.+?)\)/g)].map((m) => m[1]).filter((e, i, a) => a.indexOf(e) === i);
+  const tests = (consolaNuevo.match(/Tests:\s+[^\n]+/g) ?? []).map((t) => t.replace(/\s+/g, ' ')).join(' | ');
+  const qgOk = /Quality gate is 'OK'|QUALITY GATE STATUS: PASSED/.test(consolaNuevo);
+  caso('JEN-04', `Build final del pipeline sobre la versión refactorizada (#${nuevo.number})`, 'positivo',
+    'Ejecutar el pipeline completo (checkout de Andres-Arango280/task_flow, npm ci, regresión unitaria con cobertura, regresión de caja negra, build, análisis SonarQube, Quality Gate e imagen Docker) sobre el código final publicado.',
+    'SUCCESS con Quality Gate OK.',
+    `Build #${nuevo.number} (${origenBuild}) del ${new Date(nuevo.timestamp).toLocaleString('es-CO')} sobre el commit ${(commitBuild ?? headLocal).slice(0, 7)}: ${nuevo.result} en ${Math.round(nuevo.duration / 1000)} s; etapas ${etapas.join(' → ')}; ${tests}; Quality Gate ${qgOk ? 'OK' : 'no encontrada en la consola'}.`,
+    nuevo.result === 'SUCCESS' ? 'Aprobado' : 'Fallido', [`jenkins/build-${nuevo.number}-consola.log`, 'jenkins/job-api.json'], { commit: commitBuild ?? headLocal, etapas, origen: origenBuild });
 } else {
-  // Sin credenciales: el job sondea el SCM (H/2) y construye solo cuando detecta el commit publicado.
-  // Se busca el build más reciente, posterior al último conocido, cuya consola contenga el commit HEAD local.
-  const headLocal = ejecutar('git', ['rev-parse', 'HEAD'], RAIZ, null).salida.trim().slice(0, 40);
-  let nuevo = null; let consolaNuevo = '';
-  for (const b of builds.filter((x) => x.result && x.number > (ultimoExitoso?.number ?? 0) && x.number > 11)) {
-    const consola = await http(`${JENKINS}/job/${JOB}/${b.number}/consoleText`, { timeout: 30000 });
-    const limpio = consola.texto.replace(/\u001b\[[0-9;]*m/g, '').replace(/ha:\/\/\/\/[A-Za-z0-9+/=]+/g, '');
-    if (limpio.includes(headLocal)) { nuevo = b; consolaNuevo = limpio; break; }
-  }
-  if (nuevo) {
-    guardar(`jenkins/build-${nuevo.number}-consola.log`, consolaNuevo);
-    const etapas = [...consolaNuevo.matchAll(/\[Pipeline\] \{ \((.+?)\)/g)].map((m) => m[1]).filter((e, i, a) => a.indexOf(e) === i);
-    caso('JEN-04', `Nuevo build del pipeline sobre la versión refactorizada (#${nuevo.number})`, 'positivo',
-      'Publicar el código final en GitHub (Andres-Arango280/task_flow, rama main) y verificar que el pipeline, disparado por el sondeo SCM, termina en SUCCESS.', 'SUCCESS con Quality Gate OK.',
-      `Build #${nuevo.number} del ${new Date(nuevo.timestamp).toLocaleString('es-CO')} sobre el commit ${headLocal.slice(0, 7)}: ${nuevo.result} en ${Math.round(nuevo.duration / 1000)} s; etapas ${etapas.join(' → ')}; ${(consolaNuevo.match(/Tests:\s+[^\n]+/g) ?? []).join(' | ')} ${/Quality gate is 'OK'/.test(consolaNuevo) ? 'Quality Gate OK.' : ''}`,
-      nuevo.result === 'SUCCESS' ? 'Aprobado' : 'Fallido', [`jenkins/build-${nuevo.number}-consola.log`, 'jenkins/job-api.json'], { commit: headLocal, etapas });
-  } else {
-    caso('JEN-04', 'Nuevo build del pipeline sobre la versión refactorizada', 'positivo', 'Publicar el código final en GitHub (Andres-Arango280/task_flow, rama main) y verificar que el pipeline termina en SUCCESS.', 'SUCCESS con Quality Gate OK.',
-      `Pendiente: aún no hay un build de Jenkins sobre el commit local ${headLocal.slice(0, 7)}. Haga git push origin main y espere el sondeo SCM (cada 2 min), o defina JENKINS_USER y JENKINS_TOKEN para dispararlo desde este script.`, 'Pendiente', []);
-  }
+  caso('JEN-04', 'Build final del pipeline sobre la versión refactorizada', 'positivo', 'Ejecutar el pipeline completo sobre el código final publicado en GitHub.', 'SUCCESS con Quality Gate OK.',
+    disparo.status === 201 || disparo.status === 200 ? `El build se encoló (HTTP ${disparo.status}) pero no terminó en 15 min.`
+      : `Pendiente: no hay un build sobre el commit ${headLocal.slice(0, 7)} y no fue posible dispararlo (HTTP ${disparo.status}). Haga git push origin main y pulse «Construir ahora» en ${JENKINS}/job/${JOB}, o defina JENKINS_USER y JENKINS_TOKEN.`,
+    disparo.status === 201 || disparo.status === 200 ? 'Fallido' : 'Pendiente', []);
 }
 
 // ---------- REG: regresión posterior a la refactorización ----------

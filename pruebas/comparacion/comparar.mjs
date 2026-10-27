@@ -1,4 +1,4 @@
-// Compara la versión ANTERIOR del software (último commit en git, HEAD) con la versión FINAL
+// Compara la versión ANTERIOR del software (commit 8b46dc0, última versión antes de la refactorización; cambiar con REF_ANTES) con la versión FINAL
 // refactorizada (árbol de trabajo) y genera evidencias objetivas para el criterio
 // «Software refactorizado y comparación antes y después».
 //   node pruebas/comparacion/comparar.mjs
@@ -13,7 +13,7 @@ const SALIDA = join(RAIZ, 'pruebas', 'evidencias', 'comparacion');
 mkdirSync(SALIDA, { recursive: true });
 
 const git = (...args) => execFileSync('git', args, { cwd: RAIZ, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
-const REF = process.env.REF_ANTES ?? 'HEAD';
+const REF = process.env.REF_ANTES ?? '8b46dc0';
 const commit = git('log', '-1', '--format=%h|%ad|%s', '--date=short', REF).trim().split('|');
 
 // ---------- utilidades ----------
