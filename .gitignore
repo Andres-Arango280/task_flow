@@ -4,3 +4,6 @@ coverage/
 .scannerwork/
 _backup_mongo/
 .env
+
+# archivos de bloqueo de Microsoft Office
+~$*
