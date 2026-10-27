@@ -1,0 +1,96 @@
+{
+  "id": "ST-06",
+  "instruccionesYRespuestas": {
+    "extraido": {
+      "columnas": [
+        {
+          "nombre": "Por Hacer",
+          "tareas": [
+            "Diseñar la pantalla de inicio",
+            "Diseñar la pantalla de inicio"
+          ]
+        },
+        {
+          "nombre": "En Progreso",
+          "tareas": [
+            "Sin tareas en esta columna",
+            "Arrastra una tarea aquí o crea una nueva."
+          ]
+        },
+        {
+          "nombre": "Hecho",
+          "tareas": [
+            "Escribir las pruebas"
+          ]
+        }
+      ],
+      "progreso": 50
+    },
+    "real": {
+      "columnas": [
+        {
+          "nombre": "Por Hacer",
+          "tareas": [
+            "Diseñar la pantalla de inicio"
+          ]
+        },
+        {
+          "nombre": "En Progreso",
+          "tareas": []
+        },
+        {
+          "nombre": "Hecho",
+          "tareas": [
+            "Escribir las pruebas"
+          ]
+        }
+      ],
+      "progreso": 50
+    },
+    "marcadoresDescartados": 2
+  },
+  "datosDePrueba": {
+    "proyectoId": "c07fbb5c-e10e-4bcd-85ab-690929429376",
+    "real": {
+      "columnas": [
+        {
+          "nombre": "Por Hacer",
+          "tareas": [
+            "Diseñar la pantalla de inicio"
+          ]
+        },
+        {
+          "nombre": "En Progreso",
+          "tareas": []
+        },
+        {
+          "nombre": "Hecho",
+          "tareas": [
+            "Escribir las pruebas"
+          ]
+        }
+      ],
+      "progreso": 50
+    }
+  },
+  "tiemposIA": [
+    {
+      "paso": "extract columna Por Hacer",
+      "seg": 11.5
+    },
+    {
+      "paso": "extract columna En Progreso",
+      "seg": 10.2
+    },
+    {
+      "paso": "extract columna Hecho",
+      "seg": 7.4
+    },
+    {
+      "paso": "extract progreso",
+      "seg": 6
+    }
+  ],
+  "estado": "Fallido",
+  "obtenido": "No conforme: columna «Por Hacer»: esperado [\"Diseñar la pantalla de inicio\"], extraído [\"diseñar la pantalla de inicio\",\"diseñar la pantalla de inicio\"]"
+}

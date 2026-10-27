@@ -1,0 +1,59 @@
+{
+  "observe_summary": [
+    {
+      "observe_inference_type": "observe",
+      "timestamp": "20261027_041723519",
+      "LLM_input_file": "20261027_041723519_observe_call.txt",
+      "LLM_output_file": "20261027_041756242_observe_response.txt",
+      "prompt_tokens": 621,
+      "completion_tokens": 103,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "inference_time_ms": 32720
+    },
+    {
+      "observe_inference_type": "observe",
+      "timestamp": "20261027_041756921",
+      "LLM_input_file": "20261027_041756921_observe_call.txt",
+      "LLM_output_file": "20261027_041812907_observe_response.txt",
+      "prompt_tokens": 616,
+      "completion_tokens": 94,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "inference_time_ms": 15983
+    },
+    {
+      "observe_inference_type": "observe",
+      "timestamp": "20261027_041812929",
+      "LLM_input_file": "20261027_041812929_observe_call.txt",
+      "LLM_output_file": "20261027_041847067_observe_response.txt",
+      "prompt_tokens": 630,
+      "completion_tokens": 260,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "inference_time_ms": 34135
+    },
+    {
+      "observe_inference_type": "observe",
+      "timestamp": "20261027_042020369",
+      "LLM_input_file": "20261027_042020369_observe_call.txt",
+      "LLM_output_file": "20261027_042040743_observe_response.txt",
+      "prompt_tokens": 752,
+      "completion_tokens": 97,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "inference_time_ms": 20370
+    },
+    {
+      "observe_inference_type": "observe",
+      "timestamp": "20261027_042123602",
+      "LLM_input_file": "20261027_042123602_observe_call.txt",
+      "LLM_output_file": "20261027_042139824_observe_response.txt",
+      "prompt_tokens": 920,
+      "completion_tokens": 46,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "inference_time_ms": 16218
+    }
+  ]
+}

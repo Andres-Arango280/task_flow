@@ -1,0 +1,155 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/healer-demo.spec.ts",
+      "--reporter=json"
+    ],
+    "configFile": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\playwright.config.ts",
+    "rootDir": "C:/Users/brahi/Desktop/TercerExamen-main/TercerExamen-main/pruebas/ia-herramientas/playwright-agents/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/brahi/Desktop/TercerExamen-main/TercerExamen-main/pruebas/ia-herramientas/playwright-agents/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/brahi/Desktop/TercerExamen-main/TercerExamen-main/pruebas/ia-herramientas/playwright-agents/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "healer-demo.spec.ts",
+      "file": "healer-demo.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Autenticación (healer)",
+          "file": "healer-demo.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Inicio de sesión con credenciales válidas (copia para el healer)",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 60188,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\tests\\healer-demo.spec.ts",
+                            "column": 34,
+                            "line": 14
+                          },
+                          "message": "Error: locator.fill: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#email')\u001b[22m\n\n\n  12 |     await page.goto('/login');\n  13 |     // LOCALIZADOR ROTO: el campo no tiene id=\"email\"; la interfaz expone la etiqueta «Correo electrónico».\n> 14 |     await page.locator('#email').fill(usuario.email);\n     |                                  ^\n  15 |     await page.locator('#password').fill(usuario.password);\n  16 |     await page.locator('button.btn-login').click();\n  17 |\n    at C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\tests\\healer-demo.spec.ts:14:34"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T23:07:56.230Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\healer-demo-Autenticación--c0812-lidas-copia-para-el-healer-\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\healer-demo-Autenticación--c0812-lidas-copia-para-el-healer-\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\healer-demo-Autenticación--c0812-lidas-copia-para-el-healer-\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "62376b524cfcd137aca1-079c393d5a5dc2cee4fd",
+              "file": "healer-demo.spec.ts",
+              "line": 8,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T23:07:55.430Z",
+    "duration": 61836.423,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

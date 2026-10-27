@@ -1,0 +1,110 @@
+{
+  "SP-01": {
+    "tipo": "exitoso",
+    "actores": ["Ana"],
+    "objetivo": "Verificar que una persona nueva puede crear su cuenta desde /register y después iniciar sesión.",
+    "esperado": "Tras «Crear cuenta» se redirige a /login con el aviso «Cuenta creada correctamente» y el correo precargado; al iniciar sesión llega a «Mis equipos» (título de pestaña «Mis equipos · TaskFlow») con el token guardado."
+  },
+  "SP-02": {
+    "tipo": "alternativo",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar que no se puede registrar dos veces el mismo correo.",
+    "esperado": "Se muestra la alerta «Ya existe una cuenta con el correo …» y la persona permanece en /register."
+  },
+  "SP-03": {
+    "tipo": "alternativo",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar la validación del formulario de registro cuando la confirmación de contraseña no coincide.",
+    "esperado": "Se muestra la alerta «Las contraseñas no coinciden…» y no se crea la cuenta (sigue en /register)."
+  },
+  "SP-04": {
+    "tipo": "alternativo",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar que unas credenciales incorrectas no dan acceso.",
+    "esperado": "Aparece la alerta «El correo o la contraseña no son correctos…», se mantiene en /login y no se guarda ningún token."
+  },
+  "SP-05": {
+    "tipo": "alternativo",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar que las rutas privadas están protegidas cuando no hay sesión.",
+    "esperado": "Al visitar /proyectos/:id y /preferencias sin sesión se redirige a /login («Iniciar sesión · TaskFlow»)."
+  },
+  "SP-06": {
+    "tipo": "exitoso",
+    "actores": ["Ana"],
+    "objetivo": "Verificar que «Salir» pide confirmación, que cancelar mantiene la sesión y que confirmar la cierra.",
+    "esperado": "Cancelar deja a Ana en «Mis equipos»; confirmar la lleva a /login, borra el token y / vuelve a redirigir a /login."
+  },
+  "SP-07": {
+    "tipo": "exitoso",
+    "actores": ["Ana", "Beto"],
+    "objetivo": "Verificar que la líder crea un equipo desde la interfaz e invita a un miembro registrado por su correo.",
+    "esperado": "Aviso «Equipo «…» creado», la página del equipo muestra solo a Ana y, tras invitar, la lista de miembros contiene a Ana y a Beto con el aviso «… ahora es miembro del equipo»."
+  },
+  "SP-08": {
+    "tipo": "alternativo",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar el mensaje al invitar a un correo que no está registrado.",
+    "esperado": "Dentro de la ventana de invitación aparece «No hay ningún usuario registrado con el correo …» y el equipo sigue con 1 miembro."
+  },
+  "SP-09": {
+    "tipo": "exitoso",
+    "actores": ["Ana"],
+    "objetivo": "Verificar que al crear un proyecto se genera su tablero con las tres listas por defecto.",
+    "esperado": "Aviso «… creado con sus 3 listas»; el tablero muestra las columnas «Por Hacer», «En Progreso» y «Hecho» y un progreso del 0 %."
+  },
+  "SP-10": {
+    "tipo": "alternativo",
+    "actores": ["Ana", "Beto"],
+    "objetivo": "Verificar que quitar a un miembro exige confirmación y que se puede deshacer desde el aviso.",
+    "esperado": "Tras confirmar, Beto desaparece de la lista («… ya no forma parte del equipo»); al pulsar «Deshacer» vuelve a aparecer («… ha vuelto al equipo»)."
+  },
+  "SP-11": {
+    "tipo": "exitoso",
+    "actores": ["Ana"],
+    "objetivo": "Verificar el ciclo principal del tablero: crear tareas, moverlas a «Hecho» y que el progreso se recalcule.",
+    "esperado": "Las dos tareas aparecen en «Por Hacer» con progreso 0 %; al mover una a «Hecho» queda allí, la otra sigue en «Por Hacer», el progreso pasa a 50 % y se avisa «… movida a Hecho»."
+  },
+  "SP-12": {
+    "tipo": "alternativo",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar la validación de la ventana «Crear nueva tarea» cuando falta el título.",
+    "esperado": "Se muestra «Escribe un título para la tarea (es obligatorio)» y el tablero sigue sin tareas."
+  },
+  "SP-13": {
+    "tipo": "alternativo",
+    "actores": ["Ana"],
+    "objetivo": "Verificar que eliminar una tarea pide confirmación y que la acción se puede deshacer.",
+    "esperado": "Tras confirmar, la tarea desaparece (solo queda la otra) con aviso «… eliminada»; al pulsar «Deshacer» vuelve a «Por Hacer» con aviso «… restaurada»."
+  },
+  "SP-14": {
+    "tipo": "exitoso",
+    "actores": ["Ana"],
+    "objetivo": "Verificar que la búsqueda de tareas tolera tildes y errores de escritura y busca también en la descripción.",
+    "esperado": "«autentificacion» encuentra «Configurar autenticación JWT» (Mostrando 1 de 3), «documetacion» y «readme» encuentran «Revisar documentación» y «xyzxyz» no muestra ninguna (Mostrando 0 de 3)."
+  },
+  "SP-15": {
+    "tipo": "exitoso",
+    "actores": ["Ana"],
+    "objetivo": "Verificar que una tarea se puede arrastrar entre columnas solo con el teclado (asa de arrastre accesible).",
+    "esperado": "Tras Espacio + 2 flechas a la derecha + Espacio, la tarea queda en «Hecho», ya no está en «Por Hacer» y el progreso es 100 %."
+  },
+  "SP-16": {
+    "tipo": "exitoso",
+    "actores": ["Ana", "Beto"],
+    "objetivo": "Verificar la colaboración: un miembro ve el equipo, las tareas creadas por la líder y los cambios que ella hace.",
+    "esperado": "Beto ve el equipo en «Mis equipos» y la tarea de Ana en «Por Hacer»; después de que Ana la mueva a «Hecho», Beto la ve en «Hecho» y no en «Por Hacer»."
+  },
+  "SP-17": {
+    "tipo": "alternativo",
+    "actores": ["Ana", "Carla"],
+    "objetivo": "Comprobar que una usuaria ajena al equipo no puede ver el tablero ni sus tareas.",
+    "esperado": "La API responde 403 a Carla; en la interfaz no ve el equipo, al abrir el tablero ve la página de error con el encabezado específico «No tienes acceso a este proyecto» (no el genérico «Proyecto no encontrado» / «No se pudo cargar el tablero») y el aviso de error «No tienes acceso a este proyecto» y no se muestran columnas ni la tarea."
+  },
+  "SP-18": {
+    "tipo": "exitoso",
+    "actores": ["Ana"],
+    "objetivo": "Verificar las preferencias de accesibilidad: alto contraste, tamaño de texto, persistencia y restablecimiento.",
+    "esperado": "Al activar alto contraste y texto «Grande» el documento pasa a data-contraste=alto y data-texto=grande, se mantiene al navegar; al restablecer (con confirmación) vuelve a normal/normal con el aviso «Se restablecieron los valores por defecto»."
+  }
+}

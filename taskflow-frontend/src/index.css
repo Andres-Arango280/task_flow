@@ -1,14 +1,142 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Estilos base dentro de la capa "base" para que las utilidades de Tailwind (p-8, mt-4...)
+   puedan sobrescribirlos; fuera de una capa anularían todo el espaciado. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: #f3f4f6;
+    min-height: 100vh;
+    color: #1f2937;
+  }
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  background-color: #f3f4f6;
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0ea5e9, #0369a1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0284c7, #075985);
+}
+
+/* Componentes globales reutilizables */
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-card transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .card-elevated {
+    @apply bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-card border border-white/80 backdrop-blur-sm;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200;
+  }
+
+  .badge-primary {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200 bg-primary-100 text-primary-700;
+  }
+
+  .badge-success {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200 bg-success-50 text-success-600;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200 bg-warning-50 text-warning-600;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200 bg-danger-50 text-danger-600;
+  }
+
+  .btn-gradient {
+    @apply bg-gradient-primary hover:shadow-glow-primary text-white font-medium py-2 px-4 rounded-lg transition-all duration-300;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold bg-clip-text text-transparent bg-gradient-primary;
+  }
+
+  .subtitle {
+    @apply text-gray-600 text-lg font-medium;
+  }
+}
+/* ============================================
+   Preferencias de accesibilidad (ver Preferencias)
+   ============================================ */
+html[data-texto='grande'] {
+  font-size: 18px;
+}
+
+html[data-texto='muy-grande'] {
+  font-size: 20px;
+}
+
+/* Alto contraste: texto oscuro, sin degradados en el texto y bordes visibles */
+html[data-contraste='alto'] body {
+  background: #ffffff;
+  color: #000000;
+}
+
+html[data-contraste='alto'] [class*='text-gray-'] {
+  color: #111111 !important;
+}
+
+html[data-contraste='alto'] .bg-clip-text {
+  background: none !important;
+  -webkit-text-fill-color: currentColor;
+  color: #000000 !important;
+}
+
+html[data-contraste='alto'] [class*='border-gray-'] {
+  border-color: #333333 !important;
+}
+
+html[data-contraste='alto'] a {
+  text-decoration: underline;
+}
+
+html[data-contraste='alto'] :focus-visible {
+  outline: 3px solid #000000 !important;
+  outline-offset: 2px;
+}
+
+/* Reducir animaciones: preferencia del usuario o del sistema operativo */
+html[data-animaciones='reducidas'] *,
+html[data-animaciones='reducidas'] *::before,
+html[data-animaciones='reducidas'] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Foco visible siempre al navegar con teclado */
+:focus-visible {
+  outline: 3px solid #0369a1;
+  outline-offset: 2px;
 }

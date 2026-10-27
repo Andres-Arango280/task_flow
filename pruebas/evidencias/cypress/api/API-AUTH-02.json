@@ -1,0 +1,24 @@
+{
+  "id": "API-AUTH-02",
+  "obtenido": "Respondió 409 con el mensaje \"El email ya está registrado\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/auth/register",
+    "autenticado": false,
+    "cuerpo": {
+      "nombre": "Usuario dup 347012",
+      "email": "DUP.17930563438347012@TASKFLOW-CYPRESS.TEST",
+      "password": "***"
+    }
+  },
+  "respuesta": {
+    "estado": 409,
+    "duracionMs": 4,
+    "cuerpo": {
+      "message": "El email ya está registrado",
+      "error": "Conflict",
+      "statusCode": 409
+    }
+  },
+  "fecha": "2026-10-26T23:12:23.918Z"
+}

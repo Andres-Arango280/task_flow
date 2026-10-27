@@ -29,4 +29,8 @@ export const proyectosService = {
     const response = await api.get(`/listas/proyecto/${proyectoId}`);
     return response.data;
   },
+
+  async eliminar(proyectoId: string): Promise<void> {
+    await api.delete(`/proyectos/${proyectoId}`);
+  },
 };

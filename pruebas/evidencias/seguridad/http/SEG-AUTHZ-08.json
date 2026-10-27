@@ -1,0 +1,102 @@
+{
+  "id": "SEG-AUTHZ-08",
+  "nombre": "No se pueden asignar usuarios ajenos al equipo a una tarea",
+  "fecha": "2026-10-26T23:19:17.875Z",
+  "obtenido": "asignar → 400 \"Solo se pueden asignar miembros del equipo\"; crear con asignado ajeno → 400",
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "PATCH",
+        "url": "http://localhost:3000/tareas/e119cf5a-ff14-4453-9c95-12650b454571/asignar",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "miembros": [
+            "4ed14a24-52dc-4f52-b416-c361bc417ae1"
+          ]
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "95",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"5f-+0McMMzQnfHTIbJmz5VY1frul3U\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Solo se pueden asignar miembros del equipo",
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 18.1
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/tareas",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "titulo": "x",
+          "listaId": "6ede087c-1379-453c-bf66-938c2ea842cf",
+          "asignados": [
+            "4ed14a24-52dc-4f52-b416-c361bc417ae1"
+          ]
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "95",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"5f-+0McMMzQnfHTIbJmz5VY1frul3U\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Solo se pueden asignar miembros del equipo",
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 13.3
+      }
+    }
+  ]
+}

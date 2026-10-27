@@ -1,0 +1,509 @@
+{
+  "modulo": "axe",
+  "fecha": "2026-10-27T04:24:18.484Z",
+  "casos": [
+    {
+      "id": "A11Y-01",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Iniciar sesión (/login)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Iniciar sesión (/login)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 32 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/login.json",
+        "axe/axe-login.png"
+      ]
+    },
+    {
+      "id": "A11Y-02",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Registro (/register)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Registro (/register)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 34 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/register.json",
+        "axe/axe-register.png"
+      ]
+    },
+    {
+      "id": "A11Y-03",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Privacidad (/privacidad)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Privacidad (/privacidad)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 27 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/privacidad.json",
+        "axe/axe-privacidad.png"
+      ]
+    },
+    {
+      "id": "A11Y-04",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Inicio sin equipos (/)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Inicio sin equipos (/)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 31 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/inicio-vacio.json",
+        "axe/axe-inicio-vacio.png"
+      ]
+    },
+    {
+      "id": "A11Y-05",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Inicio con equipos (/)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Inicio con equipos (/)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 34 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/inicio-equipos.json",
+        "axe/axe-inicio-equipos.png"
+      ]
+    },
+    {
+      "id": "A11Y-06",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Vista de equipo (/equipos/:id)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Vista de equipo (/equipos/:id)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 31 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/equipo.json",
+        "axe/axe-equipo.png"
+      ]
+    },
+    {
+      "id": "A11Y-07",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Modal \"Invitar miembro\"",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Modal \"Invitar miembro\"\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 40 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/modal-invitar.json",
+        "axe/axe-modal-invitar.png"
+      ]
+    },
+    {
+      "id": "A11Y-08",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Tablero Kanban con tareas (/proyectos/:id)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Tablero Kanban con tareas (/proyectos/:id)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 42 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/tablero.json",
+        "axe/axe-tablero.png"
+      ]
+    },
+    {
+      "id": "A11Y-09",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Modal de detalle de tarea",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Modal de detalle de tarea\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 43 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/modal-detalle-tarea.json",
+        "axe/axe-modal-detalle-tarea.png"
+      ]
+    },
+    {
+      "id": "A11Y-10",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Modal \"Crear nueva tarea\"",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Modal \"Crear nueva tarea\"\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 43 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/modal-crear-tarea.json",
+        "axe/axe-modal-crear-tarea.png"
+      ]
+    },
+    {
+      "id": "A11Y-11",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Diálogo de confirmación (eliminar tarea)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Diálogo de confirmación (eliminar tarea)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 43 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/dialogo-confirmacion.json",
+        "axe/axe-dialogo-confirmacion.png"
+      ]
+    },
+    {
+      "id": "A11Y-12",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Ayuda y preguntas frecuentes (/ayuda)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Ayuda y preguntas frecuentes (/ayuda)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 42 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/ayuda.json",
+        "axe/axe-ayuda.png"
+      ]
+    },
+    {
+      "id": "A11Y-13",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Preferencias (/preferencias)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Preferencias (/preferencias)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 39 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/preferencias.json",
+        "axe/axe-preferencias.png"
+      ]
+    },
+    {
+      "id": "A11Y-14",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Panel de atajos de teclado (tecla ?)",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Panel de atajos de teclado (tecla ?)\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 41 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/panel-atajos.json",
+        "axe/axe-panel-atajos.png"
+      ]
+    },
+    {
+      "id": "A11Y-15",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Tablero en modo alto contraste",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Tablero en modo alto contraste\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 42 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/tablero-alto-contraste.json",
+        "axe/axe-tablero-alto-contraste.png"
+      ]
+    },
+    {
+      "id": "A11Y-16",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Inicio en modo alto contraste",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Inicio en modo alto contraste\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 34 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/inicio-alto-contraste.json",
+        "axe/axe-inicio-alto-contraste.png"
+      ]
+    },
+    {
+      "id": "A11Y-17",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Tablero con texto \"muy grande\"",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Tablero con texto \"muy grande\"\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 43 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/tablero-texto-muy-grande.json",
+        "axe/axe-tablero-texto-muy-grande.png"
+      ]
+    },
+    {
+      "id": "A11Y-18",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG 2.2 AA – Preferencias con texto \"grande\" + reducir animaciones",
+      "objetivo": "Detectar automáticamente incumplimientos WCAG 2.0/2.1/2.2 nivel A y AA en \"Preferencias con texto \"grande\" + reducir animaciones\".",
+      "esperado": "0 violaciones de criterios WCAG A/AA (las de \"buenas prácticas\" se informan pero no hacen fallar el caso).",
+      "obtenido": "0 violaciones (axe 4.14.0, 39 reglas superadas)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "axe/preferencias-texto-grande.json",
+        "axe/axe-preferencias-texto-grande.png"
+      ]
+    }
+  ],
+  "incidenciasCarga": [
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 1,
+      "fecha": "2026-10-27T04:23:29.062Z"
+    },
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 2,
+      "fecha": "2026-10-27T04:23:31.837Z"
+    },
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 3,
+      "fecha": "2026-10-27T04:23:34.605Z"
+    }
+  ],
+  "axeVersion": "4.14.0",
+  "etiquetas": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa",
+    "best-practice"
+  ],
+  "totalesImpacto": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+  },
+  "paginas": [
+    {
+      "id": "login",
+      "pagina": "Iniciar sesión (/login)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "register",
+      "pagina": "Registro (/register)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "privacidad",
+      "pagina": "Privacidad (/privacidad)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "inicio-vacio",
+      "pagina": "Inicio sin equipos (/)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "inicio-equipos",
+      "pagina": "Inicio con equipos (/)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "equipo",
+      "pagina": "Vista de equipo (/equipos/:id)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "modal-invitar",
+      "pagina": "Modal \"Invitar miembro\"",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "tablero",
+      "pagina": "Tablero Kanban con tareas (/proyectos/:id)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "modal-detalle-tarea",
+      "pagina": "Modal de detalle de tarea",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "modal-crear-tarea",
+      "pagina": "Modal \"Crear nueva tarea\"",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "dialogo-confirmacion",
+      "pagina": "Diálogo de confirmación (eliminar tarea)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "ayuda",
+      "pagina": "Ayuda y preguntas frecuentes (/ayuda)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "preferencias",
+      "pagina": "Preferencias (/preferencias)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "panel-atajos",
+      "pagina": "Panel de atajos de teclado (tecla ?)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "tablero-alto-contraste",
+      "pagina": "Tablero en modo alto contraste",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "inicio-alto-contraste",
+      "pagina": "Inicio en modo alto contraste",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "tablero-texto-muy-grande",
+      "pagina": "Tablero con texto \"muy grande\"",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "preferencias-texto-grande",
+      "pagina": "Preferencias con texto \"grande\" + reducir animaciones",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    }
+  ],
+  "reglas": []
+}

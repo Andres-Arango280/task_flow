@@ -1,0 +1,19 @@
+{
+  "id": "CYS-JWT-03",
+  "obtenido": "Antes de eliminar la cuenta /usuarios/me respondió 200; tras DELETE /usuarios/me (200) el mismo token recibió 401 \"La sesión ya no es válida. Vuelve a iniciar sesión.\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/usuarios/me",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 401,
+    "duracionMs": 7,
+    "cuerpo": {
+      "message": "La sesión ya no es válida. Vuelve a iniciar sesión.",
+      "error": "Unauthorized",
+      "statusCode": 401
+    }
+  },
+  "fecha": "2026-10-26T23:09:29.192Z"
+}

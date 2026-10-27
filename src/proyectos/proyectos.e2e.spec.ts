@@ -7,30 +7,42 @@ import { ProyectosService } from './proyectos.service';
 // Estas pruebas validan el comportamiento de los endpoints de proyectos
 // desde la perspectiva del usuario (entrada/salida visible)
 
-describe('Proyectos E2E Tests (Black Box)', () => {
+describe('Regression - Proyectos E2E Tests (Black Box)', () => {
+  // AAA + fluent-style assertions (Jest equivalent for this TypeScript stack)
   let service: ProyectosService;
-  let proyectoModel: any;
-  let listaModel: any;
-  let equipoModel: any;
+  let proyectoRepository: any;
+  let listaRepository: any;
+  let equipoRepository: any;
+
+  const equipoBase = (miembros: string[] = ['user-1'], liderId = 'user-1') => ({
+    id: 'equipo-1',
+    nombre: 'Backend Team',
+    liderId,
+    miembros: miembros.map((id) => ({ id })),
+  });
 
   beforeEach(() => {
-    proyectoModel = jest.fn().mockImplementation(() => ({
+    proyectoRepository = {
+      findOne: jest.fn(),
+      find: jest.fn(),
+      create: jest.fn().mockImplementation((entidad) => ({ ...entidad })),
       save: jest.fn(),
-    }));
-
-    listaModel = {
-      insertMany: jest.fn(),
     };
 
-    equipoModel = {
-      findById: jest.fn(),
+    listaRepository = {
+      create: jest.fn().mockImplementation((entidad) => ({ ...entidad })),
+      save: jest.fn().mockImplementation(async (listas) => listas),
+    };
+
+    equipoRepository = {
+      findOne: jest.fn(),
       find: jest.fn(),
     };
 
     service = new ProyectosService(
-      proyectoModel as any,
-      listaModel as any,
-      equipoModel as any,
+      proyectoRepository as any,
+      listaRepository as any,
+      equipoRepository as any,
     );
   });
 
@@ -40,88 +52,45 @@ describe('Proyectos E2E Tests (Black Box)', () => {
   describe('Crear proyecto (Caja Negra)', () => {
     // Escenario 1: Crear proyecto exitosamente
     it('debe crear un proyecto y retornarlo con ID', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        nombre: 'Backend Team',
-        lider: 'user-1',
-        miembros: ['user-1', 'user-2'],
-      };
-
       const proyectoGuardado = {
-        _id: 'proyecto-1',
+        id: 'proyecto-1',
         nombre: 'Q1 2025 Sprint',
-        equipo: 'equipo-1',
+        equipoId: 'equipo-1',
       };
 
-      const proyectoInstance = {
-        save: jest.fn().mockResolvedValue(proyectoGuardado),
-      };
-
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
-      proyectoModel.mockImplementation(() => proyectoInstance);
-      listaModel.insertMany.mockResolvedValue([]);
+      equipoRepository.findOne.mockResolvedValue(equipoBase(['user-1', 'user-2']));
+      proyectoRepository.save.mockResolvedValue(proyectoGuardado);
 
       const resultado = await service.crearProyecto(
         { nombre: 'Q1 2025 Sprint', equipoId: 'equipo-1' },
         'user-2',
       );
 
-      expect(resultado).toHaveProperty('_id', 'proyecto-1');
+      expect(resultado).toHaveProperty('id', 'proyecto-1');
       expect(resultado).toHaveProperty('nombre', 'Q1 2025 Sprint');
-      expect(resultado).toHaveProperty('equipo', 'equipo-1');
+      expect(resultado).toHaveProperty('equipoId', 'equipo-1');
     });
 
     // Escenario 2: Crear listas default automáticamente
     it('debe crear tres listas default (Por Hacer, En Progreso, Hecho)', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1'],
-      };
+      equipoRepository.findOne.mockResolvedValue(equipoBase());
+      proyectoRepository.save.mockResolvedValue({ id: 'proyecto-1', nombre: 'Sprint', equipoId: 'equipo-1' });
 
-      const proyectoGuardado = {
-        _id: 'proyecto-1',
-        nombre: 'Sprint',
-        equipo: 'equipo-1',
-      };
+      await service.crearProyecto({ nombre: 'Sprint', equipoId: 'equipo-1' }, 'user-1');
 
-      const proyectoInstance = {
-        save: jest.fn().mockResolvedValue(proyectoGuardado),
-      };
-
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
-      proyectoModel.mockImplementation(() => proyectoInstance);
-      listaModel.insertMany.mockResolvedValue([]);
-
-      await service.crearProyecto(
-        { nombre: 'Sprint', equipoId: 'equipo-1' },
-        'user-1',
-      );
-
-      expect(listaModel.insertMany).toHaveBeenCalledWith(
-        expect.arrayContaining([
-          expect.objectContaining({ nombre: 'Por Hacer' }),
-          expect.objectContaining({ nombre: 'En Progreso' }),
-          expect.objectContaining({ nombre: 'Hecho' }),
-        ]),
-      );
+      expect(listaRepository.save).toHaveBeenCalledWith([
+        expect.objectContaining({ nombre: 'Por Hacer', orden: 0, proyectoId: 'proyecto-1' }),
+        expect.objectContaining({ nombre: 'En Progreso', orden: 1, proyectoId: 'proyecto-1' }),
+        expect.objectContaining({ nombre: 'Hecho', orden: 2, proyectoId: 'proyecto-1' }),
+      ]);
     });
 
     // Escenario 3: Equipo no existe (404)
     it('debe retornar 404 si el equipo no existe', async () => {
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(null),
-      });
+      equipoRepository.findOne.mockResolvedValue(null);
 
       try {
-        await service.crearProyecto(
-          { nombre: 'Sprint', equipoId: 'equipo-no-existe' },
-          'user-1',
-        );
+        await service.crearProyecto({ nombre: 'Sprint', equipoId: 'equipo-no-existe' }, 'user-1');
         throw new Error('Debería haber lanzado una excepción');
       } catch (error: any) {
         expect(error instanceof NotFoundException).toBe(true);
@@ -131,21 +100,10 @@ describe('Proyectos E2E Tests (Black Box)', () => {
 
     // Escenario 4: Usuario no pertenece al equipo (403)
     it('debe retornar 403 si el usuario no pertenece al equipo', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1', 'user-3'],
-      };
-
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
+      equipoRepository.findOne.mockResolvedValue(equipoBase(['user-1', 'user-3']));
 
       try {
-        await service.crearProyecto(
-          { nombre: 'Sprint', equipoId: 'equipo-1' },
-          'user-2',
-        );
+        await service.crearProyecto({ nombre: 'Sprint', equipoId: 'equipo-1' }, 'user-2');
         throw new Error('Debería haber lanzado una excepción');
       } catch (error: any) {
         expect(error instanceof ForbiddenException).toBe(true);
@@ -155,89 +113,37 @@ describe('Proyectos E2E Tests (Black Box)', () => {
 
     // Escenario 5: Líder del equipo puede crear proyecto
     it('el líder del equipo debe poder crear proyectos', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1'],
-      };
-
-      const proyectoGuardado = {
-        _id: 'proyecto-2',
-        nombre: 'Sprint 2',
-        equipo: 'equipo-1',
-      };
-
-      const proyectoInstance = {
-        save: jest.fn().mockResolvedValue(proyectoGuardado),
-      };
-
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
-      proyectoModel.mockImplementation(() => proyectoInstance);
-      listaModel.insertMany.mockResolvedValue([]);
+      // El líder no figura en miembros: el acceso se concede por liderId
+      equipoRepository.findOne.mockResolvedValue(equipoBase([], 'user-1'));
+      proyectoRepository.save.mockResolvedValue({ id: 'proyecto-2', nombre: 'Sprint 2', equipoId: 'equipo-1' });
 
       const resultado = await service.crearProyecto(
         { nombre: 'Sprint 2', equipoId: 'equipo-1' },
         'user-1',
       );
 
-      expect(resultado).toHaveProperty('_id');
-      expect(listaModel.insertMany).toHaveBeenCalled();
+      expect(resultado).toHaveProperty('id');
+      expect(listaRepository.save).toHaveBeenCalled();
     });
 
     // Escenario 6: No se crean listas si hay error de acceso
     it('no debe crear listas si el usuario no tiene acceso', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1'],
-      };
+      equipoRepository.findOne.mockResolvedValue(equipoBase());
 
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
+      await expect(
+        service.crearProyecto({ nombre: 'Sprint', equipoId: 'equipo-1' }, 'user-999'),
+      ).rejects.toThrow(ForbiddenException);
 
-      try {
-        await service.crearProyecto(
-          { nombre: 'Sprint', equipoId: 'equipo-1' },
-          'user-999',
-        );
-      } catch (error) {
-        // Expected
-      }
-
-      expect(listaModel.insertMany).not.toHaveBeenCalled();
+      expect(proyectoRepository.save).not.toHaveBeenCalled();
+      expect(listaRepository.save).not.toHaveBeenCalled();
     });
 
-    // Escenario 7: Nombre de proyecto vacío
+    // Escenario 7: Nombre de proyecto vacío (la validación la hace el ValidationPipe, no el servicio)
     it('debe manejar nombres de proyecto vacíos', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1'],
-      };
+      equipoRepository.findOne.mockResolvedValue(equipoBase());
+      proyectoRepository.save.mockResolvedValue({ id: 'proyecto-1', nombre: '', equipoId: 'equipo-1' });
 
-      const proyectoGuardado = {
-        _id: 'proyecto-1',
-        nombre: '',
-        equipo: 'equipo-1',
-      };
-
-      const proyectoInstance = {
-        save: jest.fn().mockResolvedValue(proyectoGuardado),
-      };
-
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
-      proyectoModel.mockImplementation(() => proyectoInstance);
-      listaModel.insertMany.mockResolvedValue([]);
-
-      const resultado = await service.crearProyecto(
-        { nombre: '', equipoId: 'equipo-1' },
-        'user-1',
-      );
+      const resultado = await service.crearProyecto({ nombre: '', equipoId: 'equipo-1' }, 'user-1');
 
       expect(resultado.nombre).toBe('');
     });
@@ -249,41 +155,19 @@ describe('Proyectos E2E Tests (Black Box)', () => {
   describe('Obtener proyectos de equipo (Caja Negra)', () => {
     // Escenario 1: Obtener proyectos exitosamente
     it('debe retornar lista de proyectos del equipo', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        nombre: 'Backend Team',
-        lider: 'user-1',
-        miembros: ['user-1', 'user-2'],
-      };
-
       const proyectos = [
-        {
-          _id: 'proyecto-1',
-          nombre: 'Sprint 1',
-          equipo: 'equipo-1',
-        },
-        {
-          _id: 'proyecto-2',
-          nombre: 'Sprint 2',
-          equipo: 'equipo-1',
-        },
+        { id: 'proyecto-1', nombre: 'Sprint 1', equipoId: 'equipo-1' },
+        { id: 'proyecto-2', nombre: 'Sprint 2', equipoId: 'equipo-1' },
       ];
 
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
-
-      // Mock find para proyectos
-      const mockFindQuery = {
-        populate: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue(proyectos),
-        }),
-      };
-      
-      proyectoModel.find = jest.fn().mockReturnValue(mockFindQuery);
+      equipoRepository.findOne.mockResolvedValue(equipoBase(['user-1', 'user-2']));
+      proyectoRepository.find.mockResolvedValue(proyectos);
 
       const resultado = await service.findByEquipo('equipo-1', 'user-1');
 
+      expect(proyectoRepository.find).toHaveBeenCalledWith(
+        expect.objectContaining({ where: { equipoId: 'equipo-1' } }),
+      );
       expect(resultado).toHaveLength(2);
       expect(resultado[0]).toHaveProperty('nombre', 'Sprint 1');
       expect(resultado[1]).toHaveProperty('nombre', 'Sprint 2');
@@ -291,57 +175,28 @@ describe('Proyectos E2E Tests (Black Box)', () => {
 
     // Escenario 2: Equipo no existe (404)
     it('debe retornar 404 si el equipo no existe', async () => {
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(null),
-      });
+      equipoRepository.findOne.mockResolvedValue(null);
 
-      try {
-        await service.findByEquipo('equipo-no-existe', 'user-1');
-        throw new Error('Debería haber lanzado una excepción');
-      } catch (error: any) {
-        expect(error instanceof NotFoundException).toBe(true);
-      }
+      await expect(service.findByEquipo('equipo-no-existe', 'user-1')).rejects.toThrow(
+        NotFoundException,
+      );
+      expect(proyectoRepository.find).not.toHaveBeenCalled();
     });
 
     // Escenario 3: Usuario no tiene acceso (403)
     it('debe retornar 403 si el usuario no tiene acceso al equipo', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1'],
-      };
+      equipoRepository.findOne.mockResolvedValue(equipoBase());
 
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
-
-      try {
-        await service.findByEquipo('equipo-1', 'user-999');
-        throw new Error('Debería haber lanzado una excepción');
-      } catch (error: any) {
-        expect(error instanceof ForbiddenException).toBe(true);
-      }
+      await expect(service.findByEquipo('equipo-1', 'user-999')).rejects.toThrow(
+        ForbiddenException,
+      );
+      expect(proyectoRepository.find).not.toHaveBeenCalled();
     });
 
     // Escenario 4: Equipo sin proyectos
     it('debe retornar array vacío si el equipo no tiene proyectos', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1'],
-      };
-
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
-
-      const mockFindQuery = {
-        populate: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue([]),
-        }),
-      };
-      
-      proyectoModel.find = jest.fn().mockReturnValue(mockFindQuery);
+      equipoRepository.findOne.mockResolvedValue(equipoBase());
+      proyectoRepository.find.mockResolvedValue([]);
 
       const resultado = await service.findByEquipo('equipo-1', 'user-1');
 
@@ -356,73 +211,50 @@ describe('Proyectos E2E Tests (Black Box)', () => {
     // Escenario 1: Obtener proyecto exitosamente
     it('debe retornar datos del proyecto con acceso', async () => {
       const proyecto = {
-        _id: 'proyecto-1',
+        id: 'proyecto-1',
         nombre: 'Sprint 1',
-        equipo: {
-          _id: 'equipo-1',
-          nombre: 'Backend Team',
-          lider: 'user-1',
-          miembros: ['user-1', 'user-2'],
-        },
+        equipoId: 'equipo-1',
+        equipo: equipoBase(['user-1', 'user-2']),
       };
+      proyectoRepository.findOne.mockResolvedValue(proyecto);
 
-      const mockFindByIdQuery = {
-        populate: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue(proyecto),
-        }),
-      };
+      const resultado = await service.findById('proyecto-1', 'user-2');
 
-      proyectoModel.findById = jest.fn().mockReturnValue(mockFindByIdQuery);
-
-      const resultado = await service.findById('proyecto-1', 'user-1');
-
-      expect(resultado).toHaveProperty('_id', 'proyecto-1');
+      expect(proyectoRepository.findOne).toHaveBeenCalledWith(
+        expect.objectContaining({ where: { id: 'proyecto-1' } }),
+      );
+      expect(resultado).toHaveProperty('id', 'proyecto-1');
       expect(resultado).toHaveProperty('nombre', 'Sprint 1');
     });
 
     // Escenario 2: Proyecto no existe (404)
     it('debe retornar 404 si el proyecto no existe', async () => {
-      const mockFindByIdQuery = {
-        populate: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue(null),
-        }),
-      };
-
-      proyectoModel.findById = jest.fn().mockReturnValue(mockFindByIdQuery);
+      proyectoRepository.findOne.mockResolvedValue(null);
 
       try {
         await service.findById('proyecto-no-existe', 'user-1');
         throw new Error('Debería haber lanzado una excepción');
       } catch (error: any) {
         expect(error instanceof NotFoundException).toBe(true);
+        expect(error.message).toBe('Proyecto no encontrado');
       }
     });
 
     // Escenario 3: Usuario no tiene acceso (403)
     it('debe retornar 403 si el usuario no tiene acceso al proyecto', async () => {
-      const proyecto = {
-        _id: 'proyecto-1',
+      proyectoRepository.findOne.mockResolvedValue({
+        id: 'proyecto-1',
         nombre: 'Sprint 1',
-        equipo: {
-          _id: 'equipo-1',
-          lider: 'user-1',
-          miembros: ['user-1'],
-        },
-      };
-
-      const mockFindByIdQuery = {
-        populate: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue(proyecto),
-        }),
-      };
-
-      proyectoModel.findById = jest.fn().mockReturnValue(mockFindByIdQuery);
+        equipoId: 'equipo-1',
+        equipo: equipoBase(),
+      });
 
       try {
         await service.findById('proyecto-1', 'user-999');
         throw new Error('Debería haber lanzado una excepción');
       } catch (error: any) {
         expect(error instanceof ForbiddenException).toBe(true);
+        expect(error.message).toBe('No tienes acceso a este proyecto');
       }
     });
   });
@@ -431,74 +263,33 @@ describe('Proyectos E2E Tests (Black Box)', () => {
   // Validaciones de entrada
   // ========================
   describe('Validaciones de entrada (Caja Negra)', () => {
-    // IDs vacíos
+    // IDs vacíos: el repositorio no encuentra el equipo
     it('debe manejar equipoId vacío en crearProyecto', async () => {
-      try {
-        await service.crearProyecto(
-          { nombre: 'Sprint', equipoId: '' },
-          'user-1',
-        );
-      } catch (error: any) {
-        expect(error).toBeDefined();
-      }
+      equipoRepository.findOne.mockResolvedValue(null);
+
+      await expect(
+        service.crearProyecto({ nombre: 'Sprint', equipoId: '' }, 'user-1'),
+      ).rejects.toThrow(NotFoundException);
+      expect(proyectoRepository.save).not.toHaveBeenCalled();
     });
 
     // Nombre con caracteres especiales
     it('debe aceptar nombres con caracteres especiales', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1'],
-      };
+      const nombre = 'Sprint #1 & Q1 2025 (Updated)';
+      equipoRepository.findOne.mockResolvedValue(equipoBase());
+      proyectoRepository.save.mockImplementation(async (p) => ({ id: 'proyecto-1', ...p }));
 
-      const proyectoGuardado = {
-        _id: 'proyecto-1',
-        nombre: 'Sprint #1 & Q1 2025 (Updated)',
-        equipo: 'equipo-1',
-      };
+      const resultado = await service.crearProyecto({ nombre, equipoId: 'equipo-1' }, 'user-1');
 
-      const proyectoInstance = {
-        save: jest.fn().mockResolvedValue(proyectoGuardado),
-      };
-
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
-      proyectoModel.mockImplementation(() => proyectoInstance);
-      listaModel.insertMany.mockResolvedValue([]);
-
-      const resultado = await service.crearProyecto(
-        { nombre: 'Sprint #1 & Q1 2025 (Updated)', equipoId: 'equipo-1' },
-        'user-1',
-      );
-
-      expect(resultado.nombre).toBe('Sprint #1 & Q1 2025 (Updated)');
+      expect(proyectoRepository.create).toHaveBeenCalledWith({ nombre, equipoId: 'equipo-1' });
+      expect(resultado.nombre).toBe(nombre);
     });
 
     // Nombre muy largo
     it('debe aceptar nombres muy largos', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1'],
-      };
-
-      const longName = 'a'.repeat(500);
-      const proyectoGuardado = {
-        _id: 'proyecto-1',
-        nombre: longName,
-        equipo: 'equipo-1',
-      };
-
-      const proyectoInstance = {
-        save: jest.fn().mockResolvedValue(proyectoGuardado),
-      };
-
-      equipoModel.findById.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(equipo),
-      });
-      proyectoModel.mockImplementation(() => proyectoInstance);
-      listaModel.insertMany.mockResolvedValue([]);
+      const longName = 'a'.repeat(255);
+      equipoRepository.findOne.mockResolvedValue(equipoBase());
+      proyectoRepository.save.mockImplementation(async (p) => ({ id: 'proyecto-1', ...p }));
 
       const resultado = await service.crearProyecto(
         { nombre: longName, equipoId: 'equipo-1' },

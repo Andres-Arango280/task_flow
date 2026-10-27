@@ -1,0 +1,16 @@
+{
+  "name": "taskflow-pruebas-stagehand",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Pruebas E2E de TaskFlow con Stagehand (act, observe, extract) y un modelo local de Ollama",
+  "scripts": {
+    "test": "node pruebas.mjs",
+    "humo": "node humo.mjs"
+  },
+  "dependencies": {
+    "@browserbasehq/stagehand": "3.7.3",
+    "ollama-ai-provider-v2": "^1.5.5",
+    "zod": "^3.25.0"
+  }
+}

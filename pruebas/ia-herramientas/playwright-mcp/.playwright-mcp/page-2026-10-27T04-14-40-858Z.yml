@@ -1,0 +1,30 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e9]: TaskFlow
+      - paragraph [ref=e10]: Gestión colaborativa de tareas
+    - generic [ref=e11]:
+      - heading "Iniciar sesión" [level=1] [ref=e12]
+      - generic [ref=e13]:
+        - generic [ref=e14]:
+          - generic [ref=e15]:
+            - text: Correo electrónico*
+            - generic [ref=e16]: (obligatorio)
+          - textbox "Correo electrónico (obligatorio)" [ref=e18]:
+            - /placeholder: tu@email.com
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - text: Contraseña*
+            - generic [ref=e21]: (obligatorio)
+          - generic [ref=e22]:
+            - textbox "Contraseña (obligatorio)" [ref=e23]
+            - button "Mostrar contraseña" [ref=e25]
+        - button "Iniciar sesión" [ref=e29]
+      - generic [ref=e30]:
+        - paragraph [ref=e31]:
+          - text: ¿No tienes cuenta?
+          - link "Regístrate aquí" [ref=e32] [cursor=pointer]:
+            - /url: /register
+        - paragraph [ref=e33]:
+          - link "Privacidad y uso de tus datos" [ref=e34] [cursor=pointer]:
+            - /url: /privacidad

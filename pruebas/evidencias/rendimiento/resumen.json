@@ -1,0 +1,514 @@
+{
+  "area": "Rendimiento",
+  "herramienta": "autocannon 7.15.0 (API programática) sobre Node.js v20.20.2; monitor de CPU/memoria con PowerShell Get-Process",
+  "comando": "cd pruebas/rendimiento && npm test   (todos; por escenario: npm run carga-base | carga-media | escritura | login | estres | resistencia; regenerar informe: npm run informe)",
+  "fecha": "2026-10-27T04:35:41.156Z",
+  "condiciones": "Windows_NT 10.0.26300 (Windows 11 Home) x64; AMD Ryzen AI 7 350 w/ Radeon 860M — 16 hilos lógicos; 23.2 GB RAM; Node v20.20.2; PostgreSQL 18.6 (max_connections=100; pool TypeORM/pg por defecto = 10 conexiones); NestJS 10 en modo desarrollo (npm run start:dev, proceso único) en http://localhost:3000. Generador de carga (autocannon) y servidor en la misma máquina: compiten por CPU, por lo que los valores absolutos son conservadores. Datos: equipo dedicado con 5 usuarios, proyecto de lectura con 50 tareas (2 asignados c/u), proyecto de escritura; eliminados al terminar. Calentamiento de 5 s no medido. Escenarios: REN-01 10 conexiones concurrentes, 30 s, token JWT válido; equipo con 5 miembros y 2 proyectos. REN-02 50 conexiones concurrentes, 30 s; proyecto con 50 tareas sembradas (2 asignados cada una). REN-03 20 conexiones concurrentes, 20 s; cada petición crea una tarea con título único en el proyecto \"Perf escritura\". REN-04 10 conexiones concurrentes, 20 s, credenciales correctas del mismo usuario (cada éxito reinicia el contador de bloqueo, por lo que no aparecen 429). REN-05 Escalones de 15 s con 10, 50, 100, 200 y 300 conexiones concurrentes, sin pausa intermedia relevante. REN-06 25 conexiones, 120 s; cada conexión rota GET /equipos, GET /proyectos?equipoId, GET /listas/proyecto/:id y GET /tareas?proyectoId.",
+  "totales": {
+    "total": 6,
+    "aprobados": 6,
+    "fallidos": 0
+  },
+  "casos": [
+    {
+      "id": "REN-01",
+      "escenario": "carga-base",
+      "categoria": "Rendimiento — prueba de carga",
+      "nombre": "Carga base — GET /equipos autenticado",
+      "tipo": "positivo",
+      "objetivo": "Medir el tiempo de respuesta de la consulta más frecuente (dashboard) con carga normal.",
+      "condiciones": "10 conexiones concurrentes, 30 s, token JWT válido; equipo con 5 miembros y 2 proyectos.",
+      "esperado": "p95 < 200 ms y tasa de error ≤ 0%",
+      "obtenido": "15001 peticiones, 500.04 req/s, latencia media 19.53 ms, p50 19.07 ms, p90 25.47 ms, p95 28.27 ms, p99 35.23 ms, máx 239.47 ms; non-2xx 0, errores 0, timeouts 0 (tasa de error 0%). Backend: CPU media 100.94% de un núcleo (máx 108.55%), memoria 102.71→128.97 MB (máx 144.65 MB).",
+      "estado": "Aprobado",
+      "motivosFallo": [],
+      "evidencia": [
+        "raw/carga-base.json",
+        "salida-autocannon.txt",
+        "reporte.html"
+      ]
+    },
+    {
+      "id": "REN-02",
+      "escenario": "carga-media",
+      "categoria": "Rendimiento — prueba de carga",
+      "nombre": "Carga media — GET /tareas?proyectoId (50 tareas)",
+      "tipo": "positivo",
+      "objetivo": "Evaluar la consulta más pesada del tablero Kanban (tareas + lista + asignados) con concurrencia media.",
+      "condiciones": "50 conexiones concurrentes, 30 s; proyecto con 50 tareas sembradas (2 asignados cada una).",
+      "esperado": "p95 < 500 ms y tasa de error ≤ 1%",
+      "obtenido": "5497 peticiones, 183.24 req/s, latencia media 271.76 ms, p50 269.7 ms, p90 309.13 ms, p95 323.68 ms, p99 358.5 ms, máx 399.2 ms; non-2xx 0, errores 0, timeouts 0 (tasa de error 0%). Backend: CPU media 113.74% de un núcleo (máx 123%), memoria 125.98→178.19 MB (máx 216.28 MB).",
+      "estado": "Aprobado",
+      "motivosFallo": [],
+      "evidencia": [
+        "raw/carga-media.json",
+        "salida-autocannon.txt",
+        "reporte.html"
+      ]
+    },
+    {
+      "id": "REN-03",
+      "escenario": "escritura",
+      "categoria": "Rendimiento — prueba de carga",
+      "nombre": "Escritura — POST /tareas",
+      "tipo": "positivo",
+      "objetivo": "Medir la creación concurrente de tareas (validación + comprobación de acceso + INSERT + relectura).",
+      "condiciones": "20 conexiones concurrentes, 20 s; cada petición crea una tarea con título único en el proyecto \"Perf escritura\".",
+      "esperado": "p95 < 800 ms y tasa de error ≤ 1%",
+      "obtenido": "5364 peticiones, 268.2 req/s, latencia media 73.96 ms, p50 72.62 ms, p90 90.61 ms, p95 98.83 ms, p99 117.84 ms, máx 146.9 ms; non-2xx 0, errores 0, timeouts 0 (tasa de error 0%). Backend: CPU media 105.85% de un núcleo (máx 117.78%), memoria 152.65→157.96 MB (máx 231.78 MB).",
+      "estado": "Aprobado",
+      "motivosFallo": [],
+      "evidencia": [
+        "raw/escritura.json",
+        "salida-autocannon.txt",
+        "reporte.html"
+      ]
+    },
+    {
+      "id": "REN-04",
+      "escenario": "login",
+      "categoria": "Rendimiento — prueba de carga",
+      "nombre": "Login — POST /auth/login (bcrypt coste 10)",
+      "tipo": "positivo",
+      "objetivo": "Medir el coste del inicio de sesión, limitado por CPU por bcrypt.",
+      "condiciones": "10 conexiones concurrentes, 20 s, credenciales correctas del mismo usuario (cada éxito reinicia el contador de bloqueo, por lo que no aparecen 429).",
+      "esperado": "p95 < 1000 ms y tasa de error ≤ 1%",
+      "obtenido": "1267 peticiones, 63.35 req/s, latencia media 157.88 ms, p50 158.61 ms, p90 184.61 ms, p95 187.18 ms, p99 200.62 ms, máx 212.18 ms; non-2xx 0, errores 0, timeouts 0 (tasa de error 0%). Backend: CPU media 409.33% de un núcleo (máx 415.69%), memoria 111.68→110.95 MB (máx 112.25 MB).",
+      "estado": "Aprobado",
+      "motivosFallo": [],
+      "evidencia": [
+        "raw/login.json",
+        "salida-autocannon.txt",
+        "reporte.html"
+      ]
+    },
+    {
+      "id": "REN-05",
+      "escenario": "estres",
+      "categoria": "Rendimiento — prueba de estrés/pico",
+      "nombre": "Pico / estrés — GET /equipos en escalones 10→50→100→200→300 conexiones",
+      "tipo": "negativo",
+      "objetivo": "Encontrar el punto de saturación (throughput deja de crecer) y de degradación (p95 o errores fuera de umbral).",
+      "condiciones": "Escalones de 15 s con 10, 50, 100, 200 y 300 conexiones concurrentes, sin pausa intermedia relevante.",
+      "esperado": "p95 < 1000 ms y tasa de error ≤ 1% (Criterio aplicado hasta 200 conexiones; 300 se usa para observar el comportamiento fuera de capacidad.)",
+      "obtenido": "10 conex.: 489.67 req/s, p95 29.01 ms, p99 37.6 ms, errores 0% | 50 conex.: 499.07 req/s, p95 133.5 ms, p99 156.22 ms, errores 0% | 100 conex.: 573.8 req/s, p95 225.34 ms, p99 255.79 ms, errores 0% | 200 conex.: 605.67 req/s, p95 415.85 ms, p99 456.72 ms, errores 0% | 300 conex.: 556.34 req/s, p95 616.4 ms, p99 692.1 ms, errores 0%. Throughput máximo 605.67 req/s con 200 conexiones; saturación desde 10 conexiones; degradación fuera de umbral: no alcanzada.. Backend: CPU media 106.09% de un núcleo (máx 127.29%), memoria 100.91→195.63 MB (máx 234.84 MB).",
+      "estado": "Aprobado",
+      "motivosFallo": [],
+      "evidencia": [
+        "raw/estres.json",
+        "salida-autocannon.txt",
+        "reporte.html"
+      ]
+    },
+    {
+      "id": "REN-06",
+      "escenario": "resistencia",
+      "categoria": "Rendimiento — prueba de resistencia (soak)",
+      "nombre": "Resistencia corta (soak) — mezcla de lecturas, 2 min",
+      "tipo": "positivo",
+      "objetivo": "Observar deriva de latencia, errores y memoria del backend con carga moderada sostenida.",
+      "condiciones": "25 conexiones, 120 s; cada conexión rota GET /equipos, GET /proyectos?equipoId, GET /listas/proyecto/:id y GET /tareas?proyectoId.",
+      "esperado": "p95 < 500 ms y tasa de error ≤ 1%; deriva del p95 ≤ 50%",
+      "obtenido": "39952 peticiones, 332.94 req/s, latencia media 74.69 ms, p50 73.45 ms, p90 93.85 ms, p95 102.46 ms, p99 122.4 ms, máx 176.23 ms; non-2xx 0, errores 0, timeouts 0 (tasa de error 0%); p95 inicial 98.33 ms → final 98.2 ms (deriva -0.13%). Backend: CPU media 102.97% de un núcleo (máx 115.04%), memoria 147.01→124.97 MB (máx 236.17 MB).",
+      "estado": "Aprobado",
+      "motivosFallo": [],
+      "evidencia": [
+        "raw/resistencia.json",
+        "salida-autocannon.txt",
+        "reporte.html"
+      ]
+    }
+  ],
+  "hallazgos": [
+    {
+      "descripcion": "El backend es un único proceso Node (modo desarrollo) limitado por CPU: el throughput de GET /equipos se estanca en ~605.67 req/s (200 conexiones) con el proceso al ~106.09% de un núcleo de media durante toda la prueba (ya saturado desde el primer escalón de 10 conexiones: el throughput se mueve en una meseta de 489.67-605.67 req/s); a partir de ahí más concurrencia solo añade cola (p95 ×21.25 con 300 conexiones respecto a 10).",
+      "severidad": "Media",
+      "recomendacion": "Ejecutar el build de producción (node dist/main, sin --watch), usar cluster/PM2 con un proceso por núcleo o varias réplicas tras un balanceador, y establecer límites de concurrencia/rate limiting para proteger la latencia.",
+      "id": "H-01",
+      "origen": "Análisis de métricas"
+    },
+    {
+      "descripcion": "GET /tareas?proyectoId devuelve todas las tareas con lista y asignados sin paginación (~51 KB por respuesta con 50 tareas) y sin compresión HTTP; el coste crece linealmente con el tamaño del proyecto. Con 50 conexiones: 183.24 req/s y p95 323.68 ms.",
+      "severidad": "Baja",
+      "recomendacion": "Paginación o carga por lista (limit/offset o cursor), seleccionar solo los campos necesarios de los asignados, habilitar compression() (gzip/brotli) y cabeceras ETag/Cache-Control para lecturas repetidas.",
+      "id": "H-02",
+      "origen": "Análisis de métricas"
+    },
+    {
+      "descripcion": "Cada petición autenticada ejecuta una consulta adicional (JwtStrategy.validate → findById del usuario) y GET /equipos carga líder y miembros de todos los equipos en dos consultas más; esto multiplica las consultas por petición y satura antes el pool de conexiones (10 por defecto en pg).",
+      "severidad": "Baja",
+      "recomendacion": "Cachear el usuario autenticado (p. ej. caché en memoria/Redis de 30-60 s o confiar en los claims del token), ajustar extra.max del pool de TypeORM según la carga y usar consultas con select explícito.",
+      "id": "H-03",
+      "origen": "Análisis de métricas"
+    },
+    {
+      "descripcion": "El login está limitado por bcrypt (coste 10): solo 63.35 req/s con p95 187.18 ms frente a 500.04 req/s de una lectura; un pico de inicios de sesión (o un ataque de credenciales) consume el pool de hilos de libuv (4 hilos por defecto) y la CPU.",
+      "severidad": "Informativa",
+      "recomendacion": "Mantener coste 10-12 (es una defensa deliberada); limitar /auth/login por IP, ajustar UV_THREADPOOL_SIZE al número de núcleos, y escalar horizontalmente si el volumen de logins lo requiere. No reducir el coste por rendimiento.",
+      "id": "H-04",
+      "origen": "Análisis de métricas"
+    },
+    {
+      "descripcion": "La escritura (POST /tareas) alcanza 268.2 req/s con p95 98.83 ms: cada creación hace 4-5 consultas (lista, proyecto+equipo+miembros, INSERT, relectura con relaciones).",
+      "severidad": "Informativa",
+      "recomendacion": "Devolver la entidad guardada sin releerla, cargar solo los ids de miembros para la comprobación de acceso y agrupar las consultas en una transacción.",
+      "id": "H-05",
+      "origen": "Análisis de métricas"
+    },
+    {
+      "descripcion": "En la prueba de resistencia (2 min) el p95 pasó de 98.33 ms a 98.2 ms (deriva -0.13%) con 0% de errores; la memoria del backend fue de 147.01 a 124.97 MB (-14.99%, máx 236.17 MB). No se observan síntomas de fuga de memoria ni degradación progresiva en esta ventana corta.",
+      "severidad": "Informativa",
+      "recomendacion": "Repetir la prueba de resistencia durante 30-60 min en un entorno de staging con el build de producción y monitorización (Prometheus/Grafana o clinic.js) para confirmar la estabilidad.",
+      "id": "H-06",
+      "origen": "Análisis de métricas"
+    }
+  ],
+  "metricas": {
+    "carga-base": {
+      "conexiones": 10,
+      "duracionSeg": 30,
+      "peticionesTotales": 15001,
+      "peticionesPorSeg": 500.04,
+      "bytesPorSeg": 1175569,
+      "bytesPorRespuesta": 2351,
+      "latenciaMs": {
+        "media": 19.53,
+        "p50": 19.07,
+        "p90": 25.47,
+        "p95": 28.27,
+        "p99": 35.23,
+        "max": 239.47,
+        "min": 8.46
+      },
+      "non2xx": 0,
+      "errores": 0,
+      "timeouts": 0,
+      "tasaErrorPct": 0,
+      "codigos": {
+        "200": 15001
+      },
+      "recursos": {
+        "muestras": 14,
+        "backendCpuNucleoMedioPct": 100.94,
+        "backendCpuNucleoMaxPct": 108.55,
+        "backendMemInicialMB": 102.71,
+        "backendMemFinalMB": 128.97,
+        "backendMemMaxMB": 144.65,
+        "postgresCpuTotalMedioPct": 0,
+        "postgresCpuTotalMaxPct": 0
+      }
+    },
+    "carga-media": {
+      "conexiones": 50,
+      "duracionSeg": 30,
+      "peticionesTotales": 5497,
+      "peticionesPorSeg": 183.24,
+      "bytesPorSeg": 9545933,
+      "bytesPorRespuesta": 52095,
+      "latenciaMs": {
+        "media": 271.76,
+        "p50": 269.7,
+        "p90": 309.13,
+        "p95": 323.68,
+        "p99": 358.5,
+        "max": 399.2,
+        "min": 134.92
+      },
+      "non2xx": 0,
+      "errores": 0,
+      "timeouts": 0,
+      "tasaErrorPct": 0,
+      "codigos": {
+        "200": 5497
+      },
+      "recursos": {
+        "muestras": 14,
+        "backendCpuNucleoMedioPct": 113.74,
+        "backendCpuNucleoMaxPct": 123,
+        "backendMemInicialMB": 125.98,
+        "backendMemFinalMB": 178.19,
+        "backendMemMaxMB": 216.28,
+        "postgresCpuTotalMedioPct": 0,
+        "postgresCpuTotalMaxPct": 0
+      }
+    },
+    "escritura": {
+      "conexiones": 20,
+      "duracionSeg": 20,
+      "peticionesTotales": 5364,
+      "peticionesPorSeg": 268.2,
+      "bytesPorSeg": 396173,
+      "bytesPorRespuesta": 1477,
+      "latenciaMs": {
+        "media": 73.96,
+        "p50": 72.62,
+        "p90": 90.61,
+        "p95": 98.83,
+        "p99": 117.84,
+        "max": 146.9,
+        "min": 46.6
+      },
+      "non2xx": 0,
+      "errores": 0,
+      "timeouts": 0,
+      "tasaErrorPct": 0,
+      "codigos": {
+        "201": 5364
+      },
+      "recursos": {
+        "muestras": 9,
+        "backendCpuNucleoMedioPct": 105.85,
+        "backendCpuNucleoMaxPct": 117.78,
+        "backendMemInicialMB": 152.65,
+        "backendMemFinalMB": 157.96,
+        "backendMemMaxMB": 231.78,
+        "postgresCpuTotalMedioPct": 0,
+        "postgresCpuTotalMaxPct": 0
+      }
+    },
+    "login": {
+      "conexiones": 10,
+      "duracionSeg": 20,
+      "peticionesTotales": 1267,
+      "peticionesPorSeg": 63.35,
+      "bytesPorSeg": 80288,
+      "bytesPorRespuesta": 1267,
+      "latenciaMs": {
+        "media": 157.88,
+        "p50": 158.61,
+        "p90": 184.61,
+        "p95": 187.18,
+        "p99": 200.62,
+        "max": 212.18,
+        "min": 80.44
+      },
+      "non2xx": 0,
+      "errores": 0,
+      "timeouts": 0,
+      "tasaErrorPct": 0,
+      "codigos": {
+        "201": 1267
+      },
+      "recursos": {
+        "muestras": 9,
+        "backendCpuNucleoMedioPct": 409.33,
+        "backendCpuNucleoMaxPct": 415.69,
+        "backendMemInicialMB": 111.68,
+        "backendMemFinalMB": 110.95,
+        "backendMemMaxMB": 112.25,
+        "postgresCpuTotalMedioPct": 0,
+        "postgresCpuTotalMaxPct": 0
+      }
+    },
+    "estres": {
+      "conexionesPorEscalon": [
+        10,
+        50,
+        100,
+        200,
+        300
+      ],
+      "escalones": [
+        {
+          "conexiones": 10,
+          "peticionesTotales": 7345,
+          "peticionesPorSeg": 489.67,
+          "bytesPorSeg": 1151164,
+          "bytesPorRespuesta": 2351,
+          "latenciaMs": {
+            "media": 19.94,
+            "p50": 19.18,
+            "p90": 26.21,
+            "p95": 29.01,
+            "p99": 37.6,
+            "max": 304.7,
+            "min": 7.04
+          },
+          "non2xx": 0,
+          "errores": 0,
+          "timeouts": 0,
+          "tasaErrorPct": 0,
+          "codigos": {
+            "200": 7345
+          }
+        },
+        {
+          "conexiones": 50,
+          "peticionesTotales": 7486,
+          "peticionesPorSeg": 499.07,
+          "bytesPorSeg": 1173282,
+          "bytesPorRespuesta": 2351,
+          "latenciaMs": {
+            "media": 99.4,
+            "p50": 97.38,
+            "p90": 121.36,
+            "p95": 133.5,
+            "p99": 156.22,
+            "max": 177.44,
+            "min": 65.84
+          },
+          "non2xx": 0,
+          "errores": 0,
+          "timeouts": 0,
+          "tasaErrorPct": 0,
+          "codigos": {
+            "200": 7486
+          }
+        },
+        {
+          "conexiones": 100,
+          "peticionesTotales": 8607,
+          "peticionesPorSeg": 573.8,
+          "bytesPorSeg": 1348983,
+          "bytesPorRespuesta": 2351,
+          "latenciaMs": {
+            "media": 173.03,
+            "p50": 167.96,
+            "p90": 200.14,
+            "p95": 225.34,
+            "p99": 255.79,
+            "max": 286.65,
+            "min": 127.22
+          },
+          "non2xx": 0,
+          "errores": 0,
+          "timeouts": 0,
+          "tasaErrorPct": 0,
+          "codigos": {
+            "200": 8607
+          }
+        },
+        {
+          "conexiones": 200,
+          "peticionesTotales": 9085,
+          "peticionesPorSeg": 605.67,
+          "bytesPorSeg": 1423940,
+          "bytesPorRespuesta": 2351,
+          "latenciaMs": {
+            "media": 326.88,
+            "p50": 311.9,
+            "p90": 383.43,
+            "p95": 415.85,
+            "p99": 456.72,
+            "max": 499.07,
+            "min": 269.36
+          },
+          "non2xx": 0,
+          "errores": 0,
+          "timeouts": 0,
+          "tasaErrorPct": 0,
+          "codigos": {
+            "200": 9085
+          }
+        },
+        {
+          "conexiones": 300,
+          "peticionesTotales": 8345,
+          "peticionesPorSeg": 556.34,
+          "bytesPorSeg": 1307870,
+          "bytesPorRespuesta": 2351,
+          "latenciaMs": {
+            "media": 531.73,
+            "p50": 525.16,
+            "p90": 587.01,
+            "p95": 616.4,
+            "p99": 692.1,
+            "max": 752.67,
+            "min": 415.35
+          },
+          "non2xx": 0,
+          "errores": 0,
+          "timeouts": 0,
+          "tasaErrorPct": 0,
+          "codigos": {
+            "200": 8345
+          }
+        }
+      ],
+      "analisis": {
+        "throughputMaximo": {
+          "conexiones": 200,
+          "reqPorSeg": 605.67
+        },
+        "puntoSaturacion": {
+          "conexiones": 10,
+          "detalle": "meseta de throughput 489.67-605.67 req/s en todos los escalones: CPU del backend saturada desde el primer escalón"
+        },
+        "puntoDegradacion": null,
+        "factorP95vsBase": [
+          {
+            "conexiones": 10,
+            "factor": 1
+          },
+          {
+            "conexiones": 50,
+            "factor": 4.6
+          },
+          {
+            "conexiones": 100,
+            "factor": 7.77
+          },
+          {
+            "conexiones": 200,
+            "factor": 14.33
+          },
+          {
+            "conexiones": 300,
+            "factor": 21.25
+          }
+        ]
+      },
+      "recursos": {
+        "muestras": 36,
+        "backendCpuNucleoMedioPct": 106.09,
+        "backendCpuNucleoMaxPct": 127.29,
+        "backendMemInicialMB": 100.91,
+        "backendMemFinalMB": 195.63,
+        "backendMemMaxMB": 234.84,
+        "postgresCpuTotalMedioPct": 0,
+        "postgresCpuTotalMaxPct": 0
+      }
+    },
+    "resistencia": {
+      "conexiones": 25,
+      "duracionSeg": 120,
+      "peticionesTotales": 39952,
+      "peticionesPorSeg": 332.94,
+      "bytesPorSeg": 4767710,
+      "bytesPorRespuesta": 14320,
+      "latenciaMs": {
+        "media": 74.69,
+        "p50": 73.45,
+        "p90": 93.85,
+        "p95": 102.46,
+        "p99": 122.4,
+        "max": 176.23,
+        "min": 35.91
+      },
+      "non2xx": 0,
+      "errores": 0,
+      "timeouts": 0,
+      "tasaErrorPct": 0,
+      "codigos": {
+        "200": 39952
+      },
+      "analisis": {
+        "p95InicialMs": 98.33,
+        "p95FinalMs": 98.2,
+        "derivaP95Pct": -0.13,
+        "rpsInicial": 306.6,
+        "rpsFinal": 8.2
+      },
+      "recursos": {
+        "muestras": 58,
+        "backendCpuNucleoMedioPct": 102.97,
+        "backendCpuNucleoMaxPct": 115.04,
+        "backendMemInicialMB": 147.01,
+        "backendMemFinalMB": 124.97,
+        "backendMemMaxMB": 236.17,
+        "postgresCpuTotalMedioPct": 0,
+        "postgresCpuTotalMaxPct": 0
+      }
+    }
+  }
+}

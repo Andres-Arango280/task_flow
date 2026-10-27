@@ -1,0 +1,391 @@
+{
+  "fecha": "2026-10-27T04:32:15.324Z",
+  "maquina": {
+    "so": "Windows_NT 10.0.26300 (Windows 11 Home) x64",
+    "cpu": "AMD Ryzen AI 7 350 w/ Radeon 860M — 16 hilos lógicos",
+    "ramGB": 23.2,
+    "node": "v20.20.2",
+    "autocannon": "7.15.0",
+    "baseDatos": "PostgreSQL 18.6 (max_connections=100; pool TypeORM/pg por defecto = 10 conexiones)",
+    "backend": "NestJS 10 en modo desarrollo (npm run start:dev, proceso único) en http://localhost:3000",
+    "nota": "Generador de carga (autocannon) y servidor en la misma máquina: compiten por CPU, por lo que los valores absolutos son conservadores."
+  },
+  "id": "login",
+  "codigo": "REN-04",
+  "nombre": "Login — POST /auth/login (bcrypt coste 10)",
+  "objetivo": "Medir el coste del inicio de sesión, limitado por CPU por bcrypt.",
+  "condiciones": "10 conexiones concurrentes, 20 s, credenciales correctas del mismo usuario (cada éxito reinicia el contador de bloqueo, por lo que no aparecen 429).",
+  "criterios": {
+    "p95Ms": 1000,
+    "tasaErrorPctMax": 1
+  },
+  "pidBackend": 29704,
+  "resultado": {
+    "titulo": "login",
+    "conexiones": 10,
+    "duracionSeg": 20,
+    "inicio": "2026-10-27T04:31:55.132Z",
+    "peticionesTotales": 1267,
+    "peticionesPorSeg": 63.35,
+    "peticionesPorSegMax": 65,
+    "bytesPorSeg": 80288,
+    "latenciaMs": {
+      "media": 157.88,
+      "p50": 158.61,
+      "p90": 184.61,
+      "p95": 187.18,
+      "p99": 200.62,
+      "max": 212.18,
+      "min": 80.44
+    },
+    "codigos": {
+      "201": 1267
+    },
+    "respuestas2xx": 1267,
+    "non2xx": 0,
+    "erroresConexion": 0,
+    "timeouts": 0,
+    "tasaErrorPct": 0,
+    "serie": [
+      {
+        "t": 1,
+        "reqs": 56,
+        "rps": 56,
+        "p50": 155.96,
+        "p95": 208.01,
+        "errores": 0
+      },
+      {
+        "t": 2,
+        "reqs": 64,
+        "rps": 64,
+        "p50": 163.53,
+        "p95": 194.76,
+        "errores": 0
+      },
+      {
+        "t": 3,
+        "reqs": 64,
+        "rps": 64,
+        "p50": 133.37,
+        "p95": 188.28,
+        "errores": 0
+      },
+      {
+        "t": 4,
+        "reqs": 63,
+        "rps": 63,
+        "p50": 179.81,
+        "p95": 186.83,
+        "errores": 0
+      },
+      {
+        "t": 5,
+        "reqs": 65,
+        "rps": 65,
+        "p50": 137.15,
+        "p95": 183.22,
+        "errores": 0
+      },
+      {
+        "t": 6,
+        "reqs": 64,
+        "rps": 64,
+        "p50": 138.49,
+        "p95": 184.98,
+        "errores": 0
+      },
+      {
+        "t": 7,
+        "reqs": 61,
+        "rps": 61,
+        "p50": 173.32,
+        "p95": 187.31,
+        "errores": 0
+      },
+      {
+        "t": 8,
+        "reqs": 63,
+        "rps": 63,
+        "p50": 158.41,
+        "p95": 186.49,
+        "errores": 0
+      },
+      {
+        "t": 9,
+        "reqs": 64,
+        "rps": 64,
+        "p50": 157.44,
+        "p95": 184.35,
+        "errores": 0
+      },
+      {
+        "t": 10,
+        "reqs": 64,
+        "rps": 64,
+        "p50": 149.61,
+        "p95": 186.1,
+        "errores": 0
+      },
+      {
+        "t": 11,
+        "reqs": 61,
+        "rps": 61,
+        "p50": 162.37,
+        "p95": 189.68,
+        "errores": 0
+      },
+      {
+        "t": 12,
+        "reqs": 64,
+        "rps": 64,
+        "p50": 156.01,
+        "p95": 183.81,
+        "errores": 0
+      },
+      {
+        "t": 13,
+        "reqs": 64,
+        "rps": 64,
+        "p50": 154.73,
+        "p95": 183.55,
+        "errores": 0
+      },
+      {
+        "t": 14,
+        "reqs": 62,
+        "rps": 62,
+        "p50": 163.91,
+        "p95": 179.88,
+        "errores": 0
+      },
+      {
+        "t": 15,
+        "reqs": 62,
+        "rps": 62,
+        "p50": 155.15,
+        "p95": 186.12,
+        "errores": 0
+      },
+      {
+        "t": 16,
+        "reqs": 62,
+        "rps": 62,
+        "p50": 169.86,
+        "p95": 194.78,
+        "errores": 0
+      },
+      {
+        "t": 17,
+        "reqs": 63,
+        "rps": 63,
+        "p50": 162.49,
+        "p95": 174.22,
+        "errores": 0
+      },
+      {
+        "t": 18,
+        "reqs": 63,
+        "rps": 63,
+        "p50": 151.39,
+        "p95": 182.41,
+        "errores": 0
+      },
+      {
+        "t": 19,
+        "reqs": 64,
+        "rps": 64,
+        "p50": 157.39,
+        "p95": 183.25,
+        "errores": 0
+      },
+      {
+        "t": 20,
+        "reqs": 64,
+        "rps": 64,
+        "p50": 156.76,
+        "p95": 175.41,
+        "errores": 0
+      },
+      {
+        "t": 21,
+        "reqs": 10,
+        "rps": 10,
+        "p50": 168.65,
+        "p95": 173.8,
+        "errores": 0
+      }
+    ],
+    "autocannon": {
+      "latency": {
+        "average": 157.88,
+        "mean": 157.88,
+        "stddev": 21.2,
+        "min": 80,
+        "max": 212,
+        "p0_001": 80,
+        "p0_01": 80,
+        "p0_1": 83,
+        "p1": 126,
+        "p2_5": 127,
+        "p10": 131,
+        "p25": 138,
+        "p50": 158,
+        "p75": 178,
+        "p90": 184,
+        "p97_5": 191,
+        "p99": 200,
+        "p99_9": 208,
+        "p99_99": 212,
+        "p99_999": 212,
+        "totalCount": 1267
+      },
+      "requests": {
+        "average": 63.35,
+        "mean": 63.35,
+        "stddev": 1.66,
+        "min": 57,
+        "max": 65,
+        "total": 1267,
+        "p0_001": 57,
+        "p0_01": 57,
+        "p0_1": 57,
+        "p1": 57,
+        "p2_5": 57,
+        "p10": 61,
+        "p25": 63,
+        "p50": 64,
+        "p75": 64,
+        "p90": 64,
+        "p97_5": 65,
+        "p99": 65,
+        "p99_9": 65,
+        "p99_99": 65,
+        "p99_999": 65,
+        "sent": 1277
+      },
+      "throughput": {
+        "average": 80288,
+        "mean": 80288,
+        "stddev": 2098.48,
+        "min": 72219,
+        "max": 82355,
+        "total": 1605289,
+        "p0_001": 72255,
+        "p0_01": 72255,
+        "p0_1": 72255,
+        "p1": 72255,
+        "p2_5": 72255,
+        "p10": 77311,
+        "p25": 79871,
+        "p50": 81151,
+        "p75": 81151,
+        "p90": 81151,
+        "p97_5": 82367,
+        "p99": 82367,
+        "p99_9": 82367,
+        "p99_99": 82367,
+        "p99_999": 82367
+      },
+      "statusCodeStats": {
+        "201": {
+          "count": 1267
+        }
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "non2xx": 0,
+      "duration": 20.15,
+      "start": "2026-10-27T04:31:55.133Z",
+      "finish": "2026-10-27T04:32:15.284Z"
+    }
+  },
+  "evaluacion": {
+    "estado": "Aprobado",
+    "motivos": []
+  },
+  "recursos": [
+    {
+      "t": 2.04,
+      "backendMemMB": 111.68,
+      "backendCpuPctNucleo": 397.91,
+      "backendCpuPctTotal": 24.87,
+      "postgresMemMB": 269.34,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 4.09,
+      "backendMemMB": 111.69,
+      "backendCpuPctNucleo": 413.83,
+      "backendCpuPctTotal": 25.86,
+      "postgresMemMB": 269.34,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 6.12,
+      "backendMemMB": 111.69,
+      "backendCpuPctNucleo": 413.74,
+      "backendCpuPctTotal": 25.86,
+      "postgresMemMB": 269.34,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 8.15,
+      "backendMemMB": 112.2,
+      "backendCpuPctNucleo": 409.72,
+      "backendCpuPctTotal": 25.61,
+      "postgresMemMB": 269.43,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 10.17,
+      "backendMemMB": 112.25,
+      "backendCpuPctNucleo": 415.69,
+      "backendCpuPctTotal": 25.98,
+      "postgresMemMB": 115.4,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 12.2,
+      "backendMemMB": 110.49,
+      "backendCpuPctNucleo": 404.67,
+      "backendCpuPctTotal": 25.29,
+      "postgresMemMB": 89.8,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 14.23,
+      "backendMemMB": 110.55,
+      "backendCpuPctNucleo": 410.05,
+      "backendCpuPctTotal": 25.63,
+      "postgresMemMB": 89.8,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 16.26,
+      "backendMemMB": 110.94,
+      "backendCpuPctNucleo": 403.13,
+      "backendCpuPctTotal": 25.2,
+      "postgresMemMB": 89.8,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 18.32,
+      "backendMemMB": 110.95,
+      "backendCpuPctNucleo": 415.19,
+      "backendCpuPctTotal": 25.95,
+      "postgresMemMB": 89.8,
+      "postgresCpuPctTotal": 0
+    }
+  ],
+  "recursosResumen": {
+    "muestras": 9,
+    "backendCpuNucleoMedioPct": 409.33,
+    "backendCpuNucleoMaxPct": 415.69,
+    "backendMemInicialMB": 111.68,
+    "backendMemFinalMB": 110.95,
+    "backendMemMaxMB": 112.25,
+    "postgresCpuTotalMedioPct": 0,
+    "postgresCpuTotalMaxPct": 0
+  }
+}

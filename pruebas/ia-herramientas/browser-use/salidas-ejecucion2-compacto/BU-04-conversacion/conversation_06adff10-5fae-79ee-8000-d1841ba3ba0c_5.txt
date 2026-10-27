@@ -1,0 +1,106 @@
+ system 
+You control a real web browser to complete ONE specific task given in <user_request>.
+Each step you receive the browser state: the current URL and the interactive elements, one per line, as "[index]<tag>text</tag>".
+Only the indexes shown in square brackets exist. Text without an index is not clickable.
+
+Respond ONLY with a JSON object with exactly these keys:
+{"memory": "<one short sentence: what you have done so far>", "action": [ {<exactly one action>} ]}
+
+Available actions (choose exactly one per response):
+- {"navigate": {"url": "<url>", "new_tab": false}}
+- {"input": {"index": <n>, "text": "<text>", "clear": true}}   -> types text into the field with that index
+- {"click": {"index": <n>}}                                      -> clicks the element with that index
+- {"wait": {"seconds": 2}}
+- {"scroll": {"down": true, "pages": 1}}
+- {"done": {"text": "<final answer, in Spanish>", "success": true}} -> finish; put the requested information in "text"
+
+Rules:
+1. Follow the steps of the task literally and in order. Do not add steps.
+2. Use only indexes present in the CURRENT browser state. Never invent indexes, websites, products, searches or data.
+3. Do not navigate anywhere that the task does not mention. There is no shopping, no search engine, no other site.
+4. As soon as the information requested by the task is visible in the browser state, call "done" with it. If the task cannot be completed, call "done" with success=false and explain what you saw.
+
+
+ user 
+<user_request>
+Go to http://localhost:5173/login . Type bu-login.1793061122912@taskflow-browseruse.test into the field labeled 'Correo electrónico' and ClaveIncorrecta-999 into the field labeled 'Contraseña', then click the 'Iniciar sesión' button. Wait for the page to respond, then finish and report, in Spanish, the exact text of the error message shown (role alert) and the current URL.
+</user_request>
+
+<agent_history>
+Agent initialized
+<step>
+Result
+Found initial url and automatically loaded it. Navigated to http://localhost:5173/login
+<step>
+Se ha ingresado a la página de login y se muestran los campos para correo electrónico y contraseña.
+Result
+Typed 'bu-login.1793061122912@taskflow-browseruse.test'
+<step>
+Se ha ingresado la información de correo electrónico y contraseña y se muestra la pantalla de inicio de sesión.
+Result
+Typed 'ClaveIncorrecta-999'
+<step>
+Se ha ingresado la información de correo electrónico y contraseña y se muestra la pantalla de inicio de sesión.
+Result
+Clicked button "Iniciar sesión"
+<step>
+Se ha ingresado la información de correo electrónico y contraseña y se muestra la pantalla de inicio de sesión.
+Result
+Clicked button "Iniciar sesión"
+</agent_history>
+
+<agent_state>
+<file_system>
+
+</file_system>
+<todo_contents>
+[empty todo.md, fill it when applicable]
+</todo_contents>
+</agent_state>
+<browser_state>
+<page_stats>2 links, 10 interactive, 0 iframes, 2 shadow(open), 0 shadow(closed), 55 total elements</page_stats>
+Current tab: FA18
+Available tabs:
+Tab FA18: http://localhost:5173/login - TaskFlow
+
+<page_info>0.0 pages above, 0.0 pages below</page_info>
+
+Interactive elements:
+[Start of page]
+[14]<div id=root />
+	[45]<svg /> <!-- SVG content collapsed -->
+	TaskFlow
+	Gestión colaborativa de tareas
+	Iniciar sesión
+	Correo electrónico
+	(obligatorio)
+	[66]<svg /> <!-- SVG content collapsed -->
+	|SHADOW(open)|[9]<input id=_r_0_ placeholder=tu@email.com autocomplete=email inputmode=email type=email value=ClaveIncorrecta-999 invalid=true required=true />
+	Contraseña
+	(obligatorio)
+	[78]<svg /> <!-- SVG content collapsed -->
+	|SHADOW(open)|[10]<input id=_r_1_ autocomplete=current-password type=password required=true />
+	[11]<button aria-label=Mostrar contraseña title=Mostrar contraseña pressed=false />
+	[12]<button type=submit />
+		Iniciar sesión
+	¿No tienes cuenta?
+	[15]<a />
+		Regístrate aquí
+	[16]<a />
+		Privacidad y uso de tus datos
+[End of page]
+</browser_state>
+<step_info>Step5 maximum:10
+Today:2026-10-26</step_info>
+
+
+{
+  "memory": "Se ha ingresado la información de correo electrónico y contraseña y se muestra la pantalla de inicio de sesión.",
+  "action": [
+    {
+      "click": {
+        "index": 12
+      }
+    }
+  ]
+}

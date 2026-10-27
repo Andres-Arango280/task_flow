@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Resultados de Cypress (las evidencias se copian a ../pruebas/evidencias/cypress)
+cypress/results
+cypress/reports
+cypress/screenshots
+cypress/videos

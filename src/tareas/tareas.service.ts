@@ -1,160 +1,169 @@
-import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import mongoose, { Model } from 'mongoose';
-import { Tarea } from './schemas/tarea.schema';
-import { Lista } from '../listas/schemas/lista.schema';
-import { Proyecto } from '../proyectos/schemas/proyecto.schema';
-import { Equipo } from '../equipos/schemas/equipo.schema';
-import { CreateTareaDto } from './dto/tarea.dto';
+import {
+  Injectable,
+  NotFoundException,
+  ForbiddenException,
+  BadRequestException,
+} from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { In, Repository } from 'typeorm';
+import { Tarea } from './entities/tarea.entity';
+import { Lista } from '../listas/entities/lista.entity';
+import { Proyecto } from '../proyectos/entities/proyecto.entity';
+import { Usuario } from '../usuarios/entities/usuario.entity';
+import { usuarioPerteneceAEquipo } from '../equipos/equipos.service';
+import { ActualizarTareaDto, CreateTareaDto } from './dto/tarea.dto';
 
 @Injectable()
 export class TareasService {
   constructor(
-    @InjectModel(Tarea.name) private tareaModel: Model<Tarea>,
-    @InjectModel(Lista.name) private listaModel: Model<Lista>,
-    @InjectModel(Proyecto.name) private proyectoModel: Model<Proyecto>,
-    @InjectModel(Equipo.name) private equipoModel: Model<Equipo>
+    @InjectRepository(Tarea) private tareaRepository: Repository<Tarea>,
+    @InjectRepository(Lista) private listaRepository: Repository<Lista>,
+    @InjectRepository(Proyecto) private proyectoRepository: Repository<Proyecto>,
+    @InjectRepository(Usuario) private usuarioRepository: Repository<Usuario>,
   ) {}
 
-  // Nuevo: Obtener todas las tareas de un proyecto
-  async findByProyecto(proyectoId: string, userId: string) {
-    const proyecto = await this.proyectoModel.findById(proyectoId).exec();
+  private async getProyectoConAcceso(proyectoId: string, userId: string, mensaje: string) {
+    const proyecto = await this.proyectoRepository.findOne({
+      where: { id: proyectoId },
+      relations: { equipo: { miembros: true } },
+    });
     if (!proyecto) {
       throw new NotFoundException('Proyecto no encontrado');
     }
 
-    const equipo = await this.equipoModel.findById(proyecto.equipo).exec();
-    if (!equipo) {
-      throw new NotFoundException('Equipo no encontrado');
+    if (!usuarioPerteneceAEquipo(proyecto.equipo, userId)) {
+      throw new ForbiddenException(mensaje);
     }
 
-    const userIdStr = userId.toString();
-    const esMiembro = equipo.miembros.some((miembro: any) => miembro.toString() === userIdStr);
-    const esLider = equipo.lider.toString() === userIdStr;
+    return proyecto;
+  }
 
-    if (!esMiembro && !esLider) {
-      throw new ForbiddenException('No tienes acceso a este proyecto');
+  private async getListaOrThrow(listaId: string, mensaje = 'Lista no encontrada') {
+    const lista = await this.listaRepository.findOneBy({ id: listaId });
+    if (!lista) {
+      throw new NotFoundException(mensaje);
     }
+    return lista;
+  }
 
-    const proyectoObjectId = new mongoose.Types.ObjectId(proyectoId);
-    const listas = await this.listaModel.find({ proyecto: proyectoObjectId }).exec();
-    const listaIds = listas.map((lista: any) => lista._id);
+  private async getTareaOrThrow(tareaId: string) {
+    const tarea = await this.tareaRepository.findOne({
+      where: { id: tareaId },
+      relations: { asignados: true, lista: true },
+    });
+    if (!tarea) {
+      throw new NotFoundException('Tarea no encontrada');
+    }
+    return tarea;
+  }
 
-    const tareas = await this.tareaModel
-      .find({ lista: { $in: listaIds } })
-      .populate('lista', 'nombre')
-      .populate('asignados', 'nombre email')
-      .exec();
+  // Los asignados deben ser miembros (o el líder) del equipo del proyecto
+  private async getAsignadosValidos(ids: string[], proyecto: Proyecto) {
+    const unicos = [...new Set(ids)];
+    const fueraDelEquipo = unicos.filter((id) => !usuarioPerteneceAEquipo(proyecto.equipo, id));
+    if (fueraDelEquipo.length > 0) {
+      throw new BadRequestException('Solo se pueden asignar miembros del equipo');
+    }
+    return unicos.length > 0 ? this.usuarioRepository.findBy({ id: In(unicos) }) : [];
+  }
 
-    return tareas;
+  // Obtener todas las tareas de un proyecto
+  async findByProyecto(proyectoId: string, userId: string) {
+    await this.getProyectoConAcceso(proyectoId, userId, 'No tienes acceso a este proyecto');
+
+    return this.tareaRepository.find({
+      where: { lista: { proyectoId } },
+      relations: { lista: true, asignados: true },
+      order: { createdAt: 'ASC' },
+    });
   }
 
   async create(dto: CreateTareaDto, userId: string) {
-    const proyectoId = dto.proyectoId || (await this.listaModel.findById(dto.listaId).exec())?.proyecto?.toString();
-    if (!proyectoId) {
-      throw new NotFoundException('Debes enviar proyectoId o listaId');
+    let lista: Lista | null;
+    if (dto.listaId) {
+      lista = await this.getListaOrThrow(dto.listaId);
+    } else if (dto.proyectoId) {
+      lista = await this.listaRepository.findOne({
+        where: { proyectoId: dto.proyectoId },
+        order: { orden: 'ASC', createdAt: 'ASC' },
+      });
+      if (!lista) {
+        throw new NotFoundException('No hay listas creadas para este proyecto');
+      }
+    } else {
+      throw new BadRequestException('Debes enviar proyectoId o listaId');
     }
 
-    const proyecto = await this.proyectoModel.findById(proyectoId).exec();
-    if (!proyecto) {
-      throw new NotFoundException('Proyecto no encontrado');
+    const proyecto = await this.getProyectoConAcceso(
+      lista.proyectoId,
+      userId,
+      'No tienes acceso a este proyecto',
+    );
+
+    if (dto.proyectoId && dto.proyectoId !== lista.proyectoId) {
+      throw new BadRequestException('La lista no pertenece al proyecto indicado');
     }
+    const asignados = await this.getAsignadosValidos(dto.asignados ?? [], proyecto);
 
-    const equipo = await this.equipoModel.findById(proyecto.equipo).exec();
-    if (!equipo) {
-      throw new NotFoundException('Equipo no encontrado');
-    }
-
-    const userIdStr = userId.toString();
-    const esMiembro = equipo.miembros.some((miembro: any) => miembro.toString() === userIdStr);
-    const esLider = equipo.lider.toString() === userIdStr;
-
-    if (!esMiembro && !esLider) {
-      throw new ForbiddenException('No tienes acceso a este proyecto');
-    }
-
-    const proyectoObjectId = new mongoose.Types.ObjectId(proyectoId);
-    const lista = dto.listaId
-      ? await this.listaModel.findById(dto.listaId).exec()
-      : await this.listaModel.findOne({ proyecto: proyectoObjectId }).sort({ _id: 1 }).exec();
-
-    if (!lista) {
-      throw new NotFoundException('No hay listas creadas para este proyecto');
-    }
-
-    const tarea = new this.tareaModel({
+    const tarea = this.tareaRepository.create({
       titulo: dto.titulo,
       descripcion: dto.descripcion,
-      lista: lista._id,
-      asignados: dto.asignados || [],
+      listaId: lista.id,
+      asignados,
     });
-
-    return tarea.save();
+    const guardada = await this.tareaRepository.save(tarea);
+    return this.getTareaOrThrow(guardada.id);
   }
 
   async moverTarea(tareaId: string, nuevaListaId: string, userId: string) {
-    const tarea = await this.tareaModel.findById(tareaId).exec();
-    if (!tarea) {
-      throw new NotFoundException('Tarea no encontrada');
+    const tarea = await this.getTareaOrThrow(tareaId);
+    const listaDestino = await this.getListaOrThrow(nuevaListaId, 'Lista destino no encontrada');
+
+    if (listaDestino.proyectoId !== tarea.lista.proyectoId) {
+      throw new BadRequestException('No se puede mover una tarea a otro proyecto');
     }
 
-    const listaDestino = await this.listaModel.findById(nuevaListaId).exec();
-    if (!listaDestino) {
-      throw new NotFoundException('Lista destino no encontrada');
-    }
+    await this.getProyectoConAcceso(listaDestino.proyectoId, userId, 'No tienes acceso a esta tarea');
 
-    const proyecto = await this.proyectoModel.findById(listaDestino.proyecto).exec();
-    if (!proyecto) {
-      throw new NotFoundException('Proyecto no encontrado');
-    }
-
-    const equipo = await this.equipoModel.findById(proyecto.equipo).exec();
-    if (!equipo) {
-      throw new NotFoundException('Equipo no encontrado');
-    }
-
-    const userIdStr = userId.toString();
-    const esMiembro = equipo.miembros.some((miembro: any) => miembro.toString() === userIdStr);
-    const esLider = equipo.lider.toString() === userIdStr;
-
-    if (!esMiembro && !esLider) {
-      throw new ForbiddenException('No tienes acceso a esta tarea');
-    }
-
-    tarea.lista = nuevaListaId as any;
-    return tarea.save();
+    await this.tareaRepository.update(tarea.id, { listaId: listaDestino.id });
+    return this.getTareaOrThrow(tarea.id);
   }
 
   async asignarMiembros(tareaId: string, miembros: string[], userId: string) {
-    const tarea = await this.tareaModel.findById(tareaId).exec();
-    if (!tarea) {
-      throw new NotFoundException('Tarea no encontrada');
+    const tarea = await this.getTareaOrThrow(tareaId);
+    const proyecto = await this.getProyectoConAcceso(
+      tarea.lista.proyectoId,
+      userId,
+      'No tienes acceso a esta tarea',
+    );
+
+    tarea.asignados = await this.getAsignadosValidos(miembros, proyecto);
+    await this.tareaRepository.save(tarea);
+    return this.getTareaOrThrow(tarea.id);
+  }
+
+  async actualizar(tareaId: string, dto: ActualizarTareaDto, userId: string) {
+    const tarea = await this.getTareaOrThrow(tareaId);
+    await this.getProyectoConAcceso(tarea.lista.proyectoId, userId, 'No tienes acceso a esta tarea');
+
+    const cambios: Partial<Tarea> = {};
+    if (dto.titulo !== undefined) {
+      cambios.titulo = dto.titulo.trim();
     }
-
-    const lista = await this.listaModel.findById(tarea.lista).exec();
-    if (!lista) {
-      throw new NotFoundException('Lista no encontrada');
+    if (dto.descripcion !== undefined) {
+      cambios.descripcion = dto.descripcion;
     }
-
-    const proyecto = await this.proyectoModel.findById(lista.proyecto).exec();
-    if (!proyecto) {
-      throw new NotFoundException('Proyecto no encontrado');
+    if (Object.keys(cambios).length > 0) {
+      await this.tareaRepository.update(tarea.id, cambios);
     }
+    return this.getTareaOrThrow(tarea.id);
+  }
 
-    const equipo = await this.equipoModel.findById(proyecto.equipo).exec();
-    if (!equipo) {
-      throw new NotFoundException('Equipo no encontrado');
-    }
+  async eliminar(tareaId: string, userId: string) {
+    const tarea = await this.getTareaOrThrow(tareaId);
+    await this.getProyectoConAcceso(tarea.lista.proyectoId, userId, 'No tienes acceso a esta tarea');
 
-    const userIdStr = userId.toString();
-    const esMiembro = equipo.miembros.some((miembro: any) => miembro.toString() === userIdStr);
-    const esLider = equipo.lider.toString() === userIdStr;
-
-    if (!esMiembro && !esLider) {
-      throw new ForbiddenException('No tienes acceso a esta tarea');
-    }
-
-    tarea.asignados = miembros as any;
-    return tarea.save();
+    await this.tareaRepository.remove(tarea);
+    return { id: tareaId, eliminado: true };
   }
 }

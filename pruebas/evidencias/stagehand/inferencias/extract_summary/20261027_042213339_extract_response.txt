@@ -1,0 +1,6 @@
+{
+  "modelResponse": "extract",
+  "rawResponse": {
+    "progreso": 50
+  }
+}

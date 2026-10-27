@@ -1,0 +1,142 @@
+23:50:16.577 INFO  Scanner configuration file: C:\sonar-scanner\bin\..\conf\sonar-scanner.properties
+23:50:16.582 INFO  Project root configuration file: C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\sonar-project.properties
+23:50:16.610 INFO  SonarScanner CLI 8.0.1.6346
+23:50:16.618 INFO  Windows 11 10.0 amd64
+23:50:20.243 INFO  Communicating with SonarQube Server 9.9.8.100196
+23:50:21.139 INFO  Load global settings
+23:50:21.323 INFO  Load global settings (done) | time=186ms
+23:50:21.325 INFO  Server id: 243B8A4D-AaDQ1td59T94hdE7cEGk
+23:50:21.333 INFO  User cache: C:\Users\brahi\.sonar\cache
+23:50:21.341 INFO  Load/download plugins
+23:50:21.341 INFO  Load plugins index
+23:50:21.428 INFO  Load plugins index (done) | time=87ms
+23:50:21.550 INFO  Load/download plugins (done) | time=209ms
+23:50:22.237 INFO  Process project properties
+23:50:22.252 INFO  Process project properties (done) | time=15ms
+23:50:22.258 INFO  Execute project builders
+23:50:22.261 INFO  Execute project builders (done) | time=2ms
+23:50:22.274 INFO  Project key: taskflow:backend
+23:50:22.274 INFO  Base dir: C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main
+23:50:22.274 INFO  Working dir: C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\.scannerwork
+23:50:22.286 INFO  Load project settings for component key: 'taskflow:backend'
+23:50:22.365 INFO  Load project settings for component key: 'taskflow:backend' (done) | time=79ms
+23:50:22.587 INFO  Load quality profiles
+23:50:22.728 INFO  Load quality profiles (done) | time=141ms
+23:50:22.754 INFO  Load active rules
+23:50:24.929 INFO  Load active rules (done) | time=2175ms
+23:50:24.933 INFO  Load analysis cache
+23:50:24.959 INFO  Load analysis cache | time=26ms
+23:50:25.025 INFO  Load project repositories
+23:50:25.053 INFO  Load project repositories (done) | time=28ms
+23:50:25.093 INFO  Indexing files...
+23:50:25.093 INFO  Project configuration:
+23:50:25.094 INFO    Excluded sources: **/node_modules/**, **/dist/**, **/*.module.ts, **/*.controller.ts, **/*.dto.ts, **/*.spec.ts, **/*.e2e.spec.ts, **/main.ts, **/taskflow-frontend/**, **/config/**, **/*.spec.ts, **/*.e2e.spec.ts
+23:50:25.094 INFO    Included tests: **/*.spec.ts, **/*.e2e.spec.ts
+23:50:25.094 INFO    Excluded sources for coverage: **/*.module.ts, **/*.controller.ts, **/*.dto.ts, **/main.ts, **/*.interface.ts, **/taskflow-frontend/**, **/config/**
+23:50:25.838 INFO  31 files indexed
+23:50:25.838 INFO  79 files ignored because of inclusion/exclusion patterns
+23:50:25.838 INFO  0 files ignored because of scm ignore settings
+23:50:25.840 INFO  Quality profile for ts: Sonar way
+23:50:25.840 INFO  ------------- Run sensors on module TaskFlow Backend
+23:50:25.951 INFO  Load metrics repository
+23:50:25.988 INFO  Load metrics repository (done) | time=37ms
+23:50:27.807 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+23:50:27.809 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+23:50:27.810 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+23:50:27.810 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=4ms
+23:50:27.810 INFO  Sensor TypeScript analysis [javascript]
+23:51:06.259 WARN  Node.js version 20 is not recommended, you might experience issues. Please use a recommended version of Node.js [16, 18]
+23:51:06.325 INFO  Resolving TSConfig files using 'tsconfig.json' from property sonar.typescript.tsconfigPath
+23:51:06.326 INFO  Found 1 TSConfig file(s): [C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\tsconfig.json]
+23:51:06.326 INFO  Creating TypeScript program
+23:51:06.328 INFO  TypeScript configuration file C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\tsconfig.json
+23:51:06.330 INFO  31 source files to be analyzed
+23:51:09.363 INFO  Creating TypeScript program (done) | time=3037ms
+23:51:09.364 INFO  Starting analysis with current program
+23:51:11.538 INFO  Analyzed 17 file(s) with current program
+23:51:11.543 INFO  Skipped 14 file(s) because they were not part of any tsconfig.json (enable debug logs to see the full list)
+23:51:11.545 INFO  31/31 source files have been analyzed
+23:51:11.545 INFO  Hit the cache for 0 out of 17
+23:51:11.546 INFO  Miss the cache for 17 out of 17: ANALYSIS_MODE_INELIGIBLE [17/17]
+23:51:11.546 INFO  Sensor TypeScript analysis [javascript] (done) | time=43736ms
+23:51:11.546 INFO  Sensor CSS Rules [javascript]
+23:51:11.547 INFO  No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+23:51:11.547 INFO  Sensor CSS Rules [javascript] (done) | time=1ms
+23:51:11.547 INFO  Sensor JavaScript/TypeScript Coverage [javascript]
+23:51:11.548 INFO  Analysing [C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\coverage\lcov.info]
+23:51:11.577 INFO  Sensor JavaScript/TypeScript Coverage [javascript] (done) | time=30ms
+23:51:11.578 INFO  Sensor C# Project Type Information [csharp]
+23:51:11.578 INFO  Sensor C# Project Type Information [csharp] (done) | time=0ms
+23:51:11.578 INFO  Sensor C# Analysis Log [csharp]
+23:51:11.595 INFO  Sensor C# Analysis Log [csharp] (done) | time=17ms
+23:51:11.595 INFO  Sensor C# Properties [csharp]
+23:51:11.595 INFO  Sensor C# Properties [csharp] (done) | time=0ms
+23:51:11.595 INFO  Sensor HTML [web]
+23:51:11.597 INFO  Sensor HTML [web] (done) | time=2ms
+23:51:11.597 INFO  Sensor TextAndSecretsSensor [text]
+23:51:11.604 INFO  31 source files to be analyzed
+23:51:11.669 INFO  31/31 source files have been analyzed
+23:51:11.670 INFO  Sensor TextAndSecretsSensor [text] (done) | time=73ms
+23:51:11.670 INFO  Sensor VB.NET Project Type Information [vbnet]
+23:51:11.670 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=0ms
+23:51:11.670 INFO  Sensor VB.NET Analysis Log [vbnet]
+23:51:11.690 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=20ms
+23:51:11.690 INFO  Sensor VB.NET Properties [vbnet]
+23:51:11.690 INFO  Sensor VB.NET Properties [vbnet] (done) | time=0ms
+23:51:11.690 INFO  Sensor IaC Docker Sensor [iac]
+23:51:11.693 INFO  0 source files to be analyzed
+23:51:11.745 INFO  0/0 source files have been analyzed
+23:51:11.745 INFO  Sensor IaC Docker Sensor [iac] (done) | time=55ms
+23:51:11.753 INFO  ------------- Run sensors on project
+23:51:11.826 INFO  Sensor Analysis Warnings import [csharp]
+23:51:11.827 INFO  Sensor Analysis Warnings import [csharp] (done) | time=1ms
+23:51:11.827 INFO  Sensor Zero Coverage Sensor
+23:51:11.835 INFO  Sensor Zero Coverage Sensor (done) | time=8ms
+23:51:11.847 INFO  SCM Publisher SCM provider for this project is: git
+23:51:11.850 INFO  SCM Publisher 30 source files to be analyzed
+23:51:12.685 INFO  SCM Publisher 0/30 source files have been analyzed (done) | time=833ms
+23:51:12.685 WARN  Missing blame information for the following files:
+23:51:12.685 WARN    * src/proyectos/entities/proyecto.entity.ts
+23:51:12.685 WARN    * src/comentarios/entities/comentario.entity.ts
+23:51:12.685 WARN    * src/equipos/equipos.eliminar.spec.ts
+23:51:12.685 WARN    * src/listas/listas.service.spec.ts
+23:51:12.685 WARN    * src/usuarios/usuarios.service.spec.ts
+23:51:12.685 WARN    * src/usuarios/usuarios.service.ts
+23:51:12.685 WARN    * src/tareas/entities/tarea.entity.ts
+23:51:12.685 WARN    * src/auth/auth.service.spec.ts
+23:51:12.685 WARN    * src/proyectos/proyectos.service.spec.ts
+23:51:12.685 WARN    * src/comentarios/comentarios.service.ts
+23:51:12.685 WARN    * src/auth/jwt.strategy.ts
+23:51:12.685 WARN    * src/equipos/equipos.remove-miembro.spec.ts
+23:51:12.685 WARN    * src/auth/limitador-intentos.ts
+23:51:12.685 WARN    * src/common/validation.ts
+23:51:12.685 WARN    * src/tareas/tareas.service.ts
+23:51:12.685 WARN    * src/proyectos/proyectos.e2e.spec.ts
+23:51:12.685 WARN    * src/tareas/tareas.edicion.spec.ts
+23:51:12.685 WARN    * src/equipos/equipos.service.spec.ts
+23:51:12.685 WARN    * src/auth/auth.e2e.spec.ts
+23:51:12.685 WARN    * src/proyectos/proyectos.eliminar.spec.ts
+23:51:12.685 WARN    * src/equipos/equipos.e2e.spec.ts
+23:51:12.685 WARN    * src/equipos/equipos.service.ts
+23:51:12.685 WARN    * src/equipos/entities/equipo.entity.ts
+23:51:12.685 WARN    * src/tareas/tareas.service.spec.ts
+23:51:12.685 WARN    * src/usuarios/entities/usuario.entity.ts
+23:51:12.685 WARN    * src/auth/limitador-intentos.spec.ts
+23:51:12.685 WARN    * src/listas/listas.service.ts
+23:51:12.685 WARN    * src/proyectos/proyectos.service.ts
+23:51:12.685 WARN    * src/auth/auth.service.ts
+23:51:12.685 WARN    * src/listas/entities/lista.entity.ts
+23:51:12.685 WARN  This may lead to missing/broken features in SonarQube
+23:51:12.694 INFO  CPD Executor 2 files had no CPD blocks
+23:51:12.694 INFO  CPD Executor Calculating CPD for 15 files
+23:51:12.710 INFO  CPD Executor CPD calculation finished (done) | time=15ms
+23:51:12.873 INFO  Analysis report generated in 136ms, dir size=322.7 kB
+23:51:12.968 INFO  Analysis report compressed in 94ms, zip size=112.7 kB
+23:51:13.102 INFO  Analysis report uploaded in 134ms
+23:51:13.105 INFO  ------------- Check Quality Gate status
+23:51:13.106 INFO  Waiting for the analysis report to be processed (max 300s)
+23:51:18.193 INFO  QUALITY GATE STATUS: PASSED - View details on http://localhost:9000/dashboard?id=taskflow%3Abackend
+23:51:26.002 INFO  Analysis total time: 1:04.293 s
+23:51:26.004 INFO  EXECUTION SUCCESS
+23:51:26.004 INFO  Total time: 1:09.434s
+

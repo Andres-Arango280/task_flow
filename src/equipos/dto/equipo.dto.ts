@@ -1,16 +1,18 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString, IsUUID, MaxLength } from 'class-validator';
 
 export class CreateEquipoDto {
   @IsNotEmpty()
+  @IsString()
+  @MaxLength(255)
   nombre: string;
 }
 
 export class AddMiembroDto {
   @IsOptional()
-  @IsString()
+  @IsUUID()
   userId?: string;
 
   @IsOptional()
-  @IsString()
+  @IsUUID()
   usuarioId?: string;
 }

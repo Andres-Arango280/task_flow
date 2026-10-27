@@ -1,0 +1,66 @@
+# /proyectos/ad908355-2684-46ec-9b53-95c94bf7e61c
+# título: Proyecto Planner 1793055645273 · TaskFlow
+
+- link "Saltar al contenido":
+  - /url: "#contenido"
+- navigation "Navegación principal":
+  - link "TaskFlow, ir al inicio":
+    - /url: /
+    - text: TaskFlow
+  - link "Inicio":
+    - /url: /
+  - link "Ayuda":
+    - /url: /ayuda
+  - link "Preferencias":
+    - /url: /preferencias
+  - button "Ver atajos de teclado"
+  - text: Planner 1793055645273
+  - button "Salir"
+- main:
+  - navigation "Ruta de navegación":
+    - list:
+      - listitem:
+        - link "Mis equipos":
+          - /url: /
+      - listitem:
+        - link "Equipo Planner 1793055645273":
+          - /url: /equipos/da29867e-7bf0-479d-be7c-7d9c59ce41d8
+      - listitem: Proyecto Planner 1793055645273
+  - heading "Proyecto Planner 1793055645273" [level=1]
+  - paragraph:
+    - text: Equipo Equipo Planner 1793055645273 Actualizado ahora
+    - status
+  - text: Progreso 0%
+  - progressbar "Progreso"
+  - paragraph: 0 de 1 tarea hecha
+  - button "Nueva tarea"
+  - search "Buscar y filtrar tareas":
+    - text: Buscar tareas
+    - searchbox "Buscar tareas"
+    - text: Asignada a
+    - combobox "Asignada a":
+      - option "Todos" [selected]
+      - option "Sin asignar"
+      - option "Planner 1793055645273 (tú)"
+    - paragraph: Mostrando 1 de 1 tareas
+  - region "Columnas del tablero":
+    - region "Por Hacer":
+      - heading "Por Hacer" [level=2]
+      - text: "1"
+      - button "Arrastrar tarea Tarea de ejemplo"
+      - button "Tarea de ejemplo Explorada por el planner"
+      - button "Asignar miembros a la tarea Tarea de ejemplo"
+      - text: Sin asignar
+      - button "Agregar tarea en Por Hacer": Agregar tarea
+    - region "En Progreso":
+      - heading "En Progreso" [level=2]
+      - text: "0"
+      - paragraph: Sin tareas en esta columna
+      - paragraph: Arrastra una tarea aquí o crea una nueva.
+      - button "Agregar tarea en En Progreso": Agregar tarea
+    - region "Hecho":
+      - heading "Hecho" [level=2]
+      - text: "0"
+      - paragraph: Sin tareas en esta columna
+      - paragraph: Arrastra una tarea aquí o crea una nueva.
+      - button "Agregar tarea en Hecho": Agregar tarea

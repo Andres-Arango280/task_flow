@@ -1,0 +1,23 @@
+{
+  "id": "API-PRO-02",
+  "obtenido": "Respondió 403 con \"No tienes acceso a este equipo\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/proyectos",
+    "autenticado": true,
+    "cuerpo": {
+      "nombre": "Intruso",
+      "equipoId": "487c6bd4-dca8-4ff9-a225-272c2d790eb0"
+    }
+  },
+  "respuesta": {
+    "estado": 403,
+    "duracionMs": 11,
+    "cuerpo": {
+      "message": "No tienes acceso a este equipo",
+      "error": "Forbidden",
+      "statusCode": 403
+    }
+  },
+  "fecha": "2026-10-26T23:12:55.227Z"
+}

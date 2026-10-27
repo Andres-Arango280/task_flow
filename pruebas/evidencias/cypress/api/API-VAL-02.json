@@ -1,0 +1,25 @@
+{
+  "id": "API-VAL-02",
+  "obtenido": "POST /proyectos respondió 400 con \"El equipo no es un identificador válido\"; PATCH /tareas/:id/mover respondió 400 con \"La lista destino no es un identificador válido\". (Defecto detectado en una ejecución anterior y corregido.)",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/proyectos",
+    "autenticado": true,
+    "cuerpo": {
+      "nombre": "Proyecto",
+      "equipoId": "no-es-uuid"
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 6,
+    "cuerpo": {
+      "message": [
+        "El equipo no es un identificador válido"
+      ],
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:13:41.260Z"
+}

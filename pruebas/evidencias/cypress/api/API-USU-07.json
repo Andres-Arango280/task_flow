@@ -1,0 +1,24 @@
+{
+  "id": "API-USU-07",
+  "obtenido": "Respondió 200 con nombre \"Nombre Editado 1793056415046\" (sin espacios sobrantes).",
+  "peticion": {
+    "metodo": "PATCH",
+    "url": "http://localhost:3000/usuarios/me",
+    "autenticado": true,
+    "cuerpo": {
+      "nombre": "  Nombre Editado 1793056415046  "
+    }
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 34,
+    "cuerpo": {
+      "id": "80fa0ba8-f96d-4720-b2f4-2a7fe99a8215",
+      "nombre": "Nombre Editado 1793056415046",
+      "email": "usu.17930564146542747@taskflow-cypress.test",
+      "createdAt": "2026-10-26T23:13:34.876Z",
+      "updatedAt": "2026-10-26T23:13:35.058Z"
+    }
+  },
+  "fecha": "2026-10-26T23:13:35.100Z"
+}

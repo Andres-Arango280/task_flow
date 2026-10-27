@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar que mover tareas entre columnas actualiza la barra de progreso y que el cambio persiste.
+
+Resultado esperado: Con 2 tareas: mover A a 'En Progreso' mantiene 0 %; mover A a 'Hecho' da aria-valuenow=50 ('1 de 2 tareas hechas (50%)'); mover B a 'Hecho' da 100; tras recargar sigue en 100.
+
+Datos: Usuario, equipo, proyecto y 2 tareas creados por API.
+Esperas: waitForElementVisible select_ColumnaDetalle 10s; waitForElementVisible toast_Exito 10s; waitForElementAttributeValue aria-valuenow 10s; waitForElementNotPresent dialog 10s
+Evidencia: Reports/evidencias/TC12_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC12_MoverTarea_ProgresoActualizado</name>
+   <tag>positivo,tareas</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>d186ada0-13d3-46f5-8798-62cb1f08bf79</testCaseGuid>
+</TestCaseEntity>

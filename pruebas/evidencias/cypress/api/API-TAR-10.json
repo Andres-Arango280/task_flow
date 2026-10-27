@@ -1,0 +1,22 @@
+{
+  "id": "API-TAR-10",
+  "obtenido": "Respondió 400 con \"No se puede mover una tarea a otro proyecto\".",
+  "peticion": {
+    "metodo": "PATCH",
+    "url": "http://localhost:3000/tareas/1c206bef-248e-43bf-a837-6c5252959449/mover",
+    "autenticado": true,
+    "cuerpo": {
+      "nuevaListaId": "da4d20a8-f473-4e46-b7d4-00965b61251b"
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 13,
+    "cuerpo": {
+      "message": "No se puede mover una tarea a otro proyecto",
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:13:20.734Z"
+}

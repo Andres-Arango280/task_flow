@@ -1,0 +1,22 @@
+{
+  "id": "API-AUTH-07",
+  "obtenido": "Los 5 intentos fallidos respondieron 401, 401, 401, 401, 401; el 6.º (con la clave correcta) respondió 429: \"Demasiados intentos fallidos. Por seguridad, espera 15 minuto(s) antes de volver a intentarlo.\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/auth/login",
+    "autenticado": false,
+    "cuerpo": {
+      "email": "bloqueo.17930563445165268@taskflow-cypress.test",
+      "password": "***"
+    }
+  },
+  "respuesta": {
+    "estado": 429,
+    "duracionMs": 4,
+    "cuerpo": {
+      "statusCode": 429,
+      "message": "Demasiados intentos fallidos. Por seguridad, espera 15 minuto(s) antes de volver a intentarlo."
+    }
+  },
+  "fecha": "2026-10-26T23:12:25.236Z"
+}

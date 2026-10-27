@@ -1,0 +1,19 @@
+{
+  "id": "API-USU-06",
+  "obtenido": "Respondió 400 con \"Debes proporcionar un email\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/usuarios",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 10,
+    "cuerpo": {
+      "message": "Debes proporcionar un email",
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:13:34.503Z"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "API-EQU-11",
+  "obtenido": "Respondió 400 con \"Debe enviar userId o usuarioId\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/equipos/b3df6b47-0473-42fd-9062-3fb01096e6e7/miembros",
+    "autenticado": true,
+    "cuerpo": {}
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 14,
+    "cuerpo": {
+      "message": "Debe enviar userId o usuarioId",
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:12:43.425Z"
+}

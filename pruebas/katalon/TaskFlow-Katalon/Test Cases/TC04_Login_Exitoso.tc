@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar que un usuario registrado inicia sesión y llega a 'Mis equipos'.
+
+Resultado esperado: Redirección a '/', encabezado 'Mis equipos', nombre del usuario en la barra y token guardado en localStorage.
+
+Datos: Usuario creado por API con correo único y contraseña Clave123.
+Esperas: waitForElementVisible input_Correo 10s; waitForElementClickable btn_IniciarSesion 10s; waitForElementVisible h1_MisEquipos 10s
+Evidencia: Reports/evidencias/TC04_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC04_Login_Exitoso</name>
+   <tag>positivo,sesion</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>86305d7a-95f7-4cad-bcca-5756f0980dca</testCaseGuid>
+</TestCaseEntity>

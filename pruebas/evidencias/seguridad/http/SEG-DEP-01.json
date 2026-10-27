@@ -1,0 +1,15 @@
+{
+  "id": "SEG-DEP-01",
+  "nombre": "Dependencias de producción del backend sin vulnerabilidades críticas/altas",
+  "fecha": "2026-10-26T23:19:25.655Z",
+  "obtenido": "crítica=0, alta=4, moderada=7, baja=0 (total 11). Críticas/altas: @nestjs/platform-express (high, directa), body-parser (high), lodash (high), multer (high)",
+  "extra": {
+    "info": 0,
+    "low": 0,
+    "moderate": 7,
+    "high": 4,
+    "critical": 0,
+    "total": 11
+  },
+  "intercambios": []
+}

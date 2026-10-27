@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[NEGATIVO] Comprobar que no se puede invitar un correo mal formado ni uno que no está registrado.
+
+Resultado esperado: Con 'correo-invalido' aparece 'Escribe un correo completo...'; con un correo válido no registrado aparece [role=alert] 'No hay ningún usuario registrado con el correo X...'; no se muestra 'Añadir al equipo' y el equipo sigue con 1 miembro.
+
+Datos: 'correo-invalido' y un correo único nunca registrado.
+Esperas: waitForElementVisible p_ErrorFormatoCorreo 10s; waitForElementVisible alert_ErrorInvitacion 10s; verifyElementNotPresent btn_AnadirAlEquipo 3s
+Evidencia: Reports/evidencias/TC09_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC09_InvitarMiembro_CorreoInexistente</name>
+   <tag>negativo,equipos</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>17d14a89-70ec-445c-bd82-ee577c806ea1</testCaseGuid>
+</TestCaseEntity>

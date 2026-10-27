@@ -1,0 +1,29 @@
+{
+  "modelResponse": "observe",
+  "rawResponse": {
+    "elements": [
+      {
+        "elementId": "0-86",
+        "description": "Correo electrónico (obligatorio)",
+        "method": "fill",
+        "arguments": [
+          "email"
+        ]
+      },
+      {
+        "elementId": "0-86",
+        "description": "Contraseña (obligatorio)",
+        "method": "fill",
+        "arguments": [
+          "password"
+        ]
+      },
+      {
+        "elementId": "0-86",
+        "description": "Iniciar sesión",
+        "method": "click",
+        "arguments": []
+      }
+    ]
+  }
+}

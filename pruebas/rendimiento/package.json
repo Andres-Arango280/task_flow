@@ -1,0 +1,22 @@
+{
+  "name": "taskflow-pruebas-rendimiento",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pruebas de carga y rendimiento de la API TaskFlow con autocannon",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node run-all.js",
+    "seed": "node seed.js",
+    "carga-base": "node run-all.js carga-base",
+    "carga-media": "node run-all.js carga-media",
+    "escritura": "node run-all.js escritura",
+    "login": "node run-all.js login",
+    "estres": "node run-all.js estres",
+    "resistencia": "node run-all.js resistencia",
+    "informe": "node informe.js",
+    "limpiar": "node limpiar.js"
+  },
+  "dependencies": {
+    "autocannon": "^7.15.0"
+  }
+}

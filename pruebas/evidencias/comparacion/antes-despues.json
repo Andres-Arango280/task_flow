@@ -1,0 +1,651 @@
+{
+  "generado": "2026-10-27T04:53:32.748Z",
+  "versionAnterior": {
+    "ref": "HEAD",
+    "commit": "8b46dc0",
+    "fecha": "2026-09-23",
+    "mensaje": "Fuckc",
+    "descripcion": "Último commit del repositorio antes de la refactorización (API NestJS sobre MongoDB/Mongoose, sin pruebas de interfaz)."
+  },
+  "versionFinal": {
+    "descripcion": "Árbol de trabajo actual: backend NestJS + PostgreSQL/TypeORM, frontend React refactorizado según los hallazgos de las pruebas, y todas las suites de prueba.",
+    "diffStat": " 75 files changed, 4688 insertions(+), 2439 deletions(-)",
+    "archivosNuevos": 549
+  },
+  "metricas": {
+    "antes": {
+      "archivos": 84,
+      "archivosCodigo": 66,
+      "archivosPrueba": 13,
+      "lineasCodigo": 3242,
+      "lineasPrueba": 3292,
+      "casosIt": 142,
+      "escenariosGherkin": 0,
+      "porCarpeta": {
+        "src": {
+          "archivos": 48,
+          "lineas": 3057
+        },
+        "taskflow-frontend/src": {
+          "archivos": 36,
+          "lineas": 3730
+        }
+      }
+    },
+    "despues": {
+      "archivos": 757,
+      "archivosCodigo": 184,
+      "archivosPrueba": 59,
+      "lineasCodigo": 16523,
+      "lineasPrueba": 8576,
+      "casosIt": 373,
+      "escenariosGherkin": 11,
+      "porCarpeta": {
+        "src": {
+          "archivos": 55,
+          "lineas": 4396
+        },
+        "taskflow-frontend/src": {
+          "archivos": 56,
+          "lineas": 6845
+        },
+        "taskflow-frontend/cypress": {
+          "archivos": 34,
+          "lineas": 3113
+        },
+        "pruebas/accesibilidad": {
+          "archivos": 10,
+          "lineas": 4886
+        },
+        "pruebas/comparacion": {
+          "archivos": 1,
+          "lineas": 235
+        },
+        "pruebas/despliegue": {
+          "archivos": 1,
+          "lineas": 234
+        },
+        "pruebas/e2e-screenplay": {
+          "archivos": 56,
+          "lineas": 7001
+        },
+        "pruebas/ia-herramientas": {
+          "archivos": 322,
+          "lineas": 83890
+        },
+        "pruebas/informe": {
+          "archivos": 12,
+          "lineas": 11813
+        },
+        "pruebas/jest-a-resumen.js": {
+          "archivos": 1,
+          "lineas": 67
+        },
+        "pruebas/katalon": {
+          "archivos": 143,
+          "lineas": 4970
+        },
+        "pruebas/rendimiento": {
+          "archivos": 10,
+          "lineas": 1541
+        },
+        "pruebas/seguridad": {
+          "archivos": 7,
+          "lineas": 1483
+        },
+        "pruebas/stagehand": {
+          "archivos": 49,
+          "lineas": 5120
+        }
+      }
+    }
+  },
+  "dependencias": {
+    "backend": {
+      "anadidas": [
+        "@nestjs/typeorm",
+        "helmet",
+        "pg",
+        "typeorm"
+      ],
+      "eliminadas": [
+        "@hello-pangea/dnd",
+        "@nestjs/mongoose",
+        "mongodb",
+        "mongoose"
+      ],
+      "actualizadas": [
+        "bcrypt: ^5.1.1 → ^6.0.0",
+        "class-validator: ^0.14.0 → ^0.14.4"
+      ]
+    },
+    "backendDev": {
+      "anadidas": [],
+      "eliminadas": [
+        "@vitejs/plugin-react",
+        "vite"
+      ],
+      "actualizadas": []
+    },
+    "frontend": {
+      "anadidas": [],
+      "eliminadas": [],
+      "actualizadas": []
+    },
+    "frontendDev": {
+      "anadidas": [
+        "@tailwindcss/vite",
+        "@testing-library/cypress",
+        "axe-core",
+        "cypress",
+        "cypress-axe",
+        "cypress-mochawesome-reporter"
+      ],
+      "eliminadas": [
+        "autoprefixer",
+        "postcss"
+      ],
+      "actualizadas": []
+    },
+    "scriptsNpm": {
+      "antes": 12,
+      "despues": 28
+    }
+  },
+  "caracteristicas": [
+    {
+      "caracteristica": "Base de datos",
+      "antes": "MongoDB + Mongoose",
+      "despues": "PostgreSQL + TypeORM (entidades, índices en claves foráneas)",
+      "detectadoAntes": true,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Cabeceras de seguridad (helmet)",
+      "antes": "Sin helmet",
+      "despues": "helmet(): CSP, HSTS, nosniff, X-Frame-Options, Referrer-Policy",
+      "detectadoAntes": false,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "X-Powered-By",
+      "antes": "Expuesto",
+      "despues": "Desactivado",
+      "detectadoAntes": false,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "CORS",
+      "antes": "Abierto a cualquier origen (origin: true)",
+      "despues": "Limitado a FRONTEND_URL",
+      "detectadoAntes": true,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Protección fuerza bruta",
+      "antes": "Sin límite de intentos",
+      "despues": "Bloqueo 15 min tras 5 fallos por cuenta (HTTP 429)",
+      "detectadoAntes": false,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Secreto JWT",
+      "antes": "Valor por defecto en el código ('coco258')",
+      "despues": "getOrThrow sin valor por defecto; secreto de 64 caracteres en .env",
+      "detectadoAntes": true,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Política de contraseñas",
+      "antes": "Mínimo 6 caracteres",
+      "despues": "Mínimo 8 caracteres con letra y número (backend y formulario)",
+      "detectadoAntes": true,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Login resistente a enumeración por tiempo",
+      "antes": "bcrypt.compare solo si existe el correo",
+      "despues": "bcrypt.compare siempre (hash ficticio si el correo no existe)",
+      "detectadoAntes": true,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Validación de entrada en español",
+      "antes": "Mensajes genéricos en inglés",
+      "despues": "Pipe propio con mensajes en español y traducción de reglas (isUuid, etc.)",
+      "detectadoAntes": true,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Avisos (toasts) y manejo de errores en la interfaz",
+      "antes": "Errores solo en consola",
+      "despues": "Avisos en español con código de referencia, Deshacer y confirmaciones",
+      "detectadoAntes": true,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Ayuda, preferencias y privacidad",
+      "antes": "No existían",
+      "despues": "Páginas de Ayuda (FAQ), Preferencias de accesibilidad y Privacidad",
+      "detectadoAntes": false,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Búsqueda tolerante a errores",
+      "antes": "Sin búsqueda",
+      "despues": "Búsqueda de tareas/equipos tolerante a tildes y erratas",
+      "detectadoAntes": false,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Accesibilidad (WCAG 2.5.3, landmarks, dnd accesible)",
+      "antes": "aria-label distinto del texto visible",
+      "despues": "Nombre accesible = texto visible; anuncios de arrastre en español; landmark main",
+      "detectadoAntes": false,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Edición y eliminación (tareas, proyectos, equipos, cuenta)",
+      "antes": "Solo creación y movimiento",
+      "despues": "PATCH/DELETE de tareas, proyectos, equipos y cuenta propia",
+      "detectadoAntes": false,
+      "detectadoDespues": true
+    },
+    {
+      "caracteristica": "Índices en claves foráneas",
+      "antes": "Sin índices (p95 569 ms en REN-02)",
+      "despues": "@Index en listaId, proyectoId, equipoId, liderId, tareaId (p95 273 ms)",
+      "detectadoAntes": false,
+      "detectadoDespues": true
+    }
+  ],
+  "correcciones": [
+    {
+      "id": "C-01",
+      "hallazgo": "Los errores de la interfaz solo se registraban en la consola; sin ayuda, sin deshacer, sin búsqueda, título de pestaña fijo, colores de columnas iguales y barra de progreso ficticia",
+      "origen": "Evaluación heurística GRIHO (IA)",
+      "correccion": "Avisos en español con código de referencia y opción Deshacer, confirmaciones, página de Ayuda con preguntas frecuentes, Preferencias de accesibilidad, Privacidad, migas de pan, títulos por página, atajos de teclado, búsqueda tolerante a errores, borradores, actualización periódica",
+      "verificacion": "GRIHO 52,3 % → 93,4 %; recorridos UX-01..08; Screenplay SP-01..18"
+    },
+    {
+      "id": "C-02",
+      "hallazgo": "Un reset CSS fuera de capa anulaba todo el espaciado de Tailwind (tarjetas sin relleno, iconos sobre el texto)",
+      "origen": "Prueba de interfaz en navegador",
+      "correccion": "Estilos base movidos a @layer base en index.css",
+      "verificacion": "Capturas de interfaz y regresión visual (VIS)"
+    },
+    {
+      "id": "C-03",
+      "hallazgo": "Al recargar una página privada la aplicación expulsaba al login",
+      "origen": "Prueba E2E en navegador",
+      "correccion": "La sesión se restaura de forma síncrona al crear el store (useAuthStore)",
+      "verificacion": "REG/UX de recarga; recorrido principal"
+    },
+    {
+      "id": "C-04",
+      "hallazgo": "Faltaban cabeceras de seguridad, X-Powered-By expuesto y CORS abierto a cualquier origen",
+      "origen": "Revisión de seguridad",
+      "correccion": "helmet (CSP, HSTS, nosniff, X-Frame-Options), X-Powered-By desactivado y CORS limitado a FRONTEND_URL",
+      "verificacion": "SEG-CONF-01..05"
+    },
+    {
+      "id": "C-05",
+      "hallazgo": "Sin protección frente a fuerza bruta en el login",
+      "origen": "Revisión de seguridad",
+      "correccion": "Bloqueo de 15 min tras 5 intentos fallidos por cuenta (LimitadorIntentos) con HTTP 429",
+      "verificacion": "SEG-AUTH (fuerza bruta) y pruebas unitarias del limitador"
+    },
+    {
+      "id": "C-06",
+      "hallazgo": "Secreto JWT débil ('coco258') y valor por defecto en el código",
+      "origen": "Revisión de seguridad",
+      "correccion": "Secreto aleatorio de 64 caracteres en .env y getOrThrow sin valor por defecto",
+      "verificacion": "SEG-AUTH (tokens manipulados / secretos adivinables)"
+    },
+    {
+      "id": "C-07",
+      "hallazgo": "Error 500 en el login cuando la contraseña no es texto (p. ej. {\"$ne\": null})",
+      "origen": "Pruebas de seguridad (inyección)",
+      "correccion": "LoginDto con @IsString y @MaxLength(72): ahora 400 con mensaje en español",
+      "verificacion": "SEG-INY / SEG-VAL"
+    },
+    {
+      "id": "C-08",
+      "hallazgo": "El token de un usuario eliminado devolvía 404 en lugar de 401",
+      "origen": "Pruebas de seguridad",
+      "correccion": "JwtStrategy convierte la cuenta inexistente en 401",
+      "verificacion": "SEG-AUTH"
+    },
+    {
+      "id": "C-09",
+      "hallazgo": "Enumeración de cuentas por tiempo de respuesta del login (7 ms vs 85 ms)",
+      "origen": "Pruebas de seguridad (SEG-AUTH-12)",
+      "correccion": "Se ejecuta siempre bcrypt.compare (hash ficticio si el correo no existe)",
+      "verificacion": "SEG-AUTH-12"
+    },
+    {
+      "id": "C-10",
+      "hallazgo": "Se aceptaban contraseñas triviales (123456, password)",
+      "origen": "Pruebas de seguridad (SEG-AUTH-15)",
+      "correccion": "Política: mínimo 8 caracteres con al menos una letra y un número (backend y formulario de registro)",
+      "verificacion": "SEG-AUTH-15; API-AUTH-03"
+    },
+    {
+      "id": "C-11",
+      "hallazgo": ".env con secretos versionado en git",
+      "origen": "Pruebas de seguridad",
+      "correccion": "git rm --cached .env (queda ignorado); secreto JWT rotado. Pendiente: rotar la contraseña de PostgreSQL que quedó en el historial",
+      "verificacion": "git ls-files"
+    },
+    {
+      "id": "C-12",
+      "hallazgo": "Dependencias vulnerables: backend producción 2 críticas y 10 altas; frontend 2 altas",
+      "origen": "npm audit (SEG-DEP)",
+      "correccion": "bcrypt 6 y npm audit fix: backend producción 0 críticas / 3 altas (requieren NestJS 11+); frontend 0 altas",
+      "verificacion": "SEG-DEP-01..03"
+    },
+    {
+      "id": "C-13",
+      "hallazgo": "Faltaban índices en las claves foráneas",
+      "origen": "Pruebas de rendimiento",
+      "correccion": "@Index en listaId, proyectoId, equipoId, liderId y tareaId",
+      "verificacion": "pg_indexes; escenarios REN"
+    },
+    {
+      "id": "C-14",
+      "hallazgo": "Mensaje de validación genérico para identificadores inválidos (regla isUuid no traducida)",
+      "origen": "Cypress API-VAL-02",
+      "correccion": "Traductor de validación corregido y concordancia de género",
+      "verificacion": "API-VAL-02"
+    },
+    {
+      "id": "C-15",
+      "hallazgo": "Un 403 en el tablero se mostraba como error de conexión",
+      "origen": "Screenplay SP-17",
+      "correccion": "Mensaje específico 'No tienes acceso a este proyecto'",
+      "verificacion": "SP-17"
+    },
+    {
+      "id": "C-16",
+      "hallazgo": "Textos de Ayuda distintos de los botones reales; texto de progreso con concordancia incorrecta",
+      "origen": "Screenplay / Cypress",
+      "correccion": "Textos alineados ('Invitar', 'Añadir al equipo', '1 de 4 tareas hechas')",
+      "verificacion": "SP / REG-KAN-10"
+    },
+    {
+      "id": "C-17",
+      "hallazgo": "Nombre accesible distinto del texto visible (WCAG 2.5.3) en tarjetas de tarea y equipo",
+      "origen": "axe-core (12 fallos)",
+      "correccion": "Se eliminaron las aria-label: el nombre accesible es el texto visible; data-testid para las pruebas",
+      "verificacion": "A11Y / VIS-12"
+    },
+    {
+      "id": "C-18",
+      "hallazgo": "Instrucciones de arrastrar y soltar para lector de pantalla en inglés y con identificadores internos",
+      "origen": "Prueba de teclado TEC-11",
+      "correccion": "dragHandleUsageInstructions y anuncios en español con el título de la tarea y el nombre de la columna",
+      "verificacion": "TEC-11"
+    },
+    {
+      "id": "C-19",
+      "hallazgo": "Sin landmark main en Privacidad, salto de diseño (CLS) en el inicio, iconos sin texto en el menú móvil, aviso titulado 'Hecho' igual que la columna, sin meta descripción",
+      "origen": "axe-core, Lighthouse y revisión del equipo",
+      "correccion": "main en Privacidad, esqueleto de carga, etiquetas visibles en móvil, aviso 'Listo', meta description",
+      "verificacion": "A11Y, Lighthouse"
+    },
+    {
+      "id": "C-20",
+      "hallazgo": "El backend y Vite se reiniciaban al escribir archivos de prueba, causando fallos intermitentes",
+      "origen": "Ejecución de suites (estabilidad)",
+      "correccion": "tsconfig excluye pruebas/ y Vite ignora las carpetas de resultados de Cypress",
+      "verificacion": "Ejecuciones finales estables"
+    }
+  ],
+  "evolucionSuites": [
+    {
+      "suite": "Regresión backend (Jest)",
+      "antes": "125/125",
+      "despues": "137/137",
+      "comentario": "Se añadieron 12 pruebas para las nuevas funciones (editar/eliminar tareas, proyectos, equipos y cuenta; limitador de intentos). Cobertura de líneas 91,5 %."
+    },
+    {
+      "suite": "Cypress (API, regresión UI, componentes)",
+      "antes": "121/122",
+      "despues": "122/122",
+      "comentario": "API-VAL-02 detectó el mensaje genérico para identificadores inválidos (C-14); corregido."
+    },
+    {
+      "suite": "Seguridad",
+      "antes": "43/53",
+      "despues": "49/53",
+      "comentario": "Corregidos: enumeración por tiempo, contraseñas triviales, error 500, token de usuario eliminado, .env versionado, dependencias del frontend. Quedan 4 riesgos documentados como mejoras (límite por IP, búsqueda por correo, CSP del frontend, NestJS 11)."
+    },
+    {
+      "suite": "Rendimiento",
+      "antes": "5/6",
+      "despues": "6/6",
+      "comentario": "REN-02 bajó su p95 de 569 ms a 273 ms tras añadir índices a las claves foráneas (C-13)."
+    },
+    {
+      "suite": "UX, accesibilidad e interfaz",
+      "antes": "54/67",
+      "despues": "68/68",
+      "comentario": "Corregidos nombre accesible ≠ texto visible (WCAG 2.5.3), anuncios de arrastrar y soltar en español, landmark main, etiquetas del menú móvil; se añadió VIS-15."
+    },
+    {
+      "suite": "E2E Screenplay (Serenity/JS)",
+      "antes": "18/18",
+      "despues": "18/18",
+      "comentario": "SP-17 se endureció para exigir el mensaje exacto de 403 (C-15)."
+    },
+    {
+      "suite": "E2E Katalon",
+      "antes": "—",
+      "despues": "Pendiente",
+      "comentario": "16 casos preparados; localizadores validados contra la app (14/14). Requiere ejecutar en Katalon Studio."
+    }
+  ],
+  "griho": [
+    [
+      "1. Visibilidad y estado del sistema",
+      "2,64 / 5",
+      "4,66 / 5"
+    ],
+    [
+      "2. Conexión con el mundo real",
+      "2,65 / 4",
+      "4 / 4"
+    ],
+    [
+      "3. Control y libertad del usuario",
+      "1,66 / 3",
+      "2,66 / 3"
+    ],
+    [
+      "4. Consistencia y estándares",
+      "4,30 / 6",
+      "6 / 6"
+    ],
+    [
+      "5. Reconocimiento antes que memoria",
+      "3,31 / 5",
+      "4,66 / 5"
+    ],
+    [
+      "6. Flexibilidad y eficiencia",
+      "2,32 / 5",
+      "6 / 6"
+    ],
+    [
+      "7. Diagnóstico y recuperación de errores",
+      "1,65 / 4",
+      "4 / 4"
+    ],
+    [
+      "8. Prevención de errores",
+      "1,33 / 2",
+      "2,66 / 3"
+    ],
+    [
+      "9. Diseño estético y minimalista",
+      "2,65 / 4",
+      "4 / 4"
+    ],
+    [
+      "10. Ayuda y documentación",
+      "0 / 2",
+      "5 / 5"
+    ],
+    [
+      "11. Guardar el estado y proteger el trabajo",
+      "1,99 / 3",
+      "2,66 / 3"
+    ],
+    [
+      "12. Color y legibilidad",
+      "1,98 / 4",
+      "4 / 4"
+    ],
+    [
+      "13. Autonomía",
+      "1,32 / 3",
+      "2,66 / 3"
+    ],
+    [
+      "14. Valores por defecto",
+      "No aplicaba",
+      "3 / 3"
+    ],
+    [
+      "15. Reducción de la latencia",
+      "2 / 2",
+      "2 / 2"
+    ],
+    [
+      "16. Usabilidad de comercio electrónico",
+      "0 / 5",
+      "4,65 / 7"
+    ],
+    [
+      "PORCENTAJE DE USABILIDAD",
+      "52,3 %",
+      "93,4 %"
+    ]
+  ],
+  "suitesFinales": [
+    {
+      "area": "backend-jest",
+      "herramienta": "Jest 29.7.0 + ts-jest + Supertest",
+      "total": 137,
+      "aprobados": 137,
+      "fallidos": 0,
+      "fecha": "2026-10-26T23:15:58.593Z"
+    },
+    {
+      "area": "cypress",
+      "herramienta": "Cypress 15.21.1",
+      "total": 146,
+      "aprobados": 146,
+      "fallidos": 0,
+      "fecha": "2026-10-26T23:15:06.897Z"
+    },
+    {
+      "area": "seguridad",
+      "herramienta": "Node.js v20.20.2 test runner (node:test) + fetch nativo; npm 10.8.2 audit; psql (PostgreSQL 18) para verificación de solo lectura",
+      "total": 53,
+      "aprobados": 48,
+      "fallidos": 5,
+      "fecha": "2026-10-26T23:19:11.367Z"
+    },
+    {
+      "area": "rendimiento",
+      "herramienta": "autocannon 7.15.0 (API programática) sobre Node.js v20.20.2; monitor de CPU/memoria con PowerShell Get-Process",
+      "total": 6,
+      "aprobados": 6,
+      "fallidos": 0,
+      "fecha": "2026-10-27T04:35:41.156Z"
+    },
+    {
+      "area": "ux-accesibilidad",
+      "herramienta": "axe-core 4.14.0, Lighthouse 12.8.2, Puppeteer 24.43.1 (puppeteer-core + Chrome instalado), pixelmatch 8.0.0",
+      "total": 68,
+      "aprobados": 68,
+      "fallidos": 0,
+      "fecha": "2026-10-27T04:30:15.884Z"
+    },
+    {
+      "area": "screenplay",
+      "herramienta": "Serenity/JS 3.48.2 + Playwright 1.63.0",
+      "total": 18,
+      "aprobados": 18,
+      "fallidos": 0,
+      "fecha": "2026-10-26T23:42:06.635Z"
+    },
+    {
+      "area": "gherkin",
+      "herramienta": "Cucumber 11.3.0 + Serenity/JS 3.48.2 (@serenity-js/cucumber) + Playwright 1.63.0",
+      "total": 12,
+      "aprobados": 12,
+      "fallidos": 0,
+      "fecha": "2026-10-26T23:16:15.543Z"
+    },
+    {
+      "area": "stagehand",
+      "herramienta": "Stagehand 3.7.3 + Ollama 0.40.7 (ollama/llama3.1:8b, local, sin coste)",
+      "total": 7,
+      "aprobados": 2,
+      "fallidos": 5,
+      "fecha": "2026-10-27T04:22:49.693Z"
+    },
+    {
+      "area": "katalon",
+      "herramienta": "Katalon Studio",
+      "total": 16,
+      "aprobados": 0,
+      "fallidos": 0,
+      "fecha": "2026-10-09T04:36:22.663Z"
+    }
+  ],
+  "sonar": {
+    "backend": null,
+    "frontend": null,
+    "nota": "SonarQube no estaba disponible al generar la comparación; ver evidencias de despliegue."
+  },
+  "extractos": [
+    {
+      "titulo": "Arranque de la API (seguridad HTTP y CORS)",
+      "archivoAntes": "src/main.ts",
+      "archivoDespues": "src/main.ts",
+      "antes": "import { NestFactory } from '@nestjs/core';\nimport { AppModule } from './app.module';\nimport { ValidationPipe } from '@nestjs/common';\nimport * as dotenv from 'dotenv';\n\ndotenv.config();\n\nasync function bootstrap() {\n  const app = await NestFactory.create(AppModule);\n\n  app.enableCors({\n    origin: true,\n    credentials: true,\n  });\n\n  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));\n  await app.listen(process.env.PORT || 3000);\n}\n\nbootstrap();",
+      "despues": "import { NestFactory } from '@nestjs/core';\r\nimport { AppModule } from './app.module';\r\nimport helmet from 'helmet';\r\nimport { crearValidationPipe } from './common/validation';\r\n\r\n\r\nasync function bootstrap() {\r\n  const app = await NestFactory.create(AppModule);\r\n\r\n  // Cabeceras de seguridad HTTP (X-Content-Type-Options, X-Frame-Options, HSTS, CSP...)\r\n  app.use(helmet());\r\n  app.getHttpAdapter().getInstance().disable('x-powered-by');\r\n\r\n  // Solo el frontend configurado puede llamar a la API desde el navegador\r\n  const origenes = (process.env.FRONTEND_URL ?? 'http://localhost:5173')\r\n    .split(',')\r\n    .map((origen) => origen.trim());\r\n  app.enableCors({\r\n    origin: origenes,\r\n    credentials: true,\r\n  });\r\n\r\n  app.useGlobalPipes(crearValidationPipe());\r\n  await app.listen(process.env.PORT || 3000);\r\n}\r\n\r\nbootstrap();"
+    },
+    {
+      "titulo": "Servicio de autenticación (login)",
+      "archivoAntes": "src/auth/auth.service.ts",
+      "archivoDespues": "src/auth/auth.service.ts",
+      "antes": "import { Injectable, UnauthorizedException, ConflictException } from '@nestjs/common';\nimport { JwtService } from '@nestjs/jwt';\nimport * as bcrypt from 'bcrypt';\nimport { UsuariosService } from '../usuarios/usuarios.service';\nimport { RegisterDto, LoginDto } from './dto/auth.dto';\n\n@Injectable()\nexport class AuthService {\n  constructor(\n    private readonly usuariosService: UsuariosService,\n    private readonly jwtService: JwtService,\n  ) {}\n\n  async register(dto: RegisterDto) {\n    const existe = await this.usuariosService.findByEmailRaw(dto.email);\n    if (existe) {\n      throw new ConflictException('El email ya está registrado');\n    }\n\n    const hashedPassword = await bcrypt.hash(dto.password, 10);\n    const usuario = await this.usuariosService.create({\n      nombre: dto.nombre,\n      email: dto.email,\n      password: hashedPassword,\n    });\n\n    return {\n      _id: usuario._id,\n      nombre: usuario.nombre,\n      email: usuario.email,\n    };\n  }\n\n  async login(dto: LoginDto) {\n    const usuario = await this.usuariosService.findByEmailRaw(dto.email);\n    if (!usuario) {\n      throw new UnauthorizedException('Credenciales inválidas');\n    }\n\n    const isPasswordValid = await bcrypt.compare(dto.password, usuario.password);\n    if (!isPasswordValid) {\n      throw new UnauthorizedException('Credenciales inválidas');\n    }\n\n    const payload = {\n      sub: usuario._id,\n      email: usuario.email,\n      id: usuario._id,\n    };\n\n    return { access_token: await this.jwtService.signAsync(payload) };\n  }\n}",
+      "despues": "import { Injectable, UnauthorizedException, ConflictException } from '@nestjs/common';\r\nimport { JwtService } from '@nestjs/jwt';\r\nimport * as bcrypt from 'bcrypt';\r\nimport { UsuariosService } from '../usuarios/usuarios.service';\r\nimport { RegisterDto, LoginDto } from './dto/auth.dto';\r\nimport { LimitadorIntentos } from './limitador-intentos';\r\n\r\n// Hash bcrypt válido (coste 10) de un valor aleatorio, usado cuando el correo no existe\r\nconst HASH_FICTICIO = '$2b$10$Iv7AH0xdXvQttNfzYpGMvucan7f3xBPZeMHj9fehKTskjXMUe.mHe';\r\n\r\n@Injectable()\r\nexport class AuthService {\r\n  private readonly limitador = new LimitadorIntentos();\r\n\r\n  constructor(\r\n    private readonly usuariosService: UsuariosService,\r\n    private readonly jwtService: JwtService,\r\n  ) {}\r\n\r\n  async register(dto: RegisterDto) {\r\n    const existe = await this.usuariosService.findByEmailRaw(dto.email);\r\n    if (existe) {\r\n      throw new ConflictException('El email ya está registrado');\r\n    }\r\n\r\n    const hashedPassword = await bcrypt.hash(dto.password, 10);\r\n    const usuario = await this.usuariosService.create({\r\n      nombre: dto.nombre,\r\n      email: dto.email,\r\n      password: hashedPassword,\r\n    });\r\n\r\n    return {\r\n      id: usuario.id,\r\n      nombre: usuario.nombre,\r\n      email: usuario.email,\r\n    };\r\n  }\r\n\r\n  async login(dto: LoginDto) {\r\n    this.limitador.comprobar(dto.email);\r\n\r\n    const usuario = await this.usuariosService.findByEmailRaw(dto.email);\r\n    // Siempre se ejecuta bcrypt.compare (con un hash ficticio si el correo no existe)\r\n    // para que el tiempo de respuesta no permita enumerar cuentas registradas.\r\n    const isPasswordValid = await bcrypt.compare(dto.password, usuario?.password ?? HASH_FICTICIO);\r\n    if (!usuario || !isPasswordValid) {\r\n      this.limitador.registrarFallo(dto.email);\r\n      throw new UnauthorizedException('Credenciales inválidas');\r\n    }\r\n\r\n    this.limitador.limpiar(dto.email);\r\n\r\n    const payload = {\r\n      sub: usuario.id,\r\n      email: usuario.email,\r\n      id: usuario.id,\r\n    };\r\n\r\n    return { access_token: await this.jwtService.signAsync(payload) };\r\n  }\r\n}"
+    },
+    {
+      "titulo": "Validación del inicio de sesión (DTO)",
+      "archivoAntes": "src/auth/dto/auth.dto.ts",
+      "archivoDespues": "src/auth/dto/auth.dto.ts",
+      "antes": "import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';\n\nexport class RegisterDto {\n  @IsNotEmpty()\n  nombre: string;\n\n  @IsEmail()\n  email: string;\n\n  @MinLength(6)\n  password: string;\n}\n\nexport class LoginDto {\n  @IsEmail()\n  email: string;\n\n  @IsNotEmpty()\n  password: string;\n}",
+      "despues": "import { IsEmail, IsNotEmpty, IsString, Matches, MaxLength, MinLength } from 'class-validator';\r\n\r\n// Política de contraseñas: mínimo 8 caracteres con al menos una letra y un número\r\nexport const CONTIENE_LETRA = /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/;\r\nexport const CONTIENE_NUMERO = /\\d/;\r\n\r\nexport class RegisterDto {\r\n  @IsNotEmpty()\r\n  @IsString()\r\n  @MaxLength(255)\r\n  nombre: string;\r\n\r\n  @IsEmail()\r\n  @MaxLength(255)\r\n  email: string;\r\n\r\n  @IsString()\r\n  @MinLength(8)\r\n  @MaxLength(72)\r\n  @Matches(CONTIENE_LETRA, { message: 'letra' })\r\n  @Matches(CONTIENE_NUMERO, { message: 'numero' })\r\n  password: string;\r\n}\r\n\r\nexport class LoginDto {\r\n  @IsEmail()\r\n  @MaxLength(255)\r\n  email: string;\r\n\r\n  @IsNotEmpty()\r\n  @IsString()\r\n  @MaxLength(72)\r\n  password: string;\r\n}\r\n"
+    },
+    {
+      "titulo": "Entidad/esquema de tarea",
+      "archivoAntes": "src/tareas/schemas/tarea.schema.ts",
+      "archivoDespues": "src/tareas/entities/tarea.entity.ts",
+      "antes": "import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';\nimport { Document, Types } from 'mongoose';\n\n@Schema()\nexport class Tarea {\n  @Prop({ required: true })\n  titulo: string;\n\n  @Prop()\n  descripcion?: string;\n\n  @Prop({ type: Types.ObjectId, ref: 'Lista', required: true })\n  lista: Types.ObjectId;\n\n  @Prop([{ type: Types.ObjectId, ref: 'Usuario' }])\n  asignados: Types.ObjectId[];\n}\n\nexport const TareaSchema = SchemaFactory.createForClass(Tarea);",
+      "despues": "import {\r\n  Entity,\r\n  Index,\r\n  PrimaryGeneratedColumn,\r\n  Column,\r\n  ManyToOne,\r\n  OneToMany,\r\n  ManyToMany,\r\n  JoinTable,\r\n  CreateDateColumn,\r\n  UpdateDateColumn,\r\n  JoinColumn,\r\n} from 'typeorm';\r\nimport { Lista } from '../../listas/entities/lista.entity';\r\nimport { Usuario } from '../../usuarios/entities/usuario.entity';\r\nimport { Comentario } from '../../comentarios/entities/comentario.entity';\r\n\r\n@Entity('tareas')\r\nexport class Tarea {\r\n  @PrimaryGeneratedColumn('uuid')\r\n  id: string;\r\n\r\n  @Column({ type: 'varchar', length: 255 })\r\n  titulo: string;\r\n\r\n  @Column({ type: 'text', nullable: true })\r\n  descripcion: string;\r\n\r\n  @Column({ type: 'varchar', length: 50, default: 'pendiente' })\r\n  estado: string;\r\n\r\n  @Column({ type: 'varchar', length: 50, default: 'media' })\r\n  prioridad: string;\r\n\r\n  @ManyToOne(() => Lista, (lista) => lista.tareas, {\r\n    onDelete: 'CASCADE',\r\n  })\r\n  @JoinColumn({ name: 'listaId' })\r\n  lista: Lista;\r\n\r\n  @Index()\r\n  @Column({ type: 'uuid' })\r\n  listaId: string;\r\n\r\n  @ManyToMany(() => Usuario, { cascade: ['insert'] })\r\n  @JoinTable({\r\n    name: 'tarea_asignados',\r\n    joinColumn: { name: 'tareaId', referencedColumnName: 'id' },\r\n    inverseJoinColumn: { name: 'usuarioId', referencedColumnName: 'id' },\r\n  })\r\n  asignados: Usuario[];\r\n\r\n  @OneToMany(() => Comentario, (comentario) => comentario.tarea)\r\n  comentarios: Comentario[];\r\n\r\n  @CreateDateColumn()\r\n  createdAt: Date;\r\n\r\n  @UpdateDateColumn()\r\n  updatedAt: Date;\r\n}\r\n"
+    },
+    {
+      "titulo": "Estado de sesión del frontend (restauración al recargar)",
+      "archivoAntes": "taskflow-frontend/src/store/useAuthStore.ts",
+      "archivoDespues": "taskflow-frontend/src/store/useAuthStore.ts",
+      "antes": "import { create } from 'zustand';\nimport type { Usuario } from '../types';\n\ninterface AuthState {\n  user: Usuario | null;\n  token: string | null;\n  isAuthenticated: boolean;\n  login: (user: Usuario, token: string) => void;\n  logout: () => void;\n  initialize: () => void;\n}\n\nexport const useAuthStore = create<AuthState>((set) => ({\n  user: null,\n  token: null,\n  isAuthenticated: false,\n\n  login: (user, token) => {\n    localStorage.setItem('access_token', token);\n    localStorage.setItem('user', JSON.stringify(user));\n    set({ user, token, isAuthenticated: true });\n  },\n\n  logout: () => {\n    localStorage.removeItem('access_token');\n    localStorage.removeItem('user');\n    set({ user: null, token: null, isAuthenticated: false });\n  },\n\n  initialize: () => {\n    const token = localStorage.getItem('access_token');\n    const userStr = localStorage.getItem('user');\n    if (token && userStr) {\n      try {\n        const user = JSON.parse(userStr);\n        set({ user, token, isAuthenticated: true });\n      } catch {\n        localStorage.removeItem('access_token');\n        localStorage.removeItem('user');\n      }\n    }\n  },\n}));",
+      "despues": "import { create } from 'zustand';\nimport type { Usuario } from '../types';\n\ninterface AuthState {\n  user: Usuario | null;\n  token: string | null;\n  isAuthenticated: boolean;\n  login: (user: Usuario, token: string) => void;\n  logout: () => void;\n  initialize: () => void;\n}\n\ninterface SesionGuardada {\n  user: Usuario | null;\n  token: string | null;\n  isAuthenticated: boolean;\n}\n\nconst SIN_SESION: SesionGuardada = { user: null, token: null, isAuthenticated: false };\n\n// Lee la sesión guardada de forma síncrona para que, al recargar una página privada,\n// no se redirija al login antes de haberla restaurado.\nfunction leerSesion(): SesionGuardada {\n  try {\n    const token = localStorage.getItem('access_token');\n    const userStr = localStorage.getItem('user');\n    if (!token || !userStr) return SIN_SESION;\n    const user = JSON.parse(userStr);\n    // Sesiones guardadas con el formato antiguo (_id de MongoDB) ya no son válidas\n    if (!user?.id) throw new Error('Sesión con formato antiguo');\n    return { user, token, isAuthenticated: true };\n  } catch {\n    try {\n      localStorage.removeItem('access_token');\n      localStorage.removeItem('user');\n    } catch {\n      // Sin almacenamiento disponible\n    }\n    return SIN_SESION;\n  }\n}\n\nexport const useAuthStore = create<AuthState>((set) => ({\n  ...leerSesion(),\n\n  login: (user, token) => {\n    localStorage.setItem('access_token', token);\n    localStorage.setItem('user', JSON.stringify(user));\n    set({ user, token, isAuthenticated: true });\n  },\n\n  logout: () => {\n    localStorage.removeItem('access_token');\n    localStorage.removeItem('user');\n    set(SIN_SESION);\n  },\n\n  initialize: () => {\n    set(leerSesion());\n  },\n}));\n"
+    }
+  ]
+}

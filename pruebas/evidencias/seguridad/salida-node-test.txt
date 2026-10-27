@@ -1,0 +1,196 @@
+$ node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=junit --test-reporter-destination=../evidencias/seguridad/junit.xml seguridad.test.js
+# 2026-10-26T23:19:11.367Z
+
+✔ SEG-AUTH-01 | Rutas protegidas sin token devuelven 401 (1361.3061ms)
+✔ SEG-AUTH-02 | Login válido emite JWT HS256 con expiración de 1 día (96.2568ms)
+✔ SEG-AUTH-03 | Token con firma alterada es rechazado (8.6026ms)
+✔ SEG-AUTH-04 | Token con payload manipulado (suplantación de sub) es rechazado (6.993ms)
+✔ SEG-AUTH-05 | Token con algoritmo "none" es rechazado (6.9534ms)
+✔ SEG-AUTH-06 | Token firmado con un secreto incorrecto es rechazado (19.878ms)
+✔ SEG-AUTH-07 | Token caducado (exp en el pasado) es rechazado (17.6407ms)
+✔ SEG-AUTH-08 | El token solo se acepta en la cabecera Authorization: Bearer (12.1811ms)
+✔ SEG-AUTH-09 | Bloqueo por fuerza bruta: 6º intento → 429 (650.554ms)
+✔ SEG-AUTH-10 | El bloqueo afecta solo a la cuenta atacada (y no se evade con mayúsculas) (97.1813ms)
+✔ SEG-AUTH-11 | Login no permite enumerar usuarios por el mensaje (405.8398ms)
+✔ SEG-AUTH-12 | Tiempo de respuesta del login no permite enumerar usuarios (981.9203ms)
+✖ SEG-AUTH-13 | Limitación por cliente/IP frente a password spraying (1708.271ms)
+  AssertionError [ERR_ASSERTION]: SEG-AUTH-13: 20 intentos contra 20 cuentas distintas: 20×401, 0×429 (no existe límite por IP)
+      at TestContext.<anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+✔ SEG-AUTH-14 | El token de una cuenta eliminada deja de dar acceso (195.8858ms)
+✔ SEG-AUTH-15 | Política de contraseñas rechaza contraseñas triviales (24.8228ms)
+✔ SEG-AUTHZ-01 | Usuario ajeno no puede leer el equipo ni sus miembros (26.6767ms)
+✔ SEG-AUTHZ-02 | Usuario ajeno no puede leer proyectos ni listas de otro equipo (36.862ms)
+✔ SEG-AUTHZ-03 | Usuario ajeno no puede leer las tareas de otro proyecto (15.1252ms)
+✔ SEG-AUTHZ-04 | Usuario ajeno no puede crear, editar, mover, asignar ni borrar tareas ajenas (110.5365ms)
+✔ SEG-AUTHZ-05 | Usuario ajeno no puede borrar equipo/proyecto ajeno ni auto-añadirse (71.0308ms)
+✔ SEG-AUTHZ-06 | Miembro no líder no puede ejecutar acciones de líder (61.3634ms)
+✔ SEG-AUTHZ-07 | Miembro del equipo sí puede leer y crear tareas (control positivo) (67.7937ms)
+✔ SEG-AUTHZ-08 | No se pueden asignar usuarios ajenos al equipo a una tarea (34.2238ms)
+✔ SEG-AUTHZ-09 | No se puede mover una tarea a la lista de otro proyecto (72.0832ms)
+✔ SEG-AUTHZ-10 | Un miembro expulsado pierde el acceso inmediatamente (55.6739ms)
+✔ SEG-AUTHZ-11 | GET /equipos solo lista los equipos del usuario (21.1971ms)
+✔ SEG-DATA-01 | Ninguna respuesta de la API expone la contraseña ni su hash (242.2839ms)
+✔ SEG-DATA-02 | Las contraseñas se almacenan con bcrypt (coste 10) (253.0086ms)
+✖ SEG-DATA-03 | Búsqueda de usuarios por email no permite enumerar cuentas ajenas (23.2197ms)
+  AssertionError [ERR_ASSERTION]: SEG-DATA-03: B consulta el correo de A → 200 con campos [id, nombre, email, createdAt, updatedAt]; registro con correo existente → 409 "El email ya está registrado"
+      at TestContext.<anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+✔ SEG-DATA-04 | La respuesta de login y el JWT no contienen datos sensibles (89.499ms)
+✔ SEG-INY-01 | Inyección SQL en el login no permite saltar la autenticación (319.8163ms)
+✔ SEG-INY-02 | Inyección SQL en parámetros de consulta (46.5428ms)
+✔ SEG-INY-03 | Payload SQL almacenado se guarda como texto literal (137.9095ms)
+✔ SEG-INY-04 | Operadores tipo NoSQL en el email son rechazados (24.4864ms)
+✔ SEG-INY-05 | Objeto en el campo password del login es rechazado con 400 (205.6419ms)
+✔ SEG-INY-06 | XSS almacenado en el título de una tarea se devuelve como texto (129.2173ms)
+✔ SEG-INY-07 | Payload __proto__ no contamina objetos del servidor (60.2476ms)
+✔ SEG-VAL-01 | Mass assignment en el registro (id, isAdmin, rol) (121.8918ms)
+✔ SEG-VAL-02 | Mass assignment de liderId/miembros al crear equipo (50.4172ms)
+✔ SEG-VAL-03 | Mass assignment en PATCH /tareas/:id (listaId, id, estado) (61.7025ms)
+✔ SEG-VAL-04 | Cadenas que superan la longitud máxima son rechazadas (188.8144ms)
+✔ SEG-VAL-05 | Identificadores con formato inválido son rechazados (ParseUUIDPipe) (67.9566ms)
+✔ SEG-VAL-06 | Cuerpos de petición muy grandes son rechazados (51.65ms)
+✔ SEG-CONF-01 | Cabeceras de seguridad HTTP (helmet) presentes (19.5309ms)
+✔ SEG-CONF-02 | X-Powered-By ausente (no se revela el framework) (16.9711ms)
+✔ SEG-CONF-03 | CORS rechaza orígenes no autorizados (33.3103ms)
+✔ SEG-CONF-04 | CORS permite el frontend legítimo (http://localhost:5173) (8.5248ms)
+✔ SEG-CONF-05 | Las respuestas de error no filtran trazas ni detalles internos (211.0743ms)
+✖ SEG-CONF-06 | El frontend define Content-Security-Policy (80.2043ms)
+  AssertionError [ERR_ASSERTION]: SEG-CONF-06: CSP cabecera=ausente; meta CSP=no; token guardado en localStorage en: taskflow-frontend\src\pages\Login.tsx:70, taskflow-frontend\src\store\useAuthStore.ts:47
+      at TestContext.<anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+✔ SEG-CONF-07 | Secretos fuera del control de versiones y JWT_SECRET robusto (237.7139ms)
+✖ SEG-DEP-01 | Dependencias de producción del backend sin vulnerabilidades críticas/altas (4945.7991ms)
+  AssertionError [ERR_ASSERTION]: SEG-DEP-01: crítica=0, alta=4, moderada=7, baja=0 (total 11). Críticas/altas: @nestjs/platform-express (high, directa), body-parser (high), lodash (high), multer (high)
+      at TestContext.<anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+✔ SEG-DEP-02 | Árbol completo del backend (incl. desarrollo) — npm audit (4865.0349ms)
+✖ SEG-DEP-03 | Dependencias del frontend — npm audit (2018.4784ms)
+  AssertionError [ERR_ASSERTION]: SEG-DEP-03: crítica=0, alta=2, moderada=3, baja=1 (total 6). Críticas/altas: follow-redirects (high), vite (high, directa)
+      at TestContext.<anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+ℹ tests 53
+ℹ suites 0
+ℹ pass 48
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21529.4135
+
+✖ failing tests:
+
+test at lib\caso.js:21:3
+✖ SEG-AUTH-13 | Limitación por cliente/IP frente a password spraying (1708.271ms)
+  AssertionError [ERR_ASSERTION]: SEG-AUTH-13: 20 intentos contra 20 cuentas distintas: 20×401, 0×429 (no existe límite por IP)
+      at TestContext.<anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+test at lib\caso.js:21:3
+✖ SEG-DATA-03 | Búsqueda de usuarios por email no permite enumerar cuentas ajenas (23.2197ms)
+  AssertionError [ERR_ASSERTION]: SEG-DATA-03: B consulta el correo de A → 200 con campos [id, nombre, email, createdAt, updatedAt]; registro con correo existente → 409 "El email ya está registrado"
+      at TestContext.<anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+test at lib\caso.js:21:3
+✖ SEG-CONF-06 | El frontend define Content-Security-Policy (80.2043ms)
+  AssertionError [ERR_ASSERTION]: SEG-CONF-06: CSP cabecera=ausente; meta CSP=no; token guardado en localStorage en: taskflow-frontend\src\pages\Login.tsx:70, taskflow-frontend\src\store\useAuthStore.ts:47
+      at TestContext.<anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+test at lib\caso.js:21:3
+✖ SEG-DEP-01 | Dependencias de producción del backend sin vulnerabilidades críticas/altas (4945.7991ms)
+  AssertionError [ERR_ASSERTION]: SEG-DEP-01: crítica=0, alta=4, moderada=7, baja=0 (total 11). Críticas/altas: @nestjs/platform-express (high, directa), body-parser (high), lodash (high), multer (high)
+      at TestContext.<anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+test at lib\caso.js:21:3
+✖ SEG-DEP-03 | Dependencias del frontend — npm audit (2018.4784ms)
+  AssertionError [ERR_ASSERTION]: SEG-DEP-03: crítica=0, alta=2, moderada=3, baja=1 (total 6). Críticas/altas: follow-redirects (high), vite (high, directa)
+      at TestContext.<anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }

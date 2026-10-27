@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
+import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { UsuariosService } from '../usuarios/usuarios.service';
 import { JwtService } from '@nestjs/jwt';
@@ -12,16 +13,21 @@ jest.mock('bcrypt');
 // PRUEBAS DE CAJA NEGRA - AUTH (E2E)
 // ========================
 // Estas pruebas prueban el comportamiento del sistema sin conocer
-// la implementación interna. Se validan inputs/outputs reales del endpoint.
+// la implementación interna. Se validan inputs/outputs reales del endpoint
+// (HTTP -> ValidationPipe -> AuthController -> AuthService), con la capa de
+// persistencia (UsuariosService / TypeORM) y JwtService simulados.
 
-describe('Auth E2E Tests (Black Box)', () => {
+describe('Regression - Auth E2E Tests (Black Box)', () => {
+  // AAA + fluent-style assertions (Jest equivalent for this TypeScript stack)
   let app: INestApplication;
-  let authService: AuthService;
-  let usuariosService: UsuariosService;
-  let jwtService: JwtService;
+  let usuariosService: jest.Mocked<Pick<UsuariosService, 'findByEmailRaw' | 'create'>>;
+  let jwtService: jest.Mocked<Pick<JwtService, 'signAsync'>>;
+
+  const usuarioId = '3f1c2b7a-9d4e-4f6a-8b2c-1e5d7a9c0b11';
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
+      controllers: [AuthController],
       providers: [
         AuthService,
         {
@@ -44,9 +50,12 @@ describe('Auth E2E Tests (Black Box)', () => {
     app.useGlobalPipes(new ValidationPipe());
     await app.init();
 
-    authService = moduleFixture.get<AuthService>(AuthService);
-    usuariosService = moduleFixture.get<UsuariosService>(UsuariosService);
-    jwtService = moduleFixture.get<JwtService>(JwtService);
+    usuariosService = moduleFixture.get(UsuariosService);
+    jwtService = moduleFixture.get(JwtService);
+  });
+
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
   afterAll(async () => {
@@ -64,77 +73,95 @@ describe('Auth E2E Tests (Black Box)', () => {
     };
 
     // Caso 1: Registro exitoso - Usuario nuevo
-    it('debe registrar un usuario nuevo y retornar datos sin contraseña', async () => {
-      const mockUsuario = {
-        _id: '507f1f77bcf86cd799439011',
+    it('debe registrar un usuario nuevo y devolver una respuesta sanitizada sin contraseña', async () => {
+      // Arrange
+      usuariosService.findByEmailRaw.mockResolvedValue(null);
+      (bcrypt.hash as jest.Mock).mockResolvedValue('hashedPassword123');
+      usuariosService.create.mockResolvedValue({
+        id: usuarioId,
         nombre: validRegisterPayload.nombre,
         email: validRegisterPayload.email,
-      };
-
-      (usuariosService.findByEmailRaw as jest.Mock).mockResolvedValue(null);
-      (bcrypt.hash as jest.Mock).mockResolvedValue('hashedPassword123');
-      (usuariosService.create as jest.Mock).mockResolvedValue({
-        ...mockUsuario,
         password: 'hashedPassword123',
+      } as any);
+
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/register')
+        .send(validRegisterPayload);
+
+      // Assert
+      expect(res.status).toBe(201);
+      expect(res.body).toEqual({
+        id: usuarioId,
+        nombre: 'Juan Pérez',
+        email: 'juan@example.com',
       });
-
-      const resultado = await authService.register(validRegisterPayload);
-
-      expect(resultado).toHaveProperty('_id');
-      expect(resultado).toHaveProperty('nombre', 'Juan Pérez');
-      expect(resultado).toHaveProperty('email', 'juan@example.com');
-      expect(resultado).not.toHaveProperty('password');
+      expect(res.body).not.toHaveProperty('password');
     });
 
     // Caso 2: Email duplicado
-    it('debe rechazar registro si el email ya existe (409 Conflict)', async () => {
-      (usuariosService.findByEmailRaw as jest.Mock).mockResolvedValue({
+    it('debe rechazar el registro cuando el email ya existe con 409 Conflict', async () => {
+      // Arrange
+      usuariosService.findByEmailRaw.mockResolvedValue({
+        id: usuarioId,
         email: validRegisterPayload.email,
-      });
+      } as any);
 
-      try {
-        await authService.register(validRegisterPayload);
-        throw new Error('Debería haber lanzado una excepción');
-      } catch (error: any) {
-        expect(error.status).toBe(409);
-        expect(error.message).toContain('El email ya está registrado');
-      }
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/register')
+        .send(validRegisterPayload);
+
+      // Assert
+      expect(res.status).toBe(409);
+      expect(res.body.message).toContain('El email ya está registrado');
+      expect(usuariosService.create).not.toHaveBeenCalled();
     });
 
     // Caso 3: Email vacío
-    it('debe rechazar registro con email vacío', async () => {
+    it('debe rechazar el registro cuando el email está vacío', async () => {
+      // Arrange
       const invalidPayload = { ...validRegisterPayload, email: '' };
 
-      try {
-        await authService.register(invalidPayload);
-      } catch (error: any) {
-        expect(error).toBeDefined();
-      }
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/register')
+        .send(invalidPayload);
+
+      // Assert
+      expect(res.status).toBe(400);
+      expect(usuariosService.findByEmailRaw).not.toHaveBeenCalled();
+      expect(usuariosService.create).not.toHaveBeenCalled();
     });
 
     // Caso 4: Contraseña muy corta
-    it('debe rechazar contraseñas muy cortas', async () => {
-      const shortPasswordPayload = {
-        ...validRegisterPayload,
-        password: '123',
-      };
+    it('debe rechazar el registro cuando la contraseña es demasiado corta', async () => {
+      // Arrange
+      const shortPasswordPayload = { ...validRegisterPayload, password: '123' };
 
-      try {
-        await authService.register(shortPasswordPayload);
-      } catch (error: any) {
-        expect(error).toBeDefined();
-      }
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/register')
+        .send(shortPasswordPayload);
+
+      // Assert
+      expect(res.status).toBe(400);
+      expect(usuariosService.create).not.toHaveBeenCalled();
     });
 
     // Caso 5: Nombre vacío
-    it('debe rechazar registro sin nombre', async () => {
+    it('debe rechazar el registro cuando el nombre está vacío', async () => {
+      // Arrange
       const noNamePayload = { ...validRegisterPayload, nombre: '' };
 
-      try {
-        await authService.register(noNamePayload);
-      } catch (error: any) {
-        expect(error).toBeDefined();
-      }
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/register')
+        .send(noNamePayload);
+
+      // Assert
+      expect(res.status).toBe(400);
+      expect(usuariosService.create).not.toHaveBeenCalled();
     });
   });
 
@@ -147,107 +174,116 @@ describe('Auth E2E Tests (Black Box)', () => {
       password: 'SecurePassword123!',
     };
 
+    const mockUsuario = {
+      id: usuarioId,
+      nombre: 'Juan Pérez',
+      email: validLoginPayload.email,
+      password: 'hashedPassword123',
+    };
+
     // Caso 1: Login exitoso
-    it('debe retornar un access_token válido cuando las credenciales son correctas', async () => {
-      const mockUsuario = {
-        _id: '507f1f77bcf86cd799439011',
-        email: validLoginPayload.email,
-        password: 'hashedPassword123',
-      };
-
-      (usuariosService.findByEmailRaw as jest.Mock).mockResolvedValue(
-        mockUsuario,
-      );
+    it('debe devolver un token de acceso válido cuando las credenciales son correctas', async () => {
+      // Arrange
+      usuariosService.findByEmailRaw.mockResolvedValue(mockUsuario as any);
       (bcrypt.compare as jest.Mock).mockResolvedValue(true);
-      (jwtService.signAsync as jest.Mock).mockResolvedValue(
-        'mock.jwt.token.abc123',
-      );
+      jwtService.signAsync.mockResolvedValue('mock.jwt.token.abc123');
 
-      const resultado = await authService.login(validLoginPayload);
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/login')
+        .send(validLoginPayload);
 
-      expect(resultado).toHaveProperty('access_token');
-      expect(resultado.access_token).toBeTruthy();
-      expect(typeof resultado.access_token).toBe('string');
+      // Assert
+      expect(res.status).toBe(201);
+      expect(res.body).toHaveProperty('access_token');
+      expect(typeof res.body.access_token).toBe('string');
+      expect(res.body.access_token).toBeTruthy();
+      expect(jwtService.signAsync).toHaveBeenCalledWith({
+        sub: usuarioId,
+        email: validLoginPayload.email,
+        id: usuarioId,
+      });
     });
 
     // Caso 2: Usuario no existe
-    it('debe retornar 401 Unauthorized si el email no existe', async () => {
-      (usuariosService.findByEmailRaw as jest.Mock).mockResolvedValue(null);
+    it('debe devolver 401 Unauthorized cuando el email no existe', async () => {
+      // Arrange
+      usuariosService.findByEmailRaw.mockResolvedValue(null);
 
-      try {
-        await authService.login(validLoginPayload);
-        throw new Error('Debería haber lanzado una excepción');
-      } catch (error: any) {
-        expect(error.status).toBe(401);
-        expect(error.message).toContain('Credenciales inválidas');
-      }
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/login')
+        .send(validLoginPayload);
+
+      // Assert
+      expect(res.status).toBe(401);
+      expect(res.body.message).toContain('Credenciales inválidas');
     });
 
     // Caso 3: Contraseña incorrecta
-    it('debe retornar 401 Unauthorized si la contraseña es incorrecta', async () => {
-      const mockUsuario = {
-        _id: '507f1f77bcf86cd799439011',
-        email: validLoginPayload.email,
-        password: 'hashedPassword123',
-      };
-
-      (usuariosService.findByEmailRaw as jest.Mock).mockResolvedValue(
-        mockUsuario,
-      );
+    it('debe devolver 401 Unauthorized cuando la contraseña es incorrecta', async () => {
+      // Arrange
+      usuariosService.findByEmailRaw.mockResolvedValue(mockUsuario as any);
       (bcrypt.compare as jest.Mock).mockResolvedValue(false);
 
-      try {
-        await authService.login(validLoginPayload);
-        throw new Error('Debería haber lanzado una excepción');
-      } catch (error: any) {
-        expect(error.status).toBe(401);
-        expect(error.message).toContain('Credenciales inválidas');
-      }
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/login')
+        .send(validLoginPayload);
+
+      // Assert
+      expect(res.status).toBe(401);
+      expect(res.body.message).toContain('Credenciales inválidas');
+      expect(jwtService.signAsync).not.toHaveBeenCalled();
     });
 
     // Caso 4: Email vacío
-    it('debe rechazar login sin email', async () => {
+    it('debe rechazar el login cuando el email está vacío', async () => {
+      // Arrange
       const noEmailPayload = { ...validLoginPayload, email: '' };
 
-      try {
-        await authService.login(noEmailPayload);
-      } catch (error: any) {
-        expect(error).toBeDefined();
-      }
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/login')
+        .send(noEmailPayload);
+
+      // Assert
+      expect(res.status).toBe(400);
+      expect(usuariosService.findByEmailRaw).not.toHaveBeenCalled();
     });
 
     // Caso 5: Contraseña vacía
     it('debe rechazar login sin contraseña', async () => {
+      // Arrange
       const noPasswordPayload = { ...validLoginPayload, password: '' };
 
-      try {
-        await authService.login(noPasswordPayload);
-      } catch (error: any) {
-        expect(error).toBeDefined();
-      }
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/login')
+        .send(noPasswordPayload);
+
+      // Assert
+      expect(res.status).toBe(400);
+      expect(usuariosService.findByEmailRaw).not.toHaveBeenCalled();
     });
 
     // Caso 6: Token tiene estructura JWT correcta
     it('el token retornado debe ser un JWT válido', async () => {
-      const mockUsuario = {
-        _id: '507f1f77bcf86cd799439011',
-        email: validLoginPayload.email,
-        password: 'hashedPassword123',
-      };
-
+      // Arrange
       const jwtToken =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDdmMWY3N2JjZjg2Y2Q3OTk0MzkwMTEiLCJlbWFpbCI6Imp1YW5AZXhhbXBsZS5jb20iLCJpZCI6IjUwN2YxZjc3YmNmODZjZDc5OTQzOTAxMSJ9.abc123';
-
-      (usuariosService.findByEmailRaw as jest.Mock).mockResolvedValue(
-        mockUsuario,
-      );
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzZjFjMmI3YS05ZDRlLTRmNmEtOGIyYy0xZTVkN2E5YzBiMTEifQ.abc123';
+      usuariosService.findByEmailRaw.mockResolvedValue(mockUsuario as any);
       (bcrypt.compare as jest.Mock).mockResolvedValue(true);
-      (jwtService.signAsync as jest.Mock).mockResolvedValue(jwtToken);
+      jwtService.signAsync.mockResolvedValue(jwtToken);
 
-      const resultado = await authService.login(validLoginPayload);
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/login')
+        .send(validLoginPayload);
 
-      expect(resultado.access_token).toBe(jwtToken);
-      expect(resultado.access_token.split('.')).toHaveLength(3);
+      // Assert
+      expect(res.body.access_token).toBe(jwtToken);
+      expect(res.body.access_token.split('.')).toHaveLength(3);
     });
   });
 
@@ -256,45 +292,50 @@ describe('Auth E2E Tests (Black Box)', () => {
   // ========================
   describe('Security Scenarios', () => {
     // Caso: SQL Injection en email
-    it('debe escapar caracteres especiales en email', async () => {
+    it('debe rechazar caracteres de inyección SQL en el email', async () => {
+      // Arrange
       const sqlInjectionPayload = {
         nombre: 'Attacker',
         email: "' OR '1'='1",
         password: 'password123',
       };
 
-      (usuariosService.findByEmailRaw as jest.Mock).mockResolvedValue(null);
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/register')
+        .send(sqlInjectionPayload);
 
-      try {
-        await authService.register(sqlInjectionPayload);
-      } catch (error: any) {
-        // Debería fallar o escapar correctamente
-        expect(error).toBeDefined();
-      }
+      // Assert: la validación (IsEmail) lo rechaza antes de llegar a la BD.
+      expect(res.status).toBe(400);
+      expect(usuariosService.findByEmailRaw).not.toHaveBeenCalled();
+      expect(usuariosService.create).not.toHaveBeenCalled();
     });
 
     // Caso: Contraseña no debe retornarse
     it('nunca debe retornar la contraseña en la respuesta', async () => {
-      const mockUsuario = {
-        _id: '507f1f77bcf86cd799439011',
-        nombre: 'Juan',
-        email: 'juan@example.com',
-      };
-
-      (usuariosService.findByEmailRaw as jest.Mock).mockResolvedValue(null);
+      // Arrange
+      usuariosService.findByEmailRaw.mockResolvedValue(null);
       (bcrypt.hash as jest.Mock).mockResolvedValue('hashedPassword123');
-      (usuariosService.create as jest.Mock).mockResolvedValue({
-        ...mockUsuario,
-        password: 'hashedPassword123',
-      });
-
-      const resultado = await authService.register({
+      usuariosService.create.mockResolvedValue({
+        id: usuarioId,
         nombre: 'Juan',
         email: 'juan@example.com',
-        password: 'SecurePassword123!',
-      });
+        password: 'hashedPassword123',
+      } as any);
 
-      expect(resultado).not.toHaveProperty('password');
+      // Act
+      const res = await request(app.getHttpServer())
+        .post('/auth/register')
+        .send({
+          nombre: 'Juan',
+          email: 'juan@example.com',
+          password: 'SecurePassword123!',
+        });
+
+      // Assert
+      expect(res.status).toBe(201);
+      expect(res.body).not.toHaveProperty('password');
+      expect(JSON.stringify(res.body)).not.toContain('hashedPassword123');
     });
   });
 });

@@ -1,0 +1,26 @@
+{
+  "id": "API-AUTH-03",
+  "obtenido": "\"abc1\" → 400 \"La contraseña debe tener al menos 8 caracteres\"; \"12345678\" → 400 \"La contraseña debe contener al menos una letra\"; \"abcdefgh\" → 400 \"La contraseña debe contener al menos un número\"; no se creó ningún usuario.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/auth/register",
+    "autenticado": false,
+    "cuerpo": {
+      "nombre": "Usuario sinnumero 552325",
+      "email": "sinnumero.17930563439552325@taskflow-cypress.test",
+      "password": "***"
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 4,
+    "cuerpo": {
+      "message": [
+        "La contraseña debe contener al menos un número"
+      ],
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:12:23.990Z"
+}

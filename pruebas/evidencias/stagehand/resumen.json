@@ -1,0 +1,241 @@
+{
+  "area": "E2E con Stagehand e IA",
+  "herramienta": "Stagehand 3.7.3 + Ollama 0.40.7 (ollama/llama3.1:8b, local, sin coste)",
+  "modelo": {
+    "proveedor": "ollama (ollama-ai-provider-v2 a través del AI SDK de Vercel)",
+    "modelName": "ollama/llama3.1:8b",
+    "baseURL": "http://127.0.0.1:11434/api",
+    "temperatura": 0,
+    "middleware": "modelo.mjs: normaliza elementId con corchetes y bloques ```json antes de la validación zod de Stagehand",
+    "correcciones": {
+      "llamadas": 20,
+      "elementIdConCorchetes": 0,
+      "elementIdSinGuion": 4,
+      "elementIdTextual": 8,
+      "argumentosDeClickEliminados": 4,
+      "bloqueMarkdown": 0
+    }
+  },
+  "comando": "cd pruebas/stagehand && npm test",
+  "fecha": "2026-10-27T04:22:49.693Z",
+  "condiciones": "Windows_NT 10.0.26300 x64; AMD Ryzen AI 7 350 w/ Radeon 860M (16 hilos); 23.2 GB RAM; Node v20.20.2; Chrome local en modo headless (C:/Program Files/Google/Chrome/Application/chrome.exe); frontend http://localhost:5173, backend http://localhost:3000; inferencia local (sin GPU dedicada), por lo que cada llamada al modelo tarda entre 10 y 120 s según el tamaño del árbol de accesibilidad. Datos únicos por caso creados por API (usuarios, equipos, proyectos y tareas con sufijo temporal).",
+  "totales": {
+    "total": 7,
+    "aprobados": 2,
+    "fallidos": 5,
+    "duracionSeg": 327.7,
+    "segundosEnInferencia": 308.7
+  },
+  "capacidades": {
+    "act": 6,
+    "observe": 4,
+    "extract": 2
+  },
+  "entorno": {
+    "frontend": "http://localhost:5173",
+    "backend": "http://localhost:3000",
+    "ollama": "http://127.0.0.1:11434/api"
+  },
+  "casos": [
+    {
+      "id": "ST-01",
+      "nombre": "observe: identificar los campos y el botón del formulario de inicio de sesión",
+      "capacidad": "observe",
+      "tipo": "exitoso",
+      "funcionalidad": "Autenticación",
+      "objetivo": "Verificar que Stagehand.observe interpreta una instrucción en lenguaje natural y devuelve acciones con selectores reales para el correo, la contraseña y el botón «Iniciar sesión».",
+      "esperado": "Tres acciones cuyos selectores resuelven, respectivamente, al campo con etiqueta «Correo electrónico» (type=email), al campo «Contraseña» (type=password) y al botón «Iniciar sesión».",
+      "obtenido": "No conforme: No se identificaron los tres elementos. Resueltos: []",
+      "estado": "Fallido",
+      "duracionSeg": 33.3,
+      "tiemposIA": [
+        {
+          "paso": "observe",
+          "seg": 32.8
+        }
+      ],
+      "evidencia": [
+        "capturas/ST-01.png",
+        "salidas/ST-01.json",
+        "inferencias/",
+        "respuestas-modelo.jsonl"
+      ]
+    },
+    {
+      "id": "ST-02",
+      "nombre": "act: iniciar sesión con un usuario creado por API",
+      "capacidad": "observe+act",
+      "tipo": "exitoso",
+      "funcionalidad": "Autenticación",
+      "objetivo": "Verificar que con observe se localizan los campos (las credenciales se rellenan con la API de página, sin pasar por el modelo) y que act pulsa «Iniciar sesión» completando el inicio de sesión real.",
+      "esperado": "Tras act, la URL pasa a «/» y el encabezado principal es «Mis equipos»; el token queda en localStorage.",
+      "obtenido": "act ejecutó «Click the button»; la URL pasó a «/», el h1 es «Mis equipos» y el token quedó guardado en localStorage.",
+      "estado": "Aprobado",
+      "duracionSeg": 76.6,
+      "tiemposIA": [
+        {
+          "paso": "observe",
+          "seg": 16
+        },
+        {
+          "paso": "observe",
+          "seg": 34.2
+        },
+        {
+          "paso": "act",
+          "seg": 25.1
+        }
+      ],
+      "evidencia": [
+        "capturas/ST-02.png",
+        "salidas/ST-02.json",
+        "inferencias/",
+        "respuestas-modelo.jsonl"
+      ]
+    },
+    {
+      "id": "ST-03",
+      "nombre": "extract: leer los nombres de los equipos de «Mis equipos»",
+      "capacidad": "extract",
+      "tipo": "exitoso",
+      "funcionalidad": "Equipos",
+      "objetivo": "Verificar que extract devuelve, validado con un esquema zod, el listado de equipos visibles y que coincide con los equipos creados por API.",
+      "esperado": "extract devuelve { equipos: [{ nombre }] } con exactamente los 3 nombres creados por API (sin inventar ni omitir ninguno).",
+      "obtenido": "No conforme: Diferencias: faltan [\"equipo backend 30878\",\"equipo frontend 30878\",\"equipo calidad 30878\"], sobran []; extraído {\"equipos\":[]}",
+      "estado": "Fallido",
+      "duracionSeg": 23.5,
+      "tiemposIA": [
+        {
+          "paso": "extract",
+          "seg": 22.8
+        }
+      ],
+      "evidencia": [
+        "capturas/ST-03.png",
+        "salidas/ST-03.json",
+        "inferencias/",
+        "respuestas-modelo.jsonl"
+      ]
+    },
+    {
+      "id": "ST-04",
+      "nombre": "act + observe: crear un equipo desde la interfaz (act para abrir; observe → act(acción) dentro de la ventana)",
+      "capacidad": "act+observe",
+      "tipo": "exitoso",
+      "funcionalidad": "Equipos",
+      "objetivo": "Verificar que act abre la ventana «Nuevo equipo» y que, dentro de la ventana, el patrón observe → act(acción) rellena el nombre (sin enviarlo al modelo) y pulsa «Crear equipo», quedando el equipo creado en el backend.",
+      "esperado": "La ventana «Nuevo equipo» se abre, el nombre se escribe sin exponerlo al modelo (variables) y GET /equipos devuelve el equipo nuevo; la tarjeta aparece en «Mis equipos».",
+      "obtenido": "No conforme: No object generated: response did not match schema.",
+      "estado": "Fallido",
+      "duracionSeg": 42.5,
+      "tiemposIA": [
+        {
+          "paso": "act abrir",
+          "seg": 32.1
+        }
+      ],
+      "evidencia": [
+        "capturas/ST-04.png",
+        "salidas/ST-04.json",
+        "inferencias/",
+        "respuestas-modelo.jsonl"
+      ]
+    },
+    {
+      "id": "ST-05",
+      "nombre": "observe + act: reconocer las columnas del tablero y mover una tarea a «Hecho»",
+      "capacidad": "observe+act",
+      "tipo": "exitoso",
+      "funcionalidad": "Tareas / tablero",
+      "objetivo": "Verificar que observe reconoce las columnas del tablero Kanban y que act abre una tarjeta y cambia su columna mediante el selector «Columna» del detalle, persistiendo el cambio en el backend.",
+      "esperado": "observe devuelve acciones que mencionan «Por Hacer», «En Progreso» y «Hecho»; tras act la tarea queda en la lista «Hecho» según GET /tareas?proyectoId y el progreso pasa a 100 %.",
+      "obtenido": "No conforme: observe solo reconoció []: [\"click\",\"click\",\"click\"]",
+      "estado": "Fallido",
+      "duracionSeg": 80.5,
+      "tiemposIA": [
+        {
+          "paso": "observe",
+          "seg": 20.4
+        },
+        {
+          "paso": "act abrir tarjeta",
+          "seg": 42.8
+        },
+        {
+          "paso": "observe selector",
+          "seg": 16.3
+        },
+        {
+          "paso": "act seleccionar",
+          "seg": 0
+        }
+      ],
+      "evidencia": [
+        "capturas/ST-05.png",
+        "salidas/ST-05.json",
+        "inferencias/",
+        "respuestas-modelo.jsonl"
+      ]
+    },
+    {
+      "id": "ST-06",
+      "nombre": "extract con esquema: columnas, tareas por columna y progreso del tablero",
+      "capacidad": "extract",
+      "tipo": "exitoso",
+      "funcionalidad": "Listas / proyectos",
+      "objetivo": "Verificar que extract devuelve una estructura anidada validada con zod (columnas con sus tareas y el porcentaje de progreso) y que coincide con el estado real del proyecto en la API.",
+      "esperado": "extract devuelve 3 columnas «Por Hacer», «En Progreso» y «Hecho» con los títulos exactos de las tareas de cada una y progreso = 50 (1 de 2 tareas hechas).",
+      "obtenido": "No conforme: columna «Por Hacer»: esperado [\"Diseñar la pantalla de inicio\"], extraído [\"diseñar la pantalla de inicio\",\"diseñar la pantalla de inicio\"]",
+      "estado": "Fallido",
+      "duracionSeg": 36,
+      "tiemposIA": [
+        {
+          "paso": "extract columna Por Hacer",
+          "seg": 11.5
+        },
+        {
+          "paso": "extract columna En Progreso",
+          "seg": 10.2
+        },
+        {
+          "paso": "extract columna Hecho",
+          "seg": 7.4
+        },
+        {
+          "paso": "extract progreso",
+          "seg": 6
+        }
+      ],
+      "evidencia": [
+        "capturas/ST-06.png",
+        "salidas/ST-06.json",
+        "inferencias/",
+        "respuestas-modelo.jsonl"
+      ]
+    },
+    {
+      "id": "ST-07",
+      "nombre": "act con una instrucción imposible: el botón «Exportar a PDF» no existe",
+      "capacidad": "act",
+      "tipo": "error",
+      "funcionalidad": "Robustez de la IA",
+      "objetivo": "Verificar que una instrucción imposible no produce efectos colaterales en la aplicación: la página debe quedar exactamente igual (misma ruta, mismo contenido, ninguna ventana). Además se registra cómo responde el modelo (success=false, error controlado o alucinación de un elemento).",
+      "esperado": "La huella de la página (ruta + texto visible) es idéntica antes y después de act y no hay ventanas abiertas. Comportamiento ideal del modelo: success=false o error controlado; si informa success=true sobre un elemento que no es un botón se documenta como alucinación.",
+      "obtenido": "Sin efectos colaterales: la huella de la página es idéntica antes y después y no se abrió ninguna ventana. El modelo, sin embargo, alucinó: informó success=true tras pulsar <header> «Mis equiposOrganiza tu trabajo en equipos y proyectos.Nuevo » (descrito como «button»), un elemento sin acción asociada; se registra como limitación del modelo local.",
+      "estado": "Aprobado",
+      "duracionSeg": 32.9,
+      "tiemposIA": [
+        {
+          "paso": "act",
+          "seg": 31.1
+        }
+      ],
+      "evidencia": [
+        "capturas/ST-07.png",
+        "salidas/ST-07.json",
+        "inferencias/",
+        "respuestas-modelo.jsonl"
+      ]
+    }
+  ]
+}

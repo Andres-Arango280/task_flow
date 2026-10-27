@@ -1,0 +1,22 @@
+{
+  "modelCall": "extract",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are extracting content on behalf of a user. If a user asks you to extract a 'list' of information, or 'all' information, YOU MUST EXTRACT ALL OF THE INFORMATION THAT THE USER REQUESTS. You will be given: 1. An instruction 2. A list of DOM elements to extract from. Print the exact text from the DOM elements with all symbols, characters, and endlines as is. Print null or an empty string if no new information is found. If a user is attempting to extract links or URLs, you MUST respond with ONLY the IDs of the link elements. Do not attempt to extract links directly from the text unless absolutely necessary. "
+    },
+    {
+      "role": "user",
+      "content": "Instruction: Extract the heading of this kanban column and the titles of the task cards it contains
+DOM: [0-1793] region: Hecho
+  [0-1790] sectionheader
+    [0-1764] heading: Hecho
+    [0-1837] StaticText: 1
+  [0-1786] div
+    [0-1784] div
+      [0-1780] button: Arrastrar tarea Escribir las pruebas
+      [0-1781] button: Escribir las pruebas
+    [0-1839] StaticText: Sin asignar"
+    }
+  ]
+}

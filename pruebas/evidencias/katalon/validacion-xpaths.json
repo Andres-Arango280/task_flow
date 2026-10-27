@@ -1,0 +1,150 @@
+{
+  "fecha": "2026-10-09T06:07:08.343Z",
+  "herramienta": "Playwright (validación de XPath de Katalon sin Katalon Studio)",
+  "ok": true,
+  "resultados": [
+    {
+      "objeto": "Page_Inicio/link_EquipoPorNombre",
+      "parametros": {
+        "nombre": "Equipo XPath 1791525993860"
+      },
+      "xpath": "//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo XPath 1791525993860']]",
+      "coincidencias": 1,
+      "visible": true,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Inicio/link_EquipoLider",
+      "parametros": {
+        "nombre": "Equipo XPath 1791525993860"
+      },
+      "xpath": "//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo XPath 1791525993860']][.//span[normalize-space(.)='Líder']]",
+      "coincidencias": 1,
+      "visible": true,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Inicio/link_EquipoPorNombre",
+      "parametros": {
+        "nombre": "Equipo que no existe"
+      },
+      "xpath": "//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo que no existe']]",
+      "coincidencias": 0,
+      "visible": false,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Equipo/link_ProyectoPorNombre",
+      "parametros": {
+        "nombre": "Proyecto XPath 1791525993860"
+      },
+      "xpath": "//a[@data-testid='tarjeta-proyecto'][.//span[normalize-space(.)='Proyecto XPath 1791525993860']]",
+      "coincidencias": 1,
+      "visible": true,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Equipo/link_ProyectoPorNombre",
+      "parametros": {
+        "nombre": "Proyecto que no existe"
+      },
+      "xpath": "//a[@data-testid='tarjeta-proyecto'][.//span[normalize-space(.)='Proyecto que no existe']]",
+      "coincidencias": 0,
+      "visible": false,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Tablero/btn_AbrirDetalle",
+      "parametros": {
+        "titulo": "Tarea XPath Katalon"
+      },
+      "xpath": "//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Tarea XPath Katalon']]",
+      "coincidencias": 1,
+      "visible": true,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Tablero/card_Tarea",
+      "parametros": {
+        "titulo": "Tarea XPath Katalon"
+      },
+      "xpath": "//div[@data-rfd-draggable-id][.//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Tarea XPath Katalon']]]",
+      "coincidencias": 1,
+      "visible": true,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Tablero/card_TareaEnColumna",
+      "parametros": {
+        "titulo": "Tarea XPath Katalon",
+        "columna": "Por Hacer"
+      },
+      "xpath": "//section[starts-with(@aria-labelledby,'columna-')][.//h2[normalize-space(.)='Por Hacer']]//div[@data-rfd-draggable-id][.//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Tarea XPath Katalon']]]",
+      "coincidencias": 1,
+      "visible": true,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Tablero/card_TareaEnColumna",
+      "parametros": {
+        "titulo": "Tarea XPath Katalon",
+        "columna": "Hecho"
+      },
+      "xpath": "//section[starts-with(@aria-labelledby,'columna-')][.//h2[normalize-space(.)='Hecho']]//div[@data-rfd-draggable-id][.//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Tarea XPath Katalon']]]",
+      "coincidencias": 0,
+      "visible": false,
+      "ok": true
+    },
+    {
+      "objeto": "Comunes/toast_Exito",
+      "parametros": {
+        "texto": "movida a Hecho"
+      },
+      "xpath": "//div[@aria-live='polite']/div[@role='status'][.//p[normalize-space(.)='Listo']][.//p[contains(normalize-space(.),'movida a Hecho')]]",
+      "coincidencias": 1,
+      "visible": true,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Registro/li_RequisitoConEstado",
+      "parametros": {
+        "requisito": "Al menos 8 caracteres",
+        "estado": "pendiente",
+        "contrasena": "abc"
+      },
+      "xpath": "//div[@id='requisitos-password']//li[contains(normalize-space(.),'Al menos 8 caracteres') and contains(normalize-space(.),'pendiente')]",
+      "coincidencias": 1,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Registro/li_RequisitoConEstado",
+      "parametros": {
+        "requisito": "Al menos una letra",
+        "estado": "cumplido",
+        "contrasena": "abc"
+      },
+      "xpath": "//div[@id='requisitos-password']//li[contains(normalize-space(.),'Al menos una letra') and contains(normalize-space(.),'cumplido')]",
+      "coincidencias": 1,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Registro/li_RequisitoConEstado",
+      "parametros": {
+        "requisito": "Al menos un número",
+        "estado": "pendiente",
+        "contrasena": "abc"
+      },
+      "xpath": "//div[@id='requisitos-password']//li[contains(normalize-space(.),'Al menos un número') and contains(normalize-space(.),'pendiente')]",
+      "coincidencias": 1,
+      "ok": true
+    },
+    {
+      "objeto": "Page_Registro/alert_Error",
+      "parametros": {
+        "contrasena": "abc"
+      },
+      "texto": "La contraseña debe tener al menos 8 caracteres, con al menos una letra y un número.",
+      "ok": true
+    }
+  ]
+}

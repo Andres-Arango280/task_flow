@@ -1,0 +1,888 @@
+{
+  "id": "SEG-AUTH-13",
+  "nombre": "Limitación por cliente/IP frente a password spraying",
+  "fecha": "2026-10-26T23:19:17.224Z",
+  "obtenido": "20 intentos contra 20 cuentas distintas: 20×401, 0×429 (no existe límite por IP)",
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_13@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:15 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 121.3
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_14@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:15 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 81.5
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_15@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:15 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 84.5
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_16@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:15 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 78.8
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_17@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:15 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 78.1
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_18@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 84.3
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_19@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 75.8
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_20@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 84.2
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_21@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 88.3
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_22@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 78.5
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_23@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 92.1
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_24@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 95.6
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_25@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 82.4
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_26@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 83.8
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_27@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 76.6
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_28@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 77.3
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_29@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:16 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 78.7
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_30@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 90.4
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_31@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 85.3
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_spray_1793056751720_32@taskflow.test",
+          "password": "Verano2026!"
+        }
+      },
+      "respuesta": {
+        "status": 401,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "77",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"4d-Wtkv+T/MWN4290jcIjb0Fr2crac\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Credenciales inválidas",
+          "error": "Unauthorized",
+          "statusCode": 401
+        },
+        "tiempoMs": 80.8
+      }
+    }
+  ]
+}

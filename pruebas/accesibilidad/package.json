@@ -1,0 +1,23 @@
+{
+  "name": "taskflow-pruebas-accesibilidad",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pruebas de UX, heurísticas, accesibilidad e interfaz de TaskFlow",
+  "scripts": {
+    "test": "node src/ejecutar.js todo",
+    "axe": "node src/ejecutar.js axe",
+    "lighthouse": "node src/ejecutar.js lighthouse",
+    "teclado": "node src/ejecutar.js teclado",
+    "visual": "node src/ejecutar.js visual",
+    "recorrido": "node src/ejecutar.js recorrido",
+    "informe": "node src/ejecutar.js informe"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "lighthouse": "^12.8.2",
+    "pixelmatch": "^8.0.0",
+    "pngjs": "^7.0.0",
+    "puppeteer-core": "^24.43.1"
+  }
+}

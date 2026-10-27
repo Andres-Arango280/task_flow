@@ -1,0 +1,47 @@
+{
+  "modelCall": "observe",
+  "messages": [
+    {
+      "role": "system",
+      "content": " You are helping the user automate the browser by finding elements based on what the user wants to observe in the page. You will be given: 1. a instruction of elements to observe 2. a hierarchical accessibility tree showing the semantic structure of the page. The tree is a hybrid of the DOM and the accessibility tree. Return an array of elements that match the instruction if they exist, otherwise return an empty array. When returning elements, include the appropriate method from the supported actions list. Supported actions: click, fill, type, press, scrollTo, nextChunk, prevChunk, selectOptionFromDropdown, hover, doubleClick, dragAndDrop. When choosing non-left click actions, provide right or middle as the argument. Each element in the accessibility tree has an ID in square brackets, like [0-18372]. The ID has two parts: frame ordinal and backend node ID. Always copy the complete ID exactly as shown inside the brackets into elementId, including the frame ordinal and hyphen. For example, if the tree shows [0-18372], return elementId \"0-18372\"; never return only \"18372\"."
+    },
+    {
+      "role": "user",
+      "content": "instruction: Find the email input, the password input and the sign-in button of the login form
+Accessibility Tree: 
+[0-2] RootWebArea: Iniciar sesión · TaskFlow
+  [0-5] scrollable, html
+    [0-20] main
+      [0-21] div
+        [0-22] div
+          [0-29] paragraph
+            [0-30] StaticText: TaskFlow
+          [0-31] paragraph
+            [0-32] StaticText: Gestión colaborativa de tareas
+        [0-33] div
+          [0-34] heading: Iniciar sesión
+          [0-36] form
+            [0-37] div
+              [0-38] LabelText
+                [0-39] StaticText: Correo electrónico
+                [0-43] StaticText: (obligatorio)
+              [0-49] textbox: Correo electrónico (obligatorio)
+            [0-54] div
+              [0-55] LabelText
+                [0-56] StaticText: Contraseña
+                [0-60] StaticText: (obligatorio)
+              [0-61] div
+                [0-66] textbox: Contraseña (obligatorio)
+                [0-70] button: Mostrar contraseña
+            [0-74] button: Iniciar sesión
+          [0-76] div
+            [0-77] paragraph
+              [0-78] StaticText: ¿No tienes cuenta?
+              [0-86] StaticText: 
+              [0-79] link: Regístrate aquí
+            [0-81] paragraph
+              [0-82] link: Privacidad y uso de tus datos
+"
+    }
+  ]
+}

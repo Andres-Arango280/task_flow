@@ -1,0 +1,39 @@
+{
+  "id": "CYS-ACL-02",
+  "obtenido": "Seis operaciones de escritura no autorizadas respondieron 403 (miembro invita a otro → 403; miembro expulsa al líder → 403; miembro elimina el equipo → 403; ajeno crea proyecto → 403; ajeno crea tarea → 403; ajeno mueve tarea → 403); el líder sigue accediendo a sus miembros (200).",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/equipos/3b81f9bf-8b72-4823-8511-a21ff7511294/miembros",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 14,
+    "cuerpo": {
+      "lider": {
+        "id": "04b0d501-ba05-4ead-81fd-4dfed04a875e",
+        "nombre": "Usuario acl-escritura-lider 303268",
+        "email": "acl-escritura-lider.17930561720303268@taskflow-cypress.test",
+        "createdAt": "2026-10-26T23:09:32.152Z",
+        "updatedAt": "2026-10-26T23:09:32.152Z"
+      },
+      "miembros": [
+        {
+          "id": "04b0d501-ba05-4ead-81fd-4dfed04a875e",
+          "nombre": "Usuario acl-escritura-lider 303268",
+          "email": "acl-escritura-lider.17930561720303268@taskflow-cypress.test",
+          "createdAt": "2026-10-26T23:09:32.152Z",
+          "updatedAt": "2026-10-26T23:09:32.152Z"
+        },
+        {
+          "id": "d6ee7c4c-234d-4796-a48b-99160258e831",
+          "nombre": "Usuario acl-escritura-miembro 811019",
+          "email": "acl-escritura-miembro.17930561722811019@taskflow-cypress.test",
+          "createdAt": "2026-10-26T23:09:32.431Z",
+          "updatedAt": "2026-10-26T23:09:32.431Z"
+        }
+      ]
+    }
+  },
+  "fecha": "2026-10-26T23:09:33.319Z"
+}

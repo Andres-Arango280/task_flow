@@ -1,0 +1,18 @@
+{
+  "id": "API-USU-10",
+  "obtenido": "DELETE respondió 200 {eliminado: true}; el login posterior respondió 401.",
+  "peticion": {
+    "metodo": "DELETE",
+    "url": "http://localhost:3000/usuarios/me",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 8,
+    "cuerpo": {
+      "id": "4f7e5b8e-187a-44bf-bb89-cb702e649155",
+      "eliminado": true
+    }
+  },
+  "fecha": "2026-10-26T23:13:35.955Z"
+}

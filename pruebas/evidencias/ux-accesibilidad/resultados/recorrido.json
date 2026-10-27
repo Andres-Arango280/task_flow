@@ -1,0 +1,368 @@
+{
+  "modulo": "recorrido",
+  "fecha": "2026-10-27T04:30:15.861Z",
+  "casos": [
+    {
+      "id": "RUT-01",
+      "tipo": "recorrido",
+      "nombre": "Recorrido: Registrarse",
+      "objetivo": "Crear una cuenta nueva desde /register.",
+      "esperado": "Tras enviar, se llega a /login con el aviso \"Cuenta creada correctamente\" y el correo ya escrito.",
+      "obtenido": "Completado en 5 acciones de usuario y 3 s. Ruta /login, aviso de éxito visible y correo precargado: sí.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/rut-01-registrarse.png"
+      ]
+    },
+    {
+      "id": "RUT-02",
+      "tipo": "recorrido",
+      "nombre": "Recorrido: Iniciar sesión",
+      "objetivo": "Entrar con la cuenta recién creada.",
+      "esperado": "Se accede a \"Mis equipos\" con la guía de primeros pasos (0 de 4).",
+      "obtenido": "Completado en 2 acciones de usuario y 0.8 s. Título de pestaña \"Mis equipos · TaskFlow\"; guía: \"0 de 4 completados\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/rut-02-iniciar-sesión.png"
+      ]
+    },
+    {
+      "id": "RUT-03",
+      "tipo": "recorrido",
+      "nombre": "Recorrido: Crear equipo",
+      "objetivo": "Crear el primer equipo desde el inicio.",
+      "esperado": "El equipo aparece en la lista y un aviso confirma la creación con acceso directo \"Abrir equipo\".",
+      "obtenido": "Completado en 4 acciones de usuario y 2.7 s. Aviso con acción \"Abrir equipo\" mostrado; abierta la vista del equipo (título \"Equipo Recorrido 54510 · TaskFlow\").",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/rut-03-crear-equipo.png"
+      ]
+    },
+    {
+      "id": "RUT-04",
+      "tipo": "recorrido",
+      "nombre": "Recorrido: Invitar compañero",
+      "objetivo": "Añadir a un compañero registrado buscándolo por correo.",
+      "esperado": "Se encuentra al usuario, se añade y aparece en la lista de miembros.",
+      "obtenido": "Completado en 4 acciones de usuario y 3.4 s. Compañero visible en la lista de miembros y guardado en el servidor.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/rut-04-invitar-compañero.png"
+      ]
+    },
+    {
+      "id": "RUT-05",
+      "tipo": "recorrido",
+      "nombre": "Recorrido: Crear proyecto",
+      "objetivo": "Crear un proyecto dentro del equipo y abrir su tablero.",
+      "esperado": "El proyecto aparece y al abrirlo se ve el tablero con las columnas Por Hacer / En Progreso / Hecho.",
+      "obtenido": "Completado en 4 acciones de usuario y 2.7 s. Tablero abierto. Columnas: Por Hacer / En Progreso / Hecho. Migas: \"Mis equipos Equipo Recorrido 54510 Proyecto Lanzamiento\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/rut-05-crear-proyecto.png"
+      ]
+    },
+    {
+      "id": "RUT-06",
+      "tipo": "recorrido",
+      "nombre": "Recorrido: Crear tarea",
+      "objetivo": "Crear una tarea en el tablero.",
+      "esperado": "La tarjeta aparece en \"Por Hacer\" y un aviso confirma la creación.",
+      "obtenido": "Completado en 3 acciones de usuario y 1.5 s. Tarjeta visible. Aviso: \"Listo Tarea \"Preparar presentación\" creada en Por Hacer.\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/rut-06-crear-tarea.png"
+      ]
+    },
+    {
+      "id": "RUT-07",
+      "tipo": "recorrido",
+      "nombre": "Recorrido: Mover tarea con el ratón",
+      "objetivo": "Arrastrar la tarjeta de \"Por Hacer\" a \"Hecho\" con el ratón.",
+      "esperado": "La tarea queda en \"Hecho\", el progreso pasa a 100 % y se ofrece \"Deshacer\".",
+      "obtenido": "Completado en 1 acciones de usuario y 2.9 s. En el servidor la tarea está en \"Hecho\". Progreso: \"1 de 1 tareas hechas (100%)\". Botón \"Deshacer\": sí.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/rut-07-mover-tarea-con-el-ratón.png"
+      ]
+    },
+    {
+      "id": "RUT-08",
+      "tipo": "recorrido",
+      "nombre": "Recorrido: Deshacer el movimiento",
+      "objetivo": "Usar \"Deshacer\" del aviso para revertir el último movimiento (control y libertad del usuario).",
+      "esperado": "La tarea vuelve a \"Por Hacer\".",
+      "obtenido": "Completado en 1 acciones de usuario y 2.1 s. La tarea volvió a \"Por Hacer\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/rut-08-deshacer-el-movimiento.png"
+      ]
+    },
+    {
+      "id": "RUT-09",
+      "tipo": "recorrido",
+      "nombre": "Recorrido: Recargar sin perder la sesión",
+      "objetivo": "Recargar el tablero (F5) y comprobar que no se vuelve al login (problema del estado anterior).",
+      "esperado": "Tras recargar, se sigue en el mismo tablero.",
+      "obtenido": "Completado en 1 acciones de usuario y 1.9 s. Ruta tras recargar: /proyectos/0378ff47-d5b4-4ef8-8ce6-fba0b8fcd275; título \"Proyecto Lanzamiento · TaskFlow\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/rut-09-recargar-sin-perder-la-sesión.png"
+      ]
+    },
+    {
+      "id": "RUT-10",
+      "tipo": "recorrido",
+      "nombre": "Recorrido completo registrarse → mover tarea",
+      "objetivo": "Medir la tasa de éxito y el esfuerzo (acciones) del recorrido principal de un usuario nuevo.",
+      "esperado": "100 % de las 9 tareas completadas sin ayuda externa.",
+      "obtenido": "Éxito 9/9 (100 %); 25 acciones de usuario; 21.0 s de ejecución automatizada.",
+      "estado": "Aprobado",
+      "evidencia": [],
+      "detalle": [
+        {
+          "id": "RUT-01",
+          "tarea": "Registrarse",
+          "exito": true,
+          "acciones": 5,
+          "segundos": 3
+        },
+        {
+          "id": "RUT-02",
+          "tarea": "Iniciar sesión",
+          "exito": true,
+          "acciones": 2,
+          "segundos": 0.8
+        },
+        {
+          "id": "RUT-03",
+          "tarea": "Crear equipo",
+          "exito": true,
+          "acciones": 4,
+          "segundos": 2.7
+        },
+        {
+          "id": "RUT-04",
+          "tarea": "Invitar compañero",
+          "exito": true,
+          "acciones": 4,
+          "segundos": 3.4
+        },
+        {
+          "id": "RUT-05",
+          "tarea": "Crear proyecto",
+          "exito": true,
+          "acciones": 4,
+          "segundos": 2.7
+        },
+        {
+          "id": "RUT-06",
+          "tarea": "Crear tarea",
+          "exito": true,
+          "acciones": 3,
+          "segundos": 1.5
+        },
+        {
+          "id": "RUT-07",
+          "tarea": "Mover tarea con el ratón",
+          "exito": true,
+          "acciones": 1,
+          "segundos": 2.9
+        },
+        {
+          "id": "RUT-08",
+          "tarea": "Deshacer el movimiento",
+          "exito": true,
+          "acciones": 1,
+          "segundos": 2.1
+        },
+        {
+          "id": "RUT-09",
+          "tarea": "Recargar sin perder la sesión",
+          "exito": true,
+          "acciones": 1,
+          "segundos": 1.9
+        }
+      ]
+    },
+    {
+      "id": "UX-01",
+      "tipo": "recorrido",
+      "nombre": "Sin conexión: aviso, error con código y borrador conservado",
+      "objetivo": "Simular la pérdida de red en el tablero e intentar crear una tarea (heurísticas 1 y 9; antes los errores solo iban a la consola).",
+      "esperado": "Banner \"Sin conexión\"; al crear, aviso de error en español con código TF-RED; el texto escrito se conserva como borrador al volver la conexión.",
+      "obtenido": "Banner: \"Sin conexión a internet. Los cambios no se guardarán hasta q…\"; aviso: \"No se pudo crear la tarea: No hay conexión con el servidor. Revisa tu conexión a internet e inténtalo de nuevo. Código de referencia: TF-RED\"; borrador tras reabrir: \"Tarea escrita sin conexión\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/ux-sin-conexion-error.png",
+        "recorrido/ux-01.png"
+      ]
+    },
+    {
+      "id": "UX-02",
+      "tipo": "recorrido",
+      "nombre": "Búsqueda de tareas tolerante a errores de escritura",
+      "objetivo": "Comprobar que el buscador del tablero encuentra tareas aunque se escriba sin tildes o con una errata (heurística 6, antes no había búsqueda).",
+      "esperado": "\"presentasion\" encuentra \"Preparar presentación\"; un término inexistente no muestra tareas y explica el estado vacío.",
+      "obtenido": "\"presentasion\" → encuentra la tarea (Mostrando 1 de 1 tareas); \"zzqqxx\" → 0 resultados (Mostrando 0 de 1 tareas).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/ux-02.png"
+      ]
+    },
+    {
+      "id": "UX-03",
+      "tipo": "recorrido",
+      "nombre": "Ayuda: buscador de preguntas frecuentes",
+      "objetivo": "Verificar que la ayuda responde a una duda escrita con palabras del usuario y sin tildes (heurística 10; antes no existía ayuda).",
+      "esperado": "La consulta \"como muevo una tarea\" muestra al menos una respuesta sobre mover tareas.",
+      "obtenido": "1 respuesta(s): \"¿Cómo muevo una tarea de columna?\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/ux-03.png"
+      ]
+    },
+    {
+      "id": "UX-04",
+      "tipo": "recorrido",
+      "nombre": "Confirmación antes de cerrar sesión",
+      "objetivo": "Comprobar que \"Salir\" pide confirmación y que cancelar mantiene la sesión (heurística 5).",
+      "esperado": "Aparece un diálogo \"¿Cerrar sesión?\"; al cancelar se sigue en la misma página con sesión.",
+      "obtenido": "Diálogo: \"¿Cerrar sesión?\"; tras cancelar la sesión se mantiene.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/ux-confirmar-salir.png",
+        "recorrido/ux-04.png"
+      ]
+    },
+    {
+      "id": "UX-05",
+      "tipo": "visual",
+      "nombre": "Título de pestaña distinto en cada página",
+      "objetivo": "Comprobar que el título del documento identifica la página (WCAG 2.4.2; antes siempre \"taskflow-frontend\").",
+      "esperado": "Cada página tiene un título único con el formato \"<sección> · TaskFlow\".",
+      "obtenido": "\"Mis equipos · TaskFlow\", \"Equipo Recorrido 54510 · TaskFlow\", \"Proyecto Lanzamiento · TaskFlow\", \"Ayuda · TaskFlow\", \"Preferencias · TaskFlow\", \"Privacidad · TaskFlow\"",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/ux-05.png"
+      ]
+    },
+    {
+      "id": "UX-06",
+      "tipo": "visual",
+      "nombre": "Columnas del tablero diferenciadas por color",
+      "objetivo": "Verificar que \"Por Hacer\", \"En Progreso\" y \"Hecho\" tienen colores distintos (antes \"Por Hacer\" y \"Hecho\" compartían color).",
+      "esperado": "3 colores de fondo de columna distintos.",
+      "obtenido": "Por Hacer: oklch(0.968 0.007 247.896) · En Progreso: oklch(0.97 0.014 254.604) · Hecho: oklch(0.982 0.018 155.826)",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/ux-06.png"
+      ]
+    },
+    {
+      "id": "UX-07",
+      "tipo": "recorrido",
+      "nombre": "Bloqueo de inicio de sesión tras 5 intentos explica qué hacer",
+      "objetivo": "Comprobar que, tras 5 contraseñas incorrectas, el mensaje explica el bloqueo y cuánto esperar, en español y con código (heurística 9).",
+      "esperado": "Intentos 1-5: \"El correo o la contraseña no son correctos…\"; intento 6: \"Demasiados intentos fallidos… espera N minuto(s)\" con código TF-429.",
+      "obtenido": "Intento 1: \"El correo o la contraseña no son correctos. Revísalos e inténtalo de nuevo.\". Intento 6: \"No se pudo iniciar sesión: Demasiados intentos fallidos. Por seguridad, espera 15 minuto(s) antes de volver a intentarlo. Código de referencia: TF-429\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "recorrido/ux-07.png"
+      ]
+    },
+    {
+      "id": "UX-08",
+      "tipo": "recorrido",
+      "nombre": "Mensajes de validación del servidor en español",
+      "objetivo": "Enviar datos inválidos directamente a la API (como haría un cliente sin validación previa) y comprobar el idioma de los mensajes (antes llegaban en inglés: \"email must be an email\").",
+      "esperado": "Todos los mensajes de validación en español, sin textos de class-validator en inglés.",
+      "obtenido": "HTTP 400: \"El nombre es obligatorio\", \"El correo electrónico no tiene un formato válido (ejemplo: nombre@correo.com)\", \"La contraseña debe contener al menos una letra\", \"La contraseña debe tener al menos 8 caracteres\"",
+      "estado": "Aprobado",
+      "evidencia": []
+    }
+  ],
+  "incidenciasCarga": [
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 1,
+      "fecha": "2026-10-27T04:23:29.062Z"
+    },
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 2,
+      "fecha": "2026-10-27T04:23:31.837Z"
+    },
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 3,
+      "fecha": "2026-10-27T04:23:34.605Z"
+    }
+  ],
+  "recorrido": [
+    {
+      "id": "RUT-01",
+      "tarea": "Registrarse",
+      "exito": true,
+      "acciones": 5,
+      "segundos": 3
+    },
+    {
+      "id": "RUT-02",
+      "tarea": "Iniciar sesión",
+      "exito": true,
+      "acciones": 2,
+      "segundos": 0.8
+    },
+    {
+      "id": "RUT-03",
+      "tarea": "Crear equipo",
+      "exito": true,
+      "acciones": 4,
+      "segundos": 2.7
+    },
+    {
+      "id": "RUT-04",
+      "tarea": "Invitar compañero",
+      "exito": true,
+      "acciones": 4,
+      "segundos": 3.4
+    },
+    {
+      "id": "RUT-05",
+      "tarea": "Crear proyecto",
+      "exito": true,
+      "acciones": 4,
+      "segundos": 2.7
+    },
+    {
+      "id": "RUT-06",
+      "tarea": "Crear tarea",
+      "exito": true,
+      "acciones": 3,
+      "segundos": 1.5
+    },
+    {
+      "id": "RUT-07",
+      "tarea": "Mover tarea con el ratón",
+      "exito": true,
+      "acciones": 1,
+      "segundos": 2.9
+    },
+    {
+      "id": "RUT-08",
+      "tarea": "Deshacer el movimiento",
+      "exito": true,
+      "acciones": 1,
+      "segundos": 2.1
+    },
+    {
+      "id": "RUT-09",
+      "tarea": "Recargar sin perder la sesión",
+      "exito": true,
+      "acciones": 1,
+      "segundos": 1.9
+    }
+  ],
+  "usuario": "recorrido.1793075354510@taskflow-qa.test"
+}

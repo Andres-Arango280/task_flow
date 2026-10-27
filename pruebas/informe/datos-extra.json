@@ -1,0 +1,321 @@
+{
+  "griho": [
+    [
+      "1. Visibilidad y estado del sistema",
+      "2,64 / 5",
+      "4,66 / 5"
+    ],
+    [
+      "2. Conexión con el mundo real",
+      "2,65 / 4",
+      "4 / 4"
+    ],
+    [
+      "3. Control y libertad del usuario",
+      "1,66 / 3",
+      "2,66 / 3"
+    ],
+    [
+      "4. Consistencia y estándares",
+      "4,30 / 6",
+      "6 / 6"
+    ],
+    [
+      "5. Reconocimiento antes que memoria",
+      "3,31 / 5",
+      "4,66 / 5"
+    ],
+    [
+      "6. Flexibilidad y eficiencia",
+      "2,32 / 5",
+      "6 / 6"
+    ],
+    [
+      "7. Diagnóstico y recuperación de errores",
+      "1,65 / 4",
+      "4 / 4"
+    ],
+    [
+      "8. Prevención de errores",
+      "1,33 / 2",
+      "2,66 / 3"
+    ],
+    [
+      "9. Diseño estético y minimalista",
+      "2,65 / 4",
+      "4 / 4"
+    ],
+    [
+      "10. Ayuda y documentación",
+      "0 / 2",
+      "5 / 5"
+    ],
+    [
+      "11. Guardar el estado y proteger el trabajo",
+      "1,99 / 3",
+      "2,66 / 3"
+    ],
+    [
+      "12. Color y legibilidad",
+      "1,98 / 4",
+      "4 / 4"
+    ],
+    [
+      "13. Autonomía",
+      "1,32 / 3",
+      "2,66 / 3"
+    ],
+    [
+      "14. Valores por defecto",
+      "No aplicaba",
+      "3 / 3"
+    ],
+    [
+      "15. Reducción de la latencia",
+      "2 / 2",
+      "2 / 2"
+    ],
+    [
+      "16. Usabilidad de comercio electrónico",
+      "0 / 5",
+      "4,65 / 7"
+    ],
+    [
+      "PORCENTAJE DE USABILIDAD",
+      "52,3 %",
+      "93,4 %"
+    ]
+  ],
+  "evolucion": [
+    {
+      "suite": "Regresión backend (Jest)",
+      "antes": "125/125",
+      "despues": "137/137",
+      "comentario": "Se añadieron 12 pruebas para las nuevas funciones (editar/eliminar tareas, proyectos, equipos y cuenta; limitador de intentos). Cobertura de líneas 91,5 %."
+    },
+    {
+      "suite": "Cypress (API, regresión UI, componentes)",
+      "antes": "121/122",
+      "despues": "122/122",
+      "comentario": "API-VAL-02 detectó el mensaje genérico para identificadores inválidos (C-14); corregido."
+    },
+    {
+      "suite": "Seguridad",
+      "antes": "43/53",
+      "despues": "49/53",
+      "comentario": "Corregidos: enumeración por tiempo, contraseñas triviales, error 500, token de usuario eliminado, .env versionado, dependencias del frontend. Quedan 4 riesgos documentados como mejoras (límite por IP, búsqueda por correo, CSP del frontend, NestJS 11)."
+    },
+    {
+      "suite": "Rendimiento",
+      "antes": "5/6",
+      "despues": "6/6",
+      "comentario": "REN-02 bajó su p95 de 569 ms a 273 ms tras añadir índices a las claves foráneas (C-13)."
+    },
+    {
+      "suite": "UX, accesibilidad e interfaz",
+      "antes": "54/67",
+      "despues": "68/68",
+      "comentario": "Corregidos nombre accesible ≠ texto visible (WCAG 2.5.3), anuncios de arrastrar y soltar en español, landmark main, etiquetas del menú móvil; se añadió VIS-15."
+    },
+    {
+      "suite": "E2E Screenplay (Serenity/JS)",
+      "antes": "18/18",
+      "despues": "18/18",
+      "comentario": "SP-17 se endureció para exigir el mensaje exacto de 403 (C-15)."
+    },
+    {
+      "suite": "E2E Katalon",
+      "antes": "—",
+      "despues": "Pendiente",
+      "comentario": "16 casos preparados; localizadores validados contra la app (14/14). Requiere ejecutar en Katalon Studio."
+    }
+  ],
+  "correcciones": [
+    {
+      "id": "C-01",
+      "hallazgo": "Los errores de la interfaz solo se registraban en la consola; sin ayuda, sin deshacer, sin búsqueda, título de pestaña fijo, colores de columnas iguales y barra de progreso ficticia",
+      "origen": "Evaluación heurística GRIHO (IA)",
+      "correccion": "Avisos en español con código de referencia y opción Deshacer, confirmaciones, página de Ayuda con preguntas frecuentes, Preferencias de accesibilidad, Privacidad, migas de pan, títulos por página, atajos de teclado, búsqueda tolerante a errores, borradores, actualización periódica",
+      "verificacion": "GRIHO 52,3 % → 93,4 %; recorridos UX-01..08; Screenplay SP-01..18"
+    },
+    {
+      "id": "C-02",
+      "hallazgo": "Un reset CSS fuera de capa anulaba todo el espaciado de Tailwind (tarjetas sin relleno, iconos sobre el texto)",
+      "origen": "Prueba de interfaz en navegador",
+      "correccion": "Estilos base movidos a @layer base en index.css",
+      "verificacion": "Capturas de interfaz y regresión visual (VIS)"
+    },
+    {
+      "id": "C-03",
+      "hallazgo": "Al recargar una página privada la aplicación expulsaba al login",
+      "origen": "Prueba E2E en navegador",
+      "correccion": "La sesión se restaura de forma síncrona al crear el store (useAuthStore)",
+      "verificacion": "REG/UX de recarga; recorrido principal"
+    },
+    {
+      "id": "C-04",
+      "hallazgo": "Faltaban cabeceras de seguridad, X-Powered-By expuesto y CORS abierto a cualquier origen",
+      "origen": "Revisión de seguridad",
+      "correccion": "helmet (CSP, HSTS, nosniff, X-Frame-Options), X-Powered-By desactivado y CORS limitado a FRONTEND_URL",
+      "verificacion": "SEG-CONF-01..05"
+    },
+    {
+      "id": "C-05",
+      "hallazgo": "Sin protección frente a fuerza bruta en el login",
+      "origen": "Revisión de seguridad",
+      "correccion": "Bloqueo de 15 min tras 5 intentos fallidos por cuenta (LimitadorIntentos) con HTTP 429",
+      "verificacion": "SEG-AUTH (fuerza bruta) y pruebas unitarias del limitador"
+    },
+    {
+      "id": "C-06",
+      "hallazgo": "Secreto JWT débil ('coco258') y valor por defecto en el código",
+      "origen": "Revisión de seguridad",
+      "correccion": "Secreto aleatorio de 64 caracteres en .env y getOrThrow sin valor por defecto",
+      "verificacion": "SEG-AUTH (tokens manipulados / secretos adivinables)"
+    },
+    {
+      "id": "C-07",
+      "hallazgo": "Error 500 en el login cuando la contraseña no es texto (p. ej. {\"$ne\": null})",
+      "origen": "Pruebas de seguridad (inyección)",
+      "correccion": "LoginDto con @IsString y @MaxLength(72): ahora 400 con mensaje en español",
+      "verificacion": "SEG-INY / SEG-VAL"
+    },
+    {
+      "id": "C-08",
+      "hallazgo": "El token de un usuario eliminado devolvía 404 en lugar de 401",
+      "origen": "Pruebas de seguridad",
+      "correccion": "JwtStrategy convierte la cuenta inexistente en 401",
+      "verificacion": "SEG-AUTH"
+    },
+    {
+      "id": "C-09",
+      "hallazgo": "Enumeración de cuentas por tiempo de respuesta del login (7 ms vs 85 ms)",
+      "origen": "Pruebas de seguridad (SEG-AUTH-12)",
+      "correccion": "Se ejecuta siempre bcrypt.compare (hash ficticio si el correo no existe)",
+      "verificacion": "SEG-AUTH-12"
+    },
+    {
+      "id": "C-10",
+      "hallazgo": "Se aceptaban contraseñas triviales (123456, password)",
+      "origen": "Pruebas de seguridad (SEG-AUTH-15)",
+      "correccion": "Política: mínimo 8 caracteres con al menos una letra y un número (backend y formulario de registro)",
+      "verificacion": "SEG-AUTH-15; API-AUTH-03"
+    },
+    {
+      "id": "C-11",
+      "hallazgo": ".env con secretos versionado en git",
+      "origen": "Pruebas de seguridad",
+      "correccion": "git rm --cached .env (queda ignorado); secreto JWT rotado. Pendiente: rotar la contraseña de PostgreSQL que quedó en el historial",
+      "verificacion": "git ls-files"
+    },
+    {
+      "id": "C-12",
+      "hallazgo": "Dependencias vulnerables: backend producción 2 críticas y 10 altas; frontend 2 altas",
+      "origen": "npm audit (SEG-DEP)",
+      "correccion": "bcrypt 6 y npm audit fix: backend producción 0 críticas / 3 altas (requieren NestJS 11+); frontend 0 altas",
+      "verificacion": "SEG-DEP-01..03"
+    },
+    {
+      "id": "C-13",
+      "hallazgo": "Faltaban índices en las claves foráneas",
+      "origen": "Pruebas de rendimiento",
+      "correccion": "@Index en listaId, proyectoId, equipoId, liderId y tareaId",
+      "verificacion": "pg_indexes; escenarios REN"
+    },
+    {
+      "id": "C-14",
+      "hallazgo": "Mensaje de validación genérico para identificadores inválidos (regla isUuid no traducida)",
+      "origen": "Cypress API-VAL-02",
+      "correccion": "Traductor de validación corregido y concordancia de género",
+      "verificacion": "API-VAL-02"
+    },
+    {
+      "id": "C-15",
+      "hallazgo": "Un 403 en el tablero se mostraba como error de conexión",
+      "origen": "Screenplay SP-17",
+      "correccion": "Mensaje específico 'No tienes acceso a este proyecto'",
+      "verificacion": "SP-17"
+    },
+    {
+      "id": "C-16",
+      "hallazgo": "Textos de Ayuda distintos de los botones reales; texto de progreso con concordancia incorrecta",
+      "origen": "Screenplay / Cypress",
+      "correccion": "Textos alineados ('Invitar', 'Añadir al equipo', '1 de 4 tareas hechas')",
+      "verificacion": "SP / REG-KAN-10"
+    },
+    {
+      "id": "C-17",
+      "hallazgo": "Nombre accesible distinto del texto visible (WCAG 2.5.3) en tarjetas de tarea y equipo",
+      "origen": "axe-core (12 fallos)",
+      "correccion": "Se eliminaron las aria-label: el nombre accesible es el texto visible; data-testid para las pruebas",
+      "verificacion": "A11Y / VIS-12"
+    },
+    {
+      "id": "C-18",
+      "hallazgo": "Instrucciones de arrastrar y soltar para lector de pantalla en inglés y con identificadores internos",
+      "origen": "Prueba de teclado TEC-11",
+      "correccion": "dragHandleUsageInstructions y anuncios en español con el título de la tarea y el nombre de la columna",
+      "verificacion": "TEC-11"
+    },
+    {
+      "id": "C-19",
+      "hallazgo": "Sin landmark main en Privacidad, salto de diseño (CLS) en el inicio, iconos sin texto en el menú móvil, aviso titulado 'Hecho' igual que la columna, sin meta descripción",
+      "origen": "axe-core, Lighthouse y revisión del equipo",
+      "correccion": "main en Privacidad, esqueleto de carga, etiquetas visibles en móvil, aviso 'Listo', meta description",
+      "verificacion": "A11Y, Lighthouse"
+    },
+    {
+      "id": "C-20",
+      "hallazgo": "El backend y Vite se reiniciaban al escribir archivos de prueba, causando fallos intermitentes",
+      "origen": "Ejecución de suites (estabilidad)",
+      "correccion": "tsconfig excluye pruebas/ y Vite ignora las carpetas de resultados de Cypress",
+      "verificacion": "Ejecuciones finales estables"
+    }
+  ],
+  "conclusiones": [
+    "Las pruebas automatizadas cubren todas las capas: servicios del backend, API, componentes React, recorridos E2E en tres herramientas distintas (Cypress, Screenplay con Serenity/JS y Katalon), seguridad, rendimiento, accesibilidad y experiencia de usuario.",
+    "Las pruebas no solo verificaron lo existente: detectaron defectos reales (fallos de seguridad, errores 500, mensajes incorrectos, problemas de accesibilidad y de estabilidad) que se corrigieron y se volvieron a verificar, como muestra la sección 8.",
+    "La evaluación heurística apoyada por IA, contrastada con la revisión del equipo y con herramientas automáticas, llevó la usabilidad de 52,3 % a 93,4 % en la plantilla GRIHO.",
+    "El cuello de botella de rendimiento es la CPU de un único proceso Node en modo desarrollo; la base de datos no es el factor limitante con la carga probada.",
+    "Todas las suites son reproducibles con un solo comando y generan evidencias (reportes HTML, capturas, vídeos, JSON) en pruebas/evidencias."
+  ],
+  "mejoras": [
+    "Limitar peticiones por IP (p. ej. @nestjs/throttler con Redis) para frenar el password spraying y el registro masivo.",
+    "Actualizar a NestJS 11/12 para eliminar las 3 vulnerabilidades altas restantes de producción (platform-express, multer, lodash).",
+    "Rotar la contraseña de PostgreSQL que quedó en el historial de git y valorar reescribir el historial antes de publicar el repositorio.",
+    "En producción: build optimizado, varias instancias (cluster/PM2), HTTPS, compresión, paginación de tareas y CSP también para el frontend.",
+    "Revocación de tokens (lista de bloqueo o refresh tokens de corta duración) y registro de auditoría de acciones sensibles.",
+    "Invitaciones por enlace o código para no depender de que el líder conozca el correo exacto; función 'rehacer'.",
+    "Integrar todas las suites en el pipeline de Jenkins existente para ejecutarlas en cada cambio."
+  ],
+  "imagenes": {
+    "jest": "capturas-reportes/jest-cobertura.png",
+    "cypressInforme": "capturas-reportes/cypress-informe.png",
+    "rendimiento": [
+      {
+        "ruta": "capturas-reportes/rendimiento.png",
+        "pie": "Reporte de rendimiento: throughput, latencias p50/p95/p99 y estrés por concurrencia"
+      }
+    ],
+    "ux": [
+      {
+        "ruta": "capturas-reportes/lighthouse-inicio.png",
+        "pie": "Lighthouse — página de inicio (escritorio)"
+      },
+      {
+        "ruta": "ux-accesibilidad/capturas/tablero-escritorio.png",
+        "pie": "Tablero Kanban en escritorio"
+      },
+      {
+        "ruta": "ux-accesibilidad/capturas/tablero-alto-contraste-texto-muy-grande.png",
+        "pie": "Tablero con alto contraste y texto muy grande (Preferencias de accesibilidad)"
+      },
+      {
+        "ruta": "ux-accesibilidad/capturas/nav-movil.png",
+        "pie": "Menú en móvil (390 px) con etiquetas visibles",
+        "ancho": 300
+      }
+    ],
+    "serenity": "capturas-reportes/serenity.png"
+  }
+}

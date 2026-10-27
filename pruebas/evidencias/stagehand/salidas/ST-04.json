@@ -1,0 +1,32 @@
+{
+  "id": "ST-04",
+  "instruccionesYRespuestas": {
+    "acciones": [
+      {
+        "success": true,
+        "message": "Action [click] performed successfully on selector: xpath=/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/header[1]/button[1]",
+        "actionDescription": "click",
+        "actions": [
+          {
+            "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/header[1]/button[1]",
+            "description": "click",
+            "method": "click",
+            "arguments": []
+          }
+        ]
+      }
+    ],
+    "observaciones": []
+  },
+  "datosDePrueba": {
+    "nombre": "Equipo IA 708552"
+  },
+  "tiemposIA": [
+    {
+      "paso": "act abrir",
+      "seg": 32.1
+    }
+  ],
+  "estado": "Fallido",
+  "obtenido": "No conforme: No object generated: response did not match schema."
+}

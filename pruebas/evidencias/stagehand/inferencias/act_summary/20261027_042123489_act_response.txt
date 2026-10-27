@@ -1,0 +1,12 @@
+{
+  "modelResponse": "act",
+  "rawResponse": {
+    "action": {
+      "elementId": "0-1185",
+      "description": "Revisar informe 70052",
+      "method": "click",
+      "arguments": []
+    },
+    "twoStep": false
+  }
+}

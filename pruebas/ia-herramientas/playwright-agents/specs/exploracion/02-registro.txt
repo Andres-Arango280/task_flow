@@ -1,0 +1,37 @@
+# /register
+# título: Crear cuenta · TaskFlow
+
+- main:
+  - paragraph: TaskFlow
+  - paragraph: Organiza el trabajo de tu equipo en tableros Kanban
+  - heading "Crear cuenta" [level=1]
+  - paragraph: Los campos marcados con asterisco son obligatorios.
+  - text: Nombre completo (obligatorio)
+  - textbox "Nombre completo (obligatorio)":
+    - /placeholder: Juan Pérez
+  - paragraph: Es el nombre que verán tus compañeros de equipo.
+  - text: Correo electrónico (obligatorio)
+  - textbox "Correo electrónico (obligatorio)":
+    - /placeholder: tu@email.com
+  - paragraph: Tus compañeros lo usarán para invitarte a sus equipos.
+  - text: Contraseña (obligatorio)
+  - textbox "Contraseña (obligatorio)"
+  - button "Mostrar contraseñas"
+  - text: Confirmar contraseña (obligatorio)
+  - textbox "Confirmar contraseña (obligatorio)"
+  - paragraph: "La contraseña debe cumplir:"
+  - list:
+    - listitem: "Al menos 8 caracteres : pendiente"
+    - listitem: "Al menos una letra : pendiente"
+    - listitem: "Al menos un número : pendiente"
+    - listitem: "Las dos contraseñas coinciden : pendiente"
+  - paragraph:
+    - text: Al registrarte aceptas que guardemos tu nombre y correo para que tus equipos puedan encontrarte.
+    - link "Consulta cómo usamos tus datos":
+      - /url: /privacidad
+    - text: .
+  - button "Crear cuenta"
+  - paragraph:
+    - text: ¿Ya tienes cuenta?
+    - link "Inicia sesión aquí":
+      - /url: /login

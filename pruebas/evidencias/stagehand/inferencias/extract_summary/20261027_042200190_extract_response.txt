@@ -1,0 +1,10 @@
+{
+  "modelResponse": "extract",
+  "rawResponse": {
+    "nombre": "En Progreso",
+    "tareas": [
+      "Sin tareas en esta columna",
+      "Arrastra una tarea aquí o crea una nueva."
+    ]
+  }
+}

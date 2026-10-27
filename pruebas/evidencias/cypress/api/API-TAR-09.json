@@ -1,0 +1,36 @@
+{
+  "id": "API-TAR-09",
+  "obtenido": "Respondió 200; la tarea quedó en \"Hecho\" también al volver a listar.",
+  "peticion": {
+    "metodo": "PATCH",
+    "url": "http://localhost:3000/tareas/e42e1bf3-ee8a-4b86-9eb6-a7d874e56230/mover",
+    "autenticado": true,
+    "cuerpo": {
+      "nuevaListaId": "fd1adc64-c7ed-4bf8-9a8d-ddee988cee52"
+    }
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 25,
+    "cuerpo": {
+      "id": "e42e1bf3-ee8a-4b86-9eb6-a7d874e56230",
+      "titulo": "Para mover",
+      "descripcion": null,
+      "estado": "pendiente",
+      "prioridad": "media",
+      "listaId": "fd1adc64-c7ed-4bf8-9a8d-ddee988cee52",
+      "createdAt": "2026-10-26T23:13:19.485Z",
+      "updatedAt": "2026-10-26T23:13:19.523Z",
+      "asignados": [],
+      "lista": {
+        "id": "fd1adc64-c7ed-4bf8-9a8d-ddee988cee52",
+        "nombre": "Hecho",
+        "orden": 2,
+        "proyectoId": "debed274-ad43-4bee-8b78-4169355bf7ac",
+        "createdAt": "2026-10-26T23:13:19.431Z",
+        "updatedAt": "2026-10-26T23:13:19.431Z"
+      }
+    }
+  },
+  "fecha": "2026-10-26T23:13:19.577Z"
+}

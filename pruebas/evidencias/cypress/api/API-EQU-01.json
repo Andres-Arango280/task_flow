@@ -1,0 +1,40 @@
+{
+  "id": "API-EQU-01",
+  "obtenido": "Respondió 201; liderId = creador, miembros = [creador] y ningún usuario incluye password.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/equipos",
+    "autenticado": true,
+    "cuerpo": {
+      "nombre": "Equipo nuevo 1793056351017"
+    }
+  },
+  "respuesta": {
+    "estado": 201,
+    "duracionMs": 23,
+    "cuerpo": {
+      "id": "ac975288-a311-4cb6-ab0d-e8fde5a29c21",
+      "nombre": "Equipo nuevo 1793056351017",
+      "liderId": "e78dcaa7-2f02-4376-badf-2bd0965493d9",
+      "createdAt": "2026-10-26T23:12:31.041Z",
+      "updatedAt": "2026-10-26T23:12:31.041Z",
+      "lider": {
+        "id": "e78dcaa7-2f02-4376-badf-2bd0965493d9",
+        "nombre": "Usuario lider 922001",
+        "email": "lider.17930563500922001@taskflow-cypress.test",
+        "createdAt": "2026-10-26T23:12:30.238Z",
+        "updatedAt": "2026-10-26T23:12:30.238Z"
+      },
+      "miembros": [
+        {
+          "id": "e78dcaa7-2f02-4376-badf-2bd0965493d9",
+          "nombre": "Usuario lider 922001",
+          "email": "lider.17930563500922001@taskflow-cypress.test",
+          "createdAt": "2026-10-26T23:12:30.238Z",
+          "updatedAt": "2026-10-26T23:12:30.238Z"
+        }
+      ]
+    }
+  },
+  "fecha": "2026-10-26T23:12:31.089Z"
+}

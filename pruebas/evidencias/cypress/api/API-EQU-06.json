@@ -1,0 +1,19 @@
+{
+  "id": "API-EQU-06",
+  "obtenido": "Respondió 404 con \"Equipo no encontrado\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/equipos/00000000-0000-4000-8000-000000000000",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 404,
+    "duracionMs": 17,
+    "cuerpo": {
+      "message": "Equipo no encontrado",
+      "error": "Not Found",
+      "statusCode": 404
+    }
+  },
+  "fecha": "2026-10-26T23:12:37.054Z"
+}

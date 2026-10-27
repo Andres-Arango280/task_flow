@@ -1,0 +1,242 @@
+{
+  "modulo": "lighthouse",
+  "fecha": "2026-10-27T04:26:17.176Z",
+  "casos": [
+    {
+      "id": "LH-01",
+      "tipo": "accesibilidad",
+      "nombre": "Lighthouse Login – Escritorio",
+      "objetivo": "Medir accesibilidad, buenas prácticas, rendimiento y SEO de Login en escritorio.",
+      "esperado": "Accesibilidad ≥ 90 y la página auditada es la solicitada (sesión válida).",
+      "obtenido": "A11y 100 · BP 100 · Rend. 99 · SEO 91 (LCP 0,7 s, CLS 0) · auditorías no superadas: robots-txt",
+      "estado": "Aprobado",
+      "evidencia": [
+        "lighthouse/login-escritorio.html",
+        "lighthouse/login-escritorio.json"
+      ]
+    },
+    {
+      "id": "LH-02",
+      "tipo": "accesibilidad",
+      "nombre": "Lighthouse Login – Móvil",
+      "objetivo": "Medir accesibilidad, buenas prácticas, rendimiento y SEO de Login en móvil.",
+      "esperado": "Accesibilidad ≥ 90 y la página auditada es la solicitada (sesión válida).",
+      "obtenido": "A11y 100 · BP 100 · Rend. 75 · SEO 91 (LCP 2,3 s, CLS 0) · auditorías no superadas: robots-txt",
+      "estado": "Aprobado",
+      "evidencia": [
+        "lighthouse/login-movil.html",
+        "lighthouse/login-movil.json"
+      ]
+    },
+    {
+      "id": "LH-03",
+      "tipo": "accesibilidad",
+      "nombre": "Lighthouse Inicio (Mis equipos) – Escritorio",
+      "objetivo": "Medir accesibilidad, buenas prácticas, rendimiento y SEO de Inicio (Mis equipos) en escritorio.",
+      "esperado": "Accesibilidad ≥ 90 y la página auditada es la solicitada (sesión válida).",
+      "obtenido": "A11y 100 · BP 100 · Rend. 98 · SEO 91 (LCP 0,6 s, CLS 0) · auditorías no superadas: robots-txt",
+      "estado": "Aprobado",
+      "evidencia": [
+        "lighthouse/inicio-escritorio.html",
+        "lighthouse/inicio-escritorio.json"
+      ]
+    },
+    {
+      "id": "LH-04",
+      "tipo": "accesibilidad",
+      "nombre": "Lighthouse Inicio (Mis equipos) – Móvil",
+      "objetivo": "Medir accesibilidad, buenas prácticas, rendimiento y SEO de Inicio (Mis equipos) en móvil.",
+      "esperado": "Accesibilidad ≥ 90 y la página auditada es la solicitada (sesión válida).",
+      "obtenido": "A11y 100 · BP 100 · Rend. 71 · SEO 91 (LCP 2,6 s, CLS 0) · auditorías no superadas: robots-txt",
+      "estado": "Aprobado",
+      "evidencia": [
+        "lighthouse/inicio-movil.html",
+        "lighthouse/inicio-movil.json"
+      ]
+    },
+    {
+      "id": "LH-05",
+      "tipo": "accesibilidad",
+      "nombre": "Lighthouse Tablero Kanban – Escritorio",
+      "objetivo": "Medir accesibilidad, buenas prácticas, rendimiento y SEO de Tablero Kanban en escritorio.",
+      "esperado": "Accesibilidad ≥ 90 y la página auditada es la solicitada (sesión válida).",
+      "obtenido": "A11y 100 · BP 100 · Rend. 97 · SEO 91 (LCP 0,7 s, CLS 0) · auditorías no superadas: robots-txt",
+      "estado": "Aprobado",
+      "evidencia": [
+        "lighthouse/tablero-escritorio.html",
+        "lighthouse/tablero-escritorio.json"
+      ]
+    },
+    {
+      "id": "LH-06",
+      "tipo": "accesibilidad",
+      "nombre": "Lighthouse Tablero Kanban – Móvil",
+      "objetivo": "Medir accesibilidad, buenas prácticas, rendimiento y SEO de Tablero Kanban en móvil.",
+      "esperado": "Accesibilidad ≥ 90 y la página auditada es la solicitada (sesión válida).",
+      "obtenido": "A11y 100 · BP 100 · Rend. 74 · SEO 91 (LCP 2,6 s, CLS 0) · auditorías no superadas: robots-txt",
+      "estado": "Aprobado",
+      "evidencia": [
+        "lighthouse/tablero-movil.html",
+        "lighthouse/tablero-movil.json"
+      ]
+    }
+  ],
+  "incidenciasCarga": [
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 1,
+      "fecha": "2026-10-27T04:23:29.062Z"
+    },
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 2,
+      "fecha": "2026-10-27T04:23:31.837Z"
+    },
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 3,
+      "fecha": "2026-10-27T04:23:34.605Z"
+    }
+  ],
+  "lighthouseVersion": "12.8.2",
+  "tabla": [
+    {
+      "pagina": "Login",
+      "dispositivo": "Escritorio",
+      "accesibilidad": 100,
+      "buenasPracticas": 100,
+      "rendimiento": 99,
+      "seo": 91,
+      "auditoriasFallidas": [
+        {
+          "categoria": "seo",
+          "id": "robots-txt",
+          "titulo": "robots.txt no es válido"
+        }
+      ],
+      "metricas": {
+        "FCP": "0,5 s",
+        "LCP": "0,7 s",
+        "TBT": "80 ms",
+        "CLS": "0"
+      },
+      "informe": "lighthouse/login-escritorio.html",
+      "urlFinal": "http://localhost:5173/login"
+    },
+    {
+      "pagina": "Login",
+      "dispositivo": "Móvil",
+      "accesibilidad": 100,
+      "buenasPracticas": 100,
+      "rendimiento": 75,
+      "seo": 91,
+      "auditoriasFallidas": [
+        {
+          "categoria": "seo",
+          "id": "robots-txt",
+          "titulo": "robots.txt no es válido"
+        }
+      ],
+      "metricas": {
+        "FCP": "1,6 s",
+        "LCP": "2,3 s",
+        "TBT": "1020 ms",
+        "CLS": "0"
+      },
+      "informe": "lighthouse/login-movil.html",
+      "urlFinal": "http://localhost:5173/login"
+    },
+    {
+      "pagina": "Inicio (Mis equipos)",
+      "dispositivo": "Escritorio",
+      "accesibilidad": 100,
+      "buenasPracticas": 100,
+      "rendimiento": 98,
+      "seo": 91,
+      "auditoriasFallidas": [
+        {
+          "categoria": "seo",
+          "id": "robots-txt",
+          "titulo": "robots.txt no es válido"
+        }
+      ],
+      "metricas": {
+        "FCP": "0,4 s",
+        "LCP": "0,6 s",
+        "TBT": "110 ms",
+        "CLS": "0"
+      },
+      "informe": "lighthouse/inicio-escritorio.html",
+      "urlFinal": "http://localhost:5173/"
+    },
+    {
+      "pagina": "Inicio (Mis equipos)",
+      "dispositivo": "Móvil",
+      "accesibilidad": 100,
+      "buenasPracticas": 100,
+      "rendimiento": 71,
+      "seo": 91,
+      "auditoriasFallidas": [
+        {
+          "categoria": "seo",
+          "id": "robots-txt",
+          "titulo": "robots.txt no es válido"
+        }
+      ],
+      "metricas": {
+        "FCP": "1,7 s",
+        "LCP": "2,6 s",
+        "TBT": "1390 ms",
+        "CLS": "0"
+      },
+      "informe": "lighthouse/inicio-movil.html",
+      "urlFinal": "http://localhost:5173/"
+    },
+    {
+      "pagina": "Tablero Kanban",
+      "dispositivo": "Escritorio",
+      "accesibilidad": 100,
+      "buenasPracticas": 100,
+      "rendimiento": 97,
+      "seo": 91,
+      "auditoriasFallidas": [
+        {
+          "categoria": "seo",
+          "id": "robots-txt",
+          "titulo": "robots.txt no es válido"
+        }
+      ],
+      "metricas": {
+        "FCP": "0,4 s",
+        "LCP": "0,7 s",
+        "TBT": "130 ms",
+        "CLS": "0"
+      },
+      "informe": "lighthouse/tablero-escritorio.html",
+      "urlFinal": "http://localhost:5173/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f"
+    },
+    {
+      "pagina": "Tablero Kanban",
+      "dispositivo": "Móvil",
+      "accesibilidad": 100,
+      "buenasPracticas": 100,
+      "rendimiento": 74,
+      "seo": 91,
+      "auditoriasFallidas": [
+        {
+          "categoria": "seo",
+          "id": "robots-txt",
+          "titulo": "robots.txt no es válido"
+        }
+      ],
+      "metricas": {
+        "FCP": "1,7 s",
+        "LCP": "2,6 s",
+        "TBT": "910 ms",
+        "CLS": "0"
+      },
+      "informe": "lighthouse/tablero-movil.html",
+      "urlFinal": "http://localhost:5173/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f"
+    }
+  ]
+}

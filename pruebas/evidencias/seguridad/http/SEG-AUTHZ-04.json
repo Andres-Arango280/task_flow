@@ -1,0 +1,296 @@
+{
+  "id": "SEG-AUTHZ-04",
+  "nombre": "Usuario ajeno no puede crear, editar, mover, asignar ni borrar tareas ajenas",
+  "fecha": "2026-10-26T23:19:17.639Z",
+  "obtenido": "POST /tareas (lista ajena) → 403; PATCH /tareas/:id → 403; PATCH /tareas/:id/mover → 403; PATCH /tareas/:id/asignar → 403; DELETE /tareas/:id → 403; tarea de A intacta: sí; tarea intrusa creada: no",
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/tareas",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "titulo": "intrusa",
+          "listaId": "6ede087c-1379-453c-bf66-938c2ea842cf"
+        }
+      },
+      "respuesta": {
+        "status": 403,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "83",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"53-wmtjWVoAw4ztziaCOdoILjoH4d4\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "No tienes acceso a este proyecto",
+          "error": "Forbidden",
+          "statusCode": 403
+        },
+        "tiempoMs": 14.6
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "PATCH",
+        "url": "http://localhost:3000/tareas/e119cf5a-ff14-4453-9c95-12650b454571",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "titulo": "HACKEADA"
+        }
+      },
+      "respuesta": {
+        "status": 403,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "80",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"50-HRKAD9ZZxtyQMucSVhxwGgmppc4\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "No tienes acceso a esta tarea",
+          "error": "Forbidden",
+          "statusCode": 403
+        },
+        "tiempoMs": 17.9
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "PATCH",
+        "url": "http://localhost:3000/tareas/e119cf5a-ff14-4453-9c95-12650b454571/mover",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "nuevaListaId": "a247f5ff-f5f8-4c04-b2a4-c06614863742"
+        }
+      },
+      "respuesta": {
+        "status": 403,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "80",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"50-HRKAD9ZZxtyQMucSVhxwGgmppc4\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "No tienes acceso a esta tarea",
+          "error": "Forbidden",
+          "statusCode": 403
+        },
+        "tiempoMs": 20.2
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "PATCH",
+        "url": "http://localhost:3000/tareas/e119cf5a-ff14-4453-9c95-12650b454571/asignar",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "miembros": []
+        }
+      },
+      "respuesta": {
+        "status": 403,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "80",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"50-HRKAD9ZZxtyQMucSVhxwGgmppc4\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "No tienes acceso a esta tarea",
+          "error": "Forbidden",
+          "statusCode": 403
+        },
+        "tiempoMs": 19.3
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "DELETE",
+        "url": "http://localhost:3000/tareas/e119cf5a-ff14-4453-9c95-12650b454571",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 403,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "80",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"50-HRKAD9ZZxtyQMucSVhxwGgmppc4\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "No tienes acceso a esta tarea",
+          "error": "Forbidden",
+          "statusCode": 403
+        },
+        "tiempoMs": 18
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/tareas?proyectoId=1add1de7-86a6-4acf-b3d8-c33c6788f75c",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 200,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "907",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"38b-J0R5KywOWfdo+3LaeeCKDmtheFY\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": [
+          {
+            "id": "e119cf5a-ff14-4453-9c95-12650b454571",
+            "titulo": "Tarea confidencial A",
+            "descripcion": "dato interno",
+            "estado": "pendiente",
+            "prioridad": "media",
+            "listaId": "6ede087c-1379-453c-bf66-938c2ea842cf",
+            "createdAt": "2026-10-26T23:19:13.116Z",
+            "updatedAt": "2026-10-26T23:19:13.116Z",
+            "lista": {
+              "id": "6ede087c-1379-453c-bf66-938c2ea842cf",
+              "nombre": "Por Hacer",
+              "orden": 0,
+              "proyectoId": "1add1de7-86a6-4acf-b3d8-c33c6788f75c",
+              "createdAt": "2026-10-26T23:19:13.045Z",
+              "updatedAt": "2026-10-26T23:19:13.045Z"
+            },
+            "asignados": [
+              {
+                "id": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+                "nombre": "Usuario lider",
+                "email": "seg_lider_1793056751720_1@taskflow.test",
+                "createdAt": "2026-10-26T23:19:12.211Z",
+                "updatedAt": "2026-10-26T23:19:12.211Z"
+              },
+              {
+                "id": "ceb9382c-3605-4a9c-9fbe-cd92d52b9276",
+                "nombre": "Usuario miembro",
+                "email": "seg_miembro_1793056751720_3@taskflow.test",
+                "createdAt": "2026-10-26T23:19:12.636Z",
+                "updatedAt": "2026-10-26T23:19:12.636Z"
+              }
+            ]
+          }
+        ],
+        "tiempoMs": 16.4
+      }
+    }
+  ]
+}

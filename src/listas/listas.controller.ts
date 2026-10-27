@@ -1,4 +1,4 @@
-import { Controller, Get, Param, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, ParseUUIDPipe, Req, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { ListasService } from './listas.service';
 
@@ -7,9 +7,8 @@ import { ListasService } from './listas.service';
 export class ListasController {
   constructor(private readonly listasService: ListasService) {}
 
-  
   @Get('proyecto/:id')
-  obtenerListasPorProyecto(@Param('id') id: string) {
-    return this.listasService.obtenerListasPorProyecto(id);
+  obtenerListasPorProyecto(@Param('id', ParseUUIDPipe) id: string, @Req() req) {
+    return this.listasService.obtenerListasPorProyecto(id, req.user.id);
   }
 }

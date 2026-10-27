@@ -1,0 +1,18 @@
+{
+  "id": "API-USU-03",
+  "obtenido": "Respondió 401: la firma alterada del JWT fue rechazada.",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/usuarios/me",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 401,
+    "duracionMs": 9,
+    "cuerpo": {
+      "message": "Unauthorized",
+      "statusCode": 401
+    }
+  },
+  "fecha": "2026-10-26T23:13:32.996Z"
+}

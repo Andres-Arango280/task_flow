@@ -1,0 +1,86 @@
+{
+  "GH-01": {
+    "funcionalidad": "Autenticación",
+    "tipo": "exitoso",
+    "actores": ["Ana"],
+    "objetivo": "Verificar que una persona nueva puede crear su cuenta desde el formulario de registro y, a continuación, iniciar sesión.",
+    "esperado": "Tras «Crear cuenta» se redirige a /login con el aviso «Cuenta creada correctamente» y el correo precargado; al iniciar sesión llega a «Mis equipos» (título «Mis equipos · TaskFlow») y el navegador guarda el token de acceso."
+  },
+  "GH-02": {
+    "funcionalidad": "Autenticación",
+    "tipo": "alternativo",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar que no se puede registrar dos veces el mismo correo.",
+    "esperado": "El formulario muestra la alerta «Ya existe una cuenta con el correo …» y la persona permanece en /register."
+  },
+  "GH-03": {
+    "funcionalidad": "Autenticación",
+    "tipo": "error",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar que una contraseña incorrecta no da acceso (esquema del escenario, ejemplo 1).",
+    "esperado": "Aparece la alerta «El correo o la contraseña no son correctos», se mantiene en /login y no se guarda ningún token."
+  },
+  "GH-04": {
+    "funcionalidad": "Autenticación",
+    "tipo": "error",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar que un correo no registrado no da acceso y que el mensaje no revela si la cuenta existe (esquema del escenario, ejemplo 2).",
+    "esperado": "Aparece la misma alerta genérica «El correo o la contraseña no son correctos», se mantiene en /login y no se guarda ningún token."
+  },
+  "GH-05": {
+    "funcionalidad": "Autenticación",
+    "tipo": "error",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar que las rutas privadas están protegidas cuando no hay sesión.",
+    "esperado": "Al visitar /proyectos/:id y /preferencias sin sesión se redirige a /login («Iniciar sesión · TaskFlow»)."
+  },
+  "GH-06": {
+    "funcionalidad": "Equipos",
+    "tipo": "exitoso",
+    "actores": ["Ana", "Beto"],
+    "objetivo": "Verificar que la líder crea un equipo desde la interfaz e invita a un miembro registrado por su correo.",
+    "esperado": "Aviso de equipo creado; la página del equipo muestra solo a Ana y, tras invitar, la lista de miembros contiene a Ana y a Beto con el aviso «… ahora es miembro del equipo»."
+  },
+  "GH-07": {
+    "funcionalidad": "Equipos",
+    "tipo": "alternativo",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar el mensaje al invitar a un correo que no está registrado.",
+    "esperado": "Dentro de la ventana de invitación aparece «No hay ningún usuario registrado con el correo …» y el equipo sigue con 1 miembro."
+  },
+  "GH-08": {
+    "funcionalidad": "Proyectos y listas",
+    "tipo": "exitoso",
+    "actores": ["Ana"],
+    "objetivo": "Verificar que al crear un proyecto se genera su tablero con las tres listas por defecto.",
+    "esperado": "Aviso «… creado con sus 3 listas»; el tablero muestra las columnas «Por Hacer», «En Progreso» y «Hecho» y un progreso del 0 %."
+  },
+  "GH-09": {
+    "funcionalidad": "Tareas",
+    "tipo": "exitoso",
+    "actores": ["Ana"],
+    "objetivo": "Verificar el flujo principal del tablero: crear tareas, moverlas de columna y ver el progreso del proyecto.",
+    "esperado": "Las dos tareas aparecen en «Por Hacer»; al mover una a «Hecho» se muestra el aviso «movida a Hecho», la tarea cambia de columna y el progreso pasa de 0 % a 50 %."
+  },
+  "GH-10": {
+    "funcionalidad": "Tareas",
+    "tipo": "error",
+    "actores": ["Ana"],
+    "objetivo": "Comprobar la validación del título obligatorio al crear una tarea.",
+    "esperado": "La ventana muestra «Escribe un título para la tarea» y el tablero sigue sin tareas."
+  },
+  "GH-11": {
+    "funcionalidad": "Tareas",
+    "tipo": "alternativo",
+    "actores": ["Ana"],
+    "objetivo": "Verificar que eliminar una tarea exige confirmación y que la acción se puede deshacer desde el aviso.",
+    "esperado": "Tras confirmar, la tarea desaparece (aviso «Tarea \"…\" eliminada»); al pulsar «Deshacer» vuelve a «Por Hacer» (aviso «Tarea \"…\" restaurada»)."
+  },
+  "GH-12": {
+    "funcionalidad": "Usuarios y control de acceso",
+    "tipo": "error",
+    "actores": ["Ana", "Carla"],
+    "objetivo": "Comprobar que una usuaria ajena al equipo no puede ver el tablero de otro equipo, ni por la API ni por la interfaz.",
+    "esperado": "La API responde 403; en «Mis equipos» no aparece el equipo de Ana; al abrir el tablero se muestra «No tienes acceso a este proyecto» (encabezado y aviso de error) sin columnas ni tarjetas."
+  }
+}

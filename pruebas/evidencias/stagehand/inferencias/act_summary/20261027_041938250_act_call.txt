@@ -1,0 +1,92 @@
+{
+  "modelCall": "act",
+  "messages": [
+    {
+      "role": "system",
+      "content": " You are helping the user automate the browser by finding elements based on what action the user wants to take on the page You will be given: 1. a user defined instruction about what action to take 2. a hierarchical accessibility tree showing the semantic structure of the page. The tree is a hybrid of the DOM and the accessibility tree. Return the element that matches the instruction if it exists. If no element on the page matches the instruction, set `action` to null. Do not fabricate or guess an element — empty strings or placeholder values for elementId/description/method are not acceptable."
+    },
+    {
+      "role": "user",
+      "content": "instruction: Find the most relevant element to perform an action on given the following action: Click the \"Nuevo equipo\" button.  
+  IF AND ONLY IF the action EXPLICITLY includes the word 'dropdown' and implies choosing/selecting an option from a dropdown, ignore the 'General Instructions' section, and follow the 'Dropdown Specific Instructions' section carefully.
+  
+  General Instructions: 
+    Provide an action for this element such as click, fill, type, press, scrollTo, nextChunk, prevChunk, selectOptionFromDropdown, hover, doubleClick, dragAndDrop. Remember that to users, buttons and links look the same in most cases.
+    When choosing non-left click actions, provide right or middle as the argument
+    If the action is completely unrelated to a potential action to be taken on the page, or no matching element exists, set `action` to null. Do not fabricate or guess an element.
+    ONLY return one action. If multiple actions are relevant, return the most relevant one.
+    If the user is asking to scroll to a position on the page, e.g., 'halfway' or 0.75, etc, you must return the argument formatted as the correct percentage, e.g., '50%' or '75%', etc.
+    If the user is asking to scroll to the next chunk/previous chunk, choose the nextChunk/prevChunk method. No arguments are required here.
+    If the action implies a key press, e.g., 'press enter', 'press a', 'press space', etc., always choose the press method with the appropriate key as argument — e.g. 'a', 'Enter', 'Space'. Do not choose a click action on an on-screen keyboard. Capitalize the first character like 'Enter', 'Tab', 'Escape' only for special keys. 
+  
+  Dropdown Specific Instructions:
+    For interacting with dropdowns, there are two specific cases that you need to handle. 
+    
+    CASE 1: the element is a 'select' element. 
+      - choose the selectOptionFromDropdown method,
+      - set the argument to the exact text of the option that should be selected,
+      - set twoStep to false.
+    CASE 2: the element is NOT a 'select' element:
+      - do not attempt to directly choose the element from the dropdown. You will need to click to expand the dropdown first. You will achieve this by following these instructions:
+        - choose the node that most closely corresponds to the given instruction EVEN if it is a 'StaticText' element, or otherwise does not appear to be interactable.  
+        - choose the 'click' method
+        - set twoStep to true.
+  
+Accessibility Tree: 
+[0-740] RootWebArea: Mis equipos · TaskFlow
+  [0-741] scrollable, html
+    [0-813] div
+      [0-810] link: Saltar al contenido
+      [0-811] navigation: Navegación principal
+        [0-795] div
+          [0-793] link: TaskFlow, ir al inicio
+            [0-815] StaticText: TaskFlow
+          [0-794] div
+            [0-787] link: Inicio
+            [0-788] link: Ayuda
+            [0-789] link: Preferencias
+            [0-790] button: Ver atajos de teclado
+            [0-819] StaticText: Ana Stagehand 179307477676745
+            [0-792] button: Salir
+      [0-812] main
+        [0-876] div
+          [0-873] sectionheader
+            [0-830] div
+              [0-825] heading: Mis equipos
+              [0-826] paragraph
+                [0-878] StaticText: Organiza tu trabajo en equipos y proyectos.
+            [0-831] button: Nuevo equipo
+          [0-874] region: Primeros pasos
+            [0-860] div
+              [0-838] div
+                [0-833] heading: Primeros pasos
+                [0-834] paragraph
+                  [0-881] StaticText: 0
+                  [0-882] StaticText: de
+                  [0-883] StaticText: 4
+                  [0-884] StaticText: completados.
+                  [0-885] StaticText: 
+                  [0-832] link: Ver la guía de ayuda
+              [0-839] button: Ocultar la lista de primeros pasos
+            [0-861] list
+              [0-856] listitem
+                [0-887] StaticText: Crear tu primer equipo
+                [0-891] StaticText: (pendiente)
+              [0-857] listitem
+                [0-888] StaticText: Invitar a un compañero por su correo
+                [0-892] StaticText: (pendiente)
+              [0-858] listitem
+                [0-889] StaticText: Crear un proyecto dentro de un equipo
+                [0-893] StaticText: (pendiente)
+              [0-859] listitem
+                [0-890] StaticText: Abrir un tablero y mover una tarea entre listas
+                [0-894] StaticText: (pendiente)
+          [0-875] div
+            [0-870] heading: Todavía no tienes equipos
+            [0-871] paragraph
+              [0-896] StaticText: Un equipo agrupa a las personas con las que trabajas y sus proyectos. Crea uno y luego invita a tus compañeros por su correo.
+            [0-872] button: Crear mi primer equipo
+"
+    }
+  ]
+}

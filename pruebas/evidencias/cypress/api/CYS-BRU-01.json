@@ -1,0 +1,22 @@
+{
+  "id": "CYS-BRU-01",
+  "obtenido": "Cinco intentos con contraseña incorrecta respondieron 401, 401, 401, 401, 401; el sexto, con la contraseña correcta, respondió 429 \"Demasiados intentos fallidos. Por seguridad, espera 15 minuto(s) antes de volver a intentarlo.\" y sin token.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/auth/login",
+    "autenticado": false,
+    "cuerpo": {
+      "email": "seg-bruta.17930561692794984@taskflow-cypress.test",
+      "password": "***"
+    }
+  },
+  "respuesta": {
+    "estado": 429,
+    "duracionMs": 5,
+    "cuerpo": {
+      "statusCode": 429,
+      "message": "Demasiados intentos fallidos. Por seguridad, espera 15 minuto(s) antes de volver a intentarlo."
+    }
+  },
+  "fecha": "2026-10-26T23:09:30.176Z"
+}

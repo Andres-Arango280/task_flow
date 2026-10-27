@@ -1,0 +1,24 @@
+{
+  "id": "API-USU-08",
+  "obtenido": "Respondió 400 con \"El nombre es obligatorio\".",
+  "peticion": {
+    "metodo": "PATCH",
+    "url": "http://localhost:3000/usuarios/me",
+    "autenticado": true,
+    "cuerpo": {
+      "nombre": ""
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 6,
+    "cuerpo": {
+      "message": [
+        "El nombre es obligatorio"
+      ],
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:13:35.338Z"
+}

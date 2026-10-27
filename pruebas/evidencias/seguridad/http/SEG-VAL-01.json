@@ -1,0 +1,56 @@
+{
+  "id": "SEG-VAL-01",
+  "nombre": "Mass assignment en el registro (id, isAdmin, rol)",
+  "fecha": "2026-10-26T23:19:19.680Z",
+  "obtenido": "HTTP 201: campos extra eliminados silenciosamente (whitelist sin forbidNonWhitelisted); id asignado por el servidor=true",
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/register",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "nombre": "Mass",
+          "email": "seg_mass_1793056751720_43@taskflow.test",
+          "password": "ClaveSegura#2026",
+          "id": "11111111-1111-4111-8111-111111111111",
+          "isAdmin": true,
+          "rol": "admin"
+        }
+      },
+      "respuesta": {
+        "status": 201,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "111",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:19 GMT",
+          "etag": "W/\"6f-xKAZ0M0iHg3dghJV2W7cwQNp6Xg\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "id": "ac824d1f-916a-46b5-ae1f-b4343a803df1",
+          "nombre": "Mass",
+          "email": "seg_mass_1793056751720_43@taskflow.test"
+        },
+        "tiempoMs": 119.1
+      }
+    }
+  ]
+}

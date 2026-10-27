@@ -1,0 +1,599 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep-invert",
+      "healer|seed"
+    ],
+    "configFile": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\playwright.config.ts",
+    "rootDir": "C:/Users/brahi/Desktop/TercerExamen-main/TercerExamen-main/pruebas/ia-herramientas/playwright-agents/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/brahi/Desktop/TercerExamen-main/TercerExamen-main/pruebas/ia-herramientas/playwright-agents/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/brahi/Desktop/TercerExamen-main/TercerExamen-main/pruebas/ia-herramientas/playwright-agents/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "reportes/html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reportes/resultados.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "autenticacion\\login-contrasena-incorrecta.spec.ts",
+      "file": "autenticacion/login-contrasena-incorrecta.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Autenticación",
+          "file": "autenticacion/login-contrasena-incorrecta.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Inicio de sesión con contraseña incorrecta",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1670,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T23:07:19.930Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\autenticacion-login-contra-b3e64-n-con-contraseña-incorrecta\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e34039ad6020482391ec-0b2e0ed6aea379de5f4f",
+              "file": "autenticacion/login-contrasena-incorrecta.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "autenticacion\\login-valido.spec.ts",
+      "file": "autenticacion/login-valido.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Autenticación",
+          "file": "autenticacion/login-valido.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Inicio de sesión con credenciales válidas",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1146,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T23:07:22.218Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\autenticacion-login-valido-47413-ón-con-credenciales-válidas\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ac754e92c4683171cbbc-2888671a7c6d82e9ff59",
+              "file": "autenticacion/login-valido.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "autenticacion\\registro-valido.spec.ts",
+      "file": "autenticacion/registro-valido.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Autenticación",
+          "file": "autenticacion/registro-valido.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Registro con datos válidos redirige al inicio de sesión",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1876,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T23:07:23.378Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\autenticacion-registro-val-6ccea-edirige-al-inicio-de-sesión\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "888224b8f280a1546726-dad0cc14d5c6f3d16bd8",
+              "file": "autenticacion/registro-valido.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "autenticacion\\ruta-privada-sin-sesion.spec.ts",
+      "file": "autenticacion/ruta-privada-sin-sesion.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Autenticación",
+          "file": "autenticacion/ruta-privada-sin-sesion.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Ruta privada sin sesión redirige al login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 656,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T23:07:25.267Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\autenticacion-ruta-privada-caad2-in-sesión-redirige-al-login\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "264ed13f6f66781a88ff-32dc729bc3cbd3f16b87",
+              "file": "autenticacion/ruta-privada-sin-sesion.spec.ts",
+              "line": 6,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "equipos\\crear-equipo.spec.ts",
+      "file": "equipos/crear-equipo.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Equipos",
+          "file": "equipos/crear-equipo.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Crear un equipo desde «Mis equipos»",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1756,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T23:07:25.938Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\equipos-crear-equipo-Equip-a75a4--equipo-desde-«Mis-equipos»\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ff6145cfa0124e14c0a1-2e3e83df3a53cd7c9df2",
+              "file": "equipos/crear-equipo.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "equipos\\invitar-correo-no-registrado.spec.ts",
+      "file": "equipos/invitar-correo-no-registrado.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Equipos",
+          "file": "equipos/invitar-correo-no-registrado.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Invitar a un correo no registrado muestra un error en la ventana",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1916,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T23:07:27.707Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\equipos-invitar-correo-no--c9325-stra-un-error-en-la-ventana\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "99d6950e2c8378589988-e2c0a548e460847c4434",
+              "file": "equipos/invitar-correo-no-registrado.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "proyectos\\crear-proyecto-tres-columnas.spec.ts",
+      "file": "proyectos/crear-proyecto-tres-columnas.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Proyectos",
+          "file": "proyectos/crear-proyecto-tres-columnas.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Crear un proyecto genera el tablero con tres columnas",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2200,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T23:07:29.642Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\proyectos-crear-proyecto-t-b34cf-l-tablero-con-tres-columnas\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c773ef53f5cd02965ba1-fdf05754f41cbc19e4c8",
+              "file": "proyectos/crear-proyecto-tres-columnas.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tablero\\crear-tarea-y-mover-a-hecho.spec.ts",
+      "file": "tablero/crear-tarea-y-mover-a-hecho.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Tablero y tareas",
+          "file": "tablero/crear-tarea-y-mover-a-hecho.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Crear una tarea y moverla a «Hecho» actualiza el progreso",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2488,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T23:07:31.863Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\tablero-crear-tarea-y-move-968f5-echo»-actualiza-el-progreso\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c1d811c7d4f78f1b5a56-71e67305c2f5f37799ca",
+              "file": "tablero/crear-tarea-y-mover-a-hecho.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tablero\\tarea-sin-titulo.spec.ts",
+      "file": "tablero/tarea-sin-titulo.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Tablero y tareas",
+          "file": "tablero/tarea-sin-titulo.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Crear una tarea sin título es rechazado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2189,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-26T23:07:34.376Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\ia-herramientas\\playwright-agents\\test-results\\tablero-tarea-sin-titulo-T-86c5e-rea-sin-título-es-rechazado\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6bf53cfd113d515181f5-db1f532777c840a28fd6",
+              "file": "tablero/tarea-sin-titulo.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T23:07:18.909Z",
+    "duration": 21610.031,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

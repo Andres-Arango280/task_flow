@@ -1,0 +1,19 @@
+{
+  "id": "API-PRO-05",
+  "obtenido": "Respondió 403 con \"No tienes acceso a este proyecto\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/proyectos/a17c41d0-0060-4c03-97bd-2e3a012ae9d2",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 403,
+    "duracionMs": 17,
+    "cuerpo": {
+      "message": "No tienes acceso a este proyecto",
+      "error": "Forbidden",
+      "statusCode": 403
+    }
+  },
+  "fecha": "2026-10-26T23:12:58.323Z"
+}

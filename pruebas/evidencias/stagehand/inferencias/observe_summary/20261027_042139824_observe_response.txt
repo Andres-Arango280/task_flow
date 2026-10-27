@@ -1,0 +1,15 @@
+{
+  "modelResponse": "observe",
+  "rawResponse": {
+    "elements": [
+      {
+        "elementId": "0-1342",
+        "description": "Columna dropdown",
+        "method": "selectOptionFromDropdown",
+        "arguments": [
+          "Por Hacer"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "area": "Pruebas con IA — Browser Use",
+  "herramienta": "Browser Use 0.13.11 (Python 3.11.9)",
+  "modelo": "Ollama llama3.1:8b (local, sin coste; use_vision=False)",
+  "proposito": "Automatización de navegador dirigida por un agente LLM: la prueba se describe en lenguaje natural y el agente decide qué acciones ejecutar sobre el DOM; la verificación se hace en código contra la URL, el texto final y la API.",
+  "configuracion": {
+    "llm": "ChatOllama(model=llama3.1:8b, host=http://localhost:11434, timeout=900)",
+    "navegador": "Chromium headless lanzado por el script con --remote-debugging-port (ejecutable C:\\Users\\brahi\\AppData\\Local\\ms-playwright\\chromium-1223\\chrome-win64\\chrome.exe) y conectado con Browser(cdp_url=...); en BU-03 la sesión se inyecta en localStorage antes de arrancar el agente",
+    "agente": "Agent(use_vision=False, use_judge=False, max_failures=3, llm_timeout=600, generate_gif, save_conversation_path); max_steps=10; modo compacto para modelo 8B: override_system_message (prompt corto sin ejemplos), flash_mode=True, enable_planning=False, max_actions_per_step=1, Tools sin 18 acciones (quedan navigate, click, input, wait, scroll, done)",
+    "instalacion": "python -m venv .venv && .venv\\Scripts\\pip install browser-use==0.13.11"
+  },
+  "comando": "cd pruebas/ia-herramientas/browser-use && .venv\\Scripts\\python pruebas.py",
+  "fecha": "2026-10-27T00:38:15.625654+00:00",
+  "totales": {
+    "total": 4,
+    "aprobados": 1,
+    "fallidos": 3,
+    "duracionSeg": 917.7
+  },
+  "casos": [
+    {
+      "id": "BU-01",
+      "nombre": "Describir el formulario de inicio de sesión",
+      "tipo": "exploratorio",
+      "objetivo": "Comprobar que el agente navega a /login y lee correctamente el título y las etiquetas de los campos del formulario.",
+      "esperado": "El resultado final menciona «Iniciar sesión» y las etiquetas «Correo electrónico» y «Contraseña».",
+      "tarea": "Go to http://localhost:5173/login . Read the page and finish immediately with a short answer in Spanish that lists: the main heading (h1) text, the exact label of every text field, and the text of the submit button. Do not click anything.",
+      "obtenido": "Conforme: el resultado menciona el título y las dos etiquetas. El agente ejecutó 3 pasos (3 acciones) y terminó con final_result=\"Gestión colaborativa de tareas, Correo electrónico (obligatorio), Contraseña (obligatorio), Iniciar sesión\".",
+      "estado": "Aprobado",
+      "duracionSeg": 122.0,
+      "pasos": 3,
+      "final_result": "Gestión colaborativa de tareas, Correo electrónico (obligatorio), Contraseña (obligatorio), Iniciar sesión",
+      "urls": [
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login"
+      ],
+      "evidencia": [
+        "salidas/BU-01-historial.json",
+        "salidas/BU-01-historial-completo.json",
+        "salidas/BU-01-conversacion/",
+        "capturas/BU-01-paso-02.png",
+        "capturas/BU-01-paso-03.png",
+        "gif/BU-01.gif"
+      ]
+    },
+    {
+      "id": "BU-02",
+      "nombre": "Iniciar sesión con credenciales válidas",
+      "tipo": "exitoso",
+      "objetivo": "Comprobar que el agente completa el inicio de sesión con unas credenciales dadas y llega a «Mis equipos».",
+      "esperado": "La URL final es «/» y/o el resultado menciona «Mis equipos».",
+      "tarea": "Go to http://localhost:5173/login . Type bu-login.1793060699938@taskflow-browseruse.test into the field labeled 'Correo electrónico' and Clave-Segura-123 into the field labeled 'Contraseña', then click the 'Iniciar sesión' button. When the next page loads, finish and report the exact text of the main heading (h1) of the page you landed on.",
+      "obtenido": "No conforme: URL final en «/»: False; el resultado menciona «Mis equipos»: False. El agente ejecutó 11 pasos (11 acciones) y terminó con final_result=\"Gestión colaborativa de tareas\".",
+      "estado": "Fallido",
+      "duracionSeg": 260.8,
+      "pasos": 11,
+      "final_result": "Gestión colaborativa de tareas",
+      "urls": [
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login"
+      ],
+      "evidencia": [
+        "salidas/BU-02-historial.json",
+        "salidas/BU-02-historial-completo.json",
+        "salidas/BU-02-conversacion/",
+        "capturas/BU-02-paso-02.png",
+        "capturas/BU-02-paso-03.png",
+        "capturas/BU-02-paso-04.png",
+        "capturas/BU-02-paso-05.png",
+        "capturas/BU-02-paso-06.png",
+        "capturas/BU-02-paso-07.png",
+        "capturas/BU-02-paso-08.png",
+        "capturas/BU-02-paso-09.png",
+        "capturas/BU-02-paso-10.png",
+        "capturas/BU-02-paso-11.png",
+        "gif/BU-02.gif"
+      ]
+    },
+    {
+      "id": "BU-03",
+      "nombre": "Crear un equipo con la sesión iniciada",
+      "tipo": "exitoso",
+      "objetivo": "Comprobar que el agente, con la sesión ya iniciada, crea un equipo desde la interfaz y que el equipo existe en la API.",
+      "esperado": "GET /equipos devuelve un equipo con el nombre indicado en la tarea.",
+      "tarea": "Go to http://localhost:5173/ (you are already logged in). Click the 'Nuevo equipo' button. In the dialog, type exactly \"Equipo BrowserUse 1793060960926\" into the field labeled 'Nombre del equipo' and click the 'Crear equipo' button. Then finish and report whether a card with that team name is now visible on the page.",
+      "obtenido": "No conforme: GET /equipos devolvió []; se esperaba «Equipo BrowserUse 1793060960926». El agente ejecutó 11 pasos (11 acciones) y terminó con final_result=\"No se encontró una tarjeta con el nombre 'Equipo BrowserUse 1793060960926'.\".",
+      "estado": "Fallido",
+      "duracionSeg": 162.1,
+      "pasos": 11,
+      "final_result": "No se encontró una tarjeta con el nombre 'Equipo BrowserUse 1793060960926'.",
+      "urls": [
+        "http://localhost:5173/",
+        "http://localhost:5173/",
+        "http://localhost:5173/",
+        "http://localhost:5173/",
+        "http://localhost:5173/",
+        "http://localhost:5173/",
+        "http://localhost:5173/",
+        "http://localhost:5173/",
+        "http://localhost:5173/",
+        "http://localhost:5173/",
+        "http://localhost:5173/"
+      ],
+      "evidencia": [
+        "salidas/BU-03-historial.json",
+        "salidas/BU-03-historial-completo.json",
+        "salidas/BU-03-conversacion/",
+        "capturas/BU-03-paso-02.png",
+        "capturas/BU-03-paso-03.png",
+        "capturas/BU-03-paso-04.png",
+        "capturas/BU-03-paso-05.png",
+        "capturas/BU-03-paso-06.png",
+        "capturas/BU-03-paso-07.png",
+        "capturas/BU-03-paso-08.png",
+        "capturas/BU-03-paso-09.png",
+        "capturas/BU-03-paso-10.png",
+        "capturas/BU-03-paso-11.png",
+        "gif/BU-03.gif"
+      ]
+    },
+    {
+      "id": "BU-04",
+      "nombre": "Inicio de sesión con contraseña incorrecta",
+      "tipo": "error",
+      "objetivo": "Comprobar que el agente detecta y reporta el mensaje de error visible cuando la contraseña es incorrecta.",
+      "esperado": "El resultado contiene «El correo o la contraseña no son correctos» y la URL sigue siendo /login.",
+      "tarea": "Go to http://localhost:5173/login . Type bu-login.1793061122912@taskflow-browseruse.test into the field labeled 'Correo electrónico' and ClaveIncorrecta-999 into the field labeled 'Contraseña', then click the 'Iniciar sesión' button. Wait for the page to respond, then finish and report, in Spanish, the exact text of the error message shown (role alert) and the current URL.",
+      "obtenido": "No conforme: mensaje de error reportado: False; última URL /login: True. El agente ejecutó 11 pasos (11 acciones) y terminó con final_result=\"El error fue: ¿No tienes cuenta? Privacidad y uso de tus datos.\".",
+      "estado": "Fallido",
+      "duracionSeg": 371.9,
+      "pasos": 11,
+      "final_result": "El error fue: ¿No tienes cuenta? Privacidad y uso de tus datos.",
+      "urls": [
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login",
+        "http://localhost:5173/login"
+      ],
+      "evidencia": [
+        "salidas/BU-04-historial.json",
+        "salidas/BU-04-historial-completo.json",
+        "salidas/BU-04-conversacion/",
+        "capturas/BU-04-paso-02.png",
+        "capturas/BU-04-paso-03.png",
+        "capturas/BU-04-paso-04.png",
+        "capturas/BU-04-paso-05.png",
+        "capturas/BU-04-paso-06.png",
+        "capturas/BU-04-paso-07.png",
+        "capturas/BU-04-paso-08.png",
+        "capturas/BU-04-paso-09.png",
+        "capturas/BU-04-paso-10.png",
+        "capturas/BU-04-paso-11.png",
+        "gif/BU-04.gif"
+      ]
+    }
+  ],
+  "aportes": [
+    "La prueba se expresa como una tarea en lenguaje natural; el agente localiza los elementos por sí mismo a partir del DOM, sin selectores escritos a mano.",
+    "Tolera cambios de interfaz (textos, posiciones) mientras la intención siga siendo reconocible, lo que reduce el mantenimiento de localizadores.",
+    "Produce evidencia rica por sí solo: historial de acciones y razonamiento, capturas por paso y GIF del recorrido.",
+    "Es útil para pruebas exploratorias y de humo guiadas, y para generar ideas de casos a partir de lo que el agente \"ve\"."
+  ],
+  "limitaciones": [
+    "Con un modelo local de 8B la ejecución es lenta (decenas de segundos a minutos por paso) y puede desviarse de la tarea o inventar el resultado; por eso la verificación se hace siempre en código.",
+    "Sin visión (use_vision=False) el agente depende del árbol DOM/accesibilidad: elementos sin etiqueta o con texto ambiguo le cuestan más.",
+    "El resultado no es determinista: la misma tarea puede requerir distinto número de pasos en dos ejecuciones; no sirve como prueba de regresión estricta sin aserciones externas.",
+    "Las credenciales viajan dentro del prompt al modelo (aquí local); con modelos en la nube habría que usar sensitive_data."
+  ]
+}

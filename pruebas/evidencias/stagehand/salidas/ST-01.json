@@ -1,0 +1,17 @@
+{
+  "id": "ST-01",
+  "instruccionesYRespuestas": {
+    "instruccion": "Find the email input, the password input and the sign-in button of the login form",
+    "acciones": [],
+    "selectoresResueltos": []
+  },
+  "datosDePrueba": null,
+  "tiemposIA": [
+    {
+      "paso": "observe",
+      "seg": 32.8
+    }
+  ],
+  "estado": "Fallido",
+  "obtenido": "No conforme: No se identificaron los tres elementos. Resueltos: []"
+}

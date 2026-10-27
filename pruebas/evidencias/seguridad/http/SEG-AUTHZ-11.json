@@ -1,0 +1,68 @@
+{
+  "id": "SEG-AUTHZ-11",
+  "nombre": "GET /equipos solo lista los equipos del usuario",
+  "fecha": "2026-10-26T23:19:18.019Z",
+  "obtenido": "HTTP 200; 1 equipo(s); contiene equipo de A: no",
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/equipos",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 200,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "627",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:18 GMT",
+          "etag": "W/\"273-fLx9sI2uZi7jg7avnCipx4O8mMU\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": [
+          {
+            "id": "ed38e357-5cd9-4e6b-8555-97ce65aab9d0",
+            "nombre": "Equipo B 1793056751720",
+            "liderId": "4ed14a24-52dc-4f52-b416-c361bc417ae1",
+            "createdAt": "2026-10-26T23:19:13.138Z",
+            "updatedAt": "2026-10-26T23:19:13.138Z",
+            "lider": {
+              "id": "4ed14a24-52dc-4f52-b416-c361bc417ae1",
+              "nombre": "Usuario ajeno",
+              "email": "seg_ajeno_1793056751720_2@taskflow.test",
+              "createdAt": "2026-10-26T23:19:12.448Z",
+              "updatedAt": "2026-10-26T23:19:12.448Z"
+            },
+            "miembros": [
+              {
+                "id": "4ed14a24-52dc-4f52-b416-c361bc417ae1",
+                "nombre": "Usuario ajeno",
+                "email": "seg_ajeno_1793056751720_2@taskflow.test",
+                "createdAt": "2026-10-26T23:19:12.448Z",
+                "updatedAt": "2026-10-26T23:19:12.448Z"
+              }
+            ]
+          }
+        ],
+        "tiempoMs": 13.8
+      }
+    }
+  ]
+}

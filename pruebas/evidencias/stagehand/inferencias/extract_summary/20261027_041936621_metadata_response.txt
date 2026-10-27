@@ -1,0 +1,5 @@
+{
+  "modelResponse": "metadata",
+  "completed": true,
+  "progress": "chunksSeen: 1 / chunksTotal: 0"
+}

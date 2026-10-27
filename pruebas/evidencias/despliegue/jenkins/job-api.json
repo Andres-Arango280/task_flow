@@ -1,0 +1,97 @@
+{
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowJob",
+  "name": "taskflow-pipeline",
+  "builds": [
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "duration": 4483,
+      "number": 11,
+      "result": "FAILURE",
+      "timestamp": 1790691461269,
+      "url": "http://localhost:8081/job/taskflow-pipeline/11/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "duration": 179151,
+      "number": 10,
+      "result": "SUCCESS",
+      "timestamp": 1790221064336,
+      "url": "http://localhost:8081/job/taskflow-pipeline/10/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "duration": 81985,
+      "number": 9,
+      "result": "FAILURE",
+      "timestamp": 1790220636284,
+      "url": "http://localhost:8081/job/taskflow-pipeline/9/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "duration": 49926,
+      "number": 8,
+      "result": "FAILURE",
+      "timestamp": 1790220334435,
+      "url": "http://localhost:8081/job/taskflow-pipeline/8/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "duration": 30148,
+      "number": 7,
+      "result": "FAILURE",
+      "timestamp": 1790220107061,
+      "url": "http://localhost:8081/job/taskflow-pipeline/7/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "duration": 77094,
+      "number": 6,
+      "result": "FAILURE",
+      "timestamp": 1790215482585,
+      "url": "http://localhost:8081/job/taskflow-pipeline/6/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "duration": 24004,
+      "number": 5,
+      "result": "FAILURE",
+      "timestamp": 1790214272475,
+      "url": "http://localhost:8081/job/taskflow-pipeline/5/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "duration": 32309,
+      "number": 4,
+      "result": "FAILURE",
+      "timestamp": 1790214070447,
+      "url": "http://localhost:8081/job/taskflow-pipeline/4/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "duration": 16310,
+      "number": 3,
+      "result": "FAILURE",
+      "timestamp": 1790213989073,
+      "url": "http://localhost:8081/job/taskflow-pipeline/3/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "duration": 15698,
+      "number": 2,
+      "result": "FAILURE",
+      "timestamp": 1790213835050,
+      "url": "http://localhost:8081/job/taskflow-pipeline/2/"
+    }
+  ],
+  "color": "red",
+  "lastBuild": {
+    "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+    "number": 11,
+    "result": "FAILURE"
+  },
+  "lastSuccessfulBuild": {
+    "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+    "number": 10,
+    "timestamp": 1790221064336
+  }
+}

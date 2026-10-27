@@ -1,0 +1,23 @@
+{
+  "id": "API-TAR-05",
+  "obtenido": "Crear respondió 403 \"No tienes acceso a este proyecto\"; listar respondió 403.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/tareas",
+    "autenticado": true,
+    "cuerpo": {
+      "titulo": "Intrusa",
+      "listaId": "303110e9-a8c0-4aa2-bcb0-a6c809f9a5e8"
+    }
+  },
+  "respuesta": {
+    "estado": 403,
+    "duracionMs": 14,
+    "cuerpo": {
+      "message": "No tienes acceso a este proyecto",
+      "error": "Forbidden",
+      "statusCode": 403
+    }
+  },
+  "fecha": "2026-10-26T23:13:14.399Z"
+}

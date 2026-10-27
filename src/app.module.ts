@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
-import { AuthModule } from './auth/auth.module';  // ← IMPORTANTE
+import { DatabaseModule } from './database/database.module';
+import { AuthModule } from './auth/auth.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { EquiposModule } from './equipos/equipos.module';
 import { ProyectosModule } from './proyectos/proyectos.module';
@@ -14,8 +14,8 @@ import { ComentariosModule } from './comentarios/comentarios.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(process.env.MONGODB_URI),
-    AuthModule,  // ← DEBE ESTAR AQUÍ
+    DatabaseModule,
+    AuthModule,
     UsuariosModule,
     EquiposModule,
     ProyectosModule,

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar que un usuario crea un equipo desde 'Mis equipos' y queda como líder.
+
+Resultado esperado: El botón 'Crear equipo' está deshabilitado con el nombre vacío; al crear aparece el aviso 'Equipo «X» creado', la ventana se cierra, la tarjeta (data-testid=tarjeta-equipo) muestra el distintivo 'Líder' y la página del equipo muestra 'Eres el líder'.
+
+Datos: Nombre de equipo 'Equipo Katalon &lt;timestamp&gt;'.
+Esperas: waitForElementVisible dialog 10s; waitForElementClickable btn_CrearEquipo 10s; waitForElementVisible toast_Exito 10s; waitForElementNotPresent dialog 10s
+Evidencia: Reports/evidencias/TC07_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC07_CrearEquipo</name>
+   <tag>positivo,equipos</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a902b375-51ed-4546-8c6b-514248dd3d06</testCaseGuid>
+</TestCaseEntity>

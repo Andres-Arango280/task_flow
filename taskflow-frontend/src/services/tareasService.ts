@@ -26,4 +26,13 @@ export const tareasService = {
     const response = await api.patch(`/tareas/${tareaId}/asignar`, { miembros });
     return response.data;
   },
+
+  async actualizar(tareaId: string, cambios: { titulo?: string; descripcion?: string }): Promise<Tarea> {
+    const response = await api.patch(`/tareas/${tareaId}`, cambios);
+    return response.data;
+  },
+
+  async eliminar(tareaId: string): Promise<void> {
+    await api.delete(`/tareas/${tareaId}`);
+  },
 };

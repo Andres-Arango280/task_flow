@@ -1,0 +1,392 @@
+{
+  "id": "SEG-VAL-05",
+  "nombre": "Identificadores con formato inválido son rechazados (ParseUUIDPipe)",
+  "fecha": "2026-10-26T23:19:20.048Z",
+  "obtenido": "GET /equipos/123 → 400; GET /equipos/abc/miembros → 400; DELETE /equipos/1;DROP → 400; GET /proyectos/1%27%20OR%201=1 → 400; GET /listas/proyecto/not-a-uuid → 400; PATCH /tareas/xyz → 400; PATCH /tareas/e119cf5a-ff14-4453-9c95-12650b454571/mover → 400; PATCH /tareas/e119cf5a-ff14-4453-9c95-12650b454571/asignar → 400; POST /equipos/f6b022c5-2d2b-413b-bd68-4c68649a6966/miembros → 400",
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/equipos/123",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "89",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:19 GMT",
+          "etag": "W/\"59-kArN5xCcYXjUJs5yv8pQBq+GJsU\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Validation failed (uuid is expected)",
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 6.7
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/equipos/abc/miembros",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "89",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:19 GMT",
+          "etag": "W/\"59-kArN5xCcYXjUJs5yv8pQBq+GJsU\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Validation failed (uuid is expected)",
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 6.1
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "DELETE",
+        "url": "http://localhost:3000/equipos/1;DROP",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "89",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"59-kArN5xCcYXjUJs5yv8pQBq+GJsU\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Validation failed (uuid is expected)",
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 6.1
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/proyectos/1%27%20OR%201=1",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "89",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"59-kArN5xCcYXjUJs5yv8pQBq+GJsU\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Validation failed (uuid is expected)",
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 6.4
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/listas/proyecto/not-a-uuid",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "89",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"59-kArN5xCcYXjUJs5yv8pQBq+GJsU\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Validation failed (uuid is expected)",
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 5.9
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "PATCH",
+        "url": "http://localhost:3000/tareas/xyz",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "titulo": "a"
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "89",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"59-kArN5xCcYXjUJs5yv8pQBq+GJsU\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Validation failed (uuid is expected)",
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 7.8
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "PATCH",
+        "url": "http://localhost:3000/tareas/e119cf5a-ff14-4453-9c95-12650b454571/mover",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "nuevaListaId": "abc"
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "102",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"66-Ea0zREwN9uAJ4ImpYXGgYRO2eGU\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": [
+            "La lista destino no es un identificador válido"
+          ],
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 8.3
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "PATCH",
+        "url": "http://localhost:3000/tareas/e119cf5a-ff14-4453-9c95-12650b454571/asignar",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "miembros": [
+            "no-uuid"
+          ]
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "98",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"62-P+s+JaAhkMDIKtwoFW+HEcYVWtk\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": [
+            "Los miembros no es un identificador válido"
+          ],
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 7.7
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/equipos/f6b022c5-2d2b-413b-bd68-4c68649a6966/miembros",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "userId": "42"
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "96",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"60-f2j14Oxrj6HRqQVFH1qzwo70KRg\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": [
+            "El usuario no es un identificador válido"
+          ],
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 8
+      }
+    }
+  ]
+}

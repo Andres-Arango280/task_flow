@@ -1,0 +1,47 @@
+# /
+# título: Mis equipos · TaskFlow
+
+- link "Saltar al contenido":
+  - /url: "#contenido"
+- navigation "Navegación principal":
+  - link "TaskFlow, ir al inicio":
+    - /url: /
+    - text: TaskFlow
+  - link "Inicio":
+    - /url: /
+  - link "Ayuda":
+    - /url: /ayuda
+  - link "Preferencias":
+    - /url: /preferencias
+  - button "Ver atajos de teclado"
+  - text: Planner 1793055645273
+  - button "Salir"
+- main:
+  - heading "Mis equipos" [level=1]
+  - paragraph: Perteneces a 1 equipo.
+  - button "Nuevo equipo"
+  - region "Primeros pasos":
+    - heading "Primeros pasos" [level=2]
+    - paragraph:
+      - text: 2 de 4 completados.
+      - link "Ver la guía de ayuda":
+        - /url: /ayuda
+    - button "Ocultar la lista de primeros pasos"
+    - list:
+      - listitem: Crear tu primer equipo (completado)
+      - listitem: Invitar a un compañero por su correo (pendiente)
+      - listitem: Crear un proyecto dentro de un equipo (completado)
+      - listitem: Abrir un tablero y mover una tarea entre listas (pendiente)
+  - region "Equipos":
+    - heading "Equipos" [level=2]
+    - text: Buscar equipos por nombre
+    - searchbox "Buscar equipos por nombre"
+    - paragraph
+    - list:
+      - listitem:
+        - 'link "Equipo Planner 1793055645273 Líder Líder: Planner 1793055645273 1 miembro Abrir"':
+          - /url: /equipos/da29867e-7bf0-479d-be7c-7d9c59ce41d8
+          - heading "Equipo Planner 1793055645273" [level=3]
+          - text: Líder
+          - paragraph: "Líder: Planner 1793055645273"
+          - text: 1 miembro Abrir

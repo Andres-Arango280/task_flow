@@ -1,0 +1,23 @@
+{
+  "id": "API-AUTH-06",
+  "obtenido": "Respondió 401 con \"Credenciales inválidas\" y sin access_token.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/auth/login",
+    "autenticado": false,
+    "cuerpo": {
+      "email": "malpass.17930563443457707@taskflow-cypress.test",
+      "password": "***"
+    }
+  },
+  "respuesta": {
+    "estado": 401,
+    "duracionMs": 58,
+    "cuerpo": {
+      "message": "Credenciales inválidas",
+      "error": "Unauthorized",
+      "statusCode": 401
+    }
+  },
+  "fecha": "2026-10-26T23:12:24.486Z"
+}

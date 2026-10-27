@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar que al crear un proyecto se genera un tablero con las columnas 'Por Hacer', 'En Progreso' y 'Hecho'.
+
+Resultado esperado: Aviso 'Proyecto «X» creado con sus 3 listas.' y la tarjeta del proyecto (data-testid=tarjeta-proyecto, sin aria-label); al abrirla se ven exactamente 3 columnas en ese orden y el progreso es 0 %.
+
+Datos: Equipo creado por API; proyecto 'Proyecto Katalon &lt;timestamp&gt;' creado por la UI.
+Esperas: waitForElementClickable btn_CrearProyecto 10s; waitForElementVisible toast_Exito 10s; waitForElementVisible h1_Proyecto 10s
+Evidencia: Reports/evidencias/TC10_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC10_CrearProyecto_TresColumnas</name>
+   <tag>positivo,proyectos</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>c7151087-93a5-42d5-ab41-7052572af963</testCaseGuid>
+</TestCaseEntity>

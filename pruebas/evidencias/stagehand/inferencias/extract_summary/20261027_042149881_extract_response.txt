@@ -1,0 +1,10 @@
+{
+  "modelResponse": "extract",
+  "rawResponse": {
+    "nombre": "Por Hacer",
+    "tareas": [
+      "Diseñar la pantalla de inicio",
+      "Diseñar la pantalla de inicio"
+    ]
+  }
+}

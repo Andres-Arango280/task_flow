@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar que el buscador de tareas tolera tildes, mayúsculas y pequeños errores de escritura.
+
+Resultado esperado: Para cada consulta del Data File, el texto 'Mostrando N de 3 tareas' y las tarjetas visibles coinciden con lo esperado; 'zzzz' muestra 'Ninguna tarea coincide aquí'; 'Limpiar filtros' vuelve a 3 de 3.
+
+Datos: Data Files/consultas_busqueda (Data/consultas_busqueda.csv): 7 consultas. Tareas por API: 'Diseñar pantalla de inicio', 'Revisar API de usuarios', 'Preparar demostración final'.
+Esperas: waitForElementVisible input_BuscarTareas 10s; waitForElementVisible card_Tarea 10s; waitForElementNotPresent card_Tarea 3s
+Evidencia: Reports/evidencias/TC14_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC14_BuscarTarea_ToleranteErrores</name>
+   <tag>positivo,tareas</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>d3c2239b-c0bc-4bfe-8cf6-fb17d7aceb4b</testCaseGuid>
+</TestCaseEntity>

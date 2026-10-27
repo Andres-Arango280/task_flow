@@ -1,0 +1,7 @@
+{
+  "id": "SEG-DATA-02",
+  "nombre": "Las contraseñas se almacenan con bcrypt (coste 10)",
+  "fecha": "2026-10-26T23:19:18.516Z",
+  "obtenido": "prefijo=$2b$10$; longitud=60; igual al texto plano=false",
+  "intercambios": []
+}

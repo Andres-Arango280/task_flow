@@ -1,32 +1,50 @@
-import { IsArray, IsString, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsArray, IsString, IsNotEmpty, IsOptional, IsUUID, MaxLength } from 'class-validator';
 
 export class CreateTareaDto {
   @IsNotEmpty()
+  @IsString()
+  @MaxLength(255)
   titulo: string;
 
+  @IsOptional()
+  @IsString()
+  @MaxLength(5000)
   descripcion?: string;
 
   @IsOptional()
-  @IsString()
+  @IsUUID()
   proyectoId?: string;
 
   @IsOptional()
-  @IsString()
+  @IsUUID()
   listaId?: string;
 
   @IsArray()
   @IsOptional()
+  @IsUUID('all', { each: true })
   asignados?: string[];
 }
 
 export class MoverTareaDto {
-  @IsString()
+  @IsUUID()
   nuevaListaId: string;
 }
 
-
 export class AsignarMiembrosDto {
   @IsArray()
-  @IsString({ each: true })
+  @IsUUID('all', { each: true })
   miembros: string[];
+}
+
+export class ActualizarTareaDto {
+  @IsOptional()
+  @IsNotEmpty()
+  @IsString()
+  @MaxLength(255)
+  titulo?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(5000)
+  descripcion?: string;
 }

@@ -1,0 +1,49 @@
+# /equipos/da29867e-7bf0-479d-be7c-7d9c59ce41d8
+# título: Equipo Planner 1793055645273 · TaskFlow
+
+- link "Saltar al contenido":
+  - /url: "#contenido"
+- navigation "Navegación principal":
+  - link "TaskFlow, ir al inicio":
+    - /url: /
+    - text: TaskFlow
+  - link "Inicio":
+    - /url: /
+  - link "Ayuda":
+    - /url: /ayuda
+  - link "Preferencias":
+    - /url: /preferencias
+  - button "Ver atajos de teclado"
+  - text: Planner 1793055645273
+  - button "Salir"
+- main:
+  - navigation "Ruta de navegación":
+    - list:
+      - listitem:
+        - link "Mis equipos":
+          - /url: /
+      - listitem: Equipo Planner 1793055645273
+  - heading "Equipo Planner 1793055645273" [level=1]
+  - text: "Líder:"
+  - strong: Planner 1793055645273
+  - text: Eres el líder 1 miembro
+  - paragraph: Actualizado ahora · se actualiza solo cada 15 s
+  - button "Eliminar equipo"
+  - region "Proyectos (1)":
+    - heading "Proyectos (1)" [level=2]
+    - button "Nuevo proyecto"
+    - list:
+      - listitem:
+        - link "Proyecto Planner 1793055645273 Abrir tablero":
+          - /url: /proyectos/ad908355-2684-46ec-9b53-95c94bf7e61c
+        - button "Eliminar el proyecto Proyecto Planner 1793055645273"
+  - region "Miembros (1)":
+    - heading "Miembros (1)" [level=2]
+    - button "Invitar"
+    - list:
+      - listitem:
+        - paragraph: Planner 1793055645273 Líder Tú
+        - paragraph: planner.1793055645273@taskflow-agents.test
+    - paragraph: Todavía no hay más personas en el equipo
+    - paragraph: Invita a tus compañeros por su correo para trabajar juntos en los proyectos.
+    - button "Invitar al primer miembro"

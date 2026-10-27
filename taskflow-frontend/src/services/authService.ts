@@ -19,7 +19,16 @@ export const authService = {
 
   // ✅ NUEVO: Buscar usuario por email
   async searchByEmail(email: string): Promise<Usuario> {
-    const response = await api.get(`/usuarios?email=${email}`);
+    const response = await api.get('/usuarios', { params: { email: email.trim() } });
     return response.data;
+  },
+
+  async actualizarPerfil(nombre: string): Promise<Usuario> {
+    const response = await api.patch('/usuarios/me', { nombre });
+    return response.data;
+  },
+
+  async eliminarCuenta(): Promise<void> {
+    await api.delete('/usuarios/me');
   },
 };

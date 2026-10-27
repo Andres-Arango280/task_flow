@@ -1,0 +1,63 @@
+{
+  "component": {
+    "key": "taskflow:backend",
+    "name": "TaskFlow Backend",
+    "description": "API REST para gestión de tareas colaborativas con NestJS",
+    "qualifier": "TRK",
+    "measures": [
+      {
+        "metric": "vulnerabilities",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "duplicated_lines_density",
+        "value": "0.0",
+        "bestValue": true
+      },
+      {
+        "metric": "coverage",
+        "value": "87.2",
+        "bestValue": false
+      },
+      {
+        "metric": "security_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "ncloc",
+        "value": "866"
+      },
+      {
+        "metric": "alert_status",
+        "value": "OK"
+      },
+      {
+        "metric": "sqale_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "bugs",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "security_hotspots",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "code_smells",
+        "value": "1",
+        "bestValue": false
+      },
+      {
+        "metric": "reliability_rating",
+        "value": "1.0",
+        "bestValue": true
+      }
+    ]
+  }
+}

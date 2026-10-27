@@ -1,0 +1,22 @@
+- dialog "Crear nueva tarea":
+  - heading "Crear nueva tarea" [level=2]
+  - paragraph: Lo que escribas se guarda como borrador automáticamente hasta que crees la tarea.
+  - button "Cerrar ventana (Esc)"
+  - text: Título de la tarea * 0/255
+  - textbox "Título de la tarea *":
+    - /placeholder: "Ej: Diseñar la pantalla de inicio"
+  - paragraph: Pulsa Enter para crearla rápidamente.
+  - text: Descripción (opcional) 0/5000
+  - textbox "Descripción (opcional)":
+    - /placeholder: Describe los detalles de la tarea…
+  - text: Columna
+  - combobox "Columna":
+    - option "Por Hacer" [selected]
+    - option "En Progreso"
+    - option "Hecho"
+  - group "Asignar a (opcional)":
+    - text: Asignar a (opcional)
+    - checkbox "Planner 1793055645273"
+    - text: Planner 1793055645273
+  - button "Cerrar"
+  - button "Crear tarea"

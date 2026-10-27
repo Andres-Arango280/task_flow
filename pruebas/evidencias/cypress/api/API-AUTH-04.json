@@ -1,0 +1,27 @@
+{
+  "id": "API-AUTH-04",
+  "obtenido": "Respondió 400 con 2 mensajes en español: \"El nombre es obligatorio\", \"El correo electrónico no tiene un formato válido (ejemplo: nombre@correo.com)\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/auth/register",
+    "autenticado": false,
+    "cuerpo": {
+      "nombre": "",
+      "email": "no-es-un-correo",
+      "password": "***"
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 4,
+    "cuerpo": {
+      "message": [
+        "El nombre es obligatorio",
+        "El correo electrónico no tiene un formato válido (ejemplo: nombre@correo.com)"
+      ],
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:12:24.063Z"
+}

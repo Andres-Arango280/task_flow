@@ -1,0 +1,37 @@
+{
+  "id": "API-TAR-07",
+  "obtenido": "Respondió 200 con titulo \"Editada\" (recortado) y la nueva descripción.",
+  "peticion": {
+    "metodo": "PATCH",
+    "url": "http://localhost:3000/tareas/d93e5e09-36c3-4431-a560-9ef5c500f8ec",
+    "autenticado": true,
+    "cuerpo": {
+      "titulo": "  Editada  ",
+      "descripcion": "Nueva descripción"
+    }
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 22,
+    "cuerpo": {
+      "id": "d93e5e09-36c3-4431-a560-9ef5c500f8ec",
+      "titulo": "Editada",
+      "descripcion": "Nueva descripción",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "listaId": "2e39133e-983e-4716-ac7c-9989d39d9587",
+      "createdAt": "2026-10-26T23:13:16.937Z",
+      "updatedAt": "2026-10-26T23:13:16.977Z",
+      "asignados": [],
+      "lista": {
+        "id": "2e39133e-983e-4716-ac7c-9989d39d9587",
+        "nombre": "Por Hacer",
+        "orden": 0,
+        "proyectoId": "4b7f49e3-2840-4157-8688-fcf059f10979",
+        "createdAt": "2026-10-26T23:13:16.871Z",
+        "updatedAt": "2026-10-26T23:13:16.871Z"
+      }
+    }
+  },
+  "fecha": "2026-10-26T23:13:17.006Z"
+}

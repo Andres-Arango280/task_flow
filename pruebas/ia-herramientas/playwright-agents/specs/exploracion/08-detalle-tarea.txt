@@ -1,0 +1,23 @@
+- dialog "Detalle de la tarea":
+  - heading "Detalle de la tarea" [level=2]
+  - button "Cerrar ventana (Esc)"
+  - text: Título * 16/255
+  - textbox "Título *": Tarea de ejemplo
+  - text: Descripción 24/5000
+  - textbox "Descripción":
+    - /placeholder: Sin descripción. Escribe aquí los detalles de la tarea…
+    - text: Explorada por el planner
+  - text: Columna
+  - combobox "Columna":
+    - option "Por Hacer" [selected]
+    - option "En Progreso"
+    - option "Hecho"
+  - paragraph: El cambio de columna se guarda al momento.
+  - paragraph: Creada
+  - paragraph: 26 de octubre de 2026, 18:00 hace menos de un minuto
+  - heading "Asignada a" [level=3]
+  - button "Asignar miembros"
+  - paragraph: Nadie tiene asignada esta tarea todavía.
+  - button "Eliminar"
+  - button "Cerrar"
+  - button "Guardar cambios" [disabled]

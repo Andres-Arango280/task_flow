@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="SEG-AUTH-01 | Rutas protegidas sin token devuelven 401" time="1.361306" classname="test"/>
+	<testcase name="SEG-AUTH-02 | Login válido emite JWT HS256 con expiración de 1 día" time="0.096257" classname="test"/>
+	<testcase name="SEG-AUTH-03 | Token con firma alterada es rechazado" time="0.008603" classname="test"/>
+	<testcase name="SEG-AUTH-04 | Token con payload manipulado (suplantación de sub) es rechazado" time="0.006993" classname="test"/>
+	<testcase name="SEG-AUTH-05 | Token con algoritmo &amp;quot;none&amp;quot; es rechazado" time="0.006953" classname="test"/>
+	<testcase name="SEG-AUTH-06 | Token firmado con un secreto incorrecto es rechazado" time="0.019878" classname="test"/>
+	<testcase name="SEG-AUTH-07 | Token caducado (exp en el pasado) es rechazado" time="0.017641" classname="test"/>
+	<testcase name="SEG-AUTH-08 | El token solo se acepta en la cabecera Authorization: Bearer" time="0.012181" classname="test"/>
+	<testcase name="SEG-AUTH-09 | Bloqueo por fuerza bruta: 6º intento → 429" time="0.650554" classname="test"/>
+	<testcase name="SEG-AUTH-10 | El bloqueo afecta solo a la cuenta atacada (y no se evade con mayúsculas)" time="0.097181" classname="test"/>
+	<testcase name="SEG-AUTH-11 | Login no permite enumerar usuarios por el mensaje" time="0.405840" classname="test"/>
+	<testcase name="SEG-AUTH-12 | Tiempo de respuesta del login no permite enumerar usuarios" time="0.981920" classname="test"/>
+	<testcase name="SEG-AUTH-13 | Limitación por cliente/IP frente a password spraying" time="1.708271" classname="test" failure="SEG-AUTH-13: 20 intentos contra 20 cuentas distintas: 20×401, 0×429 (no existe límite por IP)">
+		<failure type="testCodeFailure" message="SEG-AUTH-13: 20 intentos contra 20 cuentas distintas: 20×401, 0×429 (no existe límite por IP)">
+[Error [ERR_TEST_FAILURE]: SEG-AUTH-13: 20 intentos contra 20 cuentas distintas: 20×401, 0×429 (no existe límite por IP)] {
+  code: 'ERR_TEST_FAILURE',
+  failureType: 'testCodeFailure',
+  cause: AssertionError [ERR_ASSERTION]: SEG-AUTH-13: 20 intentos contra 20 cuentas distintas: 20×401, 0×429 (no existe límite por IP)
+      at TestContext.&lt;anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
+		</failure>
+	</testcase>
+	<testcase name="SEG-AUTH-14 | El token de una cuenta eliminada deja de dar acceso" time="0.195886" classname="test"/>
+	<testcase name="SEG-AUTH-15 | Política de contraseñas rechaza contraseñas triviales" time="0.024823" classname="test"/>
+	<testcase name="SEG-AUTHZ-01 | Usuario ajeno no puede leer el equipo ni sus miembros" time="0.026677" classname="test"/>
+	<testcase name="SEG-AUTHZ-02 | Usuario ajeno no puede leer proyectos ni listas de otro equipo" time="0.036862" classname="test"/>
+	<testcase name="SEG-AUTHZ-03 | Usuario ajeno no puede leer las tareas de otro proyecto" time="0.015125" classname="test"/>
+	<testcase name="SEG-AUTHZ-04 | Usuario ajeno no puede crear, editar, mover, asignar ni borrar tareas ajenas" time="0.110537" classname="test"/>
+	<testcase name="SEG-AUTHZ-05 | Usuario ajeno no puede borrar equipo/proyecto ajeno ni auto-añadirse" time="0.071031" classname="test"/>
+	<testcase name="SEG-AUTHZ-06 | Miembro no líder no puede ejecutar acciones de líder" time="0.061363" classname="test"/>
+	<testcase name="SEG-AUTHZ-07 | Miembro del equipo sí puede leer y crear tareas (control positivo)" time="0.067794" classname="test"/>
+	<testcase name="SEG-AUTHZ-08 | No se pueden asignar usuarios ajenos al equipo a una tarea" time="0.034224" classname="test"/>
+	<testcase name="SEG-AUTHZ-09 | No se puede mover una tarea a la lista de otro proyecto" time="0.072083" classname="test"/>
+	<testcase name="SEG-AUTHZ-10 | Un miembro expulsado pierde el acceso inmediatamente" time="0.055674" classname="test"/>
+	<testcase name="SEG-AUTHZ-11 | GET /equipos solo lista los equipos del usuario" time="0.021197" classname="test"/>
+	<testcase name="SEG-DATA-01 | Ninguna respuesta de la API expone la contraseña ni su hash" time="0.242284" classname="test"/>
+	<testcase name="SEG-DATA-02 | Las contraseñas se almacenan con bcrypt (coste 10)" time="0.253009" classname="test"/>
+	<testcase name="SEG-DATA-03 | Búsqueda de usuarios por email no permite enumerar cuentas ajenas" time="0.023220" classname="test" failure="SEG-DATA-03: B consulta el correo de A → 200 con campos [id, nombre, email, createdAt, updatedAt]; registro con correo existente → 409 &amp;quot;El email ya está registrado&amp;quot;">
+		<failure type="testCodeFailure" message="SEG-DATA-03: B consulta el correo de A → 200 con campos [id, nombre, email, createdAt, updatedAt]; registro con correo existente → 409 &amp;quot;El email ya está registrado&amp;quot;">
+[Error [ERR_TEST_FAILURE]: SEG-DATA-03: B consulta el correo de A → 200 con campos [id, nombre, email, createdAt, updatedAt]; registro con correo existente → 409 "El email ya está registrado"] {
+  code: 'ERR_TEST_FAILURE',
+  failureType: 'testCodeFailure',
+  cause: AssertionError [ERR_ASSERTION]: SEG-DATA-03: B consulta el correo de A → 200 con campos [id, nombre, email, createdAt, updatedAt]; registro con correo existente → 409 "El email ya está registrado"
+      at TestContext.&lt;anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
+		</failure>
+	</testcase>
+	<testcase name="SEG-DATA-04 | La respuesta de login y el JWT no contienen datos sensibles" time="0.089499" classname="test"/>
+	<testcase name="SEG-INY-01 | Inyección SQL en el login no permite saltar la autenticación" time="0.319816" classname="test"/>
+	<testcase name="SEG-INY-02 | Inyección SQL en parámetros de consulta" time="0.046543" classname="test"/>
+	<testcase name="SEG-INY-03 | Payload SQL almacenado se guarda como texto literal" time="0.137910" classname="test"/>
+	<testcase name="SEG-INY-04 | Operadores tipo NoSQL en el email son rechazados" time="0.024486" classname="test"/>
+	<testcase name="SEG-INY-05 | Objeto en el campo password del login es rechazado con 400" time="0.205642" classname="test"/>
+	<testcase name="SEG-INY-06 | XSS almacenado en el título de una tarea se devuelve como texto" time="0.129217" classname="test"/>
+	<testcase name="SEG-INY-07 | Payload __proto__ no contamina objetos del servidor" time="0.060248" classname="test"/>
+	<testcase name="SEG-VAL-01 | Mass assignment en el registro (id, isAdmin, rol)" time="0.121892" classname="test"/>
+	<testcase name="SEG-VAL-02 | Mass assignment de liderId/miembros al crear equipo" time="0.050417" classname="test"/>
+	<testcase name="SEG-VAL-03 | Mass assignment en PATCH /tareas/:id (listaId, id, estado)" time="0.061703" classname="test"/>
+	<testcase name="SEG-VAL-04 | Cadenas que superan la longitud máxima son rechazadas" time="0.188814" classname="test"/>
+	<testcase name="SEG-VAL-05 | Identificadores con formato inválido son rechazados (ParseUUIDPipe)" time="0.067957" classname="test"/>
+	<testcase name="SEG-VAL-06 | Cuerpos de petición muy grandes son rechazados" time="0.051650" classname="test"/>
+	<testcase name="SEG-CONF-01 | Cabeceras de seguridad HTTP (helmet) presentes" time="0.019531" classname="test"/>
+	<testcase name="SEG-CONF-02 | X-Powered-By ausente (no se revela el framework)" time="0.016971" classname="test"/>
+	<testcase name="SEG-CONF-03 | CORS rechaza orígenes no autorizados" time="0.033310" classname="test"/>
+	<testcase name="SEG-CONF-04 | CORS permite el frontend legítimo (http://localhost:5173)" time="0.008525" classname="test"/>
+	<testcase name="SEG-CONF-05 | Las respuestas de error no filtran trazas ni detalles internos" time="0.211074" classname="test"/>
+	<testcase name="SEG-CONF-06 | El frontend define Content-Security-Policy" time="0.080204" classname="test" failure="SEG-CONF-06: CSP cabecera=ausente; meta CSP=no; token guardado en localStorage en: taskflow-frontend\src\pages\Login.tsx:70, taskflow-frontend\src\store\useAuthStore.ts:47">
+		<failure type="testCodeFailure" message="SEG-CONF-06: CSP cabecera=ausente; meta CSP=no; token guardado en localStorage en: taskflow-frontend\src\pages\Login.tsx:70, taskflow-frontend\src\store\useAuthStore.ts:47">
+[Error [ERR_TEST_FAILURE]: SEG-CONF-06: CSP cabecera=ausente; meta CSP=no; token guardado en localStorage en: taskflow-frontend\src\pages\Login.tsx:70, taskflow-frontend\src\store\useAuthStore.ts:47] {
+  code: 'ERR_TEST_FAILURE',
+  failureType: 'testCodeFailure',
+  cause: AssertionError [ERR_ASSERTION]: SEG-CONF-06: CSP cabecera=ausente; meta CSP=no; token guardado en localStorage en: taskflow-frontend\src\pages\Login.tsx:70, taskflow-frontend\src\store\useAuthStore.ts:47
+      at TestContext.&lt;anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
+		</failure>
+	</testcase>
+	<testcase name="SEG-CONF-07 | Secretos fuera del control de versiones y JWT_SECRET robusto" time="0.237714" classname="test"/>
+	<testcase name="SEG-DEP-01 | Dependencias de producción del backend sin vulnerabilidades críticas/altas" time="4.945799" classname="test" failure="SEG-DEP-01: crítica=0, alta=4, moderada=7, baja=0 (total 11). Críticas/altas: @nestjs/platform-express (high, directa), body-parser (high), lodash (high), multer (high)">
+		<failure type="testCodeFailure" message="SEG-DEP-01: crítica=0, alta=4, moderada=7, baja=0 (total 11). Críticas/altas: @nestjs/platform-express (high, directa), body-parser (high), lodash (high), multer (high)">
+[Error [ERR_TEST_FAILURE]: SEG-DEP-01: crítica=0, alta=4, moderada=7, baja=0 (total 11). Críticas/altas: @nestjs/platform-express (high, directa), body-parser (high), lodash (high), multer (high)] {
+  code: 'ERR_TEST_FAILURE',
+  failureType: 'testCodeFailure',
+  cause: AssertionError [ERR_ASSERTION]: SEG-DEP-01: crítica=0, alta=4, moderada=7, baja=0 (total 11). Críticas/altas: @nestjs/platform-express (high, directa), body-parser (high), lodash (high), multer (high)
+      at TestContext.&lt;anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
+		</failure>
+	</testcase>
+	<testcase name="SEG-DEP-02 | Árbol completo del backend (incl. desarrollo) — npm audit" time="4.865035" classname="test"/>
+	<testcase name="SEG-DEP-03 | Dependencias del frontend — npm audit" time="2.018478" classname="test" failure="SEG-DEP-03: crítica=0, alta=2, moderada=3, baja=1 (total 6). Críticas/altas: follow-redirects (high), vite (high, directa)">
+		<failure type="testCodeFailure" message="SEG-DEP-03: crítica=0, alta=2, moderada=3, baja=1 (total 6). Críticas/altas: follow-redirects (high), vite (high, directa)">
+[Error [ERR_TEST_FAILURE]: SEG-DEP-03: crítica=0, alta=2, moderada=3, baja=1 (total 6). Críticas/altas: follow-redirects (high), vite (high, directa)] {
+  code: 'ERR_TEST_FAILURE',
+  failureType: 'testCodeFailure',
+  cause: AssertionError [ERR_ASSERTION]: SEG-DEP-03: crítica=0, alta=2, moderada=3, baja=1 (total 6). Críticas/altas: follow-redirects (high), vite (high, directa)
+      at TestContext.&lt;anonymous> (C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\seguridad\lib\caso.js:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:797:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:526:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+}
+		</failure>
+	</testcase>
+	<!-- tests 53 -->
+	<!-- suites 0 -->
+	<!-- pass 48 -->
+	<!-- fail 5 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 21529.4135 -->
+</testsuites>

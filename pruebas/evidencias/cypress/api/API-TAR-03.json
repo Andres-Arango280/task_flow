@@ -1,0 +1,25 @@
+{
+  "id": "API-TAR-03",
+  "obtenido": "Título vacío: 400 \"El título es obligatorio\"; 256 caracteres: 400 \"El título no puede superar 255 caracteres\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/tareas",
+    "autenticado": true,
+    "cuerpo": {
+      "titulo": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "listaId": "c9f55635-03f5-4e8f-a8ae-d70b375aee47"
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 6,
+    "cuerpo": {
+      "message": [
+        "El título no puede superar 255 caracteres"
+      ],
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:13:12.333Z"
+}

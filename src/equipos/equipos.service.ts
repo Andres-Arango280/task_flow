@@ -1,75 +1,52 @@
-import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Equipo } from './schemas/equipo.schema';
+import {
+  Injectable,
+  NotFoundException,
+  ForbiddenException,
+  ConflictException,
+  BadRequestException,
+} from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { In, Repository } from 'typeorm';
+import { Equipo } from './entities/equipo.entity';
 import { CreateEquipoDto } from './dto/equipo.dto';
+import { Usuario } from '../usuarios/entities/usuario.entity';
+
+export function usuarioPerteneceAEquipo(equipo: Equipo, userId: string): boolean {
+  const esLider = equipo.liderId === userId;
+  const esMiembro = (equipo.miembros ?? []).some((miembro) => miembro.id === userId);
+  return esLider || esMiembro;
+}
 
 @Injectable()
 export class EquiposService {
   constructor(
-    @InjectModel(Equipo.name) private equipoModel: Model<Equipo>,
+    @InjectRepository(Equipo)
+    private equipoRepository: Repository<Equipo>,
+    @InjectRepository(Usuario)
+    private usuarioRepository: Repository<Usuario>,
   ) {}
 
-  private async resolveEquipoQuery(query: any) {
-    if (!query) {
-      return null;
-    }
-
-    if (typeof query.then === 'function') {
-      return await query;
-    }
-
-    if (typeof query.exec === 'function') {
-      return await query.populate('lider', 'nombre email').populate('miembros', 'nombre email').exec();
-    }
-
-    return query;
-  }
-
-  private normalizeUserId(userId: any) {
-    if (!userId) {
-      return '';
-    }
-
-    if (typeof userId === 'object' && userId._id) {
-      return userId._id.toString();
-    }
-
-    return userId.toString();
-  }
-
   private async getEquipoOrThrow(equipoId: string) {
-    const equipo = await this.equipoModel.findById(equipoId);
+    const equipo = await this.equipoRepository.findOne({
+      where: { id: equipoId },
+      relations: { lider: true, miembros: true },
+    });
 
     if (!equipo) {
-      if (typeof equipoId === 'string' && equipoId.length > 24) {
-        return null;
-      }
       throw new NotFoundException('Equipo no encontrado');
     }
 
     return equipo;
   }
 
-  private assertUsuarioTieneAcceso(equipo: any, userId: string) {
-    const userIdStr = this.normalizeUserId(userId);
-    const tieneMiembro = Array.isArray(equipo.miembros)
-      && equipo.miembros.some((miembro: any) => {
-        const miembroId = this.normalizeUserId(miembro?._id ?? miembro);
-        return miembroId === userIdStr;
-      });
-    const liderId = this.normalizeUserId(equipo.lider?._id ?? equipo.lider);
-    const esLider = liderId === userIdStr;
-
-    if (!tieneMiembro && !esLider) {
+  private assertUsuarioTieneAcceso(equipo: Equipo, userId: string) {
+    if (!usuarioPerteneceAEquipo(equipo, userId)) {
       throw new ForbiddenException('No tienes acceso a este equipo');
     }
   }
 
-  private assertRequesterEsLider(equipo: any, requesterId: string, accion: 'agregar' | 'eliminar') {
-    const requesterIdStr = this.normalizeUserId(requesterId);
-
-    if (equipo.lider.toString() !== requesterIdStr) {
+  private assertRequesterEsLider(equipo: Equipo, requesterId: string, accion: 'agregar' | 'eliminar') {
+    if (equipo.liderId !== requesterId) {
       throw new ForbiddenException(
         accion === 'agregar'
           ? 'Solo el líder puede agregar miembros'
@@ -78,42 +55,40 @@ export class EquiposService {
     }
   }
 
-  // ✅ NUEVO: Obtener todos los equipos donde el usuario es líder o miembro
+  // Obtener todos los equipos donde el usuario es líder o miembro
   async findByUser(userId: string) {
-    const equipos = await this.equipoModel
-      .find({
-        $or: [
-          { lider: userId },
-          { miembros: userId }
-        ]
-      })
-      .populate('lider', 'nombre email')
-      .populate('miembros', 'nombre email')
-      .exec();
+    // Primero se buscan los ids: si se filtra por miembros y se carga la relación
+    // en la misma consulta, TypeORM solo devolvería el miembro filtrado.
+    const filas = await this.equipoRepository
+      .createQueryBuilder('equipo')
+      .leftJoin('equipo.miembros', 'miembro')
+      .where('equipo.liderId = :userId', { userId })
+      .orWhere('miembro.id = :userId', { userId })
+      .select('equipo.id', 'id')
+      .distinct(true)
+      .getRawMany<{ id: string }>();
 
-    return equipos;
-  }
-
-  // ✅ NUEVO: Obtener detalles de un equipo específico
-  async findById(equipoId: string, userId: string) {
-    const equipo = await this.resolveEquipoQuery(this.equipoModel.findById(equipoId));
-
-    if (!equipo) {
-      throw new NotFoundException('Equipo no encontrado');
+    if (filas.length === 0) {
+      return [];
     }
 
+    return this.equipoRepository.find({
+      where: { id: In(filas.map((fila) => fila.id)) },
+      relations: { lider: true, miembros: true },
+      order: { createdAt: 'ASC' },
+    });
+  }
+
+  // Obtener detalles de un equipo específico
+  async findById(equipoId: string, userId: string) {
+    const equipo = await this.getEquipoOrThrow(equipoId);
     this.assertUsuarioTieneAcceso(equipo, userId);
     return equipo;
   }
 
-  // ✅ NUEVO: Obtener miembros de un equipo
+  // Obtener miembros de un equipo
   async getMiembros(equipoId: string, userId: string) {
-    const equipo = await this.resolveEquipoQuery(this.equipoModel.findById(equipoId));
-
-    if (!equipo) {
-      throw new NotFoundException('Equipo no encontrado');
-    }
-
+    const equipo = await this.getEquipoOrThrow(equipoId);
     this.assertUsuarioTieneAcceso(equipo, userId);
 
     return {
@@ -122,41 +97,56 @@ export class EquiposService {
     };
   }
 
-  // ✅ EXISTENTE: Crear equipo (mantén tu lógica original aquí)
   async create(dto: CreateEquipoDto, userId: string) {
-    const nuevoEquipo = new this.equipoModel({
+    const nuevoEquipo = this.equipoRepository.create({
       nombre: dto.nombre,
-      lider: userId,
-      miembros: [userId],
+      liderId: userId,
+      miembros: [{ id: userId } as Usuario],
     });
-    return nuevoEquipo.save();
+    const guardado = await this.equipoRepository.save(nuevoEquipo);
+    return this.getEquipoOrThrow(guardado.id);
   }
 
-  // ✅ EXISTENTE: Agregar miembro (mantén tu lógica original aquí)
   async addMiembro(equipoId: string, userId: string, requesterId: string) {
     const equipo = await this.getEquipoOrThrow(equipoId);
-
-    if (!equipo) {
-      return null;
-    }
-
     this.assertRequesterEsLider(equipo, requesterId, 'agregar');
 
-    const yaEsMiembro = equipo.miembros.some((m: any) => m.toString() === userId.toString());
-    if (yaEsMiembro) {
-      throw new ForbiddenException('El usuario ya es miembro del equipo');
+    const usuario = await this.usuarioRepository.findOneBy({ id: userId });
+    if (!usuario) {
+      throw new NotFoundException('Usuario no encontrado');
     }
 
-    equipo.miembros.push(userId as any);
-    return equipo.save();
+    const yaEsMiembro = equipo.miembros.some((m) => m.id === userId);
+    if (yaEsMiembro) {
+      throw new ConflictException('El usuario ya es miembro del equipo');
+    }
+
+    equipo.miembros.push(usuario);
+    await this.equipoRepository.save(equipo);
+    return this.getEquipoOrThrow(equipoId);
   }
 
-  // ✅ EXISTENTE: Eliminar miembro (mantén tu lógica original aquí)
   async removeMiembro(equipoId: string, userId: string, requesterId: string) {
     const equipo = await this.getEquipoOrThrow(equipoId);
     this.assertRequesterEsLider(equipo, requesterId, 'eliminar');
 
-    equipo.miembros = equipo.miembros.filter((m: any) => m.toString() !== userId.toString());
-    return equipo.save();
+    if (userId === equipo.liderId) {
+      throw new BadRequestException('El líder no puede eliminarse del equipo');
+    }
+
+    equipo.miembros = equipo.miembros.filter((m) => m.id !== userId);
+    await this.equipoRepository.save(equipo);
+    return this.getEquipoOrThrow(equipoId);
+  }
+
+  async eliminar(equipoId: string, requesterId: string) {
+    const equipo = await this.getEquipoOrThrow(equipoId);
+    if (equipo.liderId !== requesterId) {
+      throw new ForbiddenException('Solo el líder puede eliminar el equipo');
+    }
+
+    // Los proyectos, listas y tareas se eliminan en cascada
+    await this.equipoRepository.remove(equipo);
+    return { id: equipoId, eliminado: true };
   }
 }

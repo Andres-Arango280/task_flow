@@ -1,0 +1,828 @@
+{
+  "modulo": "teclado",
+  "fecha": "2026-10-27T04:27:07.359Z",
+  "casos": [
+    {
+      "id": "TEC-01",
+      "tipo": "teclado",
+      "nombre": "Enlace \"Saltar al contenido\"",
+      "objetivo": "Comprobar que el primer Tab muestra el enlace de salto y que al activarlo el siguiente Tab cae dentro del contenido principal (WCAG 2.4.1).",
+      "esperado": "Primer foco = \"Saltar al contenido\", visible; tras Enter, el siguiente foco está dentro de <main> y no en la barra de navegación.",
+      "obtenido": "Primer foco: \"Saltar al contenido\" (visible); hash=#contenido; siguiente foco: \"Nuevo equipo\" dentro de <main>.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "teclado/tec01-saltar-al-contenido.png"
+      ]
+    },
+    {
+      "id": "TEC-02",
+      "tipo": "teclado",
+      "nombre": "Orden de tabulación en \"Mis equipos\"",
+      "objetivo": "Verificar que con Tab se alcanzan las acciones principales en un orden lógico (navegación → contenido) (WCAG 2.1.1, 2.4.3).",
+      "esperado": "Se alcanzan \"Nuevo equipo\", el buscador y la tarjeta de equipo; la navegación aparece antes que el contenido.",
+      "obtenido": "12 paradas de foco. Nuevo equipo: sí; buscador: sí; tarjeta de equipo: sí; orden nav(2) → main(8). Secuencia: Saltar al contenido › TaskFlow, ir al inicio › Inicio › Ayuda › Preferencias › Ver atajos de teclado › Salir › Nuevo equipo › Ver la guía de ayuda › Ocultar la lista de primeros pasos › Buscar equipo… › Equipo Accesibilidad QA Líder Líder: Laura Líder 2 miembros Abrir",
+      "estado": "Aprobado",
+      "evidencia": [
+        "teclado/tec02-foco-tarjeta-equipo.png"
+      ],
+      "detalle": [
+        {
+          "orden": 1,
+          "tag": "A",
+          "nombre": "Saltar al contenido",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 2,
+          "tag": "A",
+          "nombre": "TaskFlow, ir al inicio",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 3,
+          "tag": "A",
+          "nombre": "Inicio",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 4,
+          "tag": "A",
+          "nombre": "Ayuda",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 5,
+          "tag": "A",
+          "nombre": "Preferencias",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 6,
+          "tag": "BUTTON",
+          "nombre": "Ver atajos de teclado",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 7,
+          "tag": "BUTTON",
+          "nombre": "Salir",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 8,
+          "tag": "BUTTON",
+          "nombre": "Nuevo equipo",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 9,
+          "tag": "A",
+          "nombre": "Ver la guía de ayuda",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 10,
+          "tag": "BUTTON",
+          "nombre": "Ocultar la lista de primeros pasos",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 11,
+          "tag": "INPUT",
+          "nombre": "Buscar equipo…",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true
+        },
+        {
+          "orden": 12,
+          "tag": "A",
+          "nombre": "Equipo Accesibilidad QA Líder Líder: Laura Líder 2 miembros Abrir",
+          "testid": "tarjeta-equipo",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "TEC-03",
+      "tipo": "teclado",
+      "nombre": "Foco visible en todos los elementos enfocables",
+      "objetivo": "Comprobar con estilos calculados (outline / box-shadow / borde / fondo) que cada parada de foco muestra un indicador visible (WCAG 2.4.7).",
+      "esperado": "100 % de las paradas de foco con indicador visible distinto del estado sin foco.",
+      "obtenido": "40/40 paradas con indicador visible (inicio 12, tablero 28).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "teclado/tec03-foco-visible-asa-tarea.png",
+        "teclado/tec02-foco-tarjeta-equipo.png"
+      ],
+      "detalle": [
+        {
+          "orden": 1,
+          "tag": "A",
+          "nombre": "Saltar al contenido",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 2,
+          "tag": "A",
+          "nombre": "TaskFlow, ir al inicio",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 3,
+          "tag": "A",
+          "nombre": "Inicio",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 4,
+          "tag": "A",
+          "nombre": "Ayuda",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 5,
+          "tag": "A",
+          "nombre": "Preferencias",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 6,
+          "tag": "BUTTON",
+          "nombre": "Ver atajos de teclado",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 7,
+          "tag": "BUTTON",
+          "nombre": "Salir",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 8,
+          "tag": "BUTTON",
+          "nombre": "Nuevo equipo",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 9,
+          "tag": "A",
+          "nombre": "Ver la guía de ayuda",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 10,
+          "tag": "BUTTON",
+          "nombre": "Ocultar la lista de primeros pasos",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 11,
+          "tag": "INPUT",
+          "nombre": "Buscar equipo…",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 12,
+          "tag": "A",
+          "nombre": "Equipo Accesibilidad QA Líder Líder: Laura Líder 2 miembros Abrir",
+          "testid": "tarjeta-equipo",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "inicio"
+        },
+        {
+          "orden": 1,
+          "tag": "A",
+          "nombre": "Saltar al contenido",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 2,
+          "tag": "A",
+          "nombre": "TaskFlow, ir al inicio",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 3,
+          "tag": "A",
+          "nombre": "Inicio",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 4,
+          "tag": "A",
+          "nombre": "Ayuda",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 5,
+          "tag": "A",
+          "nombre": "Preferencias",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 6,
+          "tag": "BUTTON",
+          "nombre": "Ver atajos de teclado",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 7,
+          "tag": "BUTTON",
+          "nombre": "Salir",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": false,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 8,
+          "tag": "A",
+          "nombre": "Mis equipos",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 9,
+          "tag": "A",
+          "nombre": "Equipo Accesibilidad QA",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": true,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 10,
+          "tag": "BUTTON",
+          "nombre": "Nueva tarea",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 11,
+          "tag": "INPUT",
+          "nombre": "Buscar tareas… (/)",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 12,
+          "tag": "SELECT",
+          "nombre": "Todos Sin asignar Laura Líder (tú) Mario Miembro",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 13,
+          "tag": "DIV",
+          "nombre": "Columnas del tablero",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 14,
+          "tag": "DIV",
+          "nombre": "Arrastrar tarea Diseñar pantalla de inicio",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 15,
+          "tag": "BUTTON",
+          "nombre": "Diseñar pantalla de inicio Boceto y prototipo de la pantalla principal",
+          "testid": "abrir-tarea",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 16,
+          "tag": "BUTTON",
+          "nombre": "Asignar miembros a la tarea Diseñar pantalla de inicio",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 17,
+          "tag": "DIV",
+          "nombre": "Arrastrar tarea Revisar contraste de colores",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 18,
+          "tag": "BUTTON",
+          "nombre": "Revisar contraste de colores Comprobar WCAG AA en botones y textos.",
+          "testid": "abrir-tarea",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 19,
+          "tag": "BUTTON",
+          "nombre": "Asignar miembros a la tarea Revisar contraste de colores",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 20,
+          "tag": "BUTTON",
+          "nombre": "Agregar tarea en Por Hacer",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 21,
+          "tag": "DIV",
+          "nombre": "Arrastrar tarea Escribir pruebas de teclado",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 22,
+          "tag": "BUTTON",
+          "nombre": "Escribir pruebas de teclado Navegación con Tab, Esc y arrastre con tec",
+          "testid": "abrir-tarea",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 23,
+          "tag": "BUTTON",
+          "nombre": "Asignar miembros a la tarea Escribir pruebas de teclado",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 24,
+          "tag": "BUTTON",
+          "nombre": "Agregar tarea en En Progreso",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 25,
+          "tag": "DIV",
+          "nombre": "Arrastrar tarea Publicar versión 1.0",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 26,
+          "tag": "BUTTON",
+          "nombre": "Publicar versión 1.0 Despliegue en el servidor de pruebas.",
+          "testid": "abrir-tarea",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 27,
+          "tag": "BUTTON",
+          "nombre": "Asignar miembros a la tarea Publicar versión 1.0",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        },
+        {
+          "orden": 28,
+          "tag": "BUTTON",
+          "nombre": "Agregar tarea en Hecho",
+          "testid": "",
+          "enDialogo": false,
+          "enMain": true,
+          "enNav": false,
+          "indicador": "outline solid 3px",
+          "visible": true,
+          "pagina": "tablero"
+        }
+      ]
+    },
+    {
+      "id": "TEC-04",
+      "tipo": "teclado",
+      "nombre": "Acciones del tablero alcanzables con Tab",
+      "objetivo": "Verificar que todas las acciones del tablero (crear, buscar, arrastrar, abrir detalle, asignar, agregar en columna) son operables con teclado (WCAG 2.1.1).",
+      "esperado": "Se alcanzan: Nueva tarea, Buscar tareas, Arrastrar tarea, Abrir detalle de tarea (data-testid=\"abrir-tarea\"), Asignar miembros, Agregar tarea en.",
+      "obtenido": "Todas alcanzadas en 28 paradas de foco.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "teclado/tec03-foco-visible-asa-tarea.png"
+      ],
+      "detalle": [
+        "Saltar al contenido",
+        "TaskFlow, ir al inicio",
+        "Inicio",
+        "Ayuda",
+        "Preferencias",
+        "Ver atajos de teclado",
+        "Salir",
+        "Mis equipos",
+        "Equipo Accesibilidad QA",
+        "Nueva tarea",
+        "Buscar tareas… (/)",
+        "Todos Sin asignar Laura Líder (tú) Mario Miembro",
+        "Columnas del tablero",
+        "Arrastrar tarea Diseñar pantalla de inicio",
+        "Diseñar pantalla de inicio Boceto y prototipo de la pantalla principal",
+        "Asignar miembros a la tarea Diseñar pantalla de inicio",
+        "Arrastrar tarea Revisar contraste de colores",
+        "Revisar contraste de colores Comprobar WCAG AA en botones y textos.",
+        "Asignar miembros a la tarea Revisar contraste de colores",
+        "Agregar tarea en Por Hacer",
+        "Arrastrar tarea Escribir pruebas de teclado",
+        "Escribir pruebas de teclado Navegación con Tab, Esc y arrastre con tec",
+        "Asignar miembros a la tarea Escribir pruebas de teclado",
+        "Agregar tarea en En Progreso",
+        "Arrastrar tarea Publicar versión 1.0",
+        "Publicar versión 1.0 Despliegue en el servidor de pruebas.",
+        "Asignar miembros a la tarea Publicar versión 1.0",
+        "Agregar tarea en Hecho"
+      ]
+    },
+    {
+      "id": "TEC-05",
+      "tipo": "teclado",
+      "nombre": "Modal \"Crear tarea\": foco atrapado, Esc cierra y el foco vuelve",
+      "objetivo": "Comprobar que el modal recibe el foco al abrirse, lo retiene con Tab/Shift+Tab, se cierra con Esc y devuelve el foco al botón que lo abrió (WCAG 2.1.2, 2.4.3).",
+      "esperado": "Foco inicial dentro del diálogo; 20 tabulaciones sin salir; Esc cierra; foco vuelve a \"Nueva tarea\".",
+      "obtenido": "Foco inicial: \"Ej: Diseñar la pantalla de inicio\" (dentro del diálogo); salidas del diálogo: 0; Esc cierra; foco tras cerrar: \"Nueva tarea\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "teclado/tec05-modal-crear-tarea-foco.png"
+      ]
+    },
+    {
+      "id": "TEC-06",
+      "tipo": "teclado",
+      "nombre": "Detalle de tarea y confirmación de borrado con teclado",
+      "objetivo": "Abrir el detalle con Enter, llegar a \"Eliminar\" con Tab, ver la confirmación y cancelarla con Esc sin borrar nada (prevención de errores operable con teclado).",
+      "esperado": "Detalle abierto; confirmación (alertdialog) con foco dentro; Esc cancela; la tarea sigue existiendo (4 tareas).",
+      "obtenido": "Detalle: abierto; \"Eliminar\" alcanzado: sí; confirmación: abierta (foco en \"Cerrar ventana (Esc)\"); Esc cancela; tareas en servidor: 4.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "teclado/tec06-confirmacion-teclado.png"
+      ]
+    },
+    {
+      "id": "TEC-07",
+      "tipo": "teclado",
+      "nombre": "Mover una tarea entre columnas solo con teclado",
+      "objetivo": "Verificar la alternativa de teclado al arrastre: Espacio para levantar la tarjeta, flechas para moverla y Espacio para soltar (WCAG 2.1.1, 2.5.7).",
+      "esperado": "La tarea pasa de \"Por Hacer\" a \"En Progreso\" y el cambio se guarda en el servidor.",
+      "obtenido": "Foco en \"Arrastrar tarea Diseñar pantalla de inicio\"; Espacio → Flecha derecha → Espacio; en el servidor la tarea pasó de \"Por Hacer\" a \"En Progreso\". Aviso visible: \"Listo \"Diseñar pantalla de inicio\" movida a En Progreso. Deshacer\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "teclado/tec07a-asa-enfocada.png",
+        "teclado/tec07b-moviendo-con-flechas.png",
+        "teclado/tec07c-tarea-soltada.png"
+      ]
+    },
+    {
+      "id": "TEC-11",
+      "tipo": "teclado",
+      "nombre": "Instrucciones y anuncios del arrastre en español (lector de pantalla)",
+      "objetivo": "Comprobar que las instrucciones de uso del asa de arrastre (aria-describedby) y los anuncios aria-live de la librería de arrastre están en el idioma de la página (WCAG 3.1.2 / 4.1.3).",
+      "esperado": "Textos en español (p. ej. \"Para mover la tarea con el teclado: pulsa Espacio…\") y un anuncio final que nombra la tarea y la columna destino, sin identificadores internos.",
+      "obtenido": "Instrucciones: \"Para mover la tarea con el teclado: pulsa Espacio para levantarla, usa las flechas izquierda y derecha para cambiar de columna y pulsa Espac\"; último anuncio: \"Has movido \"Diseñar pantalla de inicio\" a En Progreso.\"; el anuncio nombra la tarea y la columna destino.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "teclado/tec07c-tarea-soltada.png"
+      ]
+    },
+    {
+      "id": "TEC-08",
+      "tipo": "teclado",
+      "nombre": "Atajos de teclado (/, ?, n, h)",
+      "objetivo": "Comprobar los aceleradores para usuarios expertos documentados en la Ayuda (heurística 7 de Nielsen).",
+      "esperado": "\"/\" enfoca la búsqueda; \"?\" abre el panel de atajos; \"n\" abre \"Crear nueva tarea\"; \"h\" navega a /ayuda.",
+      "obtenido": "\"/\" → foco en \"Buscar tareas… (/)\"; \"?\" → \"Atajos de teclado\"; \"n\" → \"Crear nueva tarea\"; \"h\" → /ayuda.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "teclado/tec08-panel-atajos.png"
+      ]
+    },
+    {
+      "id": "TEC-09",
+      "tipo": "teclado",
+      "nombre": "Iniciar sesión solo con teclado",
+      "objetivo": "Completar el formulario de login usando Tab, escritura y Enter.",
+      "esperado": "Se llega al campo de correo con Tab, Enter envía el formulario y se accede a \"Mis equipos\".",
+      "obtenido": "Campo de correo alcanzado en 1 Tab(s); tras Enter la ruta es / y el título de pestaña \"Mis equipos · TaskFlow\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "teclado/tec09-login-teclado.png"
+      ]
+    },
+    {
+      "id": "TEC-10",
+      "tipo": "teclado",
+      "nombre": "Esc cierra todas las ventanas modales",
+      "objetivo": "Verificar el \"control y libertad del usuario\": cualquier ventana se puede abandonar con Esc.",
+      "esperado": "Las 6 ventanas (Nuevo equipo, Invitar miembro, Nuevo proyecto, Asignar miembros, Detalle de tarea, Atajos) se cierran con Esc.",
+      "obtenido": "Las 6 ventanas se cierran con Esc.",
+      "estado": "Aprobado",
+      "evidencia": [],
+      "detalle": [
+        {
+          "ventana": "Nuevo equipo",
+          "cierra": true
+        },
+        {
+          "ventana": "Invitar miembro",
+          "cierra": true
+        },
+        {
+          "ventana": "Nuevo proyecto",
+          "cierra": true
+        },
+        {
+          "ventana": "Asignar miembros",
+          "cierra": true
+        },
+        {
+          "ventana": "Detalle de tarea",
+          "cierra": true
+        },
+        {
+          "ventana": "Atajos",
+          "cierra": true
+        }
+      ]
+    }
+  ],
+  "incidenciasCarga": [
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 1,
+      "fecha": "2026-10-27T04:23:29.062Z"
+    },
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 2,
+      "fecha": "2026-10-27T04:23:31.837Z"
+    },
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 3,
+      "fecha": "2026-10-27T04:23:34.605Z"
+    }
+  ]
+}

@@ -1,0 +1,1938 @@
+{
+  "area": "Regresión del backend (servicios)",
+  "herramienta": "Jest 29.7.0 + ts-jest + Supertest",
+  "comando": "npm run test:evidencias",
+  "fecha": "2026-10-26T23:15:58.593Z",
+  "totales": {
+    "total": 137,
+    "aprobados": 137,
+    "fallidos": 0,
+    "duracionSeg": 20.8
+  },
+  "cobertura": {
+    "lines": 91.5,
+    "statements": 89.34,
+    "functions": 60.25,
+    "branches": 95.45
+  },
+  "casos": [
+    {
+      "id": "JU-001",
+      "suite": "Regression - TareasService › findByProyecto",
+      "nombre": "debe lanzar NotFoundException al intentar obtener tareas de un proyecto inexistente",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException al intentar obtener tareas de un proyecto inexistente.",
+      "esperado": "El sistema lanzar NotFoundException al intentar obtener tareas de un proyecto inexistente.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (21 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-002",
+      "suite": "Regression - TareasService › findByProyecto",
+      "nombre": "debe lanzar ForbiddenException cuando el usuario no es miembro del equipo del proyecto",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException cuando el usuario no es miembro del equipo del proyecto.",
+      "esperado": "El sistema lanzar ForbiddenException cuando el usuario no es miembro del equipo del proyecto.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-003",
+      "suite": "Regression - TareasService › findByProyecto",
+      "nombre": "debe devolver las tareas del proyecto cuando el usuario es miembro",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema devolver las tareas del proyecto cuando el usuario es miembro.",
+      "esperado": "El sistema devolver las tareas del proyecto cuando el usuario es miembro.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-004",
+      "suite": "Regression - TareasService › findByProyecto",
+      "nombre": "debe permitir al líder obtener las tareas aunque no figure en miembros",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema permitir al líder obtener las tareas aunque no figure en miembros.",
+      "esperado": "El sistema permitir al líder obtener las tareas aunque no figure en miembros.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-005",
+      "suite": "Regression - TareasService › create",
+      "nombre": "debe lanzar NotFoundException al crear una tarea con una lista inexistente",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException al crear una tarea con una lista inexistente.",
+      "esperado": "El sistema lanzar NotFoundException al crear una tarea con una lista inexistente.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-006",
+      "suite": "Regression - TareasService › create",
+      "nombre": "debe lanzar BadRequestException cuando no se envía proyectoId ni listaId",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar BadRequestException cuando no se envía proyectoId ni listaId.",
+      "esperado": "El sistema lanzar BadRequestException cuando no se envía proyectoId ni listaId.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (4 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-007",
+      "suite": "Regression - TareasService › create",
+      "nombre": "debe lanzar NotFoundException cuando el proyecto no tiene listas",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException cuando el proyecto no tiene listas.",
+      "esperado": "El sistema lanzar NotFoundException cuando el proyecto no tiene listas.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-008",
+      "suite": "Regression - TareasService › create",
+      "nombre": "debe lanzar BadRequestException cuando la lista no pertenece al proyecto indicado",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar BadRequestException cuando la lista no pertenece al proyecto indicado.",
+      "esperado": "El sistema lanzar BadRequestException cuando la lista no pertenece al proyecto indicado.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-009",
+      "suite": "Regression - TareasService › create",
+      "nombre": "no debe revelar si la lista existe cuando el usuario no tiene acceso a su proyecto",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema no debe revelar si la lista existe cuando el usuario no tiene acceso a su proyecto.",
+      "esperado": "El sistema no debe revelar si la lista existe cuando el usuario no tiene acceso a su proyecto.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-010",
+      "suite": "Regression - TareasService › create",
+      "nombre": "debe lanzar ForbiddenException cuando el usuario no pertenece al equipo del proyecto",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException cuando el usuario no pertenece al equipo del proyecto.",
+      "esperado": "El sistema lanzar ForbiddenException cuando el usuario no pertenece al equipo del proyecto.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-011",
+      "suite": "Regression - TareasService › create",
+      "nombre": "debe lanzar BadRequestException al asignar usuarios que no son miembros del equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar BadRequestException al asignar usuarios que no son miembros del equipo.",
+      "esperado": "El sistema lanzar BadRequestException al asignar usuarios que no son miembros del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-012",
+      "suite": "Regression - TareasService › create",
+      "nombre": "debe crear la tarea en la lista indicada con asignados válidos y devolverla recargada",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema crear la tarea en la lista indicada con asignados válidos y devolverla recargada.",
+      "esperado": "El sistema crear la tarea en la lista indicada con asignados válidos y devolverla recargada.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-013",
+      "suite": "Regression - TareasService › create",
+      "nombre": "debe crear la tarea en la primera lista del proyecto cuando solo se envía proyectoId",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema crear la tarea en la primera lista del proyecto cuando solo se envía proyectoId.",
+      "esperado": "El sistema crear la tarea en la primera lista del proyecto cuando solo se envía proyectoId.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-014",
+      "suite": "Regression - TareasService › moverTarea",
+      "nombre": "debe lanzar NotFoundException al mover una tarea que no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException al mover una tarea que no existe.",
+      "esperado": "El sistema lanzar NotFoundException al mover una tarea que no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-015",
+      "suite": "Regression - TareasService › moverTarea",
+      "nombre": "debe lanzar NotFoundException cuando la lista destino no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException cuando la lista destino no existe.",
+      "esperado": "El sistema lanzar NotFoundException cuando la lista destino no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-016",
+      "suite": "Regression - TareasService › moverTarea",
+      "nombre": "debe lanzar BadRequestException al mover una tarea a una lista de otro proyecto",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar BadRequestException al mover una tarea a una lista de otro proyecto.",
+      "esperado": "El sistema lanzar BadRequestException al mover una tarea a una lista de otro proyecto.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-017",
+      "suite": "Regression - TareasService › moverTarea",
+      "nombre": "debe lanzar ForbiddenException cuando el usuario no pertenece al equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException cuando el usuario no pertenece al equipo.",
+      "esperado": "El sistema lanzar ForbiddenException cuando el usuario no pertenece al equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-018",
+      "suite": "Regression - TareasService › moverTarea",
+      "nombre": "debe mover la tarea a otra lista del mismo proyecto y devolverla recargada",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema mover la tarea a otra lista del mismo proyecto y devolverla recargada.",
+      "esperado": "El sistema mover la tarea a otra lista del mismo proyecto y devolverla recargada.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-019",
+      "suite": "Regression - TareasService › asignarMiembros",
+      "nombre": "debe lanzar NotFoundException al asignar miembros a una tarea inexistente",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException al asignar miembros a una tarea inexistente.",
+      "esperado": "El sistema lanzar NotFoundException al asignar miembros a una tarea inexistente.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-020",
+      "suite": "Regression - TareasService › asignarMiembros",
+      "nombre": "debe lanzar ForbiddenException cuando el usuario no pertenece al equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException cuando el usuario no pertenece al equipo.",
+      "esperado": "El sistema lanzar ForbiddenException cuando el usuario no pertenece al equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-021",
+      "suite": "Regression - TareasService › asignarMiembros",
+      "nombre": "debe lanzar BadRequestException al asignar un usuario que no es miembro del equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar BadRequestException al asignar un usuario que no es miembro del equipo.",
+      "esperado": "El sistema lanzar BadRequestException al asignar un usuario que no es miembro del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (5 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-022",
+      "suite": "Regression - TareasService › asignarMiembros",
+      "nombre": "debe asignar miembros válidos (incluido el líder) y devolver la tarea recargada",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema asignar miembros válidos (incluido el líder) y devolver la tarea recargada.",
+      "esperado": "El sistema asignar miembros válidos (incluido el líder) y devolver la tarea recargada.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-023",
+      "suite": "Regression - TareasService › asignarMiembros",
+      "nombre": "debe permitir vaciar los asignados enviando un arreglo vacío",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema permitir vaciar los asignados enviando un arreglo vacío.",
+      "esperado": "El sistema permitir vaciar los asignados enviando un arreglo vacío.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-024",
+      "suite": "Regression - usuarioPerteneceAEquipo",
+      "nombre": "debe retornar true cuando el usuario es el líder",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema retornar true cuando el usuario es el líder.",
+      "esperado": "El sistema retornar true cuando el usuario es el líder.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-025",
+      "suite": "Regression - usuarioPerteneceAEquipo",
+      "nombre": "debe retornar true cuando el usuario es miembro",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema retornar true cuando el usuario es miembro.",
+      "esperado": "El sistema retornar true cuando el usuario es miembro.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-026",
+      "suite": "Regression - usuarioPerteneceAEquipo",
+      "nombre": "debe retornar false cuando el usuario no es líder ni miembro",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema retornar false cuando el usuario no es líder ni miembro.",
+      "esperado": "El sistema retornar false cuando el usuario no es líder ni miembro.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-027",
+      "suite": "Regression - usuarioPerteneceAEquipo",
+      "nombre": "debe tolerar miembros sin cargar (undefined)",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema tolerar miembros sin cargar (undefined).",
+      "esperado": "El sistema tolerar miembros sin cargar (undefined).",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-028",
+      "suite": "Regression - EquiposService - findByUser",
+      "nombre": "debe retornar los equipos donde el usuario es líder o miembro con sus relaciones",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema retornar los equipos donde el usuario es líder o miembro con sus relaciones.",
+      "esperado": "El sistema retornar los equipos donde el usuario es líder o miembro con sus relaciones.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-029",
+      "suite": "Regression - EquiposService - findByUser",
+      "nombre": "debe retornar un arreglo vacío sin cargar relaciones cuando el usuario no pertenece a ningún equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema retornar un arreglo vacío sin cargar relaciones cuando el usuario no pertenece a ningún equipo.",
+      "esperado": "El sistema retornar un arreglo vacío sin cargar relaciones cuando el usuario no pertenece a ningún equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (4 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-030",
+      "suite": "Regression - EquiposService - create",
+      "nombre": "debe crear el equipo con el creador como líder y miembro, y retornarlo con relaciones",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema crear el equipo con el creador como líder y miembro, y retornarlo con relaciones.",
+      "esperado": "El sistema crear el equipo con el creador como líder y miembro, y retornarlo con relaciones.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-031",
+      "suite": "Regression - EquiposService - addMiembro",
+      "nombre": "debe agregar un miembro cuando el solicitante es el líder del equipo",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema agregar un miembro cuando el solicitante es el líder del equipo.",
+      "esperado": "El sistema agregar un miembro cuando el solicitante es el líder del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-032",
+      "suite": "Regression - EquiposService - addMiembro",
+      "nombre": "debe lanzar NotFoundException cuando el equipo no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException cuando el equipo no existe.",
+      "esperado": "El sistema lanzar NotFoundException cuando el equipo no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (12 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-033",
+      "suite": "Regression - EquiposService - addMiembro",
+      "nombre": "debe lanzar NotFoundException cuando el usuario a agregar no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException cuando el usuario a agregar no existe.",
+      "esperado": "El sistema lanzar NotFoundException cuando el usuario a agregar no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-034",
+      "suite": "Regression - EquiposService - addMiembro",
+      "nombre": "debe lanzar ForbiddenException cuando el solicitante no es el líder del equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException cuando el solicitante no es el líder del equipo.",
+      "esperado": "El sistema lanzar ForbiddenException cuando el solicitante no es el líder del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-035",
+      "suite": "Regression - EquiposService - addMiembro",
+      "nombre": "debe lanzar ConflictException cuando el usuario ya es miembro del equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ConflictException cuando el usuario ya es miembro del equipo.",
+      "esperado": "El sistema lanzar ConflictException cuando el usuario ya es miembro del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-036",
+      "suite": "Regression - EquiposService - addMiembro",
+      "nombre": "debe validar que solo el líder puede autorizar la operación antes de persistir cambios",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema validar que solo el líder puede autorizar la operación antes de persistir cambios.",
+      "esperado": "El sistema validar que solo el líder puede autorizar la operación antes de persistir cambios.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-037",
+      "suite": "Regression - EquiposService - addMiembro",
+      "nombre": "debe permitir múltiples inserciones consecutivas de miembros en el mismo equipo",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema permitir múltiples inserciones consecutivas de miembros en el mismo equipo.",
+      "esperado": "El sistema permitir múltiples inserciones consecutivas de miembros en el mismo equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-038",
+      "suite": "Regression - ProyectosService - crearProyecto",
+      "nombre": "debe crear un proyecto cuando el usuario es miembro del equipo",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema crear un proyecto cuando el usuario es miembro del equipo.",
+      "esperado": "El sistema crear un proyecto cuando el usuario es miembro del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-039",
+      "suite": "Regression - ProyectosService - crearProyecto",
+      "nombre": "debe crear un proyecto cuando el usuario es el líder del equipo",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema crear un proyecto cuando el usuario es el líder del equipo.",
+      "esperado": "El sistema crear un proyecto cuando el usuario es el líder del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-040",
+      "suite": "Regression - ProyectosService - crearProyecto",
+      "nombre": "debe lanzar NotFoundException cuando el equipo no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException cuando el equipo no existe.",
+      "esperado": "El sistema lanzar NotFoundException cuando el equipo no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (8 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-041",
+      "suite": "Regression - ProyectosService - crearProyecto",
+      "nombre": "debe lanzar ForbiddenException cuando el usuario no pertenece al equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException cuando el usuario no pertenece al equipo.",
+      "esperado": "El sistema lanzar ForbiddenException cuando el usuario no pertenece al equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-042",
+      "suite": "Regression - ProyectosService - crearProyecto",
+      "nombre": "debe crear las tres listas por defecto cuando se guarda el proyecto",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema crear las tres listas por defecto cuando se guarda el proyecto.",
+      "esperado": "El sistema crear las tres listas por defecto cuando se guarda el proyecto.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-043",
+      "suite": "Regression - ProyectosService - crearProyecto",
+      "nombre": "debe guardar el proyecto antes de crear las listas por defecto",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema guardar el proyecto antes de crear las listas por defecto.",
+      "esperado": "El sistema guardar el proyecto antes de crear las listas por defecto.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-044",
+      "suite": "Regression - ProyectosService - crearProyecto",
+      "nombre": "debe reconocer como miembro a un usuario identificado por UUID",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema reconocer como miembro a un usuario identificado por UUID.",
+      "esperado": "El sistema reconocer como miembro a un usuario identificado por UUID.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-045",
+      "suite": "Regression - AuthService › register",
+      "nombre": "debe crear un usuario nuevo correctamente y devolver un payload sanitizado",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema crear un usuario nuevo correctamente y devolver un payload sanitizado.",
+      "esperado": "El sistema crear un usuario nuevo correctamente y devolver un payload sanitizado.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (12 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-046",
+      "suite": "Regression - AuthService › register",
+      "nombre": "debe rechazar el registro cuando el email ya está en uso",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema rechazar el registro cuando el email ya está en uso.",
+      "esperado": "El sistema rechazar el registro cuando el email ya está en uso.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (9 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-047",
+      "suite": "Regression - AuthService › register",
+      "nombre": "debe hashear la contraseña antes de guardarla y nunca almacenar la contraseña en texto plano",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema hashear la contraseña antes de guardarla y nunca almacenar la contraseña en texto plano.",
+      "esperado": "El sistema hashear la contraseña antes de guardarla y nunca almacenar la contraseña en texto plano.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-048",
+      "suite": "Regression - AuthService › login",
+      "nombre": "debe autenticar correctamente y devolver un token de acceso",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema autenticar correctamente y devolver un token de acceso.",
+      "esperado": "El sistema autenticar correctamente y devolver un token de acceso.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-049",
+      "suite": "Regression - AuthService › login",
+      "nombre": "debe rechazar el login cuando el usuario no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema rechazar el login cuando el usuario no existe.",
+      "esperado": "El sistema rechazar el login cuando el usuario no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-050",
+      "suite": "Regression - AuthService › login",
+      "nombre": "debe rechazar el login cuando la contraseña es inválida",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema rechazar el login cuando la contraseña es inválida.",
+      "esperado": "El sistema rechazar el login cuando la contraseña es inválida.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-051",
+      "suite": "Regression - AuthService › login",
+      "nombre": "debe generar un JWT con el payload esperado del usuario",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema generar un JWT con el payload esperado del usuario.",
+      "esperado": "El sistema generar un JWT con el payload esperado del usuario.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-052",
+      "suite": "Regression - UsuariosService",
+      "nombre": "debe crear y devolver un usuario con el payload guardado",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema crear y devolver un usuario con el payload guardado.",
+      "esperado": "El sistema crear y devolver un usuario con el payload guardado.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (5 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/usuarios/usuarios.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-053",
+      "suite": "Regression - UsuariosService",
+      "nombre": "debe devolver un usuario por id cuando existe",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema devolver un usuario por id cuando existe.",
+      "esperado": "El sistema devolver un usuario por id cuando existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/usuarios/usuarios.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-054",
+      "suite": "Regression - UsuariosService",
+      "nombre": "debe lanzar NotFoundException al buscar un usuario por id cuando no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException al buscar un usuario por id cuando no existe.",
+      "esperado": "El sistema lanzar NotFoundException al buscar un usuario por id cuando no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (11 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/usuarios/usuarios.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-055",
+      "suite": "Regression - UsuariosService",
+      "nombre": "debe devolver un usuario por email sin exponer el campo contraseña",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema devolver un usuario por email sin exponer el campo contraseña.",
+      "esperado": "El sistema devolver un usuario por email sin exponer el campo contraseña.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/usuarios/usuarios.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-056",
+      "suite": "Regression - UsuariosService",
+      "nombre": "debe lanzar NotFoundException al buscar por email cuando no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException al buscar por email cuando no existe.",
+      "esperado": "El sistema lanzar NotFoundException al buscar por email cuando no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/usuarios/usuarios.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-057",
+      "suite": "Regression - UsuariosService",
+      "nombre": "debe incluir la contraseña al buscar por email en crudo (solo autenticación)",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema incluir la contraseña al buscar por email en crudo (solo autenticación).",
+      "esperado": "El sistema incluir la contraseña al buscar por email en crudo (solo autenticación).",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/usuarios/usuarios.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-058",
+      "suite": "Regression - UsuariosService",
+      "nombre": "debe devolver null (sin lanzar) al buscar por email en crudo cuando no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema devolver null (sin lanzar) al buscar por email en crudo cuando no existe.",
+      "esperado": "El sistema devolver null (sin lanzar) al buscar por email en crudo cuando no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/usuarios/usuarios.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-059",
+      "suite": "Regression - UsuariosService",
+      "nombre": "debe actualizar el nombre del perfil sin espacios sobrantes",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema actualizar el nombre del perfil sin espacios sobrantes.",
+      "esperado": "El sistema actualizar el nombre del perfil sin espacios sobrantes.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/usuarios/usuarios.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-060",
+      "suite": "Regression - UsuariosService",
+      "nombre": "debe impedir eliminar la cuenta si el usuario lidera equipos",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema impedir eliminar la cuenta si el usuario lidera equipos.",
+      "esperado": "El sistema impedir eliminar la cuenta si el usuario lidera equipos.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/usuarios/usuarios.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-061",
+      "suite": "Regression - UsuariosService",
+      "nombre": "debe eliminar la cuenta cuando el usuario no lidera equipos",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema eliminar la cuenta cuando el usuario no lidera equipos.",
+      "esperado": "El sistema eliminar la cuenta cuando el usuario no lidera equipos.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/usuarios/usuarios.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-062",
+      "suite": "Regression - EquiposService - removeMiembro",
+      "nombre": "debe eliminar un miembro cuando el solicitante es el líder del equipo",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema eliminar un miembro cuando el solicitante es el líder del equipo.",
+      "esperado": "El sistema eliminar un miembro cuando el solicitante es el líder del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (5 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.remove-miembro.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-063",
+      "suite": "Regression - EquiposService - removeMiembro",
+      "nombre": "debe lanzar NotFoundException cuando el equipo no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException cuando el equipo no existe.",
+      "esperado": "El sistema lanzar NotFoundException cuando el equipo no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (11 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.remove-miembro.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-064",
+      "suite": "Regression - EquiposService - removeMiembro",
+      "nombre": "debe lanzar ForbiddenException cuando el solicitante no es el líder del equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException cuando el solicitante no es el líder del equipo.",
+      "esperado": "El sistema lanzar ForbiddenException cuando el solicitante no es el líder del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.remove-miembro.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-065",
+      "suite": "Regression - EquiposService - removeMiembro",
+      "nombre": "debe lanzar BadRequestException cuando el líder intenta eliminarse a sí mismo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar BadRequestException cuando el líder intenta eliminarse a sí mismo.",
+      "esperado": "El sistema lanzar BadRequestException cuando el líder intenta eliminarse a sí mismo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.remove-miembro.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-066",
+      "suite": "Regression - EquiposService - removeMiembro",
+      "nombre": "debe manejar la eliminación de un usuario que no es miembro sin corromper el estado del equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema manejar la eliminación de un usuario que no es miembro sin corromper el estado del equipo.",
+      "esperado": "El sistema manejar la eliminación de un usuario que no es miembro sin corromper el estado del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.remove-miembro.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-067",
+      "suite": "Regression - EquiposService - removeMiembro",
+      "nombre": "debe permitir múltiples eliminaciones consecutivas de miembros en el mismo equipo",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema permitir múltiples eliminaciones consecutivas de miembros en el mismo equipo.",
+      "esperado": "El sistema permitir múltiples eliminaciones consecutivas de miembros en el mismo equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.remove-miembro.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-068",
+      "suite": "Regression - TareasService - actualizar y eliminar",
+      "nombre": "debe actualizar el título (sin espacios sobrantes) y la descripción de una tarea",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema actualizar el título (sin espacios sobrantes) y la descripción de una tarea.",
+      "esperado": "El sistema actualizar el título (sin espacios sobrantes) y la descripción de una tarea.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.edicion.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-069",
+      "suite": "Regression - TareasService - actualizar y eliminar",
+      "nombre": "no debe llamar a update si no se envía ningún cambio",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema no debe llamar a update si no se envía ningún cambio.",
+      "esperado": "El sistema no debe llamar a update si no se envía ningún cambio.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.edicion.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-070",
+      "suite": "Regression - TareasService - actualizar y eliminar",
+      "nombre": "debe lanzar ForbiddenException al editar una tarea de un equipo ajeno",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException al editar una tarea de un equipo ajeno.",
+      "esperado": "El sistema lanzar ForbiddenException al editar una tarea de un equipo ajeno.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (14 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.edicion.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-071",
+      "suite": "Regression - TareasService - actualizar y eliminar",
+      "nombre": "debe lanzar NotFoundException al editar una tarea inexistente",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException al editar una tarea inexistente.",
+      "esperado": "El sistema lanzar NotFoundException al editar una tarea inexistente.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.edicion.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-072",
+      "suite": "Regression - TareasService - actualizar y eliminar",
+      "nombre": "debe eliminar la tarea cuando el usuario pertenece al equipo",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema eliminar la tarea cuando el usuario pertenece al equipo.",
+      "esperado": "El sistema eliminar la tarea cuando el usuario pertenece al equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.edicion.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-073",
+      "suite": "Regression - TareasService - actualizar y eliminar",
+      "nombre": "debe lanzar ForbiddenException al eliminar una tarea de un equipo ajeno",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException al eliminar una tarea de un equipo ajeno.",
+      "esperado": "El sistema lanzar ForbiddenException al eliminar una tarea de un equipo ajeno.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/tareas/tareas.edicion.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-074",
+      "suite": "Regression - ListasService",
+      "nombre": "debe devolver las listas del proyecto cuando existen",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema devolver las listas del proyecto cuando existen.",
+      "esperado": "El sistema devolver las listas del proyecto cuando existen.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/listas/listas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-075",
+      "suite": "Regression - ListasService",
+      "nombre": "debe devolver un arreglo vacío cuando el proyecto no tiene listas",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema devolver un arreglo vacío cuando el proyecto no tiene listas.",
+      "esperado": "El sistema devolver un arreglo vacío cuando el proyecto no tiene listas.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/listas/listas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-076",
+      "suite": "Regression - ListasService",
+      "nombre": "debe lanzar NotFoundException cuando el proyecto no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException cuando el proyecto no existe.",
+      "esperado": "El sistema lanzar NotFoundException cuando el proyecto no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (6 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/listas/listas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-077",
+      "suite": "Regression - ListasService",
+      "nombre": "debe lanzar ForbiddenException cuando el usuario no pertenece al equipo del proyecto",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException cuando el usuario no pertenece al equipo del proyecto.",
+      "esperado": "El sistema lanzar ForbiddenException cuando el usuario no pertenece al equipo del proyecto.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/listas/listas.service.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-078",
+      "suite": "Regression - LimitadorIntentos (fuerza bruta en login)",
+      "nombre": "debe permitir intentos mientras no se alcance el máximo",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema permitir intentos mientras no se alcance el máximo.",
+      "esperado": "El sistema permitir intentos mientras no se alcance el máximo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/limitador-intentos.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-079",
+      "suite": "Regression - LimitadorIntentos (fuerza bruta en login)",
+      "nombre": "debe bloquear con 429 al alcanzar el máximo de fallos, sin distinguir mayúsculas",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema bloquear con 429 al alcanzar el máximo de fallos, sin distinguir mayúsculas.",
+      "esperado": "El sistema bloquear con 429 al alcanzar el máximo de fallos, sin distinguir mayúsculas.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/limitador-intentos.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-080",
+      "suite": "Regression - LimitadorIntentos (fuerza bruta en login)",
+      "nombre": "no debe afectar a otras cuentas",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema no debe afectar a otras cuentas.",
+      "esperado": "El sistema no debe afectar a otras cuentas.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/limitador-intentos.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-081",
+      "suite": "Regression - LimitadorIntentos (fuerza bruta en login)",
+      "nombre": "debe desbloquear la cuenta cuando pasa el tiempo de bloqueo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema desbloquear la cuenta cuando pasa el tiempo de bloqueo.",
+      "esperado": "El sistema desbloquear la cuenta cuando pasa el tiempo de bloqueo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/limitador-intentos.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-082",
+      "suite": "Regression - LimitadorIntentos (fuerza bruta en login)",
+      "nombre": "debe reiniciar el contador tras un login correcto",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema reiniciar el contador tras un login correcto.",
+      "esperado": "El sistema reiniciar el contador tras un login correcto.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/limitador-intentos.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-083",
+      "suite": "Regression - ProyectosService - eliminar",
+      "nombre": "debe eliminar el proyecto cuando lo solicita el líder del equipo",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema eliminar el proyecto cuando lo solicita el líder del equipo.",
+      "esperado": "El sistema eliminar el proyecto cuando lo solicita el líder del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.eliminar.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-084",
+      "suite": "Regression - ProyectosService - eliminar",
+      "nombre": "debe lanzar ForbiddenException si quien elimina no es el líder",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException si quien elimina no es el líder.",
+      "esperado": "El sistema lanzar ForbiddenException si quien elimina no es el líder.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (4 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.eliminar.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-085",
+      "suite": "Regression - ProyectosService - eliminar",
+      "nombre": "debe lanzar NotFoundException si el proyecto no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException si el proyecto no existe.",
+      "esperado": "El sistema lanzar NotFoundException si el proyecto no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.eliminar.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-086",
+      "suite": "Regression - EquiposService - eliminar",
+      "nombre": "debe eliminar el equipo cuando lo solicita su líder",
+      "tipo": "positivo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema eliminar el equipo cuando lo solicita su líder.",
+      "esperado": "El sistema eliminar el equipo cuando lo solicita su líder.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.eliminar.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-087",
+      "suite": "Regression - EquiposService - eliminar",
+      "nombre": "debe lanzar ForbiddenException si un miembro que no es líder intenta eliminarlo",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar ForbiddenException si un miembro que no es líder intenta eliminarlo.",
+      "esperado": "El sistema lanzar ForbiddenException si un miembro que no es líder intenta eliminarlo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (6 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.eliminar.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JU-088",
+      "suite": "Regression - EquiposService - eliminar",
+      "nombre": "debe lanzar NotFoundException si el equipo no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba unitaria de servicio: verificar que el sistema lanzar NotFoundException si el equipo no existe.",
+      "esperado": "El sistema lanzar NotFoundException si el equipo no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.eliminar.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-unit.json"
+      ]
+    },
+    {
+      "id": "JE-001",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Agregar miembro a equipo (Caja Negra)",
+      "nombre": "debe agregar un miembro y retornar el equipo actualizado",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema agregar un miembro y retornar el equipo actualizado.",
+      "esperado": "El sistema agregar un miembro y retornar el equipo actualizado.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (15 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-002",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Agregar miembro a equipo (Caja Negra)",
+      "nombre": "debe retornar 404 si el equipo no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 404 si el equipo no existe.",
+      "esperado": "El sistema retornar 404 si el equipo no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-003",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Agregar miembro a equipo (Caja Negra)",
+      "nombre": "debe retornar 403 si el solicitante no es el líder",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 403 si el solicitante no es el líder.",
+      "esperado": "El sistema retornar 403 si el solicitante no es el líder.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-004",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Agregar miembro a equipo (Caja Negra)",
+      "nombre": "debe retornar 409 si el usuario ya es miembro del equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 409 si el usuario ya es miembro del equipo.",
+      "esperado": "El sistema retornar 409 si el usuario ya es miembro del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-005",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Agregar miembro a equipo (Caja Negra)",
+      "nombre": "debe retornar 404 si el usuario a agregar no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 404 si el usuario a agregar no existe.",
+      "esperado": "El sistema retornar 404 si el usuario a agregar no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-006",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Agregar miembro a equipo (Caja Negra)",
+      "nombre": "no debe guardar cambios si el usuario no tiene permisos",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema no debe guardar cambios si el usuario no tiene permisos.",
+      "esperado": "El sistema no debe guardar cambios si el usuario no tiene permisos.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (17 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-007",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Eliminar miembro de equipo (Caja Negra)",
+      "nombre": "debe eliminar un miembro y retornar el equipo actualizado",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema eliminar un miembro y retornar el equipo actualizado.",
+      "esperado": "El sistema eliminar un miembro y retornar el equipo actualizado.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-008",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Eliminar miembro de equipo (Caja Negra)",
+      "nombre": "debe retornar 404 si el equipo no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 404 si el equipo no existe.",
+      "esperado": "El sistema retornar 404 si el equipo no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-009",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Eliminar miembro de equipo (Caja Negra)",
+      "nombre": "debe retornar 403 si el solicitante no es el líder",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 403 si el solicitante no es el líder.",
+      "esperado": "El sistema retornar 403 si el solicitante no es el líder.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-010",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Eliminar miembro de equipo (Caja Negra)",
+      "nombre": "debe manejar silenciosamente si el usuario a eliminar no es miembro",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema manejar silenciosamente si el usuario a eliminar no es miembro.",
+      "esperado": "El sistema manejar silenciosamente si el usuario a eliminar no es miembro.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-011",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Eliminar miembro de equipo (Caja Negra)",
+      "nombre": "no debe guardar cambios si el usuario no tiene permisos",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema no debe guardar cambios si el usuario no tiene permisos.",
+      "esperado": "El sistema no debe guardar cambios si el usuario no tiene permisos.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-012",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Obtener miembros de equipo (Caja Negra)",
+      "nombre": "debe retornar lista de miembros y líder si el usuario tiene acceso",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar lista de miembros y líder si el usuario tiene acceso.",
+      "esperado": "El sistema retornar lista de miembros y líder si el usuario tiene acceso.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-013",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Obtener miembros de equipo (Caja Negra)",
+      "nombre": "debe retornar 404 si el equipo no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 404 si el equipo no existe.",
+      "esperado": "El sistema retornar 404 si el equipo no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-014",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Obtener miembros de equipo (Caja Negra)",
+      "nombre": "debe retornar 403 si el usuario no es miembro del equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 403 si el usuario no es miembro del equipo.",
+      "esperado": "El sistema retornar 403 si el usuario no es miembro del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-015",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Obtener detalle de equipo (Caja Negra)",
+      "nombre": "debe retornar el equipo si el usuario es miembro",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar el equipo si el usuario es miembro.",
+      "esperado": "El sistema retornar el equipo si el usuario es miembro.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-016",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Obtener detalle de equipo (Caja Negra)",
+      "nombre": "debe retornar 403 si el usuario no pertenece al equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 403 si el usuario no pertenece al equipo.",
+      "esperado": "El sistema retornar 403 si el usuario no pertenece al equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-017",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Validaciones de entrada (Caja Negra)",
+      "nombre": "debe manejar IDs vacíos correctamente",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema manejar IDs vacíos correctamente.",
+      "esperado": "El sistema manejar IDs vacíos correctamente.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-018",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Validaciones de entrada (Caja Negra)",
+      "nombre": "debe manejar IDs muy largos",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema manejar IDs muy largos.",
+      "esperado": "El sistema manejar IDs muy largos.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-019",
+      "suite": "Regression - Equipos E2E Tests (Black Box) › Validaciones de entrada (Caja Negra)",
+      "nombre": "debe manejar valores null en parámetros",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema manejar valores null en parámetros.",
+      "esperado": "El sistema manejar valores null en parámetros.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/equipos/equipos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-020",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Crear proyecto (Caja Negra)",
+      "nombre": "debe crear un proyecto y retornarlo con ID",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema crear un proyecto y retornarlo con ID.",
+      "esperado": "El sistema crear un proyecto y retornarlo con ID.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-021",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Crear proyecto (Caja Negra)",
+      "nombre": "debe crear tres listas default (Por Hacer, En Progreso, Hecho)",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema crear tres listas default (Por Hacer, En Progreso, Hecho).",
+      "esperado": "El sistema crear tres listas default (Por Hacer, En Progreso, Hecho).",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-022",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Crear proyecto (Caja Negra)",
+      "nombre": "debe retornar 404 si el equipo no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 404 si el equipo no existe.",
+      "esperado": "El sistema retornar 404 si el equipo no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-023",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Crear proyecto (Caja Negra)",
+      "nombre": "debe retornar 403 si el usuario no pertenece al equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 403 si el usuario no pertenece al equipo.",
+      "esperado": "El sistema retornar 403 si el usuario no pertenece al equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-024",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Crear proyecto (Caja Negra)",
+      "nombre": "el líder del equipo debe poder crear proyectos",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema el líder del equipo debe poder crear proyectos.",
+      "esperado": "El sistema el líder del equipo debe poder crear proyectos.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-025",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Crear proyecto (Caja Negra)",
+      "nombre": "no debe crear listas si el usuario no tiene acceso",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema no debe crear listas si el usuario no tiene acceso.",
+      "esperado": "El sistema no debe crear listas si el usuario no tiene acceso.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (7 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-026",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Crear proyecto (Caja Negra)",
+      "nombre": "debe manejar nombres de proyecto vacíos",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema manejar nombres de proyecto vacíos.",
+      "esperado": "El sistema manejar nombres de proyecto vacíos.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-027",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Obtener proyectos de equipo (Caja Negra)",
+      "nombre": "debe retornar lista de proyectos del equipo",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar lista de proyectos del equipo.",
+      "esperado": "El sistema retornar lista de proyectos del equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-028",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Obtener proyectos de equipo (Caja Negra)",
+      "nombre": "debe retornar 404 si el equipo no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 404 si el equipo no existe.",
+      "esperado": "El sistema retornar 404 si el equipo no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-029",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Obtener proyectos de equipo (Caja Negra)",
+      "nombre": "debe retornar 403 si el usuario no tiene acceso al equipo",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 403 si el usuario no tiene acceso al equipo.",
+      "esperado": "El sistema retornar 403 si el usuario no tiene acceso al equipo.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-030",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Obtener proyectos de equipo (Caja Negra)",
+      "nombre": "debe retornar array vacío si el equipo no tiene proyectos",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar array vacío si el equipo no tiene proyectos.",
+      "esperado": "El sistema retornar array vacío si el equipo no tiene proyectos.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-031",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Obtener proyecto por ID (Caja Negra)",
+      "nombre": "debe retornar datos del proyecto con acceso",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar datos del proyecto con acceso.",
+      "esperado": "El sistema retornar datos del proyecto con acceso.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-032",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Obtener proyecto por ID (Caja Negra)",
+      "nombre": "debe retornar 404 si el proyecto no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 404 si el proyecto no existe.",
+      "esperado": "El sistema retornar 404 si el proyecto no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-033",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Obtener proyecto por ID (Caja Negra)",
+      "nombre": "debe retornar 403 si el usuario no tiene acceso al proyecto",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema retornar 403 si el usuario no tiene acceso al proyecto.",
+      "esperado": "El sistema retornar 403 si el usuario no tiene acceso al proyecto.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (1 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-034",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Validaciones de entrada (Caja Negra)",
+      "nombre": "debe manejar equipoId vacío en crearProyecto",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema manejar equipoId vacío en crearProyecto.",
+      "esperado": "El sistema manejar equipoId vacío en crearProyecto.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-035",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Validaciones de entrada (Caja Negra)",
+      "nombre": "debe aceptar nombres con caracteres especiales",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema aceptar nombres con caracteres especiales.",
+      "esperado": "El sistema aceptar nombres con caracteres especiales.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-036",
+      "suite": "Regression - Proyectos E2E Tests (Black Box) › Validaciones de entrada (Caja Negra)",
+      "nombre": "debe aceptar nombres muy largos",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema aceptar nombres muy largos.",
+      "esperado": "El sistema aceptar nombres muy largos.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (0 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/proyectos/proyectos.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-037",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/register",
+      "nombre": "debe registrar un usuario nuevo y devolver una respuesta sanitizada sin contraseña",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema registrar un usuario nuevo y devolver una respuesta sanitizada sin contraseña.",
+      "esperado": "El sistema registrar un usuario nuevo y devolver una respuesta sanitizada sin contraseña.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (33 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-038",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/register",
+      "nombre": "debe rechazar el registro cuando el email ya existe con 409 Conflict",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema rechazar el registro cuando el email ya existe con 409 Conflict.",
+      "esperado": "El sistema rechazar el registro cuando el email ya existe con 409 Conflict.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (5 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-039",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/register",
+      "nombre": "debe rechazar el registro cuando el email está vacío",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema rechazar el registro cuando el email está vacío.",
+      "esperado": "El sistema rechazar el registro cuando el email está vacío.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (4 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-040",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/register",
+      "nombre": "debe rechazar el registro cuando la contraseña es demasiado corta",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema rechazar el registro cuando la contraseña es demasiado corta.",
+      "esperado": "El sistema rechazar el registro cuando la contraseña es demasiado corta.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-041",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/register",
+      "nombre": "debe rechazar el registro cuando el nombre está vacío",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema rechazar el registro cuando el nombre está vacío.",
+      "esperado": "El sistema rechazar el registro cuando el nombre está vacío.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-042",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/login",
+      "nombre": "debe devolver un token de acceso válido cuando las credenciales son correctas",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema devolver un token de acceso válido cuando las credenciales son correctas.",
+      "esperado": "El sistema devolver un token de acceso válido cuando las credenciales son correctas.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-043",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/login",
+      "nombre": "debe devolver 401 Unauthorized cuando el email no existe",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema devolver 401 Unauthorized cuando el email no existe.",
+      "esperado": "El sistema devolver 401 Unauthorized cuando el email no existe.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (4 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-044",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/login",
+      "nombre": "debe devolver 401 Unauthorized cuando la contraseña es incorrecta",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema devolver 401 Unauthorized cuando la contraseña es incorrecta.",
+      "esperado": "El sistema devolver 401 Unauthorized cuando la contraseña es incorrecta.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (4 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-045",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/login",
+      "nombre": "debe rechazar el login cuando el email está vacío",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema rechazar el login cuando el email está vacío.",
+      "esperado": "El sistema rechazar el login cuando el email está vacío.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-046",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/login",
+      "nombre": "debe rechazar login sin contraseña",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema rechazar login sin contraseña.",
+      "esperado": "El sistema rechazar login sin contraseña.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (5 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-047",
+      "suite": "Regression - Auth E2E Tests (Black Box) › POST /auth/login",
+      "nombre": "el token retornado debe ser un JWT válido",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema el token retornado debe ser un JWT válido.",
+      "esperado": "El sistema el token retornado debe ser un JWT válido.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (3 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-048",
+      "suite": "Regression - Auth E2E Tests (Black Box) › Security Scenarios",
+      "nombre": "debe rechazar caracteres de inyección SQL en el email",
+      "tipo": "negativo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema rechazar caracteres de inyección SQL en el email.",
+      "esperado": "El sistema rechazar caracteres de inyección SQL en el email.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (4 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    },
+    {
+      "id": "JE-049",
+      "suite": "Regression - Auth E2E Tests (Black Box) › Security Scenarios",
+      "nombre": "nunca debe retornar la contraseña en la respuesta",
+      "tipo": "positivo",
+      "objetivo": "Prueba de caja negra del servicio: verificar que el sistema nunca debe retornar la contraseña en la respuesta.",
+      "esperado": "El sistema nunca debe retornar la contraseña en la respuesta.",
+      "obtenido": "Correcto: todas las aserciones se cumplieron (2 ms).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "src/auth/auth.e2e.spec.ts",
+        "pruebas/evidencias/backend-jest/jest-e2e.json"
+      ]
+    }
+  ]
+}

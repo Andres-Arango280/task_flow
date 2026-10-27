@@ -1,0 +1,19 @@
+{
+  "id": "API-LIS-02",
+  "obtenido": "Respondió 403 con \"No tienes acceso a este proyecto\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/listas/proyecto/dada7439-e2bd-45f5-b9e4-b6ed7049c333",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 403,
+    "duracionMs": 13,
+    "cuerpo": {
+      "message": "No tienes acceso a este proyecto",
+      "error": "Forbidden",
+      "statusCode": 403
+    }
+  },
+  "fecha": "2026-10-26T23:13:03.547Z"
+}

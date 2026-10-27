@@ -1,0 +1,727 @@
+{
+  "fecha": "2026-10-27T04:35:37.261Z",
+  "maquina": {
+    "so": "Windows_NT 10.0.26300 (Windows 11 Home) x64",
+    "cpu": "AMD Ryzen AI 7 350 w/ Radeon 860M — 16 hilos lógicos",
+    "ramGB": 23.2,
+    "node": "v20.20.2",
+    "autocannon": "7.15.0",
+    "baseDatos": "PostgreSQL 18.6 (max_connections=100; pool TypeORM/pg por defecto = 10 conexiones)",
+    "backend": "NestJS 10 en modo desarrollo (npm run start:dev, proceso único) en http://localhost:3000",
+    "nota": "Generador de carga (autocannon) y servidor en la misma máquina: compiten por CPU, por lo que los valores absolutos son conservadores."
+  },
+  "id": "resistencia",
+  "codigo": "REN-06",
+  "nombre": "Resistencia corta (soak) — mezcla de lecturas, 2 min",
+  "objetivo": "Observar deriva de latencia, errores y memoria del backend con carga moderada sostenida.",
+  "condiciones": "25 conexiones, 120 s; cada conexión rota GET /equipos, GET /proyectos?equipoId, GET /listas/proyecto/:id y GET /tareas?proyectoId.",
+  "criterios": {
+    "p95Ms": 500,
+    "tasaErrorPctMax": 1,
+    "derivaP95PctMax": 50
+  },
+  "pidBackend": 29704,
+  "resultado": {
+    "titulo": "resistencia",
+    "conexiones": 25,
+    "duracionSeg": 120,
+    "inicio": "2026-10-27T04:33:36.976Z",
+    "peticionesTotales": 39952,
+    "peticionesPorSeg": 332.94,
+    "peticionesPorSegMax": 379,
+    "bytesPorSeg": 4767710,
+    "latenciaMs": {
+      "media": 74.69,
+      "p50": 73.45,
+      "p90": 93.85,
+      "p95": 102.46,
+      "p99": 122.4,
+      "max": 176.23,
+      "min": 35.91
+    },
+    "codigos": {
+      "200": 39952
+    },
+    "respuestas2xx": 39952,
+    "non2xx": 0,
+    "erroresConexion": 0,
+    "timeouts": 0,
+    "tasaErrorPct": 0,
+    "serie": [
+      {
+        "t": 10,
+        "reqs": 3066,
+        "rps": 306.6,
+        "p50": 78.51,
+        "p95": 121.24,
+        "errores": 0
+      },
+      {
+        "t": 20,
+        "reqs": 3310,
+        "rps": 331,
+        "p50": 74.29,
+        "p95": 98.33,
+        "errores": 0
+      },
+      {
+        "t": 30,
+        "reqs": 3440,
+        "rps": 344,
+        "p50": 71.68,
+        "p95": 95.08,
+        "errores": 0
+      },
+      {
+        "t": 40,
+        "reqs": 3393,
+        "rps": 339.3,
+        "p50": 72.14,
+        "p95": 97.32,
+        "errores": 0
+      },
+      {
+        "t": 50,
+        "reqs": 3416,
+        "rps": 341.6,
+        "p50": 71.02,
+        "p95": 99.51,
+        "errores": 0
+      },
+      {
+        "t": 60,
+        "reqs": 3299,
+        "rps": 329.9,
+        "p50": 73.84,
+        "p95": 102.45,
+        "errores": 0
+      },
+      {
+        "t": 70,
+        "reqs": 3354,
+        "rps": 335.4,
+        "p50": 73.24,
+        "p95": 98.66,
+        "errores": 0
+      },
+      {
+        "t": 80,
+        "reqs": 3255,
+        "rps": 325.5,
+        "p50": 74.2,
+        "p95": 109.44,
+        "errores": 0
+      },
+      {
+        "t": 90,
+        "reqs": 3273,
+        "rps": 327.3,
+        "p50": 75.12,
+        "p95": 97.86,
+        "errores": 0
+      },
+      {
+        "t": 100,
+        "reqs": 3326,
+        "rps": 332.6,
+        "p50": 73.29,
+        "p95": 101.84,
+        "errores": 0
+      },
+      {
+        "t": 110,
+        "reqs": 3370,
+        "rps": 337,
+        "p50": 73.39,
+        "p95": 98.51,
+        "errores": 0
+      },
+      {
+        "t": 120,
+        "reqs": 3368,
+        "rps": 336.8,
+        "p50": 73.16,
+        "p95": 98.2,
+        "errores": 0
+      },
+      {
+        "t": 130,
+        "reqs": 82,
+        "rps": 8.2,
+        "p50": 67.11,
+        "p95": 79.14,
+        "errores": 0
+      }
+    ],
+    "autocannon": {
+      "latency": {
+        "average": 74.69,
+        "mean": 74.69,
+        "stddev": 14.8,
+        "min": 35,
+        "max": 176,
+        "p0_001": 35,
+        "p0_01": 37,
+        "p0_1": 41,
+        "p1": 48,
+        "p2_5": 51,
+        "p10": 58,
+        "p25": 65,
+        "p50": 73,
+        "p75": 82,
+        "p90": 93,
+        "p97_5": 110,
+        "p99": 122,
+        "p99_9": 143,
+        "p99_99": 161,
+        "p99_999": 176,
+        "totalCount": 39952
+      },
+      "requests": {
+        "average": 332.94,
+        "mean": 332.94,
+        "stddev": 20.82,
+        "min": 251,
+        "max": 379,
+        "total": 39952,
+        "p0_001": 251,
+        "p0_01": 251,
+        "p0_1": 251,
+        "p1": 271,
+        "p2_5": 290,
+        "p10": 305,
+        "p25": 319,
+        "p50": 334,
+        "p75": 348,
+        "p90": 356,
+        "p97_5": 364,
+        "p99": 367,
+        "p99_9": 379,
+        "p99_99": 379,
+        "p99_999": 379,
+        "sent": 39977
+      },
+      "throughput": {
+        "average": 4767709.87,
+        "mean": 4767709.87,
+        "stddev": 305441.94,
+        "min": 3155668,
+        "max": 5212822,
+        "total": 572142820,
+        "p0_001": 3155967,
+        "p0_01": 3155967,
+        "p0_1": 3155967,
+        "p1": 4145151,
+        "p2_5": 4179967,
+        "p10": 4419583,
+        "p25": 4567039,
+        "p50": 4792319,
+        "p75": 5001215,
+        "p90": 5136383,
+        "p97_5": 5193727,
+        "p99": 5210111,
+        "p99_9": 5214207,
+        "p99_99": 5214207,
+        "p99_999": 5214207
+      },
+      "statusCodeStats": {
+        "200": {
+          "count": 39952
+        }
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "non2xx": 0,
+      "duration": 120.22,
+      "start": "2026-10-27T04:33:36.976Z",
+      "finish": "2026-10-27T04:35:37.199Z"
+    }
+  },
+  "analisis": {
+    "p95InicialMs": 98.33,
+    "p95FinalMs": 98.2,
+    "derivaP95Pct": -0.13,
+    "rpsInicial": 306.6,
+    "rpsFinal": 8.2
+  },
+  "evaluacion": {
+    "estado": "Aprobado",
+    "motivos": []
+  },
+  "recursos": [
+    {
+      "t": 2.05,
+      "backendMemMB": 147.01,
+      "backendCpuPctNucleo": 115.04,
+      "backendCpuPctTotal": 7.19,
+      "postgresMemMB": 225.02,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 4.11,
+      "backendMemMB": 151.79,
+      "backendCpuPctNucleo": 105.58,
+      "backendCpuPctTotal": 6.6,
+      "postgresMemMB": 225.53,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 6.15,
+      "backendMemMB": 167.98,
+      "backendCpuPctNucleo": 100.39,
+      "backendCpuPctTotal": 6.27,
+      "postgresMemMB": 225.66,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 8.17,
+      "backendMemMB": 185.91,
+      "backendCpuPctNucleo": 103.29,
+      "backendCpuPctTotal": 6.46,
+      "postgresMemMB": 225.7,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 10.21,
+      "backendMemMB": 201.59,
+      "backendCpuPctNucleo": 99.72,
+      "backendCpuPctTotal": 6.23,
+      "postgresMemMB": 225.34,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 12.25,
+      "backendMemMB": 218.57,
+      "backendCpuPctNucleo": 100.29,
+      "backendCpuPctTotal": 6.27,
+      "postgresMemMB": 225.45,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 14.28,
+      "backendMemMB": 236.17,
+      "backendCpuPctNucleo": 100.98,
+      "backendCpuPctTotal": 6.31,
+      "postgresMemMB": 225.47,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 16.31,
+      "backendMemMB": 147.14,
+      "backendCpuPctNucleo": 102.57,
+      "backendCpuPctTotal": 6.41,
+      "postgresMemMB": 225.19,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 18.35,
+      "backendMemMB": 147.74,
+      "backendCpuPctNucleo": 102.18,
+      "backendCpuPctTotal": 6.39,
+      "postgresMemMB": 225.6,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 20.38,
+      "backendMemMB": 120.36,
+      "backendCpuPctNucleo": 104.99,
+      "backendCpuPctTotal": 6.56,
+      "postgresMemMB": 225.44,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 22.41,
+      "backendMemMB": 114.17,
+      "backendCpuPctNucleo": 99.96,
+      "backendCpuPctTotal": 6.25,
+      "postgresMemMB": 225.39,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 24.45,
+      "backendMemMB": 114.93,
+      "backendCpuPctNucleo": 105.7,
+      "backendCpuPctTotal": 6.61,
+      "postgresMemMB": 225.44,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 26.48,
+      "backendMemMB": 115.59,
+      "backendCpuPctNucleo": 99.96,
+      "backendCpuPctTotal": 6.25,
+      "postgresMemMB": 225.47,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 28.51,
+      "backendMemMB": 116.45,
+      "backendCpuPctNucleo": 103.09,
+      "backendCpuPctTotal": 6.44,
+      "postgresMemMB": 225.71,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 30.55,
+      "backendMemMB": 122.4,
+      "backendCpuPctNucleo": 99.86,
+      "backendCpuPctTotal": 6.24,
+      "postgresMemMB": 225.56,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 32.58,
+      "backendMemMB": 116.18,
+      "backendCpuPctNucleo": 106.88,
+      "backendCpuPctTotal": 6.68,
+      "postgresMemMB": 225.46,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 34.61,
+      "backendMemMB": 121.68,
+      "backendCpuPctNucleo": 98.52,
+      "backendCpuPctTotal": 6.16,
+      "postgresMemMB": 225.32,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 36.65,
+      "backendMemMB": 115.13,
+      "backendCpuPctNucleo": 104.17,
+      "backendCpuPctTotal": 6.51,
+      "postgresMemMB": 225.73,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 38.67,
+      "backendMemMB": 115.43,
+      "backendCpuPctNucleo": 108.08,
+      "backendCpuPctTotal": 6.75,
+      "postgresMemMB": 225.39,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 40.71,
+      "backendMemMB": 115.92,
+      "backendCpuPctNucleo": 100.44,
+      "backendCpuPctTotal": 6.28,
+      "postgresMemMB": 225.38,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 42.74,
+      "backendMemMB": 116.67,
+      "backendCpuPctNucleo": 101.5,
+      "backendCpuPctTotal": 6.34,
+      "postgresMemMB": 225.1,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 44.78,
+      "backendMemMB": 124.2,
+      "backendCpuPctNucleo": 100.44,
+      "backendCpuPctTotal": 6.28,
+      "postgresMemMB": 232.19,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 46.81,
+      "backendMemMB": 115.39,
+      "backendCpuPctNucleo": 101.65,
+      "backendCpuPctTotal": 6.35,
+      "postgresMemMB": 225.37,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 48.86,
+      "backendMemMB": 116.71,
+      "backendCpuPctNucleo": 98.47,
+      "backendCpuPctTotal": 6.15,
+      "postgresMemMB": 225.13,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 50.89,
+      "backendMemMB": 111.89,
+      "backendCpuPctNucleo": 104.58,
+      "backendCpuPctTotal": 6.54,
+      "postgresMemMB": 225.1,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 52.93,
+      "backendMemMB": 111.93,
+      "backendCpuPctNucleo": 97.99,
+      "backendCpuPctTotal": 6.12,
+      "postgresMemMB": 225.62,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 54.96,
+      "backendMemMB": 109.91,
+      "backendCpuPctNucleo": 106.88,
+      "backendCpuPctTotal": 6.68,
+      "postgresMemMB": 225.13,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 57,
+      "backendMemMB": 110.49,
+      "backendCpuPctNucleo": 101.05,
+      "backendCpuPctTotal": 6.32,
+      "postgresMemMB": 225.3,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 59.04,
+      "backendMemMB": 110.67,
+      "backendCpuPctNucleo": 99.72,
+      "backendCpuPctTotal": 6.23,
+      "postgresMemMB": 225.24,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 61.08,
+      "backendMemMB": 111.98,
+      "backendCpuPctNucleo": 111.99,
+      "backendCpuPctTotal": 7,
+      "postgresMemMB": 225.36,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 63.12,
+      "backendMemMB": 112.13,
+      "backendCpuPctNucleo": 106.2,
+      "backendCpuPctTotal": 6.64,
+      "postgresMemMB": 225.37,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 65.15,
+      "backendMemMB": 109.13,
+      "backendCpuPctNucleo": 104.83,
+      "backendCpuPctTotal": 6.55,
+      "postgresMemMB": 225.9,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 67.18,
+      "backendMemMB": 108.84,
+      "backendCpuPctNucleo": 103.14,
+      "backendCpuPctTotal": 6.45,
+      "postgresMemMB": 225.66,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 69.22,
+      "backendMemMB": 109.1,
+      "backendCpuPctNucleo": 101.87,
+      "backendCpuPctTotal": 6.37,
+      "postgresMemMB": 231.63,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 71.24,
+      "backendMemMB": 109.36,
+      "backendCpuPctNucleo": 106.48,
+      "backendCpuPctTotal": 6.66,
+      "postgresMemMB": 225.71,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 73.28,
+      "backendMemMB": 115.97,
+      "backendCpuPctNucleo": 97.51,
+      "backendCpuPctTotal": 6.09,
+      "postgresMemMB": 225.48,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 75.31,
+      "backendMemMB": 110.09,
+      "backendCpuPctNucleo": 98.52,
+      "backendCpuPctTotal": 6.16,
+      "postgresMemMB": 225.73,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 77.34,
+      "backendMemMB": 110.56,
+      "backendCpuPctNucleo": 103.91,
+      "backendCpuPctTotal": 6.49,
+      "postgresMemMB": 225.8,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 79.38,
+      "backendMemMB": 115.22,
+      "backendCpuPctNucleo": 95.79,
+      "backendCpuPctTotal": 5.99,
+      "postgresMemMB": 225.24,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 81.43,
+      "backendMemMB": 110.17,
+      "backendCpuPctNucleo": 102.23,
+      "backendCpuPctTotal": 6.39,
+      "postgresMemMB": 225.61,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 83.45,
+      "backendMemMB": 110.83,
+      "backendCpuPctNucleo": 109.41,
+      "backendCpuPctTotal": 6.84,
+      "postgresMemMB": 225.53,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 85.48,
+      "backendMemMB": 111.25,
+      "backendCpuPctNucleo": 103.24,
+      "backendCpuPctTotal": 6.45,
+      "postgresMemMB": 225.56,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 87.51,
+      "backendMemMB": 108.95,
+      "backendCpuPctNucleo": 97.03,
+      "backendCpuPctTotal": 6.06,
+      "postgresMemMB": 225.83,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 89.56,
+      "backendMemMB": 108.74,
+      "backendCpuPctNucleo": 110.08,
+      "backendCpuPctTotal": 6.88,
+      "postgresMemMB": 225.74,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 91.58,
+      "backendMemMB": 108.73,
+      "backendCpuPctNucleo": 110.18,
+      "backendCpuPctTotal": 6.89,
+      "postgresMemMB": 226.35,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 93.61,
+      "backendMemMB": 113.39,
+      "backendCpuPctNucleo": 99.64,
+      "backendCpuPctTotal": 6.23,
+      "postgresMemMB": 226.17,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 95.64,
+      "backendMemMB": 109.77,
+      "backendCpuPctNucleo": 102.94,
+      "backendCpuPctTotal": 6.43,
+      "postgresMemMB": 226.35,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 97.66,
+      "backendMemMB": 109.25,
+      "backendCpuPctNucleo": 108.08,
+      "backendCpuPctTotal": 6.75,
+      "postgresMemMB": 226.47,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 99.7,
+      "backendMemMB": 114.25,
+      "backendCpuPctNucleo": 102.07,
+      "backendCpuPctTotal": 6.38,
+      "postgresMemMB": 226.74,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 101.74,
+      "backendMemMB": 109.77,
+      "backendCpuPctNucleo": 104.17,
+      "backendCpuPctTotal": 6.51,
+      "postgresMemMB": 227.07,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 103.77,
+      "backendMemMB": 110.23,
+      "backendCpuPctNucleo": 104.01,
+      "backendCpuPctTotal": 6.5,
+      "postgresMemMB": 227.07,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 105.81,
+      "backendMemMB": 109.86,
+      "backendCpuPctNucleo": 102.69,
+      "backendCpuPctTotal": 6.42,
+      "postgresMemMB": 226.88,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 107.84,
+      "backendMemMB": 113.37,
+      "backendCpuPctNucleo": 96.79,
+      "backendCpuPctTotal": 6.05,
+      "postgresMemMB": 227.1,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 109.89,
+      "backendMemMB": 109.77,
+      "backendCpuPctNucleo": 106.15,
+      "backendCpuPctTotal": 6.63,
+      "postgresMemMB": 227.32,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 111.93,
+      "backendMemMB": 108.83,
+      "backendCpuPctNucleo": 99.62,
+      "backendCpuPctTotal": 6.23,
+      "postgresMemMB": 227.18,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 113.96,
+      "backendMemMB": 113.34,
+      "backendCpuPctNucleo": 108.37,
+      "backendCpuPctTotal": 6.77,
+      "postgresMemMB": 227.4,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 116,
+      "backendMemMB": 109.8,
+      "backendCpuPctNucleo": 100.86,
+      "backendCpuPctTotal": 6.3,
+      "postgresMemMB": 227.55,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 118.04,
+      "backendMemMB": 124.97,
+      "backendCpuPctNucleo": 100.44,
+      "backendCpuPctTotal": 6.28,
+      "postgresMemMB": 227.26,
+      "postgresCpuPctTotal": 0
+    }
+  ],
+  "recursosResumen": {
+    "muestras": 58,
+    "backendCpuNucleoMedioPct": 102.97,
+    "backendCpuNucleoMaxPct": 115.04,
+    "backendMemInicialMB": 147.01,
+    "backendMemFinalMB": 124.97,
+    "backendMemMaxMB": 236.17,
+    "postgresCpuTotalMedioPct": 0,
+    "postgresCpuTotalMaxPct": 0
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "SEG-CONF-06",
+  "nombre": "El frontend define Content-Security-Policy",
+  "fecha": "2026-10-26T23:19:20.471Z",
+  "obtenido": "CSP cabecera=ausente; meta CSP=no; token guardado en localStorage en: taskflow-frontend\\src\\pages\\Login.tsx:70, taskflow-frontend\\src\\store\\useAuthStore.ts:47",
+  "intercambios": []
+}

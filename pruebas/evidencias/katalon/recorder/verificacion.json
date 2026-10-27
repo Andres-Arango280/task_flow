@@ -1,0 +1,61 @@
+{
+  "fecha": "2026-10-13T13:50:54.662Z",
+  "resultados": [
+    {
+      "caso": "TC01_Registro_y_login_exitoso",
+      "estado": "Aprobado",
+      "pasos": "19/19",
+      "duracionSeg": 4.5,
+      "error": null,
+      "captura": "TC01_Registro_y_login_exitoso.png"
+    },
+    {
+      "caso": "TC02_Registro_rechaza_contrasena_debil",
+      "estado": "Aprobado",
+      "pasos": "15/15",
+      "duracionSeg": 2.8,
+      "error": null,
+      "captura": "TC02_Registro_rechaza_contrasena_debil.png"
+    },
+    {
+      "caso": "TC03_Login_con_credenciales_invalidas",
+      "estado": "Aprobado",
+      "pasos": "12/12",
+      "duracionSeg": 2.2,
+      "error": null,
+      "captura": "TC03_Login_con_credenciales_invalidas.png"
+    },
+    {
+      "caso": "TC04_Crear_equipo",
+      "estado": "Aprobado",
+      "pasos": "23/23",
+      "duracionSeg": 4.3,
+      "error": null,
+      "captura": "TC04_Crear_equipo.png"
+    },
+    {
+      "caso": "TC05_Crear_proyecto_con_tablero_de_3_columnas",
+      "estado": "Aprobado",
+      "pasos": "34/34",
+      "duracionSeg": 6,
+      "error": null,
+      "captura": "TC05_Crear_proyecto_con_tablero_de_3_columnas.png"
+    },
+    {
+      "caso": "TC06_Tareas_validacion_y_busqueda",
+      "estado": "Aprobado",
+      "pasos": "46/46",
+      "duracionSeg": 8.2,
+      "error": null,
+      "captura": "TC06_Tareas_validacion_y_busqueda.png"
+    },
+    {
+      "caso": "TC07_Preferencias_cierre_de_sesion_y_ruta_protegida",
+      "estado": "Aprobado",
+      "pasos": "32/32",
+      "duracionSeg": 5.6,
+      "error": null,
+      "captura": "TC07_Preferencias_cierre_de_sesion_y_ruta_protegida.png"
+    }
+  ]
+}

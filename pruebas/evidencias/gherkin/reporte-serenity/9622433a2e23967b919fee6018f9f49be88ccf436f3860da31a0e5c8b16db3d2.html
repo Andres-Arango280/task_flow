@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>GH-11 Eliminar una tarea pide confirmación y se puede deshacer</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/2.3.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/2.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/2.3.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0.min.js"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
+<link type="text/css" href="jquery-ui-1.14.1/jquery-ui.css" rel="Stylesheet" />
+<script type="text/javascript" src="jquery-ui-1.14.1/jquery-ui.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/2.3.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/2.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/2.3.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<!-- ImgPreview -->
+<script src="scripts/imgpreview.full.jquery.js" type="text/javascript"></script>
+</head>
+
+<body class="results-page">
+
+
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs">
+            <a href="index.html" class="breadcrumbs">Home</a>
+
+ <!-- inflection.of(breadcrumb.displayName).asATitle()-->
+            > <a href="71d4b8faf5ab72d4bb86905f470014e87cdc147930377c3c126d32a221497124.html">
+            Tablero Kanban de tareas
+        </a>
+        >
+            GH-11 eliminar una tarea pide confirmaci&oacute;n y se puede deshacer
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 26-10-2026 23:13</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fs-2 bi bi-chat-left-quote title-icon"></i>
+                                        <span class="story-header-title">Tablero Kanban De Tareas </span>
+                                    </h3>
+
+                                </div>
+
+                        </td>
+                        <td valign="top">
+                            <p class="tag">
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="cc42b85dd0ecdc61ece7287f5223d9401b9381b5dff72710837468706f8417c4.html">Alternativo
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="6c5512236937b92cd7a296b24edb966c2bd94be46b8910f8b129a42d6150eb25.html">1 To 10 Seconds
+                                              (Duration)
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="b72ce1ff8db221d6a6d42a28b749e535380a2606e42629ee49b9f84d58fe2800.html">Tareas
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="#">Tablero Kanban De Tareas
+                                              (feature)
+                                        </a>
+                                </span>
+                                    
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">
+                                    GH-11 Eliminar una tarea pide confirmaci&oacute;n y se puede deshacer
+                                        <span class="related-issue-title">(GH-11)</span>
+                                </span>
+                            </span>
+
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <!-- CAST MEMBERS -->
+            <div>&nbsp;</div>
+            <div>
+                <h3 class="discreet-story-header">
+                    <i class="fs-2 bi bi-people large-icon"></i>
+                    <span class="story-header-title">
+                        <a class="btn btn-primary" data-toggle="collapse" href="#castDetails"
+                           role="button" aria-expanded="true" aria-controls="castDetails">Cast</a>
+                    </span>
+                </h3>
+            </div>
+            <div class="collapse multi-collapse" id="castDetails">
+                <table class="cast">
+                    <tr>
+                            <td width="100%">
+                                <h4>
+                                    <i class="fs-2 bi bi-person"></i>&nbsp;
+                                    <span>
+                                        <a data-toggle="collapse" href="#abilities-Ana"
+                                           aria-expanded="false" aria-controls="abilities">Ana</a>
+                                        
+                                    </span>
+                                </h4>
+                                <div class="collapse multi-collapse" id="abilities-Ana">
+                                        <div>
+                                            <span class="cast-description">Ana can:</span>
+                                            <ul>
+                                                    <li>PerformActivities</li>
+                                                    <li>AnswerQuestions</li>
+                                                    <li>RaiseErrors</li>
+                                                    <li>ScheduleWork { scheduler: { clock: { timeAdjustment: { milliseconds: 0 } }, interactionTimeout: { milliseconds: 15000 } } }</li>
+                                                    <li>BrowseTheWeb (BrowseTheWebWithPlaywright)</li>
+                                                    <li>CallAnApi { baseURL: "http://localhost:3000", headers: { common: { Accept: "application/json, text/plain, */*", Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU2NDI2NDc1MjQ0N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJpYXQiOjE3OTMwNTY0MjYsImV4cCI6MTc5MzE0MjgyNn0.zrzi03IsX2EPUq0_5b4MQu_37eFv5aIdI0g9ogvKT1k" } }, timeout: 10000 }</li>
+                                                    <li>TakeNotes { notepad: { credenciales: { nombre: "Ana Screenplay 17930564264752447", email: "ana.sp.17930564264752447@taskflow.test", password: "Clave-Segura-123" }, usuarioId: "4787eaa4-1b2b-4f0a-8f20-25df3b37c725", token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU2NDI2NDc1MjQ0N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJpYXQiOjE3OTMwNTY0MjYsImV4cCI6MTc5MzE0MjgyNn0.zrzi03IsX2EPUq0_5b4MQu_37eFv5aIdI0g9ogvKT1k", equipoId: "e46a6f94-83c6-44f0-9c7b-e2f90e482271", proyectoId: "ae898d15-3bf7-46e3-9590-cd22aa65e697", tareaId: "d0e454e5-5663-479a-9dc5-811c092e61f4" } }</li>
+                                            </ul>
+                                        </div>
+                                </div>
+                            </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </td>
+        </tr>
+        </table>
+    </div>
+    <!-- END CAST MEMBERS -->
+
+
+</div>
+</div>
+
+<div class="clr"></div>
+
+
+<div id="beforetable"></div>
+
+
+<div id="tablecontents">
+    <div>
+        <table class="step-table">
+            <tr class="step-titles">
+                <th width="65">
+                </th>
+                <th class="step-description-column greentext">
+                    Steps
+                </th>
+
+                <th width="130" class="greentext">Outcome</th>
+                <th width="100" class="greentext"><i title="Duration" class="bi bi-stopwatch"></i></th>
+            </tr>
+            <tr class="step-table-separator">
+                <td colspan="5"></td>
+            </tr>
+
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="0"></a>
+                            <span style="margin-left: 20px;"
+                                  class="top-level-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="top-level-step">
+                                                Before
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step"></span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection1 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Dado que la aplicación TaskFlow está disponible
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">043ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="1-0"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana comprueba que TaskFlow responde en http://localhost:5173 y http://localhost:3000
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">013ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="2"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Y que Ana tiene una cuenta, un equipo y un proyecto vacío creados por API
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">659ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="2-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana prepara su cuenta ana.sp.17930564264752447@taskflow.test por API
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">416ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-0-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-0-0 success-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana se registra por API como ana.sp.17930564264752447@taskflow.test
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">193ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-0-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-0-0-0"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana sends a POST request to &amp;apos;/auth/register&amp;apos;
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-7">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: http://localhost:3000/auth/register</p>
+                                    <p>Status code: 201</p>
+                                    <p>Content Type: application/json</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept: application/json, text/plain, */*<br>Content-Type: application/json<br>User-Agent: axios/1.20.0<br>Content-Length: 124<br>Accept-Encoding: gzip, compress, deflate, br</pre>
+                                    <h4>Content Body</h4>
+                                    <pre>{&quot;nombre&quot;:&quot;Ana Screenplay 17930564264752447&quot;,&quot;email&quot;:&quot;ana.sp.17930564264752447@taskflow.test&quot;,&quot;password&quot;:&quot;Clave-Segura-123&quot;}</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>content-security-policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests<br>cross-origin-opener-policy: same-origin<br>cross-origin-resource-policy: same-origin<br>origin-agent-cluster: ?1<br>referrer-policy: no-referrer<br>strict-transport-security: max-age=31536000; includeSubDomains<br>x-content-type-options: nosniff<br>x-dns-prefetch-control: off<br>x-download-options: noopen<br>x-frame-options: SAMEORIGIN<br>x-permitted-cross-domain-policies: none<br>x-xss-protection: 0<br>vary: Origin<br>access-control-allow-credentials: true<br>content-type: application/json; charset=utf-8<br>content-length: 138<br>etag: W/&quot;8a-PRhRH5filZsiYJQabWeUxRzwYxU&quot;<br>date: Mon, 26 Oct 2026 23:13:46 GMT<br>connection: close</pre>
+                                <h4>Response Body</h4>
+                                    <pre>{<br>    &quot;id&quot;: &quot;4787eaa4-1b2b-4f0a-8f20-25df3b37c725&quot;,<br>    &quot;nombre&quot;: &quot;Ana Screenplay 17930564264752447&quot;,<br>    &quot;email&quot;: &quot;ana.sp.17930564264752447@taskflow.test&quot;<br>}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">132ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-0-0-1"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that the status of the last response does equal 201
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">002ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-0-0-2"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana takes notes:<br>- credenciales: { nombre: &quot;Ana Screenplay 17930564264752447&quot;, email: &quot;ana.sp.17930564264752447@taskflow.test&quot;, password: &quot;Clave-Segura-123&quot; }
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-0-0-3"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana takes notes:<br>- usuarioId: &quot;4787eaa4-1b2b-4f0a-8f20-25df3b37c725&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-0-1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-0-1 success-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-0-1')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana obtiene un token de acceso por API
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">190ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-0-1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-0-1-0"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana sends a POST request to &amp;apos;/auth/login&amp;apos;
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-12">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: http://localhost:3000/auth/login</p>
+                                    <p>Status code: 201</p>
+                                    <p>Content Type: application/json</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept: application/json, text/plain, */*<br>Content-Type: application/json<br>User-Agent: axios/1.20.0<br>Content-Length: 80<br>Accept-Encoding: gzip, compress, deflate, br</pre>
+                                    <h4>Content Body</h4>
+                                    <pre>{&quot;email&quot;:&quot;ana.sp.17930564264752447@taskflow.test&quot;,&quot;password&quot;:&quot;Clave-Segura-123&quot;}</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>content-security-policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests<br>cross-origin-opener-policy: same-origin<br>cross-origin-resource-policy: same-origin<br>origin-agent-cluster: ?1<br>referrer-policy: no-referrer<br>strict-transport-security: max-age=31536000; includeSubDomains<br>x-content-type-options: nosniff<br>x-dns-prefetch-control: off<br>x-download-options: noopen<br>x-frame-options: SAMEORIGIN<br>x-permitted-cross-domain-policies: none<br>x-xss-protection: 0<br>vary: Origin<br>access-control-allow-credentials: true<br>content-type: application/json; charset=utf-8<br>content-length: 331<br>etag: W/&quot;14b-BjFumUwXy7aOUaXvGv0Xt2PSMF4&quot;<br>date: Mon, 26 Oct 2026 23:13:46 GMT<br>connection: close</pre>
+                                <h4>Response Body</h4>
+                                    <pre>{<br>    &quot;access_token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU2NDI2NDc1MjQ0N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJpYXQiOjE3OTMwNTY0MjYsImV4cCI6MTc5MzE0MjgyNn0.zrzi03IsX2EPUq0_5b4MQu_37eFv5aIdI0g9ogvKT1k&quot;<br>}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">118ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-0-1-1"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that the status of the last response does equal 201
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">002ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-0-1-2"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana takes notes:<br>- token: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU2NDI2NDc1MjQ0N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJpYXQiOjE3OTMwNTY0MjYsImV4cCI6MTc5MzE0MjgyNn0.zrzi03IsX2EPUq0_5b4MQu_37eFv5aIdI0g9ogvKT1k&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="2-0-1-3"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana autentica sus llamadas a la API
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="2-1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-1 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-1')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana crea por API el equipo «Equipo Kanban 17930564264752545»
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">063ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-1-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana sends a POST request to &amp;apos;/equipos&amp;apos;
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-17">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-17">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: http://localhost:3000/equipos</p>
+                                    <p>Status code: 201</p>
+                                    <p>Content Type: application/json</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept: application/json, text/plain, */*<br>Content-Type: application/json<br>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU2NDI2NDc1MjQ0N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJpYXQiOjE3OTMwNTY0MjYsImV4cCI6MTc5MzE0MjgyNn0.zrzi03IsX2EPUq0_5b4MQu_37eFv5aIdI0g9ogvKT1k<br>User-Agent: axios/1.20.0<br>Content-Length: 44<br>Accept-Encoding: gzip, compress, deflate, br</pre>
+                                    <h4>Content Body</h4>
+                                    <pre>{&quot;nombre&quot;:&quot;Equipo Kanban 17930564264752545&quot;}</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>content-security-policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests<br>cross-origin-opener-policy: same-origin<br>cross-origin-resource-policy: same-origin<br>origin-agent-cluster: ?1<br>referrer-policy: no-referrer<br>strict-transport-security: max-age=31536000; includeSubDomains<br>x-content-type-options: nosniff<br>x-dns-prefetch-control: off<br>x-download-options: noopen<br>x-frame-options: SAMEORIGIN<br>x-permitted-cross-domain-policies: none<br>x-xss-protection: 0<br>vary: Origin<br>access-control-allow-credentials: true<br>content-type: application/json; charset=utf-8<br>content-length: 670<br>etag: W/&quot;29e-uCnYpebvu4VMNyOwzh0LbSkxbMk&quot;<br>date: Mon, 26 Oct 2026 23:13:46 GMT<br>connection: close</pre>
+                                <h4>Response Body</h4>
+                                    <pre>{<br>    &quot;id&quot;: &quot;e46a6f94-83c6-44f0-9c7b-e2f90e482271&quot;,<br>    &quot;nombre&quot;: &quot;Equipo Kanban 17930564264752545&quot;,<br>    &quot;liderId&quot;: &quot;4787eaa4-1b2b-4f0a-8f20-25df3b37c725&quot;,<br>    &quot;createdAt&quot;: &quot;2026-10-26T23:13:46.970Z&quot;,<br>    &quot;updatedAt&quot;: &quot;2026-10-26T23:13:46.970Z&quot;,<br>    &quot;lider&quot;: {<br>        &quot;id&quot;: &quot;4787eaa4-1b2b-4f0a-8f20-25df3b37c725&quot;,<br>        &quot;nombre&quot;: &quot;Ana Screenplay 17930564264752447&quot;,<br>        &quot;email&quot;: &quot;ana.sp.17930564264752447@taskflow.test&quot;,<br>        &quot;createdAt&quot;: &quot;2026-10-26T23:13:46.638Z&quot;,<br>        &quot;updatedAt&quot;: &quot;2026-10-26T23:13:46.638Z&quot;<br>    },<br>    &quot;miembros&quot;: [<br>        {<br>            &quot;id&quot;: &quot;4787eaa4-1b2b-4f0a-8f20-25df3b37c725&quot;,<br>            &quot;nombre&quot;: &quot;Ana Screenplay 17930564264752447&quot;,<br>            &quot;email&quot;: &quot;ana.sp.17930564264752447@taskflow.test&quot;,<br>            &quot;createdAt&quot;: &quot;2026-10-26T23:13:46.638Z&quot;,<br>            &quot;updatedAt&quot;: &quot;2026-10-26T23:13:46.638Z&quot;<br>        }<br>    ]<br>}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">020ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-1-1"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that the status of the last response does equal 201
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-1-2"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana takes notes:<br>- equipoId: &quot;e46a6f94-83c6-44f0-9c7b-e2f90e482271&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="2-2"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-2')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection2-2 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection2-2')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana crea por API el proyecto «Proyecto Tablero 17930564264752684»
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">078ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection2-2" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-2-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana sends a POST request to &amp;apos;/proyectos&amp;apos;
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-21">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-21">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: http://localhost:3000/proyectos</p>
+                                    <p>Status code: 201</p>
+                                    <p>Content Type: application/json</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept: application/json, text/plain, */*<br>Content-Type: application/json<br>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU2NDI2NDc1MjQ0N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJpYXQiOjE3OTMwNTY0MjYsImV4cCI6MTc5MzE0MjgyNn0.zrzi03IsX2EPUq0_5b4MQu_37eFv5aIdI0g9ogvKT1k<br>User-Agent: axios/1.20.0<br>Content-Length: 97<br>Accept-Encoding: gzip, compress, deflate, br</pre>
+                                    <h4>Content Body</h4>
+                                    <pre>{&quot;nombre&quot;:&quot;Proyecto Tablero 17930564264752684&quot;,&quot;equipoId&quot;:&quot;e46a6f94-83c6-44f0-9c7b-e2f90e482271&quot;}</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>content-security-policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests<br>cross-origin-opener-policy: same-origin<br>cross-origin-resource-policy: same-origin<br>origin-agent-cluster: ?1<br>referrer-policy: no-referrer<br>strict-transport-security: max-age=31536000; includeSubDomains<br>x-content-type-options: nosniff<br>x-dns-prefetch-control: off<br>x-download-options: noopen<br>x-frame-options: SAMEORIGIN<br>x-permitted-cross-domain-policies: none<br>x-xss-protection: 0<br>vary: Origin<br>access-control-allow-credentials: true<br>content-type: application/json; charset=utf-8<br>content-length: 219<br>etag: W/&quot;db-Zph/MsV/GGAdlBS2rESVlT9/SaM&quot;<br>date: Mon, 26 Oct 2026 23:13:47 GMT<br>connection: close</pre>
+                                <h4>Response Body</h4>
+                                    <pre>{<br>    &quot;nombre&quot;: &quot;Proyecto Tablero 17930564264752684&quot;,<br>    &quot;equipoId&quot;: &quot;e46a6f94-83c6-44f0-9c7b-e2f90e482271&quot;,<br>    &quot;id&quot;: &quot;ae898d15-3bf7-46e3-9590-cd22aa65e697&quot;,<br>    &quot;createdAt&quot;: &quot;2026-10-26T23:13:47.051Z&quot;,<br>    &quot;updatedAt&quot;: &quot;2026-10-26T23:13:47.051Z&quot;<br>}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">022ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-2-1"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that the status of the last response does equal 201
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="2-2-2"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana takes notes:<br>- proyectoId: &quot;ae898d15-3bf7-46e3-9590-cd22aa65e697&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="3"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection3')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection3 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection3')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Y que Ana ha iniciado sesión en TaskFlow
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">1s 372ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection3" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="3-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection3-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection3-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection3-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana inicia sesión con sus credenciales
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">1s 332ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection3-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="3-0-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana navigates to &quot;/login&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">721ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="3-0-1"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana waits until el campo «Correo electrónico» does become visible
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">117ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="3-0-2"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana enters &quot;ana.sp.17930564264752447@taskflow.test&quot; into el campo «Correo electrónico»
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">028ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="3-0-3"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana enters &quot;Clave-Segura-123&quot; into el campo «Contraseña»
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">024ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="3-0-4"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana clicks on el botón «Iniciar sesión»
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">137ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="3-0-5"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana waits until el título «Mis equipos» does become visible
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">207ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="4"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection4')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection4 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection4')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Dado que existen por API las tareas &quot;Tarea temporal&quot; y &quot;Tarea que se queda&quot; en el proyecto de Ana
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">203ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection4" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="4-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection4-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection4-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection4-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana crea por API la tarea «Tarea temporal»
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">078ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection4-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="4-0-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana sends a POST request to &amp;apos;/tareas&amp;apos;
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-34">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-34">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: http://localhost:3000/tareas</p>
+                                    <p>Status code: 201</p>
+                                    <p>Content Type: application/json</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept: application/json, text/plain, */*<br>Content-Type: application/json<br>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU2NDI2NDc1MjQ0N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJpYXQiOjE3OTMwNTY0MjYsImV4cCI6MTc5MzE0MjgyNn0.zrzi03IsX2EPUq0_5b4MQu_37eFv5aIdI0g9ogvKT1k<br>User-Agent: axios/1.20.0<br>Content-Length: 79<br>Accept-Encoding: gzip, compress, deflate, br</pre>
+                                    <h4>Content Body</h4>
+                                    <pre>{&quot;titulo&quot;:&quot;Tarea temporal&quot;,&quot;proyectoId&quot;:&quot;ae898d15-3bf7-46e3-9590-cd22aa65e697&quot;}</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>content-security-policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests<br>cross-origin-opener-policy: same-origin<br>cross-origin-resource-policy: same-origin<br>origin-agent-cluster: ?1<br>referrer-policy: no-referrer<br>strict-transport-security: max-age=31536000; includeSubDomains<br>x-content-type-options: nosniff<br>x-dns-prefetch-control: off<br>x-download-options: noopen<br>x-frame-options: SAMEORIGIN<br>x-permitted-cross-domain-policies: none<br>x-xss-protection: 0<br>vary: Origin<br>access-control-allow-credentials: true<br>content-type: application/json; charset=utf-8<br>content-length: 488<br>etag: W/&quot;1e8-i0AVvwZxpKcEGgAhcu07GrslmEQ&quot;<br>date: Mon, 26 Oct 2026 23:13:48 GMT<br>connection: close</pre>
+                                <h4>Response Body</h4>
+                                    <pre>{<br>    &quot;id&quot;: &quot;4bce1ee9-3448-451f-af8e-ae454d7b5073&quot;,<br>    &quot;titulo&quot;: &quot;Tarea temporal&quot;,<br>    &quot;descripcion&quot;: null,<br>    &quot;estado&quot;: &quot;pendiente&quot;,<br>    &quot;prioridad&quot;: &quot;media&quot;,<br>    &quot;listaId&quot;: &quot;e5fe7bb5-12cd-44ad-ae0b-a637c53fec2e&quot;,<br>    &quot;createdAt&quot;: &quot;2026-10-26T23:13:48.534Z&quot;,<br>    &quot;updatedAt&quot;: &quot;2026-10-26T23:13:48.534Z&quot;,<br>    &quot;asignados&quot;: [],<br>    &quot;lista&quot;: {<br>        &quot;id&quot;: &quot;e5fe7bb5-12cd-44ad-ae0b-a637c53fec2e&quot;,<br>        &quot;nombre&quot;: &quot;Por Hacer&quot;,<br>        &quot;orden&quot;: 0,<br>        &quot;proyectoId&quot;: &quot;ae898d15-3bf7-46e3-9590-cd22aa65e697&quot;,<br>        &quot;createdAt&quot;: &quot;2026-10-26T23:13:47.055Z&quot;,<br>        &quot;updatedAt&quot;: &quot;2026-10-26T23:13:47.055Z&quot;<br>    }<br>}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">021ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="4-0-1"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that the status of the last response does equal 201
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">003ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="4-0-2"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana takes notes:<br>- tareaId: &quot;4bce1ee9-3448-451f-af8e-ae454d7b5073&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="4-1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection4-1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection4-1 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection4-1')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana crea por API la tarea «Tarea que se queda»
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">078ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection4-1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="4-1-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana sends a POST request to &amp;apos;/tareas&amp;apos;
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-38">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-38">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: http://localhost:3000/tareas</p>
+                                    <p>Status code: 201</p>
+                                    <p>Content Type: application/json</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept: application/json, text/plain, */*<br>Content-Type: application/json<br>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU2NDI2NDc1MjQ0N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiI0Nzg3ZWFhNC0xYjJiLTRmMGEtOGYyMC0yNWRmM2IzN2M3MjUiLCJpYXQiOjE3OTMwNTY0MjYsImV4cCI6MTc5MzE0MjgyNn0.zrzi03IsX2EPUq0_5b4MQu_37eFv5aIdI0g9ogvKT1k<br>User-Agent: axios/1.20.0<br>Content-Length: 83<br>Accept-Encoding: gzip, compress, deflate, br</pre>
+                                    <h4>Content Body</h4>
+                                    <pre>{&quot;titulo&quot;:&quot;Tarea que se queda&quot;,&quot;proyectoId&quot;:&quot;ae898d15-3bf7-46e3-9590-cd22aa65e697&quot;}</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>content-security-policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests<br>cross-origin-opener-policy: same-origin<br>cross-origin-resource-policy: same-origin<br>origin-agent-cluster: ?1<br>referrer-policy: no-referrer<br>strict-transport-security: max-age=31536000; includeSubDomains<br>x-content-type-options: nosniff<br>x-dns-prefetch-control: off<br>x-download-options: noopen<br>x-frame-options: SAMEORIGIN<br>x-permitted-cross-domain-policies: none<br>x-xss-protection: 0<br>vary: Origin<br>access-control-allow-credentials: true<br>content-type: application/json; charset=utf-8<br>content-length: 492<br>etag: W/&quot;1ec-c1N7zm6pSd3ehugZV3EJxiHKy44&quot;<br>date: Mon, 26 Oct 2026 23:13:48 GMT<br>connection: close</pre>
+                                <h4>Response Body</h4>
+                                    <pre>{<br>    &quot;id&quot;: &quot;d0e454e5-5663-479a-9dc5-811c092e61f4&quot;,<br>    &quot;titulo&quot;: &quot;Tarea que se queda&quot;,<br>    &quot;descripcion&quot;: null,<br>    &quot;estado&quot;: &quot;pendiente&quot;,<br>    &quot;prioridad&quot;: &quot;media&quot;,<br>    &quot;listaId&quot;: &quot;e5fe7bb5-12cd-44ad-ae0b-a637c53fec2e&quot;,<br>    &quot;createdAt&quot;: &quot;2026-10-26T23:13:48.630Z&quot;,<br>    &quot;updatedAt&quot;: &quot;2026-10-26T23:13:48.630Z&quot;,<br>    &quot;asignados&quot;: [],<br>    &quot;lista&quot;: {<br>        &quot;id&quot;: &quot;e5fe7bb5-12cd-44ad-ae0b-a637c53fec2e&quot;,<br>        &quot;nombre&quot;: &quot;Por Hacer&quot;,<br>        &quot;orden&quot;: 0,<br>        &quot;proyectoId&quot;: &quot;ae898d15-3bf7-46e3-9590-cd22aa65e697&quot;,<br>        &quot;createdAt&quot;: &quot;2026-10-26T23:13:47.055Z&quot;,<br>        &quot;updatedAt&quot;: &quot;2026-10-26T23:13:47.055Z&quot;<br>    }<br>}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">022ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="4-1-1"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that the status of the last response does equal 201
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">002ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="4-1-2"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana takes notes:<br>- tareaId: &quot;d0e454e5-5663-479a-9dc5-811c092e61f4&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="5"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection5')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection5 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection5')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Y que Ana está viendo el tablero de su proyecto
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">1s 022ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection5" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="5-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection5-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection5-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection5-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana abre directamente el tablero de un proyecto
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">165ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection5-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="5-0-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana navigates to /proyectos/{a note of proyectoId}
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">150ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="5-1"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana waits until la barra de progreso does become visible
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">810ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="6"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection6')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection6 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection6')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Y la columna &quot;Por Hacer&quot; contiene la tarea &quot;Tarea temporal&quot;
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">093ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection6" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="6-0"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that los títulos de las tareas en «Por Hacer» does eventually contain &quot;Tarea temporal&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">052ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="7"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection7')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection7 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection7')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Cuando Ana elimina la tarea &quot;Tarea temporal&quot; confirmando la acción
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">1s 562ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection7" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="7-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection7-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection7-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection7-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana elimina la tarea «Tarea temporal» confirmando la acción
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">1s 506ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection7-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="7-0-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection7-0-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection7-0-0 success-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection7-0-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana abre el detalle de la tarea «Tarea temporal»
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">243ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection7-0-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="7-0-0-0"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana clicks on la tarjeta «Tarea temporal»
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">147ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="7-0-0-1"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana waits until el selector de columna does become visible
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">064ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="7-0-1"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana clicks on el botón «Eliminar»
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">378ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="7-0-2"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana waits until la ventana de confirmación does become visible
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">030ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="7-0-3"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana clicks on el botón «Eliminar tarea» de la confirmación
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">498ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="7-0-4"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana waits until la tarjeta «Tarea temporal» does not become present
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">269ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="8"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection8')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection8 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection8')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Entonces Ana ve el aviso &quot;Tarea \&quot;Tarea temporal\&quot; eliminada&quot;
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">062ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection8" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="8-0"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that los avisos emergentes does eventually contain at least one item that does include &quot;Tarea &quot;Tarea temporal&quot; eliminada&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">035ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="9"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection9')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection9 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection9')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Y el tablero muestra únicamente la tarea &quot;Tarea que se queda&quot;
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">062ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection9" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="9-0"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that los títulos de las tareas visibles does eventually equal [ &quot;Tarea que se queda&quot; ]
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">037ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="10"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection10')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection10 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection10')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Cuando Ana deshace la última acción desde el aviso
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">234ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection10" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="10-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection10-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection10-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection10-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Ana deshace la última acción desde el aviso
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">193ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection10-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="10-0-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana waits until el botón «Deshacer» del aviso does become visible
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">036ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="10-0-1"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana clicks on el botón «Deshacer» del aviso
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">117ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="11"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection11')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection11 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection11')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Entonces la columna &quot;Por Hacer&quot; contiene la tarea &quot;Tarea temporal&quot;
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">078ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection11" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="11-0"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that los títulos de las tareas en «Por Hacer» does eventually contain &quot;Tarea temporal&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">039ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="12"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection12')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection12 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection12')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                Y Ana ve el aviso &quot;Tarea \&quot;Tarea temporal\&quot; restaurada&quot;
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">062ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection12" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="12-0"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Ana ensures that los avisos emergentes does eventually contain at least one item that does include &quot;Tarea &quot;Tarea temporal&quot; restaurada&quot;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">035ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="13"></a>
+                            <span style="margin-left: 20px;"
+                                  class="top-level-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="top-level-step">
+                                                After
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">073ms</span></td>
+                </tr>
+            <tr class="test-SUCCESS">
+                    <td colspan="2"></td>
+                <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
+                <td width="100"><span class="top-level-step"><em>5.63s</em></span></td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<div id="beforefooter"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 5.3.11</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function toggleDiv(divId) {
+        $("#" + divId).toggle();
+        var $icon = $(".img" + divId);
+        $icon.toggleClass("bi-caret-right-square");
+        $icon.toggleClass("bi-caret-down-square");
+    }
+</script>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    $(document).ready(function () {
+        $('img.screenshot').imgPreview({
+            imgCSS: {
+                width: '500px'
+            },
+            distanceFromCursor: {top: 10, left: -200}
+        });
+    });
+
+    //]]>
+</script>
+<div id="imgPreviewContainer" style="position: absolute; top: 612px; left: 355px; display: none; " class=""><img
+            src="" style="display: none; "></div>
+<div id="imgPreviewContainer2" style="position: absolute; top: 925px; left: 320px; display: none; " class="">
+    <img style="width: 200px; display: none; " src=""></div>
+<div id="imgPreviewWithStyles" style="position: absolute; top: 1272px; left: 321px; display: none; " class="">
+    <img style="height: 200px; opacity: 1; display: none; " src=""></div>
+<div id="imgPreviewWithStyles2" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+<div id="imgPreviewWithStyles3" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+
+</div>
+</body>
+</html>

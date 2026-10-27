@@ -1,0 +1,23 @@
+{
+  "id": "API-AUTH-08",
+  "obtenido": "Respondió 401 con \"Credenciales inválidas\" (no revela si el correo existe).",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/auth/login",
+    "autenticado": false,
+    "cuerpo": {
+      "email": "noexiste.17930563453124699@taskflow-cypress.test",
+      "password": "***"
+    }
+  },
+  "respuesta": {
+    "estado": 401,
+    "duracionMs": 119,
+    "cuerpo": {
+      "message": "Credenciales inválidas",
+      "error": "Unauthorized",
+      "statusCode": 401
+    }
+  },
+  "fecha": "2026-10-26T23:12:25.468Z"
+}

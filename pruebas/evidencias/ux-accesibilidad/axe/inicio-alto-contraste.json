@@ -1,0 +1,25 @@
+{
+  "pagina": "Inicio en modo alto contraste",
+  "url": "http://localhost:5173/",
+  "fecha": "2026-10-27T04:24:09.622Z",
+  "axe": "4.14.0",
+  "etiquetas": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa",
+    "best-practice"
+  ],
+  "totalViolaciones": 0,
+  "violaciones": [],
+  "incompletas": [
+    {
+      "regla": "color-contrast",
+      "impacto": "serious",
+      "nodos": 7,
+      "descripcion": "Elements must meet minimum color contrast ratio thresholds"
+    }
+  ],
+  "reglasSuperadas": 34
+}

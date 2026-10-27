@@ -1,0 +1,19 @@
+{
+  "id": "API-PRO-06",
+  "obtenido": "Respondió 404 con \"Proyecto no encontrado\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/proyectos/00000000-0000-4000-8000-000000000000",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 404,
+    "duracionMs": 9,
+    "cuerpo": {
+      "message": "Proyecto no encontrado",
+      "error": "Not Found",
+      "statusCode": 404
+    }
+  },
+  "fecha": "2026-10-26T23:12:59.513Z"
+}

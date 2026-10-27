@@ -1,0 +1,14 @@
+DELETE /equipos/f6b022c5-2d2b-413b-bd68-4c68649a6966 → 200
+DELETE /equipos/ed38e357-5cd9-4e6b-8555-97ce65aab9d0 → 200
+DELETE /usuarios/me (seg_lider_1793056751720_1@taskflow.test) → 200
+DELETE /usuarios/me (seg_ajeno_1793056751720_2@taskflow.test) → 200
+DELETE /usuarios/me (seg_miembro_1793056751720_3@taskflow.test) → 200
+DELETE /usuarios/me (seg_miembro2_1793056751720_4@taskflow.test) → 200
+DELETE /usuarios/me (seg_fuerzabruta_1793056751720_5@taskflow.test) → 200
+DELETE /usuarios/me (seg_enum_1793056751720_6@taskflow.test) → 200
+DELETE /usuarios/me (seg_timing_1793056751720_8@taskflow.test) → 200
+DELETE /usuarios/me (seg_borrado_1793056751720_33@taskflow.test) → 401
+DELETE /usuarios/me (seg_datos_1793056751720_38@taskflow.test) → 200
+DELETE /usuarios/me (seg_nosqlpwd_1793056751720_42@taskflow.test) → 200
+DELETE /usuarios/me (seg_errores_1793056751720_46@taskflow.test) → 200
+DELETE /usuarios/me (registrado sin login) → 200

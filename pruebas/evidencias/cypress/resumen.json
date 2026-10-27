@@ -1,0 +1,2498 @@
+{
+  "area": "Regresión, API y componentes",
+  "herramienta": "Cypress 15.21.1",
+  "comando": "npm run test:cypress",
+  "fecha": "2026-10-26T23:15:06.897Z",
+  "totales": {
+    "total": 146,
+    "aprobados": 146,
+    "fallidos": 0,
+    "duracionSeg": 336.3
+  },
+  "duracionComandoSeg": 376,
+  "baseEvidencias": "Las rutas de \"evidencia\" son relativas a esta carpeta (pruebas/evidencias/cypress).",
+  "desglose": {
+    "API - Auth": {
+      "total": 8,
+      "aprobados": 8
+    },
+    "API - Usuarios": {
+      "total": 10,
+      "aprobados": 10
+    },
+    "API - Equipos": {
+      "total": 14,
+      "aprobados": 14
+    },
+    "API - Proyectos": {
+      "total": 7,
+      "aprobados": 7
+    },
+    "API - Listas": {
+      "total": 3,
+      "aprobados": 3
+    },
+    "API - Tareas": {
+      "total": 13,
+      "aprobados": 13
+    },
+    "API - Validación": {
+      "total": 2,
+      "aprobados": 2
+    },
+    "Regresión UI - Autenticación": {
+      "total": 9,
+      "aprobados": 9
+    },
+    "Regresión UI - Equipos y proyectos": {
+      "total": 6,
+      "aprobados": 6
+    },
+    "Regresión UI - Kanban": {
+      "total": 12,
+      "aprobados": 12
+    },
+    "Regresión UI - Preferencias": {
+      "total": 5,
+      "aprobados": 5
+    },
+    "Componentes - Button": {
+      "total": 3,
+      "aprobados": 3
+    },
+    "Componentes - Input": {
+      "total": 3,
+      "aprobados": 3
+    },
+    "Componentes - Modal": {
+      "total": 4,
+      "aprobados": 4
+    },
+    "Componentes - Confirmación": {
+      "total": 4,
+      "aprobados": 4
+    },
+    "Componentes - Avisos (Toast)": {
+      "total": 4,
+      "aprobados": 4
+    },
+    "Componentes - Migas": {
+      "total": 3,
+      "aprobados": 3
+    },
+    "Componentes - Kanban": {
+      "total": 4,
+      "aprobados": 4
+    },
+    "Unidad - Búsqueda": {
+      "total": 4,
+      "aprobados": 4
+    },
+    "Unidad - Errores": {
+      "total": 4,
+      "aprobados": 4
+    },
+    "Seguridad - Autenticación": {
+      "total": 4,
+      "aprobados": 4
+    },
+    "Seguridad - Autorización": {
+      "total": 3,
+      "aprobados": 3
+    },
+    "Seguridad - Inyección y datos": {
+      "total": 3,
+      "aprobados": 3
+    },
+    "Seguridad - Configuración HTTP": {
+      "total": 3,
+      "aprobados": 3
+    },
+    "Accesibilidad - Acceso": {
+      "total": 4,
+      "aprobados": 4
+    },
+    "Accesibilidad - Equipos": {
+      "total": 2,
+      "aprobados": 2
+    },
+    "Accesibilidad - Tablero y tareas": {
+      "total": 2,
+      "aprobados": 2
+    },
+    "Accesibilidad - Usuario": {
+      "total": 3,
+      "aprobados": 3
+    }
+  },
+  "casos": [
+    {
+      "id": "API-AUTH-01",
+      "suite": "API - Auth",
+      "nombre": "Registro válido devuelve 201 con id, nombre y email y sin contraseña",
+      "tipo": "positivo",
+      "objetivo": "Verificar que POST /auth/register crea una cuenta con datos válidos y no expone la contraseña.",
+      "esperado": "201 con {id (UUID), nombre, email} y sin campo password.",
+      "obtenido": "Respondió 201 con id UUID 2a60b46b-8d10-418f-9cab-ce9ded196323, nombre y email; sin campo password.",
+      "estado": "Aprobado",
+      "duracionMs": 127,
+      "archivo": "cypress/e2e/api/auth.cy.ts",
+      "evidencia": [
+        "api/API-AUTH-01.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-AUTH-02",
+      "suite": "API - Auth",
+      "nombre": "Registro con email ya existente devuelve 409 con mensaje en español",
+      "tipo": "negativo",
+      "objetivo": "Verificar que no se pueden registrar dos cuentas con el mismo correo (aunque cambien las mayúsculas).",
+      "esperado": "409 con el mensaje \"El email ya está registrado\".",
+      "obtenido": "Respondió 409 con el mensaje \"El email ya está registrado\".",
+      "estado": "Aprobado",
+      "duracionMs": 105,
+      "archivo": "cypress/e2e/api/auth.cy.ts",
+      "evidencia": [
+        "api/API-AUTH-02.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-AUTH-03",
+      "suite": "API - Auth",
+      "nombre": "Registro con contraseña que no cumple la política (8 caracteres, letra y número) devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar la política de contraseñas en el registro (mínimo 8 caracteres, al menos una letra y un número).",
+      "esperado": "400 con \"La contraseña debe tener al menos 8 caracteres\" para \"abc1\", \"La contraseña debe contener al menos una letra\" para \"12345678\" y \"La contraseña debe contener al menos un número\" para \"abcdefgh\".",
+      "obtenido": "\"abc1\" → 400 \"La contraseña debe tener al menos 8 caracteres\"; \"12345678\" → 400 \"La contraseña debe contener al menos una letra\"; \"abcdefgh\" → 400 \"La contraseña debe contener al menos un número\"; no se creó ningún usuario.",
+      "estado": "Aprobado",
+      "duracionMs": 59,
+      "archivo": "cypress/e2e/api/auth.cy.ts",
+      "evidencia": [
+        "api/API-AUTH-03.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-AUTH-04",
+      "suite": "API - Auth",
+      "nombre": "Registro con email inválido y nombre vacío devuelve 400 con un mensaje por campo",
+      "tipo": "negativo",
+      "objetivo": "Verificar que los errores de validación del registro se devuelven en español, uno por campo.",
+      "esperado": "400 con \"El nombre es obligatorio\" y \"El correo electrónico no tiene un formato válido...\".",
+      "obtenido": "Respondió 400 con 2 mensajes en español: \"El nombre es obligatorio\", \"El correo electrónico no tiene un formato válido (ejemplo: nombre@correo.com)\".",
+      "estado": "Aprobado",
+      "duracionMs": 59,
+      "archivo": "cypress/e2e/api/auth.cy.ts",
+      "evidencia": [
+        "api/API-AUTH-04.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-AUTH-05",
+      "suite": "API - Auth",
+      "nombre": "Login con credenciales correctas devuelve un JWT",
+      "tipo": "positivo",
+      "objetivo": "Verificar que POST /auth/login con credenciales correctas emite un JWT válido.",
+      "esperado": "200/201 con access_token JWT de 3 partes cuyo payload contiene el email y no la contraseña.",
+      "obtenido": "Respondió 201 con access_token JWT válido (payload con email login.17930563441082796@taskflow-cypress.test, sin password).",
+      "estado": "Aprobado",
+      "duracionMs": 223,
+      "archivo": "cypress/e2e/api/auth.cy.ts",
+      "evidencia": [
+        "api/API-AUTH-05.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-AUTH-06",
+      "suite": "API - Auth",
+      "nombre": "Login con contraseña incorrecta devuelve 401 sin token",
+      "tipo": "negativo",
+      "objetivo": "Verificar que una contraseña incorrecta no permite iniciar sesión.",
+      "esperado": "401 con \"Credenciales inválidas\" y sin access_token.",
+      "obtenido": "Respondió 401 con \"Credenciales inválidas\" y sin access_token.",
+      "estado": "Aprobado",
+      "duracionMs": 167,
+      "archivo": "cypress/e2e/api/auth.cy.ts",
+      "evidencia": [
+        "api/API-AUTH-06.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-AUTH-07",
+      "suite": "API - Auth",
+      "nombre": "Tras 5 intentos fallidos el login del mismo correo se bloquea (429)",
+      "tipo": "negativo",
+      "objetivo": "Verificar la protección contra fuerza bruta: bloqueo tras 5 intentos fallidos del mismo correo.",
+      "esperado": "5 respuestas 401 y, en el 6.º intento (aun con la clave correcta), 429 \"Demasiados intentos fallidos...\".",
+      "obtenido": "Los 5 intentos fallidos respondieron 401, 401, 401, 401, 401; el 6.º (con la clave correcta) respondió 429: \"Demasiados intentos fallidos. Por seguridad, espera 15 minuto(s) antes de volver a intentarlo.\".",
+      "estado": "Aprobado",
+      "duracionMs": 746,
+      "archivo": "cypress/e2e/api/auth.cy.ts",
+      "evidencia": [
+        "api/API-AUTH-07.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-AUTH-08",
+      "suite": "API - Auth",
+      "nombre": "Login con un correo no registrado devuelve 401 con el mismo mensaje genérico",
+      "tipo": "negativo",
+      "objetivo": "Verificar que el login con un correo inexistente no revela si la cuenta existe.",
+      "esperado": "401 con el mismo mensaje genérico \"Credenciales inválidas\".",
+      "obtenido": "Respondió 401 con \"Credenciales inválidas\" (no revela si el correo existe).",
+      "estado": "Aprobado",
+      "duracionMs": 205,
+      "archivo": "cypress/e2e/api/auth.cy.ts",
+      "evidencia": [
+        "api/API-AUTH-08.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-USU-01",
+      "suite": "API - Usuarios",
+      "nombre": "GET /usuarios/me con token devuelve el perfil sin contraseña",
+      "tipo": "positivo",
+      "objetivo": "Verificar que GET /usuarios/me devuelve el perfil del usuario autenticado.",
+      "esperado": "200 con id, nombre y email del usuario y sin password.",
+      "obtenido": "Respondió 200 con el perfil (id, nombre, email, fechas) y sin campo password.",
+      "estado": "Aprobado",
+      "duracionMs": 512,
+      "archivo": "cypress/e2e/api/usuarios.cy.ts",
+      "evidencia": [
+        "api/API-USU-01.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-USU-02",
+      "suite": "API - Usuarios",
+      "nombre": "GET /usuarios/me sin token devuelve 401",
+      "tipo": "negativo",
+      "objetivo": "Verificar que el perfil no es accesible sin autenticación.",
+      "esperado": "401 Unauthorized.",
+      "obtenido": "Respondió 401 (Unauthorized): la ruta exige autenticación.",
+      "estado": "Aprobado",
+      "duracionMs": 804,
+      "archivo": "cypress/e2e/api/usuarios.cy.ts",
+      "evidencia": [
+        "api/API-USU-02.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-USU-03",
+      "suite": "API - Usuarios",
+      "nombre": "GET /usuarios/me con un token manipulado devuelve 401",
+      "tipo": "negativo",
+      "objetivo": "Verificar que un JWT con la firma alterada es rechazado.",
+      "esperado": "401 Unauthorized.",
+      "obtenido": "Respondió 401: la firma alterada del JWT fue rechazada.",
+      "estado": "Aprobado",
+      "duracionMs": 476,
+      "archivo": "cypress/e2e/api/usuarios.cy.ts",
+      "evidencia": [
+        "api/API-USU-03.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-USU-04",
+      "suite": "API - Usuarios",
+      "nombre": "Buscar usuario por email (sin distinguir mayúsculas) devuelve 200",
+      "tipo": "positivo",
+      "objetivo": "Verificar la búsqueda de usuarios por correo (usada al invitar), sin distinguir mayúsculas.",
+      "esperado": "200 con el usuario buscado y sin password.",
+      "obtenido": "Respondió 200 con el usuario usu.17930564131478404@taskflow-cypress.test buscando el correo en mayúsculas; sin password.",
+      "estado": "Aprobado",
+      "duracionMs": 521,
+      "archivo": "cypress/e2e/api/usuarios.cy.ts",
+      "evidencia": [
+        "api/API-USU-04.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-USU-05",
+      "suite": "API - Usuarios",
+      "nombre": "Buscar un email inexistente devuelve 404 \"Usuario no encontrado\"",
+      "tipo": "negativo",
+      "objetivo": "Verificar la respuesta al buscar un correo que no existe.",
+      "esperado": "404 con \"Usuario no encontrado\".",
+      "obtenido": "Respondió 404 con \"Usuario no encontrado\".",
+      "estado": "Aprobado",
+      "duracionMs": 421,
+      "archivo": "cypress/e2e/api/usuarios.cy.ts",
+      "evidencia": [
+        "api/API-USU-05.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-USU-06",
+      "suite": "API - Usuarios",
+      "nombre": "Buscar sin el parámetro email devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar que la búsqueda exige el parámetro email.",
+      "esperado": "400 con \"Debes proporcionar un email\".",
+      "obtenido": "Respondió 400 con \"Debes proporcionar un email\".",
+      "estado": "Aprobado",
+      "duracionMs": 418,
+      "archivo": "cypress/e2e/api/usuarios.cy.ts",
+      "evidencia": [
+        "api/API-USU-06.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-USU-07",
+      "suite": "API - Usuarios",
+      "nombre": "PATCH /usuarios/me actualiza el nombre (recortando espacios)",
+      "tipo": "positivo",
+      "objetivo": "Verificar que PATCH /usuarios/me actualiza el nombre recortando espacios.",
+      "esperado": "200 con el nombre nuevo sin espacios al inicio ni al final.",
+      "obtenido": "Respondió 200 con nombre \"Nombre Editado 1793056415046\" (sin espacios sobrantes).",
+      "estado": "Aprobado",
+      "duracionMs": 537,
+      "archivo": "cypress/e2e/api/usuarios.cy.ts",
+      "evidencia": [
+        "api/API-USU-07.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-USU-08",
+      "suite": "API - Usuarios",
+      "nombre": "PATCH /usuarios/me con nombre vacío devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar que no se puede dejar el nombre vacío.",
+      "esperado": "400 con \"El nombre es obligatorio\".",
+      "obtenido": "Respondió 400 con \"El nombre es obligatorio\".",
+      "estado": "Aprobado",
+      "duracionMs": 226,
+      "archivo": "cypress/e2e/api/usuarios.cy.ts",
+      "evidencia": [
+        "api/API-USU-08.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-USU-09",
+      "suite": "API - Usuarios",
+      "nombre": "Eliminar la cuenta siendo líder de un equipo devuelve 409",
+      "tipo": "negativo",
+      "objetivo": "Verificar que un líder de equipo no puede borrar su cuenta sin eliminar antes sus equipos.",
+      "esperado": "409 con \"Eres líder de 1 equipo(s). Elimínalos antes de borrar tu cuenta.\".",
+      "obtenido": "Respondió 409 con \"Eres líder de 1 equipo(s). Elimínalos antes de borrar tu cuenta.\"; la cuenta no se borró.",
+      "estado": "Aprobado",
+      "duracionMs": 265,
+      "archivo": "cypress/e2e/api/usuarios.cy.ts",
+      "evidencia": [
+        "api/API-USU-09.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-USU-10",
+      "suite": "API - Usuarios",
+      "nombre": "Eliminar la cuenta sin equipos devuelve 200 y luego no se puede iniciar sesión",
+      "tipo": "positivo",
+      "objetivo": "Verificar el derecho de supresión: eliminar la propia cuenta impide volver a entrar.",
+      "esperado": "200 {id, eliminado: true} y un login posterior con esas credenciales responde 401.",
+      "obtenido": "DELETE respondió 200 {eliminado: true}; el login posterior respondió 401.",
+      "estado": "Aprobado",
+      "duracionMs": 312,
+      "archivo": "cypress/e2e/api/usuarios.cy.ts",
+      "evidencia": [
+        "api/API-USU-10.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-01",
+      "suite": "API - Equipos",
+      "nombre": "Crear equipo devuelve 201 con el creador como líder y miembro",
+      "tipo": "positivo",
+      "objetivo": "Verificar que crear un equipo asigna al creador como líder y miembro.",
+      "esperado": "201 con liderId = creador, el creador en miembros y ningún usuario con password.",
+      "obtenido": "Respondió 201; liderId = creador, miembros = [creador] y ningún usuario incluye password.",
+      "estado": "Aprobado",
+      "duracionMs": 1100,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-01.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-02",
+      "suite": "API - Equipos",
+      "nombre": "Crear equipo sin nombre devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar la validación del nombre del equipo.",
+      "esperado": "400 con \"El nombre es obligatorio\".",
+      "obtenido": "Respondió 400 con \"El nombre es obligatorio\".",
+      "estado": "Aprobado",
+      "duracionMs": 1292,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-02.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-03",
+      "suite": "API - Equipos",
+      "nombre": "GET /equipos lista solo los equipos del usuario",
+      "tipo": "positivo",
+      "objetivo": "Verificar que GET /equipos lista solo los equipos donde participa el usuario.",
+      "esperado": "El líder recibe su equipo; una persona ajena recibe una lista vacía.",
+      "obtenido": "El líder recibió 1 equipo (el suyo); la persona ajena recibió una lista vacía.",
+      "estado": "Aprobado",
+      "duracionMs": 1029,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-03.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-04",
+      "suite": "API - Equipos",
+      "nombre": "Una persona ajena no puede ver el equipo (403)",
+      "tipo": "negativo",
+      "objetivo": "Verificar el control de acceso: una persona ajena no puede ver el equipo.",
+      "esperado": "403 con \"No tienes acceso a este equipo\".",
+      "obtenido": "Respondió 403 con \"No tienes acceso a este equipo\".",
+      "estado": "Aprobado",
+      "duracionMs": 1045,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-04.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-05",
+      "suite": "API - Equipos",
+      "nombre": "Un id que no es UUID devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar la validación del formato del id en la ruta.",
+      "esperado": "400 Bad Request.",
+      "obtenido": "Respondió 400 (\"Validation failed (uuid is expected)\").",
+      "estado": "Aprobado",
+      "duracionMs": 1254,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-05.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-06",
+      "suite": "API - Equipos",
+      "nombre": "Un equipo inexistente devuelve 404",
+      "tipo": "negativo",
+      "objetivo": "Verificar la respuesta para un equipo que no existe.",
+      "esperado": "404 con \"Equipo no encontrado\".",
+      "obtenido": "Respondió 404 con \"Equipo no encontrado\".",
+      "estado": "Aprobado",
+      "duracionMs": 1171,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-06.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-07",
+      "suite": "API - Equipos",
+      "nombre": "El líder agrega un miembro y aparece en /miembros",
+      "tipo": "positivo",
+      "objetivo": "Verificar que el líder puede agregar un miembro y que este obtiene acceso.",
+      "esperado": "201 con el nuevo miembro en la lista; GET /equipos/:id/miembros (como miembro) responde 200 y lo incluye.",
+      "obtenido": "Respondió 201; el nuevo miembro ya puede consultar /miembros (200) y figura en la lista.",
+      "estado": "Aprobado",
+      "duracionMs": 1331,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-07.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-08",
+      "suite": "API - Equipos",
+      "nombre": "Agregar dos veces al mismo miembro devuelve 409",
+      "tipo": "negativo",
+      "objetivo": "Verificar que no se duplica un miembro.",
+      "esperado": "409 con \"El usuario ya es miembro del equipo\".",
+      "obtenido": "Respondió 409 con \"El usuario ya es miembro del equipo\".",
+      "estado": "Aprobado",
+      "duracionMs": 1187,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-08.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-09",
+      "suite": "API - Equipos",
+      "nombre": "Agregar un usuario inexistente devuelve 404",
+      "tipo": "negativo",
+      "objetivo": "Verificar que no se puede agregar un usuario inexistente.",
+      "esperado": "404 con \"Usuario no encontrado\".",
+      "obtenido": "Respondió 404 con \"Usuario no encontrado\".",
+      "estado": "Aprobado",
+      "duracionMs": 972,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-09.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-10",
+      "suite": "API - Equipos",
+      "nombre": "Un miembro que no es líder no puede agregar miembros (403)",
+      "tipo": "negativo",
+      "objetivo": "Verificar que solo el líder puede agregar miembros.",
+      "esperado": "403 con \"Solo el líder puede agregar miembros\".",
+      "obtenido": "Respondió 403 con \"Solo el líder puede agregar miembros\".",
+      "estado": "Aprobado",
+      "duracionMs": 1252,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-10.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-11",
+      "suite": "API - Equipos",
+      "nombre": "Agregar miembro sin userId devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar que agregar miembro exige userId.",
+      "esperado": "400 con \"Debe enviar userId o usuarioId\".",
+      "obtenido": "Respondió 400 con \"Debe enviar userId o usuarioId\".",
+      "estado": "Aprobado",
+      "duracionMs": 1429,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-11.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-12",
+      "suite": "API - Equipos",
+      "nombre": "El líder quita a un miembro y este pierde el acceso",
+      "tipo": "positivo",
+      "objetivo": "Verificar que el líder puede quitar a un miembro y que este pierde el acceso.",
+      "esperado": "200 sin el miembro en la lista; después el exmiembro recibe 403 al abrir el equipo.",
+      "obtenido": "Respondió 200 sin el miembro en la lista; después el exmiembro recibe 403 al abrir el equipo.",
+      "estado": "Aprobado",
+      "duracionMs": 1207,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-12.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-13",
+      "suite": "API - Equipos",
+      "nombre": "El líder no puede quitarse a sí mismo (400)",
+      "tipo": "negativo",
+      "objetivo": "Verificar que el líder no puede quitarse a sí mismo del equipo.",
+      "esperado": "400 con \"El líder no puede eliminarse del equipo\".",
+      "obtenido": "Respondió 400 con \"El líder no puede eliminarse del equipo\".",
+      "estado": "Aprobado",
+      "duracionMs": 1122,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-13.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-EQU-14",
+      "suite": "API - Equipos",
+      "nombre": "Solo el líder elimina el equipo; después devuelve 404",
+      "tipo": "positivo",
+      "objetivo": "Verificar que solo el líder elimina el equipo y que deja de existir.",
+      "esperado": "Miembro: 403 \"Solo el líder puede eliminar el equipo\"; líder: 200 {eliminado: true}; luego GET = 404.",
+      "obtenido": "El miembro recibió 403 (\"Solo el líder puede eliminar el equipo\"); el líder 200 {eliminado: true}; luego GET = 404.",
+      "estado": "Aprobado",
+      "duracionMs": 1278,
+      "archivo": "cypress/e2e/api/equipos.cy.ts",
+      "evidencia": [
+        "api/API-EQU-14.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-PRO-01",
+      "suite": "API - Proyectos",
+      "nombre": "Crear proyecto devuelve 201 y crea las listas Por Hacer, En Progreso y Hecho",
+      "tipo": "positivo",
+      "objetivo": "Verificar que un miembro crea un proyecto y se generan las 3 listas por defecto.",
+      "esperado": "201 y GET /listas/proyecto/:id devuelve Por Hacer, En Progreso y Hecho con orden 0, 1, 2.",
+      "obtenido": "Respondió 201; el proyecto tiene 3 listas en orden: Por Hacer, En Progreso, Hecho.",
+      "estado": "Aprobado",
+      "duracionMs": 1264,
+      "archivo": "cypress/e2e/api/proyectos-listas.cy.ts",
+      "evidencia": [
+        "api/API-PRO-01.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-PRO-02",
+      "suite": "API - Proyectos",
+      "nombre": "Crear proyecto en un equipo ajeno devuelve 403",
+      "tipo": "negativo",
+      "objetivo": "Verificar que no se pueden crear proyectos en equipos ajenos.",
+      "esperado": "403 con \"No tienes acceso a este equipo\".",
+      "obtenido": "Respondió 403 con \"No tienes acceso a este equipo\".",
+      "estado": "Aprobado",
+      "duracionMs": 1157,
+      "archivo": "cypress/e2e/api/proyectos-listas.cy.ts",
+      "evidencia": [
+        "api/API-PRO-02.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-PRO-03",
+      "suite": "API - Proyectos",
+      "nombre": "Crear proyecto con equipoId inválido y sin nombre devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar la validación de nombre y equipoId al crear un proyecto.",
+      "esperado": "400 con \"El nombre es obligatorio\" y un mensaje sobre el equipo.",
+      "obtenido": "Respondió 400 con \"El nombre es obligatorio\", \"El equipo no es un identificador válido\".",
+      "estado": "Aprobado",
+      "duracionMs": 892,
+      "archivo": "cypress/e2e/api/proyectos-listas.cy.ts",
+      "evidencia": [
+        "api/API-PRO-03.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-PRO-04",
+      "suite": "API - Proyectos",
+      "nombre": "Listar proyectos por equipo; sin equipoId devuelve 400",
+      "tipo": "positivo",
+      "objetivo": "Verificar el listado de proyectos de un equipo y la obligatoriedad de equipoId.",
+      "esperado": "200 con los proyectos en orden de creación; sin equipoId 400 \"Debes proporcionar equipoId\".",
+      "obtenido": "Con equipoId respondió 200 con 2 proyectos en orden de creación; sin equipoId respondió 400 \"Debes proporcionar equipoId\".",
+      "estado": "Aprobado",
+      "duracionMs": 1133,
+      "archivo": "cypress/e2e/api/proyectos-listas.cy.ts",
+      "evidencia": [
+        "api/API-PRO-04.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-PRO-05",
+      "suite": "API - Proyectos",
+      "nombre": "Una persona ajena no puede ver un proyecto (403)",
+      "tipo": "negativo",
+      "objetivo": "Verificar que una persona ajena no puede ver un proyecto.",
+      "esperado": "403 con \"No tienes acceso a este proyecto\".",
+      "obtenido": "Respondió 403 con \"No tienes acceso a este proyecto\".",
+      "estado": "Aprobado",
+      "duracionMs": 1008,
+      "archivo": "cypress/e2e/api/proyectos-listas.cy.ts",
+      "evidencia": [
+        "api/API-PRO-05.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-PRO-06",
+      "suite": "API - Proyectos",
+      "nombre": "Un proyecto inexistente devuelve 404",
+      "tipo": "negativo",
+      "objetivo": "Verificar la respuesta para un proyecto inexistente.",
+      "esperado": "404 con \"Proyecto no encontrado\".",
+      "obtenido": "Respondió 404 con \"Proyecto no encontrado\".",
+      "estado": "Aprobado",
+      "duracionMs": 1165,
+      "archivo": "cypress/e2e/api/proyectos-listas.cy.ts",
+      "evidencia": [
+        "api/API-PRO-06.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-PRO-07",
+      "suite": "API - Proyectos",
+      "nombre": "Solo el líder elimina un proyecto y sus listas desaparecen en cascada",
+      "tipo": "positivo",
+      "objetivo": "Verificar que solo el líder elimina proyectos y que sus listas se borran en cascada.",
+      "esperado": "Miembro: 403; líder: 200 {eliminado: true}; después GET de sus listas = 404.",
+      "obtenido": "El miembro recibió 403; el líder 200 {eliminado: true}; después las listas responden 404.",
+      "estado": "Aprobado",
+      "duracionMs": 1026,
+      "archivo": "cypress/e2e/api/proyectos-listas.cy.ts",
+      "evidencia": [
+        "api/API-PRO-07.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-LIS-01",
+      "suite": "API - Listas",
+      "nombre": "Un miembro (no líder) obtiene las 3 listas del proyecto",
+      "tipo": "positivo",
+      "objetivo": "Verificar que un miembro (no líder) obtiene las listas del proyecto.",
+      "esperado": "200 con 3 listas con id UUID y proyectoId correcto.",
+      "obtenido": "Respondió 200 con 3 listas (id UUID, proyectoId correcto).",
+      "estado": "Aprobado",
+      "duracionMs": 990,
+      "archivo": "cypress/e2e/api/proyectos-listas.cy.ts",
+      "evidencia": [
+        "api/API-LIS-01.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-LIS-02",
+      "suite": "API - Listas",
+      "nombre": "Una persona ajena no puede leer las listas (403)",
+      "tipo": "negativo",
+      "objetivo": "Verificar que una persona ajena no puede leer las listas de un proyecto.",
+      "esperado": "403 con \"No tienes acceso a este proyecto\".",
+      "obtenido": "Respondió 403 con \"No tienes acceso a este proyecto\".",
+      "estado": "Aprobado",
+      "duracionMs": 1946,
+      "archivo": "cypress/e2e/api/proyectos-listas.cy.ts",
+      "evidencia": [
+        "api/API-LIS-02.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-LIS-03",
+      "suite": "API - Listas",
+      "nombre": "Listas de un id inválido devuelve 400 y de uno inexistente 404",
+      "tipo": "negativo",
+      "objetivo": "Verificar las respuestas para un id inválido y para un proyecto inexistente.",
+      "esperado": "400 para el id inválido y 404 \"Proyecto no encontrado\" para el inexistente.",
+      "obtenido": "Id inválido respondió 400; id inexistente respondió 404 \"Proyecto no encontrado\".",
+      "estado": "Aprobado",
+      "duracionMs": 890,
+      "archivo": "cypress/e2e/api/proyectos-listas.cy.ts",
+      "evidencia": [
+        "api/API-LIS-03.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-01",
+      "suite": "API - Tareas",
+      "nombre": "Crear tarea con listaId y asignados devuelve 201 con asignados sin contraseña",
+      "tipo": "positivo",
+      "objetivo": "Verificar la creación de una tarea en una lista con personas asignadas.",
+      "esperado": "201 con título, descripción, listaId y los 2 asignados, sin password.",
+      "obtenido": "Respondió 201 con la tarea en \"Por Hacer\" y 2 asignados sin password.",
+      "estado": "Aprobado",
+      "duracionMs": 1217,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-01.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-02",
+      "suite": "API - Tareas",
+      "nombre": "Crear tarea solo con proyectoId la coloca en la primera lista (Por Hacer)",
+      "tipo": "positivo",
+      "objetivo": "Verificar que crear una tarea solo con proyectoId la coloca en la primera lista.",
+      "esperado": "201 con la tarea en \"Por Hacer\" y sin asignados.",
+      "obtenido": "Respondió 201 y la tarea quedó en \"Por Hacer\" sin asignados.",
+      "estado": "Aprobado",
+      "duracionMs": 1209,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-02.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-03",
+      "suite": "API - Tareas",
+      "nombre": "Crear tarea sin título o con título de más de 255 caracteres devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar las validaciones del título (obligatorio y máximo 255 caracteres).",
+      "esperado": "400 \"El título es obligatorio\" y 400 \"El título no puede superar 255 caracteres\".",
+      "obtenido": "Título vacío: 400 \"El título es obligatorio\"; 256 caracteres: 400 \"El título no puede superar 255 caracteres\".",
+      "estado": "Aprobado",
+      "duracionMs": 1083,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-03.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-04",
+      "suite": "API - Tareas",
+      "nombre": "Crear tarea sin listaId ni proyectoId devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar que una tarea debe indicar lista o proyecto.",
+      "esperado": "400 con \"Debes enviar proyectoId o listaId\".",
+      "obtenido": "Respondió 400 con \"Debes enviar proyectoId o listaId\".",
+      "estado": "Aprobado",
+      "duracionMs": 979,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-04.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-05",
+      "suite": "API - Tareas",
+      "nombre": "Una persona ajena no puede crear ni listar tareas del proyecto (403)",
+      "tipo": "negativo",
+      "objetivo": "Verificar que una persona ajena no puede crear ni listar tareas del proyecto.",
+      "esperado": "403 en ambos casos (\"No tienes acceso a este proyecto\").",
+      "obtenido": "Crear respondió 403 \"No tienes acceso a este proyecto\"; listar respondió 403.",
+      "estado": "Aprobado",
+      "duracionMs": 1049,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-05.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-06",
+      "suite": "API - Tareas",
+      "nombre": "Asignar a alguien que no es del equipo devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar que solo se pueden asignar miembros del equipo.",
+      "esperado": "400 \"Solo se pueden asignar miembros del equipo\" para un ajeno; 200 para un miembro.",
+      "obtenido": "Asignar a un ajeno respondió 400 \"Solo se pueden asignar miembros del equipo\"; asignar a un miembro respondió 200.",
+      "estado": "Aprobado",
+      "duracionMs": 1472,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-06.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-07",
+      "suite": "API - Tareas",
+      "nombre": "Editar título y descripción devuelve 200 con los cambios",
+      "tipo": "positivo",
+      "objetivo": "Verificar la edición del título (recortado) y la descripción.",
+      "esperado": "200 con titulo \"Editada\" y la nueva descripción.",
+      "obtenido": "Respondió 200 con titulo \"Editada\" (recortado) y la nueva descripción.",
+      "estado": "Aprobado",
+      "duracionMs": 1102,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-07.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-08",
+      "suite": "API - Tareas",
+      "nombre": "Editar con título vacío devuelve 400 y no modifica la tarea",
+      "tipo": "negativo",
+      "objetivo": "Verificar que no se puede dejar una tarea sin título y que no se modifica.",
+      "esperado": "400 \"El título es obligatorio\" y la tarea conserva su título.",
+      "obtenido": "Respondió 400 \"El título es obligatorio\"; la tarea conserva el título \"Se mantiene\".",
+      "estado": "Aprobado",
+      "duracionMs": 1490,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-08.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-09",
+      "suite": "API - Tareas",
+      "nombre": "Mover una tarea a \"Hecho\" devuelve 200 y se refleja al listar",
+      "tipo": "positivo",
+      "objetivo": "Verificar el movimiento de una tarea entre listas del mismo proyecto.",
+      "esperado": "200 con la tarea en \"Hecho\", también al volver a listar.",
+      "obtenido": "Respondió 200; la tarea quedó en \"Hecho\" también al volver a listar.",
+      "estado": "Aprobado",
+      "duracionMs": 1009,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-09.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-10",
+      "suite": "API - Tareas",
+      "nombre": "Mover una tarea a una lista de otro proyecto devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar que una tarea no puede moverse a una lista de otro proyecto.",
+      "esperado": "400 con \"No se puede mover una tarea a otro proyecto\".",
+      "obtenido": "Respondió 400 con \"No se puede mover una tarea a otro proyecto\".",
+      "estado": "Aprobado",
+      "duracionMs": 1132,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-10.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-11",
+      "suite": "API - Tareas",
+      "nombre": "Una persona ajena no puede editar, mover ni borrar una tarea (403)",
+      "tipo": "negativo",
+      "objetivo": "Verificar que una persona ajena no puede editar, mover ni borrar tareas.",
+      "esperado": "403 en las tres operaciones (\"No tienes acceso a esta tarea\").",
+      "obtenido": "Editar, mover y borrar respondieron 403, 403 y 403 con \"No tienes acceso a esta tarea\".",
+      "estado": "Aprobado",
+      "duracionMs": 1305,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-11.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-12",
+      "suite": "API - Tareas",
+      "nombre": "Eliminar una tarea devuelve 200 y una segunda vez 404",
+      "tipo": "positivo",
+      "objetivo": "Verificar la eliminación de una tarea y la respuesta al borrarla de nuevo.",
+      "esperado": "200 {eliminado: true} y después 404 \"Tarea no encontrada\".",
+      "obtenido": "Primera eliminación 200 {eliminado: true}; segunda 404 \"Tarea no encontrada\".",
+      "estado": "Aprobado",
+      "duracionMs": 1406,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-12.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-TAR-13",
+      "suite": "API - Tareas",
+      "nombre": "Listar tareas sin proyectoId o con un id inválido devuelve 400",
+      "tipo": "negativo",
+      "objetivo": "Verificar las validaciones de parámetros de tareas (proyectoId y nuevaListaId).",
+      "esperado": "400 sin proyectoId, 400 con proyectoId inválido y 400 con nuevaListaId inválida.",
+      "obtenido": "Sin proyectoId: 400; proyectoId inválido: 400; nuevaListaId inválida: 400 \"La lista destino no es un identificador válido\".",
+      "estado": "Aprobado",
+      "duracionMs": 1465,
+      "archivo": "cypress/e2e/api/tareas.cy.ts",
+      "evidencia": [
+        "api/API-TAR-13.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-VAL-01",
+      "suite": "API - Validación",
+      "nombre": "Los textos de longitud máxima se traducen al español con su límite",
+      "tipo": "negativo",
+      "objetivo": "Verificar que los mensajes de longitud máxima se traducen al español con su límite.",
+      "esperado": "400 con exactamente [\"El nombre no puede superar 255 caracteres\"].",
+      "obtenido": "Respondió 400 con \"El nombre no puede superar 255 caracteres\".",
+      "estado": "Aprobado",
+      "duracionMs": 391,
+      "archivo": "cypress/e2e/api/validacion.cy.ts",
+      "evidencia": [
+        "api/API-VAL-01.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "API-VAL-02",
+      "suite": "API - Validación",
+      "nombre": "Un identificador con formato incorrecto se explica como \"no es un identificador válido\"",
+      "tipo": "negativo",
+      "objetivo": "Verificar que un identificador con formato incorrecto se explica con el mensaje específico previsto en src/common/validation.ts.",
+      "esperado": "400 con \"El equipo no es un identificador válido\" (POST /proyectos) y \"La lista destino no es un identificador válido\" (PATCH /tareas/:id/mover).",
+      "obtenido": "POST /proyectos respondió 400 con \"El equipo no es un identificador válido\"; PATCH /tareas/:id/mover respondió 400 con \"La lista destino no es un identificador válido\". (Defecto detectado en una ejecución anterior y corregido.)",
+      "estado": "Aprobado",
+      "observacion": "Este caso detectó un DEFECTO en una ejecución anterior (validation.ts traducía la restricción 'isUUID' pero class-validator la llama 'isUuid'; se devolvía el genérico \"El equipo no es válido\" y \"La lista destino no es válido\", con error de concordancia). El defecto se corrigió y el caso se mantiene como prueba de regresión.",
+      "duracionMs": 353,
+      "archivo": "cypress/e2e/api/validacion.cy.ts",
+      "evidencia": [
+        "api/API-VAL-02.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-AUT-01",
+      "suite": "Regresión UI - Autenticación",
+      "nombre": "Registro correcto redirige al login con el correo precargado y aviso de éxito",
+      "tipo": "positivo",
+      "objetivo": "Verificar el flujo de registro completo desde la interfaz.",
+      "esperado": "Los requisitos \"Al menos 8 caracteres\", \"Al menos una letra\", \"Al menos un número\" y \"Las dos contraseñas coinciden\" se marcan como cumplidos; la API responde 201, se redirige a /login con el aviso \"Cuenta creada correctamente\" y el correo precargado.",
+      "obtenido": "La API respondió 201, se redirigió a /login con el aviso \"Cuenta creada correctamente\" y el correo precargado.",
+      "estado": "Aprobado",
+      "duracionMs": 11456,
+      "archivo": "cypress/e2e/regresion/autenticacion.cy.ts",
+      "evidencia": [
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-01-01-formulario-completo.png",
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-01-02-login-con-aviso.png",
+        "videos/autenticacion.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-AUT-02",
+      "suite": "Regresión UI - Autenticación",
+      "nombre": "Registro con un correo ya registrado muestra una alerta clara",
+      "tipo": "negativo",
+      "objetivo": "Verificar el mensaje al registrarse con un correo ya existente.",
+      "esperado": "Alerta \"Ya existe una cuenta con el correo ...\" y permanencia en /register.",
+      "obtenido": "Se mostró la alerta \"Ya existe una cuenta con el correo ui-dup.17930562048959872@taskflow-cypress.test...\" y se permaneció en /register.",
+      "estado": "Aprobado",
+      "duracionMs": 8599,
+      "archivo": "cypress/e2e/regresion/autenticacion.cy.ts",
+      "evidencia": [
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-02-01-alerta-correo-duplicado.png",
+        "videos/autenticacion.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-AUT-03",
+      "suite": "Regresión UI - Autenticación",
+      "nombre": "Contraseña que no cumple la política (8 caracteres, letra y número) se rechaza en el cliente sin llamar a la API",
+      "tipo": "negativo",
+      "objetivo": "Verificar la validación en cliente de la política de contraseñas (8 caracteres, letra y número).",
+      "esperado": "Con \"12345\" y con \"abcdefgh\" los requisitos incumplidos quedan \"pendiente\" y aparece la alerta \"La contraseña debe tener al menos 8 caracteres, con al menos una letra y un número.\" sin enviar POST /auth/register.",
+      "obtenido": "Con \"12345\" y con \"abcdefgh\" la lista de requisitos marcó los pendientes, se mostró \"La contraseña debe tener al menos 8 caracteres, con al menos una letra y un número.\" y no se envió ninguna petición POST /auth/register.",
+      "estado": "Aprobado",
+      "duracionMs": 7944,
+      "archivo": "cypress/e2e/regresion/autenticacion.cy.ts",
+      "evidencia": [
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-03-01-contrasena-corta.png",
+        "videos/autenticacion.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-AUT-04",
+      "suite": "Regresión UI - Autenticación",
+      "nombre": "Inicio de sesión correcto lleva a \"Mis equipos\" y guarda la sesión",
+      "tipo": "positivo",
+      "objetivo": "Verificar el inicio de sesión desde la interfaz.",
+      "esperado": "Redirección a \"/\" (Mis equipos), nombre en la barra y token + usuario en localStorage.",
+      "obtenido": "Se navegó a \"/\" con el título \"Mis equipos\", el nombre en la barra y el token JWT + usuario guardados en localStorage.",
+      "estado": "Aprobado",
+      "duracionMs": 5969,
+      "archivo": "cypress/e2e/regresion/autenticacion.cy.ts",
+      "evidencia": [
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-04-01-formulario-login.png",
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-04-02-mis-equipos.png",
+        "videos/autenticacion.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-AUT-05",
+      "suite": "Regresión UI - Autenticación",
+      "nombre": "Contraseña incorrecta muestra una alerta y no inicia sesión",
+      "tipo": "negativo",
+      "objetivo": "Verificar el aviso de credenciales incorrectas.",
+      "esperado": "Alerta \"El correo o la contraseña no son correctos...\" y ningún token guardado.",
+      "obtenido": "Se mostró la alerta \"El correo o la contraseña no son correctos...\" y no se guardó ningún token.",
+      "estado": "Aprobado",
+      "duracionMs": 4889,
+      "archivo": "cypress/e2e/regresion/autenticacion.cy.ts",
+      "evidencia": [
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-05-01-alerta-credenciales.png",
+        "videos/autenticacion.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-AUT-06",
+      "suite": "Regresión UI - Autenticación",
+      "nombre": "Recargar la página mantiene la sesión abierta",
+      "tipo": "positivo",
+      "objetivo": "Verificar que recargar una página privada no cierra la sesión.",
+      "esperado": "Tras recargar se sigue en /preferencias con el correo del usuario visible.",
+      "obtenido": "Tras cy.reload() se siguió en /preferencias con el correo del usuario visible, sin volver al login.",
+      "estado": "Aprobado",
+      "duracionMs": 3002,
+      "archivo": "cypress/e2e/regresion/autenticacion.cy.ts",
+      "evidencia": [
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-06-01-tras-recarga.png",
+        "videos/autenticacion.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-AUT-07",
+      "suite": "Regresión UI - Autenticación",
+      "nombre": "Las rutas privadas sin sesión redirigen a /login",
+      "tipo": "negativo",
+      "objetivo": "Verificar que las rutas privadas están protegidas sin sesión.",
+      "esperado": "/, /equipos/:id, /proyectos/:id, /preferencias y /ayuda redirigen a /login; /privacidad es pública.",
+      "obtenido": "Las 5 rutas privadas (/, /equipos/00000000-0000-4000-8000-000000000000, /proyectos/00000000-0000-4000-8000-000000000000, /preferencias, /ayuda) redirigieron a /login; /privacidad siguió siendo pública.",
+      "estado": "Aprobado",
+      "duracionMs": 4658,
+      "archivo": "cypress/e2e/regresion/autenticacion.cy.ts",
+      "evidencia": [
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-07-01-privacidad-publica.png",
+        "videos/autenticacion.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-AUT-08",
+      "suite": "Regresión UI - Autenticación",
+      "nombre": "Una sesión con token inválido se descarta y vuelve al login",
+      "tipo": "negativo",
+      "objetivo": "Verificar que una sesión con token inválido se descarta.",
+      "esperado": "GET /equipos responde 401, se borra la sesión y se redirige a /login.",
+      "obtenido": "GET /equipos respondió 401, la app borró access_token/user y redirigió a /login.",
+      "estado": "Aprobado",
+      "duracionMs": 3221,
+      "archivo": "cypress/e2e/regresion/autenticacion.cy.ts",
+      "evidencia": [
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-08-01-sesion-descartada.png",
+        "videos/autenticacion.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-AUT-09",
+      "suite": "Regresión UI - Autenticación",
+      "nombre": "Cerrar sesión pide confirmación y limpia la sesión",
+      "tipo": "positivo",
+      "objetivo": "Verificar el cierre de sesión con confirmación.",
+      "esperado": "Diálogo \"¿Cerrar sesión?\"; al confirmar, /login y sesión borrada.",
+      "obtenido": "Se mostró el diálogo \"¿Cerrar sesión?\"; al confirmar se volvió a /login y se borró la sesión.",
+      "estado": "Aprobado",
+      "duracionMs": 2328,
+      "archivo": "cypress/e2e/regresion/autenticacion.cy.ts",
+      "evidencia": [
+        "capturas/regresion/autenticacion.cy.ts/REG-AUT-09-01-confirmar-salida.png",
+        "videos/autenticacion.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-EQU-01",
+      "suite": "Regresión UI - Equipos y proyectos",
+      "nombre": "Crear un equipo desde \"Mis equipos\" lo muestra con el distintivo de líder",
+      "tipo": "positivo",
+      "objetivo": "Verificar la creación de un equipo desde \"Mis equipos\".",
+      "esperado": "Aviso \"Equipo «...» creado\" y tarjeta del equipo (data-testid=\"tarjeta-equipo\", sin aria-label: su nombre accesible es el texto visible, WCAG 2.5.3) con el distintivo \"Líder\" y \"1 miembro\".",
+      "obtenido": "Apareció el aviso \"Equipo «Equipo UI 1793056251373» creado\" y la tarjeta del equipo (data-testid=\"tarjeta-equipo\", sin aria-label) con el distintivo \"Líder\" y \"1 miembro\"; su nombre accesible empieza por el texto visible.",
+      "estado": "Aprobado",
+      "duracionMs": 5950,
+      "archivo": "cypress/e2e/regresion/equipos-proyectos.cy.ts",
+      "evidencia": [
+        "capturas/regresion/equipos-proyectos.cy.ts/REG-EQU-01-01-dialogo-nuevo-equipo.png",
+        "capturas/regresion/equipos-proyectos.cy.ts/REG-EQU-01-02-equipo-creado.png",
+        "videos/equipos-proyectos.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-EQU-02",
+      "suite": "Regresión UI - Equipos y proyectos",
+      "nombre": "El líder invita a un miembro registrado buscándolo por correo",
+      "tipo": "positivo",
+      "objetivo": "Verificar la invitación de un miembro registrado buscando su correo.",
+      "esperado": "Se encuentra a la persona, aviso \"... ahora es miembro del equipo.\" y Miembros (2).",
+      "obtenido": "Se encontró a \"Usuario ui-invitado 317923\", apareció el aviso \"... ahora es miembro del equipo.\" y el contador pasó a Miembros (2).",
+      "estado": "Aprobado",
+      "duracionMs": 5058,
+      "archivo": "cypress/e2e/regresion/equipos-proyectos.cy.ts",
+      "evidencia": [
+        "capturas/regresion/equipos-proyectos.cy.ts/REG-EQU-02-01-usuario-encontrado.png",
+        "capturas/regresion/equipos-proyectos.cy.ts/REG-EQU-02-02-miembro-agregado.png",
+        "videos/equipos-proyectos.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-EQU-03",
+      "suite": "Regresión UI - Equipos y proyectos",
+      "nombre": "Invitar un correo no registrado muestra una alerta y no agrega a nadie",
+      "tipo": "negativo",
+      "objetivo": "Verificar el aviso al invitar un correo no registrado.",
+      "esperado": "Alerta \"No hay ningún usuario registrado con el correo ...\" sin opción de añadir; Miembros (1).",
+      "obtenido": "Se mostró la alerta \"No hay ningún usuario registrado con el correo nadie.1793056262697@taskflow-cypress.test...\" sin botón para añadir; el equipo siguió con 1 miembro.",
+      "estado": "Aprobado",
+      "duracionMs": 5164,
+      "archivo": "cypress/e2e/regresion/equipos-proyectos.cy.ts",
+      "evidencia": [
+        "capturas/regresion/equipos-proyectos.cy.ts/REG-EQU-03-01-correo-inexistente.png",
+        "videos/equipos-proyectos.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-EQU-04",
+      "suite": "Regresión UI - Equipos y proyectos",
+      "nombre": "Quitar a un miembro pide confirmación y se puede deshacer",
+      "tipo": "positivo",
+      "objetivo": "Verificar quitar a un miembro con confirmación y la acción Deshacer.",
+      "esperado": "Confirmación con consecuencias, Miembros (1) y, tras Deshacer, \"... ha vuelto al equipo.\" y Miembros (2).",
+      "obtenido": "Tras confirmar, Miembros pasó de (2) a (1); al pulsar \"Deshacer\" apareció \"... ha vuelto al equipo.\" y volvió a (2).",
+      "estado": "Aprobado",
+      "duracionMs": 4600,
+      "archivo": "cypress/e2e/regresion/equipos-proyectos.cy.ts",
+      "evidencia": [
+        "capturas/regresion/equipos-proyectos.cy.ts/REG-EQU-04-01-miembro-quitado.png",
+        "capturas/regresion/equipos-proyectos.cy.ts/REG-EQU-04-02-deshacer.png",
+        "videos/equipos-proyectos.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-EQU-05",
+      "suite": "Regresión UI - Equipos y proyectos",
+      "nombre": "Crear un proyecto genera un tablero con las columnas Por Hacer, En Progreso y Hecho",
+      "tipo": "positivo",
+      "objetivo": "Verificar la creación de un proyecto y su tablero inicial.",
+      "esperado": "Aviso \"... creado con sus 3 listas.\", tarjeta del proyecto (data-testid=\"tarjeta-proyecto\", sin aria-label: su nombre accesible es el texto visible, WCAG 2.5.3) y, al abrirla, tablero con columnas Por Hacer, En Progreso y Hecho (progreso 0%).",
+      "obtenido": "Apareció el aviso \"... creado con sus 3 listas.\", la tarjeta del proyecto (data-testid=\"tarjeta-proyecto\", sin aria-label; su nombre accesible empieza por el texto visible) y el tablero mostró las columnas Por Hacer, En Progreso y Hecho con progreso 0%.",
+      "estado": "Aprobado",
+      "duracionMs": 4892,
+      "archivo": "cypress/e2e/regresion/equipos-proyectos.cy.ts",
+      "evidencia": [
+        "capturas/regresion/equipos-proyectos.cy.ts/REG-EQU-05-01-proyecto-creado.png",
+        "capturas/regresion/equipos-proyectos.cy.ts/REG-EQU-05-02-tablero-tres-columnas.png",
+        "videos/equipos-proyectos.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-EQU-06",
+      "suite": "Regresión UI - Equipos y proyectos",
+      "nombre": "Un miembro que no es líder no ve las acciones de líder",
+      "tipo": "negativo",
+      "objetivo": "Verificar que un miembro no líder no ve acciones reservadas al líder.",
+      "esperado": "Sin botones \"Invitar\", \"Quitar a ...\" ni \"Eliminar\".",
+      "obtenido": "La vista del equipo para un miembro no mostró los botones \"Invitar\", \"Quitar a ...\" ni \"Eliminar\" (equipo o proyecto).",
+      "estado": "Aprobado",
+      "duracionMs": 1876,
+      "archivo": "cypress/e2e/regresion/equipos-proyectos.cy.ts",
+      "evidencia": [
+        "capturas/regresion/equipos-proyectos.cy.ts/REG-EQU-06-01-vista-miembro.png",
+        "videos/equipos-proyectos.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-01",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "Crear una tarea desde \"Nueva tarea\" la añade a la columna Por Hacer",
+      "tipo": "positivo",
+      "objetivo": "Verificar la creación de una tarea con descripción y asignado desde el tablero.",
+      "esperado": "Aviso \"Tarea ... creada en Por Hacer.\", tarjeta en Por Hacer (botón data-testid=\"abrir-tarea\" cuyo nombre accesible es su título y descripción visibles) con su asignado y 1 tarea en la API.",
+      "obtenido": "Apareció el aviso \"Tarea ... creada en Por Hacer.\", la tarjeta quedó en Por Hacer con su asignado y la API devolvió 1 tarea.",
+      "estado": "Aprobado",
+      "duracionMs": 8279,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-01-01-formulario-tarea.png",
+        "capturas/regresion/kanban.cy.ts/REG-KAN-01-02-tarea-creada.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-02",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "No se puede crear una tarea sin título",
+      "tipo": "negativo",
+      "objetivo": "Verificar que el título de la tarea es obligatorio en el formulario.",
+      "esperado": "Mensaje \"Escribe un título para la tarea (es obligatorio).\", campo aria-invalid y ningún POST /tareas.",
+      "obtenido": "Se mostró \"Escribe un título para la tarea (es obligatorio).\", el campo quedó aria-invalid y no se envió POST /tareas.",
+      "estado": "Aprobado",
+      "duracionMs": 3539,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-02-01-titulo-obligatorio.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-03",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "Editar el título y la descripción desde el detalle guarda los cambios",
+      "tipo": "positivo",
+      "objetivo": "Verificar la edición de título y descripción desde el detalle.",
+      "esperado": "Aviso \"Cambios guardados.\" y los nuevos valores en la tarjeta y en la API.",
+      "obtenido": "Apareció \"Cambios guardados.\", la tarjeta mostró el nuevo título y descripción y la API devolvió los mismos valores.",
+      "estado": "Aprobado",
+      "duracionMs": 5788,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-03-01-editando.png",
+        "capturas/regresion/kanban.cy.ts/REG-KAN-03-02-editada.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-04",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "Eliminar una tarea pide confirmación y se puede deshacer",
+      "tipo": "positivo",
+      "objetivo": "Verificar la eliminación con confirmación y su deshacer.",
+      "esperado": "La tarea desaparece (0 en API) y con \"Deshacer\" vuelve a su columna con su descripción (1 en API).",
+      "obtenido": "Se pidió confirmación, la tarea desapareció (API: 0 tareas) y con \"Deshacer\" se restauró en En Progreso con su descripción (API: 1 tarea).",
+      "estado": "Aprobado",
+      "duracionMs": 5552,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-04-01-confirmacion.png",
+        "capturas/regresion/kanban.cy.ts/REG-KAN-04-02-eliminada.png",
+        "capturas/regresion/kanban.cy.ts/REG-KAN-04-03-restaurada.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-05",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "Cancelar la eliminación conserva la tarea",
+      "tipo": "negativo",
+      "objetivo": "Verificar que cancelar la confirmación no elimina la tarea.",
+      "esperado": "Se cierra la confirmación, vuelve el detalle y la API sigue con 1 tarea.",
+      "obtenido": "Al cancelar, el diálogo de confirmación se cerró, volvió el detalle de la tarea y la API siguió devolviendo 1 tarea.",
+      "estado": "Aprobado",
+      "duracionMs": 4105,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-05-01-cancelado.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-06",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "Mover una tarea con el selector \"Columna\" del detalle persiste tras recargar",
+      "tipo": "positivo",
+      "objetivo": "Verificar el cambio de columna desde el selector del detalle y su persistencia.",
+      "esperado": "Aviso \"... movida a En Progreso.\" y la tarjeta sigue en En Progreso tras recargar.",
+      "obtenido": "Apareció el aviso «\"Tarea viajera\" movida a En Progreso.» y tras recargar la tarjeta siguió en En Progreso (Por Hacer vacía).",
+      "estado": "Aprobado",
+      "duracionMs": 3449,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-06-01-movida.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-07",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "Mover una tarea arrastrándola con el teclado y deshacer el movimiento",
+      "tipo": "positivo",
+      "objetivo": "Verificar el arrastre accesible con teclado entre columnas y la acción Deshacer.",
+      "esperado": "PATCH /mover 200, la tarjeta pasa a En Progreso y con \"Deshacer\" vuelve a Por Hacer.",
+      "obtenido": "El arrastre con teclado llamó a PATCH /mover (200) y llevó la tarjeta a En Progreso; \"Deshacer\" la devolvió a Por Hacer (confirmado por API).",
+      "estado": "Aprobado",
+      "duracionMs": 2707,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-07-01-arrastrada.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-08",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "La búsqueda ignora tildes, mayúsculas y pequeñas faltas de ortografía",
+      "tipo": "positivo",
+      "objetivo": "Verificar la búsqueda tolerante a tildes, mayúsculas y erratas.",
+      "esperado": "\"DISENAR\" y \"documentasion\" encuentran su tarea (1 de 3) y \"Limpiar filtros\" vuelve a 3 de 3.",
+      "obtenido": "\"DISENAR\" encontró \"Diseñar pantalla de inicio\" y \"documentasion\" encontró \"Escribir documentación\" (1 de 3 en ambos casos); \"Limpiar filtros\" volvió a 3 de 3.",
+      "estado": "Aprobado",
+      "duracionMs": 3545,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-08-01-sin-tildes.png",
+        "capturas/regresion/kanban.cy.ts/REG-KAN-08-02-con-errata.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-09",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "Una búsqueda sin coincidencias lo indica en cada columna",
+      "tipo": "negativo",
+      "objetivo": "Verificar el estado de búsqueda sin coincidencias.",
+      "esperado": "\"Mostrando 0 de 1 tareas\", \"Ninguna tarea coincide aquí\" en las 3 columnas y Esc limpia la búsqueda.",
+      "obtenido": "Se mostró \"Mostrando 0 de 1 tareas\" y \"Ninguna tarea coincide aquí\" en las 3 columnas; Esc limpió la búsqueda.",
+      "estado": "Aprobado",
+      "duracionMs": 2021,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-09-01-sin-coincidencias.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-10",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "La barra de progreso refleja las tareas en \"Hecho\"",
+      "tipo": "positivo",
+      "objetivo": "Verificar que la barra de progreso refleja las tareas en Hecho.",
+      "esperado": "25% y texto \"1 de 4 tareas hechas\" (plural según el total) y, al mover otra tarea a Hecho, 50% y \"2 de 4 tareas hechas\".",
+      "obtenido": "Con 1 de 4 tareas en Hecho la barra marcó 25% (aria-valuenow=25); el texto dijo \"1 de 4 tareas hechas\" (plural según el total); al mover otra pasó a 50% y \"2 de 4 tareas hechas\".",
+      "estado": "Aprobado",
+      "duracionMs": 2430,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-10-01-progreso-25.png",
+        "capturas/regresion/kanban.cy.ts/REG-KAN-10-02-progreso-50.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-11",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "Los atajos \"n\" y \"/\" abren la nueva tarea y enfocan la búsqueda",
+      "tipo": "positivo",
+      "objetivo": "Verificar los atajos de teclado del tablero.",
+      "esperado": "\"n\" abre \"Crear nueva tarea\" con foco en el título y \"/\" enfoca el buscador.",
+      "obtenido": "La tecla \"n\" abrió \"Crear nueva tarea\" con el foco en el título, Esc la cerró y \"/\" enfocó el buscador.",
+      "estado": "Aprobado",
+      "duracionMs": 1410,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-11-01-atajo-n.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-KAN-12",
+      "suite": "Regresión UI - Kanban",
+      "nombre": "Un proyecto inexistente muestra \"Proyecto no encontrado\"",
+      "tipo": "negativo",
+      "objetivo": "Verificar el manejo de un proyecto inexistente.",
+      "esperado": "Pantalla \"Proyecto no encontrado\", aviso de error y vuelta a \"/\" con el botón.",
+      "obtenido": "Se mostró \"Proyecto no encontrado\" con un aviso de error y el botón \"Volver a mis equipos\" llevó a \"/\".",
+      "estado": "Aprobado",
+      "duracionMs": 1240,
+      "archivo": "cypress/e2e/regresion/kanban.cy.ts",
+      "evidencia": [
+        "capturas/regresion/kanban.cy.ts/REG-KAN-12-01-proyecto-no-encontrado.png",
+        "capturas/regresion/kanban.cy.ts/REG-KAN-12-02-vuelta-al-inicio.png",
+        "videos/kanban.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-PRE-01",
+      "suite": "Regresión UI - Preferencias",
+      "nombre": "Activar \"Alto contraste\" se aplica al instante y se conserva al recargar",
+      "tipo": "positivo",
+      "objetivo": "Verificar que alto contraste y tamaño de texto se aplican y persisten.",
+      "esperado": "<html> con data-contraste=\"alto\" y data-texto=\"grande\", también tras recargar.",
+      "obtenido": "El <html> pasó a data-contraste=\"alto\" y data-texto=\"grande\" al instante y ambos valores se mantuvieron tras recargar (guardados en localStorage).",
+      "estado": "Aprobado",
+      "duracionMs": 2235,
+      "archivo": "cypress/e2e/regresion/preferencias.cy.ts",
+      "evidencia": [
+        "capturas/regresion/preferencias.cy.ts/REG-PRE-01-01-alto-contraste-texto-grande.png",
+        "videos/preferencias.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-PRE-02",
+      "suite": "Regresión UI - Preferencias",
+      "nombre": "\"Restablecer valores por defecto\" pide confirmación y deshace los cambios",
+      "tipo": "positivo",
+      "objetivo": "Verificar el restablecimiento de preferencias con confirmación.",
+      "esperado": "Aviso \"Se restablecieron los valores por defecto.\" y <html> con contraste y animaciones normales.",
+      "obtenido": "Se pidió confirmación; al aceptar apareció \"Se restablecieron los valores por defecto.\" y el <html> volvió a contraste normal y animaciones normales.",
+      "estado": "Aprobado",
+      "duracionMs": 1553,
+      "archivo": "cypress/e2e/regresion/preferencias.cy.ts",
+      "evidencia": [
+        "capturas/regresion/preferencias.cy.ts/REG-PRE-02-01-confirmacion.png",
+        "capturas/regresion/preferencias.cy.ts/REG-PRE-02-02-restablecido.png",
+        "videos/preferencias.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-PRE-03",
+      "suite": "Regresión UI - Preferencias",
+      "nombre": "Cancelar el restablecimiento mantiene las preferencias",
+      "tipo": "negativo",
+      "objetivo": "Verificar que cancelar el restablecimiento no cambia nada.",
+      "esperado": "El alto contraste sigue activo.",
+      "obtenido": "Al pulsar \"Cancelar\" se cerró el diálogo y el alto contraste siguió activo (data-contraste=\"alto\").",
+      "estado": "Aprobado",
+      "duracionMs": 1001,
+      "archivo": "cypress/e2e/regresion/preferencias.cy.ts",
+      "evidencia": [
+        "capturas/regresion/preferencias.cy.ts/REG-PRE-03-01-cancelado.png",
+        "videos/preferencias.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-PRE-04",
+      "suite": "Regresión UI - Preferencias",
+      "nombre": "Cambiar el nombre visible lo guarda en la API y en la barra de navegación",
+      "tipo": "positivo",
+      "objetivo": "Verificar el cambio del nombre visible desde Preferencias.",
+      "esperado": "Aviso de éxito, nombre nuevo en la barra y en GET /usuarios/me.",
+      "obtenido": "Apareció \"Tu nombre se actualizó correctamente.\", la barra mostró \"Nombre Cypress 1793056337314\" y GET /usuarios/me devolvió el mismo nombre.",
+      "estado": "Aprobado",
+      "duracionMs": 2066,
+      "archivo": "cypress/e2e/regresion/preferencias.cy.ts",
+      "evidencia": [
+        "capturas/regresion/preferencias.cy.ts/REG-PRE-04-01-nombre-actualizado.png",
+        "videos/preferencias.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "REG-PRE-05",
+      "suite": "Regresión UI - Preferencias",
+      "nombre": "Desactivar los atajos de teclado hace que \"n\" ya no abra la nueva tarea",
+      "tipo": "negativo",
+      "objetivo": "Verificar que desactivar los atajos de teclado los deshabilita.",
+      "esperado": "Pulsar \"n\" en el tablero no abre ninguna ventana.",
+      "obtenido": "Con los atajos desactivados, pulsar \"n\" en el tablero no abrió ninguna ventana.",
+      "estado": "Aprobado",
+      "duracionMs": 1774,
+      "archivo": "cypress/e2e/regresion/preferencias.cy.ts",
+      "evidencia": [
+        "capturas/regresion/preferencias.cy.ts/REG-PRE-05-01-atajo-desactivado.png",
+        "videos/preferencias.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CMP-BTN-01",
+      "suite": "Componentes - Button",
+      "nombre": "Muestra su texto y ejecuta onClick al pulsarlo",
+      "tipo": "positivo",
+      "objetivo": "Verificar el renderizado y el clic del botón.",
+      "esperado": "Botón habilitado con su texto; onClick se llama una vez.",
+      "obtenido": "El botón \"Guardar\" se mostró habilitado, sin aria-busy, y onClick se llamó 1 vez.",
+      "estado": "Aprobado",
+      "duracionMs": 912,
+      "archivo": "cypress/component/Button.cy.tsx",
+      "evidencia": [
+        "capturas/Button.cy.tsx/CMP-BTN-01-01-boton.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-BTN-02",
+      "suite": "Componentes - Button",
+      "nombre": "Con isLoading se deshabilita, anuncia aria-busy y muestra el indicador",
+      "tipo": "negativo",
+      "objetivo": "Verificar el estado de carga (isLoading).",
+      "esperado": "disabled, aria-busy=\"true\", spinner oculto a lectores y sin llamada a onClick.",
+      "obtenido": "Con isLoading el botón quedó disabled, aria-busy=\"true\", con el spinner oculto a lectores, y el clic no llamó a onClick.",
+      "estado": "Aprobado",
+      "duracionMs": 553,
+      "archivo": "cypress/component/Button.cy.tsx",
+      "evidencia": [
+        "capturas/Button.cy.tsx/CMP-BTN-02-01-cargando.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-BTN-03",
+      "suite": "Componentes - Button",
+      "nombre": "Con disabled no ejecuta onClick y aplica la variante indicada",
+      "tipo": "negativo",
+      "objetivo": "Verificar el estado deshabilitado y la variante danger.",
+      "esperado": "Botón deshabilitado con clase de peligro; el clic no llama a onClick.",
+      "obtenido": "El botón \"Eliminar\" (variante danger) quedó deshabilitado y el clic forzado no llamó a onClick.",
+      "estado": "Aprobado",
+      "duracionMs": 152,
+      "archivo": "cypress/component/Button.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-INP-01",
+      "suite": "Componentes - Input",
+      "nombre": "La etiqueta está asociada al campo y anuncia que es obligatorio",
+      "tipo": "positivo",
+      "objetivo": "Verificar la asociación etiqueta-campo, obligatoriedad y texto de ayuda.",
+      "esperado": "Campo localizable por su etiqueta, required, \"(obligatorio)\" para lectores y aria-describedby a la ayuda.",
+      "obtenido": "findByLabelText encontró el input (label for=id), con required, \"(obligatorio)\" para lectores y aria-describedby apuntando al texto de ayuda.",
+      "estado": "Aprobado",
+      "duracionMs": 603,
+      "archivo": "cypress/component/Input.cy.tsx",
+      "evidencia": [
+        "capturas/Input.cy.tsx/CMP-INP-01-01-campo-con-ayuda.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-INP-02",
+      "suite": "Componentes - Input",
+      "nombre": "Con error marca aria-invalid y enlaza el mensaje con aria-describedby",
+      "tipo": "negativo",
+      "objetivo": "Verificar la presentación accesible de un error.",
+      "esperado": "aria-invalid=\"true\" y aria-describedby con el mensaje de error (aria-live polite).",
+      "obtenido": "El input quedó aria-invalid=\"true\", aria-describedby enlazó ayuda y error (\"Escribe un correo completo\", aria-live=polite) y la ayuda pasó a sr-only.",
+      "estado": "Aprobado",
+      "duracionMs": 449,
+      "archivo": "cypress/component/Input.cy.tsx",
+      "evidencia": [
+        "capturas/Input.cy.tsx/CMP-INP-02-01-campo-con-error.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-INP-03",
+      "suite": "Componentes - Input",
+      "nombre": "Sin error ni ayuda no añade atributos de accesibilidad vacíos",
+      "tipo": "positivo",
+      "objetivo": "Verificar que sin ayuda ni error no se añaden atributos ARIA vacíos.",
+      "esperado": "Sin aria-describedby ni aria-invalid; acepta escritura.",
+      "obtenido": "Sin ayuda ni error el input no tuvo aria-describedby ni aria-invalid y aceptó la escritura (\"hola\").",
+      "estado": "Aprobado",
+      "duracionMs": 450,
+      "archivo": "cypress/component/Input.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-MOD-01",
+      "suite": "Componentes - Modal",
+      "nombre": "Cerrado no renderiza nada; abierto es un diálogo modal con título y foco en el primer campo",
+      "tipo": "positivo",
+      "objetivo": "Verificar el renderizado condicional y la semántica de diálogo.",
+      "esperado": "Nada si está cerrado; abierto: role dialog, aria-modal, nombre/descripción y foco en el primer campo.",
+      "obtenido": "Con isOpen=false no hubo diálogo; abierto tuvo role=\"dialog\", aria-modal, nombre y descripción accesibles y el foco en el primer input.",
+      "estado": "Aprobado",
+      "duracionMs": 835,
+      "archivo": "cypress/component/Modal.cy.tsx",
+      "evidencia": [
+        "capturas/Modal.cy.tsx/CMP-MOD-01-01-dialogo-abierto.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-MOD-02",
+      "suite": "Componentes - Modal",
+      "nombre": "La tecla Escape cierra la ventana",
+      "tipo": "positivo",
+      "objetivo": "Verificar el cierre con la tecla Escape.",
+      "esperado": "onClose se llama una vez.",
+      "obtenido": "Pulsar Escape llamó a onClose exactamente 1 vez.",
+      "estado": "Aprobado",
+      "duracionMs": 219,
+      "archivo": "cypress/component/Modal.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-MOD-03",
+      "suite": "Componentes - Modal",
+      "nombre": "El botón \"Cerrar ventana\" y el fondo oscuro también cierran",
+      "tipo": "positivo",
+      "objetivo": "Verificar el cierre con el botón X y con el fondo.",
+      "esperado": "onClose se llama dos veces.",
+      "obtenido": "El botón \"Cerrar ventana (Esc)\" y el clic en el fondo llamaron a onClose (2 llamadas).",
+      "estado": "Aprobado",
+      "duracionMs": 282,
+      "archivo": "cypress/component/Modal.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-MOD-04",
+      "suite": "Componentes - Modal",
+      "nombre": "El foco queda atrapado dentro con Tab y puede usarse como alertdialog",
+      "tipo": "positivo",
+      "objetivo": "Verificar la trampa de foco y el rol alertdialog.",
+      "esperado": "Tab/Shift+Tab circulan dentro del diálogo; se expone como alertdialog.",
+      "obtenido": "Con rol=\"alertdialog\" se expuso como alertdialog; Tab desde el último botón volvió al primero y Shift+Tab desde el primero fue al último.",
+      "estado": "Aprobado",
+      "duracionMs": 190,
+      "archivo": "cypress/component/Modal.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-CON-01",
+      "suite": "Componentes - Confirmación",
+      "nombre": "Muestra título, mensaje y consecuencias y resuelve true al confirmar",
+      "tipo": "positivo",
+      "objetivo": "Verificar que la confirmación muestra el contenido y resuelve true al aceptar.",
+      "esperado": "alertdialog con mensaje y 2 consecuencias; la promesa resuelve true.",
+      "obtenido": "El alertdialog mostró el mensaje y 2 consecuencias con botón de peligro; al confirmar la promesa resolvió true y se cerró.",
+      "estado": "Aprobado",
+      "duracionMs": 884,
+      "archivo": "cypress/component/Confirmacion.cy.tsx",
+      "evidencia": [
+        "capturas/Confirmacion.cy.tsx/CMP-CON-01-01-confirmacion.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-CON-02",
+      "suite": "Componentes - Confirmación",
+      "nombre": "Resuelve false al pulsar \"Cancelar\"",
+      "tipo": "negativo",
+      "objetivo": "Verificar la cancelación de la confirmación.",
+      "esperado": "La promesa resuelve false.",
+      "obtenido": "Al pulsar \"Cancelar\" la promesa resolvió false.",
+      "estado": "Aprobado",
+      "duracionMs": 264,
+      "archivo": "cypress/component/Confirmacion.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-CON-03",
+      "suite": "Componentes - Confirmación",
+      "nombre": "Resuelve false al cerrar con Escape",
+      "tipo": "negativo",
+      "objetivo": "Verificar el cierre de la confirmación con Escape.",
+      "esperado": "La promesa resuelve false y el diálogo se cierra.",
+      "obtenido": "Al pulsar Escape el diálogo se cerró y la promesa resolvió false.",
+      "estado": "Aprobado",
+      "duracionMs": 320,
+      "archivo": "cypress/component/Confirmacion.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-CON-04",
+      "suite": "Componentes - Confirmación",
+      "nombre": "useConfirmacion fuera del proveedor lanza un error descriptivo",
+      "tipo": "negativo",
+      "objetivo": "Verificar el error de uso del hook fuera de su proveedor.",
+      "esperado": "Error \"useConfirmacion debe usarse dentro de ProveedorConfirmacion\".",
+      "obtenido": "Montar el componente sin proveedor lanzó \"useConfirmacion debe usarse dentro de ProveedorConfirmacion\" y no se renderizó.",
+      "estado": "Aprobado",
+      "duracionMs": 73,
+      "archivo": "cypress/component/Confirmacion.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-AVI-01",
+      "suite": "Componentes - Avisos (Toast)",
+      "nombre": "Un aviso de éxito se anuncia como status y desaparece solo a los 4 s",
+      "tipo": "positivo",
+      "objetivo": "Verificar el aviso de éxito y su cierre automático.",
+      "esperado": "role=\"status\" con el título \"Listo\" (no \"Hecho\", para no confundirlo con la columna) y el mensaje; desaparece a los 4 s.",
+      "obtenido": "El aviso \"Equipo creado.\" apareció con role=\"status\" y título \"Listo\" (antes \"Hecho\", que se confundía con la columna); seguía a los 3,9 s y desapareció a los 4,1 s.",
+      "estado": "Aprobado",
+      "duracionMs": 670,
+      "archivo": "cypress/component/Toast.cy.tsx",
+      "evidencia": [
+        "capturas/Toast.cy.tsx/CMP-AVI-01-01-aviso-exito.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-AVI-02",
+      "suite": "Componentes - Avisos (Toast)",
+      "nombre": "El botón \"Deshacer\" ejecuta la acción y cierra el aviso",
+      "tipo": "positivo",
+      "objetivo": "Verificar la acción \"Deshacer\" del aviso.",
+      "esperado": "Se ejecuta la acción una vez y el aviso se cierra.",
+      "obtenido": "Al pulsar \"Deshacer\" se llamó 1 vez a la acción y el aviso se cerró.",
+      "estado": "Aprobado",
+      "duracionMs": 276,
+      "archivo": "cypress/component/Toast.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-AVI-03",
+      "suite": "Componentes - Avisos (Toast)",
+      "nombre": "Un error HTTP se anuncia como alerta con mensaje en español y código de referencia",
+      "tipo": "negativo",
+      "objetivo": "Verificar el aviso de error con un error HTTP real de Axios.",
+      "esperado": "role=\"alert\" con el mensaje del servidor en contexto y \"Código de referencia: TF-409\".",
+      "obtenido": "Se mostró role=\"alert\" con \"No se pudo añadir: El usuario ya es miembro del equipo\" y \"Código de referencia: TF-409\"; \"Cerrar aviso\" lo quitó.",
+      "estado": "Aprobado",
+      "duracionMs": 867,
+      "archivo": "cypress/component/Toast.cy.tsx",
+      "evidencia": [
+        "capturas/Toast.cy.tsx/CMP-AVI-03-01-aviso-error.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-AVI-04",
+      "suite": "Componentes - Avisos (Toast)",
+      "nombre": "Como máximo se muestran 4 avisos a la vez",
+      "tipo": "negativo",
+      "objetivo": "Verificar el límite de avisos simultáneos.",
+      "esperado": "Con 6 avisos solo se muestran 4.",
+      "obtenido": "Tras lanzar 6 avisos seguidos solo quedaron 4 visibles (los más recientes).",
+      "estado": "Aprobado",
+      "duracionMs": 673,
+      "archivo": "cypress/component/Toast.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-MIG-01",
+      "suite": "Componentes - Migas",
+      "nombre": "Muestra \"Mis equipos\" y los niveles intermedios como enlaces y el último como página actual",
+      "tipo": "positivo",
+      "objetivo": "Verificar la estructura de la ruta de navegación.",
+      "esperado": "Enlaces a \"/\" y al nivel intermedio; el último con aria-current=\"page\".",
+      "obtenido": "Se mostraron 3 niveles: enlaces a \"/\" y \"/equipos/1\" y \"API REST\" como texto con aria-current=\"page\".",
+      "estado": "Aprobado",
+      "duracionMs": 526,
+      "archivo": "cypress/component/Migas.cy.tsx",
+      "evidencia": [
+        "capturas/Migas.cy.tsx/CMP-MIG-01-01-migas.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-MIG-02",
+      "suite": "Componentes - Migas",
+      "nombre": "Pulsar un nivel navega a su ruta",
+      "tipo": "positivo",
+      "objetivo": "Verificar la navegación al pulsar un nivel.",
+      "esperado": "Se muestra la ruta del equipo.",
+      "obtenido": "Al pulsar \"Equipo Backend\" el router mostró la ruta /equipos/:id (\"Página del equipo\").",
+      "estado": "Aprobado",
+      "duracionMs": 186,
+      "archivo": "cypress/component/Migas.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-MIG-03",
+      "suite": "Componentes - Migas",
+      "nombre": "Un último nivel con ruta no se convierte en enlace",
+      "tipo": "negativo",
+      "objetivo": "Verificar que el último nivel nunca es un enlace.",
+      "esperado": "Texto con aria-current=\"page\" sin enlace.",
+      "obtenido": "El único nivel \"Preferencias\" se mostró como texto con aria-current=\"page\", sin enlace, aunque tuviera ruta.",
+      "estado": "Aprobado",
+      "duracionMs": 83,
+      "archivo": "cypress/component/Migas.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-KAN-01",
+      "suite": "Componentes - Kanban",
+      "nombre": "La columna muestra su nombre, el contador y una tarjeta arrastrable por tarea",
+      "tipo": "positivo",
+      "objetivo": "Verificar el renderizado de la columna y sus tarjetas arrastrables.",
+      "esperado": "Región con nombre, contador 2 y 2 tarjetas con data-rfd-draggable-id y asa enfocable.",
+      "obtenido": "La región \"Hecho\" mostró el contador 2 y 2 tarjetas con data-rfd-draggable-id y asa de arrastre enfocable (tabindex=0).",
+      "estado": "Aprobado",
+      "duracionMs": 708,
+      "archivo": "cypress/component/Kanban.cy.tsx",
+      "evidencia": [
+        "capturas/Kanban.cy.tsx/CMP-KAN-01-01-columna-con-tareas.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-KAN-02",
+      "suite": "Componentes - Kanban",
+      "nombre": "La tarjeta indica los asignados o \"Sin asignar\"",
+      "tipo": "positivo",
+      "objetivo": "Verificar la información de asignados en la tarjeta.",
+      "esperado": "\"2 asignados\" con nombres para lectores; \"Sin asignar\" en la otra.",
+      "obtenido": "La tarjeta con 2 personas mostró \"2 asignados\" (y \"Asignada a: Ana, Luis.\" para lectores); la otra mostró \"Sin asignar\".",
+      "estado": "Aprobado",
+      "duracionMs": 229,
+      "archivo": "cypress/component/Kanban.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-KAN-03",
+      "suite": "Componentes - Kanban",
+      "nombre": "Abrir el detalle y asignar miembros llaman a callbacks distintos",
+      "tipo": "positivo",
+      "objetivo": "Verificar que cada acción de la tarjeta llama a su callback.",
+      "esperado": "El botón principal de la tarjeta (data-testid=\"abrir-tarea\", title \"Ver detalle, editar o eliminar\", sin aria-label) se nombra con su título visible; onTaskClick, onAssignClick (sin abrir el detalle) y onAddTask con los argumentos correctos.",
+      "obtenido": "El detalle llamó onTaskClick(tarea-1), el botón de asignar llamó onAssignClick(tarea-2) sin abrir el detalle y \"Agregar tarea en Hecho\" llamó onAddTask.",
+      "estado": "Aprobado",
+      "duracionMs": 482,
+      "archivo": "cypress/component/Kanban.cy.tsx",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CMP-KAN-04",
+      "suite": "Componentes - Kanban",
+      "nombre": "Sin tareas muestra el estado vacío y, filtrando, \"visibles de total\"",
+      "tipo": "negativo",
+      "objetivo": "Verificar los estados vacío y filtrado de la columna.",
+      "esperado": "\"Sin tareas en esta columna\"; filtrando, \"Ninguna tarea coincide aquí\" y \"0 de 5\".",
+      "obtenido": "Vacía mostró \"Sin tareas en esta columna\"; filtrando mostró \"Ninguna tarea coincide aquí\" y el contador \"0 de 5\".",
+      "estado": "Aprobado",
+      "duracionMs": 788,
+      "archivo": "cypress/component/Kanban.cy.tsx",
+      "evidencia": [
+        "capturas/Kanban.cy.tsx/CMP-KAN-04-01-columna-vacia.png",
+        "capturas/Kanban.cy.tsx/CMP-KAN-04-02-columna-filtrada.png",
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "UNI-BUS-01",
+      "suite": "Unidad - Búsqueda",
+      "nombre": "normalizar() quita tildes, mayúsculas y espacios",
+      "tipo": "positivo",
+      "objetivo": "Verificar la normalización de textos para la búsqueda.",
+      "esperado": "\"disenar cancion\" y \"nandu\".",
+      "obtenido": "normalizar(\"  Diseñar CANCIÓN  \") devolvió \"disenar cancion\" y normalizar(\"Ñandú\") devolvió \"nandu\".",
+      "estado": "Aprobado",
+      "duracionMs": 202,
+      "archivo": "cypress/component/busqueda.cy.ts",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "UNI-BUS-02",
+      "suite": "Unidad - Búsqueda",
+      "nombre": "coincide() encuentra textos con tildes, mayúsculas y faltas leves",
+      "tipo": "positivo",
+      "objetivo": "Verificar coincidencias tolerantes de coincide().",
+      "esperado": "true para tildes, mayúsculas, erratas leves, varios términos y consulta vacía.",
+      "obtenido": "Los 5 casos positivos (sin tildes, mayúsculas, erratas de 1-2 letras, varios términos y consulta vacía) devolvieron true.",
+      "estado": "Aprobado",
+      "duracionMs": 49,
+      "archivo": "cypress/component/busqueda.cy.ts",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "UNI-BUS-03",
+      "suite": "Unidad - Búsqueda",
+      "nombre": "coincide() no da falsos positivos con términos cortos o distintos",
+      "tipo": "negativo",
+      "objetivo": "Verificar que coincide() no produce falsos positivos.",
+      "esperado": "false para términos cortos con errata, palabras distintas o términos que no coinciden todos.",
+      "obtenido": "Los 3 casos negativos devolvieron false; los campos null/undefined se ignoraron (\"readme\" encontró \"README.md\").",
+      "estado": "Aprobado",
+      "duracionMs": 35,
+      "archivo": "cypress/component/busqueda.cy.ts",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "UNI-COL-01",
+      "suite": "Unidad - Búsqueda",
+      "nombre": "tipoColumna() reconoce los nombres de columna habituales",
+      "tipo": "positivo",
+      "objetivo": "Verificar la clasificación de columnas por nombre (base del progreso).",
+      "esperado": "pendiente, progreso, hecho, hecho y otra.",
+      "obtenido": "\"Por Hacer\"→pendiente, \"EN PROGRESO\"→progreso, \"Hecho\" y \"Terminado\"→hecho, \"Revisión\"→otra.",
+      "estado": "Aprobado",
+      "duracionMs": 81,
+      "archivo": "cypress/component/busqueda.cy.ts",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "UNI-ERR-01",
+      "suite": "Unidad - Errores",
+      "nombre": "Sin respuesta del servidor indica problema de conexión (TF-RED)",
+      "tipo": "negativo",
+      "objetivo": "Verificar el mensaje para errores de red.",
+      "esperado": "Código TF-RED y \"No hay conexión con el servidor...\".",
+      "obtenido": "Devolvió código TF-RED y \"No hay conexión con el servidor. Revisa tu conexión a internet e inténtalo de nuevo.\".",
+      "estado": "Aprobado",
+      "duracionMs": 68,
+      "archivo": "cypress/component/errores.cy.ts",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "UNI-ERR-02",
+      "suite": "Unidad - Errores",
+      "nombre": "Usa el mensaje del servidor y une las listas de validación",
+      "tipo": "negativo",
+      "objetivo": "Verificar el uso de los mensajes de validación del servidor.",
+      "esperado": "Mensajes unidos con \". \" y código TF-400.",
+      "obtenido": "Devolvió \"El nombre es obligatorio. El equipo no es válido\" con código TF-400.",
+      "estado": "Aprobado",
+      "duracionMs": 41,
+      "archivo": "cypress/component/errores.cy.ts",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "UNI-ERR-03",
+      "suite": "Unidad - Errores",
+      "nombre": "Sustituye los textos genéricos en inglés por un mensaje en español según el estado",
+      "tipo": "negativo",
+      "objetivo": "Verificar la sustitución de textos genéricos en inglés.",
+      "esperado": "\"No tienes permiso para realizar esta acción.\" (TF-403) y el texto de error interno en español.",
+      "obtenido": "\"Forbidden\" → \"No tienes permiso para realizar esta acción.\" (TF-403); \"Internal server error\" → \"Error interno del servidor. Inténtalo de nuevo en unos minutos.\".",
+      "estado": "Aprobado",
+      "duracionMs": 35,
+      "archivo": "cypress/component/errores.cy.ts",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "UNI-ERR-04",
+      "suite": "Unidad - Errores",
+      "nombre": "Antepone el contexto y trata errores que no son de Axios (TF-000)",
+      "tipo": "negativo",
+      "objetivo": "Verificar el prefijo de contexto y los errores que no son de Axios.",
+      "esperado": "\"No se pudo cargar el tablero: El elemento ya no existe o fue eliminado.\" y TF-000.",
+      "obtenido": "Con contexto: \"No se pudo cargar el tablero: El elemento ya no existe o fue eliminado.\"; un Error común devolvió \"Ocurrió un error inesperado.\" (TF-000).",
+      "estado": "Aprobado",
+      "duracionMs": 40,
+      "archivo": "cypress/component/errores.cy.ts",
+      "evidencia": [
+        "informe/informe-componentes.html"
+      ]
+    },
+    {
+      "id": "CYS-JWT-01",
+      "suite": "Seguridad - Autenticación",
+      "nombre": "Las rutas protegidas sin token responden 401 y no devuelven datos",
+      "tipo": "negativo",
+      "objetivo": "Verificar que el JwtAuthGuard protege todas las rutas de equipos, proyectos, listas, tareas y usuarios cuando no se envía Authorization.",
+      "esperado": "401 en las 9 rutas probadas (GET/POST/DELETE) y ningún dato del equipo en las respuestas.",
+      "obtenido": "9/9 rutas respondieron 401 sin cabecera Authorization y sin datos del equipo: GET /usuarios/me → 401; GET /equipos → 401; GET /equipos/f05bd137-15a1-407f-a378-f735c0615df9/miembros → 401; GET /proyectos?equipoId=f05bd137-15a1-407f-a378-f735c0615df9 → 401; GET /listas/proyecto/547f4578-2c23-4d50-ad85-da55d4dae00f → 401; GET /tareas?proyectoId=547f4578-2c23-4d50-ad85-da55d4dae00f → 401; POST /equipos → 401; POST /tareas → 401; DELETE /equipos/f05bd137-15a1-407f-a378-f735c0615df9 → 401.",
+      "estado": "Aprobado",
+      "duracionMs": 1291,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-JWT-02",
+      "suite": "Seguridad - Autenticación",
+      "nombre": "Un token con la firma o el contenido alterados es rechazado con 401",
+      "tipo": "negativo",
+      "objetivo": "Verificar que un JWT con la firma alterada, con el payload alterado (sub de otro usuario) o malformado es rechazado.",
+      "esperado": "401 en los tres casos; nunca 200 ni 500.",
+      "obtenido": "Los tres tokens manipulados fueron rechazados: firma alterada → 401; payload alterado → 401; token malformado → 401 \"Unauthorized\".",
+      "estado": "Aprobado",
+      "duracionMs": 520,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "api/CYS-JWT-02.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-JWT-03",
+      "suite": "Seguridad - Autenticación",
+      "nombre": "El token de una cuenta eliminada deja de ser válido (401, no 404 ni 500)",
+      "tipo": "negativo",
+      "objetivo": "Verificar que el token de una cuenta eliminada deja de servir (corrección C-08).",
+      "esperado": "200 antes de eliminar la cuenta; 401 (no 404 ni 500) con el mismo token tras DELETE /usuarios/me.",
+      "obtenido": "Antes de eliminar la cuenta /usuarios/me respondió 200; tras DELETE /usuarios/me (200) el mismo token recibió 401 \"La sesión ya no es válida. Vuelve a iniciar sesión.\".",
+      "estado": "Aprobado",
+      "duracionMs": 502,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "api/CYS-JWT-03.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-BRU-01",
+      "suite": "Seguridad - Autenticación",
+      "nombre": "Tras 5 intentos fallidos el login se bloquea con 429 aunque la contraseña sea correcta",
+      "tipo": "negativo",
+      "objetivo": "Verificar la protección frente a fuerza bruta del login (corrección C-05: 5 intentos, bloqueo 15 min).",
+      "esperado": "Cinco intentos fallidos responden 401; el sexto, aun con la contraseña correcta, responde 429 «Demasiados intentos fallidos…» sin token.",
+      "obtenido": "Cinco intentos con contraseña incorrecta respondieron 401, 401, 401, 401, 401; el sexto, con la contraseña correcta, respondió 429 \"Demasiados intentos fallidos. Por seguridad, espera 15 minuto(s) antes de volver a intentarlo.\" y sin token.",
+      "estado": "Aprobado",
+      "duracionMs": 960,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "api/CYS-BRU-01.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-ACL-01",
+      "suite": "Seguridad - Autorización",
+      "nombre": "Un usuario ajeno al equipo no puede leer su equipo, miembros, proyectos, listas ni tareas (403)",
+      "tipo": "negativo",
+      "objetivo": "Verificar el control de acceso por pertenencia al equipo en las lecturas (BOLA): equipo, miembros, proyectos, listas y tareas.",
+      "esperado": "403 en las 6 lecturas del usuario ajeno y sin filtrar títulos de tareas.",
+      "obtenido": "6/6 lecturas del usuario ajeno respondieron 403 sin filtrar datos: GET /equipos/df16d437-0b84-4e43-a5d0-07bf60d76874 → 403; GET /equipos/df16d437-0b84-4e43-a5d0-07bf60d76874/miembros → 403; GET /proyectos?equipoId=df16d437-0b84-4e43-a5d0-07bf60d76874 → 403; GET /proyectos/8c506dbb-98da-418a-9c40-b7127d719b97 → 403; GET /listas/proyecto/8c506dbb-98da-418a-9c40-b7127d719b97 → 403; GET /tareas?proyectoId=8c506dbb-98da-418a-9c40-b7127d719b97 → 403.",
+      "estado": "Aprobado",
+      "duracionMs": 1719,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-ACL-02",
+      "suite": "Seguridad - Autorización",
+      "nombre": "Solo el líder gestiona miembros y elimina el equipo; un ajeno no puede crear proyectos ni tareas (403)",
+      "tipo": "negativo",
+      "objetivo": "Verificar que solo el líder gestiona miembros y elimina el equipo, y que un ajeno no puede crear proyectos ni crear/mover tareas.",
+      "esperado": "403 en las 6 escrituras no autorizadas; el líder conserva su acceso (200).",
+      "obtenido": "Seis operaciones de escritura no autorizadas respondieron 403 (miembro invita a otro → 403; miembro expulsa al líder → 403; miembro elimina el equipo → 403; ajeno crea proyecto → 403; ajeno crea tarea → 403; ajeno mueve tarea → 403); el líder sigue accediendo a sus miembros (200).",
+      "estado": "Aprobado",
+      "duracionMs": 1349,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "api/CYS-ACL-02.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-ACL-03",
+      "suite": "Seguridad - Autorización",
+      "nombre": "Identificadores inexistentes o malformados devuelven 404/400 controlados, nunca 500",
+      "tipo": "negativo",
+      "objetivo": "Verificar que identificadores inexistentes o malformados producen errores controlados (404/400) y no 500 ni trazas internas.",
+      "esperado": "404 para UUID inexistentes, 400/404 para identificadores no UUID; ningún 500 ni ruta de archivo en el cuerpo.",
+      "obtenido": "Ningún identificador inválido produjo 500 ni trazas internas: GET /equipos/00000000-0000-4000-8000-000000000000 → 404; GET /proyectos/00000000-0000-4000-8000-000000000000 → 404; GET /listas/proyecto/00000000-0000-4000-8000-000000000000 → 404; PATCH /tareas/00000000-0000-4000-8000-000000000000/mover → 404; GET /equipos/no-es-un-uuid → 400; POST /proyectos → 400.",
+      "estado": "Aprobado",
+      "duracionMs": 507,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-INY-01",
+      "suite": "Seguridad - Inyección y datos",
+      "nombre": "Payloads de inyección en el login nunca autentican ni provocan errores 500",
+      "tipo": "negativo",
+      "objetivo": "Verificar que payloads de inyección SQL/NoSQL en el login no autentican ni rompen la API (corrección C-07).",
+      "esperado": "400 o 401 para los 4 payloads, sin access_token y sin 500.",
+      "obtenido": "Los 4 payloads respondieron 400/401 sin token y sin 500: {\"email\":\"seg-iny.179305617391829412@taskflow-cypress.test'  → 400; {\"email\":\"admin'--\",\"password\":\"x\"} → 400; {\"email\":\"seg-iny.179305617391829412@taskflow-cypress.test\", → 400; {\"email\":{\"$gt\":\"\"},\"password\":\"Clave-Segura-123\"} → 400.",
+      "estado": "Aprobado",
+      "duracionMs": 339,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-INY-02",
+      "suite": "Seguridad - Inyección y datos",
+      "nombre": "Un título con HTML/JavaScript se guarda literal y el tablero lo muestra como texto (sin XSS)",
+      "tipo": "negativo",
+      "objetivo": "Verificar que un título de tarea con HTML y JavaScript se almacena literal y se renderiza como texto en el tablero (XSS almacenado).",
+      "esperado": "La API devuelve el título literal; el tablero lo muestra como texto, no existe <img src=x> ni <script> en el DOM y no se ejecuta alert().",
+      "obtenido": "La API devolvió el título literal; en el tablero se mostró como texto plano (sin <img> ni <script> en el DOM) y no se ejecutó ningún alert().",
+      "estado": "Aprobado",
+      "duracionMs": 4210,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "capturas/seguridad/seguridad.cy.ts/CYS-INY-02-01-titulo-renderizado-como-texto.png",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-DAT-01",
+      "suite": "Seguridad - Inyección y datos",
+      "nombre": "Ninguna respuesta de la API ni el JWT exponen la contraseña",
+      "tipo": "negativo",
+      "objetivo": "Verificar que ninguna respuesta de usuarios, equipos ni miembros, ni el payload del JWT, expone la contraseña.",
+      "esperado": "Sin campo password ni contraseña en claro en /usuarios/me, /usuarios?email=, /equipos, /equipos/:id/miembros y en el JWT.",
+      "obtenido": "Se revisaron 5 respuestas (GET /usuarios/me, GET /usuarios?email=, GET /equipos, GET /equipos/:id/miembros, payload del JWT): ninguna contiene el campo password ni la contraseña en claro.",
+      "estado": "Aprobado",
+      "duracionMs": 828,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "api/CYS-DAT-01.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-HDR-01",
+      "suite": "Seguridad - Configuración HTTP",
+      "nombre": "La API envía las cabeceras de seguridad de helmet y oculta X-Powered-By",
+      "tipo": "positivo",
+      "objetivo": "Verificar las cabeceras de seguridad añadidas con helmet (corrección C-04) y la ausencia de X-Powered-By.",
+      "esperado": "Content-Security-Policy con default-src self, X-Content-Type-Options nosniff, X-Frame-Options, Strict-Transport-Security y Referrer-Policy presentes; X-Powered-By ausente.",
+      "obtenido": "Cabeceras presentes: CSP (default-src 'self';base-uri 'self';font-…), X-Content-Type-Options=nosniff, X-Frame-Options=SAMEORIGIN, HSTS=max-age=31536000; includeSubDomains, Referrer-Policy=no-referrer; X-Powered-By ausente.",
+      "estado": "Aprobado",
+      "duracionMs": 203,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "api/CYS-HDR-01.json",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-HDR-02",
+      "suite": "Seguridad - Configuración HTTP",
+      "nombre": "CORS solo permite el origen del frontend configurado",
+      "tipo": "negativo",
+      "objetivo": "Verificar que CORS solo acepta el origen del frontend configurado (FRONTEND_URL).",
+      "esperado": "Sin Access-Control-Allow-Origin para http://malicioso.test; Access-Control-Allow-Origin=http://localhost:5173 y Allow-Credentials=true para el frontend.",
+      "obtenido": "Origin http://malicioso.test → sin Access-Control-Allow-Origin; Origin http://localhost:5173 → Access-Control-Allow-Origin=http://localhost:5173 y Allow-Credentials=true.",
+      "estado": "Aprobado",
+      "duracionMs": 218,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYS-SES-01",
+      "suite": "Seguridad - Configuración HTTP",
+      "nombre": "(UI) Un usuario ajeno que abre el tablero de otro equipo ve un mensaje de acceso denegado y ningún dato",
+      "tipo": "negativo",
+      "objetivo": "Verificar en la interfaz que un usuario ajeno no ve datos del tablero de otro equipo (corrección C-15).",
+      "esperado": "Se muestra «No tienes acceso a este proyecto», sin el nombre del proyecto ni los títulos de sus tareas.",
+      "obtenido": "La interfaz mostró «No tienes acceso a este proyecto» (403) sin el nombre del proyecto ni la tarea «Secreto del equipo».",
+      "estado": "Aprobado",
+      "duracionMs": 3387,
+      "archivo": "cypress/e2e/seguridad/seguridad.cy.ts",
+      "evidencia": [
+        "capturas/seguridad/seguridad.cy.ts/CYS-SES-01-01-acceso-denegado.png",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-LOG-01",
+      "suite": "Accesibilidad - Acceso",
+      "nombre": "La página de inicio de sesión no tiene violaciones WCAG A/AA",
+      "tipo": "accesibilidad",
+      "objetivo": "Detectar incumplimientos WCAG 2.0/2.1/2.2 A y AA en la página de inicio de sesión con axe-core.",
+      "esperado": "0 violaciones A/AA.",
+      "obtenido": "0 violaciones WCAG 2.x A/AA (axe-core 4.14.0); 23 reglas superadas, 0 marcadas para revisión manual.",
+      "estado": "Aprobado",
+      "duracionMs": 2694,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-LOG-01-01-pagina-auditada.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-REG-01",
+      "suite": "Accesibilidad - Acceso",
+      "nombre": "La página de registro no tiene violaciones WCAG A/AA (incluida la lista de requisitos de contraseña)",
+      "tipo": "accesibilidad",
+      "objetivo": "Detectar incumplimientos WCAG A/AA en la página de registro con la lista de requisitos de contraseña visible.",
+      "esperado": "0 violaciones A/AA.",
+      "obtenido": "0 violaciones WCAG 2.x A/AA (axe-core 4.14.0); 25 reglas superadas, 0 marcadas para revisión manual.",
+      "estado": "Aprobado",
+      "duracionMs": 1302,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-REG-01-01-pagina-auditada.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-PRI-01",
+      "suite": "Accesibilidad - Acceso",
+      "nombre": "La página de privacidad (pública) no tiene violaciones WCAG A/AA",
+      "tipo": "accesibilidad",
+      "objetivo": "Detectar incumplimientos WCAG A/AA en la página pública de privacidad (landmark main añadido en C-19).",
+      "esperado": "0 violaciones A/AA y existencia de <main>.",
+      "obtenido": "0 violaciones WCAG 2.x A/AA (axe-core 4.14.0); 18 reglas superadas, 0 marcadas para revisión manual.",
+      "estado": "Aprobado",
+      "duracionMs": 870,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-PRI-01-01-pagina-auditada.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-TEC-01",
+      "suite": "Accesibilidad - Acceso",
+      "nombre": "El formulario de inicio de sesión se completa y envía solo con el teclado",
+      "tipo": "accesibilidad",
+      "objetivo": "Verificar que el inicio de sesión puede completarse únicamente con el teclado (WCAG 2.1.1).",
+      "esperado": "Los campos reciben el foco y el texto; Enter envía el formulario y se llega a «Mis equipos».",
+      "obtenido": "Ambos campos recibieron el foco y el texto desde el teclado; Enter envió el formulario y se llegó a «Mis equipos» sin usar el ratón.",
+      "estado": "Aprobado",
+      "duracionMs": 3344,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-TEC-01-01-sesion-iniciada-con-teclado.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-INI-01",
+      "suite": "Accesibilidad - Equipos",
+      "nombre": "«Mis equipos» con un equipo creado no tiene violaciones WCAG A/AA",
+      "tipo": "accesibilidad",
+      "objetivo": "Detectar incumplimientos WCAG A/AA en «Mis equipos» con tarjetas de equipo (sin aria-label, C-17).",
+      "esperado": "0 violaciones A/AA.",
+      "obtenido": "0 violaciones WCAG 2.x A/AA (axe-core 4.14.0); 24 reglas superadas, 1 marcadas para revisión manual.",
+      "estado": "Aprobado",
+      "duracionMs": 1713,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-INI-01-01-pagina-auditada.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-EQU-01",
+      "suite": "Accesibilidad - Equipos",
+      "nombre": "La página del equipo (miembros y proyectos) no tiene violaciones WCAG A/AA",
+      "tipo": "accesibilidad",
+      "objetivo": "Detectar incumplimientos WCAG A/AA en la página del equipo con miembros y proyectos.",
+      "esperado": "0 violaciones A/AA.",
+      "obtenido": "0 violaciones WCAG 2.x A/AA (axe-core 4.14.0); 22 reglas superadas, 1 marcadas para revisión manual.",
+      "estado": "Aprobado",
+      "duracionMs": 1678,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-EQU-01-01-pagina-auditada.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-TAB-01",
+      "suite": "Accesibilidad - Tablero y tareas",
+      "nombre": "El tablero Kanban con tareas en dos columnas no tiene violaciones WCAG A/AA",
+      "tipo": "accesibilidad",
+      "objetivo": "Detectar incumplimientos WCAG A/AA en el tablero Kanban con tareas en «Por Hacer» y «Hecho».",
+      "esperado": "0 violaciones A/AA.",
+      "obtenido": "0 violaciones WCAG 2.x A/AA (axe-core 4.14.0); 30 reglas superadas, 1 marcadas para revisión manual.",
+      "estado": "Aprobado",
+      "duracionMs": 1379,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-TAB-01-01-pagina-auditada.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-MOD-01",
+      "suite": "Accesibilidad - Tablero y tareas",
+      "nombre": "El diálogo «Crear nueva tarea» es accesible y recibe el foco al abrirse",
+      "tipo": "accesibilidad",
+      "objetivo": "Verificar que el diálogo «Crear nueva tarea» es modal (aria-modal), recibe el foco al abrirse y no tiene violaciones WCAG A/AA.",
+      "esperado": "aria-modal=true, foco dentro del diálogo y 0 violaciones en el diálogo.",
+      "obtenido": "0 violaciones WCAG 2.x A/AA (axe-core 4.14.0); 17 reglas superadas, 0 marcadas para revisión manual.",
+      "estado": "Aprobado",
+      "duracionMs": 1526,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-MOD-01-01-pagina-auditada.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-PRE-01",
+      "suite": "Accesibilidad - Usuario",
+      "nombre": "La página de preferencias (interruptores y opciones) no tiene violaciones WCAG A/AA",
+      "tipo": "accesibilidad",
+      "objetivo": "Detectar incumplimientos WCAG A/AA en Preferencias (interruptores y grupos de radio).",
+      "esperado": "0 violaciones A/AA.",
+      "obtenido": "0 violaciones WCAG 2.x A/AA (axe-core 4.14.0); 28 reglas superadas, 0 marcadas para revisión manual.",
+      "estado": "Aprobado",
+      "duracionMs": 1998,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-PRE-01-01-pagina-auditada.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-AYU-01",
+      "suite": "Accesibilidad - Usuario",
+      "nombre": "La página de ayuda no tiene violaciones WCAG A/AA",
+      "tipo": "accesibilidad",
+      "objetivo": "Detectar incumplimientos WCAG A/AA en la página de Ayuda.",
+      "esperado": "0 violaciones A/AA.",
+      "obtenido": "0 violaciones WCAG 2.x A/AA (axe-core 4.14.0); 29 reglas superadas, 0 marcadas para revisión manual.",
+      "estado": "Aprobado",
+      "duracionMs": 3082,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-AYU-01-01-pagina-auditada.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    },
+    {
+      "id": "CYA-CON-01",
+      "suite": "Accesibilidad - Usuario",
+      "nombre": "Con alto contraste y texto grande el tablero mantiene el contraste de color exigido por WCAG",
+      "tipo": "accesibilidad",
+      "objetivo": "Verificar que el modo de alto contraste con texto grande mantiene el contraste de color exigido (WCAG 1.4.3) en el tablero.",
+      "esperado": "data-contraste=alto y data-texto=grande aplicados; 0 violaciones A/AA (incluida color-contrast).",
+      "obtenido": "0 violaciones WCAG 2.x A/AA (axe-core 4.14.0); 31 reglas superadas, 1 marcadas para revisión manual.",
+      "estado": "Aprobado",
+      "duracionMs": 2237,
+      "archivo": "cypress/e2e/accesibilidad/accesibilidad.cy.ts",
+      "evidencia": [
+        "capturas/accesibilidad/accesibilidad.cy.ts/CYA-CON-01-01-alto-contraste-texto-grande.png",
+        "videos/accesibilidad.cy.ts.mp4",
+        "informe/informe-e2e.html"
+      ]
+    }
+  ]
+}

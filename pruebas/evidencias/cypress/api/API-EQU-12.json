@@ -1,0 +1,37 @@
+{
+  "id": "API-EQU-12",
+  "obtenido": "Respondió 200 sin el miembro en la lista; después el exmiembro recibe 403 al abrir el equipo.",
+  "peticion": {
+    "metodo": "DELETE",
+    "url": "http://localhost:3000/equipos/20d1efca-67e8-4988-a7a4-16cce2d480b3/miembros/72890e3d-eb18-4e7d-897c-c7b9bb3a355f",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 48,
+    "cuerpo": {
+      "id": "20d1efca-67e8-4988-a7a4-16cce2d480b3",
+      "nombre": "Equipo API 1793056364403",
+      "liderId": "eeab713d-095f-499e-9e01-c96a5d2c0203",
+      "createdAt": "2026-10-26T23:12:44.428Z",
+      "updatedAt": "2026-10-26T23:12:44.428Z",
+      "lider": {
+        "id": "eeab713d-095f-499e-9e01-c96a5d2c0203",
+        "nombre": "Usuario lider 565734",
+        "email": "lider.17930563635565734@taskflow-cypress.test",
+        "createdAt": "2026-10-26T23:12:43.644Z",
+        "updatedAt": "2026-10-26T23:12:43.644Z"
+      },
+      "miembros": [
+        {
+          "id": "eeab713d-095f-499e-9e01-c96a5d2c0203",
+          "nombre": "Usuario lider 565734",
+          "email": "lider.17930563635565734@taskflow-cypress.test",
+          "createdAt": "2026-10-26T23:12:43.644Z",
+          "updatedAt": "2026-10-26T23:12:43.644Z"
+        }
+      ]
+    }
+  },
+  "fecha": "2026-10-26T23:12:44.666Z"
+}

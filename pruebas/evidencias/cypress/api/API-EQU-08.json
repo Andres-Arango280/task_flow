@@ -1,0 +1,22 @@
+{
+  "id": "API-EQU-08",
+  "obtenido": "Respondió 409 con \"El usuario ya es miembro del equipo\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/equipos/96513e9e-f9b8-4aa5-9891-f64c2bed2272/miembros",
+    "autenticado": true,
+    "cuerpo": {
+      "userId": "6713ac5b-42a4-492d-81a5-eda95c10257e"
+    }
+  },
+  "respuesta": {
+    "estado": 409,
+    "duracionMs": 13,
+    "cuerpo": {
+      "message": "El usuario ya es miembro del equipo",
+      "error": "Conflict",
+      "statusCode": 409
+    }
+  },
+  "fecha": "2026-10-26T23:12:39.673Z"
+}

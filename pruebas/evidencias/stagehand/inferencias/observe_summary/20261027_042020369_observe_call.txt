@@ -1,0 +1,51 @@
+{
+  "modelCall": "observe",
+  "messages": [
+    {
+      "role": "system",
+      "content": " You are helping the user automate the browser by finding elements based on what the user wants to observe in the page. You will be given: 1. a instruction of elements to observe 2. a hierarchical accessibility tree showing the semantic structure of the page. The tree is a hybrid of the DOM and the accessibility tree. Return an array of elements that match the instruction if they exist, otherwise return an empty array. When returning elements, include the appropriate method from the supported actions list. Supported actions: click, fill, type, press, scrollTo, nextChunk, prevChunk, selectOptionFromDropdown, hover, doubleClick, dragAndDrop. When choosing non-left click actions, provide right or middle as the argument. Each element in the accessibility tree has an ID in square brackets, like [0-18372]. The ID has two parts: frame ordinal and backend node ID. Always copy the complete ID exactly as shown inside the brackets into elementId, including the frame ordinal and hyphen. For example, if the tree shows [0-18372], return elementId \"0-18372\"; never return only \"18372\"."
+    },
+    {
+      "role": "user",
+      "content": "instruction: Find the heading of each column of the kanban board
+Accessibility Tree: 
+[0-1239] region: Columnas del tablero
+  [0-1237] div
+    [0-1197] region: Por Hacer
+      [0-1194] sectionheader
+        [0-1168] heading: Por Hacer
+        [0-1267] StaticText: 1
+      [0-1190] div
+        [0-1188] div
+          [0-1184] button: Arrastrar tarea Revisar informe 70052
+          [0-1185] button: Revisar informe 70052
+          [0-1186] button: Asignar miembros a la tarea Revisar informe 70052
+        [0-1269] StaticText: Sin asignar
+      [0-1196] button: Agregar tarea en Por Hacer
+        [0-1270] StaticText: Agregar tarea
+    [0-1215] region: En Progreso
+      [0-1212] sectionheader
+        [0-1199] heading: En Progreso
+        [0-1272] StaticText: 0
+      [0-1208] div
+        [0-1206] paragraph
+          [0-1273] StaticText: Sin tareas en esta columna
+        [0-1207] paragraph
+          [0-1274] StaticText: Arrastra una tarea aquí o crea una nueva.
+      [0-1214] button: Agregar tarea en En Progreso
+        [0-1275] StaticText: Agregar tarea
+    [0-1233] region: Hecho
+      [0-1230] sectionheader
+        [0-1217] heading: Hecho
+        [0-1277] StaticText: 0
+      [0-1226] div
+        [0-1224] paragraph
+          [0-1278] StaticText: Sin tareas en esta columna
+        [0-1225] paragraph
+          [0-1279] StaticText: Arrastra una tarea aquí o crea una nueva.
+      [0-1232] button: Agregar tarea en Hecho
+        [0-1280] StaticText: Agregar tarea
+"
+    }
+  ]
+}

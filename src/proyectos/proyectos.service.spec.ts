@@ -1,5 +1,5 @@
 import { ForbiddenException, NotFoundException } from '@nestjs/common';
-import { ProyectosService } from './proyectos.service';
+import { LISTAS_POR_DEFECTO, ProyectosService } from './proyectos.service';
 
 // Principios FIRST aplicados:
 // - Fast: no uso de BD real ni red.
@@ -9,45 +9,53 @@ import { ProyectosService } from './proyectos.service';
 // - Timely: cubre los comportamientos críticos de negocio.
 //
 // Tipo de mock:
-// - Fake: proyectoInstance simula el documento a guardar.
-// - Stub: equipoModel.findById devuelve valores controlados.
-// - Spy: observamos que insertMany se invoca con los valores esperados.
+// - Fake: proyectoRepository.create/save simulan la entidad a guardar.
+// - Stub: equipoRepository.findOne devuelve valores controlados.
+// - Spy: observamos que listaRepository.save se invoca con los valores esperados.
 
-describe('ProyectosService - crearProyecto', () => {
+type RepoMock = {
+  findOne: jest.Mock;
+  find: jest.Mock;
+  create: jest.Mock;
+  save: jest.Mock;
+};
+
+const crearRepoMock = (): RepoMock => ({
+  findOne: jest.fn(),
+  find: jest.fn(),
+  // create devuelve la misma entidad recibida (comportamiento de TypeORM sin persistir)
+  create: jest.fn().mockImplementation((entidad) => ({ ...entidad })),
+  save: jest.fn(),
+});
+
+describe('Regression - ProyectosService - crearProyecto', () => {
+  // AAA + fluent-style assertions (Jest equivalent for this TypeScript stack)
   let service: ProyectosService;
-  let proyectoModelMock: any;
-  let listaModelMock: { insertMany: jest.Mock };
-  let equipoModelMock: { findById: jest.Mock };
+  let proyectoRepositoryMock: RepoMock;
+  let listaRepositoryMock: RepoMock;
+  let equipoRepositoryMock: RepoMock;
 
   beforeEach(() => {
-    proyectoModelMock = jest.fn().mockImplementation(() => ({
-      save: jest.fn(),
-    }));
+    proyectoRepositoryMock = crearRepoMock();
+    listaRepositoryMock = crearRepoMock();
+    equipoRepositoryMock = crearRepoMock();
 
-    listaModelMock = {
-      insertMany: jest.fn(),
-    };
-
-    equipoModelMock = {
-      findById: jest.fn(),
-    };
+    listaRepositoryMock.save.mockImplementation(async (listas) => listas);
 
     service = new ProyectosService(
-      proyectoModelMock as any,
-      listaModelMock as any,
-      equipoModelMock as any,
+      proyectoRepositoryMock as any,
+      listaRepositoryMock as any,
+      equipoRepositoryMock as any,
     );
   });
 
   it('debe crear un proyecto cuando el usuario es miembro del equipo', async () => {
     // Arrange
-    const equipo = { lider: 'user-1', miembros: ['user-1', 'user-2'] };
-    const proyectoGuardado = { _id: 'proyecto-1', nombre: 'Sprint 1', equipo: 'equipo-1' };
-    const proyectoInstanceFake = { save: jest.fn().mockResolvedValue(proyectoGuardado) };
+    const equipo = { id: 'equipo-1', liderId: 'user-1', miembros: [{ id: 'user-1' }, { id: 'user-2' }] };
+    const proyectoGuardado = { id: 'proyecto-1', nombre: 'Sprint 1', equipoId: 'equipo-1' };
 
-    equipoModelMock.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue(equipo) });
-    proyectoModelMock.mockImplementation(() => proyectoInstanceFake);
-    listaModelMock.insertMany.mockResolvedValue([]);
+    equipoRepositoryMock.findOne.mockResolvedValue(equipo);
+    proyectoRepositoryMock.save.mockResolvedValue(proyectoGuardado);
 
     // Act
     const resultado = await service.crearProyecto(
@@ -56,25 +64,29 @@ describe('ProyectosService - crearProyecto', () => {
     );
 
     // Assert
-    expect(equipoModelMock.findById).toHaveBeenCalledWith('equipo-1');
-    expect(proyectoInstanceFake.save).toHaveBeenCalledTimes(1);
-    expect(listaModelMock.insertMany).toHaveBeenCalledWith([
-      { nombre: 'Por Hacer', proyecto: 'proyecto-1' },
-      { nombre: 'En Progreso', proyecto: 'proyecto-1' },
-      { nombre: 'Hecho', proyecto: 'proyecto-1' },
+    expect(equipoRepositoryMock.findOne).toHaveBeenCalledWith(
+      expect.objectContaining({ where: { id: 'equipo-1' } }),
+    );
+    expect(proyectoRepositoryMock.create).toHaveBeenCalledWith({
+      nombre: 'Sprint 1',
+      equipoId: 'equipo-1',
+    });
+    expect(proyectoRepositoryMock.save).toHaveBeenCalledTimes(1);
+    expect(listaRepositoryMock.save).toHaveBeenCalledWith([
+      { nombre: 'Por Hacer', orden: 0, proyectoId: 'proyecto-1' },
+      { nombre: 'En Progreso', orden: 1, proyectoId: 'proyecto-1' },
+      { nombre: 'Hecho', orden: 2, proyectoId: 'proyecto-1' },
     ]);
     expect(resultado).toEqual(proyectoGuardado);
   });
 
-  it('debe crear un proyecto cuando el usuario es líder del equipo', async () => {
+  it('debe crear un proyecto cuando el usuario es el líder del equipo', async () => {
     // Arrange
-    const equipo = { lider: 'user-1', miembros: ['user-1'] };
-    const proyectoGuardado = { _id: 'proyecto-2', nombre: 'Sprint 2', equipo: 'equipo-1' };
-    const proyectoInstanceFake = { save: jest.fn().mockResolvedValue(proyectoGuardado) };
+    const equipo = { id: 'equipo-1', liderId: 'user-1', miembros: [] };
+    const proyectoGuardado = { id: 'proyecto-2', nombre: 'Sprint 2', equipoId: 'equipo-1' };
 
-    equipoModelMock.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue(equipo) });
-    proyectoModelMock.mockImplementation(() => proyectoInstanceFake);
-    listaModelMock.insertMany.mockResolvedValue([]);
+    equipoRepositoryMock.findOne.mockResolvedValue(equipo);
+    proyectoRepositoryMock.save.mockResolvedValue(proyectoGuardado);
 
     // Act
     const resultado = await service.crearProyecto(
@@ -83,13 +95,13 @@ describe('ProyectosService - crearProyecto', () => {
     );
 
     // Assert
-    expect(proyectoInstanceFake.save).toHaveBeenCalledTimes(1);
+    expect(proyectoRepositoryMock.save).toHaveBeenCalledTimes(1);
     expect(resultado).toEqual(proyectoGuardado);
   });
 
-  it('debe lanzar NotFoundException si el equipo no existe', async () => {
+  it('debe lanzar NotFoundException cuando el equipo no existe', async () => {
     // Arrange
-    equipoModelMock.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue(null) });
+    equipoRepositoryMock.findOne.mockResolvedValue(null);
 
     // Act + Assert
     await expect(
@@ -98,12 +110,13 @@ describe('ProyectosService - crearProyecto', () => {
     await expect(
       service.crearProyecto({ nombre: 'Sprint 1', equipoId: 'equipo-404' }, 'user-2'),
     ).rejects.toThrow('Equipo no encontrado');
+    expect(proyectoRepositoryMock.save).not.toHaveBeenCalled();
   });
 
-  it('debe lanzar ForbiddenException si el usuario no pertenece al equipo', async () => {
+  it('debe lanzar ForbiddenException cuando el usuario no pertenece al equipo', async () => {
     // Arrange
-    const equipo = { lider: 'user-1', miembros: ['user-3'] };
-    equipoModelMock.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue(equipo) });
+    const equipo = { id: 'equipo-1', liderId: 'user-1', miembros: [{ id: 'user-3' }] };
+    equipoRepositoryMock.findOne.mockResolvedValue(equipo);
 
     // Act + Assert
     await expect(
@@ -112,81 +125,76 @@ describe('ProyectosService - crearProyecto', () => {
     await expect(
       service.crearProyecto({ nombre: 'Sprint 1', equipoId: 'equipo-1' }, 'user-2'),
     ).rejects.toThrow('No tienes acceso a este equipo');
-    expect(listaModelMock.insertMany).not.toHaveBeenCalled();
+    expect(proyectoRepositoryMock.save).not.toHaveBeenCalled();
+    expect(listaRepositoryMock.save).not.toHaveBeenCalled();
   });
 
-  it('debe crear las tres listas por defecto al guardar un proyecto', async () => {
+  it('debe crear las tres listas por defecto cuando se guarda el proyecto', async () => {
     // Arrange
-    const equipo = { lider: 'user-1', miembros: ['user-1', 'user-2'] };
-    const proyectoGuardado = { _id: 'proyecto-xyz', nombre: 'Test Project', equipo: 'equipo-1' };
-    const proyectoInstanceFake = { save: jest.fn().mockResolvedValue(proyectoGuardado) };
+    const equipo = { id: 'equipo-1', liderId: 'user-1', miembros: [{ id: 'user-1' }, { id: 'user-2' }] };
+    const proyectoGuardado = { id: 'proyecto-xyz', nombre: 'Test Project', equipoId: 'equipo-1' };
 
-    equipoModelMock.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue(equipo) });
-    proyectoModelMock.mockImplementation(() => proyectoInstanceFake);
-    listaModelMock.insertMany.mockResolvedValue([]);
+    equipoRepositoryMock.findOne.mockResolvedValue(equipo);
+    proyectoRepositoryMock.save.mockResolvedValue(proyectoGuardado);
 
     // Act
     await service.crearProyecto({ nombre: 'Test Project', equipoId: 'equipo-1' }, 'user-2');
 
     // Assert
-    expect(listaModelMock.insertMany).toHaveBeenCalledWith(
+    expect(LISTAS_POR_DEFECTO).toEqual(['Por Hacer', 'En Progreso', 'Hecho']);
+    expect(listaRepositoryMock.create).toHaveBeenCalledTimes(3);
+    const listasGuardadas = listaRepositoryMock.save.mock.calls[0][0];
+    expect(listasGuardadas).toHaveLength(3);
+    expect(listasGuardadas).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ nombre: 'Por Hacer' }),
-        expect.objectContaining({ nombre: 'En Progreso' }),
-        expect.objectContaining({ nombre: 'Hecho' }),
+        expect.objectContaining({ nombre: 'Por Hacer', proyectoId: 'proyecto-xyz' }),
+        expect.objectContaining({ nombre: 'En Progreso', proyectoId: 'proyecto-xyz' }),
+        expect.objectContaining({ nombre: 'Hecho', proyectoId: 'proyecto-xyz' }),
       ]),
     );
   });
 
-  it('debe guardar el proyecto antes de insertar las listas por defecto', async () => {
+  it('debe guardar el proyecto antes de crear las listas por defecto', async () => {
     // Arrange
-    const equipo = { lider: 'user-1', miembros: ['user-1'] };
-    const proyectoGuardado = { _id: 'proyecto-guardado-123', nombre: 'Orden de operaciones', equipo: 'equipo-1' };
-    const proyectoInstanceFake = { save: jest.fn().mockResolvedValue(proyectoGuardado) };
-    let saveWasCalled = false;
-    let insertManyWasCalled = false;
+    const equipo = { id: 'equipo-1', liderId: 'user-1', miembros: [{ id: 'user-1' }] };
+    const proyectoGuardado = { id: 'proyecto-guardado-123', nombre: 'Orden de operaciones', equipoId: 'equipo-1' };
+    let saveProyectoWasCalled = false;
+    let saveListasWasCalled = false;
 
-    equipoModelMock.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue(equipo) });
-    proyectoModelMock.mockImplementation(() => proyectoInstanceFake);
-    proyectoInstanceFake.save.mockImplementation(() => {
-      saveWasCalled = true;
-      expect(insertManyWasCalled).toBe(false);
+    equipoRepositoryMock.findOne.mockResolvedValue(equipo);
+    proyectoRepositoryMock.save.mockImplementation(() => {
+      saveProyectoWasCalled = true;
+      expect(saveListasWasCalled).toBe(false);
       return Promise.resolve(proyectoGuardado);
     });
-    listaModelMock.insertMany.mockImplementation(() => {
-      insertManyWasCalled = true;
-      expect(saveWasCalled).toBe(true);
-      return Promise.resolve([]);
+    listaRepositoryMock.save.mockImplementation((listas) => {
+      saveListasWasCalled = true;
+      expect(saveProyectoWasCalled).toBe(true);
+      return Promise.resolve(listas);
     });
 
     // Act
     await service.crearProyecto({ nombre: 'Orden de operaciones', equipoId: 'equipo-1' }, 'user-1');
 
     // Assert
-    expect(saveWasCalled).toBe(true);
-    expect(insertManyWasCalled).toBe(true);
+    expect(saveProyectoWasCalled).toBe(true);
+    expect(saveListasWasCalled).toBe(true);
   });
 
-  it('debe manejar ObjectId como string en los miembros del equipo', async () => {
+  it('debe reconocer como miembro a un usuario identificado por UUID', async () => {
     // Arrange
-    const equipo = {
-      lider: new String('507f1f77bcf86cd799439011'),
-      miembros: [
-        new String('507f1f77bcf86cd799439011'),
-        new String('507f1f77bcf86cd799439012'),
-      ],
-    };
-    const proyectoGuardado = { _id: 'proyecto-1', nombre: 'Sprint 1', equipo: 'equipo-1' };
-    const proyectoInstanceFake = { save: jest.fn().mockResolvedValue(proyectoGuardado) };
+    const liderId = '3f1c2b7a-0d4e-4c1a-9b8e-111111111111';
+    const miembroId = '3f1c2b7a-0d4e-4c1a-9b8e-222222222222';
+    const equipo = { id: 'equipo-1', liderId, miembros: [{ id: liderId }, { id: miembroId }] };
+    const proyectoGuardado = { id: 'proyecto-1', nombre: 'Sprint 1', equipoId: 'equipo-1' };
 
-    equipoModelMock.findById.mockReturnValue({ exec: jest.fn().mockResolvedValue(equipo) });
-    proyectoModelMock.mockImplementation(() => proyectoInstanceFake);
-    listaModelMock.insertMany.mockResolvedValue([]);
+    equipoRepositoryMock.findOne.mockResolvedValue(equipo);
+    proyectoRepositoryMock.save.mockResolvedValue(proyectoGuardado);
 
     // Act
     const resultado = await service.crearProyecto(
       { nombre: 'Sprint 1', equipoId: 'equipo-1' },
-      '507f1f77bcf86cd799439012',
+      miembroId,
     );
 
     // Assert

@@ -1,0 +1,25 @@
+{
+  "pagina": "Tablero Kanban con tareas (/proyectos/:id)",
+  "url": "http://localhost:5173/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+  "fecha": "2026-10-27T04:23:22.954Z",
+  "axe": "4.14.0",
+  "etiquetas": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa",
+    "best-practice"
+  ],
+  "totalViolaciones": 0,
+  "violaciones": [],
+  "incompletas": [
+    {
+      "regla": "aria-prohibited-attr",
+      "impacto": "serious",
+      "nodos": 3,
+      "descripcion": "Elements must only use permitted ARIA attributes"
+    }
+  ],
+  "reglasSuperadas": 42
+}

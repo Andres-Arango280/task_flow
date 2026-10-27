@@ -1,0 +1,24 @@
+{
+  "id": "API-EQU-02",
+  "obtenido": "Respondió 400 con \"El nombre es obligatorio\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/equipos",
+    "autenticado": true,
+    "cuerpo": {
+      "nombre": ""
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 8,
+    "cuerpo": {
+      "message": [
+        "El nombre es obligatorio"
+      ],
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:12:32.408Z"
+}

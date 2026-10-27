@@ -1,0 +1,15 @@
+{
+  "id": "SEG-DEP-03",
+  "nombre": "Dependencias del frontend — npm audit",
+  "fecha": "2026-10-26T23:19:32.540Z",
+  "obtenido": "crítica=0, alta=2, moderada=3, baja=1 (total 6). Críticas/altas: follow-redirects (high), vite (high, directa)",
+  "extra": {
+    "info": 0,
+    "low": 1,
+    "moderate": 3,
+    "high": 2,
+    "critical": 0,
+    "total": 6
+  },
+  "intercambios": []
+}

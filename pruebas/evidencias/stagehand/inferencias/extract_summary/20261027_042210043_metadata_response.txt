@@ -1,0 +1,5 @@
+{
+  "modelResponse": "metadata",
+  "completed": false,
+  "progress": "partial"
+}

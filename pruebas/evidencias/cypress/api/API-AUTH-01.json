@@ -1,0 +1,24 @@
+{
+  "id": "API-AUTH-01",
+  "obtenido": "Respondió 201 con id UUID 2a60b46b-8d10-418f-9cab-ce9ded196323, nombre y email; sin campo password.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/auth/register",
+    "autenticado": false,
+    "cuerpo": {
+      "nombre": "Usuario auth 991701",
+      "email": "auth.17930563436991701@taskflow-cypress.test",
+      "password": "***"
+    }
+  },
+  "respuesta": {
+    "estado": 201,
+    "duracionMs": 65,
+    "cuerpo": {
+      "id": "2a60b46b-8d10-418f-9cab-ce9ded196323",
+      "nombre": "Usuario auth 991701",
+      "email": "auth.17930563436991701@taskflow-cypress.test"
+    }
+  },
+  "fecha": "2026-10-26T23:12:23.791Z"
+}

@@ -1,0 +1,2 @@
+$ psql -At -c "SELECT left(password,7), length(password), password = '<clave>' FROM usuarios WHERE email='seg_lider_1793056751720_1@taskflow.test'"
+$2b$10$ | 60 | false

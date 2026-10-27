@@ -1,0 +1,242 @@
+{
+  "area": "Pruebas con IA — Playwright Test Agents",
+  "herramienta": "Playwright Test Agents (Planner, Generator, Healer) — @playwright/test 1.63.0, inicializados con «npx playwright init-agents --loop=claude»",
+  "modelo": "Claude Code (asistente de IA, sin coste adicional) ejecutando las definiciones de agentes generadas; exploración del navegador con snapshots de accesibilidad de Playwright",
+  "proposito": "Planificar (Planner), generar (Generator) y mantener/reparar (Healer) pruebas E2E de Playwright a partir de la exploración real de la aplicación, con un asistente de IA que sigue definiciones de agente estándar.",
+  "configuracion": {
+    "inicializacion": "npx playwright init-agents --loop=claude --prompts → .claude/agents/*.md, .claude/prompts/*.md, .mcp.json (servidor «playwright run-test-mcp-server»), tests/seed.spec.ts",
+    "exploracion": "node explorar.mjs → specs/exploracion/*.txt (ariaSnapshot) y *.png de /login, /register, /, /equipos/:id, /proyectos/:id, modales y /preferencias",
+    "ejecucion": "npx playwright test (Chrome, headless, 1 worker, reporter html+json en reportes/)",
+    "nota": "Sin clave de API para Copilot/Claude en el IDE, el bucle agéntico lo ejecutó Claude Code siguiendo literalmente cada definición; el servidor MCP «playwright-test» queda configurado en .mcp.json para usarlo desde un IDE compatible."
+  },
+  "comando": "cd pruebas/ia-herramientas/playwright-agents && node explorar.mjs && npx playwright test --grep-invert \"healer|seed\" && node generar-resumen.mjs",
+  "fecha": "2026-10-26T23:24:26.006Z",
+  "totales": {
+    "total": 11,
+    "aprobados": 11,
+    "fallidos": 0,
+    "duracionSeg": 21.6
+  },
+  "agentes": {
+    "planner": {
+      "definicion": ".claude/agents/playwright-test-planner.md",
+      "salida": "specs/plan-de-pruebas.md",
+      "escenarios": 9,
+      "paginasExploradas": 9
+    },
+    "generator": {
+      "definicion": ".claude/agents/playwright-test-generator.md",
+      "pruebasGeneradas": 9,
+      "carpeta": "tests/"
+    },
+    "healer": {
+      "definicion": ".claude/agents/playwright-test-healer.md",
+      "antes": "timedOut",
+      "despues": "passed",
+      "diff": "reportes/healer-diff.md"
+    }
+  },
+  "casos": [
+    {
+      "id": "PWA-01",
+      "nombre": "Inicio de sesión con contraseña incorrecta",
+      "suite": "Autenticación",
+      "tipo": "alternativo/error",
+      "agente": "Generator",
+      "objetivo": "Prueba generada por el agente Generator a partir del escenario «Inicio de sesión con contraseña incorrecta» del plan (specs/plan-de-pruebas.md).",
+      "esperado": "Todas las verificaciones (expect) del escenario se cumplen tal como las define el plan.",
+      "obtenido": "Conforme: la prueba pasó en 1.7 s (expected).",
+      "estado": "Aprobado",
+      "duracionSeg": 1.7,
+      "evidencia": [
+        "tests/autenticacion/login-contrasena-incorrecta.spec.ts",
+        "reportes/html-generados/index.html",
+        "reportes/resultados-generados.json"
+      ]
+    },
+    {
+      "id": "PWA-02",
+      "nombre": "Inicio de sesión con credenciales válidas",
+      "suite": "Autenticación",
+      "tipo": "exitoso",
+      "agente": "Generator",
+      "objetivo": "Prueba generada por el agente Generator a partir del escenario «Inicio de sesión con credenciales válidas» del plan (specs/plan-de-pruebas.md).",
+      "esperado": "Todas las verificaciones (expect) del escenario se cumplen tal como las define el plan.",
+      "obtenido": "Conforme: la prueba pasó en 1.1 s (expected).",
+      "estado": "Aprobado",
+      "duracionSeg": 1.1,
+      "evidencia": [
+        "tests/autenticacion/login-valido.spec.ts",
+        "reportes/html-generados/index.html",
+        "reportes/resultados-generados.json"
+      ]
+    },
+    {
+      "id": "PWA-03",
+      "nombre": "Registro con datos válidos redirige al inicio de sesión",
+      "suite": "Autenticación",
+      "tipo": "exitoso",
+      "agente": "Generator",
+      "objetivo": "Prueba generada por el agente Generator a partir del escenario «Registro con datos válidos redirige al inicio de sesión» del plan (specs/plan-de-pruebas.md).",
+      "esperado": "Todas las verificaciones (expect) del escenario se cumplen tal como las define el plan.",
+      "obtenido": "Conforme: la prueba pasó en 1.9 s (expected).",
+      "estado": "Aprobado",
+      "duracionSeg": 1.9,
+      "evidencia": [
+        "tests/autenticacion/registro-valido.spec.ts",
+        "reportes/html-generados/index.html",
+        "reportes/resultados-generados.json"
+      ]
+    },
+    {
+      "id": "PWA-04",
+      "nombre": "Ruta privada sin sesión redirige al login",
+      "suite": "Autenticación",
+      "tipo": "alternativo/error",
+      "agente": "Generator",
+      "objetivo": "Prueba generada por el agente Generator a partir del escenario «Ruta privada sin sesión redirige al login» del plan (specs/plan-de-pruebas.md).",
+      "esperado": "Todas las verificaciones (expect) del escenario se cumplen tal como las define el plan.",
+      "obtenido": "Conforme: la prueba pasó en 0.7 s (expected).",
+      "estado": "Aprobado",
+      "duracionSeg": 0.7,
+      "evidencia": [
+        "tests/autenticacion/ruta-privada-sin-sesion.spec.ts",
+        "reportes/html-generados/index.html",
+        "reportes/resultados-generados.json"
+      ]
+    },
+    {
+      "id": "PWA-05",
+      "nombre": "Crear un equipo desde «Mis equipos»",
+      "suite": "Equipos",
+      "tipo": "exitoso",
+      "agente": "Generator",
+      "objetivo": "Prueba generada por el agente Generator a partir del escenario «Crear un equipo desde «Mis equipos»» del plan (specs/plan-de-pruebas.md).",
+      "esperado": "Todas las verificaciones (expect) del escenario se cumplen tal como las define el plan.",
+      "obtenido": "Conforme: la prueba pasó en 1.8 s (expected).",
+      "estado": "Aprobado",
+      "duracionSeg": 1.8,
+      "evidencia": [
+        "tests/equipos/crear-equipo.spec.ts",
+        "reportes/html-generados/index.html",
+        "reportes/resultados-generados.json"
+      ]
+    },
+    {
+      "id": "PWA-06",
+      "nombre": "Invitar a un correo no registrado muestra un error en la ventana",
+      "suite": "Equipos",
+      "tipo": "alternativo/error",
+      "agente": "Generator",
+      "objetivo": "Prueba generada por el agente Generator a partir del escenario «Invitar a un correo no registrado muestra un error en la ventana» del plan (specs/plan-de-pruebas.md).",
+      "esperado": "Todas las verificaciones (expect) del escenario se cumplen tal como las define el plan.",
+      "obtenido": "Conforme: la prueba pasó en 1.9 s (expected).",
+      "estado": "Aprobado",
+      "duracionSeg": 1.9,
+      "evidencia": [
+        "tests/equipos/invitar-correo-no-registrado.spec.ts",
+        "reportes/html-generados/index.html",
+        "reportes/resultados-generados.json"
+      ]
+    },
+    {
+      "id": "PWA-07",
+      "nombre": "Crear un proyecto genera el tablero con tres columnas",
+      "suite": "Proyectos",
+      "tipo": "exitoso",
+      "agente": "Generator",
+      "objetivo": "Prueba generada por el agente Generator a partir del escenario «Crear un proyecto genera el tablero con tres columnas» del plan (specs/plan-de-pruebas.md).",
+      "esperado": "Todas las verificaciones (expect) del escenario se cumplen tal como las define el plan.",
+      "obtenido": "Conforme: la prueba pasó en 2.2 s (expected).",
+      "estado": "Aprobado",
+      "duracionSeg": 2.2,
+      "evidencia": [
+        "tests/proyectos/crear-proyecto-tres-columnas.spec.ts",
+        "reportes/html-generados/index.html",
+        "reportes/resultados-generados.json"
+      ]
+    },
+    {
+      "id": "PWA-08",
+      "nombre": "Crear una tarea y moverla a «Hecho» actualiza el progreso",
+      "suite": "Tablero y tareas",
+      "tipo": "exitoso",
+      "agente": "Generator",
+      "objetivo": "Prueba generada por el agente Generator a partir del escenario «Crear una tarea y moverla a «Hecho» actualiza el progreso» del plan (specs/plan-de-pruebas.md).",
+      "esperado": "Todas las verificaciones (expect) del escenario se cumplen tal como las define el plan.",
+      "obtenido": "Conforme: la prueba pasó en 2.5 s (expected).",
+      "estado": "Aprobado",
+      "duracionSeg": 2.5,
+      "evidencia": [
+        "tests/tablero/crear-tarea-y-mover-a-hecho.spec.ts",
+        "reportes/html-generados/index.html",
+        "reportes/resultados-generados.json"
+      ]
+    },
+    {
+      "id": "PWA-09",
+      "nombre": "Crear una tarea sin título es rechazado",
+      "suite": "Tablero y tareas",
+      "tipo": "alternativo/error",
+      "agente": "Generator",
+      "objetivo": "Prueba generada por el agente Generator a partir del escenario «Crear una tarea sin título es rechazado» del plan (specs/plan-de-pruebas.md).",
+      "esperado": "Todas las verificaciones (expect) del escenario se cumplen tal como las define el plan.",
+      "obtenido": "Conforme: la prueba pasó en 2.2 s (expected).",
+      "estado": "Aprobado",
+      "duracionSeg": 2.2,
+      "evidencia": [
+        "tests/tablero/tarea-sin-titulo.spec.ts",
+        "reportes/html-generados/index.html",
+        "reportes/resultados-generados.json"
+      ]
+    },
+    {
+      "id": "PWA-10",
+      "nombre": "Planner: exploración de la aplicación y plan de pruebas",
+      "suite": "Agentes",
+      "tipo": "planificación",
+      "agente": "Planner",
+      "objetivo": "Explorar la interfaz (snapshots de accesibilidad de cada página) y producir un plan de pruebas estructurado con pasos y resultados esperados.",
+      "esperado": "Un plan en specs/plan-de-pruebas.md con escenarios para autenticación, equipos, proyectos y tablero, independiente del orden de ejecución.",
+      "obtenido": "Conforme: se exploraron 9 vistas (login, registro, mis equipos, equipo, tablero, 3 ventanas modales y preferencias) y el plan contiene 9 escenarios en 4 funcionalidades.",
+      "estado": "Aprobado",
+      "duracionSeg": null,
+      "evidencia": [
+        "specs/plan-de-pruebas.md",
+        "specs/exploracion/",
+        ".claude/agents/playwright-test-planner.md"
+      ]
+    },
+    {
+      "id": "PWA-11",
+      "nombre": "Healer: diagnóstico y reparación de una prueba con localizadores rotos",
+      "suite": "Agentes",
+      "tipo": "mantenimiento",
+      "agente": "Healer",
+      "objetivo": "Partiendo de una prueba que falla por localizadores inexistentes (#email, #password, button.btn-login), diagnosticar la causa con el snapshot y corregirla sin tocar la aplicación.",
+      "esperado": "La ejecución inicial falla; tras la corrección (localizadores por etiqueta y rol) la prueba pasa.",
+      "obtenido": "Conforme: antes → timedOut (60.2 s); después → passed (7.6 s). Diff en reportes/healer-diff.md.",
+      "estado": "Aprobado",
+      "duracionSeg": 7.6,
+      "evidencia": [
+        "reportes/healer-antes.json",
+        "reportes/healer-despues.json",
+        "reportes/healer-diff.md",
+        "tests/healer-demo.spec.ts",
+        ".claude/agents/playwright-test-healer.md"
+      ]
+    }
+  ],
+  "aportes": [
+    "El Planner convierte la exploración real de la interfaz (árbol de accesibilidad) en un plan legible con pasos y resultados esperados, útil también como documentación para el equipo.",
+    "El Generator produce pruebas con localizadores por rol/etiqueta (getByRole, getByLabel) y un comentario por paso, consistentes con el plan y fáciles de revisar.",
+    "El Healer diagnostica fallos de localizadores comparando el error con el snapshot y propone localizadores estables, reduciendo el coste de mantenimiento cuando cambia la interfaz.",
+    "Todo es código abierto y gratuito; las definiciones de agentes son archivos Markdown versionables y reutilizables con cualquier asistente compatible (Claude, Copilot, Codex, VS Code)."
+  ],
+  "limitaciones": [
+    "La calidad del plan y de las pruebas depende del asistente que ejecuta los agentes; un modelo pequeño o sin acceso al navegador produce planes genéricos.",
+    "El flujo oficial requiere un IDE con MCP (Copilot/Claude); aquí el asistente fue Claude Code sin MCP, por lo que la exploración se hizo con un script de Playwright equivalente a browser_snapshot.",
+    "El Healer solo corrige lo que puede inferir del DOM: no distingue por sí mismo entre un cambio legítimo de la interfaz y un defecto real (riesgo de \"sanar\" una prueba que debía fallar).",
+    "Las pruebas generadas siguen necesitando revisión humana: datos únicos, independencia entre casos y aserciones significativas no las garantiza el agente."
+  ]
+}

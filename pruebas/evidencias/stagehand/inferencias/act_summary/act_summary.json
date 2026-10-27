@@ -1,0 +1,48 @@
+{
+  "act_summary": [
+    {
+      "act_inference_type": "act",
+      "timestamp": "20261027_041847853",
+      "LLM_input_file": "20261027_041847853_act_call.txt",
+      "LLM_output_file": "20261027_041912384_act_response.txt",
+      "prompt_tokens": 1100,
+      "completion_tokens": 47,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "inference_time_ms": 24529
+    },
+    {
+      "act_inference_type": "act",
+      "timestamp": "20261027_041938250",
+      "LLM_input_file": "20261027_041938250_act_call.txt",
+      "LLM_output_file": "20261027_042009809_act_response.txt",
+      "prompt_tokens": 1348,
+      "completion_tokens": 45,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "inference_time_ms": 31556
+    },
+    {
+      "act_inference_type": "act",
+      "timestamp": "20261027_042041301",
+      "LLM_input_file": "20261027_042041301_act_call.txt",
+      "LLM_output_file": "20261027_042123489_act_response.txt",
+      "prompt_tokens": 2013,
+      "completion_tokens": 52,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "inference_time_ms": 42187
+    },
+    {
+      "act_inference_type": "act",
+      "timestamp": "20261027_042217458",
+      "LLM_input_file": "20261027_042217458_act_call.txt",
+      "LLM_output_file": "20261027_042248000_act_response.txt",
+      "prompt_tokens": 1403,
+      "completion_tokens": 45,
+      "reasoning_tokens": 0,
+      "cached_input_tokens": 0,
+      "inference_time_ms": 30541
+    }
+  ]
+}

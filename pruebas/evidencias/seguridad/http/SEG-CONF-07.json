@@ -1,0 +1,7 @@
+{
+  "id": "SEG-CONF-07",
+  "nombre": "Secretos fuera del control de versiones y JWT_SECRET robusto",
+  "fecha": "2026-10-26T23:19:20.710Z",
+  "obtenido": ".env rastreado por git: no (aparece en 1 commit(s); estado actual \"D  .env\"); longitud JWT_SECRET=64",
+  "intercambios": []
+}

@@ -1,0 +1,18 @@
+{
+  "id": "CYS-JWT-02",
+  "obtenido": "Los tres tokens manipulados fueron rechazados: firma alterada → 401; payload alterado → 401; token malformado → 401 \"Unauthorized\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/usuarios/me",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 401,
+    "duracionMs": 4,
+    "cuerpo": {
+      "message": "Unauthorized",
+      "statusCode": 401
+    }
+  },
+  "fecha": "2026-10-26T23:09:28.661Z"
+}

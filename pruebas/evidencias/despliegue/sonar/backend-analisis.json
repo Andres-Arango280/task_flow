@@ -1,0 +1,74 @@
+{
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 10,
+    "total": 5
+  },
+  "analyses": [
+    {
+      "key": "AaF7srRg90SSP5i2_t4n",
+      "date": "2026-10-27T04:50:22+0000",
+      "events": [
+        {
+          "key": "AaF7sr4q90SSP5i2_uZJ",
+          "category": "VERSION",
+          "name": "1.0.0"
+        }
+      ],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "8b46dc0e7a60142b1bf26472161580efdf02c1e8",
+      "detectedCI": "undetected"
+    },
+    {
+      "key": "AaF7rBIW90SSP5i2_tHQ",
+      "date": "2026-10-27T04:43:07+0000",
+      "events": [],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "8b46dc0e7a60142b1bf26472161580efdf02c1e8",
+      "detectedCI": "undetected"
+    },
+    {
+      "key": "AaF7qHBH90SSP5i2_sml",
+      "date": "2026-10-27T04:39:12+0000",
+      "events": [
+        {
+          "key": "AaF7qHeX90SSP5i2_tHH",
+          "category": "QUALITY_GATE",
+          "name": "Passed",
+          "description": ""
+        }
+      ],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "8b46dc0e7a60142b1bf26472161580efdf02c1e8",
+      "detectedCI": "undetected"
+    },
+    {
+      "key": "AaF7ngzI90SSP5i2_sFH",
+      "date": "2026-10-27T04:27:31+0000",
+      "events": [
+        {
+          "key": "AaF7nhjL90SSP5i2_smK",
+          "category": "QUALITY_GATE",
+          "name": "Failed",
+          "description": "Security Hotspots Reviewed on New Code < 100"
+        }
+      ],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "8b46dc0e7a60142b1bf26472161580efdf02c1e8",
+      "detectedCI": "undetected"
+    },
+    {
+      "key": "AaDUa2qwAGXBLGF0BPEA",
+      "date": "2026-09-24T17:15:09+0000",
+      "events": [],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "8b46dc0e7a60142b1bf26472161580efdf02c1e8",
+      "detectedCI": "undetected"
+    }
+  ]
+}

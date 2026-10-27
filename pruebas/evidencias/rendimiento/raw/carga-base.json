@@ -1,0 +1,511 @@
+{
+  "fecha": "2026-10-27T04:30:55.389Z",
+  "maquina": {
+    "so": "Windows_NT 10.0.26300 (Windows 11 Home) x64",
+    "cpu": "AMD Ryzen AI 7 350 w/ Radeon 860M — 16 hilos lógicos",
+    "ramGB": 23.2,
+    "node": "v20.20.2",
+    "autocannon": "7.15.0",
+    "baseDatos": "PostgreSQL 18.6 (max_connections=100; pool TypeORM/pg por defecto = 10 conexiones)",
+    "backend": "NestJS 10 en modo desarrollo (npm run start:dev, proceso único) en http://localhost:3000",
+    "nota": "Generador de carga (autocannon) y servidor en la misma máquina: compiten por CPU, por lo que los valores absolutos son conservadores."
+  },
+  "id": "carga-base",
+  "codigo": "REN-01",
+  "nombre": "Carga base — GET /equipos autenticado",
+  "objetivo": "Medir el tiempo de respuesta de la consulta más frecuente (dashboard) con carga normal.",
+  "condiciones": "10 conexiones concurrentes, 30 s, token JWT válido; equipo con 5 miembros y 2 proyectos.",
+  "criterios": {
+    "p95Ms": 200,
+    "tasaErrorPctMax": 0
+  },
+  "pidBackend": 29704,
+  "resultado": {
+    "titulo": "carga-base",
+    "conexiones": 10,
+    "duracionSeg": 30,
+    "inicio": "2026-10-27T04:30:25.271Z",
+    "peticionesTotales": 15001,
+    "peticionesPorSeg": 500.04,
+    "peticionesPorSegMax": 579,
+    "bytesPorSeg": 1175569,
+    "latenciaMs": {
+      "media": 19.53,
+      "p50": 19.07,
+      "p90": 25.47,
+      "p95": 28.27,
+      "p99": 35.23,
+      "max": 239.47,
+      "min": 8.46
+    },
+    "codigos": {
+      "200": 15001
+    },
+    "respuestas2xx": 15001,
+    "non2xx": 0,
+    "erroresConexion": 0,
+    "timeouts": 0,
+    "tasaErrorPct": 0,
+    "serie": [
+      {
+        "t": 1,
+        "reqs": 340,
+        "rps": 340,
+        "p50": 25.51,
+        "p95": 43.69,
+        "errores": 0
+      },
+      {
+        "t": 2,
+        "reqs": 440,
+        "rps": 440,
+        "p50": 21.1,
+        "p95": 30.81,
+        "errores": 0
+      },
+      {
+        "t": 3,
+        "reqs": 515,
+        "rps": 515,
+        "p50": 19.35,
+        "p95": 25.49,
+        "errores": 0
+      },
+      {
+        "t": 4,
+        "reqs": 519,
+        "rps": 519,
+        "p50": 18.79,
+        "p95": 24.2,
+        "errores": 0
+      },
+      {
+        "t": 5,
+        "reqs": 504,
+        "rps": 504,
+        "p50": 19.2,
+        "p95": 25.56,
+        "errores": 0
+      },
+      {
+        "t": 6,
+        "reqs": 473,
+        "rps": 473,
+        "p50": 20.63,
+        "p95": 29.37,
+        "errores": 0
+      },
+      {
+        "t": 7,
+        "reqs": 414,
+        "rps": 414,
+        "p50": 23.15,
+        "p95": 33.73,
+        "errores": 0
+      },
+      {
+        "t": 8,
+        "reqs": 458,
+        "rps": 458,
+        "p50": 20.82,
+        "p95": 34.42,
+        "errores": 0
+      },
+      {
+        "t": 9,
+        "reqs": 498,
+        "rps": 498,
+        "p50": 19.43,
+        "p95": 26.57,
+        "errores": 0
+      },
+      {
+        "t": 10,
+        "reqs": 516,
+        "rps": 516,
+        "p50": 18.99,
+        "p95": 25.75,
+        "errores": 0
+      },
+      {
+        "t": 11,
+        "reqs": 479,
+        "rps": 479,
+        "p50": 18.84,
+        "p95": 31.7,
+        "errores": 0
+      },
+      {
+        "t": 12,
+        "reqs": 520,
+        "rps": 520,
+        "p50": 19.23,
+        "p95": 23.45,
+        "errores": 0
+      },
+      {
+        "t": 13,
+        "reqs": 504,
+        "rps": 504,
+        "p50": 18.75,
+        "p95": 29.56,
+        "errores": 0
+      },
+      {
+        "t": 14,
+        "reqs": 510,
+        "rps": 510,
+        "p50": 19.26,
+        "p95": 24.46,
+        "errores": 0
+      },
+      {
+        "t": 15,
+        "reqs": 516,
+        "rps": 516,
+        "p50": 18.93,
+        "p95": 23.6,
+        "errores": 0
+      },
+      {
+        "t": 16,
+        "reqs": 480,
+        "rps": 480,
+        "p50": 21.12,
+        "p95": 25.8,
+        "errores": 0
+      },
+      {
+        "t": 17,
+        "reqs": 557,
+        "rps": 557,
+        "p50": 17.88,
+        "p95": 23.47,
+        "errores": 0
+      },
+      {
+        "t": 18,
+        "reqs": 389,
+        "rps": 389,
+        "p50": 23.84,
+        "p95": 40.13,
+        "errores": 0
+      },
+      {
+        "t": 19,
+        "reqs": 560,
+        "rps": 560,
+        "p50": 17.33,
+        "p95": 24.59,
+        "errores": 0
+      },
+      {
+        "t": 20,
+        "reqs": 562,
+        "rps": 562,
+        "p50": 17.19,
+        "p95": 22.88,
+        "errores": 0
+      },
+      {
+        "t": 21,
+        "reqs": 510,
+        "rps": 510,
+        "p50": 16.99,
+        "p95": 32.06,
+        "errores": 0
+      },
+      {
+        "t": 22,
+        "reqs": 557,
+        "rps": 557,
+        "p50": 17.53,
+        "p95": 22.98,
+        "errores": 0
+      },
+      {
+        "t": 23,
+        "reqs": 556,
+        "rps": 556,
+        "p50": 17.23,
+        "p95": 21.95,
+        "errores": 0
+      },
+      {
+        "t": 24,
+        "reqs": 490,
+        "rps": 490,
+        "p50": 19.88,
+        "p95": 27.35,
+        "errores": 0
+      },
+      {
+        "t": 25,
+        "reqs": 504,
+        "rps": 504,
+        "p50": 18.73,
+        "p95": 29.64,
+        "errores": 0
+      },
+      {
+        "t": 26,
+        "reqs": 530,
+        "rps": 530,
+        "p50": 18.39,
+        "p95": 24.25,
+        "errores": 0
+      },
+      {
+        "t": 27,
+        "reqs": 468,
+        "rps": 468,
+        "p50": 20.71,
+        "p95": 29.22,
+        "errores": 0
+      },
+      {
+        "t": 28,
+        "reqs": 484,
+        "rps": 484,
+        "p50": 20.91,
+        "p95": 25.68,
+        "errores": 0
+      },
+      {
+        "t": 29,
+        "reqs": 534,
+        "rps": 534,
+        "p50": 17.54,
+        "p95": 25.41,
+        "errores": 0
+      },
+      {
+        "t": 30,
+        "reqs": 580,
+        "rps": 580,
+        "p50": 16.89,
+        "p95": 20.99,
+        "errores": 0
+      },
+      {
+        "t": 31,
+        "reqs": 34,
+        "rps": 34,
+        "p50": 16.88,
+        "p95": 20.17,
+        "errores": 0
+      }
+    ],
+    "autocannon": {
+      "latency": {
+        "average": 19.53,
+        "mean": 19.53,
+        "stddev": 5.52,
+        "min": 8,
+        "max": 239,
+        "p0_001": 8,
+        "p0_01": 9,
+        "p0_1": 12,
+        "p1": 13,
+        "p2_5": 14,
+        "p10": 15,
+        "p25": 16,
+        "p50": 19,
+        "p75": 21,
+        "p90": 25,
+        "p97_5": 31,
+        "p99": 35,
+        "p99_9": 51,
+        "p99_99": 213,
+        "p99_999": 239,
+        "totalCount": 15001
+      },
+      "requests": {
+        "average": 500.04,
+        "mean": 500.04,
+        "stddev": 50.9,
+        "min": 343,
+        "max": 579,
+        "total": 15001,
+        "p0_001": 343,
+        "p0_01": 343,
+        "p0_1": 343,
+        "p1": 343,
+        "p2_5": 343,
+        "p10": 417,
+        "p25": 479,
+        "p50": 507,
+        "p75": 526,
+        "p90": 557,
+        "p97_5": 579,
+        "p99": 579,
+        "p99_9": 579,
+        "p99_99": 579,
+        "p99_999": 579,
+        "sent": 15011
+      },
+      "throughput": {
+        "average": 1175569.07,
+        "mean": 1175569.07,
+        "stddev": 119679.61,
+        "min": 806393,
+        "max": 1361229,
+        "total": 35267351,
+        "p0_001": 806399,
+        "p0_01": 806399,
+        "p0_1": 806399,
+        "p1": 806399,
+        "p2_5": 806399,
+        "p10": 980479,
+        "p25": 1126399,
+        "p50": 1192959,
+        "p75": 1236991,
+        "p90": 1309695,
+        "p97_5": 1361919,
+        "p99": 1361919,
+        "p99_9": 1361919,
+        "p99_99": 1361919,
+        "p99_999": 1361919
+      },
+      "statusCodeStats": {
+        "200": {
+          "count": 15001
+        }
+      },
+      "errors": 0,
+      "timeouts": 0,
+      "non2xx": 0,
+      "duration": 30.07,
+      "start": "2026-10-27T04:30:25.272Z",
+      "finish": "2026-10-27T04:30:55.337Z"
+    }
+  },
+  "evaluacion": {
+    "estado": "Aprobado",
+    "motivos": []
+  },
+  "recursos": [
+    {
+      "t": 2.06,
+      "backendMemMB": 102.71,
+      "backendCpuPctNucleo": 106.84,
+      "backendCpuPctTotal": 6.68,
+      "postgresMemMB": 206.74,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 4.13,
+      "backendMemMB": 122.64,
+      "backendCpuPctNucleo": 102.86,
+      "backendCpuPctTotal": 6.43,
+      "postgresMemMB": 207.34,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 6.17,
+      "backendMemMB": 105.03,
+      "backendCpuPctNucleo": 108.55,
+      "backendCpuPctTotal": 6.78,
+      "postgresMemMB": 208.31,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 8.21,
+      "backendMemMB": 107.87,
+      "backendCpuPctNucleo": 100.29,
+      "backendCpuPctTotal": 6.27,
+      "postgresMemMB": 214.86,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 10.24,
+      "backendMemMB": 113.61,
+      "backendCpuPctNucleo": 95,
+      "backendCpuPctTotal": 5.94,
+      "postgresMemMB": 208.66,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 12.28,
+      "backendMemMB": 107.82,
+      "backendCpuPctNucleo": 100.29,
+      "backendCpuPctTotal": 6.27,
+      "postgresMemMB": 208.09,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 14.32,
+      "backendMemMB": 118.76,
+      "backendCpuPctNucleo": 102.74,
+      "backendCpuPctTotal": 6.42,
+      "postgresMemMB": 208.5,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 16.36,
+      "backendMemMB": 144.65,
+      "backendCpuPctNucleo": 99.42,
+      "backendCpuPctTotal": 6.21,
+      "postgresMemMB": 208.41,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 18.4,
+      "backendMemMB": 107.54,
+      "backendCpuPctNucleo": 97.37,
+      "backendCpuPctTotal": 6.09,
+      "postgresMemMB": 208.32,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 20.42,
+      "backendMemMB": 120.09,
+      "backendCpuPctNucleo": 94.09,
+      "backendCpuPctTotal": 5.88,
+      "postgresMemMB": 208.18,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 22.46,
+      "backendMemMB": 109.29,
+      "backendCpuPctNucleo": 101.4,
+      "backendCpuPctTotal": 6.34,
+      "postgresMemMB": 208.43,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 24.49,
+      "backendMemMB": 134.68,
+      "backendCpuPctNucleo": 100.44,
+      "backendCpuPctTotal": 6.28,
+      "postgresMemMB": 208.14,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 26.53,
+      "backendMemMB": 109.86,
+      "backendCpuPctNucleo": 104.32,
+      "backendCpuPctTotal": 6.52,
+      "postgresMemMB": 208.14,
+      "postgresCpuPctTotal": 0
+    },
+    {
+      "t": 28.57,
+      "backendMemMB": 128.97,
+      "backendCpuPctNucleo": 99.57,
+      "backendCpuPctTotal": 6.22,
+      "postgresMemMB": 208.15,
+      "postgresCpuPctTotal": 0
+    }
+  ],
+  "recursosResumen": {
+    "muestras": 14,
+    "backendCpuNucleoMedioPct": 100.94,
+    "backendCpuNucleoMaxPct": 108.55,
+    "backendMemInicialMB": 102.71,
+    "backendMemFinalMB": 128.97,
+    "backendMemMaxMB": 144.65,
+    "postgresCpuTotalMedioPct": 0,
+    "postgresCpuTotalMaxPct": 0
+  }
+}

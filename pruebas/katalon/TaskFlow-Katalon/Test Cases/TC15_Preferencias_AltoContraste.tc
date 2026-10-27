@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar que el modo de alto contraste se activa, persiste al recargar y se restablece.
+
+Resultado esperado: Por defecto el interruptor está desactivado y 'Restablecer' deshabilitado; al activarlo &lt;html data-contraste='alto'&gt; y sigue activo tras recargar; al restablecer (con confirmación) vuelve a 'normal'.
+
+Datos: Usuario creado por API.
+Esperas: waitForElementVisible h1_Preferencias 10s; waitForElementAttributeValue data-contraste 10s; waitForElementVisible alertdialog 10s
+Evidencia: Reports/evidencias/TC15_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC15_Preferencias_AltoContraste</name>
+   <tag>positivo,preferencias</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>135de343-a450-4564-95fa-5dc1e59a92cb</testCaseGuid>
+</TestCaseEntity>

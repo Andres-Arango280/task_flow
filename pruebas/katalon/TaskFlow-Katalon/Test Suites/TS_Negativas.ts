@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description>Casos negativos: validaciones, errores del servidor, accesos sin sesión. TC05 data-driven.</description>
+   <name>TS_Negativas</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>30</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>8c21d1c5-4ca5-4562-b8b7-df50d2907ace</testSuiteGuid>
+   <testCaseLink>
+      <guid>c6e63640-acd5-490f-9e3b-48211cb0b123</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/TC02_Registro_CorreoDuplicado</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>34910f9e-ad0e-43cb-abf9-2f673eb52232</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/TC03_Registro_ContrasenaCorta</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>4a836d0b-3e45-4471-97e8-fe5f6f511ee5</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/TC05_Login_CredencialesInvalidas</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>716a438a-b5a3-44e5-8937-13ac1159d9d8</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/credenciales_invalidas</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>716a438a-b5a3-44e5-8937-13ac1159d9d8</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>escenario</value>
+         <variableId>c432f10b-56f8-4dd5-ab89-609c4565e7de</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>716a438a-b5a3-44e5-8937-13ac1159d9d8</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>correo</value>
+         <variableId>13b829da-8312-4472-a48c-cf4b66a1d35b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>716a438a-b5a3-44e5-8937-13ac1159d9d8</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>contrasena</value>
+         <variableId>ed801f3c-9691-4485-81b3-5dca36e6183d</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>716a438a-b5a3-44e5-8937-13ac1159d9d8</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>preparacion</value>
+         <variableId>888a3aeb-6ac7-4f24-af08-1fe7135ec45a</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>716a438a-b5a3-44e5-8937-13ac1159d9d8</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>validacion</value>
+         <variableId>821848b6-e7a8-4cf2-a1a8-8518f6304271</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>716a438a-b5a3-44e5-8937-13ac1159d9d8</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>mensaje</value>
+         <variableId>09d2ebac-16b8-4c7c-a18a-202594a516e8</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>a71d5b0d-9797-4b58-96c5-0cae04b81fc2</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/TC06_RutaProtegida_SinSesion</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>ee825063-ff70-446c-930b-ffc2d0cb1a5a</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/TC09_InvitarMiembro_CorreoInexistente</testCaseId>
+   </testCaseLink>
+</TestSuiteEntity>

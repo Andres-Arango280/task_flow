@@ -1,0 +1,67 @@
+{
+  "modelResponse": "observe",
+  "rawResponse": {
+    "elements": [
+      {
+        "elementId": "0-119",
+        "description": "textbox: Correo electrónico (obligatorio)",
+        "method": "type",
+        "arguments": [
+          "type",
+          "Correo electrónico"
+        ]
+      },
+      {
+        "elementId": "0-119",
+        "description": "textbox: Correo electrónico (obligatorio)",
+        "method": "fill",
+        "arguments": [
+          "fill",
+          "Correo electrónico"
+        ]
+      },
+      {
+        "elementId": "0-133",
+        "description": "textbox: Contraseña (obligatorio)",
+        "method": "type",
+        "arguments": [
+          "type",
+          "Contraseña"
+        ]
+      },
+      {
+        "elementId": "0-133",
+        "description": "textbox: Contraseña (obligatorio)",
+        "method": "fill",
+        "arguments": [
+          "fill",
+          "Contraseña"
+        ]
+      },
+      {
+        "elementId": "0-119",
+        "description": "textbox: Correo electrónico (obligatorio)",
+        "method": "click",
+        "arguments": []
+      },
+      {
+        "elementId": "0-133",
+        "description": "textbox: Contraseña (obligatorio)",
+        "method": "click",
+        "arguments": []
+      },
+      {
+        "elementId": "0-119",
+        "description": "textbox: Correo electrónico (obligatorio)",
+        "method": "scrollTo",
+        "arguments": []
+      },
+      {
+        "elementId": "0-133",
+        "description": "textbox: Contraseña (obligatorio)",
+        "method": "scrollTo",
+        "arguments": []
+      }
+    ]
+  }
+}

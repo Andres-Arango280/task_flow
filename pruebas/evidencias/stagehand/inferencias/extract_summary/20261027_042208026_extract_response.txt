@@ -1,0 +1,9 @@
+{
+  "modelResponse": "extract",
+  "rawResponse": {
+    "nombre": "Hecho",
+    "tareas": [
+      "Escribir las pruebas"
+    ]
+  }
+}

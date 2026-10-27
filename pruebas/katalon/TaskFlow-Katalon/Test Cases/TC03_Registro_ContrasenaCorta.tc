@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[NEGATIVO] Comprobar la política de contraseñas (8 caracteres, letra y número) y la confirmación distinta en el registro.
+
+Resultado esperado: Con 'abc' los requisitos 'Al menos 8 caracteres' y 'Al menos un número' quedan pendientes y aparece 'La contraseña debe tener al menos 8 caracteres, con al menos una letra y un número.'; con 'abcdefgh' se rechaza igual; con confirmación distinta aparece 'Las contraseñas no coinciden...'; no se crea la cuenta (login por API devuelve 401).
+
+Datos: Contraseña 'abc' / confirmación 'abc'; 'abcdefgh' / 'abcdefgh'; después 'Clave123' / 'Clave999'. Correo único.
+Esperas: waitForElementVisible alert_Error 10s; verifyElementPresent li_RequisitoConEstado 10s
+Evidencia: Reports/evidencias/TC03_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC03_Registro_ContrasenaCorta</name>
+   <tag>negativo,registro</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>6b160dd3-a8fb-4bb5-85d9-05881b7bd088</testCaseGuid>
+</TestCaseEntity>

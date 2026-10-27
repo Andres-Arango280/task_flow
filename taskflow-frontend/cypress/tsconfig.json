@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "types": ["cypress", "node", "@testing-library/cypress"],
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "isolatedModules": true,
+    "allowImportingTsExtensions": true
+  },
+  "include": ["**/*.ts", "**/*.tsx", "../cypress.config.ts"]
+}

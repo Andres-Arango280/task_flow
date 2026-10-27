@@ -1,104 +1,100 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Proyecto } from './schemas/proyecto.schema';
-import { Lista } from '../listas/schemas/lista.schema';
-import { Equipo } from '../equipos/schemas/equipo.schema';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Proyecto } from './entities/proyecto.entity';
+import { Lista } from '../listas/entities/lista.entity';
+import { Equipo } from '../equipos/entities/equipo.entity';
+import { usuarioPerteneceAEquipo } from '../equipos/equipos.service';
 import { CreateProyectoDto } from './dto/proyecto.dto';
+
+export const LISTAS_POR_DEFECTO = ['Por Hacer', 'En Progreso', 'Hecho'];
 
 @Injectable()
 export class ProyectosService {
   constructor(
-    @InjectModel(Proyecto.name) private proyectoModel: Model<Proyecto>,
-    @InjectModel(Lista.name) private listaModel: Model<Lista>,
-    @InjectModel(Equipo.name) private equipoModel: Model<Equipo>,
+    @InjectRepository(Proyecto)
+    private proyectoRepository: Repository<Proyecto>,
+    @InjectRepository(Lista)
+    private listaRepository: Repository<Lista>,
+    @InjectRepository(Equipo)
+    private equipoRepository: Repository<Equipo>,
   ) {}
 
-  // ✅ NUEVO: Obtener proyectos de un equipo
-  async findByEquipo(equipoId: string, userId: string) {
-    const equipo = await this.equipoModel.findById(equipoId).exec();
+  private async getEquipoConAcceso(equipoId: string, userId: string) {
+    const equipo = await this.equipoRepository.findOne({
+      where: { id: equipoId },
+      relations: { miembros: true },
+    });
 
     if (!equipo) {
       throw new NotFoundException('Equipo no encontrado');
     }
 
-    const userIdStr = userId.toString();
-    const esMiembro = equipo.miembros.some((miembro: any) => miembro.toString() === userIdStr);
-    const esLider = equipo.lider.toString() === userIdStr;
-
-    if (!esMiembro && !esLider) {
+    if (!usuarioPerteneceAEquipo(equipo, userId)) {
       throw new ForbiddenException('No tienes acceso a este equipo');
     }
 
-    const proyectos = await this.proyectoModel
-      .find({ equipo: equipoId })
-      .populate('equipo', 'nombre')
-      .exec();
+    return equipo;
+  }
 
-    return proyectos;
+  // Obtener proyectos de un equipo
+  async findByEquipo(equipoId: string, userId: string) {
+    await this.getEquipoConAcceso(equipoId, userId);
+
+    return this.proyectoRepository.find({
+      where: { equipoId },
+      order: { createdAt: 'ASC' },
+    });
   }
 
   async findById(proyectoId: string, userId: string) {
-    const proyecto = await this.proyectoModel
-      .findById(proyectoId)
-      .populate({
-        path: 'equipo',
-        select: 'nombre lider miembros',
-        populate: [
-          { path: 'lider', select: 'nombre email' },
-          { path: 'miembros', select: 'nombre email' },
-        ],
-      })
-      .exec();
+    const proyecto = await this.proyectoRepository.findOne({
+      where: { id: proyectoId },
+      relations: { equipo: { lider: true, miembros: true } },
+    });
 
     if (!proyecto) {
       throw new NotFoundException('Proyecto no encontrado');
     }
 
-    const equipo = proyecto.equipo as any;
-    const userIdStr = userId.toString();
-    const esMiembro = equipo.miembros.some(
-      (miembro: any) => miembro.toString() === userIdStr,
-    );
-    const esLider = equipo.lider.toString() === userIdStr;
-
-    if (!esMiembro && !esLider) {
+    if (!usuarioPerteneceAEquipo(proyecto.equipo, userId)) {
       throw new ForbiddenException('No tienes acceso a este proyecto');
     }
 
     return proyecto;
   }
 
-  // ✅ EXISTENTE: Crear proyecto (mantén tu lógica original aquí)
   async crearProyecto(dto: CreateProyectoDto, userId: string) {
-    const equipo = await this.equipoModel.findById(dto.equipoId).exec();
+    await this.getEquipoConAcceso(dto.equipoId, userId);
 
-    if (!equipo) {
-      throw new NotFoundException('Equipo no encontrado');
-    }
-
-    const userIdStr = userId.toString();
-    const esMiembro = equipo.miembros.some((miembro: any) => miembro.toString() === userIdStr);
-    const esLider = equipo.lider.toString() === userIdStr;
-
-    if (!esMiembro && !esLider) {
-      throw new ForbiddenException('No tienes acceso a este equipo');
-    }
-
-    const nuevoProyecto = new this.proyectoModel({
+    const nuevoProyecto = this.proyectoRepository.create({
       nombre: dto.nombre,
-      equipo: dto.equipoId,
+      equipoId: dto.equipoId,
     });
-    const proyectoGuardado = await nuevoProyecto.save();
+    const proyectoGuardado = await this.proyectoRepository.save(nuevoProyecto);
 
-    const listasDefault = [
-      { nombre: 'Por Hacer', proyecto: proyectoGuardado._id },
-      { nombre: 'En Progreso', proyecto: proyectoGuardado._id },
-      { nombre: 'Hecho', proyecto: proyectoGuardado._id },
-    ];
-
-    await this.listaModel.insertMany(listasDefault);
+    const listasDefault = LISTAS_POR_DEFECTO.map((nombre, orden) =>
+      this.listaRepository.create({ nombre, orden, proyectoId: proyectoGuardado.id }),
+    );
+    await this.listaRepository.save(listasDefault);
 
     return proyectoGuardado;
+  }
+
+  async eliminar(proyectoId: string, userId: string) {
+    const proyecto = await this.proyectoRepository.findOne({
+      where: { id: proyectoId },
+      relations: { equipo: true },
+    });
+    if (!proyecto) {
+      throw new NotFoundException('Proyecto no encontrado');
+    }
+    if (proyecto.equipo.liderId !== userId) {
+      throw new ForbiddenException('Solo el líder del equipo puede eliminar proyectos');
+    }
+
+    // Las listas y tareas se eliminan en cascada
+    await this.proyectoRepository.remove(proyecto);
+    return { id: proyectoId, eliminado: true };
   }
 }

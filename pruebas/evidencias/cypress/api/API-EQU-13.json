@@ -1,0 +1,19 @@
+{
+  "id": "API-EQU-13",
+  "obtenido": "Respondió 400 con \"El líder no puede eliminarse del equipo\".",
+  "peticion": {
+    "metodo": "DELETE",
+    "url": "http://localhost:3000/equipos/ffb318a4-f445-4a18-b210-439eb6123cb4/miembros/a9252192-0c2d-4bbd-b56e-02ec84fe2653",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 18,
+    "cuerpo": {
+      "message": "El líder no puede eliminarse del equipo",
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:12:45.870Z"
+}

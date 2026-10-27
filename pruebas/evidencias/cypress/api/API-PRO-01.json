@@ -1,0 +1,25 @@
+{
+  "id": "API-PRO-01",
+  "obtenido": "Respondió 201; el proyecto tiene 3 listas en orden: Por Hacer, En Progreso, Hecho.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/proyectos",
+    "autenticado": true,
+    "cuerpo": {
+      "nombre": "Proyecto API 1793056373932",
+      "equipoId": "e8b5f426-7890-4968-813e-a1f798192cc4"
+    }
+  },
+  "respuesta": {
+    "estado": 201,
+    "duracionMs": 21,
+    "cuerpo": {
+      "nombre": "Proyecto API 1793056373932",
+      "equipoId": "e8b5f426-7890-4968-813e-a1f798192cc4",
+      "id": "db9e2e0c-48f9-42b6-b3eb-dfacd6ccb3a8",
+      "createdAt": "2026-10-26T23:12:53.953Z",
+      "updatedAt": "2026-10-26T23:12:53.953Z"
+    }
+  },
+  "fecha": "2026-10-26T23:12:54.030Z"
+}

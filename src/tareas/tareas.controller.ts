@@ -3,15 +3,18 @@ import {
   Controller,
   Post,
   Patch,
+  Delete,
   Get,
   Param,
   Query,
   UseGuards,
   Req,
+  BadRequestException,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { TareasService } from './tareas.service';
-import { AsignarMiembrosDto, CreateTareaDto, MoverTareaDto } from './dto/tarea.dto';
+import { ActualizarTareaDto, AsignarMiembrosDto, CreateTareaDto, MoverTareaDto } from './dto/tarea.dto';
 
 @Controller('tareas')
 @UseGuards(JwtAuthGuard)
@@ -20,9 +23,9 @@ export class TareasController {
 
   // GET /tareas?proyectoId=X - Obtener todas las tareas de un proyecto
   @Get()
-  getByProyecto(@Query('proyectoId') proyectoId: string, @Req() req) {
+  getByProyecto(@Query('proyectoId', new ParseUUIDPipe({ optional: true })) proyectoId: string, @Req() req) {
     if (!proyectoId) {
-      return { message: 'Debes proporcionar proyectoId' };
+      throw new BadRequestException('Debes proporcionar proyectoId');
     }
     return this.tareasService.findByProyecto(proyectoId, req.user.id);
   }
@@ -35,13 +38,25 @@ export class TareasController {
 
   // PATCH /tareas/:id/mover - Mover tarea (ya existe)
   @Patch(':id/mover')
-  mover(@Param('id') id: string, @Body() dto: MoverTareaDto, @Req() req) {
+  mover(@Param('id', ParseUUIDPipe) id: string, @Body() dto: MoverTareaDto, @Req() req) {
     return this.tareasService.moverTarea(id, dto.nuevaListaId, req.user.id);
   }
 
   // PATCH /tareas/:id/asignar - Asignar miembros (ya existe)
   @Patch(':id/asignar')
-  asignarMiembros(@Param('id') id: string, @Body() dto: AsignarMiembrosDto, @Req() req) {
+  asignarMiembros(@Param('id', ParseUUIDPipe) id: string, @Body() dto: AsignarMiembrosDto, @Req() req) {
     return this.tareasService.asignarMiembros(id, dto.miembros, req.user.id);
+  }
+
+  // PATCH /tareas/:id - Editar título o descripción
+  @Patch(':id')
+  actualizar(@Param('id', ParseUUIDPipe) id: string, @Body() dto: ActualizarTareaDto, @Req() req) {
+    return this.tareasService.actualizar(id, dto, req.user.id);
+  }
+
+  // DELETE /tareas/:id - Eliminar tarea
+  @Delete(':id')
+  eliminar(@Param('id', ParseUUIDPipe) id: string, @Req() req) {
+    return this.tareasService.eliminar(id, req.user.id);
   }
 }

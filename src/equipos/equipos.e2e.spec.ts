@@ -1,5 +1,9 @@
-import { ForbiddenException, NotFoundException } from '@nestjs/common';
+import { ConflictException, ForbiddenException, NotFoundException } from '@nestjs/common';
+import { Test } from '@nestjs/testing';
+import { getRepositoryToken } from '@nestjs/typeorm';
 import { EquiposService } from './equipos.service';
+import { Equipo } from './entities/equipo.entity';
+import { Usuario } from '../usuarios/entities/usuario.entity';
 
 // ========================
 // PRUEBAS DE CAJA NEGRA - EQUIPOS (E2E)
@@ -7,17 +11,46 @@ import { EquiposService } from './equipos.service';
 // Estas pruebas validan el comportamiento de los endpoints de equipos
 // desde la perspectiva del usuario (entrada/salida visible)
 
-describe('Equipos E2E Tests (Black Box)', () => {
-  let service: EquiposService;
-  let equipoModel: any;
+const juan = { id: 'user-1', nombre: 'Juan', email: 'juan@example.com' } as Usuario;
+const maria = { id: 'user-2', nombre: 'María', email: 'maria@example.com' } as Usuario;
+const pedro = { id: 'user-3', nombre: 'Pedro', email: 'pedro@example.com' } as Usuario;
 
-  beforeEach(() => {
-    equipoModel = {
-      findById: jest.fn(),
+const crearEquipo = (lider: Usuario, miembros: Usuario[]): Equipo =>
+  ({
+    id: 'equipo-1',
+    nombre: 'Backend Team',
+    liderId: lider.id,
+    lider,
+    miembros: [...miembros],
+  }) as Equipo;
+
+const idsDe = (equipo: Equipo) => equipo.miembros.map((m) => m.id);
+
+describe('Regression - Equipos E2E Tests (Black Box)', () => {
+  // AAA + fluent-style assertions (Jest equivalent for this TypeScript stack)
+  let service: EquiposService;
+  let equipoRepository: { findOne: jest.Mock; find: jest.Mock; save: jest.Mock };
+  let usuarioRepository: { findOneBy: jest.Mock };
+
+  beforeEach(async () => {
+    equipoRepository = {
+      findOne: jest.fn(),
       find: jest.fn(),
+      save: jest.fn().mockImplementation(async (e: Equipo) => e),
+    };
+    usuarioRepository = {
+      findOneBy: jest.fn(),
     };
 
-    service = new EquiposService(equipoModel as any);
+    const moduleRef = await Test.createTestingModule({
+      providers: [
+        EquiposService,
+        { provide: getRepositoryToken(Equipo), useValue: equipoRepository },
+        { provide: getRepositoryToken(Usuario), useValue: usuarioRepository },
+      ],
+    }).compile();
+
+    service = moduleRef.get(EquiposService);
   });
 
   // ========================
@@ -26,34 +59,30 @@ describe('Equipos E2E Tests (Black Box)', () => {
   describe('Agregar miembro a equipo (Caja Negra)', () => {
     // Escenario 1: Agregar miembro exitosamente
     it('debe agregar un miembro y retornar el equipo actualizado', async () => {
-      const equipoOriginal = {
-        _id: 'equipo-1',
-        nombre: 'Backend Team',
-        lider: 'user-1',
-        miembros: ['user-1'],
-        save: jest.fn().mockResolvedValue({
-          _id: 'equipo-1',
-          nombre: 'Backend Team',
-          lider: 'user-1',
-          miembros: ['user-1', 'user-2'],
-        }),
-      };
+      // Arrange
+      equipoRepository.findOne
+        .mockResolvedValueOnce(crearEquipo(juan, [juan]))
+        .mockResolvedValueOnce(crearEquipo(juan, [juan, maria]));
+      usuarioRepository.findOneBy.mockResolvedValue(maria);
 
-      equipoModel.findById.mockResolvedValue(equipoOriginal);
-
+      // Act
       const resultado = await service.addMiembro('equipo-1', 'user-2', 'user-1');
 
-      expect(resultado).toHaveProperty('_id', 'equipo-1');
+      // Assert
+      expect(resultado).toHaveProperty('id', 'equipo-1');
       expect(resultado).toHaveProperty('nombre', 'Backend Team');
-      expect(resultado.miembros).toContain('user-1');
-      expect(resultado.miembros).toContain('user-2');
+      expect(resultado).toHaveProperty('liderId', 'user-1');
+      expect(idsDe(resultado)).toContain('user-1');
+      expect(idsDe(resultado)).toContain('user-2');
       expect(resultado.miembros).toHaveLength(2);
     });
 
     // Escenario 2: Equipo no encontrado (404)
     it('debe retornar 404 si el equipo no existe', async () => {
-      equipoModel.findById.mockResolvedValue(null);
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(null);
 
+      // Act + Assert
       try {
         await service.addMiembro('equipo-no-existe', 'user-2', 'user-1');
         throw new Error('Debería haber lanzado una excepción');
@@ -65,16 +94,10 @@ describe('Equipos E2E Tests (Black Box)', () => {
 
     // Escenario 3: Solicitante no es líder (403)
     it('debe retornar 403 si el solicitante no es el líder', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        nombre: 'Backend Team',
-        lider: 'user-1',
-        miembros: ['user-1', 'user-2'],
-        save: jest.fn(),
-      };
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(crearEquipo(juan, [juan, maria]));
 
-      equipoModel.findById.mockResolvedValue(equipo);
-
+      // Act + Assert
       try {
         await service.addMiembro('equipo-1', 'user-3', 'user-2');
         throw new Error('Debería haber lanzado una excepción');
@@ -86,43 +109,46 @@ describe('Equipos E2E Tests (Black Box)', () => {
 
     // Escenario 4: Usuario ya es miembro (409 Conflict)
     it('debe retornar 409 si el usuario ya es miembro del equipo', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        nombre: 'Backend Team',
-        lider: 'user-1',
-        miembros: ['user-1', 'user-2'],
-        save: jest.fn(),
-      };
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(crearEquipo(juan, [juan, maria]));
+      usuarioRepository.findOneBy.mockResolvedValue(maria);
 
-      equipoModel.findById.mockResolvedValue(equipo);
-
+      // Act + Assert
       try {
         await service.addMiembro('equipo-1', 'user-2', 'user-1');
         throw new Error('Debería haber lanzado una excepción');
       } catch (error: any) {
-        expect(error instanceof ForbiddenException).toBe(true);
+        expect(error instanceof ConflictException).toBe(true);
         expect(error.message).toBe('El usuario ya es miembro del equipo');
       }
     });
 
-    // Escenario 5: Validar que no se guarda si hay error
-    it('no debe guardar cambios si el usuario no tiene permisos', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1'],
-        save: jest.fn(),
-      };
+    // Escenario 5: Usuario a agregar no existe (404)
+    it('debe retornar 404 si el usuario a agregar no existe', async () => {
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(crearEquipo(juan, [juan]));
+      usuarioRepository.findOneBy.mockResolvedValue(null);
 
-      equipoModel.findById.mockResolvedValue(equipo);
-
+      // Act + Assert
       try {
-        await service.addMiembro('equipo-1', 'user-2', 'user-999');
-      } catch (error) {
-        // Expected
+        await service.addMiembro('equipo-1', 'user-404', 'user-1');
+        throw new Error('Debería haber lanzado una excepción');
+      } catch (error: any) {
+        expect(error instanceof NotFoundException).toBe(true);
+        expect(error.message).toBe('Usuario no encontrado');
       }
+    });
 
-      expect(equipo.save).not.toHaveBeenCalled();
+    // Escenario 6: Validar que no se guarda si hay error
+    it('no debe guardar cambios si el usuario no tiene permisos', async () => {
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(crearEquipo(juan, [juan]));
+
+      // Act
+      await expect(service.addMiembro('equipo-1', 'user-2', 'user-999')).rejects.toThrow(ForbiddenException);
+
+      // Assert
+      expect(equipoRepository.save).not.toHaveBeenCalled();
     });
   });
 
@@ -132,38 +158,28 @@ describe('Equipos E2E Tests (Black Box)', () => {
   describe('Eliminar miembro de equipo (Caja Negra)', () => {
     // Escenario 1: Eliminar miembro exitosamente
     it('debe eliminar un miembro y retornar el equipo actualizado', async () => {
-      const equipoOriginal = {
-        _id: 'equipo-1',
-        nombre: 'Backend Team',
-        lider: 'user-1',
-        miembros: ['user-1', 'user-2', 'user-3'],
-        save: jest.fn().mockResolvedValue({
-          _id: 'equipo-1',
-          nombre: 'Backend Team',
-          lider: 'user-1',
-          miembros: ['user-1', 'user-3'],
-        }),
-      };
+      // Arrange
+      equipoRepository.findOne
+        .mockResolvedValueOnce(crearEquipo(juan, [juan, maria, pedro]))
+        .mockResolvedValueOnce(crearEquipo(juan, [juan, pedro]));
 
-      equipoModel.findById.mockResolvedValue(equipoOriginal);
+      // Act
+      const resultado = await service.removeMiembro('equipo-1', 'user-2', 'user-1');
 
-      const resultado = await service.removeMiembro(
-        'equipo-1',
-        'user-2',
-        'user-1',
-      );
-
-      expect(resultado).toHaveProperty('_id', 'equipo-1');
-      expect(resultado.miembros).toContain('user-1');
-      expect(resultado.miembros).toContain('user-3');
-      expect(resultado.miembros).not.toContain('user-2');
+      // Assert
+      expect(resultado).toHaveProperty('id', 'equipo-1');
+      expect(idsDe(resultado)).toContain('user-1');
+      expect(idsDe(resultado)).toContain('user-3');
+      expect(idsDe(resultado)).not.toContain('user-2');
       expect(resultado.miembros).toHaveLength(2);
     });
 
     // Escenario 2: Equipo no encontrado (404)
     it('debe retornar 404 si el equipo no existe', async () => {
-      equipoModel.findById.mockResolvedValue(null);
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(null);
 
+      // Act + Assert
       try {
         await service.removeMiembro('equipo-no-existe', 'user-2', 'user-1');
         throw new Error('Debería haber lanzado una excepción');
@@ -175,15 +191,10 @@ describe('Equipos E2E Tests (Black Box)', () => {
 
     // Escenario 3: Solicitante no es líder (403)
     it('debe retornar 403 si el solicitante no es el líder', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1', 'user-2'],
-        save: jest.fn(),
-      };
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(crearEquipo(juan, [juan, maria]));
 
-      equipoModel.findById.mockResolvedValue(equipo);
-
+      // Act + Assert
       try {
         await service.removeMiembro('equipo-1', 'user-2', 'user-2');
         throw new Error('Debería haber lanzado una excepción');
@@ -195,48 +206,28 @@ describe('Equipos E2E Tests (Black Box)', () => {
 
     // Escenario 4: Usuario no es miembro (no causa error)
     it('debe manejar silenciosamente si el usuario a eliminar no es miembro', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1', 'user-2'],
-        save: jest.fn().mockResolvedValue({
-          _id: 'equipo-1',
-          lider: 'user-1',
-          miembros: ['user-1', 'user-2'],
-        }),
-      };
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(crearEquipo(juan, [juan, maria]));
 
-      equipoModel.findById.mockResolvedValue(equipo);
+      // Act
+      const resultado = await service.removeMiembro('equipo-1', 'user-999', 'user-1');
 
-      const resultado = await service.removeMiembro(
-        'equipo-1',
-        'user-999',
-        'user-1',
-      );
-
-      expect(equipo.save).toHaveBeenCalledTimes(1);
-      expect(resultado.miembros).toContain('user-1');
-      expect(resultado.miembros).toContain('user-2');
+      // Assert
+      expect(equipoRepository.save).toHaveBeenCalledTimes(1);
+      expect(idsDe(resultado)).toContain('user-1');
+      expect(idsDe(resultado)).toContain('user-2');
     });
 
     // Escenario 5: Validar que no se guarda si hay error
     it('no debe guardar cambios si el usuario no tiene permisos', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: 'user-1',
-        miembros: ['user-1', 'user-2'],
-        save: jest.fn(),
-      };
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(crearEquipo(juan, [juan, maria]));
 
-      equipoModel.findById.mockResolvedValue(equipo);
+      // Act
+      await expect(service.removeMiembro('equipo-1', 'user-2', 'user-999')).rejects.toThrow(ForbiddenException);
 
-      try {
-        await service.removeMiembro('equipo-1', 'user-2', 'user-999');
-      } catch (error) {
-        // Expected
-      }
-
-      expect(equipo.save).not.toHaveBeenCalled();
+      // Assert
+      expect(equipoRepository.save).not.toHaveBeenCalled();
     });
   });
 
@@ -246,41 +237,26 @@ describe('Equipos E2E Tests (Black Box)', () => {
   describe('Obtener miembros de equipo (Caja Negra)', () => {
     // Escenario 1: Obtener miembros exitosamente
     it('debe retornar lista de miembros y líder si el usuario tiene acceso', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: {
-          _id: 'user-1',
-          nombre: 'Juan',
-          email: 'juan@example.com',
-        },
-        miembros: [
-          {
-            _id: 'user-1',
-            nombre: 'Juan',
-            email: 'juan@example.com',
-          },
-          {
-            _id: 'user-2',
-            nombre: 'María',
-            email: 'maria@example.com',
-          },
-        ],
-      };
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(crearEquipo(juan, [juan, maria]));
 
-      equipoModel.findById.mockResolvedValue(equipo);
+      // Act
+      const resultado = await service.getMiembros('equipo-1', 'user-2');
 
-      const resultado = await service.getMiembros('equipo-1', 'user-1');
-
+      // Assert
       expect(resultado).toHaveProperty('lider');
       expect(resultado).toHaveProperty('miembros');
       expect(resultado.miembros).toHaveLength(2);
-      expect((resultado.lider as any).nombre).toBe('Juan');
+      expect(resultado.lider.nombre).toBe('Juan');
+      expect(resultado.miembros.map((m) => m.email)).toEqual(['juan@example.com', 'maria@example.com']);
     });
 
     // Escenario 2: Equipo no encontrado (404)
     it('debe retornar 404 si el equipo no existe', async () => {
-      equipoModel.findById.mockResolvedValue(null);
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(null);
 
+      // Act + Assert
       try {
         await service.getMiembros('equipo-no-existe', 'user-1');
         throw new Error('Debería haber lanzado una excepción');
@@ -291,22 +267,10 @@ describe('Equipos E2E Tests (Black Box)', () => {
 
     // Escenario 3: Usuario no tiene acceso (403)
     it('debe retornar 403 si el usuario no es miembro del equipo', async () => {
-      const equipo = {
-        _id: 'equipo-1',
-        lider: {
-          _id: 'user-1',
-          nombre: 'Juan',
-        },
-        miembros: [
-          {
-            _id: 'user-1',
-            nombre: 'Juan',
-          },
-        ],
-      };
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(crearEquipo(juan, [juan]));
 
-      equipoModel.findById.mockResolvedValue(equipo);
-
+      // Act + Assert
       try {
         await service.getMiembros('equipo-1', 'user-999');
         throw new Error('Debería haber lanzado una excepción');
@@ -318,38 +282,67 @@ describe('Equipos E2E Tests (Black Box)', () => {
   });
 
   // ========================
+  // GET /equipos/:id - DETALLE DE EQUIPO
+  // ========================
+  describe('Obtener detalle de equipo (Caja Negra)', () => {
+    it('debe retornar el equipo si el usuario es miembro', async () => {
+      // Arrange
+      const equipo = crearEquipo(juan, [juan, maria]);
+      equipoRepository.findOne.mockResolvedValue(equipo);
+
+      // Act
+      const resultado = await service.findById('equipo-1', 'user-2');
+
+      // Assert
+      expect(resultado).toBe(equipo);
+    });
+
+    it('debe retornar 403 si el usuario no pertenece al equipo', async () => {
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(crearEquipo(juan, [juan]));
+
+      // Act + Assert
+      await expect(service.findById('equipo-1', 'user-999')).rejects.toThrow(ForbiddenException);
+    });
+  });
+
+  // ========================
   // Validaciones de entrada
   // ========================
   describe('Validaciones de entrada (Caja Negra)', () => {
     // IDs vacíos
     it('debe manejar IDs vacíos correctamente', async () => {
-      equipoModel.findById.mockResolvedValue(null);
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(null);
 
-      try {
-        await service.addMiembro('', 'user-2', 'user-1');
-      } catch (error) {
-        expect(error).toBeDefined();
-      }
+      // Act + Assert
+      await expect(service.addMiembro('', 'user-2', 'user-1')).rejects.toThrow(NotFoundException);
     });
 
     // IDs muy largos
     it('debe manejar IDs muy largos', async () => {
+      // Arrange
       const largeId = 'a'.repeat(1000);
-      equipoModel.findById.mockResolvedValue(null);
+      equipoRepository.findOne.mockResolvedValue(null);
 
-      await service.addMiembro(largeId, 'user-2', 'user-1');
-      expect(equipoModel.findById).toHaveBeenCalledWith(largeId);
+      // Act
+      await expect(service.addMiembro(largeId, 'user-2', 'user-1')).rejects.toThrow(NotFoundException);
+
+      // Assert
+      expect(equipoRepository.findOne).toHaveBeenCalledWith({
+        where: { id: largeId },
+        relations: { lider: true, miembros: true },
+      });
     });
 
     // Valores null
     it('debe manejar valores null en parámetros', async () => {
-      equipoModel.findById.mockResolvedValue(null);
+      // Arrange
+      equipoRepository.findOne.mockResolvedValue(null);
 
-      try {
-        await service.addMiembro(null as any, 'user-2', 'user-1');
-      } catch (error) {
-        expect(error).toBeDefined();
-      }
+      // Act + Assert
+      await expect(service.addMiembro(null as any, 'user-2', 'user-1')).rejects.toThrow(NotFoundException);
+      expect(equipoRepository.save).not.toHaveBeenCalled();
     });
   });
 });

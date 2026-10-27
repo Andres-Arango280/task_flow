@@ -1,0 +1,264 @@
+{
+  "id": "SEG-CONF-05",
+  "nombre": "Las respuestas de error no filtran trazas ni detalles internos",
+  "fecha": "2026-10-26T23:19:20.390Z",
+  "obtenido": "400 {\"message\":\"Expected double-quoted property name in JSON at position 15\",\"error\":\"Bad Requ | 404 {\"message\":\"Cannot GET /ruta/inexistente\",\"error\":\"Not Found\",\"statusCode\":404} | 404 {\"message\":\"Equipo no encontrado\",\"error\":\"Not Found\",\"statusCode\":404} | 400 {\"message\":[\"La contraseña no puede superar 72 caracteres\",\"La contraseña debe ser texto\"]",
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/register",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "nombre": "Usuario errores",
+          "email": "seg_errores_1793056751720_46@taskflow.test",
+          "password": "ClaveSegura#2026"
+        }
+      },
+      "respuesta": {
+        "status": 201,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "125",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"7d-Mzn8qQ7X54iBDgRloJUb0uiEsRs\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "id": "5aab0394-74f9-44c9-bd2e-d754ccc1c6a0",
+          "nombre": "Usuario errores",
+          "email": "seg_errores_1793056751720_46@taskflow.test"
+        },
+        "tiempoMs": 89.3
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_errores_1793056751720_46@taskflow.test",
+          "password": "ClaveSegura#2026"
+        }
+      },
+      "respuesta": {
+        "status": 201,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "336",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"150-grR3wzmQi7WEqFA8FtJLOJG2JTA\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YWFiMDM5NC03NGY5LTQ0YzktYmQyZS1kNzU0Y2NjMWM2YTAiLCJlbWFpbCI6InNlZ19lcnJvcmVzXzE3OTMwNTY3NTE3MjBfNDZAdGFza2Zsb3cudGVzdCIsImlkIjoiNWFhYjAzOTQtNzRmOS00NGM5LWJkMmUtZDc1NGNjYzFjNmEwIiwiaWF0IjoxNzkzMDU2NzYwLCJleHAiOjE3OTMxNDMxNjB9.91mji18j54KLHx0X9ytndZKTUcbFaA4t34zK3Q0rCjs"
+        },
+        "tiempoMs": 93
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/equipos",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": "{\"nombre\": \"x\",,}"
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "112",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"70-9NNAscuc35CwXlclc+eoub8oaeM\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Expected double-quoted property name in JSON at position 15",
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 7.8
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/ruta/inexistente",
+        "headers": {}
+      },
+      "respuesta": {
+        "status": 404,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "79",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"4f-nHc0ZhHpe/FQsAO5HiyMLxiTMcc\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Cannot GET /ruta/inexistente",
+          "error": "Not Found",
+          "statusCode": 404
+        },
+        "tiempoMs": 2.7
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/equipos/00000000-0000-4000-8000-000000000000",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 404,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "71",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"47-BikU+6vxCkc4uKlSV3GREjvAObg\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Equipo no encontrado",
+          "error": "Not Found",
+          "statusCode": 404
+        },
+        "tiempoMs": 8.5
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_errores_1793056751720_46@taskflow.test",
+          "password": {
+            "a": 1
+          }
+        }
+      },
+      "respuesta": {
+        "status": 400,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "132",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:20 GMT",
+          "etag": "W/\"84-ojL9fz12U14NZqYdUW/4b2AFjQM\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": [
+            "La contraseña no puede superar 72 caracteres",
+            "La contraseña debe ser texto"
+          ],
+          "error": "Bad Request",
+          "statusCode": 400
+        },
+        "tiempoMs": 4.1
+      }
+    }
+  ]
+}

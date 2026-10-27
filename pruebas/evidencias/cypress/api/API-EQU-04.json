@@ -1,0 +1,19 @@
+{
+  "id": "API-EQU-04",
+  "obtenido": "Respondió 403 con \"No tienes acceso a este equipo\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/equipos/6f34e0a6-4305-462d-b01b-b29d3971a356",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 403,
+    "duracionMs": 13,
+    "cuerpo": {
+      "message": "No tienes acceso a este equipo",
+      "error": "Forbidden",
+      "statusCode": 403
+    }
+  },
+  "fecha": "2026-10-26T23:12:34.549Z"
+}

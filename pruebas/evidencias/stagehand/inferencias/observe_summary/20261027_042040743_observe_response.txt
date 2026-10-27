@@ -1,0 +1,25 @@
+{
+  "modelResponse": "observe",
+  "rawResponse": {
+    "elements": [
+      {
+        "elementId": "0-1267",
+        "description": "click",
+        "method": "click",
+        "arguments": []
+      },
+      {
+        "elementId": "0-1267",
+        "description": "click",
+        "method": "click",
+        "arguments": []
+      },
+      {
+        "elementId": "0-1267",
+        "description": "click",
+        "method": "click",
+        "arguments": []
+      }
+    ]
+  }
+}

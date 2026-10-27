@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[NEGATIVO] Comprobar con varios datos (data-driven) que el login rechaza credenciales incorrectas o mal formadas.
+
+Resultado esperado: Errores del servidor: [role=alert] 'El correo o la contraseña no son correctos...'. Errores de formato/vacíos: el navegador bloquea el envío (checkValidity=false) sin alerta. En todos los casos se permanece en /login sin token.
+
+Datos: Data Files/credenciales_invalidas (Data/credenciales_invalidas.csv): 7 filas — contraseña incorrecta, correo no registrado, mayúsculas, inyección SQL, correo sin @, contraseña vacía, correo vacío. Cada fila usa un correo único para no activar el bloqueo de 5 intentos (HTTP 429).
+Esperas: waitForElementVisible input_Correo 10s; waitForElementVisible alert_Error 10s; verifyElementNotPresent alert_Error 3s
+Evidencia: Reports/evidencias/TC05_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC05_Login_CredencialesInvalidas</name>
+   <tag>negativo,sesion</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>50e52fe4-1564-4a31-bac5-8323842d4bc9</testCaseGuid>
+   <variable>
+      <defaultValue>'contrasena_incorrecta'</defaultValue>
+      <description>Nombre del escenario</description>
+      <id>c432f10b-56f8-4dd5-ab89-609c4565e7de</id>
+      <masked>false</masked>
+      <name>escenario</name>
+   </variable>
+   <variable>
+      <defaultValue>'{unico}'</defaultValue>
+      <description>Correo a escribir; {unico} se sustituye por un correo único</description>
+      <id>13b829da-8312-4472-a48c-cf4b66a1d35b</id>
+      <masked>false</masked>
+      <name>correo</name>
+   </variable>
+   <variable>
+      <defaultValue>'ClaveErronea99'</defaultValue>
+      <description>Contraseña a escribir</description>
+      <id>ed801f3c-9691-4485-81b3-5dca36e6183d</id>
+      <masked>false</masked>
+      <name>contrasena</name>
+   </variable>
+   <variable>
+      <defaultValue>'registrar'</defaultValue>
+      <description>registrar = crear antes el usuario por API con Clave123; ninguna = no crear</description>
+      <id>888a3aeb-6ac7-4f24-af08-1fe7135ec45a</id>
+      <masked>false</masked>
+      <name>preparacion</name>
+   </variable>
+   <variable>
+      <defaultValue>'servidor'</defaultValue>
+      <description>servidor = alerta 401; navegador = validación HTML5</description>
+      <id>821848b6-e7a8-4cf2-a1a8-8518f6304271</id>
+      <masked>false</masked>
+      <name>validacion</name>
+   </variable>
+   <variable>
+      <defaultValue>'no son correctos'</defaultValue>
+      <description>Fragmento esperado del mensaje de error</description>
+      <id>09d2ebac-16b8-4c7c-a18a-202594a516e8</id>
+      <masked>false</masked>
+      <name>mensaje</name>
+   </variable>
+</TestCaseEntity>

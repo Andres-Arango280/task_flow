@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar la creación de tareas desde 'Nueva tarea' con datos de un Data File, incluida la validación de título obligatorio.
+
+Resultado esperado: Sin título aparece 'Escribe un título para la tarea (es obligatorio).'; cada tarea del CSV aparece en 'Por Hacer' con el aviso 'Tarea &quot;X&quot; creada en Por Hacer.'; el contador muestra 'Mostrando 3 de 3 tareas'.
+
+Datos: Data Files/titulos_tareas (Data/titulos_tareas.csv): 3 títulos con descripción. Tablero creado por API.
+Esperas: waitForElementVisible dialog 10s; waitForElementVisible toast_Exito 10s; waitForElementNotPresent dialog 10s; waitForElementVisible card_TareaEnColumna 10s
+Evidencia: Reports/evidencias/TC11_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC11_CrearTarea</name>
+   <tag>positivo,tareas</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>4733befe-859f-4d43-bcd2-b5f40cb510c6</testCaseGuid>
+</TestCaseEntity>

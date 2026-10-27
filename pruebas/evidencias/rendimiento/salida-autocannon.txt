@@ -1,0 +1,168 @@
+===== Ejecución 1 (npm test, todos los escenarios) — REN-01, REN-02 y REN-06 invalidados por reinicio del backend (nest --watch) =====
+Siembra OK: equipo 6c1ca22e-e4d6-4593-ab98-d493acb2cfa8, 50 tareas en "Perf lectura", 5 usuarios.
+
+▶ REN-01 Carga base — GET /equipos autenticado
+  10 conexiones concurrentes, 30 s, token JWT válido; equipo con 5 miembros y 2 proyectos.
+  9556 pet. | 318.54 req/s | p50 20.84 ms | p95 57.81 ms | p99 89.11 ms | máx 224.85 ms | errores 50.27%
+  → Fallido: errores 50.27% > 0%
+  recursos backend: CPU media -398.13% de 1 núcleo, memoria 206.34→24.73 MB
+
+▶ REN-02 Carga media — GET /tareas?proyectoId (50 tareas)
+  50 conexiones concurrentes, 30 s; proyecto con 50 tareas sembradas (2 asignados cada una).
+  3777 pet. | 125.9 req/s | p50 12820.56 ms | p95 26604.58 ms | p99 27701.17 ms | máx 28053.35 ms | errores 71.46%
+  → Fallido: p95 26604.58 ms > 500 ms; errores 71.46% > 1%
+  recursos backend: CPU media -690250.28% de 1 núcleo, memoria 66.7→216.86 MB
+
+▶ REN-03 Escritura — POST /tareas
+  20 conexiones concurrentes, 20 s; cada petición crea una tarea con título único en el proyecto "Perf escritura".
+  1442 pet. | 72.1 req/s | p50 169.68 ms | p95 792.75 ms | p99 1019.47 ms | máx 1356.95 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 106.49% de 1 núcleo, memoria 208.68→208.52 MB
+
+▶ REN-04 Login — POST /auth/login (bcrypt coste 10)
+  10 conexiones concurrentes, 20 s, credenciales correctas del mismo usuario (cada éxito reinicia el contador de bloqueo, por lo que no aparecen 429).
+  481 pet. | 24.05 req/s | p50 403.99 ms | p95 604.24 ms | p99 688.55 ms | máx 741.57 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 381.45% de 1 núcleo, memoria 210.77→216.64 MB
+
+▶ REN-05 Pico / estrés — GET /equipos en escalones 10→50→100→200→300 conexiones
+  Escalones de 15 s con 10, 50, 100, 200 y 300 conexiones concurrentes, sin pausa intermedia relevante.
+   10 conex.: 3576 pet. | 238.4 req/s | p50 39.53 ms | p95 59.07 ms | p99 70.77 ms | máx 765.86 ms | errores 0%
+   50 conex.: 3731 pet. | 248.74 req/s | p50 201.5 ms | p95 247.17 ms | p99 281.62 ms | máx 295.69 ms | errores 0%
+  100 conex.: 4501 pet. | 300.07 req/s | p50 326.6 ms | p95 427.41 ms | p99 463.76 ms | máx 486.96 ms | errores 0%
+  200 conex.: 3973 pet. | 264.87 req/s | p50 740.52 ms | p95 927.85 ms | p99 973.36 ms | máx 1059.14 ms | errores 0%
+  300 conex.: 3100 pet. | 206.67 req/s | p50 1393.75 ms | p95 1997.91 ms | p99 2517.86 ms | máx 2652.15 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 102.14% de 1 núcleo, memoria 244.27→212.69 MB
+
+▶ REN-06 Resistencia corta (soak) — mezcla de lecturas, 2 min
+  25 conexiones, 120 s; cada conexión rota GET /equipos, GET /proyectos?equipoId, GET /listas/proyecto/:id y GET /tareas?proyectoId.
+  27539 pet. | 229.5 req/s | p50 23313.38 ms | p95 29581.88 ms | p99 30726.02 ms | máx 31474.46 ms | errores 30.6%
+  → Fallido: p95 29581.88 ms > 500 ms; errores 30.6% > 1%; deriva p95 11605.11% > 50%
+  recursos backend: CPU media -166.56% de 1 núcleo, memoria 197.17→228.34 MB
+Limpieza OK: equipo 6c1ca22e-e4d6-4593-ab98-d493acb2cfa8 y 5 usuarios eliminados.
+informe pendiente
+
+===== Repetición (node run-all.js carga-base carga-media resistencia) con detección de reinicios =====
+Siembra OK: equipo b17546cf-17f7-434a-8abf-86d9c434b455, 50 tareas en "Perf lectura", 5 usuarios.
+
+▶ REN-01 Carga base — GET /equipos autenticado
+  10 conexiones concurrentes, 30 s, token JWT válido; equipo con 5 miembros y 2 proyectos.
+  11302 pet. | 376.74 req/s | p50 23.89 ms | p95 44.75 ms | p99 62.25 ms | máx 396.41 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 100.87% de 1 núcleo, memoria 137.5→152.83 MB
+
+▶ REN-02 Carga media — GET /tareas?proyectoId (50 tareas)
+  50 conexiones concurrentes, 30 s; proyecto con 50 tareas sembradas (2 asignados cada una).
+  4064 pet. | 135.47 req/s | p50 346.15 ms | p95 569.19 ms | p99 675.26 ms | máx 822.01 ms | errores 0%
+  → Fallido: p95 569.19 ms > 500 ms
+  recursos backend: CPU media 106.86% de 1 núcleo, memoria 195→178.66 MB
+
+▶ REN-06 Resistencia corta (soak) — mezcla de lecturas, 2 min
+  25 conexiones, 120 s; cada conexión rota GET /equipos, GET /proyectos?equipoId, GET /listas/proyecto/:id y GET /tareas?proyectoId.
+  24889 pet. | 207.41 req/s | p50 15675.45 ms | p95 27094.54 ms | p99 27782.85 ms | máx 28171.62 ms | errores 13.94%
+  ⚠ Reinicio del backend detectado (PID 304 → 22392)
+  → Fallido: p95 27094.54 ms > 500 ms; errores 13.94% > 1%; deriva p95 22801.1% > 50%; el backend se reinició durante la prueba (PID 304 → 22392); resultado no válido, repetir
+  recursos backend: CPU media 17.07% de 1 núcleo, memoria 218.43→7.13 MB
+  ↻ Repetición 1/2 por reinicio del backend (esperando 15 s a que vuelva a estar disponible)
+
+▶ REN-06 Resistencia corta (soak) — mezcla de lecturas, 2 min
+  25 conexiones, 120 s; cada conexión rota GET /equipos, GET /proyectos?equipoId, GET /listas/proyecto/:id y GET /tareas?proyectoId.
+  33088 pet. | 275.74 req/s | p50 83.31 ms | p95 146.94 ms | p99 245.42 ms | máx 585.93 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 104.46% de 1 núcleo, memoria 147.66→187.58 MB
+Limpieza OK: equipo b17546cf-17f7-434a-8abf-86d9c434b455 y 5 usuarios eliminados.
+
+Informe generado: 5/6 escenarios aprobados, 8 hallazgos → C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\evidencias\rendimiento
+
+===== 2026-10-09T05:47:31.859Z · npm test  (node run-all.js ) =====
+Siembra OK: equipo 940ecbe2-79c8-4d09-8bac-3ad059bfcf87, 50 tareas en "Perf lectura", 5 usuarios.
+
+▶ REN-01 Carga base — GET /equipos autenticado
+  10 conexiones concurrentes, 30 s, token JWT válido; equipo con 5 miembros y 2 proyectos.
+  19278 pet. | 642.6 req/s | p50 15.21 ms | p95 18.86 ms | p99 21.31 ms | máx 167.77 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 102.67% de 1 núcleo, memoria 176.23→154.97 MB
+
+▶ REN-02 Carga media — GET /tareas?proyectoId (50 tareas)
+  50 conexiones concurrentes, 30 s; proyecto con 50 tareas sembradas (2 asignados cada una).
+  6062 pet. | 202.07 req/s | p50 247.27 ms | p95 273.09 ms | p99 290.46 ms | máx 338.39 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 113.92% de 1 núcleo, memoria 157.61→163.31 MB
+
+▶ REN-03 Escritura — POST /tareas
+  20 conexiones concurrentes, 20 s; cada petición crea una tarea con título único en el proyecto "Perf escritura".
+  6659 pet. | 332.95 req/s | p50 59.25 ms | p95 70.06 ms | p99 85.93 ms | máx 130.59 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 106.24% de 1 núcleo, memoria 232.65→148.39 MB
+
+▶ REN-04 Login — POST /auth/login (bcrypt coste 10)
+  10 conexiones concurrentes, 20 s, credenciales correctas del mismo usuario (cada éxito reinicia el contador de bloqueo, por lo que no aparecen 429).
+  1281 pet. | 64.05 req/s | p50 156.35 ms | p95 180.01 ms | p99 184.86 ms | máx 683.18 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 416.2% de 1 núcleo, memoria 145.02→144.75 MB
+
+▶ REN-05 Pico / estrés — GET /equipos en escalones 10→50→100→200→300 conexiones
+  Escalones de 15 s con 10, 50, 100, 200 y 300 conexiones concurrentes, sin pausa intermedia relevante.
+   10 conex.: 9131 pet. | 608.74 req/s | p50 15.7 ms | p95 21.23 ms | p99 25.57 ms | máx 226.22 ms | errores 0%
+   50 conex.: 9127 pet. | 608.47 req/s | p50 81.87 ms | p95 93.51 ms | p99 100.39 ms | máx 110.58 ms | errores 0%
+  100 conex.: 9997 pet. | 666.47 req/s | p50 147.71 ms | p95 167.7 ms | p99 177.45 ms | máx 231.54 ms | errores 0%
+  200 conex.: 10324 pet. | 688.27 req/s | p50 285.06 ms | p95 311.35 ms | p99 370.41 ms | máx 474.14 ms | errores 0%
+  300 conex.: 9600 pet. | 640 req/s | p50 454.42 ms | p95 498.99 ms | p99 657.51 ms | máx 768.26 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 108.19% de 1 núcleo, memoria 126.15→167.98 MB
+
+▶ REN-06 Resistencia corta (soak) — mezcla de lecturas, 2 min
+  25 conexiones, 120 s; cada conexión rota GET /equipos, GET /proyectos?equipoId, GET /listas/proyecto/:id y GET /tareas?proyectoId.
+  47523 pet. | 396.03 req/s | p50 62.76 ms | p95 78.3 ms | p99 88.25 ms | máx 146.24 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 104.4% de 1 núcleo, memoria 239.66→145.49 MB
+Limpieza OK: equipo 940ecbe2-79c8-4d09-8bac-3ad059bfcf87 y 5 usuarios eliminados.
+
+Informe generado: 6/6 escenarios aprobados, 6 hallazgos → C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\evidencias\rendimiento
+
+===== 2026-10-27T04:30:18.078Z · npm test  (node run-all.js ) =====
+Siembra OK: equipo 4bbd84c7-2541-4438-a731-08222a2efffb, 50 tareas en "Perf lectura", 5 usuarios.
+
+▶ REN-01 Carga base — GET /equipos autenticado
+  10 conexiones concurrentes, 30 s, token JWT válido; equipo con 5 miembros y 2 proyectos.
+  15001 pet. | 500.04 req/s | p50 19.07 ms | p95 28.27 ms | p99 35.23 ms | máx 239.47 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 100.94% de 1 núcleo, memoria 102.71→128.97 MB
+
+▶ REN-02 Carga media — GET /tareas?proyectoId (50 tareas)
+  50 conexiones concurrentes, 30 s; proyecto con 50 tareas sembradas (2 asignados cada una).
+  5497 pet. | 183.24 req/s | p50 269.7 ms | p95 323.68 ms | p99 358.5 ms | máx 399.2 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 113.74% de 1 núcleo, memoria 125.98→178.19 MB
+
+▶ REN-03 Escritura — POST /tareas
+  20 conexiones concurrentes, 20 s; cada petición crea una tarea con título único en el proyecto "Perf escritura".
+  5364 pet. | 268.2 req/s | p50 72.62 ms | p95 98.83 ms | p99 117.84 ms | máx 146.9 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 105.85% de 1 núcleo, memoria 152.65→157.96 MB
+
+▶ REN-04 Login — POST /auth/login (bcrypt coste 10)
+  10 conexiones concurrentes, 20 s, credenciales correctas del mismo usuario (cada éxito reinicia el contador de bloqueo, por lo que no aparecen 429).
+  1267 pet. | 63.35 req/s | p50 158.61 ms | p95 187.18 ms | p99 200.62 ms | máx 212.18 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 409.33% de 1 núcleo, memoria 111.68→110.95 MB
+
+▶ REN-05 Pico / estrés — GET /equipos en escalones 10→50→100→200→300 conexiones
+  Escalones de 15 s con 10, 50, 100, 200 y 300 conexiones concurrentes, sin pausa intermedia relevante.
+   10 conex.: 7345 pet. | 489.67 req/s | p50 19.18 ms | p95 29.01 ms | p99 37.6 ms | máx 304.7 ms | errores 0%
+   50 conex.: 7486 pet. | 499.07 req/s | p50 97.38 ms | p95 133.5 ms | p99 156.22 ms | máx 177.44 ms | errores 0%
+  100 conex.: 8607 pet. | 573.8 req/s | p50 167.96 ms | p95 225.34 ms | p99 255.79 ms | máx 286.65 ms | errores 0%
+  200 conex.: 9085 pet. | 605.67 req/s | p50 311.9 ms | p95 415.85 ms | p99 456.72 ms | máx 499.07 ms | errores 0%
+  300 conex.: 8345 pet. | 556.34 req/s | p50 525.16 ms | p95 616.4 ms | p99 692.1 ms | máx 752.67 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 106.09% de 1 núcleo, memoria 100.91→195.63 MB
+
+▶ REN-06 Resistencia corta (soak) — mezcla de lecturas, 2 min
+  25 conexiones, 120 s; cada conexión rota GET /equipos, GET /proyectos?equipoId, GET /listas/proyecto/:id y GET /tareas?proyectoId.
+  39952 pet. | 332.94 req/s | p50 73.45 ms | p95 102.46 ms | p99 122.4 ms | máx 176.23 ms | errores 0%
+  → Aprobado
+  recursos backend: CPU media 102.97% de 1 núcleo, memoria 147.01→124.97 MB
+Limpieza OK: equipo 4bbd84c7-2541-4438-a731-08222a2efffb y 5 usuarios eliminados.
+
+Informe generado: 6/6 escenarios aprobados, 6 hallazgos → C:\Users\brahi\Desktop\TercerExamen-main\TercerExamen-main\pruebas\evidencias\rendimiento

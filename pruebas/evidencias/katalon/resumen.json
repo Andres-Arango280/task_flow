@@ -1,0 +1,394 @@
+{
+  "area": "E2E Katalon",
+  "herramienta": "Katalon Studio",
+  "comando": "Ejecutar TS_Regresion_Completa en Chrome",
+  "fecha": "2026-10-09T04:36:22.663Z",
+  "proyecto": "pruebas/katalon/TaskFlow-Katalon",
+  "version_objetivo": "Katalon Studio 10.x / 11.x (edición gratuita)",
+  "totales": {
+    "total": 16,
+    "aprobados": 0,
+    "fallidos": 0,
+    "pendientes": 16
+  },
+  "casos": [
+    {
+      "id": "TC01",
+      "nombre": "TC01_Registro_Exitoso",
+      "tipo": "positivo",
+      "objetivo": "Verificar que una persona nueva puede crear su cuenta desde /register con datos válidos.",
+      "esperado": "Los cuatro requisitos de contraseña (\"Al menos 8 caracteres\", \"Al menos una letra\", \"Al menos un número\" y \"Las dos contraseñas coinciden\") se marcan como cumplidos, al enviar se redirige a /login con el aviso 'Cuenta creada correctamente' y el correo queda precargado.",
+      "localizadores": [
+        "Page_Registro/input_NombreCompleto",
+        "Page_Registro/input_Correo",
+        "Page_Registro/input_Contrasena",
+        "Page_Registro/input_ConfirmarContrasena",
+        "Page_Registro/li_RequisitoConEstado",
+        "Page_Registro/btn_CrearCuenta",
+        "Page_Login/status_CuentaCreada",
+        "Page_Login/input_Correo"
+      ],
+      "esperas": [
+        "waitForElementVisible h1_CrearCuenta 10s",
+        "waitForElementClickable btn_CrearCuenta 10s",
+        "waitForElementVisible status_CuentaCreada 10s",
+        "verifyElementAttributeValue value 10s"
+      ],
+      "datos": "Nombre 'Usuario Katalon <timestamp>', correo único registro.<timestamp>@correo-pruebas.com, contraseña Clave123.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC02",
+      "nombre": "TC02_Registro_CorreoDuplicado",
+      "tipo": "negativo",
+      "objetivo": "Comprobar que no se puede registrar dos veces el mismo correo.",
+      "esperado": "Se muestra [role=alert] 'Ya existe una cuenta con el correo <correo>. Inicia sesión con ella o usa otro correo.' y la URL sigue en /register.",
+      "localizadores": [
+        "Page_Registro/input_Correo",
+        "Page_Registro/btn_CrearCuenta",
+        "Page_Registro/alert_Error"
+      ],
+      "esperas": [
+        "waitForElementVisible h1_CrearCuenta 10s",
+        "waitForElementVisible alert_Error 10s"
+      ],
+      "datos": "Usuario creado previamente por API (POST /auth/register) con correo único; se repite el registro por la UI con el mismo correo.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC03",
+      "nombre": "TC03_Registro_ContrasenaCorta",
+      "tipo": "negativo",
+      "objetivo": "Comprobar la política de contraseñas (mínimo 8 caracteres, al menos una letra y un número) y la confirmación distinta en el registro.",
+      "esperado": "Con 'abc' los requisitos 'Al menos 8 caracteres' y 'Al menos un número' quedan pendientes y aparece 'La contraseña debe tener al menos 8 caracteres, con al menos una letra y un número.'; con 'abcdefgh' (sin número) se rechaza con el mismo mensaje; con confirmación distinta aparece 'Las contraseñas no coinciden...'; no se crea la cuenta (login por API devuelve 401).",
+      "localizadores": [
+        "Page_Registro/input_Contrasena",
+        "Page_Registro/input_ConfirmarContrasena",
+        "Page_Registro/li_RequisitoConEstado",
+        "Page_Registro/alert_Error"
+      ],
+      "esperas": [
+        "waitForElementVisible alert_Error 10s",
+        "verifyElementPresent li_RequisitoConEstado 10s"
+      ],
+      "datos": "Contraseña 'abc' / confirmación 'abc'; 'abcdefgh' / 'abcdefgh'; después 'Clave123' / 'Clave999'. Correo único.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC04",
+      "nombre": "TC04_Login_Exitoso",
+      "tipo": "positivo",
+      "objetivo": "Verificar que un usuario registrado inicia sesión y llega a 'Mis equipos'.",
+      "esperado": "Redirección a '/', encabezado 'Mis equipos', nombre del usuario en la barra y token guardado en localStorage.",
+      "localizadores": [
+        "Page_Login/input_Correo",
+        "Page_Login/input_Contrasena",
+        "Page_Login/btn_IniciarSesion",
+        "Page_Inicio/h1_MisEquipos",
+        "Comunes/nav_span_Usuario"
+      ],
+      "esperas": [
+        "waitForElementVisible input_Correo 10s",
+        "waitForElementClickable btn_IniciarSesion 10s",
+        "waitForElementVisible h1_MisEquipos 10s"
+      ],
+      "datos": "Usuario creado por API con correo único y contraseña Clave123.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC05",
+      "nombre": "TC05_Login_CredencialesInvalidas",
+      "tipo": "negativo",
+      "objetivo": "Comprobar con varios datos (data-driven) que el login rechaza credenciales incorrectas o mal formadas.",
+      "esperado": "Errores del servidor: [role=alert] 'El correo o la contraseña no son correctos...'. Errores de formato/vacíos: el navegador bloquea el envío (checkValidity=false) sin alerta. En todos los casos se permanece en /login sin token.",
+      "localizadores": [
+        "Page_Login/input_Correo",
+        "Page_Login/input_Contrasena",
+        "Page_Login/btn_IniciarSesion",
+        "Page_Login/alert_Error"
+      ],
+      "esperas": [
+        "waitForElementVisible input_Correo 10s",
+        "waitForElementVisible alert_Error 10s",
+        "verifyElementNotPresent alert_Error 3s"
+      ],
+      "datos": "Data Files/credenciales_invalidas (Data/credenciales_invalidas.csv): 7 filas — contraseña incorrecta, correo no registrado, mayúsculas, inyección SQL, correo sin @, contraseña vacía, correo vacío. Cada fila usa un correo único para no activar el bloqueo de 5 intentos (HTTP 429).",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC06",
+      "nombre": "TC06_RutaProtegida_SinSesion",
+      "tipo": "negativo",
+      "objetivo": "Comprobar que las rutas privadas no son accesibles sin sesión (UI y API).",
+      "esperado": "Cada ruta privada (/, /preferencias, /ayuda, /equipos/:id, /proyectos/:id) redirige a /login sin mostrar la barra; GET /equipos sin token devuelve 401.",
+      "localizadores": [
+        "Page_Login/h1_IniciarSesion",
+        "Comunes/nav_btn_Salir"
+      ],
+      "esperas": [
+        "waitForElementVisible h1_IniciarSesion 10s",
+        "verifyElementNotPresent nav_btn_Salir 3s"
+      ],
+      "datos": "Rutas privadas con UUID inexistente; navegador sin sesión.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC07",
+      "nombre": "TC07_CrearEquipo",
+      "tipo": "positivo",
+      "objetivo": "Verificar que un usuario crea un equipo desde 'Mis equipos' y queda como líder.",
+      "esperado": "El botón 'Crear equipo' está deshabilitado con el nombre vacío; al crear aparece el aviso 'Equipo «X» creado' (título 'Listo'), la ventana se cierra, la tarjeta (data-testid=tarjeta-equipo, sin aria-label) muestra el distintivo 'Líder' y la página del equipo muestra 'Eres el líder'.",
+      "localizadores": [
+        "Page_Inicio/btn_NuevoEquipo",
+        "Comunes/dialog_PorTitulo",
+        "Page_Inicio/input_NombreEquipo",
+        "Page_Inicio/btn_CrearEquipo",
+        "Comunes/toast_Exito",
+        "Page_Inicio/link_EquipoLider",
+        "Page_Equipo/span_EresLider"
+      ],
+      "esperas": [
+        "waitForElementVisible dialog 10s",
+        "waitForElementClickable btn_CrearEquipo 10s",
+        "waitForElementVisible toast_Exito 10s",
+        "waitForElementNotPresent dialog 10s"
+      ],
+      "datos": "Nombre de equipo 'Equipo Katalon <timestamp>'.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC08",
+      "nombre": "TC08_InvitarMiembro_Exitoso",
+      "tipo": "positivo",
+      "objetivo": "Verificar que el líder invita a un usuario registrado buscándolo por su correo.",
+      "esperado": "La búsqueda muestra el nombre del usuario; tras 'Añadir al equipo' aparece el aviso '<nombre> ahora es miembro del equipo.', la persona figura en la lista con su botón 'Quitar' y el contador pasa a 'Miembros (2)'.",
+      "localizadores": [
+        "Page_Equipo/btn_Invitar",
+        "Page_Equipo/input_CorreoInvitado",
+        "Page_Equipo/btn_Buscar",
+        "Page_Equipo/p_UsuarioEncontrado",
+        "Page_Equipo/btn_AnadirAlEquipo",
+        "Page_Equipo/li_MiembroPorCorreo",
+        "Page_Equipo/btn_QuitarMiembro",
+        "Page_Equipo/h2_Miembros"
+      ],
+      "esperas": [
+        "waitForElementVisible btn_Invitar 10s",
+        "waitForElementVisible btn_AnadirAlEquipo 10s",
+        "waitForElementVisible toast_Exito 10s",
+        "waitForElementVisible li_MiembroPorCorreo 10s"
+      ],
+      "datos": "Líder e invitado creados por API con correos únicos; equipo creado por API.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC09",
+      "nombre": "TC09_InvitarMiembro_CorreoInexistente",
+      "tipo": "negativo",
+      "objetivo": "Comprobar que no se puede invitar un correo mal formado ni uno que no está registrado.",
+      "esperado": "Con 'correo-invalido' aparece 'Escribe un correo completo...'; con un correo válido no registrado aparece [role=alert] 'No hay ningún usuario registrado con el correo X...'; no se muestra 'Añadir al equipo' y el equipo sigue con 1 miembro.",
+      "localizadores": [
+        "Page_Equipo/input_CorreoInvitado",
+        "Page_Equipo/btn_Buscar",
+        "Page_Equipo/p_ErrorFormatoCorreo",
+        "Page_Equipo/alert_ErrorInvitacion",
+        "Page_Equipo/btn_AnadirAlEquipo",
+        "Page_Equipo/h2_Miembros"
+      ],
+      "esperas": [
+        "waitForElementVisible p_ErrorFormatoCorreo 10s",
+        "waitForElementVisible alert_ErrorInvitacion 10s",
+        "verifyElementNotPresent btn_AnadirAlEquipo 3s"
+      ],
+      "datos": "'correo-invalido' y un correo único nunca registrado.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC10",
+      "nombre": "TC10_CrearProyecto_TresColumnas",
+      "tipo": "positivo",
+      "objetivo": "Verificar que al crear un proyecto se genera un tablero con las columnas 'Por Hacer', 'En Progreso' y 'Hecho'.",
+      "esperado": "Aviso 'Proyecto «X» creado con sus 3 listas.'; al abrirlo se ven exactamente 3 columnas en ese orden y el progreso es 0 %.",
+      "localizadores": [
+        "Page_Equipo/btn_NuevoProyecto",
+        "Page_Equipo/input_NombreProyecto",
+        "Page_Equipo/btn_CrearProyecto",
+        "Page_Equipo/link_ProyectoPorNombre",
+        "Page_Tablero/h2_Columnas",
+        "Page_Tablero/progressbar_Progreso"
+      ],
+      "esperas": [
+        "waitForElementClickable btn_CrearProyecto 10s",
+        "waitForElementVisible toast_Exito 10s",
+        "waitForElementVisible h1_Proyecto 10s"
+      ],
+      "datos": "Equipo creado por API; proyecto 'Proyecto Katalon <timestamp>' creado por la UI.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC11",
+      "nombre": "TC11_CrearTarea",
+      "tipo": "positivo",
+      "objetivo": "Verificar la creación de tareas desde 'Nueva tarea' con datos de un Data File, incluida la validación de título obligatorio.",
+      "esperado": "Sin título aparece 'Escribe un título para la tarea (es obligatorio).'; cada tarea del CSV aparece en 'Por Hacer' con el aviso 'Tarea \"X\" creada en Por Hacer.'; el contador muestra 'Mostrando 3 de 3 tareas'.",
+      "localizadores": [
+        "Page_Tablero/btn_NuevaTarea",
+        "Page_Tablero/input_TituloTarea",
+        "Page_Tablero/textarea_DescripcionTarea",
+        "Page_Tablero/btn_CrearTarea",
+        "Page_Tablero/p_ErrorTitulo",
+        "Page_Tablero/card_TareaEnColumna",
+        "Page_Tablero/span_ContadorColumna"
+      ],
+      "esperas": [
+        "waitForElementVisible dialog 10s",
+        "waitForElementVisible toast_Exito 10s",
+        "waitForElementNotPresent dialog 10s",
+        "waitForElementVisible card_TareaEnColumna 10s"
+      ],
+      "datos": "Data Files/titulos_tareas (Data/titulos_tareas.csv): 3 títulos con descripción. Tablero creado por API.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC12",
+      "nombre": "TC12_MoverTarea_ProgresoActualizado",
+      "tipo": "positivo",
+      "objetivo": "Verificar que mover tareas entre columnas actualiza la barra de progreso y que el cambio persiste.",
+      "esperado": "Con 2 tareas: mover A a 'En Progreso' mantiene 0 %; mover A a 'Hecho' da aria-valuenow=50 ('1 de 2 tareas hechas (50%)'); mover B a 'Hecho' da 100; tras recargar sigue en 100.",
+      "localizadores": [
+        "Page_Tablero/btn_AbrirDetalle",
+        "Page_Tablero/select_ColumnaDetalle",
+        "Page_Tablero/btn_CerrarDetalle",
+        "Page_Tablero/card_TareaEnColumna",
+        "Page_Tablero/progressbar_Progreso"
+      ],
+      "esperas": [
+        "waitForElementVisible select_ColumnaDetalle 10s",
+        "waitForElementVisible toast_Exito 10s",
+        "waitForElementAttributeValue aria-valuenow 10s",
+        "waitForElementNotPresent dialog 10s"
+      ],
+      "datos": "Usuario, equipo, proyecto y 2 tareas creados por API.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC13",
+      "nombre": "TC13_EliminarTarea_ConfirmarYDeshacer",
+      "tipo": "positivo",
+      "objetivo": "Verificar que eliminar una tarea pide confirmación, que Cancelar no borra y que 'Deshacer' la restaura.",
+      "esperado": "Aparece [role=alertdialog] '¿Eliminar esta tarea?'; Cancelar mantiene la tarea; 'Eliminar tarea' la quita con aviso 'Tarea \"X\" eliminada.'; 'Deshacer' la restaura (aviso 'restaurada') y persiste tras recargar.",
+      "localizadores": [
+        "Page_Tablero/btn_EliminarTarea",
+        "Comunes/alertdialog_Confirmacion",
+        "Comunes/alertdialog_Titulo",
+        "Comunes/alertdialog_Boton",
+        "Comunes/toast_Boton",
+        "Comunes/toast_Info",
+        "Page_Tablero/card_Tarea"
+      ],
+      "esperas": [
+        "waitForElementVisible alertdialog 10s",
+        "waitForElementNotPresent card_Tarea 10s",
+        "waitForElementVisible toast_Boton 10s",
+        "waitForElementVisible card_Tarea 10s"
+      ],
+      "datos": "Usuario, equipo, proyecto y 1 tarea creados por API.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC14",
+      "nombre": "TC14_BuscarTarea_ToleranteErrores",
+      "tipo": "positivo",
+      "objetivo": "Verificar que el buscador de tareas tolera tildes, mayúsculas y pequeños errores de escritura.",
+      "esperado": "Para cada consulta del Data File, el texto 'Mostrando N de 3 tareas' y las tarjetas visibles coinciden con lo esperado; 'zzzz' muestra 'Ninguna tarea coincide aquí'; 'Limpiar filtros' vuelve a 3 de 3.",
+      "localizadores": [
+        "Page_Tablero/input_BuscarTareas",
+        "Page_Tablero/p_ContadorVisibles",
+        "Page_Tablero/card_Tarea",
+        "Page_Tablero/p_SinCoincidencias",
+        "Page_Tablero/btn_LimpiarFiltros"
+      ],
+      "esperas": [
+        "waitForElementVisible input_BuscarTareas 10s",
+        "waitForElementVisible card_Tarea 10s",
+        "waitForElementNotPresent card_Tarea 3s"
+      ],
+      "datos": "Data Files/consultas_busqueda (Data/consultas_busqueda.csv): 7 consultas. Tareas por API: 'Diseñar pantalla de inicio', 'Revisar API de usuarios', 'Preparar demostración final'.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC15",
+      "nombre": "TC15_Preferencias_AltoContraste",
+      "tipo": "positivo",
+      "objetivo": "Verificar que el modo de alto contraste se activa, persiste al recargar y se restablece.",
+      "esperado": "Por defecto el interruptor está desactivado y 'Restablecer' deshabilitado; al activarlo <html data-contraste='alto'> y sigue activo tras recargar; al restablecer (con confirmación) vuelve a 'normal'.",
+      "localizadores": [
+        "Comunes/nav_link_Preferencias",
+        "Page_Preferencias/chk_AltoContraste",
+        "Comunes/html_Raiz",
+        "Page_Preferencias/btn_Restablecer",
+        "Comunes/alertdialog_Boton",
+        "Page_Preferencias/span_ValoresPorDefecto"
+      ],
+      "esperas": [
+        "waitForElementVisible h1_Preferencias 10s",
+        "waitForElementAttributeValue data-contraste 10s",
+        "waitForElementVisible alertdialog 10s"
+      ],
+      "datos": "Usuario creado por API.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "TC16",
+      "nombre": "TC16_CerrarSesion",
+      "tipo": "positivo",
+      "objetivo": "Verificar que cerrar sesión pide confirmación, elimina la sesión y bloquea las rutas privadas.",
+      "esperado": "'Salir' abre '¿Cerrar sesión?'; Cancelar mantiene la sesión; 'Cerrar sesión' lleva a /login, borra el token y volver a '/' redirige a /login.",
+      "localizadores": [
+        "Comunes/nav_btn_Salir",
+        "Comunes/alertdialog_Titulo",
+        "Comunes/alertdialog_Boton",
+        "Page_Login/h1_IniciarSesion"
+      ],
+      "esperas": [
+        "waitForElementVisible alertdialog 10s",
+        "waitForElementNotPresent alertdialog 10s",
+        "waitForElementVisible h1_IniciarSesion 10s"
+      ],
+      "datos": "Usuario creado por API.",
+      "obtenido": "Pendiente de ejecución en Katalon Studio",
+      "estado": "Pendiente",
+      "evidencia": []
+    }
+  ]
+}

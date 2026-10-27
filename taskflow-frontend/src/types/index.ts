@@ -2,7 +2,7 @@
 // USUARIOS
 // ============================================
 export interface Usuario {
-  _id: string;
+  id: string;
   nombre: string;
   email: string;
 }
@@ -11,8 +11,9 @@ export interface Usuario {
 // EQUIPOS
 // ============================================
 export interface Equipo {
-  _id: string;
+  id: string;
   nombre: string;
+  liderId: string;
   lider: Usuario;
   miembros: Usuario[];
 }
@@ -21,28 +22,31 @@ export interface Equipo {
 // PROYECTOS
 // ============================================
 export interface Proyecto {
-  _id: string;
+  id: string;
   nombre: string;
-  equipo: string | Equipo;
+  equipoId: string;
+  equipo?: Equipo;
 }
 
 // ============================================
 // LISTAS (Tablero Kanban)
 // ============================================
 export interface Lista {
-  _id: string;
+  id: string;
   nombre: string;
-  proyecto: string;
+  orden: number;
+  proyectoId: string;
 }
 
 // ============================================
 // TAREAS
 // ============================================
 export interface Tarea {
-  _id: string;
+  id: string;
   titulo: string;
-  descripcion?: string;
-  lista: string | Lista;
+  descripcion?: string | null;
+  listaId: string;
+  lista?: Lista;
   asignados: Usuario[];
   createdAt?: string;
 }

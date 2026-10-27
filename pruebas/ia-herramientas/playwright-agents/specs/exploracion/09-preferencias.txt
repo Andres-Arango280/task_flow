@@ -1,0 +1,65 @@
+# /preferencias
+# título: Preferencias · TaskFlow
+
+- link "Saltar al contenido":
+  - /url: "#contenido"
+- navigation "Navegación principal":
+  - link "TaskFlow, ir al inicio":
+    - /url: /
+    - text: TaskFlow
+  - link "Inicio":
+    - /url: /
+  - link "Ayuda":
+    - /url: /ayuda
+  - link "Preferencias":
+    - /url: /preferencias
+  - button "Ver atajos de teclado"
+  - text: Planner 1793055645273
+  - button "Salir"
+- main:
+  - navigation "Ruta de navegación":
+    - list:
+      - listitem:
+        - link "Mis equipos":
+          - /url: /
+      - listitem: Preferencias
+  - heading "Preferencias" [level=1]
+  - paragraph: Tu perfil, la apariencia de TaskFlow y tus datos. Los cambios se guardan al instante.
+  - region "Perfil":
+    - heading "Perfil" [level=2]
+    - text: Nombre visible para tu equipo (obligatorio)
+    - textbox "Nombre visible para tu equipo (obligatorio)": Planner 1793055645273
+    - paragraph:
+      - text: "Correo:"
+      - strong: planner.1793055645273@taskflow-agents.test
+      - text: (no se puede cambiar)
+    - button "Guardar nombre" [disabled]
+  - region "Apariencia y accesibilidad":
+    - heading "Apariencia y accesibilidad" [level=2]
+    - group "Tamaño del texto":
+      - text: Tamaño del texto
+      - radio "Normal (por defecto)" [checked]
+      - text: Normal (por defecto)
+      - radio "Grande"
+      - text: Grande
+      - radio "Muy grande"
+      - text: Muy grande
+    - text: Alto contraste
+    - paragraph: Texto negro sobre fondo blanco y bordes marcados, útil para visión reducida.
+    - switch "Alto contraste"
+    - text: Reducir animaciones
+    - paragraph: Quita los movimientos y transiciones de la interfaz.
+    - switch "Reducir animaciones"
+    - text: Atajos de teclado
+    - paragraph: Teclas rápidas como "n" para nueva tarea. Pulsa "?" para ver la lista.
+    - switch "Atajos de teclado" [checked]
+    - button "Restablecer valores por defecto" [disabled]
+    - text: Estás usando los valores por defecto.
+  - region "Privacidad y cuenta":
+    - heading "Privacidad y cuenta" [level=2]
+    - paragraph:
+      - text: Revisa qué datos guardamos y para qué en
+      - link "Privacidad":
+        - /url: /privacidad
+      - text: . Puedes eliminar tu cuenta y tus datos personales cuando quieras.
+    - button "Eliminar mi cuenta"

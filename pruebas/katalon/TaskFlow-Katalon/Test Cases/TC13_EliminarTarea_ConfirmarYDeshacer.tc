@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar que eliminar una tarea pide confirmación, que Cancelar no borra y que 'Deshacer' la restaura.
+
+Resultado esperado: Aparece [role=alertdialog] '¿Eliminar esta tarea?'; Cancelar mantiene la tarea; 'Eliminar tarea' la quita con aviso 'Tarea &quot;X&quot; eliminada.'; 'Deshacer' la restaura (aviso 'restaurada') y persiste tras recargar.
+
+Datos: Usuario, equipo, proyecto y 1 tarea creados por API.
+Esperas: waitForElementVisible alertdialog 10s; waitForElementNotPresent card_Tarea 10s; waitForElementVisible toast_Boton 10s; waitForElementVisible card_Tarea 10s
+Evidencia: Reports/evidencias/TC13_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC13_EliminarTarea_ConfirmarYDeshacer</name>
+   <tag>positivo,tareas</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>92686a09-089a-4abb-a455-95e5ee40b5ae</testCaseGuid>
+</TestCaseEntity>

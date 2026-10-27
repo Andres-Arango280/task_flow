@@ -1,0 +1,19 @@
+{
+  "id": "API-USU-09",
+  "obtenido": "Respondió 409 con \"Eres líder de 1 equipo(s). Elimínalos antes de borrar tu cuenta.\"; la cuenta no se borró.",
+  "peticion": {
+    "metodo": "DELETE",
+    "url": "http://localhost:3000/usuarios/me",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 409,
+    "duracionMs": 10,
+    "cuerpo": {
+      "message": "Eres líder de 1 equipo(s). Elimínalos antes de borrar tu cuenta.",
+      "error": "Conflict",
+      "statusCode": 409
+    }
+  },
+  "fecha": "2026-10-26T23:13:35.623Z"
+}

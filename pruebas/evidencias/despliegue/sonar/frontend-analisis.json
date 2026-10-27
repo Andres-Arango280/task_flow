@@ -1,0 +1,33 @@
+{
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 10,
+    "total": 2
+  },
+  "analyses": [
+    {
+      "key": "AaF7s7TE90SSP5i2_uZR",
+      "date": "2026-10-27T04:51:34+0000",
+      "events": [
+        {
+          "key": "AaF7s7kl90SSP5i2_uys",
+          "category": "VERSION",
+          "name": "1.0.0"
+        }
+      ],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "8b46dc0e7a60142b1bf26472161580efdf02c1e8",
+      "detectedCI": "undetected"
+    },
+    {
+      "key": "AaF7rT5X90SSP5i2_tn6",
+      "date": "2026-10-27T04:44:17+0000",
+      "events": [],
+      "projectVersion": "1.0.0",
+      "manualNewCodePeriodBaseline": false,
+      "revision": "8b46dc0e7a60142b1bf26472161580efdf02c1e8",
+      "detectedCI": "undetected"
+    }
+  ]
+}

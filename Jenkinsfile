@@ -8,8 +8,6 @@ pipeline {
     IMAGE_TAG = "${env.BUILD_NUMBER}"
     SONAR_HOST_URL = 'http://sonarqube:9000'
     SONAR_PROJECT_KEY = 'taskflow:backend'
-    SONAR_LOGIN = 'admin'
-    SONAR_PASSWORD = 'Coco258%'
   }
 
   tools {
@@ -31,10 +29,17 @@ pipeline {
       }
     }
 
-    stage('Ejecutar pruebas unitarias') {
+    stage('Pruebas de regresión unitarias') {
       steps {
-        echo 'Ejecutando pruebas del backend...'
-        sh 'npm run test:unit'
+        echo 'Ejecutando pruebas unitarias del backend...'
+        sh 'npm run test:regression:unit'
+      }
+    }
+
+    stage('Pruebas de regresión caja negra') {
+      steps {
+        echo 'Ejecutando pruebas de caja negra (e2e)...'
+        sh 'npm run test:regression:e2e'
       }
     }
 
@@ -55,8 +60,7 @@ pipeline {
               -Dsonar.projectName=taskflow-backend \
               -Dsonar.sources=src \
               -Dsonar.host.url=${SONAR_HOST_URL} \
-              -Dsonar.login=${SONAR_LOGIN} \
-              -Dsonar.password=${SONAR_PASSWORD}
+              -Dsonar.token=\$SONAR_AUTH_TOKEN
           """
         }
       }

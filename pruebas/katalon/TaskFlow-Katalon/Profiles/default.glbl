@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalVariableEntities>
+   <description>Perfil por defecto: TaskFlow en local</description>
+   <name>default</name>
+   <tag></tag>
+   <defaultProfile>true</defaultProfile>
+   <GlobalVariableEntity>
+      <description>URL del frontend (Vite)</description>
+      <initValue>'http://localhost:5173'</initValue>
+      <name>baseUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>URL del backend (NestJS)</description>
+      <initValue>'http://localhost:3000'</initValue>
+      <name>apiUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Espera explícita por defecto en segundos</description>
+      <initValue>10</initValue>
+      <name>timeout</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Espera para comprobar ausencia de elementos</description>
+      <initValue>3</initValue>
+      <name>timeoutCorto</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>Contraseña válida para los usuarios de prueba</description>
+      <initValue>'Clave123'</initValue>
+      <name>contrasenaValida</name>
+   </GlobalVariableEntity>
+</GlobalVariableEntities>

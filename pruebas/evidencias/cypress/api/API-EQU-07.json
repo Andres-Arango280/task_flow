@@ -1,0 +1,47 @@
+{
+  "id": "API-EQU-07",
+  "obtenido": "Respondió 201; el nuevo miembro ya puede consultar /miembros (200) y figura en la lista.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/equipos/e70d3b83-6f09-4e89-a676-1d74a209d3f9/miembros",
+    "autenticado": true,
+    "cuerpo": {
+      "userId": "6dd8df25-ae54-46de-94dc-855e5148b675"
+    }
+  },
+  "respuesta": {
+    "estado": 201,
+    "duracionMs": 44,
+    "cuerpo": {
+      "id": "e70d3b83-6f09-4e89-a676-1d74a209d3f9",
+      "nombre": "Equipo API 1793056358222",
+      "liderId": "ea12ae93-70c3-4a41-a181-c1884cc6379d",
+      "createdAt": "2026-10-26T23:12:38.260Z",
+      "updatedAt": "2026-10-26T23:12:38.260Z",
+      "lider": {
+        "id": "ea12ae93-70c3-4a41-a181-c1884cc6379d",
+        "nombre": "Usuario lider 640019",
+        "email": "lider.179305635719640019@taskflow-cypress.test",
+        "createdAt": "2026-10-26T23:12:37.337Z",
+        "updatedAt": "2026-10-26T23:12:37.337Z"
+      },
+      "miembros": [
+        {
+          "id": "6dd8df25-ae54-46de-94dc-855e5148b675",
+          "nombre": "Usuario miembro 992820",
+          "email": "miembro.179305635755992820@taskflow-cypress.test",
+          "createdAt": "2026-10-26T23:12:37.714Z",
+          "updatedAt": "2026-10-26T23:12:37.714Z"
+        },
+        {
+          "id": "ea12ae93-70c3-4a41-a181-c1884cc6379d",
+          "nombre": "Usuario lider 640019",
+          "email": "lider.179305635719640019@taskflow-cypress.test",
+          "createdAt": "2026-10-26T23:12:37.337Z",
+          "updatedAt": "2026-10-26T23:12:37.337Z"
+        }
+      ]
+    }
+  },
+  "fecha": "2026-10-26T23:12:38.434Z"
+}

@@ -1,0 +1,141 @@
+{
+  "modelCall": "act",
+  "messages": [
+    {
+      "role": "system",
+      "content": " You are helping the user automate the browser by finding elements based on what action the user wants to take on the page You will be given: 1. a user defined instruction about what action to take 2. a hierarchical accessibility tree showing the semantic structure of the page. The tree is a hybrid of the DOM and the accessibility tree. Return the element that matches the instruction if it exists. If no element on the page matches the instruction, set `action` to null. Do not fabricate or guess an element — empty strings or placeholder values for elementId/description/method are not acceptable."
+    },
+    {
+      "role": "user",
+      "content": "instruction: Find the most relevant element to perform an action on given the following action: Click the task card titled \"Revisar informe 70052\" to open its details.  
+  IF AND ONLY IF the action EXPLICITLY includes the word 'dropdown' and implies choosing/selecting an option from a dropdown, ignore the 'General Instructions' section, and follow the 'Dropdown Specific Instructions' section carefully.
+  
+  General Instructions: 
+    Provide an action for this element such as click, fill, type, press, scrollTo, nextChunk, prevChunk, selectOptionFromDropdown, hover, doubleClick, dragAndDrop. Remember that to users, buttons and links look the same in most cases.
+    When choosing non-left click actions, provide right or middle as the argument
+    If the action is completely unrelated to a potential action to be taken on the page, or no matching element exists, set `action` to null. Do not fabricate or guess an element.
+    ONLY return one action. If multiple actions are relevant, return the most relevant one.
+    If the user is asking to scroll to a position on the page, e.g., 'halfway' or 0.75, etc, you must return the argument formatted as the correct percentage, e.g., '50%' or '75%', etc.
+    If the user is asking to scroll to the next chunk/previous chunk, choose the nextChunk/prevChunk method. No arguments are required here.
+    If the action implies a key press, e.g., 'press enter', 'press a', 'press space', etc., always choose the press method with the appropriate key as argument — e.g. 'a', 'Enter', 'Space'. Do not choose a click action on an on-screen keyboard. Capitalize the first character like 'Enter', 'Tab', 'Escape' only for special keys. 
+  
+  Dropdown Specific Instructions:
+    For interacting with dropdowns, there are two specific cases that you need to handle. 
+    
+    CASE 1: the element is a 'select' element. 
+      - choose the selectOptionFromDropdown method,
+      - set the argument to the exact text of the option that should be selected,
+      - set twoStep to false.
+    CASE 2: the element is NOT a 'select' element:
+      - do not attempt to directly choose the element from the dropdown. You will need to click to expand the dropdown first. You will achieve this by following these instructions:
+        - choose the node that most closely corresponds to the given instruction EVEN if it is a 'StaticText' element, or otherwise does not appear to be interactable.  
+        - choose the 'click' method
+        - set twoStep to true.
+  
+Accessibility Tree: 
+[0-1020] RootWebArea: Proyecto IA 66879 · TaskFlow
+  [0-1029] scrollable, html
+    [0-1041] div
+      [0-1042] link: Saltar al contenido
+      [0-1043] navigation: Navegación principal
+        [0-1045] div
+          [0-1046] link: TaskFlow, ir al inicio
+            [0-1021] StaticText: TaskFlow
+          [0-1053] div
+            [0-1054] link: Inicio
+            [0-1059] link: Ayuda
+            [0-1065] link: Preferencias
+            [0-1070] button: Ver atajos de teclado
+            [0-1025] StaticText: Ana Stagehand 179307481935239
+            [0-1082] button: Salir
+      [0-1087] main
+        [0-1088] div
+          [0-1238] sectionheader
+            [0-1164] navigation: Ruta de navegación
+              [0-1109] list
+                [0-1106] listitem
+                  [0-1099] link: Mis equipos
+                [0-1107] listitem
+                  [0-1102] link: Equipo Tablero 64313
+                [0-1108] listitem
+                  [0-1245] StaticText: Proyecto IA 66879
+            [0-1165] div
+              [0-1128] div
+                [0-1115] heading: Proyecto IA 66879
+                [0-1116] p
+                  [0-1111] span
+                    [0-1247] StaticText: Equipo
+                    [0-1248] StaticText: Equipo Tablero 64313
+                  [0-1250] StaticText: Actualizado hace 5 s
+                  [0-1114] status
+              [0-1129] div
+                [0-1126] div
+                  [0-1120] div
+                    [0-1251] StaticText: Progreso
+                    [0-1118] span
+                      [0-1252] StaticText: 0
+                      [0-1253] StaticText: %
+                  [0-1121] progressbar: Progreso
+                  [0-1122] paragraph
+                    [0-1254] StaticText: 0 de 1 tarea hecha
+                [0-1127] button: Nueva tarea
+            [0-1166] search: Buscar y filtrar tareas
+              [0-1161] div
+                [0-1139] LabelText
+                  [0-1256] StaticText: Buscar tareas
+                [0-1138] searchbox: Buscar tareas
+              [0-1162] div
+                [0-1156] LabelText
+                  [0-1258] StaticText: Asignada a
+                [0-1157] select: Asignada a
+                  [0-1149] MenuListPopup
+                    [0-1153] option: Todos [selected]
+                    [0-1154] option: Sin asignar
+                    [0-1155] option: Ana Stagehand 179307481935239 (tú)
+              [0-1160] paragraph
+                [0-1260] StaticText: Mostrando
+                [0-1261] StaticText: 1
+                [0-1262] StaticText: de
+                [0-1263] StaticText: 
+                [0-1264] StaticText: 1
+                [0-1265] StaticText: tareas
+          [0-1239] region: Columnas del tablero
+            [0-1237] div
+              [0-1197] region: Por Hacer
+                [0-1194] sectionheader
+                  [0-1168] heading: Por Hacer
+                  [0-1267] StaticText: 1
+                [0-1190] div
+                  [0-1188] div
+                    [0-1184] button: Arrastrar tarea Revisar informe 70052
+                    [0-1185] button: Revisar informe 70052
+                    [0-1186] button: Asignar miembros a la tarea Revisar informe 70052
+                  [0-1269] StaticText: Sin asignar
+                [0-1196] button: Agregar tarea en Por Hacer
+                  [0-1270] StaticText: Agregar tarea
+              [0-1215] region: En Progreso
+                [0-1212] sectionheader
+                  [0-1199] heading: En Progreso
+                  [0-1272] StaticText: 0
+                [0-1208] div
+                  [0-1206] paragraph
+                    [0-1273] StaticText: Sin tareas en esta columna
+                  [0-1207] paragraph
+                    [0-1274] StaticText: Arrastra una tarea aquí o crea una nueva.
+                [0-1214] button: Agregar tarea en En Progreso
+                  [0-1275] StaticText: Agregar tarea
+              [0-1233] region: Hecho
+                [0-1230] sectionheader
+                  [0-1217] heading: Hecho
+                  [0-1277] StaticText: 0
+                [0-1226] div
+                  [0-1224] paragraph
+                    [0-1278] StaticText: Sin tareas en esta columna
+                  [0-1225] paragraph
+                    [0-1279] StaticText: Arrastra una tarea aquí o crea una nueva.
+                [0-1232] button: Agregar tarea en Hecho
+                  [0-1280] StaticText: Agregar tarea
+"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "API-TAR-01",
+  "obtenido": "Respondió 201 con la tarea en \"Por Hacer\" y 2 asignados sin password.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/tareas",
+    "autenticado": true,
+    "cuerpo": {
+      "titulo": "Diseñar login",
+      "descripcion": "Pantalla y validaciones",
+      "listaId": "a6e5c131-f9d0-4397-8b50-eb9a814cfced",
+      "asignados": [
+        "1103bf18-61e6-4da2-9440-d0ac5ab03eed",
+        "c6c96696-75b2-4616-8acc-d38561c47259"
+      ]
+    }
+  },
+  "respuesta": {
+    "estado": 201,
+    "duracionMs": 53,
+    "cuerpo": {
+      "id": "998d104b-f313-489c-828d-69cdae6b6d99",
+      "titulo": "Diseñar login",
+      "descripcion": "Pantalla y validaciones",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "listaId": "a6e5c131-f9d0-4397-8b50-eb9a814cfced",
+      "createdAt": "2026-10-26T23:13:09.885Z",
+      "updatedAt": "2026-10-26T23:13:09.885Z",
+      "asignados": [
+        {
+          "id": "1103bf18-61e6-4da2-9440-d0ac5ab03eed",
+          "nombre": "Usuario t-lider 212421",
+          "email": "t-lider.17930563888212421@taskflow-cypress.test",
+          "createdAt": "2026-10-26T23:13:08.983Z",
+          "updatedAt": "2026-10-26T23:13:08.983Z"
+        },
+        {
+          "id": "c6c96696-75b2-4616-8acc-d38561c47259",
+          "nombre": "Usuario t-miembro 272212",
+          "email": "t-miembro.17930563891272212@taskflow-cypress.test",
+          "createdAt": "2026-10-26T23:13:09.231Z",
+          "updatedAt": "2026-10-26T23:13:09.231Z"
+        }
+      ],
+      "lista": {
+        "id": "a6e5c131-f9d0-4397-8b50-eb9a814cfced",
+        "nombre": "Por Hacer",
+        "orden": 0,
+        "proyectoId": "7f2c6666-8f40-46fe-b157-3b13b13ff597",
+        "createdAt": "2026-10-26T23:13:09.806Z",
+        "updatedAt": "2026-10-26T23:13:09.806Z"
+      }
+    }
+  },
+  "fecha": "2026-10-26T23:13:09.963Z"
+}

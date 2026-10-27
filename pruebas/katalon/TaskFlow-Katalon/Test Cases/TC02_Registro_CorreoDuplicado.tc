@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[NEGATIVO] Comprobar que no se puede registrar dos veces el mismo correo.
+
+Resultado esperado: Se muestra [role=alert] 'Ya existe una cuenta con el correo &lt;correo&gt;. Inicia sesión con ella o usa otro correo.' y la URL sigue en /register.
+
+Datos: Usuario creado previamente por API (POST /auth/register) con correo único; se repite el registro por la UI con el mismo correo.
+Esperas: waitForElementVisible h1_CrearCuenta 10s; waitForElementVisible alert_Error 10s
+Evidencia: Reports/evidencias/TC02_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC02_Registro_CorreoDuplicado</name>
+   <tag>negativo,registro</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>db6d7372-d251-4aaa-a6f0-4405f0c5a11c</testCaseGuid>
+</TestCaseEntity>

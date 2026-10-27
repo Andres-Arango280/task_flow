@@ -1,0 +1,19 @@
+{
+  "id": "API-LIS-03",
+  "obtenido": "Id inválido respondió 400; id inexistente respondió 404 \"Proyecto no encontrado\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/listas/proyecto/00000000-0000-4000-8000-000000000000",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 404,
+    "duracionMs": 7,
+    "cuerpo": {
+      "message": "Proyecto no encontrado",
+      "error": "Not Found",
+      "statusCode": 404
+    }
+  },
+  "fecha": "2026-10-26T23:13:04.452Z"
+}

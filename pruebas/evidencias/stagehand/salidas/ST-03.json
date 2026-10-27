@@ -1,0 +1,23 @@
+{
+  "id": "ST-03",
+  "instruccionesYRespuestas": {
+    "extraido": {
+      "equipos": []
+    }
+  },
+  "datosDePrueba": {
+    "equiposCreados": [
+      "Equipo Backend 30878",
+      "Equipo Frontend 30878",
+      "Equipo Calidad 30878"
+    ]
+  },
+  "tiemposIA": [
+    {
+      "paso": "extract",
+      "seg": 22.8
+    }
+  ],
+  "estado": "Fallido",
+  "obtenido": "No conforme: Diferencias: faltan [\"equipo backend 30878\",\"equipo frontend 30878\",\"equipo calidad 30878\"], sobran []; extraído {\"equipos\":[]}"
+}

@@ -1,0 +1,11 @@
+{
+  "_class": "hudson.model.Hudson",
+  "jobs": [
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowJob",
+      "name": "taskflow-pipeline",
+      "url": "http://localhost:8081/job/taskflow-pipeline/",
+      "color": "red"
+    }
+  ]
+}

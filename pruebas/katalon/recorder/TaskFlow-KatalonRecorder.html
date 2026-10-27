@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+<title>TaskFlow - Katalon Recorder (7 caminos)</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC01_Registro_y_login_exitoso</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:5173/login<datalist><option>http://localhost:5173/login</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>localStorage.clear(); return &quot;ok&quot;<datalist><option>localStorage.clear(); return &quot;ok&quot;</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>return String(Date.now())<datalist><option>return String(Date.now())</option></datalist></td><td>ts</td></tr>
+<tr><td>store</td><td>tc01.${ts}@taskflow.test<datalist><option>tc01.${ts}@taskflow.test</option></datalist></td><td>email</td></tr>
+<tr><td>open</td><td>http://localhost:5173/register<datalist><option>http://localhost:5173/register</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Crear cuenta']<datalist><option>xpath=//h1[normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]</option></datalist></td><td>Usuario tc01</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]</option></datalist></td><td>${email}</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='status'][contains(normalize-space(.),'Cuenta creada correctamente')]<datalist><option>xpath=//div[@role='status'][contains(normalize-space(.),'Cuenta creada correctamente')]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>css=form input[type=&quot;email&quot;]<datalist><option>css=form input[type=&quot;email&quot;]</option></datalist></td><td>${email}</td></tr>
+<tr><td>type</td><td>css=form input[autocomplete=&quot;current-password&quot;]<datalist><option>css=form input[autocomplete=&quot;current-password&quot;]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Mis equipos']<datalist><option>xpath=//h1[normalize-space(.)='Mis equipos']</option></datalist></td><td></td></tr>
+<tr><td>assertTitle</td><td>Mis equipos · TaskFlow<datalist><option>Mis equipos · TaskFlow</option></datalist></td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//nav[@aria-label='Navegación principal']//span[@title='${email}']<datalist><option>xpath=//nav[@aria-label='Navegación principal']//span[@title='${email}']</option></datalist></td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//nav[@aria-label='Navegación principal']//*[self::a or self::button][normalize-space(.)='Salir']<datalist><option>xpath=//nav[@aria-label='Navegación principal']//*[self::a or self::button][normalize-space(.)='Salir']</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC02_Registro_rechaza_contrasena_debil</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:5173/login<datalist><option>http://localhost:5173/login</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>localStorage.clear(); return &quot;ok&quot;<datalist><option>localStorage.clear(); return &quot;ok&quot;</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>return String(Date.now())<datalist><option>return String(Date.now())</option></datalist></td><td>ts</td></tr>
+<tr><td>open</td><td>http://localhost:5173/register<datalist><option>http://localhost:5173/register</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Crear cuenta']<datalist><option>xpath=//h1[normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]</option></datalist></td><td>Usuario contraseña débil</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]</option></datalist></td><td>tc02.${ts}@taskflow.test</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]</option></datalist></td><td>abcdefgh</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]</option></datalist></td><td>abcdefgh</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@id='requisitos-password']//li[contains(normalize-space(.),'Al menos 8 caracteres') and contains(normalize-space(.),'cumplido')]<datalist><option>xpath=//div[@id='requisitos-password']//li[contains(normalize-space(.),'Al menos 8 caracteres') and contains(normalize-space(.),'cumplido')]</option></datalist></td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@id='requisitos-password']//li[contains(normalize-space(.),'Al menos un número') and contains(normalize-space(.),'pendiente')]<datalist><option>xpath=//div[@id='requisitos-password']//li[contains(normalize-space(.),'Al menos un número') and contains(normalize-space(.),'pendiente')]</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//form//div[@role='alert']<datalist><option>xpath=//form//div[@role='alert']</option></datalist></td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//form//div[@role='alert']<datalist><option>xpath=//form//div[@role='alert']</option></datalist></td><td>*al menos una letra y un número*</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//h1[normalize-space(.)='Crear cuenta']<datalist><option>xpath=//h1[normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC03_Login_con_credenciales_invalidas</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:5173/login<datalist><option>http://localhost:5173/login</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>localStorage.clear(); return &quot;ok&quot;<datalist><option>localStorage.clear(); return &quot;ok&quot;</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>return String(Date.now())<datalist><option>return String(Date.now())</option></datalist></td><td>ts</td></tr>
+<tr><td>open</td><td>http://localhost:5173/login<datalist><option>http://localhost:5173/login</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Iniciar sesión']<datalist><option>xpath=//h1[normalize-space(.)='Iniciar sesión']</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>css=form input[type=&quot;email&quot;]<datalist><option>css=form input[type=&quot;email&quot;]</option></datalist></td><td>no.existe.${ts}@taskflow.test</td></tr>
+<tr><td>type</td><td>css=form input[autocomplete=&quot;current-password&quot;]<datalist><option>css=form input[autocomplete=&quot;current-password&quot;]</option></datalist></td><td>ClaveErronea1</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//form//div[@role='alert']<datalist><option>xpath=//form//div[@role='alert']</option></datalist></td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//form//div[@role='alert']<datalist><option>xpath=//form//div[@role='alert']</option></datalist></td><td>*no son correctos*</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//h1[normalize-space(.)='Iniciar sesión']<datalist><option>xpath=//h1[normalize-space(.)='Iniciar sesión']</option></datalist></td><td></td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//h1[normalize-space(.)='Mis equipos']<datalist><option>xpath=//h1[normalize-space(.)='Mis equipos']</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC04_Crear_equipo</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:5173/login<datalist><option>http://localhost:5173/login</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>localStorage.clear(); return &quot;ok&quot;<datalist><option>localStorage.clear(); return &quot;ok&quot;</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>return String(Date.now())<datalist><option>return String(Date.now())</option></datalist></td><td>ts</td></tr>
+<tr><td>store</td><td>tc04.${ts}@taskflow.test<datalist><option>tc04.${ts}@taskflow.test</option></datalist></td><td>email</td></tr>
+<tr><td>open</td><td>http://localhost:5173/register<datalist><option>http://localhost:5173/register</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Crear cuenta']<datalist><option>xpath=//h1[normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]</option></datalist></td><td>Usuario tc04</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]</option></datalist></td><td>${email}</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='status'][contains(normalize-space(.),'Cuenta creada correctamente')]<datalist><option>xpath=//div[@role='status'][contains(normalize-space(.),'Cuenta creada correctamente')]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>css=form input[type=&quot;email&quot;]<datalist><option>css=form input[type=&quot;email&quot;]</option></datalist></td><td>${email}</td></tr>
+<tr><td>type</td><td>css=form input[autocomplete=&quot;current-password&quot;]<datalist><option>css=form input[autocomplete=&quot;current-password&quot;]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Mis equipos']<datalist><option>xpath=//h1[normalize-space(.)='Mis equipos']</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//main//header//button[normalize-space(.)='Nuevo equipo']<datalist><option>xpath=//main//header//button[normalize-space(.)='Nuevo equipo']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]</option></datalist></td><td>Equipo KR ${ts}</td></tr>
+<tr><td>click</td><td>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear equipo']<datalist><option>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear equipo']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']]<datalist><option>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']]</option></datalist></td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@aria-live='polite']/div[@role='status'][.//p[normalize-space(.)='Listo']][.//p[contains(normalize-space(.),'creado')]]<datalist><option>xpath=//div[@aria-live='polite']/div[@role='status'][.//p[normalize-space(.)='Listo']][.//p[contains(normalize-space(.),'creado')]]</option></datalist></td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']][.//span[normalize-space(.)='Líder']]<datalist><option>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']][.//span[normalize-space(.)='Líder']]</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC05_Crear_proyecto_con_tablero_de_3_columnas</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:5173/login<datalist><option>http://localhost:5173/login</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>localStorage.clear(); return &quot;ok&quot;<datalist><option>localStorage.clear(); return &quot;ok&quot;</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>return String(Date.now())<datalist><option>return String(Date.now())</option></datalist></td><td>ts</td></tr>
+<tr><td>store</td><td>tc05.${ts}@taskflow.test<datalist><option>tc05.${ts}@taskflow.test</option></datalist></td><td>email</td></tr>
+<tr><td>open</td><td>http://localhost:5173/register<datalist><option>http://localhost:5173/register</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Crear cuenta']<datalist><option>xpath=//h1[normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]</option></datalist></td><td>Usuario tc05</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]</option></datalist></td><td>${email}</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='status'][contains(normalize-space(.),'Cuenta creada correctamente')]<datalist><option>xpath=//div[@role='status'][contains(normalize-space(.),'Cuenta creada correctamente')]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>css=form input[type=&quot;email&quot;]<datalist><option>css=form input[type=&quot;email&quot;]</option></datalist></td><td>${email}</td></tr>
+<tr><td>type</td><td>css=form input[autocomplete=&quot;current-password&quot;]<datalist><option>css=form input[autocomplete=&quot;current-password&quot;]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Mis equipos']<datalist><option>xpath=//h1[normalize-space(.)='Mis equipos']</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//main//header//button[normalize-space(.)='Nuevo equipo']<datalist><option>xpath=//main//header//button[normalize-space(.)='Nuevo equipo']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]</option></datalist></td><td>Equipo KR ${ts}</td></tr>
+<tr><td>click</td><td>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear equipo']<datalist><option>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear equipo']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']]<datalist><option>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']]</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']]<datalist><option>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']]</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//main//header//h1[normalize-space(.)='Equipo KR ${ts}']<datalist><option>xpath=//main//header//h1[normalize-space(.)='Equipo KR ${ts}']</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//section[@aria-labelledby='titulo-proyectos']//button[normalize-space(.)='Nuevo proyecto']<datalist><option>xpath=//section[@aria-labelledby='titulo-proyectos']//button[normalize-space(.)='Nuevo proyecto']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del proyecto')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del proyecto')]/@for]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del proyecto')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del proyecto')]/@for]</option></datalist></td><td>Proyecto KR ${ts}</td></tr>
+<tr><td>click</td><td>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear proyecto']<datalist><option>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear proyecto']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//a[@data-testid='tarjeta-proyecto'][.//span[normalize-space(.)='Proyecto KR ${ts}']]<datalist><option>xpath=//a[@data-testid='tarjeta-proyecto'][.//span[normalize-space(.)='Proyecto KR ${ts}']]</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//a[@data-testid='tarjeta-proyecto'][.//span[normalize-space(.)='Proyecto KR ${ts}']]<datalist><option>xpath=//a[@data-testid='tarjeta-proyecto'][.//span[normalize-space(.)='Proyecto KR ${ts}']]</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//main//header//h1[normalize-space(.)='Proyecto KR ${ts}']<datalist><option>xpath=//main//header//h1[normalize-space(.)='Proyecto KR ${ts}']</option></datalist></td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//section[starts-with(@aria-labelledby,'columna-')]//h2[normalize-space(.)='Por Hacer']<datalist><option>xpath=//section[starts-with(@aria-labelledby,'columna-')]//h2[normalize-space(.)='Por Hacer']</option></datalist></td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//section[starts-with(@aria-labelledby,'columna-')]//h2[normalize-space(.)='En Progreso']<datalist><option>xpath=//section[starts-with(@aria-labelledby,'columna-')]//h2[normalize-space(.)='En Progreso']</option></datalist></td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//section[starts-with(@aria-labelledby,'columna-')]//h2[normalize-space(.)='Hecho']<datalist><option>xpath=//section[starts-with(@aria-labelledby,'columna-')]//h2[normalize-space(.)='Hecho']</option></datalist></td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//nav[@aria-label='Ruta de navegación']//a[normalize-space(.)='Equipo KR ${ts}']<datalist><option>xpath=//nav[@aria-label='Ruta de navegación']//a[normalize-space(.)='Equipo KR ${ts}']</option></datalist></td><td></td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC06_Tareas_validacion_y_busqueda</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:5173/login<datalist><option>http://localhost:5173/login</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>localStorage.clear(); return &quot;ok&quot;<datalist><option>localStorage.clear(); return &quot;ok&quot;</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>return String(Date.now())<datalist><option>return String(Date.now())</option></datalist></td><td>ts</td></tr>
+<tr><td>store</td><td>tc06.${ts}@taskflow.test<datalist><option>tc06.${ts}@taskflow.test</option></datalist></td><td>email</td></tr>
+<tr><td>open</td><td>http://localhost:5173/register<datalist><option>http://localhost:5173/register</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Crear cuenta']<datalist><option>xpath=//h1[normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]</option></datalist></td><td>Usuario tc06</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]</option></datalist></td><td>${email}</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='status'][contains(normalize-space(.),'Cuenta creada correctamente')]<datalist><option>xpath=//div[@role='status'][contains(normalize-space(.),'Cuenta creada correctamente')]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>css=form input[type=&quot;email&quot;]<datalist><option>css=form input[type=&quot;email&quot;]</option></datalist></td><td>${email}</td></tr>
+<tr><td>type</td><td>css=form input[autocomplete=&quot;current-password&quot;]<datalist><option>css=form input[autocomplete=&quot;current-password&quot;]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Mis equipos']<datalist><option>xpath=//h1[normalize-space(.)='Mis equipos']</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//main//header//button[normalize-space(.)='Nuevo equipo']<datalist><option>xpath=//main//header//button[normalize-space(.)='Nuevo equipo']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del equipo')]/@for]</option></datalist></td><td>Equipo KR ${ts}</td></tr>
+<tr><td>click</td><td>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear equipo']<datalist><option>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear equipo']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']]<datalist><option>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']]</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']]<datalist><option>xpath=//a[@data-testid='tarjeta-equipo'][.//h3[normalize-space(.)='Equipo KR ${ts}']]</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//main//header//h1[normalize-space(.)='Equipo KR ${ts}']<datalist><option>xpath=//main//header//h1[normalize-space(.)='Equipo KR ${ts}']</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//section[@aria-labelledby='titulo-proyectos']//button[normalize-space(.)='Nuevo proyecto']<datalist><option>xpath=//section[@aria-labelledby='titulo-proyectos']//button[normalize-space(.)='Nuevo proyecto']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del proyecto')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del proyecto')]/@for]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del proyecto')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Nombre del proyecto')]/@for]</option></datalist></td><td>Proyecto KR ${ts}</td></tr>
+<tr><td>click</td><td>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear proyecto']<datalist><option>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear proyecto']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//a[@data-testid='tarjeta-proyecto'][.//span[normalize-space(.)='Proyecto KR ${ts}']]<datalist><option>xpath=//a[@data-testid='tarjeta-proyecto'][.//span[normalize-space(.)='Proyecto KR ${ts}']]</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//a[@data-testid='tarjeta-proyecto'][.//span[normalize-space(.)='Proyecto KR ${ts}']]<datalist><option>xpath=//a[@data-testid='tarjeta-proyecto'][.//span[normalize-space(.)='Proyecto KR ${ts}']]</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//main//header//h1[normalize-space(.)='Proyecto KR ${ts}']<datalist><option>xpath=//main//header//h1[normalize-space(.)='Proyecto KR ${ts}']</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//main//header//button[@aria-keyshortcuts='n' and normalize-space(.)='Nueva tarea']<datalist><option>xpath=//main//header//button[@aria-keyshortcuts='n' and normalize-space(.)='Nueva tarea']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Título de la tarea')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Título de la tarea')]/@for]</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear tarea']<datalist><option>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear tarea']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='dialog']//p[@role='alert']<datalist><option>xpath=//div[@role='dialog']//p[@role='alert']</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Título de la tarea')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Título de la tarea')]/@for]</option></datalist></td><td>Preparar informe final</td></tr>
+<tr><td>click</td><td>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear tarea']<datalist><option>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear tarea']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//section[starts-with(@aria-labelledby,'columna-')][.//h2[normalize-space(.)='Por Hacer']]//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Preparar informe final']]<datalist><option>xpath=//section[starts-with(@aria-labelledby,'columna-')][.//h2[normalize-space(.)='Por Hacer']]//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Preparar informe final']]</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//main//header//button[@aria-keyshortcuts='n' and normalize-space(.)='Nueva tarea']<datalist><option>xpath=//main//header//button[@aria-keyshortcuts='n' and normalize-space(.)='Nueva tarea']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Título de la tarea')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Título de la tarea')]/@for]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Título de la tarea')]/@for]<datalist><option>xpath=//div[@role='dialog']//input[@id=//label[starts-with(normalize-space(.),'Título de la tarea')]/@for]</option></datalist></td><td>Diseñar portada</td></tr>
+<tr><td>click</td><td>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear tarea']<datalist><option>xpath=//div[@role='dialog']//button[@type='submit' and normalize-space(.)='Crear tarea']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//section[starts-with(@aria-labelledby,'columna-')][.//h2[normalize-space(.)='Por Hacer']]//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Diseñar portada']]<datalist><option>xpath=//section[starts-with(@aria-labelledby,'columna-')][.//h2[normalize-space(.)='Por Hacer']]//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Diseñar portada']]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[normalize-space(.)='Buscar tareas']/@for]<datalist><option>xpath=//input[@id=//label[normalize-space(.)='Buscar tareas']/@for]</option></datalist></td><td>disenar</td></tr>
+<tr><td>waitForElementNotPresent</td><td>xpath=//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Preparar informe final']]<datalist><option>xpath=//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Preparar informe final']]</option></datalist></td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Diseñar portada']]<datalist><option>xpath=//button[@data-testid='abrir-tarea'][.//span[normalize-space(.)='Diseñar portada']]</option></datalist></td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//div[@role='search']//p[starts-with(normalize-space(.),'Mostrando')]<datalist><option>xpath=//div[@role='search']//p[starts-with(normalize-space(.),'Mostrando')]</option></datalist></td><td>*1 de 2*</td></tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">TC07_Preferencias_cierre_de_sesion_y_ruta_protegida</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:5173/login<datalist><option>http://localhost:5173/login</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>localStorage.clear(); return &quot;ok&quot;<datalist><option>localStorage.clear(); return &quot;ok&quot;</option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>return String(Date.now())<datalist><option>return String(Date.now())</option></datalist></td><td>ts</td></tr>
+<tr><td>store</td><td>tc07.${ts}@taskflow.test<datalist><option>tc07.${ts}@taskflow.test</option></datalist></td><td>email</td></tr>
+<tr><td>open</td><td>http://localhost:5173/register<datalist><option>http://localhost:5173/register</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Crear cuenta']<datalist><option>xpath=//h1[normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Nombre completo')]/@for]</option></datalist></td><td>Usuario tc07</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Correo electrónico')]/@for]</option></datalist></td><td>${email}</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Contraseña')]/@for]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>type</td><td>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]<datalist><option>xpath=//input[@id=//label[starts-with(normalize-space(.),'Confirmar contraseña')]/@for]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Crear cuenta']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='status'][contains(normalize-space(.),'Cuenta creada correctamente')]<datalist><option>xpath=//div[@role='status'][contains(normalize-space(.),'Cuenta creada correctamente')]</option></datalist></td><td></td></tr>
+<tr><td>type</td><td>css=form input[type=&quot;email&quot;]<datalist><option>css=form input[type=&quot;email&quot;]</option></datalist></td><td>${email}</td></tr>
+<tr><td>type</td><td>css=form input[autocomplete=&quot;current-password&quot;]<datalist><option>css=form input[autocomplete=&quot;current-password&quot;]</option></datalist></td><td>Prueba2026</td></tr>
+<tr><td>click</td><td>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']<datalist><option>xpath=//form//button[@type='submit' and normalize-space(.)='Iniciar sesión']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Mis equipos']<datalist><option>xpath=//h1[normalize-space(.)='Mis equipos']</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//nav[@aria-label='Navegación principal']//*[self::a or self::button][normalize-space(.)='Preferencias']<datalist><option>xpath=//nav[@aria-label='Navegación principal']//*[self::a or self::button][normalize-space(.)='Preferencias']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Preferencias']<datalist><option>xpath=//h1[normalize-space(.)='Preferencias']</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>css=#alto-contraste<datalist><option>css=#alto-contraste</option></datalist></td><td></td></tr>
+<tr><td>assertAttribute</td><td>xpath=/html@data-contraste<datalist><option>xpath=/html@data-contraste</option></datalist></td><td>alto</td></tr>
+<tr><td>click</td><td>xpath=//button[normalize-space(.)='Restablecer valores por defecto']<datalist><option>xpath=//button[normalize-space(.)='Restablecer valores por defecto']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='alertdialog']//button[normalize-space(.)='Restablecer']<datalist><option>xpath=//div[@role='alertdialog']//button[normalize-space(.)='Restablecer']</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//div[@role='alertdialog']//button[normalize-space(.)='Restablecer']<datalist><option>xpath=//div[@role='alertdialog']//button[normalize-space(.)='Restablecer']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//span[normalize-space(.)='Estás usando los valores por defecto.']<datalist><option>xpath=//span[normalize-space(.)='Estás usando los valores por defecto.']</option></datalist></td><td></td></tr>
+<tr><td>assertAttribute</td><td>xpath=/html@data-contraste<datalist><option>xpath=/html@data-contraste</option></datalist></td><td>normal</td></tr>
+<tr><td>click</td><td>xpath=//nav[@aria-label='Navegación principal']//*[self::a or self::button][normalize-space(.)='Salir']<datalist><option>xpath=//nav[@aria-label='Navegación principal']//*[self::a or self::button][normalize-space(.)='Salir']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//div[@role='alertdialog']//button[normalize-space(.)='Cerrar sesión']<datalist><option>xpath=//div[@role='alertdialog']//button[normalize-space(.)='Cerrar sesión']</option></datalist></td><td></td></tr>
+<tr><td>click</td><td>xpath=//div[@role='alertdialog']//button[normalize-space(.)='Cerrar sesión']<datalist><option>xpath=//div[@role='alertdialog']//button[normalize-space(.)='Cerrar sesión']</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Iniciar sesión']<datalist><option>xpath=//h1[normalize-space(.)='Iniciar sesión']</option></datalist></td><td></td></tr>
+<tr><td>open</td><td>http://localhost:5173/preferencias<datalist><option>http://localhost:5173/preferencias</option></datalist></td><td></td></tr>
+<tr><td>waitForElementPresent</td><td>xpath=//h1[normalize-space(.)='Iniciar sesión']<datalist><option>xpath=//h1[normalize-space(.)='Iniciar sesión']</option></datalist></td><td></td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//h1[normalize-space(.)='Preferencias']<datalist><option>xpath=//h1[normalize-space(.)='Preferencias']</option></datalist></td><td></td></tr>
+</tbody></table>
+</body>
+</html>

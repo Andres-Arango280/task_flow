@@ -7,7 +7,16 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cy:open": "node cypress/scripts/cypress.mjs open",
+    "test:e2e": "node cypress/scripts/cypress.mjs run --e2e",
+    "test:api": "node cypress/scripts/cypress.mjs run --e2e --spec \"cypress/e2e/api/**/*.cy.ts\"",
+    "test:regresion": "node cypress/scripts/cypress.mjs run --e2e --spec \"cypress/e2e/regresion/**/*.cy.ts\"",
+    "test:component": "node cypress/scripts/cypress.mjs run --component",
+    "cy:resumen": "node cypress/scripts/generar-resumen.mjs",
+    "test:cypress": "node cypress/scripts/ejecutar-todo.mjs",
+    "test:seguridad": "node cypress/scripts/cypress.mjs run --e2e --spec \"cypress/e2e/seguridad/**/*.cy.ts\"",
+    "test:accesibilidad": "node cypress/scripts/cypress.mjs run --e2e --spec \"cypress/e2e/accesibilidad/**/*.cy.ts\""
   },
   "dependencies": {
     "@hello-pangea/dnd": "^18.0.1",
@@ -20,13 +29,17 @@
     "zustand": "^5.0.15"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@testing-library/cypress": "10.1.3",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
-    "autoprefixer": "^10.5.4",
+    "axe-core": "^4.14.0",
+    "cypress": "15.21.1",
+    "cypress-axe": "^1.7.0",
+    "cypress-mochawesome-reporter": "3.8.4",
     "oxlint": "^1.75.0",
-    "postcss": "^8.5.26",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",
     "vite": "^8.2.0"

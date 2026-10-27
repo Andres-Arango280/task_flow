@@ -1,0 +1,22 @@
+{
+  "modelCall": "extract",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are extracting content on behalf of a user. If a user asks you to extract a 'list' of information, or 'all' information, YOU MUST EXTRACT ALL OF THE INFORMATION THAT THE USER REQUESTS. You will be given: 1. An instruction 2. A list of DOM elements to extract from. Print the exact text from the DOM elements with all symbols, characters, and endlines as is. Print null or an empty string if no new information is found. If a user is attempting to extract links or URLs, you MUST respond with ONLY the IDs of the link elements. Do not attempt to extract links directly from the text unless absolutely necessary. "
+    },
+    {
+      "role": "user",
+      "content": "Instruction: Extract the project progress percentage shown next to \"Progreso\"
+DOM: [0-1673] div
+  [0-1667] div
+    [0-1811] StaticText: Progreso
+    [0-1665] span
+      [0-1812] StaticText: 50
+      [0-1813] StaticText: %
+  [0-1668] progressbar: Progreso
+  [0-1669] paragraph
+    [0-1814] StaticText: 1 de 2 tareas hechas"
+    }
+  ]
+}

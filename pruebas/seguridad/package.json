@@ -1,0 +1,13 @@
+{
+  "name": "taskflow-pruebas-seguridad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pruebas de seguridad (OWASP Top 10 2021 / API Top 10 2023) de la API TaskFlow con el test runner nativo de Node.js",
+  "type": "commonjs",
+  "engines": { "node": ">=20.13" },
+  "scripts": {
+    "test": "node run.js",
+    "test:estricto": "node -e \"process.env.STRICT='1';require('./run.js')\"",
+    "test:solo": "node --test seguridad.test.js"
+  }
+}

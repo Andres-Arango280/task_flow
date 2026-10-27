@@ -1,0 +1,115 @@
+{
+  "_comentario": "Mapa de requisitos ↔ funcionalidades ↔ casos de prueba. Edite 'integrantes' con los nombres reales y el reparto de las seis funcionalidades. Los 'prefijos' son expresiones regulares que se comparan con el id de cada caso (API-AUTH-01, REG-KAN-03, SP-11, GH-04, ST-02, SEG-AUTH-12, A11Y-03, REN-02, N-05, TC01, JU-012, IA-...).",
+  "integrantes": [
+    {
+      "nombre": "Andrés Arango",
+      "rol": "Desarrollo backend/frontend y pruebas",
+      "funcionalidades": ["F1", "F2", "F3", "F4", "F5", "F6"]
+    }
+  ],
+  "requisitos": [
+    { "id": "RF01", "tipo": "Funcional", "texto": "Permitir el registro de usuarios nuevos con nombre, correo y contraseña", "funcionalidad": "F1" },
+    { "id": "RF02", "tipo": "Funcional", "texto": "Garantizar correos únicos (sin distinguir mayúsculas) y una política de contraseñas (8 caracteres, letra y número)", "funcionalidad": "F1" },
+    { "id": "RF03", "tipo": "Funcional", "texto": "Iniciar sesión con credenciales válidas y rechazar las inválidas con mensajes claros", "funcionalidad": "F1" },
+    { "id": "RF04", "tipo": "Funcional", "texto": "Emitir un JWT firmado con expiración y proteger todas las rutas privadas (API y SPA)", "funcionalidad": "F1" },
+    { "id": "RF05", "tipo": "Funcional", "texto": "Consultar, editar y eliminar el perfil propio y buscar usuarios por correo", "funcionalidad": "F2" },
+    { "id": "RF06", "tipo": "Funcional", "texto": "Ajustar preferencias de accesibilidad (contraste, tamaño de texto, animaciones) y consultar Ayuda y Privacidad", "funcionalidad": "F2" },
+    { "id": "RF07", "tipo": "Funcional", "texto": "Crear equipos, listar los propios y eliminarlos (solo el líder)", "funcionalidad": "F3" },
+    { "id": "RF08", "tipo": "Funcional", "texto": "Invitar y quitar miembros (solo el líder), con confirmación y opción de deshacer", "funcionalidad": "F3" },
+    { "id": "RF09", "tipo": "Funcional", "texto": "Crear proyectos dentro de un equipo y eliminarlos; listarlos por equipo", "funcionalidad": "F4" },
+    { "id": "RF10", "tipo": "Funcional", "texto": "Generar automáticamente las listas «Por Hacer», «En Progreso» y «Hecho» al crear un proyecto y consultarlas", "funcionalidad": "F5" },
+    { "id": "RF11", "tipo": "Funcional", "texto": "Mostrar el tablero Kanban con progreso, búsqueda tolerante a errores y filtros", "funcionalidad": "F5" },
+    { "id": "RF12", "tipo": "Funcional", "texto": "Crear, editar y eliminar tareas (con confirmación y deshacer), validando el título", "funcionalidad": "F6" },
+    { "id": "RF13", "tipo": "Funcional", "texto": "Mover tareas entre listas (ratón y teclado) y asignar miembros del equipo", "funcionalidad": "F6" },
+    { "id": "RNF01", "tipo": "Seguridad", "texto": "No exponer contraseñas ni datos sensibles en respuestas ni en el token", "funcionalidad": "F2" },
+    { "id": "RNF02", "tipo": "Seguridad", "texto": "Autorizar por pertenencia al equipo y rol de líder (401/403 correctos, sin fuga de datos)", "funcionalidad": "F3" },
+    { "id": "RNF03", "tipo": "Seguridad", "texto": "Resistir inyección (SQL/NoSQL/XSS) y validar toda la entrada con mensajes en español", "funcionalidad": "F1" },
+    { "id": "RNF04", "tipo": "Seguridad", "texto": "Proteger el login frente a fuerza bruta y enumeración de cuentas", "funcionalidad": "F1" },
+    { "id": "RNF05", "tipo": "Seguridad", "texto": "Configuración segura: cabeceras helmet, CORS restringido, sin X-Powered-By, secretos fuera del repositorio, dependencias sin vulnerabilidades críticas", "funcionalidad": "F1" },
+    { "id": "RNF06", "tipo": "Fiabilidad", "texto": "Manejar errores de red y del servidor con avisos comprensibles y recuperación (reintentar, deshacer)", "funcionalidad": "F5" },
+    { "id": "RNF07", "tipo": "Rendimiento", "texto": "Responder con p95 < 500 ms bajo carga media y sin errores en estrés/resistencia", "funcionalidad": "F6" },
+    { "id": "RNF08", "tipo": "Accesibilidad", "texto": "Cumplir WCAG 2.1/2.2 AA (axe, Lighthouse ≥ 90), navegación por teclado y lector de pantalla", "funcionalidad": "F2" },
+    { "id": "RNF09", "tipo": "Usabilidad", "texto": "Satisfacer las heurísticas de Nielsen/GRIHO (≥ 90 %) con ayuda, confirmaciones y estados visibles", "funcionalidad": "F2" },
+    { "id": "RNF10", "tipo": "Mantenibilidad", "texto": "Pasar la Quality Gate de SonarQube y el pipeline de Jenkins con cobertura ≥ 80 % en servicios", "funcionalidad": "F4" }
+  ],
+  "funcionalidades": [
+    {
+      "id": "F1",
+      "nombre": "Autenticación (registro e inicio de sesión)",
+      "modulo": "src/auth · pages/Login, Register",
+      "requisitos": ["RF01", "RF02", "RF03", "RF04", "RNF03", "RNF04", "RNF05"],
+      "prefijos": ["^API-AUTH", "^API-VAL", "^REG-AUT", "^CYS-JWT", "^CYS-BRU", "^CYS-INY-01", "^CYS-HDR", "^CYA-LOG", "^CYA-REG", "^CYA-TEC", "^SEG-AUTH", "^SEG-INY", "^SEG-VAL", "^SEG-CONF", "^SEG-DEP", "^SP-0[1-6]$", "^GH-0[1-4]$", "^ST-0[12]$", "^ST-07$", "^BU-0[124]$", "^MCP-0[1-3]$", "^PWA-0[1-4]$", "^PWA-10$", "^REN-04", "^TC0[1-4]$", "^A11Y-0[1-2]$", "^(UX|REC)-0[1-2]$", "^RUT-0[1-2]$"],
+      "jest": ["AuthService", "LimitadorIntentos", "Auth"]
+    },
+    {
+      "id": "F2",
+      "nombre": "Usuarios: perfil, cuenta, preferencias de accesibilidad, ayuda y privacidad",
+      "modulo": "src/usuarios · pages/Preferencias, Ayuda, Privacidad",
+      "requisitos": ["RF05", "RF06", "RNF01", "RNF08", "RNF09"],
+      "prefijos": ["^API-USU", "^REG-PRE", "^CYS-DAT", "^CYS-JWT-03", "^CYA-PRE", "^CYA-AYU", "^CYA-PRI", "^CYA-CON", "^SEG-DATA", "^SP-18$", "^A11Y-", "^TEC-", "^VIS-", "^LH-", "^N-", "^UX-", "^REC-", "^TC1[4-6]$"],
+      "jest": ["UsuariosService", "Usuarios"]
+    },
+    {
+      "id": "F3",
+      "nombre": "Equipos y miembros",
+      "modulo": "src/equipos · pages/Dashboard, TeamView",
+      "requisitos": ["RF07", "RF08", "RNF02"],
+      "prefijos": ["^API-EQU", "^REG-EQU-0[1-4]", "^CYS-ACL-0[12]", "^CYS-SES", "^CYA-INI", "^CYA-EQU", "^SEG-AUTHZ", "^SP-0[78]$", "^SP-10$", "^SP-17$", "^GH-0[5-6]$", "^GH-11$", "^ST-0[34]$", "^BU-03$", "^PWA-0[56]$", "^REN-01", "^TC0[5-8]$", "^CMP-MIG", "^RUT-0[3-4]$"],
+      "jest": ["EquiposService", "Equipos", "usuarioPerteneceAEquipo"]
+    },
+    {
+      "id": "F4",
+      "nombre": "Proyectos",
+      "modulo": "src/proyectos · components/equipo/ProjectsList, CreateProjectModal",
+      "requisitos": ["RF09", "RNF10"],
+      "prefijos": ["^API-PRO", "^REG-EQU-0[5-6]", "^CYS-ACL-03", "^SP-09$", "^GH-07$", "^PWA-07$", "^TC09$", "^RUT-05$", "^SON-", "^JEN-", "^DEP-"],
+      "jest": ["ProyectosService", "Proyectos"]
+    },
+    {
+      "id": "F5",
+      "nombre": "Listas y tablero Kanban (progreso, búsqueda, filtros)",
+      "modulo": "src/listas · pages/KanbanBoard, components/kanban/KanbanColumn",
+      "requisitos": ["RF10", "RF11", "RNF06"],
+      "prefijos": ["^API-LIS", "^REG-KAN-(0[5-9]|1[0-2])", "^CYA-TAB", "^SP-1[4]$", "^GH-08$", "^ST-0[56]$", "^IA-PWA-06$", "^REN-0[26]", "^TC1[0-1]$", "^RUT-(09|10)$", "^CMP-KAN", "^UNI-BUS", "^UNI-COL", "^UNI-ERR", "^CMP-AVI", "^CMP-BTN", "^CMP-INP", "^CMP-MOD", "^CMP-CON"],
+      "jest": ["ListasService", "Listas"]
+    },
+    {
+      "id": "F6",
+      "nombre": "Tareas (crear, editar, mover, asignar, eliminar)",
+      "modulo": "src/tareas · components/kanban/CreateTaskModal, TaskDetailModal, TaskCard",
+      "requisitos": ["RF12", "RF13", "RNF07"],
+      "prefijos": ["^API-TAR", "^REG-KAN-0[1-4]", "^CYS-INY-02", "^CYA-MOD", "^SP-1[1-3]$", "^SP-1[56]$", "^GH-(09|10|12)$", "^PWA-0[89]$", "^PWA-11$", "^REN-0[35]", "^TC1[2-3]$", "^RUT-0[6-8]$"],
+      "jest": ["TareasService", "Tareas"]
+    }
+  ],
+  "requisitosPorPrefijo": {
+    "^CYS-HDR": ["RNF05"],
+    "^SEG-CONF": ["RNF05"],
+    "^SEG-DEP": ["RNF05"],
+    "^CYS-BRU": ["RNF04"],
+    "^SEG-AUTH-1[2-5]": ["RNF04"],
+    "^CYS-INY": ["RNF03"],
+    "^SEG-INY": ["RNF03"],
+    "^SEG-VAL": ["RNF03"],
+    "^API-VAL": ["RNF03"],
+    "^CYS-DAT": ["RNF01"],
+    "^SEG-DATA": ["RNF01"],
+    "^CYS-ACL": ["RNF02"],
+    "^CYS-SES": ["RNF02"],
+    "^SEG-AUTHZ": ["RNF02"],
+    "^CYA-": ["RNF08"],
+    "^A11Y-": ["RNF08"],
+    "^TEC-": ["RNF08"],
+    "^LH-": ["RNF08"],
+    "^VIS-": ["RNF08"],
+    "^N-": ["RNF09"],
+    "^UX-": ["RNF09"],
+    "^REC-": ["RNF09"],
+    "^REN-": ["RNF07"],
+    "^UNI-ERR": ["RNF06"],
+    "^CMP-AVI": ["RNF06"],
+    "^SON-": ["RNF10"],
+    "^JEN-": ["RNF10"],
+    "^DEP-": ["RNF10"]
+  }
+}

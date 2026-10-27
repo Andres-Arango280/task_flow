@@ -1,0 +1,64 @@
+{
+  "modelCall": "extract",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are extracting content on behalf of a user. If a user asks you to extract a 'list' of information, or 'all' information, YOU MUST EXTRACT ALL OF THE INFORMATION THAT THE USER REQUESTS. You will be given: 1. An instruction 2. A list of DOM elements to extract from. Print the exact text from the DOM elements with all symbols, characters, and endlines as is. Print null or an empty string if no new information is found. If a user is attempting to extract links or URLs, you MUST respond with ONLY the IDs of the link elements. Do not attempt to extract links directly from the text unless absolutely necessary. "
+    },
+    {
+      "role": "user",
+      "content": "Instruction: Extract the name of every team card listed under the \"Mis equipos\" heading
+DOM: [0-606] region: Equipos
+  [0-601] div
+    [0-539] heading: Equipos
+    [0-540] div
+      [0-537] LabelText
+        [0-652] StaticText: Buscar equipos por nombre
+      [0-536] searchbox: Buscar equipos por nombre
+  [0-602] paragraph
+  [0-603] list
+    [0-598] listitem
+      [0-559] link: Equipo Backend 30878 Líder Líder: Ana Stagehand 179307475314765 1 miembro Abrir
+        [0-556] div
+          [0-544] heading: Equipo Backend 30878
+          [0-629] StaticText: Líder
+        [0-557] paragraph
+          [0-630] StaticText: Líder:
+          [0-631] StaticText: Ana Stagehand 179307475314765
+        [0-558] div
+          [0-554] span
+            [0-632] StaticText: 1
+            [0-633] StaticText: 
+            [0-634] StaticText: miembro
+          [0-635] StaticText: Abrir
+    [0-599] listitem
+      [0-578] link: Equipo Frontend 30878 Líder Líder: Ana Stagehand 179307475314765 1 miembro Abrir
+        [0-575] div
+          [0-563] heading: Equipo Frontend 30878
+          [0-637] StaticText: Líder
+        [0-576] paragraph
+          [0-638] StaticText: Líder:
+          [0-639] StaticText: Ana Stagehand 179307475314765
+        [0-577] div
+          [0-573] span
+            [0-640] StaticText: 1
+            [0-641] StaticText: 
+            [0-642] StaticText: miembro
+          [0-643] StaticText: Abrir
+    [0-600] listitem
+      [0-597] link: Equipo Calidad 30878 Líder Líder: Ana Stagehand 179307475314765 1 miembro Abrir
+        [0-594] div
+          [0-582] heading: Equipo Calidad 30878
+          [0-645] StaticText: Líder
+        [0-595] paragraph
+          [0-646] StaticText: Líder:
+          [0-647] StaticText: Ana Stagehand 179307475314765
+        [0-596] div
+          [0-592] span
+            [0-648] StaticText: 1
+            [0-649] StaticText: 
+            [0-650] StaticText: miembro
+          [0-651] StaticText: Abrir"
+    }
+  ]
+}

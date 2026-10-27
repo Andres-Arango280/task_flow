@@ -1,0 +1,22 @@
+{
+  "id": "API-TAR-04",
+  "obtenido": "Respondió 400 con \"Debes enviar proyectoId o listaId\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/tareas",
+    "autenticado": true,
+    "cuerpo": {
+      "titulo": "Huérfana"
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 5,
+    "cuerpo": {
+      "message": "Debes enviar proyectoId o listaId",
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:13:13.320Z"
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar que cerrar sesión pide confirmación, elimina la sesión y bloquea las rutas privadas.
+
+Resultado esperado: 'Salir' abre '¿Cerrar sesión?'; Cancelar mantiene la sesión; 'Cerrar sesión' lleva a /login, borra el token y volver a '/' redirige a /login.
+
+Datos: Usuario creado por API.
+Esperas: waitForElementVisible alertdialog 10s; waitForElementNotPresent alertdialog 10s; waitForElementVisible h1_IniciarSesion 10s
+Evidencia: Reports/evidencias/TC16_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC16_CerrarSesion</name>
+   <tag>positivo,sesion</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>3c0c5b18-92c6-4655-a886-cc465ea7f70f</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,21 @@
+# /login
+# título: Iniciar sesión · TaskFlow
+
+- main:
+  - paragraph: TaskFlow
+  - paragraph: Gestión colaborativa de tareas
+  - heading "Iniciar sesión" [level=1]
+  - text: Correo electrónico (obligatorio)
+  - textbox "Correo electrónico (obligatorio)":
+    - /placeholder: tu@email.com
+  - text: Contraseña (obligatorio)
+  - textbox "Contraseña (obligatorio)"
+  - button "Mostrar contraseña"
+  - button "Iniciar sesión"
+  - paragraph:
+    - text: ¿No tienes cuenta?
+    - link "Regístrate aquí":
+      - /url: /register
+  - paragraph:
+    - link "Privacidad y uso de tus datos":
+      - /url: /privacidad

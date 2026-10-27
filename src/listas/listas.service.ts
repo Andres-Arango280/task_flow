@@ -1,25 +1,34 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import mongoose, { Model } from 'mongoose';
-import { Lista } from './schemas/lista.schema';
+import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Lista } from './entities/lista.entity';
+import { Proyecto } from '../proyectos/entities/proyecto.entity';
+import { usuarioPerteneceAEquipo } from '../equipos/equipos.service';
 
 @Injectable()
 export class ListasService {
   constructor(
-    @InjectModel(Lista.name) private readonly listaModel: Model<Lista>,
+    @InjectRepository(Lista) private readonly listaRepository: Repository<Lista>,
+    @InjectRepository(Proyecto) private readonly proyectoRepository: Repository<Proyecto>,
   ) {}
 
+  async obtenerListasPorProyecto(proyectoId: string, userId: string): Promise<Lista[]> {
+    const proyecto = await this.proyectoRepository.findOne({
+      where: { id: proyectoId },
+      relations: { equipo: { miembros: true } },
+    });
 
-  async obtenerListasPorProyecto(proyectoId: string): Promise<Lista[]> {
-   
-    const id = new mongoose.Types.ObjectId(proyectoId);
-
-    const listas = await this.listaModel.find({ proyecto: id }).exec();
-
-    if (!listas || listas.length === 0) {
-      throw new NotFoundException('No se encontraron listas para este proyecto');
+    if (!proyecto) {
+      throw new NotFoundException('Proyecto no encontrado');
     }
 
-    return listas;
+    if (!usuarioPerteneceAEquipo(proyecto.equipo, userId)) {
+      throw new ForbiddenException('No tienes acceso a este proyecto');
+    }
+
+    return this.listaRepository.find({
+      where: { proyectoId },
+      order: { orden: 'ASC', createdAt: 'ASC' },
+    });
   }
 }

@@ -1,0 +1,4 @@
+titulo,descripcion
+Configurar entorno de pruebas,Instalar dependencias y preparar datos de prueba
+Redactar casos de prueba,Casos positivos y negativos del tablero Kanban
+Automatizar flujo de login,Script de Katalon con esperas explicitas y verificaciones

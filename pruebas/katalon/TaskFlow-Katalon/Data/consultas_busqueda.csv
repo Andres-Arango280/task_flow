@@ -1,0 +1,8 @@
+consulta,coincidencias,esperada,motivo
+disenar,1,T1,sin tilde (el titulo lleva n con virgulilla)
+PANTALLA,1,T1,mayusculas
+pantala,1,T1,error de escritura: falta una letra
+revisr api,1,T2,error de escritura en un termino y dos terminos
+demostracion final,1,T3,dos terminos sin tilde
+de,3,todas,termino corto presente en las tres tareas
+zzzz,0,ninguna,sin coincidencias

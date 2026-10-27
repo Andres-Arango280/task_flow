@@ -1,0 +1,18 @@
+{
+  "id": "API-PRO-07",
+  "obtenido": "El miembro recibió 403; el líder 200 {eliminado: true}; después las listas responden 404.",
+  "peticion": {
+    "metodo": "DELETE",
+    "url": "http://localhost:3000/proyectos/55386884-b00d-4b14-b315-0c8c879a3f1e",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 14,
+    "cuerpo": {
+      "id": "55386884-b00d-4b14-b315-0c8c879a3f1e",
+      "eliminado": true
+    }
+  },
+  "fecha": "2026-10-26T23:13:00.561Z"
+}

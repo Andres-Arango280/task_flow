@@ -1,0 +1,15 @@
+{
+  "id": "SEG-DEP-02",
+  "nombre": "Árbol completo del backend (incl. desarrollo) — npm audit",
+  "fecha": "2026-10-26T23:19:30.521Z",
+  "obtenido": "crítica=0, alta=8, moderada=13, baja=3 (total 24)",
+  "extra": {
+    "info": 0,
+    "low": 3,
+    "moderate": 13,
+    "high": 8,
+    "critical": 0,
+    "total": 24
+  },
+  "intercambios": []
+}

@@ -1,0 +1,18 @@
+{
+  "id": "API-TAR-12",
+  "obtenido": "Primera eliminación 200 {eliminado: true}; segunda 404 \"Tarea no encontrada\".",
+  "peticion": {
+    "metodo": "DELETE",
+    "url": "http://localhost:3000/tareas/c3b642f8-b607-41e7-8ace-d1b767180342",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 55,
+    "cuerpo": {
+      "id": "c3b642f8-b607-41e7-8ace-d1b767180342",
+      "eliminado": true
+    }
+  },
+  "fecha": "2026-10-26T23:13:23.438Z"
+}

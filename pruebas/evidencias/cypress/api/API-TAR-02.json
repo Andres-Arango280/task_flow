@@ -1,0 +1,37 @@
+{
+  "id": "API-TAR-02",
+  "obtenido": "Respondió 201 y la tarea quedó en \"Por Hacer\" sin asignados.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/tareas",
+    "autenticado": true,
+    "cuerpo": {
+      "titulo": "Sin lista",
+      "proyectoId": "470ff989-774e-4075-b715-5e6b33f21427"
+    }
+  },
+  "respuesta": {
+    "estado": 201,
+    "duracionMs": 67,
+    "cuerpo": {
+      "id": "584dc2fe-8f16-4c7b-b888-098db36a6c9c",
+      "titulo": "Sin lista",
+      "descripcion": null,
+      "estado": "pendiente",
+      "prioridad": "media",
+      "listaId": "5883c374-923d-4aa9-9078-f02dd9531f3e",
+      "createdAt": "2026-10-26T23:13:11.083Z",
+      "updatedAt": "2026-10-26T23:13:11.083Z",
+      "asignados": [],
+      "lista": {
+        "id": "5883c374-923d-4aa9-9078-f02dd9531f3e",
+        "nombre": "Por Hacer",
+        "orden": 0,
+        "proyectoId": "470ff989-774e-4075-b715-5e6b33f21427",
+        "createdAt": "2026-10-26T23:13:11.037Z",
+        "updatedAt": "2026-10-26T23:13:11.037Z"
+      }
+    }
+  },
+  "fecha": "2026-10-26T23:13:11.159Z"
+}

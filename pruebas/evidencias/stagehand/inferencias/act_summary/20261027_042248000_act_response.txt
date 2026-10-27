@@ -1,0 +1,12 @@
+{
+  "modelResponse": "act",
+  "rawResponse": {
+    "action": {
+      "elementId": "0-2084",
+      "description": "button",
+      "method": "click",
+      "arguments": []
+    },
+    "twoStep": false
+  }
+}

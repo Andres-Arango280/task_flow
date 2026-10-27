@@ -1,0 +1,22 @@
+{
+  "id": "API-USU-05",
+  "obtenido": "Respondió 404 con \"Usuario no encontrado\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/usuarios",
+    "query": {
+      "email": "nadie.1793056413972@taskflow-cypress.test"
+    },
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 404,
+    "duracionMs": 16,
+    "cuerpo": {
+      "message": "Usuario no encontrado",
+      "error": "Not Found",
+      "statusCode": 404
+    }
+  },
+  "fecha": "2026-10-26T23:13:34.033Z"
+}

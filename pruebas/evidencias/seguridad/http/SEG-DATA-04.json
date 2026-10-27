@@ -1,0 +1,50 @@
+{
+  "id": "SEG-DATA-04",
+  "nombre": "La respuesta de login y el JWT no contienen datos sensibles",
+  "fecha": "2026-10-26T23:19:18.632Z",
+  "obtenido": "cuerpo=[access_token]; claims=[email,exp,iat,id,sub]",
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/auth/login",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "email": "seg_lider_1793056751720_1@taskflow.test",
+          "password": "ClaveSegura#2026"
+        }
+      },
+      "respuesta": {
+        "status": 201,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "332",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:18 GMT",
+          "etag": "W/\"14c-qiuNAFaw9KK/bo2hnz0LZTIM23U\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5YzBlNTVhZC1jMmNkLTQ1NzYtYTE1OS1hMDI2NjNmYjg3YmUiLCJlbWFpbCI6InNlZ19saWRlcl8xNzkzMDU2NzUxNzIwXzFAdGFza2Zsb3cudGVzdCIsImlkIjoiOWMwZTU1YWQtYzJjZC00NTc2LWExNTktYTAyNjYzZmI4N2JlIiwiaWF0IjoxNzkzMDU2NzU4LCJleHAiOjE3OTMxNDMxNTh9.T5reZHbHxGCgn4KGwSGGvtFV-nrKxwOEi-UQgSPvvg0"
+        },
+        "tiempoMs": 85.8
+      }
+    }
+  ]
+}

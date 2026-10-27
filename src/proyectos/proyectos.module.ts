@@ -1,19 +1,13 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProyectosController } from './proyectos.controller';
 import { ProyectosService } from './proyectos.service';
-import { Proyecto, ProyectoSchema } from './schemas/proyecto.schema';
-import { Lista, ListaSchema } from '../listas/schemas/lista.schema';
-import { Equipo, EquipoSchema } from '../equipos/schemas/equipo.schema';
+import { Proyecto } from './entities/proyecto.entity';
+import { Lista } from '../listas/entities/lista.entity';
+import { Equipo } from '../equipos/entities/equipo.entity';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([
-      { name: Proyecto.name, schema: ProyectoSchema },
-      { name: Lista.name, schema: ListaSchema },
-      { name: Equipo.name, schema: EquipoSchema }, // ← IMPORTANTE
-    ]),
-  ],
+  imports: [TypeOrmModule.forFeature([Proyecto, Lista, Equipo])],
   controllers: [ProyectosController],
   providers: [ProyectosService],
   exports: [ProyectosService],

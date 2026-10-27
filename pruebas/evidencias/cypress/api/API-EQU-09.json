@@ -1,0 +1,22 @@
+{
+  "id": "API-EQU-09",
+  "obtenido": "Respondió 404 con \"Usuario no encontrado\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/equipos/6c7c04d9-d0de-4c5e-a451-83041e550884/miembros",
+    "autenticado": true,
+    "cuerpo": {
+      "userId": "00000000-0000-4000-8000-000000000000"
+    }
+  },
+  "respuesta": {
+    "estado": 404,
+    "duracionMs": 14,
+    "cuerpo": {
+      "message": "Usuario no encontrado",
+      "error": "Not Found",
+      "statusCode": 404
+    }
+  },
+  "fecha": "2026-10-26T23:12:40.683Z"
+}

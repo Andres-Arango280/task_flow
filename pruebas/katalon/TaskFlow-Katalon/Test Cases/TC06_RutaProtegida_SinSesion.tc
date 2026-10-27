@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[NEGATIVO] Comprobar que las rutas privadas no son accesibles sin sesión (UI y API).
+
+Resultado esperado: Cada ruta privada (/, /preferencias, /ayuda, /equipos/:id, /proyectos/:id) redirige a /login sin mostrar la barra; GET /equipos sin token devuelve 401.
+
+Datos: Rutas privadas con UUID inexistente; navegador sin sesión.
+Esperas: waitForElementVisible h1_IniciarSesion 10s; verifyElementNotPresent nav_btn_Salir 3s
+Evidencia: Reports/evidencias/TC06_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC06_RutaProtegida_SinSesion</name>
+   <tag>negativo,sesion</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b9ee2ef3-c17b-423e-8eaa-906ce01ef822</testCaseGuid>
+</TestCaseEntity>

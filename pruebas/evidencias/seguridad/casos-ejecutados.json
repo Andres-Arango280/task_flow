@@ -1,0 +1,779 @@
+[
+  {
+    "id": "SEG-AUTH-01",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Rutas protegidas sin token devuelven 401",
+    "tipo": "negativo",
+    "objetivo": "Verificar que el JwtAuthGuard protege todas las rutas salvo /auth/*",
+    "esperado": "HTTP 401 en todas las rutas protegidas cuando no se envía Authorization",
+    "obtenido": "22/22 rutas respondieron 401",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-01.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-02",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Login válido emite JWT HS256 con expiración de 1 día",
+    "tipo": "positivo",
+    "objetivo": "Comprobar que el token emitido tiene algoritmo seguro, expiración y no incluye datos sensibles",
+    "esperado": "HTTP 201 con access_token; header alg=HS256; exp - iat = 86400 s; payload sin password",
+    "obtenido": "HTTP 201; alg=HS256; vida=86400s; claims=[sub, email, id, iat, exp]",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-02.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-03",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Token con firma alterada es rechazado",
+    "tipo": "negativo",
+    "objetivo": "Verificar que se valida la firma HMAC del JWT",
+    "esperado": "HTTP 401 en GET /usuarios/me con un token cuya firma fue modificada",
+    "obtenido": "HTTP 401",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-03.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-04",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Token con payload manipulado (suplantación de sub) es rechazado",
+    "tipo": "negativo",
+    "objetivo": "Impedir que un usuario cambie el \"sub\" del token para suplantar a otro",
+    "esperado": "HTTP 401 al usar el token de B con sub/id de A y la firma original",
+    "obtenido": "HTTP 401",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-04.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-05",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Token con algoritmo \"none\" es rechazado",
+    "tipo": "negativo",
+    "objetivo": "Evitar el ataque alg=none (token sin firma)",
+    "esperado": "HTTP 401",
+    "obtenido": "HTTP 401",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-05.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-06",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Token firmado con un secreto incorrecto es rechazado",
+    "tipo": "negativo",
+    "objetivo": "Verificar que un atacante no puede fabricar tokens con secretos débiles/adivinados (p. ej. \"secret\")",
+    "esperado": "HTTP 401 para tokens firmados con \"secret\", \"changeme\" y \"taskflow\"",
+    "obtenido": "HTTP 401, 401, 401",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-06.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-07",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Token caducado (exp en el pasado) es rechazado",
+    "tipo": "negativo",
+    "objetivo": "Verificar que se valida la expiración del JWT (ignoreExpiration=false)",
+    "esperado": "HTTP 401 con un token correctamente firmado pero expirado hace 1 hora",
+    "obtenido": "Token caducado → HTTP 401; control (mismo secreto, vigente) → HTTP 200",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-07.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-08",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "El token solo se acepta en la cabecera Authorization: Bearer",
+    "tipo": "negativo",
+    "objetivo": "Evitar fugas de token por URL (logs, Referer) y formatos ambiguos",
+    "esperado": "HTTP 401 si el token va en query string, sin prefijo Bearer o como cookie",
+    "obtenido": "query → 401; sin Bearer → 401; cookie → 401",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-08.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-09",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Bloqueo por fuerza bruta: 6º intento → 429",
+    "tipo": "negativo",
+    "objetivo": "Verificar el limitador de intentos: tras 5 fallos sobre el mismo correo se bloquea 15 min",
+    "esperado": "Intentos 1-5 → 401; intento 6 → 429 (incluso con la contraseña correcta) con mensaje en español",
+    "obtenido": "Intentos 1-5 → [401, 401, 401, 401, 401]; 6º → 429 (\"Demasiados intentos fallidos. Por seguridad, espera 15 minuto(s) antes de volver a intentarlo.\"); contraseña correcta durante bloqueo → 429",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-09.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-10",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "El bloqueo afecta solo a la cuenta atacada (y no se evade con mayúsculas)",
+    "tipo": "positivo",
+    "objetivo": "Comprobar que otros usuarios pueden autenticarse y que la clave del bloqueo normaliza el correo",
+    "esperado": "Otro usuario → 201; mismo correo en MAYÚSCULAS → 429",
+    "obtenido": "Otro usuario → 201; correo bloqueado en mayúsculas → 429",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-10.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-11",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Login no permite enumerar usuarios por el mensaje",
+    "tipo": "negativo",
+    "objetivo": "El mensaje y código de error deben ser idénticos para usuario inexistente y contraseña incorrecta",
+    "esperado": "Ambos → HTTP 401 con el mismo cuerpo {\"message\":\"Credenciales inválidas\",...}",
+    "obtenido": "Inexistente → 401 {\"message\":\"Credenciales inválidas\",\"error\":\"Unauthorized\",\"statusCode\":401}; contraseña incorrecta → 401 {\"message\":\"Credenciales inválidas\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-11.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-12",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Tiempo de respuesta del login no permite enumerar usuarios",
+    "tipo": "negativo",
+    "objetivo": "Detectar enumeración por canal lateral de tiempo (bcrypt solo se ejecuta si el usuario existe)",
+    "esperado": "Diferencia de medianas entre usuario inexistente y contraseña incorrecta < 30 ms",
+    "obtenido": "Mediana usuario existente=90.8 ms; inexistente=94.3 ms; diferencia=-3.5 ms",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-12.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-13",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Limitación por cliente/IP frente a password spraying",
+    "tipo": "negativo",
+    "objetivo": "Comprobar si un mismo cliente puede probar contraseñas contra muchas cuentas distintas sin ser frenado",
+    "esperado": "Tras un umbral razonable (≤ 20 intentos fallidos desde la misma IP) la API responde 429",
+    "obtenido": "20 intentos contra 20 cuentas distintas: 20×401, 0×429 (no existe límite por IP)",
+    "estado": "Fallido",
+    "evidencia": [
+      "http/SEG-AUTH-13.json",
+      "salida-node-test.txt"
+    ],
+    "severidad": "Media",
+    "hallazgo": {
+      "descripcion": "El limitador es solo por correo y en memoria: un atacante puede hacer password spraying (una contraseña contra muchas cuentas) o registrar cuentas masivamente sin límite por IP.",
+      "severidad": "Media",
+      "recomendacion": "Añadir @nestjs/throttler (límite global y por IP) con almacenamiento compartido (Redis) para que funcione con varias instancias y sobreviva a reinicios."
+    }
+  },
+  {
+    "id": "SEG-AUTH-14",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "El token de una cuenta eliminada deja de dar acceso",
+    "tipo": "negativo",
+    "objetivo": "Verificar que la estrategia JWT comprueba que el usuario sigue existiendo",
+    "esperado": "Tras DELETE /usuarios/me, el mismo token → 401 (acceso denegado, sin datos)",
+    "obtenido": "DELETE /usuarios/me → 200; token reutilizado → 401 {\"message\":\"La sesión ya no es válida. Vuelve a iniciar sesión.\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-14.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTH-15",
+    "categoria": "OWASP A07:2021 Identification and Authentication Failures / API2:2023 Broken Authentication",
+    "nombre": "Política de contraseñas rechaza contraseñas triviales",
+    "tipo": "negativo",
+    "objetivo": "Comprobar la robustez de la política de contraseñas (OWASP ASVS 2.1)",
+    "esperado": "HTTP 400 al registrar con \"123456\", \"password\" o \"aaaaaa\" (y con \"12345\"); política: ≥ 8 caracteres con al menos una letra y un número",
+    "obtenido": "\"123456\" → 400 (La contraseña debe contener al menos una letra / La contraseña debe tener al menos 8 caracteres); \"password\" → 400 (La contraseña debe contener al menos un número); \"aaaaaa\" → 400 (La contraseña debe contener al menos un número / La contraseña debe tener al menos 8 caracteres); \"12345\" (5 car.) → 400",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTH-15.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-01",
+    "categoria": "OWASP A01:2021 Broken Access Control / API1:2023 Broken Object Level Authorization",
+    "nombre": "Usuario ajeno no puede leer el equipo ni sus miembros",
+    "tipo": "negativo",
+    "objetivo": "Evitar IDOR sobre /equipos/:id conociendo el UUID",
+    "esperado": "HTTP 403/404 y sin datos del equipo",
+    "obtenido": "GET equipo → 403; GET miembros → 403; fuga de datos: no",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-01.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-02",
+    "categoria": "OWASP A01:2021 Broken Access Control / API1:2023 Broken Object Level Authorization",
+    "nombre": "Usuario ajeno no puede leer proyectos ni listas de otro equipo",
+    "tipo": "negativo",
+    "objetivo": "Evitar IDOR sobre /proyectos y /listas",
+    "esperado": "HTTP 403/404 en las 3 rutas",
+    "obtenido": "GET /proyectos?equipoId → 403; GET /proyectos/:id → 403; GET /listas/proyecto/:id → 403",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-02.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-03",
+    "categoria": "OWASP A01:2021 Broken Access Control / API1:2023 Broken Object Level Authorization",
+    "nombre": "Usuario ajeno no puede leer las tareas de otro proyecto",
+    "tipo": "negativo",
+    "objetivo": "Evitar IDOR sobre GET /tareas?proyectoId",
+    "esperado": "HTTP 403/404 sin el título de la tarea",
+    "obtenido": "HTTP 403 {\"message\":\"No tienes acceso a este proyecto\",\"error\":\"Forbidden\",\"statusCode\":403}",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-03.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-04",
+    "categoria": "OWASP A01:2021 Broken Access Control / API1:2023 Broken Object Level Authorization",
+    "nombre": "Usuario ajeno no puede crear, editar, mover, asignar ni borrar tareas ajenas",
+    "tipo": "negativo",
+    "objetivo": "Evitar modificación de objetos ajenos (BOLA en escritura)",
+    "esperado": "HTTP 403/404 en las 5 operaciones y la tarea de A queda intacta",
+    "obtenido": "POST /tareas (lista ajena) → 403; PATCH /tareas/:id → 403; PATCH /tareas/:id/mover → 403; PATCH /tareas/:id/asignar → 403; DELETE /tareas/:id → 403; tarea de A intacta: sí; tarea intrusa creada: no",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-04.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-05",
+    "categoria": "OWASP A01:2021 Broken Access Control / API1:2023 Broken Object Level Authorization",
+    "nombre": "Usuario ajeno no puede borrar equipo/proyecto ajeno ni auto-añadirse",
+    "tipo": "negativo",
+    "objetivo": "Evitar destrucción de datos y escalada mediante IDs conocidos",
+    "esperado": "HTTP 403/404 en las 4 operaciones; el equipo sigue existiendo",
+    "obtenido": "DELETE /proyectos/:id → 403; DELETE /equipos/:id → 403; POST /equipos/:id/miembros (a sí mismo) → 403; DELETE /equipos/:id/miembros/:C → 403; equipo intacto: sí",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-05.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-06",
+    "categoria": "OWASP A01:2021 Broken Access Control / API5:2023 Broken Function Level Authorization",
+    "nombre": "Miembro no líder no puede ejecutar acciones de líder",
+    "tipo": "negativo",
+    "objetivo": "Verificar la autorización a nivel de función (solo el líder gestiona miembros y elimina equipo/proyecto)",
+    "esperado": "HTTP 403 al añadir/quitar miembros y al eliminar equipo o proyecto",
+    "obtenido": "añadir miembro → 403; quitar miembro → 403; quitar al líder → 403; eliminar proyecto → 403; eliminar equipo → 403",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-06.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-07",
+    "categoria": "OWASP A01:2021 Broken Access Control / API1:2023 Broken Object Level Authorization",
+    "nombre": "Miembro del equipo sí puede leer y crear tareas (control positivo)",
+    "tipo": "positivo",
+    "objetivo": "Confirmar que los controles no bloquean el uso legítimo",
+    "esperado": "GET equipo/proyecto/tareas → 200; POST /tareas → 201",
+    "obtenido": "GET equipo → 200; GET proyecto → 200; GET tareas → 200; POST tarea → 201",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-07.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-08",
+    "categoria": "OWASP A01:2021 Broken Access Control / API1:2023 Broken Object Level Authorization",
+    "nombre": "No se pueden asignar usuarios ajenos al equipo a una tarea",
+    "tipo": "negativo",
+    "objetivo": "Impedir asignar (y exponer la tarea a) usuarios que no son miembros",
+    "esperado": "HTTP 400 \"Solo se pueden asignar miembros del equipo\" (al asignar y al crear)",
+    "obtenido": "asignar → 400 \"Solo se pueden asignar miembros del equipo\"; crear con asignado ajeno → 400",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-08.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-09",
+    "categoria": "OWASP A01:2021 Broken Access Control / API1:2023 Broken Object Level Authorization",
+    "nombre": "No se puede mover una tarea a la lista de otro proyecto",
+    "tipo": "negativo",
+    "objetivo": "Mantener la integridad entre proyectos (y evitar mover tareas a proyectos ajenos)",
+    "esperado": "HTTP 400 al mover a una lista de otro proyecto (propio o ajeno)",
+    "obtenido": "a otro proyecto propio → 400; a proyecto de otro equipo → 400",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-09.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-10",
+    "categoria": "OWASP A01:2021 Broken Access Control / API1:2023 Broken Object Level Authorization",
+    "nombre": "Un miembro expulsado pierde el acceso inmediatamente",
+    "tipo": "negativo",
+    "objetivo": "Verificar que la autorización se evalúa en cada petición (no cacheada en el token)",
+    "esperado": "Antes de expulsar → 200; después → 403",
+    "obtenido": "antes → 200; expulsión → 200; después → 403",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-10.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-AUTHZ-11",
+    "categoria": "OWASP A01:2021 Broken Access Control / API1:2023 Broken Object Level Authorization",
+    "nombre": "GET /equipos solo lista los equipos del usuario",
+    "tipo": "positivo",
+    "objetivo": "Evitar fuga de equipos ajenos en listados",
+    "esperado": "B ve su equipo y no ve el de A",
+    "obtenido": "HTTP 200; 1 equipo(s); contiene equipo de A: no",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-AUTHZ-11.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-DATA-01",
+    "categoria": "OWASP A02:2021 Cryptographic Failures / API3:2023 Broken Object Property Level Authorization",
+    "nombre": "Ninguna respuesta de la API expone la contraseña ni su hash",
+    "tipo": "negativo",
+    "objetivo": "Verificar select:false en la columna password y respuestas sanitizadas",
+    "esperado": "Ni \"password\" ni \"$2b$\" aparecen en register, login, /usuarios/me, /usuarios?email, equipos, miembros ni tareas (ni en ninguna respuesta de la suite)",
+    "obtenido": "0 de 150 respuestas analizadas contienen \"password\" o un hash bcrypt",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-DATA-01.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-DATA-02",
+    "categoria": "OWASP A02:2021 Cryptographic Failures / API3:2023 Broken Object Property Level Authorization",
+    "nombre": "Las contraseñas se almacenan con bcrypt (coste 10)",
+    "tipo": "positivo",
+    "objetivo": "Verificar el hashing en la base de datos (consulta SQL de solo lectura con psql)",
+    "esperado": "La columna password empieza por \"$2b$10$\", tiene 60 caracteres y no contiene la contraseña en claro",
+    "obtenido": "prefijo=$2b$10$; longitud=60; igual al texto plano=false",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-DATA-02.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-DATA-03",
+    "categoria": "OWASP A01:2021 / API3:2023 Broken Object Property Level Authorization",
+    "nombre": "Búsqueda de usuarios por email no permite enumerar cuentas ajenas",
+    "tipo": "negativo",
+    "objetivo": "Comprobar si cualquier usuario autenticado puede consultar si un correo está registrado y obtener sus datos",
+    "esperado": "La búsqueda no revela datos de usuarios sin relación con el solicitante (o está limitada en frecuencia)",
+    "obtenido": "B consulta el correo de A → 200 con campos [id, nombre, email, createdAt, updatedAt]; registro con correo existente → 409 \"El email ya está registrado\"",
+    "estado": "Fallido",
+    "evidencia": [
+      "http/SEG-DATA-03.json",
+      "salida-node-test.txt"
+    ],
+    "severidad": "Baja",
+    "hallazgo": {
+      "descripcion": "GET /usuarios?email= devuelve id, nombre, email y fechas de cualquier usuario a cualquier usuario autenticado, y /auth/register responde 409 \"El email ya está registrado\": ambos permiten enumerar cuentas.",
+      "severidad": "Baja",
+      "recomendacion": "Limitar la búsqueda (rate limit, devolver solo id/nombre, o invitar por correo sin confirmar existencia) y responder de forma genérica en el registro."
+    }
+  },
+  {
+    "id": "SEG-DATA-04",
+    "categoria": "OWASP A02:2021 Cryptographic Failures / API3:2023 Broken Object Property Level Authorization",
+    "nombre": "La respuesta de login y el JWT no contienen datos sensibles",
+    "tipo": "positivo",
+    "objetivo": "Minimizar los datos expuestos en el token (que es legible en base64)",
+    "esperado": "Respuesta = {access_token}; claims solo sub, email, id, iat, exp",
+    "obtenido": "cuerpo=[access_token]; claims=[email,exp,iat,id,sub]",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-DATA-04.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-INY-01",
+    "categoria": "OWASP A03:2021 Injection",
+    "nombre": "Inyección SQL en el login no permite saltar la autenticación",
+    "tipo": "negativo",
+    "objetivo": "Comprobar el uso de consultas parametrizadas y validación de entrada en /auth/login",
+    "esperado": "HTTP 400/401 (nunca 201 ni 500) para payloads SQLi en email y password",
+    "obtenido": "Códigos: [400, 401, 400, 401, 401, 401]; tokens emitidos: 0",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-INY-01.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-INY-02",
+    "categoria": "OWASP A03:2021 Injection",
+    "nombre": "Inyección SQL en parámetros de consulta",
+    "tipo": "negativo",
+    "objetivo": "Comprobar que los parámetros de búsqueda y filtros no son interpretados como SQL",
+    "esperado": "GET /usuarios?email=<sqli> → 404 sin datos; ?proyectoId/?equipoId=<sqli> → 400 (ParseUUIDPipe); nunca 500",
+    "obtenido": "usuarios?email=' OR '1'='1 → 404; usuarios?email=% → 404; usuarios?email=x' UNION SELECT ... → 404; tareas?proyectoId=1 OR 1=1 → 400; proyectos?equipoId=' OR ''=' → 400",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-INY-02.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-INY-03",
+    "categoria": "OWASP A03:2021 Injection",
+    "nombre": "Payload SQL almacenado se guarda como texto literal",
+    "tipo": "negativo",
+    "objetivo": "Verificar que un nombre como \"'); DROP TABLE usuarios; --\" no se ejecuta",
+    "esperado": "HTTP 201, el nombre se devuelve literal y la tabla usuarios sigue operativa (login posterior 201)",
+    "obtenido": "crear → 201, nombre literal: sí; login posterior → 201",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-INY-03.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-INY-04",
+    "categoria": "OWASP A03:2021 Injection",
+    "nombre": "Operadores tipo NoSQL en el email son rechazados",
+    "tipo": "negativo",
+    "objetivo": "Comprobar que objetos JSON ({\"$ne\":null}, {\"$gt\":\"\"}) no se aceptan donde se espera texto",
+    "esperado": "HTTP 400 por validación (IsEmail) en login y registro",
+    "obtenido": "Códigos: [400, 400, 400, 400]",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-INY-04.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-INY-05",
+    "categoria": "OWASP A03:2021 Injection / A04:2021 Insecure Design",
+    "nombre": "Objeto en el campo password del login es rechazado con 400",
+    "tipo": "negativo",
+    "objetivo": "Comprobar la validación de tipo del campo password en LoginDto",
+    "esperado": "HTTP 400 (validación) — no 500 — y el intento cuenta para el bloqueo",
+    "obtenido": "{\"$ne\":null} → 400 {\"message\":[\"La contraseña no puede superar 72 caracteres\",\"La contraseña debe ser texto\"],\"error\":\"Bad Request\",\"statusCode\":400}; array → 400; número → 400",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-INY-05.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-INY-06",
+    "categoria": "OWASP A03:2021 Injection (XSS)",
+    "nombre": "XSS almacenado en el título de una tarea se devuelve como texto",
+    "tipo": "negativo",
+    "objetivo": "Verificar que el payload se trata como dato: JSON con Content-Type application/json + nosniff, y que el frontend no usa sinks HTML peligrosos",
+    "esperado": "Título devuelto literal en JSON; Content-Type application/json; X-Content-Type-Options: nosniff; 0 usos de dangerouslySetInnerHTML/innerHTML en taskflow-frontend/src",
+    "obtenido": "crear → 201; título literal: sí; content-type=application/json; charset=utf-8; nosniff=nosniff; sinks peligrosos en frontend: 0 (React escapa el texto al renderizar {tarea.titulo})",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-INY-06.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-INY-07",
+    "categoria": "OWASP A03:2021 Injection / Prototype pollution",
+    "nombre": "Payload __proto__ no contamina objetos del servidor",
+    "tipo": "negativo",
+    "objetivo": "Comprobar que claves __proto__/constructor en el JSON no alteran el comportamiento",
+    "esperado": "Sin 500; las respuestas posteriores no contienen la propiedad inyectada",
+    "obtenido": "crear → 201; propiedades inyectadas presentes: no",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-INY-07.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-VAL-01",
+    "categoria": "OWASP A04:2021 Insecure Design / API3:2023 BOPLA (Mass Assignment)",
+    "nombre": "Mass assignment en el registro (id, isAdmin, rol)",
+    "tipo": "negativo",
+    "objetivo": "Comprobar que no se pueden fijar campos internos al registrarse",
+    "esperado": "Campos extra rechazados (400) o ignorados: el id no es el enviado y no aparece isAdmin/rol",
+    "obtenido": "HTTP 201: campos extra eliminados silenciosamente (whitelist sin forbidNonWhitelisted); id asignado por el servidor=true",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-VAL-01.json",
+      "salida-node-test.txt"
+    ],
+    "hallazgo": {
+      "descripcion": "El ValidationPipe usa whitelist:true sin forbidNonWhitelisted: los campos no permitidos se eliminan en silencio (mass assignment mitigado) en vez de rechazarse con 400; el mensaje traducido \"El campo X no está permitido\" nunca se muestra.",
+      "severidad": "Informativa",
+      "recomendacion": "Activar forbidNonWhitelisted: true para rechazar explícitamente campos desconocidos y detectar clientes maliciosos o desactualizados."
+    }
+  },
+  {
+    "id": "SEG-VAL-02",
+    "categoria": "OWASP A04:2021 Insecure Design / API3:2023 BOPLA (Mass Assignment)",
+    "nombre": "Mass assignment de liderId/miembros al crear equipo",
+    "tipo": "negativo",
+    "objetivo": "Impedir crear un equipo asignando otro líder o miembros arbitrarios",
+    "esperado": "El líder es siempre el creador y los miembros extra se ignoran (o 400)",
+    "obtenido": "HTTP 201; liderId = creador (B); A incluido como miembro: no",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-VAL-02.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-VAL-03",
+    "categoria": "OWASP A04:2021 Insecure Design / API3:2023 BOPLA (Mass Assignment)",
+    "nombre": "Mass assignment en PATCH /tareas/:id (listaId, id, estado)",
+    "tipo": "negativo",
+    "objetivo": "Evitar que la edición de título cambie campos no editables (p. ej. mover la tarea a otro proyecto)",
+    "esperado": "Solo cambia el título; listaId e id se mantienen",
+    "obtenido": "HTTP 200; titulo=Editada; listaId sin cambios=true; estado=pendiente",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-VAL-03.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-VAL-04",
+    "categoria": "OWASP A04:2021 Insecure Design / API3:2023 BOPLA (Mass Assignment)",
+    "nombre": "Cadenas que superan la longitud máxima son rechazadas",
+    "tipo": "negativo",
+    "objetivo": "Verificar MaxLength en los DTO (evita errores de BD y abuso de almacenamiento)",
+    "esperado": "HTTP 400 con mensaje en español para nombre/título de 256, descripción de 5001 y contraseña de 73 caracteres",
+    "obtenido": "equipo.nombre 256 → 400; proyecto.nombre 256 → 400; tarea.titulo 256 → 400; tarea.descripcion 5001 → 400; usuario.nombre 256 → 400; register.password 73 → 400; límite exacto (255) → 201; ej. mensaje: [\"El nombre no puede superar 255 caracteres\"]",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-VAL-04.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-VAL-05",
+    "categoria": "OWASP A04:2021 Insecure Design / API3:2023 BOPLA (Mass Assignment)",
+    "nombre": "Identificadores con formato inválido son rechazados (ParseUUIDPipe)",
+    "tipo": "negativo",
+    "objetivo": "Evitar errores de BD/500 y sondeos con ids arbitrarios",
+    "esperado": "HTTP 400 en todas las rutas con :id o ?id no UUID",
+    "obtenido": "GET /equipos/123 → 400; GET /equipos/abc/miembros → 400; DELETE /equipos/1;DROP → 400; GET /proyectos/1%27%20OR%201=1 → 400; GET /listas/proyecto/not-a-uuid → 400; PATCH /tareas/xyz → 400; PATCH /tareas/e119cf5a-ff14-4453-9c95-12650b454571/mover → 400; PATCH /tareas/e119cf5a-ff14-4453-9c95-12650b454571/asignar → 400; POST /equipos/f6b022c5-2d2b-413b-bd68-4c68649a6966/miembros → 400",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-VAL-05.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-VAL-06",
+    "categoria": "OWASP API4:2023 Unrestricted Resource Consumption",
+    "nombre": "Cuerpos de petición muy grandes son rechazados",
+    "tipo": "negativo",
+    "objetivo": "Verificar el límite de tamaño del body (por defecto 100 KB en body-parser)",
+    "esperado": "HTTP 413 Payload Too Large con un body de ~1 MB",
+    "obtenido": "POST /tareas 1 MB → 413; POST /auth/login 200 KB → 413",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-VAL-06.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-CONF-01",
+    "categoria": "OWASP A05:2021 Security Misconfiguration / API8:2023 Security Misconfiguration",
+    "nombre": "Cabeceras de seguridad HTTP (helmet) presentes",
+    "tipo": "positivo",
+    "objetivo": "Verificar CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, COOP/CORP",
+    "esperado": "Todas las cabeceras presentes en respuestas autenticadas y de error",
+    "obtenido": "content-security-policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests | strict-transport-security: max-age=31536000; includeSubDomains | x-content-type-options: nosniff | x-frame-options: SAMEORIGIN | referrer-policy: no-referrer | cross-origin-opener-policy: same-origin | cross-origin-resource-policy: same-origin",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-CONF-01.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-CONF-02",
+    "categoria": "OWASP A05:2021 Security Misconfiguration / API8:2023 Security Misconfiguration",
+    "nombre": "X-Powered-By ausente (no se revela el framework)",
+    "tipo": "positivo",
+    "objetivo": "Reducir el fingerprinting del servidor",
+    "esperado": "Sin cabecera X-Powered-By ni Server",
+    "obtenido": "x-powered-by=ausente; server=ausente",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-CONF-02.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-CONF-03",
+    "categoria": "OWASP A05:2021 Security Misconfiguration / API8:2023 Security Misconfiguration",
+    "nombre": "CORS rechaza orígenes no autorizados",
+    "tipo": "negativo",
+    "objetivo": "Impedir que webs de terceros lean respuestas de la API desde el navegador",
+    "esperado": "Preflight y GET desde http://evil.example sin Access-Control-Allow-Origin",
+    "obtenido": "preflight evil → ACAO=ausente; GET evil → ACAO=ausente; Origin null → ACAO=ausente",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-CONF-03.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-CONF-04",
+    "categoria": "OWASP A05:2021 Security Misconfiguration / API8:2023 Security Misconfiguration",
+    "nombre": "CORS permite el frontend legítimo (http://localhost:5173)",
+    "tipo": "positivo",
+    "objetivo": "Confirmar que la restricción CORS no rompe el frontend",
+    "esperado": "Preflight 204 con Access-Control-Allow-Origin: http://localhost:5173",
+    "obtenido": "HTTP 204; ACAO=http://localhost:5173; métodos=GET,HEAD,PUT,PATCH,POST,DELETE",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-CONF-04.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-CONF-05",
+    "categoria": "OWASP A05:2021 Security Misconfiguration / API8:2023 Security Misconfiguration",
+    "nombre": "Las respuestas de error no filtran trazas ni detalles internos",
+    "tipo": "negativo",
+    "objetivo": "Verificar que 400/404/500 no exponen stack traces, rutas de ficheros, SQL ni versiones",
+    "esperado": "Ningún cuerpo de error contiene \"stack\", \"at \", rutas .ts/.js, \"QueryFailedError\" ni \"SELECT\"",
+    "obtenido": "400 {\"message\":\"Expected double-quoted property name in JSON at position 15\",\"error\":\"Bad Requ | 404 {\"message\":\"Cannot GET /ruta/inexistente\",\"error\":\"Not Found\",\"statusCode\":404} | 404 {\"message\":\"Equipo no encontrado\",\"error\":\"Not Found\",\"statusCode\":404} | 400 {\"message\":[\"La contraseña no puede superar 72 caracteres\",\"La contraseña debe ser texto\"]",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-CONF-05.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-CONF-06",
+    "categoria": "OWASP A05:2021 Security Misconfiguration / API8:2023 Security Misconfiguration",
+    "nombre": "El frontend define Content-Security-Policy",
+    "tipo": "negativo",
+    "objetivo": "Mitigar XSS en el cliente (el JWT se guarda en localStorage y sería robable ante un XSS)",
+    "esperado": "Cabecera Content-Security-Policy o <meta http-equiv=\"Content-Security-Policy\"> en el index.html del frontend",
+    "obtenido": "CSP cabecera=ausente; meta CSP=no; token guardado en localStorage en: taskflow-frontend\\src\\pages\\Login.tsx:70, taskflow-frontend\\src\\store\\useAuthStore.ts:47",
+    "estado": "Fallido",
+    "evidencia": [
+      "http/SEG-CONF-06.json",
+      "salida-node-test.txt"
+    ],
+    "severidad": "Baja",
+    "hallazgo": {
+      "descripcion": "El frontend no define CSP y guarda el JWT en localStorage (taskflow-frontend\\src\\pages\\Login.tsx:70, taskflow-frontend\\src\\store\\useAuthStore.ts:47); ante cualquier XSS el token (válido 24 h y sin revocación) podría ser exfiltrado.",
+      "severidad": "Baja",
+      "recomendacion": "Servir el build con CSP estricta (script-src 'self'; connect-src a la API) desde el servidor web/proxy y valorar cookies HttpOnly+SameSite para el token."
+    }
+  },
+  {
+    "id": "SEG-CONF-07",
+    "categoria": "OWASP A05:2021 Security Misconfiguration / A02:2021 (gestión de secretos)",
+    "nombre": "Secretos fuera del control de versiones y JWT_SECRET robusto",
+    "tipo": "negativo",
+    "objetivo": "Verificar que .env no está versionado y que el secreto JWT tiene entropía suficiente",
+    "esperado": ".env ignorado y NO rastreado por git; JWT_SECRET ≥ 32 caracteres",
+    "obtenido": ".env rastreado por git: no (aparece en 1 commit(s); estado actual \"D  .env\"); longitud JWT_SECRET=64",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-CONF-07.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-DEP-01",
+    "categoria": "OWASP A06:2021 Vulnerable and Outdated Components",
+    "nombre": "Dependencias de producción del backend sin vulnerabilidades críticas/altas",
+    "tipo": "negativo",
+    "objetivo": "Analizar con npm audit --omit=dev las dependencias que se despliegan",
+    "esperado": "0 vulnerabilidades críticas y 0 altas",
+    "obtenido": "crítica=0, alta=4, moderada=7, baja=0 (total 11). Críticas/altas: @nestjs/platform-express (high, directa), body-parser (high), lodash (high), multer (high)",
+    "estado": "Fallido",
+    "evidencia": [
+      "http/SEG-DEP-01.json",
+      "salida-node-test.txt"
+    ],
+    "severidad": "Alta",
+    "hallazgo": {
+      "descripcion": "npm audit (producción) del backend reporta crítica=0, alta=4, moderada=7, baja=0 (total 11); entre ellas @nestjs/platform-express (high, directa), body-parser (high), lodash (high), multer (high).",
+      "severidad": "Media",
+      "recomendacion": "Actualizar NestJS 10→11 (@nestjs/platform-express, express 5), bcrypt ≥ 6 (elimina node-pre-gyp/tar), passport-jwt/jws; ejecutar npm audit fix y revisar breaking changes; añadir npm audit / Dependabot al pipeline."
+    }
+  },
+  {
+    "id": "SEG-DEP-02",
+    "categoria": "OWASP A06:2021 Vulnerable and Outdated Components",
+    "nombre": "Árbol completo del backend (incl. desarrollo) — npm audit",
+    "tipo": "negativo",
+    "objetivo": "Cuantificar el riesgo de la cadena de suministro en el entorno de desarrollo/CI",
+    "esperado": "0 vulnerabilidades críticas",
+    "obtenido": "crítica=0, alta=8, moderada=13, baja=3 (total 24)",
+    "estado": "Aprobado",
+    "evidencia": [
+      "http/SEG-DEP-02.json",
+      "salida-node-test.txt"
+    ]
+  },
+  {
+    "id": "SEG-DEP-03",
+    "categoria": "OWASP A06:2021 Vulnerable and Outdated Components",
+    "nombre": "Dependencias del frontend — npm audit",
+    "tipo": "negativo",
+    "objetivo": "Analizar las dependencias de taskflow-frontend",
+    "esperado": "0 vulnerabilidades críticas y 0 altas",
+    "obtenido": "crítica=0, alta=2, moderada=3, baja=1 (total 6). Críticas/altas: follow-redirects (high), vite (high, directa)",
+    "estado": "Fallido",
+    "evidencia": [
+      "http/SEG-DEP-03.json",
+      "salida-node-test.txt"
+    ],
+    "severidad": "Media",
+    "hallazgo": {
+      "descripcion": "npm audit del frontend reporta crítica=0, alta=2, moderada=3, baja=1 (total 6) (follow-redirects (high), vite (high, directa)).",
+      "severidad": "Baja",
+      "recomendacion": "Ejecutar npm audit fix en taskflow-frontend y actualizar los paquetes señalados (afectan principalmente a la cadena de build/desarrollo)."
+    }
+  }
+]

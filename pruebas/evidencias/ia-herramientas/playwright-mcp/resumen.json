@@ -1,0 +1,109 @@
+{
+  "area": "Pruebas con IA — Playwright MCP + asistente local",
+  "herramienta": "@playwright/mcp 0.0.83 + @modelcontextprotocol/sdk undefined (cliente propio en Node v20.20.2)",
+  "modelo": "Ollama llama3.1:8b (local, sin coste) con tool calling nativo",
+  "proposito": "Que un asistente de IA inspeccione el navegador real (snapshot de accesibilidad) y ejecute acciones (navegar, escribir, pulsar) mediante el servidor MCP de Playwright, como hace GitHub Copilot en modo agente; el script verifica en código el estado final del navegador.",
+  "configuracion": {
+    "servidor": "node node_modules/@playwright/mcp/cli.js --headless --isolated --viewport-size 1280x720 --executable-path C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "herramientasExpuestas": [
+      "browser_navigate",
+      "browser_snapshot",
+      "browser_click",
+      "browser_type",
+      "browser_fill_form",
+      "browser_wait_for",
+      "browser_take_screenshot"
+    ],
+    "bucle": "máximo 12 turnos, una herramienta por turno, temperature 0, num_ctx 16384, respuesta final en JSON {resultado, exito}",
+    "verificacion": "tras el bucle el script llama a browser_snapshot y browser_take_screenshot y comprueba el texto esperado"
+  },
+  "comando": "cd pruebas/ia-herramientas/playwright-mcp && node cliente.mjs",
+  "fecha": "2026-10-27T04:17:18.486Z",
+  "totales": {
+    "total": 3,
+    "aprobados": 1,
+    "fallidos": 2,
+    "duracionSeg": 203.2
+  },
+  "casos": [
+    {
+      "id": "MCP-01",
+      "nombre": "Inspeccionar el formulario de inicio de sesión con browser_snapshot",
+      "tipo": "exploratorio",
+      "objetivo": "Comprobar que el asistente navega a /login, obtiene el snapshot de accesibilidad y enumera los campos del formulario.",
+      "esperado": "El modelo usa browser_navigate y browser_snapshot y su respuesta final menciona el correo, la contraseña y el botón «Iniciar sesión».",
+      "tarea": "Task: open http://localhost:5173/login, take an accessibility snapshot and finish. In \"resultado\" list, in Spanish, the heading text, the label of each textbox and the text of the submit button exactly as they appear in the snapshot.",
+      "obtenido": "No conforme: browser_snapshot usado: false; menciona 0/3 textos esperados; página final es /login: true; exito declarado: undefined. El modelo hizo 1 llamadas a herramientas (browser_navigate) en 2 turnos y respondió: \"{\\\"name\\\": \\\"browser_snapshot\\\"}\".",
+      "estado": "Fallido",
+      "duracionSeg": 50.5,
+      "turnos": 1,
+      "herramientasUsadas": [
+        "browser_navigate"
+      ],
+      "respuestaFinal": "{\"name\": \"browser_snapshot\"}",
+      "urlFinal": "http://localhost:5173/login",
+      "evidencia": [
+        "salidas/MCP-01-transcripcion.json",
+        "capturas/MCP-01-final.png"
+      ]
+    },
+    {
+      "id": "MCP-02",
+      "nombre": "Iniciar sesión con credenciales válidas",
+      "tipo": "exitoso",
+      "objetivo": "Comprobar que el asistente rellena el formulario con las credenciales dadas, pulsa el botón y llega a «Mis equipos».",
+      "esperado": "El snapshot final (comprobado por el script) contiene el encabezado «Mis equipos» y la URL es la raíz.",
+      "tarea": "Task: open http://localhost:5173/login . Type \"mcp-login.179307448647715@taskflow-mcp.test\" into the textbox labeled \"Correo electrónico (obligatorio)\" and \"Clave-Segura-123\" into the textbox labeled \"Contraseña (obligatorio)\". Then click the button \"Iniciar sesión\". Take a snapshot and finish; put in \"resultado\" the text of the level-1 heading of the page you landed on.",
+      "obtenido": "Conforme: snapshot final contiene heading «Mis equipos»: true; URL final: http://localhost:5173/; exito declarado por el modelo: true. El modelo hizo 6 llamadas a herramientas (browser_navigate, browser_snapshot, browser_type, browser_click) en 7 turnos y respondió: \"{\\\"resultado\\\": \\\"Mis equipos\\\", \\\"exito\\\": true}\".",
+      "estado": "Aprobado",
+      "duracionSeg": 73.8,
+      "turnos": 6,
+      "herramientasUsadas": [
+        "browser_navigate",
+        "browser_snapshot",
+        "browser_type",
+        "browser_click"
+      ],
+      "respuestaFinal": "{\"resultado\": \"Mis equipos\", \"exito\": true}",
+      "urlFinal": "http://localhost:5173/",
+      "evidencia": [
+        "salidas/MCP-02-transcripcion.json",
+        "capturas/MCP-02-final.png"
+      ]
+    },
+    {
+      "id": "MCP-03",
+      "nombre": "Contraseña incorrecta muestra una alerta",
+      "tipo": "error",
+      "objetivo": "Comprobar que el asistente intenta iniciar sesión con una contraseña incorrecta y reporta la alerta de error.",
+      "esperado": "El snapshot final contiene la alerta «El correo o la contraseña no son correctos» y la URL sigue siendo /login.",
+      "tarea": "Task: open http://localhost:5173/login . Type \"mcp-error.179307456019448@taskflow-mcp.test\" into the textbox labeled \"Correo electrónico (obligatorio)\" and \"ClaveIncorrecta-999\" into the textbox labeled \"Contraseña (obligatorio)\". Click the button \"Iniciar sesión\". Then take a snapshot and finish; put in \"resultado\" the exact text of the alert shown on the page, in Spanish, and set \"exito\" to true only if an error alert is visible.",
+      "obtenido": "No conforme: alerta en el snapshot final: false; URL sigue en /login: true; el modelo reportó: \"\". El modelo hizo 12 llamadas a herramientas (browser_navigate, browser_snapshot, browser_fill_form) en 12 turnos y respondió: \"(sin respuesta final)\".",
+      "estado": "Fallido",
+      "duracionSeg": 78.8,
+      "turnos": 12,
+      "herramientasUsadas": [
+        "browser_navigate",
+        "browser_snapshot",
+        "browser_fill_form"
+      ],
+      "respuestaFinal": null,
+      "urlFinal": "http://localhost:5173/login",
+      "evidencia": [
+        "salidas/MCP-03-transcripcion.json",
+        "capturas/MCP-03-final.png"
+      ]
+    }
+  ],
+  "aportes": [
+    "El asistente ve la página como árbol de accesibilidad con referencias estables (ref=eN), lo que le permite actuar sin selectores escritos por una persona y detectar problemas de accesibilidad (elementos sin nombre).",
+    "El protocolo MCP es abierto: el mismo servidor sirve para Copilot, Claude, Cursor o un cliente propio como este, y las herramientas son las mismas que usa Playwright (click, type, fill_form, wait_for, screenshot).",
+    "Permite exploración guiada por lenguaje natural y generación de pruebas a partir de lo observado; la transcripción completa (argumentos y respuestas de cada herramienta) es en sí misma evidencia reproducible."
+  ],
+  "limitaciones": [
+    "Un modelo local de 8B decide peor que los modelos grandes: a veces omite el snapshot previo, confunde el ref de un elemento o responde con texto en lugar de llamar a una herramienta; hubo que restringir las herramientas a 7 y dar reglas muy estrictas.",
+    "Cada turno requiere enviar el snapshot completo al modelo: con páginas grandes el contexto crece y la latencia local sube a minutos por turno.",
+    "El resultado declarado por el modelo no es fiable por sí solo (puede afirmar éxito sin haberlo logrado): la validación debe hacerse en código con el estado real del navegador, como se hace aquí.",
+    "Sin API key de un modelo en la nube no es posible usar Copilot/Claude directamente desde el IDE, así que el \"asistente\" se implementó como cliente propio; el servidor MCP y el flujo son los mismos."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "component": {
+    "key": "taskflow:frontend",
+    "name": "TaskFlow Frontend",
+    "description": "Aplicación React para gestión de tareas colaborativas",
+    "qualifier": "TRK",
+    "measures": [
+      {
+        "metric": "alert_status",
+        "value": "OK"
+      },
+      {
+        "metric": "vulnerabilities",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "bugs",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "sqale_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "security_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "reliability_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "security_hotspots",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "ncloc",
+        "value": "264"
+      },
+      {
+        "metric": "code_smells",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "duplicated_lines_density",
+        "value": "0.0",
+        "bestValue": true
+      }
+    ]
+  }
+}

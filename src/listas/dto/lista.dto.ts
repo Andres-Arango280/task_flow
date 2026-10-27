@@ -1,9 +1,9 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsUUID } from 'class-validator';
 
 export class CreateListaDto {
   @IsNotEmpty()
   nombre: string;
 
-  @IsString()
+  @IsUUID()
   proyectoId: string;
 }

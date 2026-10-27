@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar que una persona nueva puede crear su cuenta desde /register con datos válidos.
+
+Resultado esperado: Los requisitos de contraseña se marcan como cumplidos, al enviar se redirige a /login con el aviso 'Cuenta creada correctamente' y el correo queda precargado.
+
+Datos: Nombre 'Usuario Katalon &lt;timestamp&gt;', correo único registro.&lt;timestamp&gt;@correo-pruebas.com, contraseña Clave123.
+Esperas: waitForElementVisible h1_CrearCuenta 10s; waitForElementClickable btn_CrearCuenta 10s; waitForElementVisible status_CuentaCreada 10s; verifyElementAttributeValue value 10s
+Evidencia: Reports/evidencias/TC01_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC01_Registro_Exitoso</name>
+   <tag>positivo,registro</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>8f5ddf3c-74cc-4eac-8159-eba5ec319945</testCaseGuid>
+</TestCaseEntity>

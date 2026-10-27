@@ -1,0 +1,40 @@
+{
+  "id": "API-LIS-01",
+  "obtenido": "Respondió 200 con 3 listas (id UUID, proyectoId correcto).",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/listas/proyecto/112262c7-7b62-429c-b1f1-3af1983415da",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 13,
+    "cuerpo": [
+      {
+        "id": "438301e7-6673-4b58-b6e9-6f99d1e3a0df",
+        "nombre": "Por Hacer",
+        "orden": 0,
+        "proyectoId": "112262c7-7b62-429c-b1f1-3af1983415da",
+        "createdAt": "2026-10-26T23:13:01.488Z",
+        "updatedAt": "2026-10-26T23:13:01.488Z"
+      },
+      {
+        "id": "a18a4fe3-1ed4-41d6-92a8-f3a12979e675",
+        "nombre": "En Progreso",
+        "orden": 1,
+        "proyectoId": "112262c7-7b62-429c-b1f1-3af1983415da",
+        "createdAt": "2026-10-26T23:13:01.488Z",
+        "updatedAt": "2026-10-26T23:13:01.488Z"
+      },
+      {
+        "id": "5000e285-5706-4e21-bcb4-b9712f785329",
+        "nombre": "Hecho",
+        "orden": 2,
+        "proyectoId": "112262c7-7b62-429c-b1f1-3af1983415da",
+        "createdAt": "2026-10-26T23:13:01.488Z",
+        "updatedAt": "2026-10-26T23:13:01.488Z"
+      }
+    ]
+  },
+  "fecha": "2026-10-26T23:13:01.567Z"
+}

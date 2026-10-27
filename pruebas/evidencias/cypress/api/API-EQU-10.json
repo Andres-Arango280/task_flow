@@ -1,0 +1,22 @@
+{
+  "id": "API-EQU-10",
+  "obtenido": "Respondió 403 con \"Solo el líder puede agregar miembros\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/equipos/238f16ec-70cf-4cbc-8fa1-8565c25ad2c7/miembros",
+    "autenticado": true,
+    "cuerpo": {
+      "userId": "7fca2896-2542-40b7-b140-4389d90d7c21"
+    }
+  },
+  "respuesta": {
+    "estado": 403,
+    "duracionMs": 19,
+    "cuerpo": {
+      "message": "Solo el líder puede agregar miembros",
+      "error": "Forbidden",
+      "statusCode": 403
+    }
+  },
+  "fecha": "2026-10-26T23:12:41.970Z"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "API-EQU-14",
+  "obtenido": "El miembro recibió 403 (\"Solo el líder puede eliminar el equipo\"); el líder 200 {eliminado: true}; luego GET = 404.",
+  "peticion": {
+    "metodo": "DELETE",
+    "url": "http://localhost:3000/equipos/de1adeb7-633b-4de8-bd45-c25ab2021a57",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 29,
+    "cuerpo": {
+      "id": "de1adeb7-633b-4de8-bd45-c25ab2021a57",
+      "eliminado": true
+    }
+  },
+  "fecha": "2026-10-26T23:12:47.192Z"
+}

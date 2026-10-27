@@ -1,0 +1,26 @@
+{
+  "id": "API-PRO-03",
+  "obtenido": "Respondió 400 con \"El nombre es obligatorio\", \"El equipo no es un identificador válido\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/proyectos",
+    "autenticado": true,
+    "cuerpo": {
+      "nombre": "",
+      "equipoId": "abc"
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 7,
+    "cuerpo": {
+      "message": [
+        "El nombre es obligatorio",
+        "El equipo no es un identificador válido"
+      ],
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:12:56.140Z"
+}

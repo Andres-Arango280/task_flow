@@ -1,0 +1,121 @@
+{
+  "id": "ST-05",
+  "instruccionesYRespuestas": {
+    "columnasObservadas": [
+      {
+        "description": "click",
+        "method": "click",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/section[1]/header[1]/span[1]",
+        "existe": true,
+        "tag": "span",
+        "type": null,
+        "etiqueta": null,
+        "texto": "1"
+      },
+      {
+        "description": "click",
+        "method": "click",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/section[1]/header[1]/span[1]",
+        "existe": true,
+        "tag": "span",
+        "type": null,
+        "etiqueta": null,
+        "texto": "1"
+      },
+      {
+        "description": "click",
+        "method": "click",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/section[1]/header[1]/span[1]",
+        "existe": true,
+        "tag": "span",
+        "type": null,
+        "etiqueta": null,
+        "texto": "1"
+      }
+    ],
+    "columnasReconocidas": [],
+    "acciones": [
+      {
+        "success": true,
+        "message": "Action [click] performed successfully on selector: xpath=/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/button[1]",
+        "actionDescription": "Revisar informe 70052",
+        "actions": [
+          {
+            "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/button[1]",
+            "description": "Revisar informe 70052",
+            "method": "click",
+            "arguments": []
+          }
+        ]
+      },
+      {
+        "success": true,
+        "message": "Action [selectOptionFromDropdown] performed successfully on selector: xpath=/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[2]/div[1]/div[2]/form[1]/div[3]/div[1]/select[1]",
+        "actionDescription": "Columna dropdown",
+        "actions": [
+          {
+            "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[2]/div[1]/div[2]/form[1]/div[3]/div[1]/select[1]",
+            "description": "Columna dropdown",
+            "method": "selectOptionFromDropdown",
+            "arguments": [
+              "Hecho"
+            ]
+          }
+        ]
+      }
+    ],
+    "intentosSelector": [
+      {
+        "frase": "Find the \"Columna\" dropdown (select element) in the task details dialog",
+        "resultado": [
+          {
+            "description": "Columna dropdown",
+            "method": "selectOptionFromDropdown",
+            "arguments": [
+              "Por Hacer"
+            ],
+            "selector": "xpath=/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[2]/div[1]/div[2]/form[1]/div[3]/div[1]/select[1]",
+            "existe": true,
+            "tag": "select",
+            "type": null,
+            "etiqueta": "Columna",
+            "texto": "Por HacerEn ProgresoHecho"
+          }
+        ]
+      }
+    ]
+  },
+  "datosDePrueba": {
+    "proyectoId": "abd0ba12-625f-4ab1-9ade-32123850bc26",
+    "tareaId": "da393b44-5d56-4c29-9b80-6223438e804a",
+    "titulo": "Revisar informe 70052",
+    "listas": [
+      "Por Hacer",
+      "En Progreso",
+      "Hecho"
+    ]
+  },
+  "tiemposIA": [
+    {
+      "paso": "observe",
+      "seg": 20.4
+    },
+    {
+      "paso": "act abrir tarjeta",
+      "seg": 42.8
+    },
+    {
+      "paso": "observe selector",
+      "seg": 16.3
+    },
+    {
+      "paso": "act seleccionar",
+      "seg": 0
+    }
+  ],
+  "estado": "Fallido",
+  "obtenido": "No conforme: observe solo reconoció []: [\"click\",\"click\",\"click\"]"
+}

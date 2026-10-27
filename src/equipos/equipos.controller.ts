@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param, Body, Req, UseGuards, Delete, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Req, UseGuards, Delete, BadRequestException, ParseUUIDPipe } from '@nestjs/common';
 import { EquiposService } from './equipos.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AddMiembroDto, CreateEquipoDto } from './dto/equipo.dto';
@@ -16,13 +16,13 @@ export class EquiposController {
 
   // GET /equipos/:id - Obtener detalles de un equipo específico
   @Get(':id')
-  getEquipo(@Param('id') id: string, @Req() req) {
+  getEquipo(@Param('id', ParseUUIDPipe) id: string, @Req() req) {
     return this.equiposService.findById(id, req.user.id);
   }
 
   // GET /equipos/:id/miembros - Obtener miembros de un equipo
   @Get(':id/miembros')
-  getMiembros(@Param('id') id: string, @Req() req) {
+  getMiembros(@Param('id', ParseUUIDPipe) id: string, @Req() req) {
     return this.equiposService.getMiembros(id, req.user.id);
   }
 
@@ -34,7 +34,7 @@ export class EquiposController {
 
   // POST /equipos/:id/miembros - Agregar miembro (ya existe)
   @Post(':id/miembros')
-  addMiembro(@Param('id') id: string, @Body() dto: AddMiembroDto, @Req() req) {
+  addMiembro(@Param('id', ParseUUIDPipe) id: string, @Body() dto: AddMiembroDto, @Req() req) {
     const userId = dto.userId ?? dto.usuarioId;
     if (!userId) {
       throw new BadRequestException('Debe enviar userId o usuarioId');
@@ -45,10 +45,16 @@ export class EquiposController {
   // DELETE /equipos/:id/miembros/:userId - Eliminar miembro (ya existe)
   @Delete(':id/miembros/:userId')
   removeMiembro(
-    @Param('id') equipoId: string,
-    @Param('userId') userId: string,
+    @Param('id', ParseUUIDPipe) equipoId: string,
+    @Param('userId', ParseUUIDPipe) userId: string,
     @Req() req,
   ) {
     return this.equiposService.removeMiembro(equipoId, userId, req.user.id);
+  }
+
+  // DELETE /equipos/:id - Eliminar equipo (solo el líder)
+  @Delete(':id')
+  eliminar(@Param('id', ParseUUIDPipe) id: string, @Req() req) {
+    return this.equiposService.eliminar(id, req.user.id);
   }
 }

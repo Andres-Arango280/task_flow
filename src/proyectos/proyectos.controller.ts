@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get, Query, Param, UseGuards, Req } from '@nestjs/common';
+import { Body, Controller, Post, Get, Query, Param, UseGuards, Req, BadRequestException, ParseUUIDPipe, Delete } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { ProyectosService } from './proyectos.service';
 import { CreateProyectoDto } from './dto/proyecto.dto';
@@ -10,16 +10,16 @@ export class ProyectosController {
 
   // GET /proyectos?equipoId=X - Obtener proyectos de un equipo
   @Get()
-  getByEquipo(@Query('equipoId') equipoId: string, @Req() req) {
+  getByEquipo(@Query('equipoId', new ParseUUIDPipe({ optional: true })) equipoId: string, @Req() req) {
     if (!equipoId) {
-      return { message: 'Debes proporcionar equipoId' };
+      throw new BadRequestException('Debes proporcionar equipoId');
     }
     return this.proyectosService.findByEquipo(equipoId, req.user.id);
   }
 
   // GET /proyectos/:id - Obtener un proyecto específico
   @Get(':id')
-  getById(@Param('id') id: string, @Req() req) {
+  getById(@Param('id', ParseUUIDPipe) id: string, @Req() req) {
     return this.proyectosService.findById(id, req.user.id);
   }
 
@@ -27,5 +27,11 @@ export class ProyectosController {
   @Post()
   create(@Body() dto: CreateProyectoDto, @Req() req) {
     return this.proyectosService.crearProyecto(dto, req.user.id);
+  }
+
+  // DELETE /proyectos/:id - Eliminar proyecto (solo el líder del equipo)
+  @Delete(':id')
+  eliminar(@Param('id', ParseUUIDPipe) id: string, @Req() req) {
+    return this.proyectosService.eliminar(id, req.user.id);
   }
 }

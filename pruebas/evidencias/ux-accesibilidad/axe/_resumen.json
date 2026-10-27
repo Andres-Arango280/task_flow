@@ -1,0 +1,254 @@
+{
+  "axeVersion": "4.14.0",
+  "etiquetas": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa",
+    "best-practice"
+  ],
+  "totalesImpacto": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+  },
+  "paginas": [
+    {
+      "id": "login",
+      "pagina": "Iniciar sesión (/login)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "register",
+      "pagina": "Registro (/register)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "privacidad",
+      "pagina": "Privacidad (/privacidad)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "inicio-vacio",
+      "pagina": "Inicio sin equipos (/)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "inicio-equipos",
+      "pagina": "Inicio con equipos (/)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "equipo",
+      "pagina": "Vista de equipo (/equipos/:id)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "modal-invitar",
+      "pagina": "Modal \"Invitar miembro\"",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "tablero",
+      "pagina": "Tablero Kanban con tareas (/proyectos/:id)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "modal-detalle-tarea",
+      "pagina": "Modal de detalle de tarea",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "modal-crear-tarea",
+      "pagina": "Modal \"Crear nueva tarea\"",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "dialogo-confirmacion",
+      "pagina": "Diálogo de confirmación (eliminar tarea)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "ayuda",
+      "pagina": "Ayuda y preguntas frecuentes (/ayuda)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "preferencias",
+      "pagina": "Preferencias (/preferencias)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "panel-atajos",
+      "pagina": "Panel de atajos de teclado (tecla ?)",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "tablero-alto-contraste",
+      "pagina": "Tablero en modo alto contraste",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "inicio-alto-contraste",
+      "pagina": "Inicio en modo alto contraste",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "tablero-texto-muy-grande",
+      "pagina": "Tablero con texto \"muy grande\"",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    },
+    {
+      "id": "preferencias-texto-grande",
+      "pagina": "Preferencias con texto \"grande\" + reducir animaciones",
+      "conteo": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "reglas": [],
+      "wcag": 0,
+      "buenasPracticas": 0
+    }
+  ],
+  "reglas": []
+}

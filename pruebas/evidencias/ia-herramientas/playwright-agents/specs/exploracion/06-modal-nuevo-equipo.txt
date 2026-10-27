@@ -1,0 +1,10 @@
+- dialog "Nuevo equipo":
+  - heading "Nuevo equipo" [level=2]
+  - paragraph: "Serás el líder: podrás invitar miembros y crear proyectos."
+  - button "Cerrar ventana (Esc)"
+  - text: Nombre del equipo (obligatorio)
+  - textbox "Nombre del equipo (obligatorio)":
+    - /placeholder: "Ej.: Equipo Backend"
+  - paragraph: 0/255 caracteres. Se guarda un borrador si cierras la ventana.
+  - button "Cancelar"
+  - button "Crear equipo" [disabled]

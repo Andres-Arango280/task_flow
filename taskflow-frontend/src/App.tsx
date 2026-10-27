@@ -7,6 +7,9 @@ import { Register } from './pages/Register';
 import { Dashboard } from './pages/Dashboard';
 import { TeamView } from './pages/TeamView';
 import { KanbanBoard } from './pages/KanbanBoard';
+import { Ayuda } from './pages/Ayuda';
+import { Preferencias } from './pages/Preferencias';
+import { Privacidad } from './pages/Privacidad';
 
 function App() {
   const { initialize } = useAuthStore();
@@ -44,6 +47,23 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/ayuda"
+          element={
+            <PrivateRoute>
+              <Ayuda />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/preferencias"
+          element={
+            <PrivateRoute>
+              <Preferencias />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/privacidad" element={<Privacidad />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

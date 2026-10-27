@@ -1,0 +1,179 @@
+{
+  "id": "SEG-INY-06",
+  "nombre": "XSS almacenado en el título de una tarea se devuelve como texto",
+  "fecha": "2026-10-26T23:19:19.496Z",
+  "obtenido": "crear → 201; título literal: sí; content-type=application/json; charset=utf-8; nosniff=nosniff; sinks peligrosos en frontend: 0 (React escapa el texto al renderizar {tarea.titulo})",
+  "extra": {
+    "sinks": []
+  },
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/tareas",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "titulo": "<script>alert(document.cookie)</script><img src=x onerror=alert(1)>",
+          "listaId": "6ede087c-1379-453c-bf66-938c2ea842cf"
+        }
+      },
+      "respuesta": {
+        "status": 201,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "541",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:19 GMT",
+          "etag": "W/\"21d-H2PnO2NVCJsFA8wlXlAFP96J5dI\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "id": "85acc2ee-5b90-42fd-a08a-9ada988e3fa0",
+          "titulo": "<script>alert(document.cookie)</script><img src=x onerror=alert(1)>",
+          "descripcion": null,
+          "estado": "pendiente",
+          "prioridad": "media",
+          "listaId": "6ede087c-1379-453c-bf66-938c2ea842cf",
+          "createdAt": "2026-10-26T23:19:19.385Z",
+          "updatedAt": "2026-10-26T23:19:19.385Z",
+          "asignados": [],
+          "lista": {
+            "id": "6ede087c-1379-453c-bf66-938c2ea842cf",
+            "nombre": "Por Hacer",
+            "orden": 0,
+            "proyectoId": "1add1de7-86a6-4acf-b3d8-c33c6788f75c",
+            "createdAt": "2026-10-26T23:19:13.045Z",
+            "updatedAt": "2026-10-26T23:19:13.045Z"
+          }
+        },
+        "tiempoMs": 26.7
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/tareas?proyectoId=1add1de7-86a6-4acf-b3d8-c33c6788f75c",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 200,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "1934",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:19 GMT",
+          "etag": "W/\"78e-uCz+KZNDQnYH9WaA/W8Iw6xCwLI\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": [
+          {
+            "id": "e119cf5a-ff14-4453-9c95-12650b454571",
+            "titulo": "Tarea confidencial A",
+            "descripcion": "dato interno",
+            "estado": "pendiente",
+            "prioridad": "media",
+            "listaId": "6ede087c-1379-453c-bf66-938c2ea842cf",
+            "createdAt": "2026-10-26T23:19:13.116Z",
+            "updatedAt": "2026-10-26T23:19:13.116Z",
+            "lista": {
+              "id": "6ede087c-1379-453c-bf66-938c2ea842cf",
+              "nombre": "Por Hacer",
+              "orden": 0,
+              "proyectoId": "1add1de7-86a6-4acf-b3d8-c33c6788f75c",
+              "createdAt": "2026-10-26T23:19:13.045Z",
+              "updatedAt": "2026-10-26T23:19:13.045Z"
+            },
+            "asignados": [
+              {
+                "id": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+                "nombre": "Usuario lider",
+                "email": "seg_lider_1793056751720_1@taskflow.test",
+                "createdAt": "2026-10-26T23:19:12.211Z",
+                "updatedAt": "2026-10-26T23:19:12.211Z"
+              },
+              {
+                "id": "ceb9382c-3605-4a9c-9fbe-cd92d52b9276",
+                "nombre": "Usuario miembro",
+                "email": "seg_miembro_1793056751720_3@taskflow.test",
+                "createdAt": "2026-10-26T23:19:12.636Z",
+                "updatedAt": "2026-10-26T23:19:12.636Z"
+              }
+            ]
+          },
+          {
+            "id": "1968dc4c-5974-48b1-8eb6-c82c94dbb3e2",
+            "titulo": "Tarea de C",
+            "descripcion": null,
+            "estado": "pendiente",
+            "prioridad": "media",
+            "listaId": "6ede087c-1379-453c-bf66-938c2ea842cf",
+            "createdAt": "2026-10-26T23:19:17.830Z",
+            "updatedAt": "2026-10-26T23:19:17.830Z",
+            "lista": {
+              "id": "6ede087c-1379-453c-bf66-938c2ea842cf",
+              "nombre": "Por Hacer",
+              "orden": 0,
+              "proyectoId": "1add1de7-86a6-4acf-b3d8-c33c6788f75c",
+              "createdAt": "2026-10-26T23:19:13.045Z",
+              "updatedAt": "2026-10-26T23:19:13.045Z"
+            },
+            "asignados": []
+          },
+          {
+            "id": "85acc2ee-5b90-42fd-a08a-9ada988e3fa0",
+            "titulo": "<script>alert(document.cookie)</script><img src=x onerror=alert(1)>",
+            "descripcion": null,
+            "estado": "pendiente",
+            "prioridad": "media",
+            "listaId": "6ede087c-1379-453c-bf66-938c2ea842cf",
+            "createdAt": "2026-10-26T23:19:19.385Z",
+            "updatedAt": "2026-10-26T23:19:19.385Z",
+            "lista": {
+              "id": "6ede087c-1379-453c-bf66-938c2ea842cf",
+              "nombre": "Por Hacer",
+              "orden": 0,
+              "proyectoId": "1add1de7-86a6-4acf-b3d8-c33c6788f75c",
+              "createdAt": "2026-10-26T23:19:13.045Z",
+              "updatedAt": "2026-10-26T23:19:13.045Z"
+            },
+            "asignados": []
+          }
+        ],
+        "tiempoMs": 18.8
+      }
+    }
+  ]
+}

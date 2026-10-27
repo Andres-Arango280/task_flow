@@ -1,0 +1,244 @@
+{
+  "id": "SEG-AUTHZ-05",
+  "nombre": "Usuario ajeno no puede borrar equipo/proyecto ajeno ni auto-añadirse",
+  "fecha": "2026-10-26T23:19:17.709Z",
+  "obtenido": "DELETE /proyectos/:id → 403; DELETE /equipos/:id → 403; POST /equipos/:id/miembros (a sí mismo) → 403; DELETE /equipos/:id/miembros/:C → 403; equipo intacto: sí",
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "DELETE",
+        "url": "http://localhost:3000/proyectos/b266d803-f3e3-48de-8091-a5e467f04b7a",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 403,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "101",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"65-MIIdCuDP3+iyEiWxzw960Rk6r9Q\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Solo el líder del equipo puede eliminar proyectos",
+          "error": "Forbidden",
+          "statusCode": 403
+        },
+        "tiempoMs": 9.7
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "DELETE",
+        "url": "http://localhost:3000/equipos/f6b022c5-2d2b-413b-bd68-4c68649a6966",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 403,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "90",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"5a-sAUVjpSvGYR+NY8ZzCV+B/FGFW8\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Solo el líder puede eliminar el equipo",
+          "error": "Forbidden",
+          "statusCode": 403
+        },
+        "tiempoMs": 11.1
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "POST",
+        "url": "http://localhost:3000/equipos/f6b022c5-2d2b-413b-bd68-4c68649a6966/miembros",
+        "headers": {
+          "content-type": "application/json",
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        },
+        "body": {
+          "userId": "4ed14a24-52dc-4f52-b416-c361bc417ae1"
+        }
+      },
+      "respuesta": {
+        "status": 403,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "88",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"58-KDSVn48cBtODYj2n226ckY66YHU\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Solo el líder puede agregar miembros",
+          "error": "Forbidden",
+          "statusCode": 403
+        },
+        "tiempoMs": 16.9
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "DELETE",
+        "url": "http://localhost:3000/equipos/f6b022c5-2d2b-413b-bd68-4c68649a6966/miembros/ceb9382c-3605-4a9c-9fbe-cd92d52b9276",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 403,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "89",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"59-J0F3lIoasfAPb9xHZU2uu6MLDGQ\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "Solo el líder puede eliminar miembros",
+          "error": "Forbidden",
+          "statusCode": 403
+        },
+        "tiempoMs": 14.7
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/equipos/f6b022c5-2d2b-413b-bd68-4c68649a6966",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 200,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "1041",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"411-+rBTivn6pcUSo0JZQVi5LziRDCo\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "id": "f6b022c5-2d2b-413b-bd68-4c68649a6966",
+          "nombre": "Equipo seguridad 1793056751720",
+          "liderId": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+          "createdAt": "2026-10-26T23:19:12.953Z",
+          "updatedAt": "2026-10-26T23:19:12.953Z",
+          "lider": {
+            "id": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+            "nombre": "Usuario lider",
+            "email": "seg_lider_1793056751720_1@taskflow.test",
+            "createdAt": "2026-10-26T23:19:12.211Z",
+            "updatedAt": "2026-10-26T23:19:12.211Z"
+          },
+          "miembros": [
+            {
+              "id": "044b7661-d6dd-4844-8ec0-5b16fb26078d",
+              "nombre": "Usuario miembro2",
+              "email": "seg_miembro2_1793056751720_4@taskflow.test",
+              "createdAt": "2026-10-26T23:19:12.837Z",
+              "updatedAt": "2026-10-26T23:19:12.837Z"
+            },
+            {
+              "id": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+              "nombre": "Usuario lider",
+              "email": "seg_lider_1793056751720_1@taskflow.test",
+              "createdAt": "2026-10-26T23:19:12.211Z",
+              "updatedAt": "2026-10-26T23:19:12.211Z"
+            },
+            {
+              "id": "ceb9382c-3605-4a9c-9fbe-cd92d52b9276",
+              "nombre": "Usuario miembro",
+              "email": "seg_miembro_1793056751720_3@taskflow.test",
+              "createdAt": "2026-10-26T23:19:12.636Z",
+              "updatedAt": "2026-10-26T23:19:12.636Z"
+            }
+          ]
+        },
+        "tiempoMs": 13.2
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+- generic [ref=e35]:
+  - link "Saltar al contenido" [ref=e36] [cursor=pointer]:
+    - /url: "#contenido"
+  - navigation "Navegación principal" [ref=e37]:
+    - generic [ref=e39]:
+      - link "TaskFlow, ir al inicio" [ref=e40] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e43]: TaskFlow
+      - generic [ref=e44]:
+        - link "Inicio" [ref=e45] [cursor=pointer]:
+          - /url: /
+        - link "Ayuda" [ref=e50] [cursor=pointer]:
+          - /url: /ayuda
+        - link "Preferencias" [ref=e55] [cursor=pointer]:
+          - /url: /preferencias
+        - button "Ver atajos de teclado" [ref=e60]
+        - generic "mcp-login.179307448647715@taskflow-mcp.test" [ref=e63]: Usuario mcp-login 647715
+        - button "Salir" [ref=e64]
+  - main [ref=e68]:
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - heading "Mis equipos" [level=1] [ref=e73]
+          - paragraph [ref=e74]: Organiza tu trabajo en equipos y proyectos.
+        - button "Nuevo equipo" [ref=e75]
+      - region [ref=e77]:
+        - generic [ref=e78]:
+          - generic [ref=e79]:
+            - heading "Primeros pasos" [level=2] [ref=e80]
+            - paragraph [ref=e81]:
+              - text: 0 de 4 completados.
+              - link "Ver la guía de ayuda" [ref=e82] [cursor=pointer]:
+                - /url: /ayuda
+          - button "Ocultar la lista de primeros pasos" [ref=e83]
+        - list [ref=e87]:
+          - listitem [ref=e88]:
+            - generic [ref=e91]: Crear tu primer equipo
+            - generic [ref=e92]: (pendiente)
+          - listitem [ref=e93]:
+            - generic [ref=e96]: Invitar a un compañero por su correo
+            - generic [ref=e97]: (pendiente)
+          - listitem [ref=e98]:
+            - generic [ref=e101]: Crear un proyecto dentro de un equipo
+            - generic [ref=e102]: (pendiente)
+          - listitem [ref=e103]:
+            - generic [ref=e106]: Abrir un tablero y mover una tarea entre listas
+            - generic [ref=e107]: (pendiente)
+      - generic [ref=e108]:
+        - heading "Todavía no tienes equipos" [level=2] [ref=e114]
+        - paragraph [ref=e115]: Un equipo agrupa a las personas con las que trabajas y sus proyectos. Crea uno y luego invita a tus compañeros por su correo.
+        - button "Crear mi primer equipo" [ref=e116]

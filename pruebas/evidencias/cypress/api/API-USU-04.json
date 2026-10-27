@@ -1,0 +1,24 @@
+{
+  "id": "API-USU-04",
+  "obtenido": "Respondió 200 con el usuario usu.17930564131478404@taskflow-cypress.test buscando el correo en mayúsculas; sin password.",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/usuarios",
+    "query": {
+      "email": "USU.17930564131478404@TASKFLOW-CYPRESS.TEST"
+    },
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 8,
+    "cuerpo": {
+      "id": "97acc5b9-6908-4ad4-929f-7e225d177875",
+      "nombre": "Usuario usu 478404",
+      "email": "usu.17930564131478404@taskflow-cypress.test",
+      "createdAt": "2026-10-26T23:13:33.317Z",
+      "updatedAt": "2026-10-26T23:13:33.317Z"
+    }
+  },
+  "fecha": "2026-10-26T23:13:33.561Z"
+}

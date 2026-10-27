@@ -1,0 +1,24 @@
+{
+  "id": "API-TAR-06",
+  "obtenido": "Asignar a un ajeno respondió 400 \"Solo se pueden asignar miembros del equipo\"; asignar a un miembro respondió 200.",
+  "peticion": {
+    "metodo": "PATCH",
+    "url": "http://localhost:3000/tareas/7cb4e248-06fe-4c28-b361-2d7c2a9010b7/asignar",
+    "autenticado": true,
+    "cuerpo": {
+      "miembros": [
+        "53bc2d23-7e33-496b-ae0b-791dc5f09d56"
+      ]
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 18,
+    "cuerpo": {
+      "message": "Solo se pueden asignar miembros del equipo",
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:13:15.890Z"
+}

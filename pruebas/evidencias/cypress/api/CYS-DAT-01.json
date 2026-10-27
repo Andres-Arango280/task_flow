@@ -1,0 +1,21 @@
+{
+  "id": "CYS-DAT-01",
+  "obtenido": "Se revisaron 5 respuestas (GET /usuarios/me, GET /usuarios?email=, GET /equipos, GET /equipos/:id/miembros, payload del JWT): ninguna contiene el campo password ni la contraseña en claro.",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/auth/login",
+    "autenticado": false,
+    "cuerpo": {
+      "email": "seg-datos.17930561785632514@taskflow-cypress.test",
+      "password": "***"
+    }
+  },
+  "respuesta": {
+    "estado": 201,
+    "duracionMs": 122,
+    "cuerpo": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzFiZjRmMS05N2RhLTQzNDEtODM0Ni1kYWM4MGE1NjhmNTEiLCJlbWFpbCI6InNlZy1kYXRvcy4xNzkzMDU2MTc4NTYzMjUxNEB0YXNrZmxvdy1jeXByZXNzLnRlc3QiLCJpZCI6ImM3MWJmNGYxLTk3ZGEtNDM0MS04MzQ2LWRhYzgwYTU2OGY1MSIsImlhdCI6MTc5MzA1NjE3OSwiZXhwIjoxNzkzMTQyNTc5fQ.2EodfR1e6sPyPkZa0nFxXYl8JIMFXmqZ_NR5nVbIWVk"
+    }
+  },
+  "fecha": "2026-10-26T23:09:39.309Z"
+}

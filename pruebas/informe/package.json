@@ -1,0 +1,14 @@
+{
+  "name": "taskflow-informe",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Genera el informe Word de pruebas a partir de las evidencias",
+  "scripts": {
+    "informe": "node generar-informe.js"
+  },
+  "dependencies": {
+    "docx": "9.5.1",
+    "exceljs": "^4.4.0",
+    "image-size": "1.2.1"
+  }
+}

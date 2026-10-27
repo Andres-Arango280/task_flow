@@ -1,0 +1,12 @@
+{
+  "fecha": "2026-10-27T04:35:41.156Z",
+  "comando": "npm test  (node run-all.js )",
+  "escenarios": [
+    "carga-base",
+    "carga-media",
+    "escritura",
+    "login",
+    "estres",
+    "resistencia"
+  ]
+}

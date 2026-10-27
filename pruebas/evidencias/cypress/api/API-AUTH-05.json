@@ -1,0 +1,21 @@
+{
+  "id": "API-AUTH-05",
+  "obtenido": "Respondió 201 con access_token JWT válido (payload con email login.17930563441082796@taskflow-cypress.test, sin password).",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/auth/login",
+    "autenticado": false,
+    "cuerpo": {
+      "email": "login.17930563441082796@taskflow-cypress.test",
+      "password": "***"
+    }
+  },
+  "respuesta": {
+    "estado": 201,
+    "duracionMs": 76,
+    "cuerpo": {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDhmYzZiMy02Y2VlLTQyMjgtODM2YS1iNzJjYTAwN2M2YTUiLCJlbWFpbCI6ImxvZ2luLjE3OTMwNTYzNDQxMDgyNzk2QHRhc2tmbG93LWN5cHJlc3MudGVzdCIsImlkIjoiMTA4ZmM2YjMtNmNlZS00MjI4LTgzNmEtYjcyY2EwMDdjNmE1IiwiaWF0IjoxNzkzMDU2MzQ0LCJleHAiOjE3OTMxNDI3NDR9.WlBmlub-glGzi2qjFUmnLz74RF7Vpua9Z5TMvdfkOA0"
+    }
+  },
+  "fecha": "2026-10-26T23:12:24.305Z"
+}

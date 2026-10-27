@@ -1,0 +1,18 @@
+{
+  "id": "CYS-HDR-01",
+  "obtenido": "Cabeceras presentes: CSP (default-src 'self';base-uri 'self';font-…), X-Content-Type-Options=nosniff, X-Frame-Options=SAMEORIGIN, HSTS=max-age=31536000; includeSubDomains, Referrer-Policy=no-referrer; X-Powered-By ausente.",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/usuarios/me",
+    "autenticado": false
+  },
+  "respuesta": {
+    "estado": 401,
+    "duracionMs": 7,
+    "cuerpo": {
+      "message": "Unauthorized",
+      "statusCode": 401
+    }
+  },
+  "fecha": "2026-10-26T23:09:39.533Z"
+}

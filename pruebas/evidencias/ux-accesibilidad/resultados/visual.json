@@ -1,0 +1,1640 @@
+{
+  "modulo": "visual",
+  "fecha": "2026-10-27T04:29:13.660Z",
+  "casos": [
+    {
+      "id": "VIS-01",
+      "tipo": "visual",
+      "nombre": "Diseño adaptable sin desbordamiento – Login",
+      "objetivo": "Comprobar que \"Login\" se adapta a móvil, tablet y escritorio sin barra de desplazamiento horizontal (WCAG 1.4.10).",
+      "esperado": "document.scrollWidth ≤ window.innerWidth en 390, 768 y 1366 px.",
+      "obtenido": "Móvil: 390/390px · Tablet: 768/768px · Escritorio: 1366/1366px",
+      "estado": "Aprobado",
+      "evidencia": [
+        "capturas/login-movil.png",
+        "capturas/login-tablet.png",
+        "capturas/login-escritorio.png"
+      ],
+      "detalle": [
+        {
+          "viewport": "Móvil 390×844",
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/login-movil.png"
+        },
+        {
+          "viewport": "Tablet 768×1024",
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/login-tablet.png"
+        },
+        {
+          "viewport": "Escritorio 1366×900",
+          "innerWidth": 1366,
+          "scrollWidth": 1366,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/login-escritorio.png"
+        },
+        {
+          "viewport": "Reflow 320×640 (equivale a 1280px al 400 %)",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "culpables": [],
+          "captura": null
+        }
+      ]
+    },
+    {
+      "id": "VIS-02",
+      "tipo": "visual",
+      "nombre": "Diseño adaptable sin desbordamiento – Registro",
+      "objetivo": "Comprobar que \"Registro\" se adapta a móvil, tablet y escritorio sin barra de desplazamiento horizontal (WCAG 1.4.10).",
+      "esperado": "document.scrollWidth ≤ window.innerWidth en 390, 768 y 1366 px.",
+      "obtenido": "Móvil: 390/390px · Tablet: 768/768px · Escritorio: 1366/1366px",
+      "estado": "Aprobado",
+      "evidencia": [
+        "capturas/register-movil.png",
+        "capturas/register-tablet.png",
+        "capturas/register-escritorio.png"
+      ],
+      "detalle": [
+        {
+          "viewport": "Móvil 390×844",
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/register-movil.png"
+        },
+        {
+          "viewport": "Tablet 768×1024",
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/register-tablet.png"
+        },
+        {
+          "viewport": "Escritorio 1366×900",
+          "innerWidth": 1366,
+          "scrollWidth": 1366,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/register-escritorio.png"
+        },
+        {
+          "viewport": "Reflow 320×640 (equivale a 1280px al 400 %)",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "culpables": [],
+          "captura": null
+        }
+      ]
+    },
+    {
+      "id": "VIS-03",
+      "tipo": "visual",
+      "nombre": "Diseño adaptable sin desbordamiento – Privacidad",
+      "objetivo": "Comprobar que \"Privacidad\" se adapta a móvil, tablet y escritorio sin barra de desplazamiento horizontal (WCAG 1.4.10).",
+      "esperado": "document.scrollWidth ≤ window.innerWidth en 390, 768 y 1366 px.",
+      "obtenido": "Móvil: 390/390px · Tablet: 768/768px · Escritorio: 1366/1366px",
+      "estado": "Aprobado",
+      "evidencia": [
+        "capturas/privacidad-movil.png",
+        "capturas/privacidad-tablet.png",
+        "capturas/privacidad-escritorio.png"
+      ],
+      "detalle": [
+        {
+          "viewport": "Móvil 390×844",
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/privacidad-movil.png"
+        },
+        {
+          "viewport": "Tablet 768×1024",
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/privacidad-tablet.png"
+        },
+        {
+          "viewport": "Escritorio 1366×900",
+          "innerWidth": 1366,
+          "scrollWidth": 1366,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/privacidad-escritorio.png"
+        },
+        {
+          "viewport": "Reflow 320×640 (equivale a 1280px al 400 %)",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "culpables": [],
+          "captura": null
+        }
+      ]
+    },
+    {
+      "id": "VIS-04",
+      "tipo": "visual",
+      "nombre": "Diseño adaptable sin desbordamiento – Inicio",
+      "objetivo": "Comprobar que \"Inicio\" se adapta a móvil, tablet y escritorio sin barra de desplazamiento horizontal (WCAG 1.4.10).",
+      "esperado": "document.scrollWidth ≤ window.innerWidth en 390, 768 y 1366 px.",
+      "obtenido": "Móvil: 390/390px · Tablet: 768/768px · Escritorio: 1366/1366px",
+      "estado": "Aprobado",
+      "evidencia": [
+        "capturas/inicio-movil.png",
+        "capturas/inicio-tablet.png",
+        "capturas/inicio-escritorio.png"
+      ],
+      "detalle": [
+        {
+          "viewport": "Móvil 390×844",
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/inicio-movil.png"
+        },
+        {
+          "viewport": "Tablet 768×1024",
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/inicio-tablet.png"
+        },
+        {
+          "viewport": "Escritorio 1366×900",
+          "innerWidth": 1366,
+          "scrollWidth": 1366,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/inicio-escritorio.png"
+        },
+        {
+          "viewport": "Reflow 320×640 (equivale a 1280px al 400 %)",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "culpables": [],
+          "captura": null
+        }
+      ]
+    },
+    {
+      "id": "VIS-05",
+      "tipo": "visual",
+      "nombre": "Diseño adaptable sin desbordamiento – Equipo",
+      "objetivo": "Comprobar que \"Equipo\" se adapta a móvil, tablet y escritorio sin barra de desplazamiento horizontal (WCAG 1.4.10).",
+      "esperado": "document.scrollWidth ≤ window.innerWidth en 390, 768 y 1366 px.",
+      "obtenido": "Móvil: 390/390px · Tablet: 768/768px · Escritorio: 1366/1366px",
+      "estado": "Aprobado",
+      "evidencia": [
+        "capturas/equipo-movil.png",
+        "capturas/equipo-tablet.png",
+        "capturas/equipo-escritorio.png"
+      ],
+      "detalle": [
+        {
+          "viewport": "Móvil 390×844",
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/equipo-movil.png"
+        },
+        {
+          "viewport": "Tablet 768×1024",
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/equipo-tablet.png"
+        },
+        {
+          "viewport": "Escritorio 1366×900",
+          "innerWidth": 1366,
+          "scrollWidth": 1366,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/equipo-escritorio.png"
+        },
+        {
+          "viewport": "Reflow 320×640 (equivale a 1280px al 400 %)",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "culpables": [],
+          "captura": null
+        }
+      ]
+    },
+    {
+      "id": "VIS-06",
+      "tipo": "visual",
+      "nombre": "Diseño adaptable sin desbordamiento – Tablero",
+      "objetivo": "Comprobar que \"Tablero\" se adapta a móvil, tablet y escritorio sin barra de desplazamiento horizontal (WCAG 1.4.10).",
+      "esperado": "document.scrollWidth ≤ window.innerWidth en 390, 768 y 1366 px.",
+      "obtenido": "Móvil: 390/390px · Tablet: 768/768px · Escritorio: 1366/1366px",
+      "estado": "Aprobado",
+      "evidencia": [
+        "capturas/tablero-movil.png",
+        "capturas/tablero-tablet.png",
+        "capturas/tablero-escritorio.png"
+      ],
+      "detalle": [
+        {
+          "viewport": "Móvil 390×844",
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/tablero-movil.png"
+        },
+        {
+          "viewport": "Tablet 768×1024",
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/tablero-tablet.png"
+        },
+        {
+          "viewport": "Escritorio 1366×900",
+          "innerWidth": 1366,
+          "scrollWidth": 1366,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/tablero-escritorio.png"
+        },
+        {
+          "viewport": "Reflow 320×640 (equivale a 1280px al 400 %)",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "culpables": [],
+          "captura": null
+        }
+      ]
+    },
+    {
+      "id": "VIS-07",
+      "tipo": "visual",
+      "nombre": "Diseño adaptable sin desbordamiento – Ayuda",
+      "objetivo": "Comprobar que \"Ayuda\" se adapta a móvil, tablet y escritorio sin barra de desplazamiento horizontal (WCAG 1.4.10).",
+      "esperado": "document.scrollWidth ≤ window.innerWidth en 390, 768 y 1366 px.",
+      "obtenido": "Móvil: 390/390px · Tablet: 768/768px · Escritorio: 1366/1366px",
+      "estado": "Aprobado",
+      "evidencia": [
+        "capturas/ayuda-movil.png",
+        "capturas/ayuda-tablet.png",
+        "capturas/ayuda-escritorio.png"
+      ],
+      "detalle": [
+        {
+          "viewport": "Móvil 390×844",
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/ayuda-movil.png"
+        },
+        {
+          "viewport": "Tablet 768×1024",
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/ayuda-tablet.png"
+        },
+        {
+          "viewport": "Escritorio 1366×900",
+          "innerWidth": 1366,
+          "scrollWidth": 1366,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/ayuda-escritorio.png"
+        },
+        {
+          "viewport": "Reflow 320×640 (equivale a 1280px al 400 %)",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "culpables": [],
+          "captura": null
+        }
+      ]
+    },
+    {
+      "id": "VIS-08",
+      "tipo": "visual",
+      "nombre": "Diseño adaptable sin desbordamiento – Preferencias",
+      "objetivo": "Comprobar que \"Preferencias\" se adapta a móvil, tablet y escritorio sin barra de desplazamiento horizontal (WCAG 1.4.10).",
+      "esperado": "document.scrollWidth ≤ window.innerWidth en 390, 768 y 1366 px.",
+      "obtenido": "Móvil: 390/390px · Tablet: 768/768px · Escritorio: 1366/1366px",
+      "estado": "Aprobado",
+      "evidencia": [
+        "capturas/preferencias-movil.png",
+        "capturas/preferencias-tablet.png",
+        "capturas/preferencias-escritorio.png"
+      ],
+      "detalle": [
+        {
+          "viewport": "Móvil 390×844",
+          "innerWidth": 390,
+          "scrollWidth": 390,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/preferencias-movil.png"
+        },
+        {
+          "viewport": "Tablet 768×1024",
+          "innerWidth": 768,
+          "scrollWidth": 768,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/preferencias-tablet.png"
+        },
+        {
+          "viewport": "Escritorio 1366×900",
+          "innerWidth": 1366,
+          "scrollWidth": 1366,
+          "desborda": false,
+          "culpables": [],
+          "captura": "capturas/preferencias-escritorio.png"
+        },
+        {
+          "viewport": "Reflow 320×640 (equivale a 1280px al 400 %)",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "culpables": [],
+          "captura": null
+        }
+      ]
+    },
+    {
+      "id": "VIS-09",
+      "tipo": "visual",
+      "nombre": "Reflow a 320 px (equivalente a zoom 400 %)",
+      "objetivo": "Verificar que todas las páginas pueden leerse a 320 px de ancho sin desplazamiento horizontal (WCAG 1.4.10 Reflow).",
+      "esperado": "Ninguna página desborda a 320 px (el tablero puede desplazar sus columnas dentro de su propia región).",
+      "obtenido": "Las 8 páginas caben en 320 px.",
+      "estado": "Aprobado",
+      "evidencia": [],
+      "detalle": [
+        {
+          "pagina": "Login",
+          "viewport": "reflow320",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "captura": null
+        },
+        {
+          "pagina": "Registro",
+          "viewport": "reflow320",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "captura": null
+        },
+        {
+          "pagina": "Privacidad",
+          "viewport": "reflow320",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "captura": null
+        },
+        {
+          "pagina": "Inicio",
+          "viewport": "reflow320",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "captura": null
+        },
+        {
+          "pagina": "Equipo",
+          "viewport": "reflow320",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "captura": null
+        },
+        {
+          "pagina": "Tablero",
+          "viewport": "reflow320",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "captura": null
+        },
+        {
+          "pagina": "Ayuda",
+          "viewport": "reflow320",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "captura": null
+        },
+        {
+          "pagina": "Preferencias",
+          "viewport": "reflow320",
+          "innerWidth": 320,
+          "scrollWidth": 320,
+          "desborda": false,
+          "captura": null
+        }
+      ]
+    },
+    {
+      "id": "VIS-10",
+      "tipo": "visual",
+      "nombre": "Tamaño mínimo de texto (≥ 14 px)",
+      "objetivo": "Muestrear el font-size calculado de todos los textos visibles (escritorio) y comprobar que no hay texto menor de 14 px (antes se usaban 12 px).",
+      "esperado": "0 elementos de texto visibles con font-size < 14 px; cuerpo ≥ 16 px.",
+      "obtenido": "270 textos muestreados en 8 páginas; 0 con < 14 px; cuerpo 16px; mínimo 14px.",
+      "estado": "Aprobado",
+      "evidencia": [],
+      "detalle": [
+        {
+          "pagina": "Login",
+          "total": 9,
+          "menores14": 0,
+          "minimo": 14,
+          "ejemplos": [],
+          "cuerpo": 16
+        },
+        {
+          "pagina": "Registro",
+          "total": 20,
+          "menores14": 0,
+          "minimo": 14,
+          "ejemplos": [],
+          "cuerpo": 16
+        },
+        {
+          "pagina": "Privacidad",
+          "total": 21,
+          "menores14": 0,
+          "minimo": 16,
+          "ejemplos": [],
+          "cuerpo": 16
+        },
+        {
+          "pagina": "Inicio",
+          "total": 23,
+          "menores14": 0,
+          "minimo": 14,
+          "ejemplos": [],
+          "cuerpo": 16
+        },
+        {
+          "pagina": "Equipo",
+          "total": 30,
+          "menores14": 0,
+          "minimo": 14,
+          "ejemplos": [],
+          "cuerpo": 16
+        },
+        {
+          "pagina": "Tablero",
+          "total": 43,
+          "menores14": 0,
+          "minimo": 14,
+          "ejemplos": [],
+          "cuerpo": 16
+        },
+        {
+          "pagina": "Ayuda",
+          "total": 93,
+          "menores14": 0,
+          "minimo": 14,
+          "ejemplos": [],
+          "cuerpo": 16
+        },
+        {
+          "pagina": "Preferencias",
+          "total": 31,
+          "menores14": 0,
+          "minimo": 14,
+          "ejemplos": [],
+          "cuerpo": 16
+        }
+      ]
+    },
+    {
+      "id": "VIS-11",
+      "tipo": "visual",
+      "nombre": "Contraste de color en 3 viewports (axe color-contrast)",
+      "objetivo": "Verificar con axe-core que todo el texto alcanza 4.5:1 (3:1 en texto grande) en móvil, tablet y escritorio (WCAG 1.4.3).",
+      "esperado": "0 nodos con contraste insuficiente en las 8 páginas × 3 viewports.",
+      "obtenido": "0 nodos con contraste insuficiente en 24 combinaciones página×viewport.",
+      "estado": "Aprobado",
+      "evidencia": [],
+      "detalle": [
+        {
+          "pagina": "login",
+          "viewport": "movil",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "login",
+          "viewport": "tablet",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "login",
+          "viewport": "escritorio",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "register",
+          "viewport": "movil",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "register",
+          "viewport": "tablet",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "register",
+          "viewport": "escritorio",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "privacidad",
+          "viewport": "movil",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "privacidad",
+          "viewport": "tablet",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "privacidad",
+          "viewport": "escritorio",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "inicio",
+          "viewport": "movil",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "inicio",
+          "viewport": "tablet",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "inicio",
+          "viewport": "escritorio",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "equipo",
+          "viewport": "movil",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "equipo",
+          "viewport": "tablet",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "equipo",
+          "viewport": "escritorio",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "tablero",
+          "viewport": "movil",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "tablero",
+          "viewport": "tablet",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "tablero",
+          "viewport": "escritorio",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "ayuda",
+          "viewport": "movil",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "ayuda",
+          "viewport": "tablet",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "ayuda",
+          "viewport": "escritorio",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "preferencias",
+          "viewport": "movil",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "preferencias",
+          "viewport": "tablet",
+          "nodos": 0,
+          "ejemplos": []
+        },
+        {
+          "pagina": "preferencias",
+          "viewport": "escritorio",
+          "nodos": 0,
+          "ejemplos": []
+        }
+      ]
+    },
+    {
+      "id": "VIS-12",
+      "tipo": "accesibilidad",
+      "nombre": "axe-core WCAG A/AA en móvil y tablet",
+      "objetivo": "Repetir la auditoría automática en los viewports móvil (390 px) y tablet (768 px), donde la barra de navegación cambia (enlaces solo con icono).",
+      "esperado": "0 violaciones WCAG A/AA en las 8 páginas en móvil y tablet.",
+      "obtenido": "0 violaciones WCAG A/AA en 16 combinaciones página×viewport.",
+      "estado": "Aprobado",
+      "evidencia": [],
+      "detalle": [
+        {
+          "pagina": "login",
+          "viewport": "movil",
+          "reglas": []
+        },
+        {
+          "pagina": "login",
+          "viewport": "tablet",
+          "reglas": []
+        },
+        {
+          "pagina": "login",
+          "viewport": "escritorio",
+          "reglas": []
+        },
+        {
+          "pagina": "register",
+          "viewport": "movil",
+          "reglas": []
+        },
+        {
+          "pagina": "register",
+          "viewport": "tablet",
+          "reglas": []
+        },
+        {
+          "pagina": "register",
+          "viewport": "escritorio",
+          "reglas": []
+        },
+        {
+          "pagina": "privacidad",
+          "viewport": "movil",
+          "reglas": []
+        },
+        {
+          "pagina": "privacidad",
+          "viewport": "tablet",
+          "reglas": []
+        },
+        {
+          "pagina": "privacidad",
+          "viewport": "escritorio",
+          "reglas": []
+        },
+        {
+          "pagina": "inicio",
+          "viewport": "movil",
+          "reglas": []
+        },
+        {
+          "pagina": "inicio",
+          "viewport": "tablet",
+          "reglas": []
+        },
+        {
+          "pagina": "inicio",
+          "viewport": "escritorio",
+          "reglas": []
+        },
+        {
+          "pagina": "equipo",
+          "viewport": "movil",
+          "reglas": []
+        },
+        {
+          "pagina": "equipo",
+          "viewport": "tablet",
+          "reglas": []
+        },
+        {
+          "pagina": "equipo",
+          "viewport": "escritorio",
+          "reglas": []
+        },
+        {
+          "pagina": "tablero",
+          "viewport": "movil",
+          "reglas": []
+        },
+        {
+          "pagina": "tablero",
+          "viewport": "tablet",
+          "reglas": []
+        },
+        {
+          "pagina": "tablero",
+          "viewport": "escritorio",
+          "reglas": []
+        },
+        {
+          "pagina": "ayuda",
+          "viewport": "movil",
+          "reglas": []
+        },
+        {
+          "pagina": "ayuda",
+          "viewport": "tablet",
+          "reglas": []
+        },
+        {
+          "pagina": "ayuda",
+          "viewport": "escritorio",
+          "reglas": []
+        },
+        {
+          "pagina": "preferencias",
+          "viewport": "movil",
+          "reglas": []
+        },
+        {
+          "pagina": "preferencias",
+          "viewport": "tablet",
+          "reglas": []
+        },
+        {
+          "pagina": "preferencias",
+          "viewport": "escritorio",
+          "reglas": []
+        }
+      ]
+    },
+    {
+      "id": "VIS-13",
+      "tipo": "visual",
+      "nombre": "Preferencias \"Alto contraste\" + \"Texto muy grande\" se aplican",
+      "objetivo": "Comprobar que las preferencias de accesibilidad cambian realmente los estilos calculados y el diseño sigue sin desbordar (WCAG 1.4.4 Redimensionar texto).",
+      "esperado": "html font-size 16px → 20px; texto gris secundario → #111 (rgb 17,17,17); fondo blanco; sin desbordamiento horizontal.",
+      "obtenido": "Normal: font 16px, gris oklch(0.373 0.034 259.733), fondo rgb(243, 244, 246). Preferencias activas: font 20px, gris rgb(17, 17, 17), fondo rgb(255, 255, 255); scrollWidth 1366/1366.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "capturas/tablero-alto-contraste-texto-muy-grande.png"
+      ]
+    },
+    {
+      "id": "VIS-14",
+      "tipo": "visual",
+      "nombre": "Regresión visual (pixelmatch) entre dos ejecuciones",
+      "objetivo": "Comparar píxel a píxel la UI de escritorio contra una línea base para detectar cambios visuales no intencionados.",
+      "esperado": "Diferencia ≤ 0.5 % en cada página (UI estable ≈ 0 %).",
+      "obtenido": "Login: 0% · Registro: 0.057% · Privacidad: 0% · Inicio: 0% · Equipo: 0.041% · Tablero: 0.001% · Ayuda: 0% · Preferencias: 0.022% (línea base de una ejecución anterior).",
+      "estado": "Aprobado",
+      "evidencia": [
+        "visual/diff/register.png",
+        "visual/diff/equipo.png",
+        "visual/diff/tablero.png",
+        "visual/diff/preferencias.png",
+        "visual/base/login.png"
+      ],
+      "detalle": [
+        {
+          "pagina": "Login",
+          "porcentaje": 0,
+          "pixeles": 0,
+          "origen": "línea base de una ejecución anterior",
+          "base": "visual/base/login.png",
+          "actual": "visual/actual/login.png",
+          "diff": "visual/diff/login.png"
+        },
+        {
+          "pagina": "Registro",
+          "porcentaje": 0.057,
+          "pixeles": 699,
+          "origen": "línea base de una ejecución anterior",
+          "base": "visual/base/register.png",
+          "actual": "visual/actual/register.png",
+          "diff": "visual/diff/register.png"
+        },
+        {
+          "pagina": "Privacidad",
+          "porcentaje": 0,
+          "pixeles": 0,
+          "origen": "línea base de una ejecución anterior",
+          "base": "visual/base/privacidad.png",
+          "actual": "visual/actual/privacidad.png",
+          "diff": "visual/diff/privacidad.png"
+        },
+        {
+          "pagina": "Inicio",
+          "porcentaje": 0,
+          "pixeles": 0,
+          "origen": "línea base de una ejecución anterior",
+          "base": "visual/base/inicio.png",
+          "actual": "visual/actual/inicio.png",
+          "diff": "visual/diff/inicio.png"
+        },
+        {
+          "pagina": "Equipo",
+          "porcentaje": 0.041,
+          "pixeles": 502,
+          "origen": "línea base de una ejecución anterior",
+          "base": "visual/base/equipo.png",
+          "actual": "visual/actual/equipo.png",
+          "diff": "visual/diff/equipo.png"
+        },
+        {
+          "pagina": "Tablero",
+          "porcentaje": 0.001,
+          "pixeles": 12,
+          "origen": "línea base de una ejecución anterior",
+          "base": "visual/base/tablero.png",
+          "actual": "visual/actual/tablero.png",
+          "diff": "visual/diff/tablero.png"
+        },
+        {
+          "pagina": "Ayuda",
+          "porcentaje": 0,
+          "pixeles": 0,
+          "origen": "línea base de una ejecución anterior",
+          "base": "visual/base/ayuda.png",
+          "actual": "visual/actual/ayuda.png",
+          "diff": "visual/diff/ayuda.png"
+        },
+        {
+          "pagina": "Preferencias",
+          "porcentaje": 0.022,
+          "pixeles": 275,
+          "origen": "línea base de una ejecución anterior",
+          "base": "visual/base/preferencias.png",
+          "actual": "visual/actual/preferencias.png",
+          "diff": "visual/diff/preferencias.png"
+        }
+      ]
+    },
+    {
+      "id": "VIS-15",
+      "tipo": "visual",
+      "nombre": "Navegación en móvil con etiquetas de texto visibles",
+      "objetivo": "Comprobar que en móvil (390 px) los enlaces \"Inicio\" y \"Preferencias\" muestran texto visible y no dependen solo de un icono con title, que no se ve en pantallas táctiles (heurística 6, reconocimiento antes que recuerdo).",
+      "esperado": "Los enlaces a / y /preferencias de la barra de navegación muestran el texto \"Inicio\" y \"Preferencias\" a 390 px.",
+      "obtenido": "Enlace a /: texto visible \"Inicio\"; enlace a /preferencias: texto visible \"Preferencias\".",
+      "estado": "Aprobado",
+      "evidencia": [
+        "capturas/nav-movil.png"
+      ],
+      "detalle": {
+        "inicio": {
+          "encontrado": true,
+          "texto": "Inicio",
+          "visible": true
+        },
+        "preferencias": {
+          "encontrado": true,
+          "texto": "Preferencias",
+          "visible": true
+        },
+        "captura": "capturas/nav-movil.png"
+      }
+    }
+  ],
+  "incidenciasCarga": [
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 1,
+      "fecha": "2026-10-27T04:23:29.062Z"
+    },
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 2,
+      "fecha": "2026-10-27T04:23:31.837Z"
+    },
+    {
+      "ruta": "/proyectos/ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "intento": 3,
+      "fecha": "2026-10-27T04:23:34.605Z"
+    }
+  ],
+  "capturas": [
+    {
+      "pagina": "Login",
+      "viewport": "movil",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "desborda": false,
+      "captura": "capturas/login-movil.png"
+    },
+    {
+      "pagina": "Login",
+      "viewport": "tablet",
+      "innerWidth": 768,
+      "scrollWidth": 768,
+      "desborda": false,
+      "captura": "capturas/login-tablet.png"
+    },
+    {
+      "pagina": "Login",
+      "viewport": "escritorio",
+      "innerWidth": 1366,
+      "scrollWidth": 1366,
+      "desborda": false,
+      "captura": "capturas/login-escritorio.png"
+    },
+    {
+      "pagina": "Login",
+      "viewport": "reflow320",
+      "innerWidth": 320,
+      "scrollWidth": 320,
+      "desborda": false,
+      "captura": null
+    },
+    {
+      "pagina": "Registro",
+      "viewport": "movil",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "desborda": false,
+      "captura": "capturas/register-movil.png"
+    },
+    {
+      "pagina": "Registro",
+      "viewport": "tablet",
+      "innerWidth": 768,
+      "scrollWidth": 768,
+      "desborda": false,
+      "captura": "capturas/register-tablet.png"
+    },
+    {
+      "pagina": "Registro",
+      "viewport": "escritorio",
+      "innerWidth": 1366,
+      "scrollWidth": 1366,
+      "desborda": false,
+      "captura": "capturas/register-escritorio.png"
+    },
+    {
+      "pagina": "Registro",
+      "viewport": "reflow320",
+      "innerWidth": 320,
+      "scrollWidth": 320,
+      "desborda": false,
+      "captura": null
+    },
+    {
+      "pagina": "Privacidad",
+      "viewport": "movil",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "desborda": false,
+      "captura": "capturas/privacidad-movil.png"
+    },
+    {
+      "pagina": "Privacidad",
+      "viewport": "tablet",
+      "innerWidth": 768,
+      "scrollWidth": 768,
+      "desborda": false,
+      "captura": "capturas/privacidad-tablet.png"
+    },
+    {
+      "pagina": "Privacidad",
+      "viewport": "escritorio",
+      "innerWidth": 1366,
+      "scrollWidth": 1366,
+      "desborda": false,
+      "captura": "capturas/privacidad-escritorio.png"
+    },
+    {
+      "pagina": "Privacidad",
+      "viewport": "reflow320",
+      "innerWidth": 320,
+      "scrollWidth": 320,
+      "desborda": false,
+      "captura": null
+    },
+    {
+      "pagina": "Inicio",
+      "viewport": "movil",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "desborda": false,
+      "captura": "capturas/inicio-movil.png"
+    },
+    {
+      "pagina": "Inicio",
+      "viewport": "tablet",
+      "innerWidth": 768,
+      "scrollWidth": 768,
+      "desborda": false,
+      "captura": "capturas/inicio-tablet.png"
+    },
+    {
+      "pagina": "Inicio",
+      "viewport": "escritorio",
+      "innerWidth": 1366,
+      "scrollWidth": 1366,
+      "desborda": false,
+      "captura": "capturas/inicio-escritorio.png"
+    },
+    {
+      "pagina": "Inicio",
+      "viewport": "reflow320",
+      "innerWidth": 320,
+      "scrollWidth": 320,
+      "desborda": false,
+      "captura": null
+    },
+    {
+      "pagina": "Equipo",
+      "viewport": "movil",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "desborda": false,
+      "captura": "capturas/equipo-movil.png"
+    },
+    {
+      "pagina": "Equipo",
+      "viewport": "tablet",
+      "innerWidth": 768,
+      "scrollWidth": 768,
+      "desborda": false,
+      "captura": "capturas/equipo-tablet.png"
+    },
+    {
+      "pagina": "Equipo",
+      "viewport": "escritorio",
+      "innerWidth": 1366,
+      "scrollWidth": 1366,
+      "desborda": false,
+      "captura": "capturas/equipo-escritorio.png"
+    },
+    {
+      "pagina": "Equipo",
+      "viewport": "reflow320",
+      "innerWidth": 320,
+      "scrollWidth": 320,
+      "desborda": false,
+      "captura": null
+    },
+    {
+      "pagina": "Tablero",
+      "viewport": "movil",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "desborda": false,
+      "captura": "capturas/tablero-movil.png"
+    },
+    {
+      "pagina": "Tablero",
+      "viewport": "tablet",
+      "innerWidth": 768,
+      "scrollWidth": 768,
+      "desborda": false,
+      "captura": "capturas/tablero-tablet.png"
+    },
+    {
+      "pagina": "Tablero",
+      "viewport": "escritorio",
+      "innerWidth": 1366,
+      "scrollWidth": 1366,
+      "desborda": false,
+      "captura": "capturas/tablero-escritorio.png"
+    },
+    {
+      "pagina": "Tablero",
+      "viewport": "reflow320",
+      "innerWidth": 320,
+      "scrollWidth": 320,
+      "desborda": false,
+      "captura": null
+    },
+    {
+      "pagina": "Ayuda",
+      "viewport": "movil",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "desborda": false,
+      "captura": "capturas/ayuda-movil.png"
+    },
+    {
+      "pagina": "Ayuda",
+      "viewport": "tablet",
+      "innerWidth": 768,
+      "scrollWidth": 768,
+      "desborda": false,
+      "captura": "capturas/ayuda-tablet.png"
+    },
+    {
+      "pagina": "Ayuda",
+      "viewport": "escritorio",
+      "innerWidth": 1366,
+      "scrollWidth": 1366,
+      "desborda": false,
+      "captura": "capturas/ayuda-escritorio.png"
+    },
+    {
+      "pagina": "Ayuda",
+      "viewport": "reflow320",
+      "innerWidth": 320,
+      "scrollWidth": 320,
+      "desborda": false,
+      "captura": null
+    },
+    {
+      "pagina": "Preferencias",
+      "viewport": "movil",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "desborda": false,
+      "captura": "capturas/preferencias-movil.png"
+    },
+    {
+      "pagina": "Preferencias",
+      "viewport": "tablet",
+      "innerWidth": 768,
+      "scrollWidth": 768,
+      "desborda": false,
+      "captura": "capturas/preferencias-tablet.png"
+    },
+    {
+      "pagina": "Preferencias",
+      "viewport": "escritorio",
+      "innerWidth": 1366,
+      "scrollWidth": 1366,
+      "desborda": false,
+      "captura": "capturas/preferencias-escritorio.png"
+    },
+    {
+      "pagina": "Preferencias",
+      "viewport": "reflow320",
+      "innerWidth": 320,
+      "scrollWidth": 320,
+      "desborda": false,
+      "captura": null
+    }
+  ],
+  "texto": [
+    {
+      "pagina": "Login",
+      "total": 9,
+      "menores14": 0,
+      "minimo": 14,
+      "ejemplos": [],
+      "cuerpo": 16
+    },
+    {
+      "pagina": "Registro",
+      "total": 20,
+      "menores14": 0,
+      "minimo": 14,
+      "ejemplos": [],
+      "cuerpo": 16
+    },
+    {
+      "pagina": "Privacidad",
+      "total": 21,
+      "menores14": 0,
+      "minimo": 16,
+      "ejemplos": [],
+      "cuerpo": 16
+    },
+    {
+      "pagina": "Inicio",
+      "total": 23,
+      "menores14": 0,
+      "minimo": 14,
+      "ejemplos": [],
+      "cuerpo": 16
+    },
+    {
+      "pagina": "Equipo",
+      "total": 30,
+      "menores14": 0,
+      "minimo": 14,
+      "ejemplos": [],
+      "cuerpo": 16
+    },
+    {
+      "pagina": "Tablero",
+      "total": 43,
+      "menores14": 0,
+      "minimo": 14,
+      "ejemplos": [],
+      "cuerpo": 16
+    },
+    {
+      "pagina": "Ayuda",
+      "total": 93,
+      "menores14": 0,
+      "minimo": 14,
+      "ejemplos": [],
+      "cuerpo": 16
+    },
+    {
+      "pagina": "Preferencias",
+      "total": 31,
+      "menores14": 0,
+      "minimo": 14,
+      "ejemplos": [],
+      "cuerpo": 16
+    }
+  ],
+  "contraste": [
+    {
+      "pagina": "login",
+      "viewport": "movil",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "login",
+      "viewport": "tablet",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "login",
+      "viewport": "escritorio",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "register",
+      "viewport": "movil",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "register",
+      "viewport": "tablet",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "register",
+      "viewport": "escritorio",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "privacidad",
+      "viewport": "movil",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "privacidad",
+      "viewport": "tablet",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "privacidad",
+      "viewport": "escritorio",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "inicio",
+      "viewport": "movil",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "inicio",
+      "viewport": "tablet",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "inicio",
+      "viewport": "escritorio",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "equipo",
+      "viewport": "movil",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "equipo",
+      "viewport": "tablet",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "equipo",
+      "viewport": "escritorio",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "tablero",
+      "viewport": "movil",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "tablero",
+      "viewport": "tablet",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "tablero",
+      "viewport": "escritorio",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "ayuda",
+      "viewport": "movil",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "ayuda",
+      "viewport": "tablet",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "ayuda",
+      "viewport": "escritorio",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "preferencias",
+      "viewport": "movil",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "preferencias",
+      "viewport": "tablet",
+      "nodos": 0,
+      "ejemplos": []
+    },
+    {
+      "pagina": "preferencias",
+      "viewport": "escritorio",
+      "nodos": 0,
+      "ejemplos": []
+    }
+  ],
+  "axeViewport": [
+    {
+      "pagina": "login",
+      "viewport": "movil",
+      "reglas": []
+    },
+    {
+      "pagina": "login",
+      "viewport": "tablet",
+      "reglas": []
+    },
+    {
+      "pagina": "login",
+      "viewport": "escritorio",
+      "reglas": []
+    },
+    {
+      "pagina": "register",
+      "viewport": "movil",
+      "reglas": []
+    },
+    {
+      "pagina": "register",
+      "viewport": "tablet",
+      "reglas": []
+    },
+    {
+      "pagina": "register",
+      "viewport": "escritorio",
+      "reglas": []
+    },
+    {
+      "pagina": "privacidad",
+      "viewport": "movil",
+      "reglas": []
+    },
+    {
+      "pagina": "privacidad",
+      "viewport": "tablet",
+      "reglas": []
+    },
+    {
+      "pagina": "privacidad",
+      "viewport": "escritorio",
+      "reglas": []
+    },
+    {
+      "pagina": "inicio",
+      "viewport": "movil",
+      "reglas": []
+    },
+    {
+      "pagina": "inicio",
+      "viewport": "tablet",
+      "reglas": []
+    },
+    {
+      "pagina": "inicio",
+      "viewport": "escritorio",
+      "reglas": []
+    },
+    {
+      "pagina": "equipo",
+      "viewport": "movil",
+      "reglas": []
+    },
+    {
+      "pagina": "equipo",
+      "viewport": "tablet",
+      "reglas": []
+    },
+    {
+      "pagina": "equipo",
+      "viewport": "escritorio",
+      "reglas": []
+    },
+    {
+      "pagina": "tablero",
+      "viewport": "movil",
+      "reglas": []
+    },
+    {
+      "pagina": "tablero",
+      "viewport": "tablet",
+      "reglas": []
+    },
+    {
+      "pagina": "tablero",
+      "viewport": "escritorio",
+      "reglas": []
+    },
+    {
+      "pagina": "ayuda",
+      "viewport": "movil",
+      "reglas": []
+    },
+    {
+      "pagina": "ayuda",
+      "viewport": "tablet",
+      "reglas": []
+    },
+    {
+      "pagina": "ayuda",
+      "viewport": "escritorio",
+      "reglas": []
+    },
+    {
+      "pagina": "preferencias",
+      "viewport": "movil",
+      "reglas": []
+    },
+    {
+      "pagina": "preferencias",
+      "viewport": "tablet",
+      "reglas": []
+    },
+    {
+      "pagina": "preferencias",
+      "viewport": "escritorio",
+      "reglas": []
+    }
+  ],
+  "regresion": [
+    {
+      "pagina": "Login",
+      "porcentaje": 0,
+      "pixeles": 0,
+      "origen": "línea base de una ejecución anterior",
+      "base": "visual/base/login.png",
+      "actual": "visual/actual/login.png",
+      "diff": "visual/diff/login.png"
+    },
+    {
+      "pagina": "Registro",
+      "porcentaje": 0.057,
+      "pixeles": 699,
+      "origen": "línea base de una ejecución anterior",
+      "base": "visual/base/register.png",
+      "actual": "visual/actual/register.png",
+      "diff": "visual/diff/register.png"
+    },
+    {
+      "pagina": "Privacidad",
+      "porcentaje": 0,
+      "pixeles": 0,
+      "origen": "línea base de una ejecución anterior",
+      "base": "visual/base/privacidad.png",
+      "actual": "visual/actual/privacidad.png",
+      "diff": "visual/diff/privacidad.png"
+    },
+    {
+      "pagina": "Inicio",
+      "porcentaje": 0,
+      "pixeles": 0,
+      "origen": "línea base de una ejecución anterior",
+      "base": "visual/base/inicio.png",
+      "actual": "visual/actual/inicio.png",
+      "diff": "visual/diff/inicio.png"
+    },
+    {
+      "pagina": "Equipo",
+      "porcentaje": 0.041,
+      "pixeles": 502,
+      "origen": "línea base de una ejecución anterior",
+      "base": "visual/base/equipo.png",
+      "actual": "visual/actual/equipo.png",
+      "diff": "visual/diff/equipo.png"
+    },
+    {
+      "pagina": "Tablero",
+      "porcentaje": 0.001,
+      "pixeles": 12,
+      "origen": "línea base de una ejecución anterior",
+      "base": "visual/base/tablero.png",
+      "actual": "visual/actual/tablero.png",
+      "diff": "visual/diff/tablero.png"
+    },
+    {
+      "pagina": "Ayuda",
+      "porcentaje": 0,
+      "pixeles": 0,
+      "origen": "línea base de una ejecución anterior",
+      "base": "visual/base/ayuda.png",
+      "actual": "visual/actual/ayuda.png",
+      "diff": "visual/diff/ayuda.png"
+    },
+    {
+      "pagina": "Preferencias",
+      "porcentaje": 0.022,
+      "pixeles": 275,
+      "origen": "línea base de una ejecución anterior",
+      "base": "visual/base/preferencias.png",
+      "actual": "visual/actual/preferencias.png",
+      "diff": "visual/diff/preferencias.png"
+    }
+  ]
+}

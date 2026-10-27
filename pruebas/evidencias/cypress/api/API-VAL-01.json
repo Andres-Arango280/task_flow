@@ -1,0 +1,24 @@
+{
+  "id": "API-VAL-01",
+  "obtenido": "Respondió 400 con \"El nombre no puede superar 255 caracteres\".",
+  "peticion": {
+    "metodo": "POST",
+    "url": "http://localhost:3000/equipos",
+    "autenticado": true,
+    "cuerpo": {
+      "nombre": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 6,
+    "cuerpo": {
+      "message": [
+        "El nombre no puede superar 255 caracteres"
+      ],
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:13:40.870Z"
+}

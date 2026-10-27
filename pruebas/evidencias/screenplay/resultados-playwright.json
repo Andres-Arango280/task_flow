@@ -1,0 +1,4050 @@
+{
+ "config": {
+  "argv": [
+   "C:\\Program Files\\nodejs\\node.exe",
+   "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\e2e-screenplay\\node_modules\\@playwright\\test\\cli.js",
+   "test"
+  ],
+  "configFile": "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\e2e-screenplay\\playwright.config.ts",
+  "rootDir": "C:/Users/brahi/Desktop/TercerExamen-main/TercerExamen-main/pruebas/e2e-screenplay/specs",
+  "failOnFlakyTests": false,
+  "forbidOnly": false,
+  "fullyParallel": false,
+  "globalSetup": null,
+  "globalTeardown": null,
+  "globalTimeout": 0,
+  "grep": {},
+  "grepInvert": null,
+  "maxFailures": 0,
+  "metadata": {
+   "actualWorkers": 2
+  },
+  "preserveOutput": "always",
+  "projects": [
+   {
+    "outputDir": "C:/Users/brahi/Desktop/TercerExamen-main/TercerExamen-main/pruebas/e2e-screenplay/test-results",
+    "repeatEach": 1,
+    "retries": 1,
+    "metadata": {
+     "actualWorkers": 2
+    },
+    "id": "",
+    "name": "",
+    "testDir": "C:/Users/brahi/Desktop/TercerExamen-main/TercerExamen-main/pruebas/e2e-screenplay/specs",
+    "testIgnore": [],
+    "testMatch": [
+     "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+    ],
+    "timeout": 90000
+   }
+  ],
+  "quiet": false,
+  "reporter": [
+   [
+    "line",
+    null
+   ],
+   [
+    "html",
+    {
+     "outputFolder": "reportes/playwright-html",
+     "open": "never"
+    }
+   ],
+   [
+    "json",
+    {
+     "outputFile": "reportes/resultados-playwright.json"
+    }
+   ],
+   [
+    "C:\\Users\\brahi\\Desktop\\TercerExamen-main\\TercerExamen-main\\pruebas\\e2e-screenplay\\node_modules\\@serenity-js\\playwright-test\\lib\\index.js",
+    {
+     "crew": [
+      [
+       "@serenity-js/console-reporter",
+       {
+        "theme": "auto"
+       }
+      ],
+      [
+       "@serenity-js/serenity-bdd",
+       {
+        "specDirectory": "./specs"
+       }
+      ],
+      [
+       "@serenity-js/core:ArtifactArchiver",
+       {
+        "outputDirectory": "./target/site/serenity"
+       }
+      ]
+     ]
+    }
+   ]
+  ],
+  "reportSlowTests": {
+   "max": 5,
+   "threshold": 300000
+  },
+  "shard": null,
+  "tags": [],
+  "updateSnapshots": "missing",
+  "updateSourceMethod": "patch",
+  "version": "1.63.0",
+  "workers": 2,
+  "webServer": null
+ },
+ "suites": [
+  {
+   "title": "acceso.spec.ts",
+   "file": "acceso.spec.ts",
+   "column": 0,
+   "line": 0,
+   "specs": [],
+   "suites": [
+    {
+     "title": "Acceso a TaskFlow",
+     "file": "acceso.spec.ts",
+     "line": 11,
+     "column": 9,
+     "specs": [
+      {
+       "title": "SP-01 Registro exitoso de una nueva usuaria e inicio de sesión",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 16398,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana se registra en TaskFlow como ana.sp.1793057965861002@taskflow.test",
+             "duration": 3248,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/register\"",
+               "duration": 2123
+              },
+              {
+               "title": "Ana waits until el campo «Nombre completo» does become visible",
+               "duration": 163
+              },
+              {
+               "title": "Ana enters \"Ana Screenplay 1793057965861002\" into el campo «Nombre completo»",
+               "duration": 243
+              },
+              {
+               "title": "Ana enters \"ana.sp.1793057965861002@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 82
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 120
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Confirmar contraseña»",
+               "duration": 92
+              },
+              {
+               "title": "Ana clicks on el botón «Crear cuenta»",
+               "duration": 384
+              },
+              {
+               "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 1793057965861002\", email: \"ana.sp.1793057965861002@taskflow.test\", password: \"Clave-Segura-123\" }",
+               "duration": 12
+              }
+             ]
+            },
+            {
+             "title": "Ana waits until la ruta actual does equal \"/login\"",
+             "duration": 542
+            },
+            {
+             "title": "Ana ensures that el mensaje de cuenta creada does eventually include \"Cuenta creada correctamente\"",
+             "duration": 61
+            },
+            {
+             "title": "Ana ensures that the value of el campo «Correo electrónico» does equal \"ana.sp.1793057965861002@taskflow.test\"",
+             "duration": 46
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 2563,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 951
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 306
+              },
+              {
+               "title": "Ana enters \"ana.sp.1793057965861002@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 78
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 78
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 255
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 875
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that la ruta actual does equal \"/\"",
+             "duration": 15
+            },
+            {
+             "title": "Ana ensures that el título de la pestaña does equal \"Mis equipos · TaskFlow\"",
+             "duration": 31
+            },
+            {
+             "title": "Ana ensures that el valor «access_token» del almacenamiento local does become present",
+             "duration": 79
+            }
+           ],
+           "startTime": "2026-10-26T23:39:20.851Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-c6731--usuaria-e-inicio-de-sesión/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-c6731--usuaria-e-inicio-de-sesión/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-c6731--usuaria-e-inicio-de-sesión/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "70748693b849e6ccd7c1-889ac768250a8e783e44",
+       "file": "acceso.spec.ts",
+       "line": 13,
+       "column": 7
+      },
+      {
+       "title": "SP-02 Registro con un correo ya existente muestra un error",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 4812,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana se registra por API como ana.sp.17930579840230174@taskflow.test",
+             "duration": 311,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/auth/register'",
+               "duration": 232
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930579840230174\", email: \"ana.sp.17930579840230174@taskflow.test\", password: \"Clave-Segura-123\" }",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- usuarioId: \"33f44c36-9bf7-40ea-9b03-0c47e9a1cdd9\"",
+               "duration": 18
+              }
+             ]
+            },
+            {
+             "title": "Ana se registra en TaskFlow como ana.sp.17930579840230174@taskflow.test",
+             "duration": 1788,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/register\"",
+               "duration": 1068
+              },
+              {
+               "title": "Ana waits until el campo «Nombre completo» does become visible",
+               "duration": 90
+              },
+              {
+               "title": "Ana enters \"Otra Ana\" into el campo «Nombre completo»",
+               "duration": 75
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930579840230174@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 93
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 157
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Confirmar contraseña»",
+               "duration": 58
+              },
+              {
+               "title": "Ana clicks on el botón «Crear cuenta»",
+               "duration": 219
+              },
+              {
+               "title": "Ana takes notes:\n- credenciales: { nombre: \"Otra Ana\", email: \"ana.sp.17930579840230174@taskflow.test\", password: \"Clave-Segura-123\" }",
+               "duration": 10
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that el mensaje de error del registro does eventually include \"Ya existe una cuenta con el correo ana.sp.17930579840230174@taskflow.test\"",
+             "duration": 52
+            },
+            {
+             "title": "Ana ensures that la ruta actual does equal \"/register\"",
+             "duration": 15
+            }
+           ],
+           "startTime": "2026-10-26T23:39:42.062Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-74593--existente-muestra-un-error/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-74593--existente-muestra-un-error/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-74593--existente-muestra-un-error/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "70748693b849e6ccd7c1-32533cd15e46b6dff776",
+       "file": "acceso.spec.ts",
+       "line": 30,
+       "column": 7
+      },
+      {
+       "title": "SP-03 Registro con contraseñas que no coinciden es rechazado en el formulario",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 3959,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana se registra en TaskFlow como ana.sp.1793057988343029@taskflow.test",
+             "duration": 1706,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/register\"",
+               "duration": 1000
+              },
+              {
+               "title": "Ana waits until el campo «Nombre completo» does become visible",
+               "duration": 115
+              },
+              {
+               "title": "Ana enters \"Ana Screenplay 1793057988343029\" into el campo «Nombre completo»",
+               "duration": 126
+              },
+              {
+               "title": "Ana enters \"ana.sp.1793057988343029@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 90
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 86
+              },
+              {
+               "title": "Ana enters \"otra-clave-distinta\" into el campo «Confirmar contraseña»",
+               "duration": 62
+              },
+              {
+               "title": "Ana clicks on el botón «Crear cuenta»",
+               "duration": 193
+              },
+              {
+               "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 1793057988343029\", email: \"ana.sp.1793057988343029@taskflow.test\", password: \"Clave-Segura-123\" }",
+               "duration": 14
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that el mensaje de error del registro does eventually include \"Las contraseñas no coinciden\"",
+             "duration": 46
+            },
+            {
+             "title": "Ana ensures that la ruta actual does equal \"/register\"",
+             "duration": 15
+            }
+           ],
+           "startTime": "2026-10-26T23:39:47.139Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-55bc1--rechazado-en-el-formulario/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-55bc1--rechazado-en-el-formulario/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-55bc1--rechazado-en-el-formulario/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "70748693b849e6ccd7c1-8a9d17b8ec59d19207cd",
+       "file": "acceso.spec.ts",
+       "line": 42,
+       "column": 7
+      },
+      {
+       "title": "SP-04 Inicio de sesión con contraseña incorrecta muestra una alerta",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 4927,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana se registra por API como ana.sp.1793057991539038@taskflow.test",
+             "duration": 257,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/auth/register'",
+               "duration": 180
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 14
+              },
+              {
+               "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 1793057991539038\", email: \"ana.sp.1793057991539038@taskflow.test\", password: \"Clave-Segura-123\" }",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- usuarioId: \"7b10096e-c216-4558-ba19-373698cd0243\"",
+               "duration": 24
+              }
+             ]
+            },
+            {
+             "title": "Ana intenta iniciar sesión como ana.sp.1793057991539038@taskflow.test",
+             "duration": 1696,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 1089
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 285
+              },
+              {
+               "title": "Ana enters \"ana.sp.1793057991539038@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 63
+              },
+              {
+               "title": "Ana enters \"contraseña-equivocada\" into el campo «Contraseña»",
+               "duration": 51
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 188
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that el mensaje de error del inicio de sesión does eventually include \"El correo o la contraseña no son correctos\"",
+             "duration": 245
+            },
+            {
+             "title": "Ana ensures that la ruta actual does equal \"/login\"",
+             "duration": 12
+            },
+            {
+             "title": "Ana ensures that el valor «access_token» del almacenamiento local does not become present",
+             "duration": 38
+            }
+           ],
+           "startTime": "2026-10-26T23:39:51.228Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-7fcee-correcta-muestra-una-alerta/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-7fcee-correcta-muestra-una-alerta/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-7fcee-correcta-muestra-una-alerta/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "70748693b849e6ccd7c1-b57dcfdbb7b98d1124ea",
+       "file": "acceso.spec.ts",
+       "line": 53,
+       "column": 7
+      },
+      {
+       "title": "SP-05 Una ruta protegida sin sesión redirige al inicio de sesión",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 5119,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana navigates to \"/login\"",
+             "duration": 1417
+            },
+            {
+             "title": "Ana borra la sesión guardada en su navegador",
+             "duration": 46
+            },
+            {
+             "title": "Ana navigates to \"/proyectos/00000000-0000-0000-0000-000000000000\"",
+             "duration": 950
+            },
+            {
+             "title": "Ana waits until la ruta actual does equal \"/login\"",
+             "duration": 30
+            },
+            {
+             "title": "Ana ensures that el encabezado principal does equal \"Iniciar sesión\"",
+             "duration": 111
+            },
+            {
+             "title": "Ana navigates to \"/preferencias\"",
+             "duration": 780
+            },
+            {
+             "title": "Ana waits until la ruta actual does equal \"/login\"",
+             "duration": 27
+            },
+            {
+             "title": "Ana ensures that el título de la pestaña does equal \"Iniciar sesión · TaskFlow\"",
+             "duration": 34
+            }
+           ],
+           "startTime": "2026-10-26T23:39:56.547Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-ec47b-edirige-al-inicio-de-sesión/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-ec47b-edirige-al-inicio-de-sesión/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-ec47b-edirige-al-inicio-de-sesión/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "70748693b849e6ccd7c1-c2e6ae5a2075d72b46d7",
+       "file": "acceso.spec.ts",
+       "line": 66,
+       "column": 7
+      },
+      {
+       "title": "SP-06 Cerrar sesión pide confirmación y después protege las rutas privadas",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 7428,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana se registra por API como ana.sp.17930580023650423@taskflow.test",
+             "duration": 328,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/auth/register'",
+               "duration": 231
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 29
+              },
+              {
+               "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930580023650423\", email: \"ana.sp.17930580023650423@taskflow.test\", password: \"Clave-Segura-123\" }",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- usuarioId: \"365e13ca-1fda-4460-9489-edc9bffff654\"",
+               "duration": 23
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 2776,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 1265
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 117
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930580023650423@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 66
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 83
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 314
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 908
+              }
+             ]
+            },
+            {
+             "title": "Ana pulsa «Salir» y cancela la confirmación",
+             "duration": 940,
+             "steps": [
+              {
+               "title": "Ana clicks on el botón «Salir»",
+               "duration": 220
+              },
+              {
+               "title": "Ana waits until la ventana de confirmación does become visible",
+               "duration": 92
+              },
+              {
+               "title": "Ana clicks on el botón «Cancelar» de la confirmación",
+               "duration": 290
+              },
+              {
+               "title": "Ana waits until la ventana de confirmación does not become visible",
+               "duration": 318
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that la ruta actual does equal \"/\"",
+             "duration": 25
+            },
+            {
+             "title": "Ana ensures that el título «Mis equipos» does become present",
+             "duration": 46
+            },
+            {
+             "title": "Ana cierra su sesión",
+             "duration": 712,
+             "steps": [
+              {
+               "title": "Ana clicks on el botón «Salir»",
+               "duration": 217
+              },
+              {
+               "title": "Ana waits until la ventana de confirmación does become visible",
+               "duration": 150
+              },
+              {
+               "title": "Ana clicks on el botón «Cerrar sesión» de la confirmación",
+               "duration": 286
+              },
+              {
+               "title": "Ana waits until \"/login\" does equal \"/login\"",
+               "duration": 43
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that la ruta actual does equal \"/login\"",
+             "duration": 30
+            },
+            {
+             "title": "Ana ensures that el valor «access_token» del almacenamiento local does not become present",
+             "duration": 184
+            },
+            {
+             "title": "Ana navigates to \"/\"",
+             "duration": 915
+            },
+            {
+             "title": "Ana waits until la ruta actual does equal \"/login\"",
+             "duration": 34
+            }
+           ],
+           "startTime": "2026-10-26T23:40:01.876Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-08dd7--protege-las-rutas-privadas/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-08dd7--protege-las-rutas-privadas/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/acceso-Acceso-a-TaskFlow-S-08dd7--protege-las-rutas-privadas/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "70748693b849e6ccd7c1-bd7ba89496e4f4674208",
+       "file": "acceso.spec.ts",
+       "line": 80,
+       "column": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "colaboracion.spec.ts",
+   "file": "colaboracion.spec.ts",
+   "column": 0,
+   "line": 0,
+   "specs": [],
+   "suites": [
+    {
+     "title": "Colaboración entre actores",
+     "file": "colaboracion.spec.ts",
+     "line": 13,
+     "column": 9,
+     "specs": [
+      {
+       "title": "SP-16 Beto (miembro) ve la tarea que creó Ana y el cambio de columna que ella hace",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 1,
+           "parallelIndex": 1,
+           "status": "passed",
+           "duration": 23284,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Beto prepara su cuenta beto.sp.17930579658840069@taskflow.test por API",
+             "duration": 2017,
+             "steps": [
+              {
+               "title": "Beto se registra por API como beto.sp.17930579658840069@taskflow.test",
+               "duration": 1400,
+               "steps": [
+                {
+                 "title": "Beto sends a POST request to '/auth/register'",
+                 "duration": 1169
+                },
+                {
+                 "title": "Beto ensures that the status of the last response does equal 201",
+                 "duration": 26
+                },
+                {
+                 "title": "Beto takes notes:\n- credenciales: { nombre: \"Beto Screenplay 17930579658840069\", email: \"beto.sp.17930579658840069@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 15
+                },
+                {
+                 "title": "Beto takes notes:\n- usuarioId: \"74aba9fa-5f8b-49ce-a571-6ceeb2e47af3\"",
+                 "duration": 96
+                }
+               ]
+              },
+              {
+               "title": "Beto obtiene un token de acceso por API",
+               "duration": 588,
+               "steps": [
+                {
+                 "title": "Beto sends a POST request to '/auth/login'",
+                 "duration": 453
+                },
+                {
+                 "title": "Beto ensures that the status of the last response does equal 201",
+                 "duration": 30
+                },
+                {
+                 "title": "Beto takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3NGFiYTlmYS01ZjhiLTQ5Y2UtYTU3MS02Y2VlYjJlNDdhZjMiLCJlbWFpbCI6ImJldG8uc3AuMTc5MzA1Nzk2NTg4NDAwNjlAdGFza2Zsb3cudGVzdCIsImlkIjoiNzRhYmE5ZmEtNWY4Yi00OWNlLWE1NzEtNmNlZWIyZTQ3YWYzIiwiaWF0IjoxNzkzMDU3OTY3LCJleHAiOjE3OTMxNDQzNjd9.qsbRsxUJW2OYM6wzf1y4ADN0hRVBxhkONe4LKFAhd-E\"",
+                 "duration": 29
+                },
+                {
+                 "title": "Beto autentica sus llamadas a la API",
+                 "duration": 19
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana prepara su cuenta ana.sp.17930579681070275@taskflow.test por API",
+             "duration": 644,
+             "steps": [
+              {
+               "title": "Ana se registra por API como ana.sp.17930579681070275@taskflow.test",
+               "duration": 335,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/register'",
+                 "duration": 255
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930579681070275\", email: \"ana.sp.17930579681070275@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- usuarioId: \"a51efb43-f2d6-4d98-b98e-ec5116a7d7eb\"",
+                 "duration": 26
+                }
+               ]
+              },
+              {
+               "title": "Ana obtiene un token de acceso por API",
+               "duration": 294,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/login'",
+                 "duration": 210
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 25
+                },
+                {
+                 "title": "Ana takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhNTFlZmI0My1mMmQ2LTRkOTgtYjk4ZS1lYzUxMTZhN2Q3ZWIiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU3OTY4MTA3MDI3NUB0YXNrZmxvdy50ZXN0IiwiaWQiOiJhNTFlZmI0My1mMmQ2LTRkOTgtYjk4ZS1lYzUxMTZhN2Q3ZWIiLCJpYXQiOjE3OTMwNTc5NjgsImV4cCI6MTc5MzE0NDM2OH0.MkEoR-1-cU_6tr3euynqTp3JRwOLgsKiaGZM1LnXdl8\"",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana autentica sus llamadas a la API",
+                 "duration": 17
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el equipo «Equipo Compartido 17930579658840179»",
+             "duration": 484,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/equipos'",
+               "duration": 245
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 152
+              },
+              {
+               "title": "Ana takes notes:\n- equipoId: \"6132f105-c682-4cd1-a479-076a992b2bd0\"",
+               "duration": 26
+              }
+             ]
+            },
+            {
+             "title": "Ana añade por API a beto.sp.17930579658840069@taskflow.test a su equipo",
+             "duration": 208,
+             "steps": [
+              {
+               "title": "Ana sends a GET request to '/usuarios?email=beto.sp.17930579658840069%40taskflow.test'",
+               "duration": 45
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 200",
+               "duration": 23
+              },
+              {
+               "title": "Ana sends a POST request to /equipos/{a note of equipoId}/miembros",
+               "duration": 105
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 16
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el proyecto «Proyecto Compartido 17930579681870350»",
+             "duration": 173,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/proyectos'",
+               "duration": 110
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 16
+              },
+              {
+               "title": "Ana takes notes:\n- proyectoId: \"8a0122a3-a9bc-40eb-9aa8-340190d215a6\"",
+               "duration": 26
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API la tarea «Preparar la demo del sprint»",
+             "duration": 139,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/tareas'",
+               "duration": 77
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 14
+              },
+              {
+               "title": "Ana takes notes:\n- tareaId: \"8fe8fb15-eed7-4ffc-8f4d-9a8d026d4771\"",
+               "duration": 24
+              }
+             ]
+            },
+            {
+             "title": "Beto inicia sesión con sus credenciales",
+             "duration": 4301,
+             "steps": [
+              {
+               "title": "Beto navigates to \"/login\"",
+               "duration": 2624
+              },
+              {
+               "title": "Beto waits until el campo «Correo electrónico» does become visible",
+               "duration": 275
+              },
+              {
+               "title": "Beto enters \"beto.sp.17930579658840069@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 104
+              },
+              {
+               "title": "Beto enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 123
+              },
+              {
+               "title": "Beto clicks on el botón «Iniciar sesión»",
+               "duration": 258
+              },
+              {
+               "title": "Beto waits until el título «Mis equipos» does become visible",
+               "duration": 900
+              }
+             ]
+            },
+            {
+             "title": "Beto ensures that los equipos que ve el actor does eventually contain \"Equipo Compartido 17930579658840179\"",
+             "duration": 81
+            },
+            {
+             "title": "Beto abre directamente el tablero de un proyecto",
+             "duration": 1024,
+             "steps": [
+              {
+               "title": "Beto navigates to /proyectos/8a0122a3-a9bc-40eb-9aa8-340190d215a6",
+               "duration": 1004
+              }
+             ]
+            },
+            {
+             "title": "Beto waits until la barra de progreso does become visible",
+             "duration": 261
+            },
+            {
+             "title": "Beto ensures that los títulos de las tareas en «Por Hacer» does eventually contain \"Preparar la demo del sprint\"",
+             "duration": 92
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 3283,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 1756
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 93
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930579681070275@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 149
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 79
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 259
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 928
+              }
+             ]
+            },
+            {
+             "title": "Ana abre directamente el tablero de un proyecto",
+             "duration": 813,
+             "steps": [
+              {
+               "title": "Ana navigates to /proyectos/8a0122a3-a9bc-40eb-9aa8-340190d215a6",
+               "duration": 801
+              }
+             ]
+            },
+            {
+             "title": "Ana waits until la barra de progreso does become visible",
+             "duration": 261
+            },
+            {
+             "title": "Ana mueve la tarea «Preparar la demo del sprint» a «Hecho»",
+             "duration": 1350,
+             "steps": [
+              {
+               "title": "Ana abre el detalle de la tarea «Preparar la demo del sprint»",
+               "duration": 600,
+               "steps": [
+                {
+                 "title": "Ana clicks on la tarjeta «Preparar la demo del sprint»",
+                 "duration": 408
+                },
+                {
+                 "title": "Ana waits until el selector de columna does become visible",
+                 "duration": 181
+                }
+               ]
+              },
+              {
+               "title": "Ana selects \"Hecho\" from el selector de columna",
+               "duration": 110
+              },
+              {
+               "title": "Ana waits until the text of los títulos de las tareas en «Hecho» does contain \"Preparar la demo del sprint\"",
+               "duration": 119
+              },
+              {
+               "title": "Ana clicks on el botón «Cerrar» del detalle",
+               "duration": 182
+              },
+              {
+               "title": "Ana waits until la ventana modal does not become present",
+               "duration": 323
+              }
+             ]
+            },
+            {
+             "title": "Beto abre directamente el tablero de un proyecto",
+             "duration": 1039,
+             "steps": [
+              {
+               "title": "Beto navigates to /proyectos/8a0122a3-a9bc-40eb-9aa8-340190d215a6",
+               "duration": 1023
+              }
+             ]
+            },
+            {
+             "title": "Beto waits until la barra de progreso does become visible",
+             "duration": 135
+            },
+            {
+             "title": "Beto ensures that los títulos de las tareas en «Hecho» does eventually contain \"Preparar la demo del sprint\"",
+             "duration": 72
+            },
+            {
+             "title": "Beto ensures that los títulos de las tareas en «Por Hacer» does not contain \"Preparar la demo del sprint\"",
+             "duration": 63
+            }
+           ],
+           "startTime": "2026-10-26T23:39:20.841Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/colaboracion-Colaboración--cc443-io-de-columna-que-ella-hace/test-finished-1.png"
+            },
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/colaboracion-Colaboración--cc443-io-de-columna-que-ella-hace/test-finished-2.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/colaboracion-Colaboración--cc443-io-de-columna-que-ella-hace/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/colaboracion-Colaboración--cc443-io-de-columna-que-ella-hace/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "2d28fa4bda9b6ba91551-621c88f354d15d175858",
+       "file": "colaboracion.spec.ts",
+       "line": 15,
+       "column": 7
+      },
+      {
+       "title": "SP-17 Carla (usuaria ajena al equipo) no puede ver el tablero de Ana",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 1,
+           "parallelIndex": 1,
+           "status": "passed",
+           "duration": 14491,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana prepara su cuenta ana.sp.17930579905370563@taskflow.test por API",
+             "duration": 547,
+             "steps": [
+              {
+               "title": "Ana se registra por API como ana.sp.17930579905370563@taskflow.test",
+               "duration": 293,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/register'",
+                 "duration": 216
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930579905370563\", email: \"ana.sp.17930579905370563@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- usuarioId: \"5c73759e-436e-47e1-a05e-4400f80efa8c\"",
+                 "duration": 27
+                }
+               ]
+              },
+              {
+               "title": "Ana obtiene un token de acceso por API",
+               "duration": 225,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/login'",
+                 "duration": 140
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YzczNzU5ZS00MzZlLTQ3ZTEtYTA1ZS00NDAwZjgwZWZhOGMiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU3OTkwNTM3MDU2M0B0YXNrZmxvdy50ZXN0IiwiaWQiOiI1YzczNzU5ZS00MzZlLTQ3ZTEtYTA1ZS00NDAwZjgwZWZhOGMiLCJpYXQiOjE3OTMwNTc5OTEsImV4cCI6MTc5MzE0NDM5MX0.XhaXICbwgv4qDz-OwpAKNvZQQGQiMtUooY5raXfPzdA\"",
+                 "duration": 27
+                },
+                {
+                 "title": "Ana autentica sus llamadas a la API",
+                 "duration": 13
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el equipo «Equipo Privado 17930579905340489»",
+             "duration": 114,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/equipos'",
+               "duration": 55
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 14
+              },
+              {
+               "title": "Ana takes notes:\n- equipoId: \"74f129bd-2853-43bd-a6aa-a67abbe0362b\"",
+               "duration": 18
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el proyecto «Proyecto Secreto 17930579905710671»",
+             "duration": 127,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/proyectos'",
+               "duration": 62
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- proyectoId: \"196a7d54-e66e-4416-8cb1-ae9f4852321f\"",
+               "duration": 26
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API la tarea «Tarea confidencial»",
+             "duration": 126,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/tareas'",
+               "duration": 62
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- tareaId: \"16dc8ffa-c1f4-4574-8963-914af99ec1f6\"",
+               "duration": 26
+              }
+             ]
+            },
+            {
+             "title": "Carla prepara su cuenta carla.sp.17930579915310787@taskflow.test por API",
+             "duration": 488,
+             "steps": [
+              {
+               "title": "Carla se registra por API como carla.sp.17930579915310787@taskflow.test",
+               "duration": 216,
+               "steps": [
+                {
+                 "title": "Carla sends a POST request to '/auth/register'",
+                 "duration": 136
+                },
+                {
+                 "title": "Carla ensures that the status of the last response does equal 201",
+                 "duration": 14
+                },
+                {
+                 "title": "Carla takes notes:\n- credenciales: { nombre: \"Carla Screenplay 17930579915310787\", email: \"carla.sp.17930579915310787@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 15
+                },
+                {
+                 "title": "Carla takes notes:\n- usuarioId: \"ddaf6e7d-7951-4d76-9958-7c6c4b72952e\"",
+                 "duration": 25
+                }
+               ]
+              },
+              {
+               "title": "Carla obtiene un token de acceso por API",
+               "duration": 249,
+               "steps": [
+                {
+                 "title": "Carla sends a POST request to '/auth/login'",
+                 "duration": 171
+                },
+                {
+                 "title": "Carla ensures that the status of the last response does equal 201",
+                 "duration": 16
+                },
+                {
+                 "title": "Carla takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZGFmNmU3ZC03OTUxLTRkNzYtOTk1OC03YzZjNGI3Mjk1MmUiLCJlbWFpbCI6ImNhcmxhLnNwLjE3OTMwNTc5OTE1MzEwNzg3QHRhc2tmbG93LnRlc3QiLCJpZCI6ImRkYWY2ZTdkLTc5NTEtNGQ3Ni05OTU4LTdjNmM0YjcyOTUyZSIsImlhdCI6MTc5MzA1Nzk5MSwiZXhwIjoxNzkzMTQ0MzkxfQ.gteqVvy9kHGRXubACl96_zHHLLE3R_i1maz3SCxbyOA\"",
+                 "duration": 27
+                },
+                {
+                 "title": "Carla autentica sus llamadas a la API",
+                 "duration": 15
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Carla sends a GET request to '/tareas?proyectoId=196a7d54-e66e-4416-8cb1-ae9f4852321f'",
+             "duration": 46
+            },
+            {
+             "title": "Carla ensures that the status of the last response does equal 403",
+             "duration": 15
+            },
+            {
+             "title": "Carla inicia sesión con sus credenciales",
+             "duration": 2774,
+             "steps": [
+              {
+               "title": "Carla navigates to \"/login\"",
+               "duration": 1902
+              },
+              {
+               "title": "Carla waits until el campo «Correo electrónico» does become visible",
+               "duration": 94
+              },
+              {
+               "title": "Carla enters \"carla.sp.17930579915310787@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 77
+              },
+              {
+               "title": "Carla enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 98
+              },
+              {
+               "title": "Carla clicks on el botón «Iniciar sesión»",
+               "duration": 334
+              },
+              {
+               "title": "Carla waits until el título «Mis equipos» does become visible",
+               "duration": 249
+              }
+             ]
+            },
+            {
+             "title": "Carla ensures that los equipos que ve el actor does not contain \"Equipo Privado 17930579905340489\"",
+             "duration": 108
+            },
+            {
+             "title": "Carla abre directamente el tablero de un proyecto",
+             "duration": 813,
+             "steps": [
+              {
+               "title": "Carla navigates to /proyectos/196a7d54-e66e-4416-8cb1-ae9f4852321f",
+               "duration": 799
+              }
+             ]
+            },
+            {
+             "title": "Carla ensures that el encabezado principal does eventually equal \"No tienes acceso a este proyecto\"",
+             "duration": 98
+            },
+            {
+             "title": "Carla ensures that los avisos de error does eventually contain at least one item that does include \"No tienes acceso a este proyecto\"",
+             "duration": 101
+            },
+            {
+             "title": "Carla ensures that el tablero does not become present",
+             "duration": 277
+            },
+            {
+             "title": "Carla ensures that la tarjeta «Tarea confidencial» does not become present",
+             "duration": 339
+            }
+           ],
+           "startTime": "2026-10-26T23:39:49.912Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/colaboracion-Colaboración--7de29-puede-ver-el-tablero-de-Ana/test-finished-1.png"
+            },
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/colaboracion-Colaboración--7de29-puede-ver-el-tablero-de-Ana/test-finished-2.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/colaboracion-Colaboración--7de29-puede-ver-el-tablero-de-Ana/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/colaboracion-Colaboración--7de29-puede-ver-el-tablero-de-Ana/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "2d28fa4bda9b6ba91551-28e70765e8ae38173e4e",
+       "file": "colaboracion.spec.ts",
+       "line": 53,
+       "column": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "equipos.spec.ts",
+   "file": "equipos.spec.ts",
+   "column": 0,
+   "line": 0,
+   "specs": [],
+   "suites": [
+    {
+     "title": "Gestión de equipos y proyectos",
+     "file": "equipos.spec.ts",
+     "line": 11,
+     "column": 9,
+     "specs": [
+      {
+       "title": "SP-07 La líder crea un equipo e invita a un miembro registrado",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 1,
+           "parallelIndex": 1,
+           "status": "passed",
+           "duration": 9752,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Beto se registra por API como beto.sp.1793058005956099@taskflow.test",
+             "duration": 311,
+             "steps": [
+              {
+               "title": "Beto sends a POST request to '/auth/register'",
+               "duration": 233
+              },
+              {
+               "title": "Beto ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Beto takes notes:\n- credenciales: { nombre: \"Beto Screenplay 1793058005956099\", email: \"beto.sp.1793058005956099@taskflow.test\", password: \"Clave-Segura-123\" }",
+               "duration": 15
+              },
+              {
+               "title": "Beto takes notes:\n- usuarioId: \"2f7dcc71-5838-4852-93c5-4671aac206a5\"",
+               "duration": 22
+              }
+             ]
+            },
+            {
+             "title": "Ana se registra por API como ana.sp.1793058005956082@taskflow.test",
+             "duration": 226,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/auth/register'",
+               "duration": 145
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 1793058005956082\", email: \"ana.sp.1793058005956082@taskflow.test\", password: \"Clave-Segura-123\" }",
+               "duration": 14
+              },
+              {
+               "title": "Ana takes notes:\n- usuarioId: \"4544e824-4d86-4eda-b323-aa84087c67c1\"",
+               "duration": 25
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 2128,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 1254
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 101
+              },
+              {
+               "title": "Ana enters \"ana.sp.1793058005956082@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 113
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 51
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 269
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 319
+              }
+             ]
+            },
+            {
+             "title": "Ana crea el equipo «Equipo Backend 17930580059561074»",
+             "duration": 716,
+             "steps": [
+              {
+               "title": "Ana waits until el botón «Nuevo equipo» does become visible",
+               "duration": 61
+              },
+              {
+               "title": "Ana clicks on el botón «Nuevo equipo»",
+               "duration": 120
+              },
+              {
+               "title": "Ana waits until la ventana modal does become visible",
+               "duration": 49
+              },
+              {
+               "title": "Ana enters \"Equipo Backend 17930580059561074\" into el campo «Nombre del equipo» of la ventana modal",
+               "duration": 48
+              },
+              {
+               "title": "Ana clicks on el botón «Crear equipo»",
+               "duration": 330
+              },
+              {
+               "title": "Ana waits until la tarjeta del equipo Equipo Backend 17930580059561074 does become visible",
+               "duration": 91
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los avisos emergentes does eventually contain at least one item that does include \"Equipo «Equipo Backend 17930580059561074» creado\"",
+             "duration": 48
+            },
+            {
+             "title": "Ana abre el equipo «Equipo Backend 17930580059561074»",
+             "duration": 311,
+             "steps": [
+              {
+               "title": "Ana clicks on la tarjeta del equipo Equipo Backend 17930580059561074",
+               "duration": 124
+              },
+              {
+               "title": "Ana waits until la ruta de navegación does become visible",
+               "duration": 171
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that el título de la pestaña does equal \"Equipo Backend 17930580059561074 · TaskFlow\"",
+             "duration": 20
+            },
+            {
+             "title": "Ana ensures that los correos de los miembros del equipo does equal [ \"ana.sp.1793058005956082@taskflow.test\" ]",
+             "duration": 44
+            },
+            {
+             "title": "Ana invita a beto.sp.1793058005956099@taskflow.test a su equipo",
+             "duration": 1704,
+             "steps": [
+              {
+               "title": "Ana busca a beto.sp.1793058005956099@taskflow.test para invitarle",
+               "duration": 628,
+               "steps": [
+                {
+                 "title": "Ana clicks on el botón «Invitar»",
+                 "duration": 121
+                },
+                {
+                 "title": "Ana waits until la ventana modal does become visible",
+                 "duration": 52
+                },
+                {
+                 "title": "Ana enters \"beto.sp.1793058005956099@taskflow.test\" into el campo «Correo electrónico» of la ventana modal",
+                 "duration": 42
+                },
+                {
+                 "title": "Ana clicks on el botón «Buscar»",
+                 "duration": 398
+                }
+               ]
+              },
+              {
+               "title": "Ana waits until el botón «Añadir al equipo» does become visible",
+               "duration": 115
+              },
+              {
+               "title": "Ana clicks on el botón «Añadir al equipo»",
+               "duration": 242
+              },
+              {
+               "title": "Ana waits until the text of los correos de los miembros does contain \"beto.sp.1793058005956099@taskflow.test\"",
+               "duration": 693
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los correos de los miembros del equipo does eventually equal [ \"ana.sp.1793058005956082@taskflow.test\", \"beto.sp.1793058005956099@taskflow.test\" ]",
+             "duration": 107
+            },
+            {
+             "title": "Ana ensures that los avisos emergentes does eventually contain at least one item that does include \"Beto Screenplay 1793058005956099 ahora es miembro del equipo\"",
+             "duration": 124
+            }
+           ],
+           "startTime": "2026-10-26T23:40:05.292Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/equipos-Gestión-de-equipos-59b99-ita-a-un-miembro-registrado/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/equipos-Gestión-de-equipos-59b99-ita-a-un-miembro-registrado/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/equipos-Gestión-de-equipos-59b99-ita-a-un-miembro-registrado/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "42f37fcd84d5c455d141-8a1aa6403934aef6ad3f",
+       "file": "equipos.spec.ts",
+       "line": 13,
+       "column": 7
+      },
+      {
+       "title": "SP-08 Invitar un correo que no está registrado muestra un error en la ventana",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 1,
+           "parallelIndex": 1,
+           "status": "passed",
+           "duration": 7924,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana prepara su cuenta ana.sp.17930580168681154@taskflow.test por API",
+             "duration": 515,
+             "steps": [
+              {
+               "title": "Ana se registra por API como ana.sp.17930580168681154@taskflow.test",
+               "duration": 247,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/register'",
+                 "duration": 163
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 14
+                },
+                {
+                 "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930580168681154\", email: \"ana.sp.17930580168681154@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 16
+                },
+                {
+                 "title": "Ana takes notes:\n- usuarioId: \"d4136f0c-1b33-4b46-92d6-d75003e6a43b\"",
+                 "duration": 23
+                }
+               ]
+              },
+              {
+               "title": "Ana obtiene un token de acceso por API",
+               "duration": 248,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/login'",
+                 "duration": 152
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 31
+                },
+                {
+                 "title": "Ana takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNDEzNmYwYy0xYjMzLTRiNDYtOTJkNi1kNzUwMDNlNmE0M2IiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU4MDE2ODY4MTE1NEB0YXNrZmxvdy50ZXN0IiwiaWQiOiJkNDEzNmYwYy0xYjMzLTRiNDYtOTJkNi1kNzUwMDNlNmE0M2IiLCJpYXQiOjE3OTMwNTgwMTcsImV4cCI6MTc5MzE0NDQxN30.vByf6w4tTV2BeRA0NbIbcHm02zF2w1AAjnoTKwiGcCY\"",
+                 "duration": 24
+                },
+                {
+                 "title": "Ana autentica sus llamadas a la API",
+                 "duration": 13
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el equipo «Equipo QA 17930580168881354»",
+             "duration": 141,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/equipos'",
+               "duration": 60
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 29
+              },
+              {
+               "title": "Ana takes notes:\n- equipoId: \"8d0a110a-bf97-4660-9298-d6b9845ecc85\"",
+               "duration": 26
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 2875,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 1259
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 122
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930580168681154@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 106
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 112
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 325
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 921
+              }
+             ]
+            },
+            {
+             "title": "Ana abre la página de su equipo",
+             "duration": 1202,
+             "steps": [
+              {
+               "title": "Ana navigates to /equipos/{a note of equipoId}",
+               "duration": 1012
+              },
+              {
+               "title": "Ana waits until la ruta de navegación does become visible",
+               "duration": 170
+              }
+             ]
+            },
+            {
+             "title": "Ana busca a nadie.sp.17930580168681290@taskflow.test para invitarle",
+             "duration": 735,
+             "steps": [
+              {
+               "title": "Ana clicks on el botón «Invitar»",
+               "duration": 277
+              },
+              {
+               "title": "Ana waits until la ventana modal does become visible",
+               "duration": 104
+              },
+              {
+               "title": "Ana enters \"nadie.sp.17930580168681290@taskflow.test\" into el campo «Correo electrónico» of la ventana modal",
+               "duration": 118
+              },
+              {
+               "title": "Ana clicks on el botón «Buscar»",
+               "duration": 218
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that el error mostrado en la ventana de invitación does eventually include \"No hay ningún usuario registrado con el correo nadie.sp.17930580168681290@taskflow.test\"",
+             "duration": 81
+            },
+            {
+             "title": "Ana ensures that los correos de los miembros del equipo does have property length that does equal 1",
+             "duration": 119
+            }
+           ],
+           "startTime": "2026-10-26T23:40:16.301Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/equipos-Gestión-de-equipos-d89ac-stra-un-error-en-la-ventana/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/equipos-Gestión-de-equipos-d89ac-stra-un-error-en-la-ventana/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/equipos-Gestión-de-equipos-d89ac-stra-un-error-en-la-ventana/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "42f37fcd84d5c455d141-403281b83c413f946e90",
+       "file": "equipos.spec.ts",
+       "line": 37,
+       "column": 7
+      },
+      {
+       "title": "SP-09 Crear un proyecto genera un tablero con las 3 columnas por defecto",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 1,
+           "parallelIndex": 1,
+           "status": "passed",
+           "duration": 10644,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana prepara su cuenta ana.sp.17930580255721457@taskflow.test por API",
+             "duration": 1050,
+             "steps": [
+              {
+               "title": "Ana se registra por API como ana.sp.17930580255721457@taskflow.test",
+               "duration": 719,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/register'",
+                 "duration": 639
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 14
+                },
+                {
+                 "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930580255721457\", email: \"ana.sp.17930580255721457@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- usuarioId: \"bff405b3-2b40-4acb-8663-e8bbabccf771\"",
+                 "duration": 26
+                }
+               ]
+              },
+              {
+               "title": "Ana obtiene un token de acceso por API",
+               "duration": 299,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/login'",
+                 "duration": 153
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 47
+                },
+                {
+                 "title": "Ana takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZmY0MDViMy0yYjQwLTRhY2ItODY2My1lOGJiYWJjY2Y3NzEiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU4MDI1NTcyMTQ1N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiJiZmY0MDViMy0yYjQwLTRhY2ItODY2My1lOGJiYWJjY2Y3NzEiLCJpYXQiOjE3OTMwNTgwMjYsImV4cCI6MTc5MzE0NDQyNn0.xNxhgH9xnCJAcGE4jTTZccoGlMYChQJLR9OdN6daRFc\"",
+                 "duration": 19
+                },
+                {
+                 "title": "Ana autentica sus llamadas a la API",
+                 "duration": 27
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el equipo «Equipo Web 17930580256401612»",
+             "duration": 184,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/equipos'",
+               "duration": 119
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 14
+              },
+              {
+               "title": "Ana takes notes:\n- equipoId: \"93cb0f30-e8c4-4219-8c41-952414edbffc\"",
+               "duration": 25
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 3196,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 1671
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 123
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930580255721457@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 123
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 87
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 295
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 874
+              }
+             ]
+            },
+            {
+             "title": "Ana abre la página de su equipo",
+             "duration": 1038,
+             "steps": [
+              {
+               "title": "Ana navigates to /equipos/{a note of equipoId}",
+               "duration": 897
+              },
+              {
+               "title": "Ana waits until la ruta de navegación does become visible",
+               "duration": 125
+              }
+             ]
+            },
+            {
+             "title": "Ana crea el proyecto «Proyecto API 17930580255721597»",
+             "duration": 1639,
+             "steps": [
+              {
+               "title": "Ana clicks on el botón «Nuevo proyecto»",
+               "duration": 288
+              },
+              {
+               "title": "Ana waits until la ventana modal does become visible",
+               "duration": 91
+              },
+              {
+               "title": "Ana enters \"Proyecto API 17930580255721597\" into el campo «Nombre del proyecto» of la ventana modal",
+               "duration": 87
+              },
+              {
+               "title": "Ana clicks on el botón «Crear proyecto»",
+               "duration": 265
+              },
+              {
+               "title": "Ana waits until el enlace al tablero Proyecto API 17930580255721597 does become visible",
+               "duration": 888
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los avisos emergentes does eventually contain at least one item that does include \"creado con sus 3 listas\"",
+             "duration": 203
+            },
+            {
+             "title": "Ana abre el tablero del proyecto «Proyecto API 17930580255721597»",
+             "duration": 518,
+             "steps": [
+              {
+               "title": "Ana clicks on el enlace al tablero Proyecto API 17930580255721597",
+               "duration": 272
+              },
+              {
+               "title": "Ana waits until la barra de progreso does become visible",
+               "duration": 228
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that la ruta actual does include \"/proyectos/\"",
+             "duration": 14
+            },
+            {
+             "title": "Ana ensures that las columnas del tablero does eventually equal [ \"Por Hacer\", \"En Progreso\", \"Hecho\" ]",
+             "duration": 138
+            },
+            {
+             "title": "Ana ensures that el progreso del proyecto (%) does equal 0",
+             "duration": 66
+            }
+           ],
+           "startTime": "2026-10-26T23:40:24.739Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/equipos-Gestión-de-equipos-5d75a--las-3-columnas-por-defecto/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/equipos-Gestión-de-equipos-5d75a--las-3-columnas-por-defecto/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/equipos-Gestión-de-equipos-5d75a--las-3-columnas-por-defecto/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "42f37fcd84d5c455d141-4e74d4d93b05a84d959e",
+       "file": "equipos.spec.ts",
+       "line": 53,
+       "column": 7
+      },
+      {
+       "title": "SP-10 La líder quita a un miembro (con confirmación) y lo deshace desde el aviso",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 1,
+           "parallelIndex": 1,
+           "status": "passed",
+           "duration": 6976,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Beto se registra por API como beto.sp.17930580378411885@taskflow.test",
+             "duration": 342,
+             "steps": [
+              {
+               "title": "Beto sends a POST request to '/auth/register'",
+               "duration": 264
+              },
+              {
+               "title": "Beto ensures that the status of the last response does equal 201",
+               "duration": 16
+              },
+              {
+               "title": "Beto takes notes:\n- credenciales: { nombre: \"Beto Screenplay 17930580378411885\", email: \"beto.sp.17930580378411885@taskflow.test\", password: \"Clave-Segura-123\" }",
+               "duration": 14
+              },
+              {
+               "title": "Beto takes notes:\n- usuarioId: \"88146c16-508c-40a7-9046-e1ba9c3ade25\"",
+               "duration": 20
+              }
+             ]
+            },
+            {
+             "title": "Ana prepara su cuenta ana.sp.17930580378411742@taskflow.test por API",
+             "duration": 479,
+             "steps": [
+              {
+               "title": "Ana se registra por API como ana.sp.17930580378411742@taskflow.test",
+               "duration": 256,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/register'",
+                 "duration": 170
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930580378411742\", email: \"ana.sp.17930580378411742@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 14
+                },
+                {
+                 "title": "Ana takes notes:\n- usuarioId: \"92fac8c0-5307-4dbb-aea0-161a1e36ba96\"",
+                 "duration": 25
+                }
+               ]
+              },
+              {
+               "title": "Ana obtiene un token de acceso por API",
+               "duration": 203,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/login'",
+                 "duration": 121
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 16
+                },
+                {
+                 "title": "Ana takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MmZhYzhjMC01MzA3LTRkYmItYWVhMC0xNjFhMWUzNmJhOTYiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU4MDM3ODQxMTc0MkB0YXNrZmxvdy50ZXN0IiwiaWQiOiI5MmZhYzhjMC01MzA3LTRkYmItYWVhMC0xNjFhMWUzNmJhOTYiLCJpYXQiOjE3OTMwNTgwMzgsImV4cCI6MTc5MzE0NDQzOH0.OEdRSIQP7eauGQWIZBWUGZ8cITvsozQa7BSC671Vfc0\"",
+                 "duration": 26
+                },
+                {
+                 "title": "Ana autentica sus llamadas a la API",
+                 "duration": 15
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el equipo «Equipo Móvil 17930580382211976»",
+             "duration": 106,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/equipos'",
+               "duration": 45
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 14
+              },
+              {
+               "title": "Ana takes notes:\n- equipoId: \"480ed0b7-67c6-4cbc-a642-5509df6a22a6\"",
+               "duration": 24
+              }
+             ]
+            },
+            {
+             "title": "Ana añade por API a beto.sp.17930580378411885@taskflow.test a su equipo",
+             "duration": 138,
+             "steps": [
+              {
+               "title": "Ana sends a GET request to '/usuarios?email=beto.sp.17930580378411885%40taskflow.test'",
+               "duration": 30
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 200",
+               "duration": 15
+              },
+              {
+               "title": "Ana sends a POST request to /equipos/{a note of equipoId}/miembros",
+               "duration": 60
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 1264,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 746
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 66
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930580378411742@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 46
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 45
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 155
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 185
+              }
+             ]
+            },
+            {
+             "title": "Ana abre la página de su equipo",
+             "duration": 576,
+             "steps": [
+              {
+               "title": "Ana navigates to /equipos/{a note of equipoId}",
+               "duration": 487
+              },
+              {
+               "title": "Ana waits until la ruta de navegación does become visible",
+               "duration": 72
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los correos de los miembros del equipo does eventually contain \"beto.sp.17930580378411885@taskflow.test\"",
+             "duration": 61
+            },
+            {
+             "title": "Ana quita a Beto Screenplay 17930580378411885 del equipo",
+             "duration": 788,
+             "steps": [
+              {
+               "title": "Ana clicks on el botón para quitar a Beto Screenplay 17930580378411885",
+               "duration": 113
+              },
+              {
+               "title": "Ana waits until la ventana de confirmación does become visible",
+               "duration": 45
+              },
+              {
+               "title": "Ana clicks on el botón «Quitar del equipo» de la confirmación",
+               "duration": 318
+              },
+              {
+               "title": "Ana waits until la ventana de confirmación does not become visible",
+               "duration": 300
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los correos de los miembros del equipo does eventually not contain \"beto.sp.17930580378411885@taskflow.test\"",
+             "duration": 51
+            },
+            {
+             "title": "Ana ensures that los avisos emergentes does eventually contain at least one item that does include \"Beto Screenplay 17930580378411885 ya no forma parte del equipo\"",
+             "duration": 46
+            },
+            {
+             "title": "Ana deshace la última acción desde el aviso",
+             "duration": 187,
+             "steps": [
+              {
+               "title": "Ana waits until el botón «Deshacer» del aviso does become visible",
+               "duration": 56
+              },
+              {
+               "title": "Ana clicks on el botón «Deshacer» del aviso",
+               "duration": 120
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los correos de los miembros del equipo does eventually contain \"beto.sp.17930580378411885@taskflow.test\"",
+             "duration": 45
+            },
+            {
+             "title": "Ana ensures that los avisos emergentes does eventually contain at least one item that does include \"Beto Screenplay 17930580378411885 ha vuelto al equipo\"",
+             "duration": 43
+            }
+           ],
+           "startTime": "2026-10-26T23:40:35.757Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/equipos-Gestión-de-equipos-4ac16-y-lo-deshace-desde-el-aviso/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/equipos-Gestión-de-equipos-4ac16-y-lo-deshace-desde-el-aviso/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/equipos-Gestión-de-equipos-4ac16-y-lo-deshace-desde-el-aviso/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "42f37fcd84d5c455d141-036bd16275e19d6c2df9",
+       "file": "equipos.spec.ts",
+       "line": 73,
+       "column": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "preferencias.spec.ts",
+   "file": "preferencias.spec.ts",
+   "column": 0,
+   "line": 0,
+   "specs": [],
+   "suites": [
+    {
+     "title": "Preferencias de accesibilidad",
+     "file": "preferencias.spec.ts",
+     "line": 11,
+     "column": 9,
+     "specs": [
+      {
+       "title": "SP-18 Activar alto contraste y texto grande, y restablecer los valores por defecto",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 8675,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana se registra por API como ana.sp.17930580095620528@taskflow.test",
+             "duration": 159,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/auth/register'",
+               "duration": 95
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 16
+              },
+              {
+               "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930580095620528\", email: \"ana.sp.17930580095620528@taskflow.test\", password: \"Clave-Segura-123\" }",
+               "duration": 16
+              },
+              {
+               "title": "Ana takes notes:\n- usuarioId: \"c3419f01-cb01-4076-8988-274519422b3d\"",
+               "duration": 11
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 2204,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 602
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 160
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930580095620528@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 75
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 107
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 281
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 960
+              }
+             ]
+            },
+            {
+             "title": "Ana abre sus preferencias",
+             "duration": 447,
+             "steps": [
+              {
+               "title": "Ana clicks on el enlace «Preferencias»",
+               "duration": 341
+              },
+              {
+               "title": "Ana waits until el interruptor «Alto contraste» does become visible",
+               "duration": 88
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that el modo de contraste activo does equal \"normal\"",
+             "duration": 52
+            },
+            {
+             "title": "Ana ensures that el tamaño de texto activo does equal \"normal\"",
+             "duration": 45
+            },
+            {
+             "title": "Ana activa el alto contraste",
+             "duration": 282,
+             "steps": [
+              {
+               "title": "Ana clicks on el interruptor «Alto contraste»",
+               "duration": 269
+              }
+             ]
+            },
+            {
+             "title": "Ana elige el tamaño de texto «Grande»",
+             "duration": 323,
+             "steps": [
+              {
+               "title": "Ana clicks on la opción de tamaño «Grande»",
+               "duration": 300
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that el modo de contraste activo does eventually equal \"alto\"",
+             "duration": 61
+            },
+            {
+             "title": "Ana ensures that el tamaño de texto activo does eventually equal \"grande\"",
+             "duration": 60
+            },
+            {
+             "title": "Ana ensures that el interruptor «Alto contraste» does become selected",
+             "duration": 123
+            },
+            {
+             "title": "Ana navigates to \"/\"",
+             "duration": 1058
+            },
+            {
+             "title": "Ana waits until el título «Mis equipos» does become visible",
+             "duration": 164
+            },
+            {
+             "title": "Ana ensures that el modo de contraste activo does equal \"alto\"",
+             "duration": 60
+            },
+            {
+             "title": "Ana abre sus preferencias",
+             "duration": 403,
+             "steps": [
+              {
+               "title": "Ana clicks on el enlace «Preferencias»",
+               "duration": 273
+              },
+              {
+               "title": "Ana waits until el interruptor «Alto contraste» does become visible",
+               "duration": 112
+              }
+             ]
+            },
+            {
+             "title": "Ana restablece los valores por defecto confirmando la acción",
+             "duration": 1120,
+             "steps": [
+              {
+               "title": "Ana clicks on el botón «Restablecer valores por defecto»",
+               "duration": 281
+              },
+              {
+               "title": "Ana waits until la ventana de confirmación does become visible",
+               "duration": 91
+              },
+              {
+               "title": "Ana clicks on el botón «Restablecer» de la confirmación",
+               "duration": 418
+              },
+              {
+               "title": "Ana waits until la ventana de confirmación does not become visible",
+               "duration": 314
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that el modo de contraste activo does eventually equal \"normal\"",
+             "duration": 71
+            },
+            {
+             "title": "Ana ensures that el tamaño de texto activo does eventually equal \"normal\"",
+             "duration": 77
+            },
+            {
+             "title": "Ana ensures that los avisos emergentes does eventually contain at least one item that does include \"Se restablecieron los valores por defecto\"",
+             "duration": 90
+            },
+            {
+             "title": "Ana ensures that el aviso de valores por defecto does eventually become visible",
+             "duration": 102
+            }
+           ],
+           "startTime": "2026-10-26T23:40:09.431Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/preferencias-Preferencias--1014d-cer-los-valores-por-defecto/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/preferencias-Preferencias--1014d-cer-los-valores-por-defecto/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/preferencias-Preferencias--1014d-cer-los-valores-por-defecto/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "8581532fd5182a65da87-3bc68659ccdf8e9ef034",
+       "file": "preferencias.spec.ts",
+       "line": 13,
+       "column": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "tablero.spec.ts",
+   "file": "tablero.spec.ts",
+   "column": 0,
+   "line": 0,
+   "specs": [],
+   "suites": [
+    {
+     "title": "Tablero Kanban",
+     "file": "tablero.spec.ts",
+     "line": 28,
+     "column": 9,
+     "specs": [
+      {
+       "title": "SP-11 Crear tareas, mover una a «Hecho» y ver subir el progreso",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 16404,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana prepara su cuenta ana.sp.17930580203980647@taskflow.test por API",
+             "duration": 677,
+             "steps": [
+              {
+               "title": "Ana se registra por API como ana.sp.17930580203980647@taskflow.test",
+               "duration": 309,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/register'",
+                 "duration": 214
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930580203980647\", email: \"ana.sp.17930580203980647@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 19
+                },
+                {
+                 "title": "Ana takes notes:\n- usuarioId: \"e6b793d2-896e-4858-a055-31b81876f3b9\"",
+                 "duration": 23
+                }
+               ]
+              },
+              {
+               "title": "Ana obtiene un token de acceso por API",
+               "duration": 353,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/login'",
+                 "duration": 269
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNmI3OTNkMi04OTZlLTQ4NTgtYTA1NS0zMWI4MTg3NmYzYjkiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU4MDIwMzk4MDY0N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiJlNmI3OTNkMi04OTZlLTQ4NTgtYTA1NS0zMWI4MTg3NmYzYjkiLCJpYXQiOjE3OTMwNTgwMjEsImV4cCI6MTc5MzE0NDQyMX0.TD80uzR3of9U-M7XxM51_HkaURxBhwhD6WldNSD5yvs\"",
+                 "duration": 23
+                },
+                {
+                 "title": "Ana autentica sus llamadas a la API",
+                 "duration": 15
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el equipo «Equipo Kanban 17930580204220798»",
+             "duration": 141,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/equipos'",
+               "duration": 77
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- equipoId: \"6469e8b7-882d-4434-8b20-f941fb363407\"",
+               "duration": 26
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el proyecto «Proyecto Tablero 17930580204300838»",
+             "duration": 152,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/proyectos'",
+               "duration": 88
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- proyectoId: \"5d18845c-0142-4855-b1a0-8cac6c476403\"",
+               "duration": 21
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 3100,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 1487
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 109
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930580203980647@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 100
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 93
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 402
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 879
+              }
+             ]
+            },
+            {
+             "title": "Ana abre directamente el tablero de un proyecto",
+             "duration": 1079,
+             "steps": [
+              {
+               "title": "Ana navigates to /proyectos/{a note of proyectoId}",
+               "duration": 1068
+              }
+             ]
+            },
+            {
+             "title": "Ana waits until la barra de progreso does become visible",
+             "duration": 287
+            },
+            {
+             "title": "Ana ensures that el progreso del proyecto (%) does equal 0",
+             "duration": 51
+            },
+            {
+             "title": "Ana crea la tarea «Diseñar la pantalla de inicio»",
+             "duration": 1136,
+             "steps": [
+              {
+               "title": "Ana rellena la nueva tarea «Diseñar la pantalla de inicio»",
+               "duration": 932,
+               "steps": [
+                {
+                 "title": "Ana waits until el botón «Nueva tarea» does become visible",
+                 "duration": 88
+                },
+                {
+                 "title": "Ana clicks on el botón «Nueva tarea»",
+                 "duration": 280
+                },
+                {
+                 "title": "Ana waits until la ventana modal does become visible",
+                 "duration": 92
+                },
+                {
+                 "title": "Ana enters \"Diseñar la pantalla de inicio\" into el título de la nueva tarea",
+                 "duration": 113
+                },
+                {
+                 "title": "Ana enters \"Wireframes y prototipo\" into la descripción de la nueva tarea",
+                 "duration": 99
+                },
+                {
+                 "title": "Ana clicks on el botón «Crear tarea»",
+                 "duration": 242
+                }
+               ]
+              },
+              {
+               "title": "Ana waits until la tarjeta «Diseñar la pantalla de inicio» does become visible",
+               "duration": 187
+              }
+             ]
+            },
+            {
+             "title": "Ana crea la tarea «Configurar la base de datos»",
+             "duration": 4119,
+             "steps": [
+              {
+               "title": "Ana rellena la nueva tarea «Configurar la base de datos»",
+               "duration": 4004,
+               "steps": [
+                {
+                 "title": "Ana waits until el botón «Nueva tarea» does become visible",
+                 "duration": 90
+                },
+                {
+                 "title": "Ana clicks on el botón «Nueva tarea»",
+                 "duration": 253
+                },
+                {
+                 "title": "Ana waits until la ventana modal does become visible",
+                 "duration": 108
+                },
+                {
+                 "title": "Ana enters \"Configurar la base de datos\" into el título de la nueva tarea",
+                 "duration": 91
+                },
+                {
+                 "title": "Ana clicks on el botón «Crear tarea»",
+                 "duration": 3442
+                }
+               ]
+              },
+              {
+               "title": "Ana waits until la tarjeta «Configurar la base de datos» does become visible",
+               "duration": 98
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas en «Por Hacer» does eventually equal [ \"Diseñar la pantalla de inicio\", \"Configurar la base de datos\" ]",
+             "duration": 136
+            },
+            {
+             "title": "Ana ensures that el progreso del proyecto (%) does equal 0",
+             "duration": 46
+            },
+            {
+             "title": "Ana mueve la tarea «Diseñar la pantalla de inicio» a «Hecho»",
+             "duration": 1538,
+             "steps": [
+              {
+               "title": "Ana abre el detalle de la tarea «Diseñar la pantalla de inicio»",
+               "duration": 499,
+               "steps": [
+                {
+                 "title": "Ana clicks on la tarjeta «Diseñar la pantalla de inicio»",
+                 "duration": 311
+                },
+                {
+                 "title": "Ana waits until el selector de columna does become visible",
+                 "duration": 166
+                }
+               ]
+              },
+              {
+               "title": "Ana selects \"Hecho\" from el selector de columna",
+               "duration": 169
+              },
+              {
+               "title": "Ana waits until the text of los títulos de las tareas en «Hecho» does contain \"Diseñar la pantalla de inicio\"",
+               "duration": 184
+              },
+              {
+               "title": "Ana clicks on el botón «Cerrar» del detalle",
+               "duration": 334
+              },
+              {
+               "title": "Ana waits until la ventana modal does not become present",
+               "duration": 331
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los avisos emergentes does eventually contain at least one item that does include \"movida a Hecho\"",
+             "duration": 126
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas en «Hecho» does eventually equal [ \"Diseñar la pantalla de inicio\" ]",
+             "duration": 110
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas en «Por Hacer» does eventually equal [ \"Configurar la base de datos\" ]",
+             "duration": 99
+            },
+            {
+             "title": "Ana ensures that el progreso del proyecto (%) does eventually equal 50",
+             "duration": 56
+            }
+           ],
+           "startTime": "2026-10-26T23:40:18.958Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/tablero-Tablero-Kanban-SP--4c643-ho»-y-ver-subir-el-progreso/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/tablero-Tablero-Kanban-SP--4c643-ho»-y-ver-subir-el-progreso/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/tablero-Tablero-Kanban-SP--4c643-ho»-y-ver-subir-el-progreso/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "b8955a925741e2e255e5-714ce698e454f4f7134b",
+       "file": "tablero.spec.ts",
+       "line": 30,
+       "column": 7
+      },
+      {
+       "title": "SP-12 Crear una tarea sin título muestra un error y no la crea",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 5955,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana prepara su cuenta ana.sp.17930580378270975@taskflow.test por API",
+             "duration": 536,
+             "steps": [
+              {
+               "title": "Ana se registra por API como ana.sp.17930580378270975@taskflow.test",
+               "duration": 298,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/register'",
+                 "duration": 206
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 29
+                },
+                {
+                 "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930580378270975\", email: \"ana.sp.17930580378270975@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 14
+                },
+                {
+                 "title": "Ana takes notes:\n- usuarioId: \"05788e18-526a-40fc-8421-8ea92ef004aa\"",
+                 "duration": 22
+                }
+               ]
+              },
+              {
+               "title": "Ana obtiene un token de acceso por API",
+               "duration": 218,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/login'",
+                 "duration": 140
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 14
+                },
+                {
+                 "title": "Ana takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNTc4OGUxOC01MjZhLTQwZmMtODQyMS04ZWE5MmVmMDA0YWEiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU4MDM3ODI3MDk3NUB0YXNrZmxvdy50ZXN0IiwiaWQiOiIwNTc4OGUxOC01MjZhLTQwZmMtODQyMS04ZWE5MmVmMDA0YWEiLCJpYXQiOjE3OTMwNTgwMzgsImV4cCI6MTc5MzE0NDQzOH0.JPod2Iu9PtA7L_4_GHnfk4yZKFyUwxwYFgy5UJT7BwU\"",
+                 "duration": 23
+                },
+                {
+                 "title": "Ana autentica sus llamadas a la API",
+                 "duration": 15
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el equipo «Equipo Kanban 17930580378671093»",
+             "duration": 107,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/equipos'",
+               "duration": 46
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- equipoId: \"f33b1d91-ccd0-4ffa-a698-b036d3316511\"",
+               "duration": 25
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el proyecto «Proyecto Tablero 17930580378831166»",
+             "duration": 188,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/proyectos'",
+               "duration": 108
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 31
+              },
+              {
+               "title": "Ana takes notes:\n- proyectoId: \"18981b43-2e92-4cb2-8e58-b47d5e3ca31f\"",
+               "duration": 22
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 1356,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 798
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 85
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930580378270975@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 52
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 40
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 142
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 219
+              }
+             ]
+            },
+            {
+             "title": "Ana abre directamente el tablero de un proyecto",
+             "duration": 451,
+             "steps": [
+              {
+               "title": "Ana navigates to /proyectos/{a note of proyectoId}",
+               "duration": 439
+              }
+             ]
+            },
+            {
+             "title": "Ana waits until la barra de progreso does become visible",
+             "duration": 155
+            },
+            {
+             "title": "Ana rellena la nueva tarea «»",
+             "duration": 622,
+             "steps": [
+              {
+               "title": "Ana waits until el botón «Nueva tarea» does become visible",
+               "duration": 47
+              },
+              {
+               "title": "Ana clicks on el botón «Nueva tarea»",
+               "duration": 125
+              },
+              {
+               "title": "Ana waits until la ventana modal does become visible",
+               "duration": 62
+              },
+              {
+               "title": "Ana enters \"Solo descripción, sin título\" into la descripción de la nueva tarea",
+               "duration": 46
+              },
+              {
+               "title": "Ana clicks on el botón «Crear tarea»",
+               "duration": 324
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that el error del título de la tarea does eventually include \"Escribe un título para la tarea\"",
+             "duration": 46
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas visibles does have property length that does equal 0",
+             "duration": 30
+            }
+           ],
+           "startTime": "2026-10-26T23:40:35.892Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/tablero-Tablero-Kanban-SP--52ed0-estra-un-error-y-no-la-crea/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/tablero-Tablero-Kanban-SP--52ed0-estra-un-error-y-no-la-crea/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/tablero-Tablero-Kanban-SP--52ed0-estra-un-error-y-no-la-crea/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "b8955a925741e2e255e5-3e5dbcb3b5041546e9db",
+       "file": "tablero.spec.ts",
+       "line": 50,
+       "column": 7
+      },
+      {
+       "title": "SP-13 Eliminar una tarea pide confirmación y se puede deshacer",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 4786,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana prepara su cuenta ana.sp.1793058042058128@taskflow.test por API",
+             "duration": 301,
+             "steps": [
+              {
+               "title": "Ana se registra por API como ana.sp.1793058042058128@taskflow.test",
+               "duration": 143,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/register'",
+                 "duration": 80
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 1793058042058128\", email: \"ana.sp.1793058042058128@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- usuarioId: \"c3518241-39fb-409c-a635-4175c909721a\"",
+                 "duration": 12
+                }
+               ]
+              },
+              {
+               "title": "Ana obtiene un token de acceso por API",
+               "duration": 142,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/login'",
+                 "duration": 78
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 16
+                },
+                {
+                 "title": "Ana takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjMzUxODI0MS0zOWZiLTQwOWMtYTYzNS00MTc1YzkwOTcyMWEiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU4MDQyMDU4MTI4QHRhc2tmbG93LnRlc3QiLCJpZCI6ImMzNTE4MjQxLTM5ZmItNDA5Yy1hNjM1LTQxNzVjOTA5NzIxYSIsImlhdCI6MTc5MzA1ODA0MiwiZXhwIjoxNzkzMTQ0NDQyfQ.EIP-BbNdQBYv46ViZjTO3iHCxck0YQ8FGmH8iKROoYg\"",
+                 "duration": 13
+                },
+                {
+                 "title": "Ana autentica sus llamadas a la API",
+                 "duration": 16
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el equipo «Equipo Kanban 17930580420691335»",
+             "duration": 78,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/equipos'",
+               "duration": 31
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- equipoId: \"aee02533-9ce8-4344-8b19-853cd6d77176\"",
+               "duration": 12
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el proyecto «Proyecto Tablero 17930580420731467»",
+             "duration": 79,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/proyectos'",
+               "duration": 31
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- proyectoId: \"f1b50731-dee3-40a3-9483-9f6b1f197ddc\"",
+               "duration": 13
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API la tarea «Tarea temporal»",
+             "duration": 86,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/tareas'",
+               "duration": 39
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- tareaId: \"1642fbce-22bf-401c-8305-23247bccd3c5\"",
+               "duration": 12
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API la tarea «Tarea que se queda»",
+             "duration": 93,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/tareas'",
+               "duration": 46
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- tareaId: \"96903ec6-f6d5-4a53-a707-f459250c06a7\"",
+               "duration": 13
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 983,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 514
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 78
+              },
+              {
+               "title": "Ana enters \"ana.sp.1793058042058128@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 47
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 30
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 126
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 169
+              }
+             ]
+            },
+            {
+             "title": "Ana abre directamente el tablero de un proyecto",
+             "duration": 392,
+             "steps": [
+              {
+               "title": "Ana navigates to /proyectos/{a note of proyectoId}",
+               "duration": 379
+              }
+             ]
+            },
+            {
+             "title": "Ana waits until la barra de progreso does become visible",
+             "duration": 107
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas en «Por Hacer» does eventually contain \"Tarea temporal\"",
+             "duration": 63
+            },
+            {
+             "title": "Ana elimina la tarea «Tarea temporal» confirmando la acción",
+             "duration": 1249,
+             "steps": [
+              {
+               "title": "Ana abre el detalle de la tarea «Tarea temporal»",
+               "duration": 218,
+               "steps": [
+                {
+                 "title": "Ana clicks on la tarjeta «Tarea temporal»",
+                 "duration": 138
+                },
+                {
+                 "title": "Ana waits until el selector de columna does become visible",
+                 "duration": 64
+                }
+               ]
+              },
+              {
+               "title": "Ana clicks on el botón «Eliminar»",
+               "duration": 331
+              },
+              {
+               "title": "Ana waits until la ventana de confirmación does become visible",
+               "duration": 46
+              },
+              {
+               "title": "Ana clicks on el botón «Eliminar tarea» de la confirmación",
+               "duration": 354
+              },
+              {
+               "title": "Ana waits until la tarjeta «Tarea temporal» does not become present",
+               "duration": 285
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los avisos emergentes does eventually contain at least one item that does include \"Tarea \"Tarea temporal\" eliminada\"",
+             "duration": 45
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas visibles does eventually equal [ \"Tarea que se queda\" ]",
+             "duration": 47
+            },
+            {
+             "title": "Ana deshace la última acción desde el aviso",
+             "duration": 218,
+             "steps": [
+              {
+               "title": "Ana waits until el botón «Deshacer» del aviso does become visible",
+               "duration": 61
+              },
+              {
+               "title": "Ana clicks on el botón «Deshacer» del aviso",
+               "duration": 142
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas en «Por Hacer» does eventually contain \"Tarea temporal\"",
+             "duration": 315
+            },
+            {
+             "title": "Ana ensures that los avisos emergentes does eventually contain at least one item that does include \"Tarea \"Tarea temporal\" restaurada\"",
+             "duration": 55
+            }
+           ],
+           "startTime": "2026-10-26T23:40:41.926Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/tablero-Tablero-Kanban-SP--2df85-rmación-y-se-puede-deshacer/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/tablero-Tablero-Kanban-SP--2df85-rmación-y-se-puede-deshacer/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/tablero-Tablero-Kanban-SP--2df85-rmación-y-se-puede-deshacer/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "b8955a925741e2e255e5-3c2fb19ee72793f30e15",
+       "file": "tablero.spec.ts",
+       "line": 62,
+       "column": 7
+      },
+      {
+       "title": "SP-14 La búsqueda de tareas tolera tildes y errores de escritura",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 5040,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana prepara su cuenta ana.sp.17930580469911597@taskflow.test por API",
+             "duration": 312,
+             "steps": [
+              {
+               "title": "Ana se registra por API como ana.sp.17930580469911597@taskflow.test",
+               "duration": 155,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/register'",
+                 "duration": 92
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930580469911597\", email: \"ana.sp.17930580469911597@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 16
+                },
+                {
+                 "title": "Ana takes notes:\n- usuarioId: \"92574e3a-5014-4b9f-94c6-4c76e70cf56b\"",
+                 "duration": 12
+                }
+               ]
+              },
+              {
+               "title": "Ana obtiene un token de acceso por API",
+               "duration": 140,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/login'",
+                 "duration": 76
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MjU3NGUzYS01MDE0LTRiOWYtOTRjNi00Yzc2ZTcwY2Y1NmIiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU4MDQ2OTkxMTU5N0B0YXNrZmxvdy50ZXN0IiwiaWQiOiI5MjU3NGUzYS01MDE0LTRiOWYtOTRjNi00Yzc2ZTcwY2Y1NmIiLCJpYXQiOjE3OTMwNTgwNDcsImV4cCI6MTc5MzE0NDQ0N30.D1T1XSU0g7Y6hlgyqZVHD8uDDvYaAEof3PHggBBpsd0\"",
+                 "duration": 13
+                },
+                {
+                 "title": "Ana autentica sus llamadas a la API",
+                 "duration": 15
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el equipo «Equipo Kanban 17930580470001626»",
+             "duration": 79,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/equipos'",
+               "duration": 31
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- equipoId: \"cf4bfdb3-00b0-4170-9794-bb65ac795785\"",
+               "duration": 13
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el proyecto «Proyecto Tablero 17930580470031730»",
+             "duration": 80,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/proyectos'",
+               "duration": 31
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- proyectoId: \"2f1b5948-0518-4e0d-9d1d-1cce73128b20\"",
+               "duration": 13
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API la tarea «Configurar autenticación JWT»",
+             "duration": 76,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/tareas'",
+               "duration": 31
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- tareaId: \"0482eaa7-7949-49e5-9f33-156c666f0b5f\"",
+               "duration": 12
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API la tarea «Diseñar pantalla de inicio»",
+             "duration": 77,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/tareas'",
+               "duration": 30
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- tareaId: \"a4ac6ed8-97c3-4199-bc53-faaa1f8639fa\"",
+               "duration": 14
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API la tarea «Revisar documentación»",
+             "duration": 78,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/tareas'",
+               "duration": 30
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- tareaId: \"1cc773f9-4c65-444e-bffa-f62e8b85becb\"",
+               "duration": 11
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 948,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 484
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 58
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930580469911597@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 35
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 43
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 124
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 185
+              }
+             ]
+            },
+            {
+             "title": "Ana abre directamente el tablero de un proyecto",
+             "duration": 505,
+             "steps": [
+              {
+               "title": "Ana navigates to /proyectos/{a note of proyectoId}",
+               "duration": 495
+              }
+             ]
+            },
+            {
+             "title": "Ana waits until la barra de progreso does become visible",
+             "duration": 223
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas visibles does eventually have property length that does equal 3",
+             "duration": 107
+            },
+            {
+             "title": "Ana busca «autentificacion» en el tablero",
+             "duration": 199,
+             "steps": [
+              {
+               "title": "Ana clears the value of el buscador de tareas",
+               "duration": 95
+              },
+              {
+               "title": "Ana enters \"autentificacion\" into el buscador de tareas",
+               "duration": 81
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas visibles does eventually equal [ \"Configurar autenticación JWT\" ]",
+             "duration": 82
+            },
+            {
+             "title": "Ana ensures that el contador de resultados de búsqueda does eventually equal \"Mostrando 1 de 3 tareas\"",
+             "duration": 55
+            },
+            {
+             "title": "Ana busca «documetacion» en el tablero",
+             "duration": 343,
+             "steps": [
+              {
+               "title": "Ana clears the value of el buscador de tareas",
+               "duration": 241
+              },
+              {
+               "title": "Ana enters \"documetacion\" into el buscador de tareas",
+               "duration": 81
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas visibles does eventually equal [ \"Revisar documentación\" ]",
+             "duration": 61
+            },
+            {
+             "title": "Ana busca «readme» en el tablero",
+             "duration": 202,
+             "steps": [
+              {
+               "title": "Ana clears the value of el buscador de tareas",
+               "duration": 101
+              },
+              {
+               "title": "Ana enters \"readme\" into el buscador de tareas",
+               "duration": 75
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas visibles does eventually equal [ \"Revisar documentación\" ]",
+             "duration": 77
+            },
+            {
+             "title": "Ana busca «xyzxyz» en el tablero",
+             "duration": 217,
+             "steps": [
+              {
+               "title": "Ana clears the value of el buscador de tareas",
+               "duration": 125
+              },
+              {
+               "title": "Ana enters \"xyzxyz\" into el buscador de tareas",
+               "duration": 67
+              }
+             ]
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas visibles does eventually have property length that does equal 0",
+             "duration": 47
+            },
+            {
+             "title": "Ana ensures that el contador de resultados de búsqueda does eventually equal \"Mostrando 0 de 3 tareas\"",
+             "duration": 45
+            }
+           ],
+           "startTime": "2026-10-26T23:40:46.827Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/tablero-Tablero-Kanban-SP--f36c5-ldes-y-errores-de-escritura/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/tablero-Tablero-Kanban-SP--f36c5-ldes-y-errores-de-escritura/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/tablero-Tablero-Kanban-SP--f36c5-ldes-y-errores-de-escritura/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "b8955a925741e2e255e5-c850452fa397b118783e",
+       "file": "tablero.spec.ts",
+       "line": 81,
+       "column": 7
+      },
+      {
+       "title": "SP-15 Mover una tarea arrastrándola con el teclado hasta «Hecho»",
+       "ok": true,
+       "tags": [],
+       "tests": [
+        {
+         "timeout": 90000,
+         "annotations": [],
+         "expectedStatus": "passed",
+         "projectId": "",
+         "projectName": "",
+         "results": [
+          {
+           "workerIndex": 0,
+           "parallelIndex": 0,
+           "status": "passed",
+           "duration": 5273,
+           "errors": [],
+           "retry": 0,
+           "steps": [
+            {
+             "title": "Ana prepara su cuenta ana.sp.17930580525011885@taskflow.test por API",
+             "duration": 466,
+             "steps": [
+              {
+               "title": "Ana se registra por API como ana.sp.17930580525011885@taskflow.test",
+               "duration": 246,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/register'",
+                 "duration": 167
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- credenciales: { nombre: \"Ana Screenplay 17930580525011885\", email: \"ana.sp.17930580525011885@taskflow.test\", password: \"Clave-Segura-123\" }",
+                 "duration": 15
+                },
+                {
+                 "title": "Ana takes notes:\n- usuarioId: \"e7b97d31-7c7b-4616-891c-505ad0ded302\"",
+                 "duration": 25
+                }
+               ]
+              },
+              {
+               "title": "Ana obtiene un token de acceso por API",
+               "duration": 203,
+               "steps": [
+                {
+                 "title": "Ana sends a POST request to '/auth/login'",
+                 "duration": 125
+                },
+                {
+                 "title": "Ana ensures that the status of the last response does equal 201",
+                 "duration": 16
+                },
+                {
+                 "title": "Ana takes notes:\n- token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlN2I5N2QzMS03YzdiLTQ2MTYtODkxYy01MDVhZDBkZWQzMDIiLCJlbWFpbCI6ImFuYS5zcC4xNzkzMDU4MDUyNTAxMTg4NUB0YXNrZmxvdy50ZXN0IiwiaWQiOiJlN2I5N2QzMS03YzdiLTQ2MTYtODkxYy01MDVhZDBkZWQzMDIiLCJpYXQiOjE3OTMwNTgwNTIsImV4cCI6MTc5MzE0NDQ1Mn0.D69MOjpx7F3tnc_jdsZ6xeE5NwewfsI66JKOWWVUcqs\"",
+                 "duration": 25
+                },
+                {
+                 "title": "Ana autentica sus llamadas a la API",
+                 "duration": 15
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el equipo «Equipo Kanban 17930580525201910»",
+             "duration": 108,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/equipos'",
+               "duration": 45
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- equipoId: \"0add9676-f5cb-41b6-b2cf-29687641f844\"",
+               "duration": 26
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API el proyecto «Proyecto Tablero 17930580525252052»",
+             "duration": 108,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/proyectos'",
+               "duration": 46
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- proyectoId: \"5c468aea-6599-4e11-a92c-0b08062e3cb1\"",
+               "duration": 25
+              }
+             ]
+            },
+            {
+             "title": "Ana crea por API la tarea «Tarea arrastrada con teclado»",
+             "duration": 119,
+             "steps": [
+              {
+               "title": "Ana sends a POST request to '/tareas'",
+               "duration": 55
+              },
+              {
+               "title": "Ana ensures that the status of the last response does equal 201",
+               "duration": 15
+              },
+              {
+               "title": "Ana takes notes:\n- tareaId: \"3f42cd9f-5fb5-4b15-b5c3-b70a49b3d768\"",
+               "duration": 26
+              }
+             ]
+            },
+            {
+             "title": "Ana inicia sesión con sus credenciales",
+             "duration": 1864,
+             "steps": [
+              {
+               "title": "Ana navigates to \"/login\"",
+               "duration": 1069
+              },
+              {
+               "title": "Ana waits until el campo «Correo electrónico» does become visible",
+               "duration": 93
+              },
+              {
+               "title": "Ana enters \"ana.sp.17930580525011885@taskflow.test\" into el campo «Correo electrónico»",
+               "duration": 68
+              },
+              {
+               "title": "Ana enters \"Clave-Segura-123\" into el campo «Contraseña»",
+               "duration": 67
+              },
+              {
+               "title": "Ana clicks on el botón «Iniciar sesión»",
+               "duration": 240
+              },
+              {
+               "title": "Ana waits until el título «Mis equipos» does become visible",
+               "duration": 306
+              }
+             ]
+            },
+            {
+             "title": "Ana abre directamente el tablero de un proyecto",
+             "duration": 767,
+             "steps": [
+              {
+               "title": "Ana navigates to /proyectos/{a note of proyectoId}",
+               "duration": 747
+              }
+             ]
+            },
+            {
+             "title": "Ana waits until la barra de progreso does become visible",
+             "duration": 220
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas en «Por Hacer» does eventually equal [ \"Tarea arrastrada con teclado\" ]",
+             "duration": 77
+            },
+            {
+             "title": "Ana arrastra con el teclado la tarea «Tarea arrastrada con teclado» 2 columna(s) a la derecha",
+             "duration": 231
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas en «Hecho» does eventually equal [ \"Tarea arrastrada con teclado\" ]",
+             "duration": 85
+            },
+            {
+             "title": "Ana ensures that los títulos de las tareas en «Por Hacer» does eventually not contain \"Tarea arrastrada con teclado\"",
+             "duration": 48
+            },
+            {
+             "title": "Ana ensures that el progreso del proyecto (%) does eventually equal 100",
+             "duration": 47
+            }
+           ],
+           "startTime": "2026-10-26T23:40:52.166Z",
+           "annotations": [],
+           "attachments": [
+            {
+             "name": "screenshot",
+             "contentType": "image/png",
+             "path": "test-results/tablero-Tablero-Kanban-SP--33d2c-on-el-teclado-hasta-«Hecho»/test-finished-1.png"
+            },
+            {
+             "name": "video",
+             "contentType": "video/webm",
+             "path": "test-results/tablero-Tablero-Kanban-SP--33d2c-on-el-teclado-hasta-«Hecho»/video.webm"
+            },
+            {
+             "name": "trace",
+             "contentType": "application/zip",
+             "path": "test-results/tablero-Tablero-Kanban-SP--33d2c-on-el-teclado-hasta-«Hecho»/trace.zip"
+            }
+           ]
+          }
+         ],
+         "status": "expected"
+        }
+       ],
+       "id": "b8955a925741e2e255e5-d511dd044b1dcb6ac151",
+       "file": "tablero.spec.ts",
+       "line": 107,
+       "column": 7
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "errors": [],
+ "stats": {
+  "startTime": "2026-10-26T23:39:16.712Z",
+  "duration": 101419.76999999999,
+  "expected": 18,
+  "skipped": 0,
+  "unexpected": 0,
+  "flaky": 0
+ }
+}

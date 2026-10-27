@@ -1,0 +1,503 @@
+{
+  "area": "Despliegue final y regresión posterior a la refactorización",
+  "herramienta": "Docker Compose (SonarQube 9.9 Community, PostgreSQL 15, Jenkins LTS), sonar-scanner, nest build, vite build, docker build",
+  "comando": "node pruebas/despliegue/verificar-despliegue.mjs  (con SONAR_TOKEN y, opcionalmente, JENKINS_USER/JENKINS_TOKEN)",
+  "fecha": "2026-10-27T04:52:37.771Z",
+  "entorno": {
+    "sonar": "http://localhost:9000",
+    "jenkins": "http://localhost:8081",
+    "job": "taskflow-pipeline",
+    "conToken": true,
+    "conJenkins": false
+  },
+  "totales": {
+    "total": 20,
+    "aprobados": 19,
+    "fallidos": 0,
+    "pendientes": 1,
+    "duracionSeg": 260
+  },
+  "regresion": [
+    {
+      "suite": "Regresión backend (Jest unitarias + e2e API)",
+      "area": "backend-jest",
+      "total": 137,
+      "aprobados": 137,
+      "fallidos": 0,
+      "duracionSeg": 20.8,
+      "fecha": "2026-10-26T23:15:58.593Z"
+    },
+    {
+      "suite": "Cypress (API, regresión UI, componentes, seguridad, accesibilidad)",
+      "area": "cypress",
+      "total": 146,
+      "aprobados": 146,
+      "fallidos": 0,
+      "duracionSeg": 336.3,
+      "fecha": "2026-10-26T23:15:06.897Z"
+    },
+    {
+      "suite": "E2E Screenplay (Serenity/JS + Playwright)",
+      "area": "screenplay",
+      "total": 18,
+      "aprobados": 18,
+      "fallidos": 0,
+      "inestables": [],
+      "duracionSeg": 113.2,
+      "fecha": "2026-10-26T23:42:06.635Z"
+    },
+    {
+      "suite": "E2E Gherkin + Screenplay (Cucumber)",
+      "area": "gherkin",
+      "total": 12,
+      "aprobados": 12,
+      "fallidos": 0,
+      "pasos": 106,
+      "duracionSeg": 47.6,
+      "fecha": "2026-10-26T23:16:15.543Z"
+    },
+    {
+      "suite": "Seguridad OWASP (node --test)",
+      "area": "seguridad",
+      "total": 53,
+      "aprobados": 48,
+      "fallidos": 5,
+      "fecha": "2026-10-26T23:19:11.367Z"
+    },
+    {
+      "suite": "UX y accesibilidad (axe, Lighthouse, Puppeteer)",
+      "area": "ux-accesibilidad",
+      "total": 68,
+      "aprobados": 68,
+      "fallidos": 0,
+      "fecha": "2026-10-27T04:30:15.884Z"
+    },
+    {
+      "suite": "Rendimiento (autocannon)",
+      "area": "rendimiento",
+      "total": 6,
+      "aprobados": 6,
+      "fallidos": 0,
+      "fecha": "2026-10-27T04:35:41.156Z"
+    }
+  ],
+  "casos": [
+    {
+      "id": "DEP-01",
+      "nombre": "Servicios de CI/CD en ejecución (docker compose)",
+      "tipo": "positivo",
+      "objetivo": "Verificar que los contenedores de SonarQube, su base de datos y Jenkins definidos en docker-compose.yml están levantados.",
+      "esperado": "sonarqube, sonarqube-db y jenkins en estado running.",
+      "obtenido": "jenkins: running; sonarqube: running; sonarqube-db: running",
+      "estado": "Aprobado",
+      "evidencia": [
+        "docker-compose-ps.json"
+      ]
+    },
+    {
+      "id": "DEP-02",
+      "nombre": "Compilación del backend (nest build)",
+      "tipo": "positivo",
+      "objetivo": "Verificar que la versión refactorizada del backend compila sin errores de TypeScript.",
+      "esperado": "Salida 0 y carpeta dist/main.js generada.",
+      "obtenido": "nest build terminó con código 0 y generó dist/main.js",
+      "estado": "Aprobado",
+      "evidencia": [
+        "build/backend-build.log"
+      ]
+    },
+    {
+      "id": "DEP-03",
+      "nombre": "Compilación del frontend (tsc + vite build)",
+      "tipo": "positivo",
+      "objetivo": "Verificar que el frontend refactorizado compila (tipos) y se empaqueta para producción.",
+      "esperado": "Salida 0 y taskflow-frontend/dist/index.html generado.",
+      "obtenido": "vite build terminó con código 0 y generó dist/index.html",
+      "estado": "Aprobado",
+      "evidencia": [
+        "build/frontend-build.log"
+      ]
+    },
+    {
+      "id": "DEP-04",
+      "nombre": "Imagen Docker del backend (misma etapa que el pipeline)",
+      "tipo": "positivo",
+      "objetivo": "Verificar que el Dockerfile multi-etapa construye la imagen de producción del backend refactorizado.",
+      "esperado": "docker build termina con código 0 y la imagen taskflow-backend:final existe.",
+      "obtenido": "docker build OK: imagen creada",
+      "estado": "Aprobado",
+      "evidencia": [
+        "build/docker-build.log"
+      ]
+    },
+    {
+      "id": "SON-01",
+      "nombre": "Servidor SonarQube disponible",
+      "tipo": "positivo",
+      "objetivo": "Verificar que SonarQube responde y está operativo.",
+      "esperado": "status UP.",
+      "obtenido": "SonarQube 9.9.8.100196 status=UP",
+      "estado": "Aprobado",
+      "evidencia": [
+        "sonar/system-status.json"
+      ]
+    },
+    {
+      "id": "SON-02",
+      "nombre": "Análisis SonarQube del backend (sonar-scanner)",
+      "tipo": "positivo",
+      "objetivo": "Ejecutar el análisis estático del backend refactorizado con sonar-scanner y subir el informe al servidor.",
+      "esperado": "Informe de análisis subido y procesado por SonarQube (EXECUTION SUCCESS o QUALITY GATE STATUS reportado).",
+      "obtenido": "Informe subido y procesado (31 archivos indexados); estado reportado por el scanner: PASSED",
+      "estado": "Aprobado",
+      "evidencia": [
+        "sonar/backend-scanner.log"
+      ]
+    },
+    {
+      "id": "SON-03",
+      "nombre": "Quality Gate del backend",
+      "tipo": "positivo",
+      "objetivo": "Leer el estado de la Quality Gate («Sonar way»: nuevo código) y las métricas del backend en SonarQube tras el análisis final.",
+      "esperado": "Quality Gate OK: fiabilidad, seguridad y mantenibilidad A en código nuevo, cobertura nueva ≥ 80 %, duplicación nueva ≤ 3 %, 100 % de hotspots revisados.",
+      "obtenido": "Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1) · new_coverage OK (87.1 vs LT 80) · new_duplicated_lines_density OK (0.0 vs GT 3) · new_security_hotspots_reviewed OK (100.0 vs LT 100). bugs=0, vulnerabilidades=0, code smells=1, cobertura=87.2 %, duplicación=0.0 %, hotspots=0, ncloc=866; análisis registrados=5",
+      "estado": "Aprobado",
+      "evidencia": [
+        "sonar/backend-quality-gate.json",
+        "sonar/backend-medidas.json",
+        "sonar/backend-analisis.json"
+      ],
+      "metricas": {
+        "vulnerabilities": "0",
+        "duplicated_lines_density": "0.0",
+        "coverage": "87.2",
+        "security_rating": "1.0",
+        "ncloc": "866",
+        "alert_status": "OK",
+        "sqale_rating": "1.0",
+        "bugs": "0",
+        "security_hotspots": "0",
+        "code_smells": "1",
+        "reliability_rating": "1.0"
+      },
+      "qualityGate": "OK",
+      "condiciones": [
+        {
+          "status": "OK",
+          "metricKey": "new_reliability_rating",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "1",
+          "actualValue": "1"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_security_rating",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "1",
+          "actualValue": "1"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_maintainability_rating",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "1",
+          "actualValue": "1"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_coverage",
+          "comparator": "LT",
+          "periodIndex": 1,
+          "errorThreshold": "80",
+          "actualValue": "87.1"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_duplicated_lines_density",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "3",
+          "actualValue": "0.0"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_security_hotspots_reviewed",
+          "comparator": "LT",
+          "periodIndex": 1,
+          "errorThreshold": "100",
+          "actualValue": "100.0"
+        }
+      ]
+    },
+    {
+      "id": "SON-04",
+      "nombre": "Análisis SonarQube del frontend (sonar-scanner)",
+      "tipo": "positivo",
+      "objetivo": "Ejecutar el análisis estático del frontend refactorizado con sonar-scanner y subir el informe al servidor.",
+      "esperado": "Informe de análisis subido y procesado por SonarQube (EXECUTION SUCCESS o QUALITY GATE STATUS reportado).",
+      "obtenido": "Informe subido y procesado (56 archivos indexados); estado reportado por el scanner: PASSED",
+      "estado": "Aprobado",
+      "evidencia": [
+        "sonar/frontend-scanner.log"
+      ]
+    },
+    {
+      "id": "SON-05",
+      "nombre": "Quality Gate del frontend",
+      "tipo": "positivo",
+      "objetivo": "Leer el estado de la Quality Gate («Sonar way»: nuevo código) y las métricas del frontend en SonarQube tras el análisis final.",
+      "esperado": "Quality Gate OK: fiabilidad, seguridad y mantenibilidad A en código nuevo, cobertura nueva ≥ 80 %, duplicación nueva ≤ 3 %, 100 % de hotspots revisados.",
+      "obtenido": "Quality Gate=OK; condiciones: new_reliability_rating OK (1 vs GT 1) · new_security_rating OK (1 vs GT 1) · new_maintainability_rating OK (1 vs GT 1). bugs=0, vulnerabilidades=0, code smells=0, cobertura=— %, duplicación=0.0 %, hotspots=0, ncloc=264; análisis registrados=2",
+      "estado": "Aprobado",
+      "evidencia": [
+        "sonar/frontend-quality-gate.json",
+        "sonar/frontend-medidas.json",
+        "sonar/frontend-analisis.json"
+      ],
+      "metricas": {
+        "alert_status": "OK",
+        "vulnerabilities": "0",
+        "bugs": "0",
+        "sqale_rating": "1.0",
+        "security_rating": "1.0",
+        "reliability_rating": "1.0",
+        "security_hotspots": "0",
+        "ncloc": "264",
+        "code_smells": "0",
+        "duplicated_lines_density": "0.0"
+      },
+      "qualityGate": "OK",
+      "condiciones": [
+        {
+          "status": "OK",
+          "metricKey": "new_reliability_rating",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "1",
+          "actualValue": "1"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_security_rating",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "1",
+          "actualValue": "1"
+        },
+        {
+          "status": "OK",
+          "metricKey": "new_maintainability_rating",
+          "comparator": "GT",
+          "periodIndex": 1,
+          "errorThreshold": "1",
+          "actualValue": "1"
+        }
+      ]
+    },
+    {
+      "id": "JEN-01",
+      "nombre": "Servidor Jenkins y job del pipeline disponibles",
+      "tipo": "positivo",
+      "objetivo": "Verificar que Jenkins responde y que existe el job taskflow-pipeline (Jenkinsfile desde GitHub).",
+      "esperado": "Jenkins responde 200 y el job taskflow-pipeline existe.",
+      "obtenido": "Jenkins OK (1 jobs); taskflow-pipeline: color=red, último build #11 (FAILURE), último exitoso #10",
+      "estado": "Aprobado",
+      "evidencia": [
+        "jenkins/jenkins-api.json",
+        "jenkins/job-api.json"
+      ]
+    },
+    {
+      "id": "JEN-02",
+      "nombre": "Último build exitoso del pipeline (#10)",
+      "tipo": "positivo",
+      "objetivo": "Verificar que el pipeline completo (instalar, pruebas de regresión, build, SonarQube, Quality Gate, imagen Docker) terminó en SUCCESS.",
+      "esperado": "Todas las etapas ejecutadas, Quality Gate OK y SUCCESS.",
+      "obtenido": "Build #10 del 23/9/2026, 10:37:44 p. m. sobre el commit 8b46dc0: etapas Declarative: Checkout SCM → Declarative: Tool Install → Checkout → Instalar dependencias → Ejecutar pruebas unitarias → Compilar aplicación → Analisis con SonarQube → Quality Gate → Construir imagen Docker → Declarative: Post Actions; Tests:       35 passed, 35 total; Quality Gate OK; resultado SUCCESS.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "jenkins/build-10-consola.log",
+        "jenkins/job-api.json"
+      ],
+      "commit": "8b46dc0",
+      "etapas": [
+        "Declarative: Checkout SCM",
+        "Declarative: Tool Install",
+        "Checkout",
+        "Instalar dependencias",
+        "Ejecutar pruebas unitarias",
+        "Compilar aplicación",
+        "Analisis con SonarQube",
+        "Quality Gate",
+        "Construir imagen Docker",
+        "Declarative: Post Actions"
+      ]
+    },
+    {
+      "id": "JEN-03",
+      "nombre": "Diagnóstico del último build (#11, FAILURE)",
+      "tipo": "negativo",
+      "objetivo": "Registrar la causa del último build no exitoso para corregirla antes del despliegue final.",
+      "esperado": "Causa identificada y corregible (no es un fallo del software).",
+      "obtenido": "Build #11: fatal: unable to access 'https://github.com/Claudia280-girl/validacion/': Could not resolve host: github.com",
+      "estado": "Aprobado",
+      "evidencia": [
+        "jenkins/build-11-consola.log"
+      ],
+      "observacion": "El contenedor de Jenkins no tenía red para clonar GitHub; no es un fallo de las pruebas ni del código."
+    },
+    {
+      "id": "JEN-04",
+      "nombre": "Nuevo build del pipeline sobre la versión refactorizada",
+      "tipo": "positivo",
+      "objetivo": "Disparar el pipeline con el código final publicado en GitHub (checkout scm de Claudia280-girl/validacion, rama main).",
+      "esperado": "SUCCESS con Quality Gate OK.",
+      "obtenido": "Pendiente: 1) git add -A && git commit && git push origin main; 2) defina JENKINS_USER y JENKINS_TOKEN (Jenkins → usuario → Configurar → API Token) y vuelva a ejecutar este script, o pulse «Construir ahora» en http://localhost:8081/job/taskflow-pipeline y guarde la consola en pruebas/evidencias/despliegue/jenkins/.",
+      "estado": "Pendiente",
+      "evidencia": []
+    },
+    {
+      "id": "REG-01",
+      "nombre": "Regresión posterior: Regresión backend (Jest unitarias + e2e API)",
+      "tipo": "regresión",
+      "objetivo": "Volver a ejecutar la suite completa sobre la versión refactorizada para verificar las correcciones y detectar regresiones.",
+      "esperado": "Mismos o más casos que en la primera ronda, 100 % aprobados salvo hallazgos documentados.",
+      "obtenido": "137/137 aprobados el 26/10/2026, 6:15:58 p. m.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "pruebas/evidencias/backend-jest/resumen.json"
+      ],
+      "suite": "backend-jest",
+      "totales": {
+        "total": 137,
+        "aprobados": 137,
+        "fallidos": 0,
+        "duracionSeg": 20.8
+      },
+      "fecha": "2026-10-26T23:15:58.593Z"
+    },
+    {
+      "id": "REG-02",
+      "nombre": "Regresión posterior: Cypress (API, regresión UI, componentes, seguridad, accesibilidad)",
+      "tipo": "regresión",
+      "objetivo": "Volver a ejecutar la suite completa sobre la versión refactorizada para verificar las correcciones y detectar regresiones.",
+      "esperado": "Mismos o más casos que en la primera ronda, 100 % aprobados salvo hallazgos documentados.",
+      "obtenido": "146/146 aprobados el 26/10/2026, 6:15:06 p. m.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "pruebas/evidencias/cypress/resumen.json"
+      ],
+      "suite": "cypress",
+      "totales": {
+        "total": 146,
+        "aprobados": 146,
+        "fallidos": 0,
+        "duracionSeg": 336.3
+      },
+      "fecha": "2026-10-26T23:15:06.897Z"
+    },
+    {
+      "id": "REG-03",
+      "nombre": "Regresión posterior: E2E Screenplay (Serenity/JS + Playwright)",
+      "tipo": "regresión",
+      "objetivo": "Volver a ejecutar la suite completa sobre la versión refactorizada para verificar las correcciones y detectar regresiones.",
+      "esperado": "Mismos o más casos que en la primera ronda, 100 % aprobados salvo hallazgos documentados.",
+      "obtenido": "18/18 aprobados el 26/10/2026, 6:42:06 p. m.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "pruebas/evidencias/screenplay/resumen.json"
+      ],
+      "suite": "screenplay",
+      "totales": {
+        "total": 18,
+        "aprobados": 18,
+        "fallidos": 0,
+        "inestables": [],
+        "duracionSeg": 113.2
+      },
+      "fecha": "2026-10-26T23:42:06.635Z"
+    },
+    {
+      "id": "REG-04",
+      "nombre": "Regresión posterior: E2E Gherkin + Screenplay (Cucumber)",
+      "tipo": "regresión",
+      "objetivo": "Volver a ejecutar la suite completa sobre la versión refactorizada para verificar las correcciones y detectar regresiones.",
+      "esperado": "Mismos o más casos que en la primera ronda, 100 % aprobados salvo hallazgos documentados.",
+      "obtenido": "12/12 aprobados el 26/10/2026, 6:16:15 p. m.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "pruebas/evidencias/gherkin/resumen.json"
+      ],
+      "suite": "gherkin",
+      "totales": {
+        "total": 12,
+        "aprobados": 12,
+        "fallidos": 0,
+        "pasos": 106,
+        "duracionSeg": 47.6
+      },
+      "fecha": "2026-10-26T23:16:15.543Z"
+    },
+    {
+      "id": "REG-05",
+      "nombre": "Regresión posterior: Seguridad OWASP (node --test)",
+      "tipo": "regresión",
+      "objetivo": "Volver a ejecutar la suite completa sobre la versión refactorizada para verificar las correcciones y detectar regresiones.",
+      "esperado": "Mismos o más casos que en la primera ronda, 100 % aprobados salvo hallazgos documentados.",
+      "obtenido": "48/53 aprobados (5 fallidos documentados como hallazgos) el 26/10/2026, 6:19:11 p. m.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "pruebas/evidencias/seguridad/resumen.json"
+      ],
+      "suite": "seguridad",
+      "totales": {
+        "total": 53,
+        "aprobados": 48,
+        "fallidos": 5
+      },
+      "fecha": "2026-10-26T23:19:11.367Z",
+      "observacion": "Los fallos corresponden a hallazgos conocidos documentados en el informe (no a regresiones)."
+    },
+    {
+      "id": "REG-06",
+      "nombre": "Regresión posterior: UX y accesibilidad (axe, Lighthouse, Puppeteer)",
+      "tipo": "regresión",
+      "objetivo": "Volver a ejecutar la suite completa sobre la versión refactorizada para verificar las correcciones y detectar regresiones.",
+      "esperado": "Mismos o más casos que en la primera ronda, 100 % aprobados salvo hallazgos documentados.",
+      "obtenido": "68/68 aprobados el 26/10/2026, 11:30:15 p. m.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "pruebas/evidencias/ux-accesibilidad/resumen.json"
+      ],
+      "suite": "ux-accesibilidad",
+      "totales": {
+        "total": 68,
+        "aprobados": 68,
+        "fallidos": 0
+      },
+      "fecha": "2026-10-27T04:30:15.884Z"
+    },
+    {
+      "id": "REG-07",
+      "nombre": "Regresión posterior: Rendimiento (autocannon)",
+      "tipo": "regresión",
+      "objetivo": "Volver a ejecutar la suite completa sobre la versión refactorizada para verificar las correcciones y detectar regresiones.",
+      "esperado": "Mismos o más casos que en la primera ronda, 100 % aprobados salvo hallazgos documentados.",
+      "obtenido": "6/6 aprobados el 26/10/2026, 11:35:41 p. m.",
+      "estado": "Aprobado",
+      "evidencia": [
+        "pruebas/evidencias/rendimiento/resumen.json"
+      ],
+      "suite": "rendimiento",
+      "totales": {
+        "total": 6,
+        "aprobados": 6,
+        "fallidos": 0
+      },
+      "fecha": "2026-10-27T04:35:41.156Z"
+    }
+  ]
+}

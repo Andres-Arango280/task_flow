@@ -1,0 +1,53 @@
+{
+  "id": "BU-01",
+  "nombre": "Describir el formulario de inicio de sesión",
+  "tipo": "exploratorio",
+  "objetivo": "Comprobar que el agente navega a /login y lee correctamente el título y las etiquetas de los campos del formulario.",
+  "esperado": "El resultado final menciona «Iniciar sesión» y las etiquetas «Correo electrónico» y «Contraseña».",
+  "tarea": "Go to http://localhost:5173/login . Read the page and finish immediately with a short answer in Spanish that lists: the main heading (h1) text, the exact label of every text field, and the text of the submit button. Do not click anything.",
+  "final_result": "Gestión colaborativa de tareas, Correo electrónico (obligatorio), Contraseña (obligatorio), Iniciar sesión",
+  "urls": [
+    "http://localhost:5173/login",
+    "http://localhost:5173/login",
+    "http://localhost:5173/login"
+  ],
+  "pasos": 3,
+  "acciones": [
+    {
+      "navigate": {
+        "url": "http://localhost:5173/login",
+        "new_tab": false
+      },
+      "interacted_element": null
+    },
+    {
+      "navigate": {
+        "url": "http://localhost:5173/login",
+        "new_tab": false
+      },
+      "interacted_element": null
+    },
+    {
+      "done": {
+        "text": "Gestión colaborativa de tareas, Correo electrónico (obligatorio), Contraseña (obligatorio), Iniciar sesión",
+        "success": true,
+        "files_to_display": []
+      },
+      "interacted_element": null
+    }
+  ],
+  "errores": [],
+  "is_done": true,
+  "is_successful": true,
+  "verificacion": {
+    "ok": true,
+    "detalle": "el resultado menciona el título y las dos etiquetas."
+  },
+  "capturas": [
+    "BU-01-paso-02.png",
+    "BU-01-paso-03.png"
+  ],
+  "estado": "Aprobado",
+  "obtenido": "Conforme: el resultado menciona el título y las dos etiquetas. El agente ejecutó 3 pasos (3 acciones) y terminó con final_result=\"Gestión colaborativa de tareas, Correo electrónico (obligatorio), Contraseña (obligatorio), Iniciar sesión\".",
+  "duracionSeg": 122.0
+}

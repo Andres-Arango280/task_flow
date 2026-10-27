@@ -1,0 +1,19 @@
+{
+  "id": "API-TAR-13",
+  "obtenido": "Sin proyectoId: 400; proyectoId inválido: 400; nuevaListaId inválida: 400 \"La lista destino no es un identificador válido\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/tareas",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 6,
+    "cuerpo": {
+      "message": "Debes proporcionar proyectoId",
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:13:24.967Z"
+}

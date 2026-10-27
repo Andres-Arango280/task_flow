@@ -1,0 +1,266 @@
+{
+  "id": "ST-02",
+  "instruccionesYRespuestas": {
+    "intentos": [
+      {
+        "instruccion": "Find the email input and the password input of the login form",
+        "resultado": []
+      },
+      {
+        "instruccion": "Find the two text input boxes of the login form: the email box and the password box (the input elements, not the labels)",
+        "resultado": [
+          {
+            "description": "textbox: Correo electrónico (obligatorio)",
+            "method": "type",
+            "arguments": [
+              "type",
+              "Correo electrónico"
+            ],
+            "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]",
+            "existe": true,
+            "tag": "input",
+            "type": "email",
+            "etiqueta": "Correo electrónico* (obligatorio)",
+            "texto": null,
+            "resueltoDesdeEtiqueta": false
+          },
+          {
+            "description": "textbox: Correo electrónico (obligatorio)",
+            "method": "fill",
+            "arguments": [
+              "fill",
+              "Correo electrónico"
+            ],
+            "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]",
+            "existe": true,
+            "tag": "input",
+            "type": "email",
+            "etiqueta": "Correo electrónico* (obligatorio)",
+            "texto": null,
+            "resueltoDesdeEtiqueta": false
+          },
+          {
+            "description": "textbox: Contraseña (obligatorio)",
+            "method": "type",
+            "arguments": [
+              "type",
+              "Contraseña"
+            ],
+            "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]",
+            "existe": true,
+            "tag": "input",
+            "type": "password",
+            "etiqueta": "Contraseña* (obligatorio)",
+            "texto": null,
+            "resueltoDesdeEtiqueta": false
+          },
+          {
+            "description": "textbox: Contraseña (obligatorio)",
+            "method": "fill",
+            "arguments": [
+              "fill",
+              "Contraseña"
+            ],
+            "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]",
+            "existe": true,
+            "tag": "input",
+            "type": "password",
+            "etiqueta": "Contraseña* (obligatorio)",
+            "texto": null,
+            "resueltoDesdeEtiqueta": false
+          },
+          {
+            "description": "textbox: Correo electrónico (obligatorio)",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]",
+            "existe": true,
+            "tag": "input",
+            "type": "email",
+            "etiqueta": "Correo electrónico* (obligatorio)",
+            "texto": null,
+            "resueltoDesdeEtiqueta": false
+          },
+          {
+            "description": "textbox: Contraseña (obligatorio)",
+            "method": "click",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]",
+            "existe": true,
+            "tag": "input",
+            "type": "password",
+            "etiqueta": "Contraseña* (obligatorio)",
+            "texto": null,
+            "resueltoDesdeEtiqueta": false
+          },
+          {
+            "description": "textbox: Correo electrónico (obligatorio)",
+            "method": "scrollTo",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]",
+            "existe": true,
+            "tag": "input",
+            "type": "email",
+            "etiqueta": "Correo electrónico* (obligatorio)",
+            "texto": null,
+            "resueltoDesdeEtiqueta": false
+          },
+          {
+            "description": "textbox: Contraseña (obligatorio)",
+            "method": "scrollTo",
+            "arguments": [],
+            "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]",
+            "existe": true,
+            "tag": "input",
+            "type": "password",
+            "etiqueta": "Contraseña* (obligatorio)",
+            "texto": null,
+            "resueltoDesdeEtiqueta": false
+          }
+        ]
+      }
+    ],
+    "camposObservados": [
+      {
+        "description": "textbox: Correo electrónico (obligatorio)",
+        "method": "type",
+        "arguments": [
+          "type",
+          "Correo electrónico"
+        ],
+        "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]",
+        "existe": true,
+        "tag": "input",
+        "type": "email",
+        "etiqueta": "Correo electrónico* (obligatorio)",
+        "texto": null,
+        "resueltoDesdeEtiqueta": false
+      },
+      {
+        "description": "textbox: Correo electrónico (obligatorio)",
+        "method": "fill",
+        "arguments": [
+          "fill",
+          "Correo electrónico"
+        ],
+        "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]",
+        "existe": true,
+        "tag": "input",
+        "type": "email",
+        "etiqueta": "Correo electrónico* (obligatorio)",
+        "texto": null,
+        "resueltoDesdeEtiqueta": false
+      },
+      {
+        "description": "textbox: Contraseña (obligatorio)",
+        "method": "type",
+        "arguments": [
+          "type",
+          "Contraseña"
+        ],
+        "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]",
+        "existe": true,
+        "tag": "input",
+        "type": "password",
+        "etiqueta": "Contraseña* (obligatorio)",
+        "texto": null,
+        "resueltoDesdeEtiqueta": false
+      },
+      {
+        "description": "textbox: Contraseña (obligatorio)",
+        "method": "fill",
+        "arguments": [
+          "fill",
+          "Contraseña"
+        ],
+        "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]",
+        "existe": true,
+        "tag": "input",
+        "type": "password",
+        "etiqueta": "Contraseña* (obligatorio)",
+        "texto": null,
+        "resueltoDesdeEtiqueta": false
+      },
+      {
+        "description": "textbox: Correo electrónico (obligatorio)",
+        "method": "click",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]",
+        "existe": true,
+        "tag": "input",
+        "type": "email",
+        "etiqueta": "Correo electrónico* (obligatorio)",
+        "texto": null,
+        "resueltoDesdeEtiqueta": false
+      },
+      {
+        "description": "textbox: Contraseña (obligatorio)",
+        "method": "click",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]",
+        "existe": true,
+        "tag": "input",
+        "type": "password",
+        "etiqueta": "Contraseña* (obligatorio)",
+        "texto": null,
+        "resueltoDesdeEtiqueta": false
+      },
+      {
+        "description": "textbox: Correo electrónico (obligatorio)",
+        "method": "scrollTo",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[1]/div[1]/input[1]",
+        "existe": true,
+        "tag": "input",
+        "type": "email",
+        "etiqueta": "Correo electrónico* (obligatorio)",
+        "texto": null,
+        "resueltoDesdeEtiqueta": false
+      },
+      {
+        "description": "textbox: Contraseña (obligatorio)",
+        "method": "scrollTo",
+        "arguments": [],
+        "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/div[2]/div[1]/input[1]",
+        "existe": true,
+        "tag": "input",
+        "type": "password",
+        "etiqueta": "Contraseña* (obligatorio)",
+        "texto": null,
+        "resueltoDesdeEtiqueta": false
+      }
+    ],
+    "act": {
+      "success": true,
+      "message": "Action [click] performed successfully on selector: xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/button[1]",
+      "actionDescription": "Click the button",
+      "actions": [
+        {
+          "selector": "xpath=/html[1]/body[1]/div[1]/main[1]/div[1]/div[2]/form[1]/button[1]",
+          "description": "Click the button",
+          "method": "click",
+          "arguments": []
+        }
+      ]
+    }
+  },
+  "datosDePrueba": {
+    "email": "ana.stagehand.179307467635369@taskflow.test"
+  },
+  "tiemposIA": [
+    {
+      "paso": "observe",
+      "seg": 16
+    },
+    {
+      "paso": "observe",
+      "seg": 34.2
+    },
+    {
+      "paso": "act",
+      "seg": 25.1
+    }
+  ],
+  "estado": "Aprobado",
+  "obtenido": "act ejecutó «Click the button»; la URL pasó a «/», el h1 es «Mis equipos» y el token quedó guardado en localStorage."
+}

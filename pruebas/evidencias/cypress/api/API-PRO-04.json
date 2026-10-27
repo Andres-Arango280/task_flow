@@ -1,0 +1,33 @@
+{
+  "id": "API-PRO-04",
+  "obtenido": "Con equipoId respondió 200 con 2 proyectos en orden de creación; sin equipoId respondió 400 \"Debes proporcionar equipoId\".",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/proyectos",
+    "query": {
+      "equipoId": "5f028bc9-ed49-44b4-99f2-6b846b5774c2"
+    },
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 11,
+    "cuerpo": [
+      {
+        "id": "2406e1e5-2ee4-4761-b0a1-6d97eaaf0f1c",
+        "nombre": "Uno",
+        "equipoId": "5f028bc9-ed49-44b4-99f2-6b846b5774c2",
+        "createdAt": "2026-10-26T23:12:57.174Z",
+        "updatedAt": "2026-10-26T23:12:57.174Z"
+      },
+      {
+        "id": "a5e971ea-6f17-409a-928c-975c26cc01b5",
+        "nombre": "Dos",
+        "equipoId": "5f028bc9-ed49-44b4-99f2-6b846b5774c2",
+        "createdAt": "2026-10-26T23:12:57.217Z",
+        "updatedAt": "2026-10-26T23:12:57.217Z"
+      }
+    ]
+  },
+  "fecha": "2026-10-26T23:12:57.299Z"
+}

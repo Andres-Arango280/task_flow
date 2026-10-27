@@ -1,0 +1,8 @@
+escenario,correo,contrasena,preparacion,validacion,mensaje
+contrasena_incorrecta,{unico},ClaveErronea99,registrar,servidor,no son correctos
+correo_no_registrado,{unico},Clave123,ninguna,servidor,no son correctos
+contrasena_en_mayusculas,{unico},CLAVE123,registrar,servidor,no son correctos
+inyeccion_sql,{unico},x' OR '1'='1,ninguna,servidor,no son correctos
+correo_sin_arroba,usuario.sin.arroba,Clave123,ninguna,navegador,
+contrasena_vacia,{unico},,registrar,navegador,
+correo_vacio,,Clave123,ninguna,navegador,

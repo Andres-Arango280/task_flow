@@ -14,5 +14,5 @@
     "skipLibCheck": true,
     "types": ["node", "jest"]
   },
-  "exclude": ["taskflow-frontend", "node_modules", "dist", "**/*.spec.ts"]
+  "exclude": ["taskflow-frontend", "pruebas", "_backup_mongo", "coverage", "node_modules", "dist", "**/*.spec.ts"]
 }

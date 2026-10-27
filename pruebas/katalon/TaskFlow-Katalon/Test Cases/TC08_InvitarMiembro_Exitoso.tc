@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>[POSITIVO] Verificar que el líder invita a un usuario registrado buscándolo por su correo.
+
+Resultado esperado: La búsqueda muestra el nombre del usuario; tras 'Añadir al equipo' aparece el aviso '&lt;nombre&gt; ahora es miembro del equipo.', la persona figura en la lista con su botón 'Quitar' y el contador pasa a 'Miembros (2)'.
+
+Datos: Líder e invitado creados por API con correos únicos; equipo creado por API.
+Esperas: waitForElementVisible btn_Invitar 10s; waitForElementVisible btn_AnadirAlEquipo 10s; waitForElementVisible toast_Exito 10s; waitForElementVisible li_MiembroPorCorreo 10s
+Evidencia: Reports/evidencias/TC08_*.png y reporte HTML/JUnit de la suite.</description>
+   <name>TC08_InvitarMiembro_Exitoso</name>
+   <tag>positivo,equipos</tag>
+   <comment>Objetivo / esperado / obtenido / evidencia: ver pruebas/evidencias/katalon/resumen.json</comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>3c56be10-f139-4fb0-a6b5-40df20ee5eb1</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,39 @@
+{
+  "id": "API-EQU-03",
+  "obtenido": "El líder recibió 1 equipo (el suyo); la persona ajena recibió una lista vacía.",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/equipos",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 200,
+    "duracionMs": 15,
+    "cuerpo": [
+      {
+        "id": "fc8e8fe8-169e-493e-91f9-60d1b04852ce",
+        "nombre": "Equipo API 1793056353341",
+        "liderId": "26c09e9f-5cbf-4240-a6bd-15f8d17b2ac0",
+        "createdAt": "2026-10-26T23:12:33.356Z",
+        "updatedAt": "2026-10-26T23:12:33.356Z",
+        "lider": {
+          "id": "26c09e9f-5cbf-4240-a6bd-15f8d17b2ac0",
+          "nombre": "Usuario lider 477407",
+          "email": "lider.17930563525477407@taskflow-cypress.test",
+          "createdAt": "2026-10-26T23:12:32.665Z",
+          "updatedAt": "2026-10-26T23:12:32.665Z"
+        },
+        "miembros": [
+          {
+            "id": "26c09e9f-5cbf-4240-a6bd-15f8d17b2ac0",
+            "nombre": "Usuario lider 477407",
+            "email": "lider.17930563525477407@taskflow-cypress.test",
+            "createdAt": "2026-10-26T23:12:32.665Z",
+            "updatedAt": "2026-10-26T23:12:32.665Z"
+          }
+        ]
+      }
+    ]
+  },
+  "fecha": "2026-10-26T23:12:33.484Z"
+}

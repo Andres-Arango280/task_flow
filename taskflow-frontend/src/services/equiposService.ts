@@ -33,4 +33,8 @@ export const equiposService = {
     const response = await api.delete(`/equipos/${equipoId}/miembros/${usuarioId}`);
     return response.data;
   },
+
+  async eliminar(equipoId: string): Promise<void> {
+    await api.delete(`/equipos/${equipoId}`);
+  },
 };

@@ -1,0 +1,19 @@
+{
+  "id": "API-EQU-05",
+  "obtenido": "Respondió 400 (\"Validation failed (uuid is expected)\").",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/equipos/123-no-uuid",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 14,
+    "cuerpo": {
+      "message": "Validation failed (uuid is expected)",
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:12:35.836Z"
+}

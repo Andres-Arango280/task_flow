@@ -1,0 +1,18 @@
+{
+  "id": "API-USU-02",
+  "obtenido": "Respondió 401 (Unauthorized): la ruta exige autenticación.",
+  "peticion": {
+    "metodo": "GET",
+    "url": "http://localhost:3000/usuarios/me",
+    "autenticado": false
+  },
+  "respuesta": {
+    "estado": 401,
+    "duracionMs": 5,
+    "cuerpo": {
+      "message": "Unauthorized",
+      "statusCode": 401
+    }
+  },
+  "fecha": "2026-10-26T23:13:32.477Z"
+}

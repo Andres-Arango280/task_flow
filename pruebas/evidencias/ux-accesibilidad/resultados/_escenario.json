@@ -1,0 +1,155 @@
+{
+  "creado": 1793074971756,
+  "lider": {
+    "id": "81b38dcc-ba8e-402b-81f8-d5021524fe88",
+    "nombre": "Laura Líder",
+    "email": "a11y.lider.1793074971756656@taskflow-qa.test",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4MWIzOGRjYy1iYThlLTQwMmItODFmOC1kNTAyMTUyNGZlODgiLCJlbWFpbCI6ImExMXkubGlkZXIuMTc5MzA3NDk3MTc1NjY1NkB0YXNrZmxvdy1xYS50ZXN0IiwiaWQiOiI4MWIzOGRjYy1iYThlLTQwMmItODFmOC1kNTAyMTUyNGZlODgiLCJpYXQiOjE3OTMwNzQ5NzEsImV4cCI6MTc5MzE2MTM3MX0.sCR05_X_Sh_D6ydyulVvg0KtzeXMsz0mCxNM2_6UMMk"
+  },
+  "miembro": {
+    "id": "a0e9a384-6dbe-4af4-9eaf-2a201b78a2cd",
+    "nombre": "Mario Miembro",
+    "email": "a11y.miembro.1793074971997542@taskflow-qa.test",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMGU5YTM4NC02ZGJlLTRhZjQtOWVhZi0yYTIwMWI3OGEyY2QiLCJlbWFpbCI6ImExMXkubWllbWJyby4xNzkzMDc0OTcxOTk3NTQyQHRhc2tmbG93LXFhLnRlc3QiLCJpZCI6ImEwZTlhMzg0LTZkYmUtNGFmNC05ZWFmLTJhMjAxYjc4YTJjZCIsImlhdCI6MTc5MzA3NDk3MiwiZXhwIjoxNzkzMTYxMzcyfQ.WXJwVz-1Z7O-Z0djHpCrxfniVi4C9uu3MOoLi0dhIOA"
+  },
+  "vacio": {
+    "id": "536da87a-3ea4-4e63-b4c0-afc4a7c3d91a",
+    "nombre": "Vera Vacía",
+    "email": "a11y.vacio.1793074972171676@taskflow-qa.test",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MzZkYTg3YS0zZWE0LTRlNjMtYjRjMC1hZmM0YTdjM2Q5MWEiLCJlbWFpbCI6ImExMXkudmFjaW8uMTc5MzA3NDk3MjE3MTY3NkB0YXNrZmxvdy1xYS50ZXN0IiwiaWQiOiI1MzZkYTg3YS0zZWE0LTRlNjMtYjRjMC1hZmM0YTdjM2Q5MWEiLCJpYXQiOjE3OTMwNzQ5NzIsImV4cCI6MTc5MzE2MTM3Mn0.35DBpfaD7aeYmOVYgj6byGbqMrHFNU374_4pWa8NXgs"
+  },
+  "equipo": {
+    "id": "20a1b393-127e-4a42-9768-cce73494935f",
+    "nombre": "Equipo Accesibilidad QA",
+    "liderId": "81b38dcc-ba8e-402b-81f8-d5021524fe88",
+    "createdAt": "2026-10-27T04:22:52.354Z",
+    "updatedAt": "2026-10-27T04:22:52.354Z",
+    "lider": {
+      "id": "81b38dcc-ba8e-402b-81f8-d5021524fe88",
+      "nombre": "Laura Líder",
+      "email": "a11y.lider.1793074971756656@taskflow-qa.test",
+      "createdAt": "2026-10-27T04:22:51.904Z",
+      "updatedAt": "2026-10-27T04:22:51.904Z"
+    },
+    "miembros": [
+      {
+        "id": "81b38dcc-ba8e-402b-81f8-d5021524fe88",
+        "nombre": "Laura Líder",
+        "email": "a11y.lider.1793074971756656@taskflow-qa.test",
+        "createdAt": "2026-10-27T04:22:51.904Z",
+        "updatedAt": "2026-10-27T04:22:51.904Z"
+      }
+    ]
+  },
+  "proyecto": {
+    "nombre": "Proyecto Tablero QA",
+    "equipoId": "20a1b393-127e-4a42-9768-cce73494935f",
+    "id": "ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+    "createdAt": "2026-10-27T04:22:52.407Z",
+    "updatedAt": "2026-10-27T04:22:52.407Z"
+  },
+  "listas": [
+    {
+      "id": "286bcbf2-fcb6-4e70-891b-1a4c866bbc7f",
+      "nombre": "Por Hacer",
+      "orden": 0,
+      "proyectoId": "ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "createdAt": "2026-10-27T04:22:52.412Z",
+      "updatedAt": "2026-10-27T04:22:52.412Z"
+    },
+    {
+      "id": "ac395351-8caf-43dd-8ccb-18ea0a6087d3",
+      "nombre": "En Progreso",
+      "orden": 1,
+      "proyectoId": "ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "createdAt": "2026-10-27T04:22:52.412Z",
+      "updatedAt": "2026-10-27T04:22:52.412Z"
+    },
+    {
+      "id": "96a302ec-c6cd-4cf3-a67c-04d169f953c2",
+      "nombre": "Hecho",
+      "orden": 2,
+      "proyectoId": "ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+      "createdAt": "2026-10-27T04:22:52.412Z",
+      "updatedAt": "2026-10-27T04:22:52.412Z"
+    }
+  ],
+  "tareas": [
+    {
+      "id": "d74e3f87-57fd-4d8a-b2fc-839fe8282afc",
+      "titulo": "Diseñar pantalla de inicio",
+      "descripcion": "Boceto y prototipo de la pantalla principal.",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "listaId": "286bcbf2-fcb6-4e70-891b-1a4c866bbc7f",
+      "createdAt": "2026-10-27T04:22:52.439Z",
+      "updatedAt": "2026-10-27T04:22:52.439Z",
+      "asignados": [],
+      "lista": {
+        "id": "286bcbf2-fcb6-4e70-891b-1a4c866bbc7f",
+        "nombre": "Por Hacer",
+        "orden": 0,
+        "proyectoId": "ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+        "createdAt": "2026-10-27T04:22:52.412Z",
+        "updatedAt": "2026-10-27T04:22:52.412Z"
+      }
+    },
+    {
+      "id": "414ffae8-e5d6-4d04-a2bc-5c79a1323b6f",
+      "titulo": "Revisar contraste de colores",
+      "descripcion": "Comprobar WCAG AA en botones y textos.",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "listaId": "286bcbf2-fcb6-4e70-891b-1a4c866bbc7f",
+      "createdAt": "2026-10-27T04:22:52.459Z",
+      "updatedAt": "2026-10-27T04:22:52.459Z",
+      "asignados": [],
+      "lista": {
+        "id": "286bcbf2-fcb6-4e70-891b-1a4c866bbc7f",
+        "nombre": "Por Hacer",
+        "orden": 0,
+        "proyectoId": "ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+        "createdAt": "2026-10-27T04:22:52.412Z",
+        "updatedAt": "2026-10-27T04:22:52.412Z"
+      }
+    },
+    {
+      "id": "384d71fd-c16d-4b26-9be8-12ee8a786857",
+      "titulo": "Escribir pruebas de teclado",
+      "descripcion": "Navegación con Tab, Esc y arrastre con teclado.",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "listaId": "286bcbf2-fcb6-4e70-891b-1a4c866bbc7f",
+      "createdAt": "2026-10-27T04:22:52.477Z",
+      "updatedAt": "2026-10-27T04:22:52.477Z",
+      "asignados": [],
+      "lista": {
+        "id": "286bcbf2-fcb6-4e70-891b-1a4c866bbc7f",
+        "nombre": "Por Hacer",
+        "orden": 0,
+        "proyectoId": "ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+        "createdAt": "2026-10-27T04:22:52.412Z",
+        "updatedAt": "2026-10-27T04:22:52.412Z"
+      }
+    },
+    {
+      "id": "bb2d3eaf-0184-428d-9cba-a89cab9db5ef",
+      "titulo": "Publicar versión 1.0",
+      "descripcion": "Despliegue en el servidor de pruebas.",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "listaId": "286bcbf2-fcb6-4e70-891b-1a4c866bbc7f",
+      "createdAt": "2026-10-27T04:22:52.495Z",
+      "updatedAt": "2026-10-27T04:22:52.495Z",
+      "asignados": [],
+      "lista": {
+        "id": "286bcbf2-fcb6-4e70-891b-1a4c866bbc7f",
+        "nombre": "Por Hacer",
+        "orden": 0,
+        "proyectoId": "ceb57851-8edf-4a64-9ec0-eb621ff04d5f",
+        "createdAt": "2026-10-27T04:22:52.412Z",
+        "updatedAt": "2026-10-27T04:22:52.412Z"
+      }
+    }
+  ]
+}

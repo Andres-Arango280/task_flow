@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Comentario, ComentarioSchema } from './schemas/comentario.schema';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Comentario } from './entities/comentario.entity';
 import { ComentariosController } from './comentarios.controller';
 import { ComentariosService } from './comentarios.service';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: Comentario.name, schema: ComentarioSchema }]),
-  ],
+  imports: [TypeOrmModule.forFeature([Comentario])],
   controllers: [ComentariosController],
   providers: [ComentariosService],
 })

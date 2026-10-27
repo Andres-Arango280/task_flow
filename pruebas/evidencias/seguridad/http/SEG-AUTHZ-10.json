@@ -1,0 +1,192 @@
+{
+  "id": "SEG-AUTHZ-10",
+  "nombre": "Un miembro expulsado pierde el acceso inmediatamente",
+  "fecha": "2026-10-26T23:19:18.000Z",
+  "obtenido": "antes → 200; expulsión → 200; después → 403",
+  "intercambios": [
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/proyectos/1add1de7-86a6-4acf-b3d8-c33c6788f75c",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 200,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "1247",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"4df-8slWU90WMLbQw2mIIVEvAOVZ3KY\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "id": "1add1de7-86a6-4acf-b3d8-c33c6788f75c",
+          "nombre": "Proyecto A1",
+          "equipoId": "f6b022c5-2d2b-413b-bd68-4c68649a6966",
+          "createdAt": "2026-10-26T23:19:13.039Z",
+          "updatedAt": "2026-10-26T23:19:13.039Z",
+          "equipo": {
+            "id": "f6b022c5-2d2b-413b-bd68-4c68649a6966",
+            "nombre": "Equipo seguridad 1793056751720",
+            "liderId": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+            "createdAt": "2026-10-26T23:19:12.953Z",
+            "updatedAt": "2026-10-26T23:19:12.953Z",
+            "lider": {
+              "id": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+              "nombre": "Usuario lider",
+              "email": "seg_lider_1793056751720_1@taskflow.test",
+              "createdAt": "2026-10-26T23:19:12.211Z",
+              "updatedAt": "2026-10-26T23:19:12.211Z"
+            },
+            "miembros": [
+              {
+                "id": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+                "nombre": "Usuario lider",
+                "email": "seg_lider_1793056751720_1@taskflow.test",
+                "createdAt": "2026-10-26T23:19:12.211Z",
+                "updatedAt": "2026-10-26T23:19:12.211Z"
+              },
+              {
+                "id": "ceb9382c-3605-4a9c-9fbe-cd92d52b9276",
+                "nombre": "Usuario miembro",
+                "email": "seg_miembro_1793056751720_3@taskflow.test",
+                "createdAt": "2026-10-26T23:19:12.636Z",
+                "updatedAt": "2026-10-26T23:19:12.636Z"
+              },
+              {
+                "id": "044b7661-d6dd-4844-8ec0-5b16fb26078d",
+                "nombre": "Usuario miembro2",
+                "email": "seg_miembro2_1793056751720_4@taskflow.test",
+                "createdAt": "2026-10-26T23:19:12.837Z",
+                "updatedAt": "2026-10-26T23:19:12.837Z"
+              }
+            ]
+          }
+        },
+        "tiempoMs": 14.5
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "DELETE",
+        "url": "http://localhost:3000/equipos/f6b022c5-2d2b-413b-bd68-4c68649a6966/miembros/044b7661-d6dd-4844-8ec0-5b16fb26078d",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 200,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "836",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"344-6E9uBfawG0m7yDdoVgq9Ma+3Vls\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "id": "f6b022c5-2d2b-413b-bd68-4c68649a6966",
+          "nombre": "Equipo seguridad 1793056751720",
+          "liderId": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+          "createdAt": "2026-10-26T23:19:12.953Z",
+          "updatedAt": "2026-10-26T23:19:12.953Z",
+          "lider": {
+            "id": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+            "nombre": "Usuario lider",
+            "email": "seg_lider_1793056751720_1@taskflow.test",
+            "createdAt": "2026-10-26T23:19:12.211Z",
+            "updatedAt": "2026-10-26T23:19:12.211Z"
+          },
+          "miembros": [
+            {
+              "id": "9c0e55ad-c2cd-4576-a159-a02663fb87be",
+              "nombre": "Usuario lider",
+              "email": "seg_lider_1793056751720_1@taskflow.test",
+              "createdAt": "2026-10-26T23:19:12.211Z",
+              "updatedAt": "2026-10-26T23:19:12.211Z"
+            },
+            {
+              "id": "ceb9382c-3605-4a9c-9fbe-cd92d52b9276",
+              "nombre": "Usuario miembro",
+              "email": "seg_miembro_1793056751720_3@taskflow.test",
+              "createdAt": "2026-10-26T23:19:12.636Z",
+              "updatedAt": "2026-10-26T23:19:12.636Z"
+            }
+          ]
+        },
+        "tiempoMs": 23
+      }
+    },
+    {
+      "peticion": {
+        "metodo": "GET",
+        "url": "http://localhost:3000/proyectos/1add1de7-86a6-4acf-b3d8-c33c6788f75c",
+        "headers": {
+          "authorization": "Bearer eyJhbGciO…(token recortado)"
+        }
+      },
+      "respuesta": {
+        "status": 403,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "connection": "keep-alive",
+          "content-length": "83",
+          "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          "content-type": "application/json; charset=utf-8",
+          "cross-origin-opener-policy": "same-origin",
+          "cross-origin-resource-policy": "same-origin",
+          "date": "Mon, 26 Oct 2026 23:19:17 GMT",
+          "etag": "W/\"53-wmtjWVoAw4ztziaCOdoILjoH4d4\"",
+          "keep-alive": "timeout=5",
+          "origin-agent-cluster": "?1",
+          "referrer-policy": "no-referrer",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "vary": "Origin",
+          "x-content-type-options": "nosniff",
+          "x-dns-prefetch-control": "off",
+          "x-download-options": "noopen",
+          "x-frame-options": "SAMEORIGIN",
+          "x-permitted-cross-domain-policies": "none",
+          "x-xss-protection": "0"
+        },
+        "body": {
+          "message": "No tienes acceso a este proyecto",
+          "error": "Forbidden",
+          "statusCode": 403
+        },
+        "tiempoMs": 12.2
+      }
+    }
+  ]
+}

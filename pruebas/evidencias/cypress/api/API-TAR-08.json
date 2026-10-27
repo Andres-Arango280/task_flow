@@ -1,0 +1,24 @@
+{
+  "id": "API-TAR-08",
+  "obtenido": "Respondió 400 \"El título es obligatorio\"; la tarea conserva el título \"Se mantiene\".",
+  "peticion": {
+    "metodo": "PATCH",
+    "url": "http://localhost:3000/tareas/f9cab689-0315-42e8-88c6-4f12349eec3d",
+    "autenticado": true,
+    "cuerpo": {
+      "titulo": ""
+    }
+  },
+  "respuesta": {
+    "estado": 400,
+    "duracionMs": 9,
+    "cuerpo": {
+      "message": [
+        "El título es obligatorio"
+      ],
+      "error": "Bad Request",
+      "statusCode": 400
+    }
+  },
+  "fecha": "2026-10-26T23:13:18.538Z"
+}

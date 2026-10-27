@@ -21,19 +21,22 @@ jest.mock('bcrypt', () => ({
 // - Stub: valores fijados para bcrypt.hash/compare y usuariosService.findByEmailRaw.
 // - Spy: comprobamos llamadas a usuariosService.create y jwtService.signAsync.
 
-describe('AuthService', () => {
+describe('Regression - AuthService', () => {
+  // AAA + fluent-style assertions (Jest equivalent for this TypeScript stack)
   let authService: AuthService;
   let usuariosServiceMock: jest.Mocked<Pick<UsuariosService, 'findByEmailRaw' | 'create'>>;
   let jwtServiceMock: jest.Mocked<Pick<JwtService, 'signAsync'>>;
 
   const usuarioFixture = {
-    _id: '507f1f77bcf86cd799439011',
+    id: '3f1c2b7a-9d4e-4f6a-8b2c-1e5d7a9c0b11',
     nombre: 'Juan Pérez',
     email: 'juan@test.com',
     password: 'hashedPassword123',
   };
 
   beforeEach(async () => {
+    jest.clearAllMocks();
+
     usuariosServiceMock = {
       findByEmailRaw: jest.fn(),
       create: jest.fn(),
@@ -52,7 +55,6 @@ describe('AuthService', () => {
     }).compile();
 
     authService = module.get<AuthService>(AuthService);
-    jest.clearAllMocks();
   });
 
   describe('register', () => {
@@ -62,7 +64,7 @@ describe('AuthService', () => {
       password: '123456',
     };
 
-    it('debe registrar un usuario nuevo exitosamente', async () => {
+    it('debe crear un usuario nuevo correctamente y devolver un payload sanitizado', async () => {
       // Arrange: Stub de datos del repositorio y hash.
       usuariosServiceMock.findByEmailRaw.mockResolvedValue(null);
       (bcrypt.hash as jest.Mock).mockResolvedValue('hashedPassword123');
@@ -80,14 +82,15 @@ describe('AuthService', () => {
         password: 'hashedPassword123',
       });
       expect(resultado).toEqual({
-        _id: usuarioFixture._id,
+        id: usuarioFixture.id,
         nombre: usuarioFixture.nombre,
         email: usuarioFixture.email,
       });
       expect(resultado).not.toHaveProperty('password');
+      expect(resultado).not.toHaveProperty('_id');
     });
 
-    it('debe lanzar ConflictException si el email ya existe', async () => {
+    it('debe rechazar el registro cuando el email ya está en uso', async () => {
       // Arrange: Stub que simula un usuario existente.
       usuariosServiceMock.findByEmailRaw.mockResolvedValue(usuarioFixture as any);
 
@@ -99,7 +102,7 @@ describe('AuthService', () => {
       expect(usuariosServiceMock.create).not.toHaveBeenCalled();
     });
 
-    it('debe guardar la contraseña hasheada y no la original', async () => {
+    it('debe hashear la contraseña antes de guardarla y nunca almacenar la contraseña en texto plano', async () => {
       // Arrange
       const hashedPassword = 'encrypted_password_xyz123';
       usuariosServiceMock.findByEmailRaw.mockResolvedValue(null);
@@ -125,7 +128,7 @@ describe('AuthService', () => {
       password: '123456',
     };
 
-    it('debe iniciar sesión exitosamente y retornar un token', async () => {
+    it('debe autenticar correctamente y devolver un token de acceso', async () => {
       // Arrange: Stub de usuario y contraseña válidas.
       usuariosServiceMock.findByEmailRaw.mockResolvedValue(usuarioFixture as any);
       (bcrypt.compare as jest.Mock).mockResolvedValue(true);
@@ -137,26 +140,29 @@ describe('AuthService', () => {
       expect(usuariosServiceMock.findByEmailRaw).toHaveBeenCalledWith('juan@test.com');
       expect(bcrypt.compare).toHaveBeenCalledWith('123456', 'hashedPassword123');
       expect(jwtServiceMock.signAsync).toHaveBeenCalledWith({
-        sub: usuarioFixture._id,
+        sub: usuarioFixture.id,
         email: usuarioFixture.email,
-        id: usuarioFixture._id,
+        id: usuarioFixture.id,
       });
       expect(resultado).toEqual({ access_token: 'mock.jwt.token' });
     });
 
-    it('debe lanzar UnauthorizedException si el usuario no existe', async () => {
+    it('debe rechazar el login cuando el usuario no existe', async () => {
       // Arrange
       usuariosServiceMock.findByEmailRaw.mockResolvedValue(null);
+      (bcrypt.compare as jest.Mock).mockResolvedValue(true);
 
       // Act + Assert
       await expect(authService.login(loginDto)).rejects.toThrow(UnauthorizedException);
       await expect(authService.login(loginDto)).rejects.toThrow('Credenciales inválidas');
 
-      expect(bcrypt.compare).not.toHaveBeenCalled();
+      // Se compara igualmente contra un hash ficticio (tiempo constante, sin enumeración de cuentas)
+      // y, aunque la comparación "acertara", nunca se emite un token para un usuario inexistente.
+      expect(bcrypt.compare).toHaveBeenCalledWith(loginDto.password, expect.stringMatching(/^\$2b\$10\$/));
       expect(jwtServiceMock.signAsync).not.toHaveBeenCalled();
     });
 
-    it('debe lanzar UnauthorizedException si la contraseña es incorrecta', async () => {
+    it('debe rechazar el login cuando la contraseña es inválida', async () => {
       // Arrange: Stub de contraseña inválida.
       usuariosServiceMock.findByEmailRaw.mockResolvedValue(usuarioFixture as any);
       (bcrypt.compare as jest.Mock).mockResolvedValue(false);
@@ -168,7 +174,7 @@ describe('AuthService', () => {
       expect(jwtServiceMock.signAsync).not.toHaveBeenCalled();
     });
 
-    it('debe generar el JWT con el payload correcto', async () => {
+    it('debe generar un JWT con el payload esperado del usuario', async () => {
       // Arrange
       const customToken = 'custom.jwt.token.123';
       usuariosServiceMock.findByEmailRaw.mockResolvedValue(usuarioFixture as any);
@@ -181,10 +187,13 @@ describe('AuthService', () => {
       // Assert
       expect(jwtServiceMock.signAsync).toHaveBeenCalledWith(
         expect.objectContaining({
-          sub: usuarioFixture._id,
+          sub: usuarioFixture.id,
           email: usuarioFixture.email,
-          id: usuarioFixture._id,
+          id: usuarioFixture.id,
         }),
+      );
+      expect(jwtServiceMock.signAsync).toHaveBeenCalledWith(
+        expect.not.objectContaining({ password: expect.anything() }),
       );
       expect(resultado).toEqual({ access_token: customToken });
     });

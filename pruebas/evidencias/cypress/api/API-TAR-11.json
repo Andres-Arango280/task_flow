@@ -1,0 +1,19 @@
+{
+  "id": "API-TAR-11",
+  "obtenido": "Editar, mover y borrar respondieron 403, 403 y 403 con \"No tienes acceso a esta tarea\".",
+  "peticion": {
+    "metodo": "DELETE",
+    "url": "http://localhost:3000/tareas/10dc8843-55f4-4a71-891e-89844625d16e",
+    "autenticado": true
+  },
+  "respuesta": {
+    "estado": 403,
+    "duracionMs": 16,
+    "cuerpo": {
+      "message": "No tienes acceso a esta tarea",
+      "error": "Forbidden",
+      "statusCode": 403
+    }
+  },
+  "fecha": "2026-10-26T23:13:22.034Z"
+}
