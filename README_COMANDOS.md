@@ -300,7 +300,7 @@ node pruebas/informe/generar-informe.js
 | Criterio | Suite / documento | Carpeta | Comando | Evidencias |
 |---|---|---|---|---|
 | 1. Plan de pruebas | Plan-de-Pruebas-TaskFlow.docx | `pruebas/informe/` | `node pruebas/informe/generar-plan.js` | `pruebas/informe/Plan-de-Pruebas-TaskFlow.docx` |
-| 2. Matriz de trazabilidad | Excel + JSON + MD generados desde las evidencias | `pruebas/informe/generar-matriz.js` | `node pruebas/informe/generar-matriz.js` | `pruebas/evidencias/matriz/` |
+| 2. Matriz de trazabilidad | Excel detallado + JSON + MD, y RTM en el formato de la asignatura (Lookups, RTM, Dashboard, Defectos, Cómo usar) | `pruebas/informe/generar-matriz.js`, `generar-rtm.js` | `node pruebas/informe/generar-matriz.js && node pruebas/informe/generar-rtm.js` | `pruebas/evidencias/matriz/` |
 | 3. Informe final | Informe-Pruebas-TaskFlow.docx (16 secciones + anexos) | `pruebas/informe/` | `node pruebas/informe/generar-informe.js` | `pruebas/informe/Informe-Pruebas-TaskFlow.docx` |
 | 4. Cypress: seguridad y accesibilidad | `cypress/e2e/seguridad/` (CYS-*) y `cypress/e2e/accesibilidad/` (CYA-*, axe-core) | `taskflow-frontend/` | `npm run test:seguridad` · `npm run test:accesibilidad` · todo: `npm run test:cypress` | `pruebas/evidencias/cypress/` |
 | 5. Gherkin + Screenplay | `features/*.feature`, `features/step_definitions/`, `features/support/` (Cucumber 11 + Serenity/JS) | `pruebas/e2e-screenplay/` | `npm run gherkin` | `pruebas/evidencias/gherkin/` |

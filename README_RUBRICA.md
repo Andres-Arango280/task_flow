@@ -47,9 +47,10 @@ docker compose up -d                  # SonarQube http://localhost:9000 · Jenki
 
 ## 2. Matriz de Trazabilidad actualizada
 
-- **Archivo:** `pruebas/evidencias/matriz/Matriz-Trazabilidad-TaskFlow.xlsx` (también `matriz.json` y `matriz.md`).
-- **Regenerar:** `node pruebas/informe/generar-matriz.js`
-- **Qué mostrar:** hoja **Requisitos** (cada requisito → funcionalidad → casos que lo verifican → estado), hoja **Casos** (los ~530 casos de todas las suites con objetivo, esperado, obtenido y evidencia), hoja **Defectos** (correcciones C-01… enlazadas con los casos que las comprueban). Cobertura: 23/23 requisitos.
+- **Archivo principal (formato RTM de la asignatura):** `pruebas/evidencias/matriz/Matriz-Trazabilidad-RTM-TaskFlow.xlsx`, con las hojas **Lookups**, **RTM**, **Dashboard**, **Defectos** y **Cómo usar** de la plantilla del curso. Una fila por par caso × requisito (1 004 filas, 529 casos únicos) con HU, RF/RNF, escenario (exitoso / alternativo / error), nivel, tipo, prioridad, riesgo, sprint, estado Pass/Fail/Blocked/Not Run, defecto, severidad, versión, entorno, fecha, notas con el resultado obtenido, evidencia y la fórmula de cobertura por requisito.
+- **Archivo detallado:** `pruebas/evidencias/matriz/Matriz-Trazabilidad-TaskFlow.xlsx` (también `matriz.json` y `matriz.md`).
+- **Regenerar:** `node pruebas/informe/generar-matriz.js && node pruebas/informe/generar-rtm.js`
+- **Qué mostrar:** en el RTM, la hoja **Dashboard** (total, % aprobación, cobertura por cada uno de los 23 requisitos con semáforo, filas por suite), un filtro en la hoja **RTM** por requisito o por funcionalidad F1…F6, y la hoja **Defectos** (20 correcciones C-01…C-20 con los casos que las verifican y 5 hallazgos abiertos HAL-01…HAL-05). En el archivo detallado, la hoja **Casos** con objetivo, esperado, obtenido y evidencia de cada caso. Cobertura: 23/23 requisitos.
 - **Mensaje clave:** la matriz se construye con expresiones regulares sobre los prefijos de los casos (`API-AUTH`, `CYS-`, `GH-`, `ST-`…) definidas en `funcionalidades.json`; al añadir una prueba nueva basta con regenerarla.
 
 ## 3. Informe Final de Pruebas
@@ -223,7 +224,7 @@ cd pruebas/rendimiento && npm test && cd ../..           # al final: carga la CP
 # herramientas de IA: ver README de cada carpeta en pruebas/ia-herramientas
 SONAR_TOKEN=<token> node pruebas/despliegue/verificar-despliegue.mjs
 node pruebas/comparacion/comparar.mjs
-node pruebas/informe/generar-matriz.js
+node pruebas/informe/generar-matriz.js && node pruebas/informe/generar-rtm.js
 node pruebas/informe/generar-plan.js
 node pruebas/informe/generar-informe.js
 node pruebas/informe/generar-presentacion.js
